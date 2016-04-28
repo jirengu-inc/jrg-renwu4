@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-7-2</title>
+</head>
+<style>
+	form{
+		display: table;
+		border-spacing: 5px;
+		margin: 0px auto;
+		border: 1px solid #ccc;
+		background-color: #6BF37C;
+	}
+	.btn{
+		display: table-row;
+	}
+	.btn p{
+		display: table-cell;
+		text-align: left;
+		font-weight: bold;
+	}
+	.btn p:first-child {
+		display: table-cell;
+		text-align: right;
+	}
+</style>
+<body>
+	<form action="#" method="post">
+		<div class="btn">
+			<p>姓名:</p>
+			<p><input type="text" name="user" value=""></p>
+		</div>
+		<div class="btn">
+			<p>密码:</p>
+			<p><input type="passwords" name="password" value=""></p>
+		</div>
+		<div class="btn">
+			<p>性别:</p>
+			<p>
+			<input type="radio"  name="sex" value="男" >
+			<input type="radio"  name="sex" value="女" >
+		</p>
+		</div>
+		<div class="btn">
+			<p>取向:</p>
+			<p>
+			<input type="radio" name="love" value="男" >
+			<input type="radio"  name="love" value= "女" >	
+			</p>
+		</div>
+		<div class="btn">
+			<p>爱好:</p>
+			<p><input type="checkbox" name="hobby" value="DOTA">
+			<input type="checkbox" name="hobby" value="旅游">
+			<input type="checkbox" name="hobby" value="宠物"></p>
+		</div>
+		<div class="btn">
+			<p>评论:</p>
+			<p>
+			<textarea name="comments" id="comment" cols="30" rows="10"></textarea>
+			</p>
+		</div>
+		<div class="btn">
+			<p>我的car:</p>
+			<p>
+			<select name="name" >
+				<option value="张三">张三</option>
+				<option value="李四">李四</option>
+				<option value="王五">王五</option>
+			</select>
+			<input type="submit">
+			</p>
+		</div>
+	</form>
+</body>
+</html>
