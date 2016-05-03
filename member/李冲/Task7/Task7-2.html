@@ -16,36 +16,37 @@
 	</style>
 </head>
 <body>
-    <form method="post" action="save.php">
+    <form method="post" action="#">
       <div>
     	<span>用户名：</span><input type="text" name="myname" placeholder="张三" /><br />
-    	<span>密码：</span><input type="password" name="password" placeholder="6到14位数字或者密码" /><br />
+    	<span>密码：</span><input type="password" name="password" placeholder="6到14位数字或者密码" />
       </div>
       <div> 	
         <input type="radio" name="sex" value="man" />男
-        <input type="radio" name="sex" value="woman" />女<br />
+        <input type="radio" name="sex" value="woman" />女
       </div>
       <div>
         <input type="radio" name="target" value="man" />男
-        <input type="radio" name="target" value="woman" />女<br />
+        <input type="radio" name="target" value="woman" />女
       </div>
       <div class="mutiple">
         <input type="checkbox" name="hobby" value="Dota" />dota
         <input type="checkbox" name="hobby" value="travel" />旅游
-        <input type="checkbox" name="hobby" value="pet" />宠物<br />
+        <input type="checkbox" name="hobby" value="pet" />宠物
       </div>
       <div> 
         评论：<textarea cols="50" rows="10" placeholder="我还有想法......"></textarea>
       </div> 
-      <div>
+      <div class="optional">
       	 学历：
       	 <select name="education">
       	 	<option value="college diploma">大专</option>
       	 	<option value="unisersity diploma">本科</option>
       	 	<option value="master diploma">硕士</option>
       	 	<option value="doctor diploma">博士</option>
-      	 </select>
-      </div>         
+        </select>
+           <input type="submit" value="提交" />
+      </div>  
     </form>
 </body>
 </html>
