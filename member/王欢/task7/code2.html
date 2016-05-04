@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>任务7-代码2</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		form{
+			font-size: 16px;
+			font-weight: bold;
+			border: 1px solid #ddd;
+			margin: 0 auto;
+			display: table;
+			border-spacing: 10px;
+			background: hsla(120,70%,90%,0.3);
+		}
+		input{
+			height: 24px;
+			vertical-align: middle;
+			margin-left: 10px;
+			margin-top: 3px;
+		}
+		#submit{
+			color: #000;
+		    text-decoration: none;
+		    margin-left: 10px;
+		    padding: 4px 10px;
+		    font-size: 12px;
+		    border-radius: 3px;
+		    border: 1px solid #ddd;
+		}
+		select{
+			width: 60px;
+			font-size: 24px;
+		}
+	</style>
+</head>
+<body>
+	<form action="">
+		姓名：<input type="text" placeholder="用户名"><br>
+		密码：<input type="password" placeholder="*********"><br>
+		性别：<input type="radio" name="sex" checked="">男
+			 <input type="radio" name="sex">女<br>
+		取向：<input type="radio" name="orient">男
+			 <input type="radio" name="orient" checked="">女<br>
+		爱好：<input type="checkbox" name="hobby">dota
+			 <input type="checkbox" name="hobby" checked="">旅游
+			 <input type="checkbox" name="hobby" checked="">宠物<br>
+		评论：<textarea name="comment" id="" cols="30" rows="10" placeholder="ddd">
+			
+		</textarea><br>
+		我的car：<select name="car" id="car">
+					<option value="" selected="">萨博</option>
+				</select>
+				<!-- <button type="submit" id="submit">提交</button> -->
+				<a href="#" id="submit">提交</a>
+	</form>
+</body>
+</html>
