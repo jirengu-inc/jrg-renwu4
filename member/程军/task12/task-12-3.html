@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-12-3</title>
+	<style>
+	body,div {
+		padding: 0px;
+		margin:0px;
+		font-size: 30px;
+	}
+	#header,#footer{
+		background-color: #D8D4D4;
+		height: 30px;
+	}
+	#content:after {
+		content: "";
+		display: block;
+		height: 0;
+		clear: both;
+	}
+	#main{		
+		height: 100px;
+		width: 100%;
+		float: left;
+	}
+	#main .wrap {
+		margin: 0px 200px;
+		font-size: 16px;
+		background-color: green;
+	}
+	#aside{
+		background: red; 
+		float: left;
+		width: 200px;
+		height: 200px;
+		margin-left: -100%;
+	}
+	#exra{
+		background: yellow; 
+		float: left;
+		width: 200px;
+		height: 200px;
+		margin-left: -200px;
+	
+	}
+
+	</style>
+</head>
+<body>
+	
+	<div id="header">header</div>
+	<div id="content">
+		<div id="main"><div class="wrap">我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main</div></div>
+		<div id="aside">aside</div>
+		<div id="exra">exra</div>
+	</div>
+	<div id="footer">footer</div>
+</body>
+</html>
