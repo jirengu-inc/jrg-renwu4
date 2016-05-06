@@ -1,0 +1,14 @@
+.center{                  /*类选择器为.center*/
+
+        display:table-cell; //block; inline; inline-blick; none; table-cell;              /*使对象显示具有表格元素属性;块级元素属性;行内元素属性;行内块级属性和没有样式*/
+ 
+        width: 200px;                 /*宽度设置为200px*/
+
+        height: 200px;                /*高度设置为200px*/
+
+        vertical-align: middle;    /*设置内容垂直居中显示，前提是内容具有表格属性*/
+
+        text-align: center;          /*设置内容水平居中显示*/
+
+        background-color: #ccc;          /*设置背景颜色为#ccc色*/
+}
