@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>code2</title>
+  <style>
+	*{
+	  margin: 0;
+	  padding: 0;
+	}
+	body{
+	  padding: 20px;
+	}
+	.item{
+	  width: 250px;
+	  height: 150px;
+	  border: 1px solid #ddd;
+	  position: relative;
+	  margin-bottom: 20px;
+	}
+	.item .item-side{
+	  position: absolute;
+	  width: 0;
+	  height: 0;
+	  border: 15px solid rgba(0,0,0,0);
+	}
+	.item .side1{
+	  bottom: 100%;
+	  left: 20px;
+	  border-bottom-color:#ddd;
+	  margin-bottom: 1px;
+	}
+	.item .side2{
+	  border-top-color: red;
+	  border-right-color: red;
+	  right:0;
+	  margin-top: -1px;
+      margin-right: -1px;
+	}
+	.item .side3{
+	  width: 0;
+	  height: 0;
+	  border: 13px solid;
+	  border-color:  transparent transparent white transparent;
+	  bottom: 100%;
+	  left: 22px;
+	}
+  </style>
+</head>
+<body>
+<div class="item">
+  <div class="item-side side1"> 
+  </div>
+</div>
+  <div class="item">
+    <div class="item-side side2">
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-side side1"></div>
+    <div class="item-side side3"></div>
+  </div>
+</body>
+</html>
