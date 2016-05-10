@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+</head>
+
+<body>
+    <form class="pForm" action="index.html" method="post">
+        <p>姓名：
+            <input name="username" type="text" placeholder="用户名" />
+        </p>
+        <p>密码：
+            <input name="password" type="password" placeholder="密码" />
+        </p>
+        <p>性别：
+            <input name="sex" type="radio" value="male" />男
+            <input name="sex" type="radio" value="female" />女
+        </p>
+        <p>取向：
+            <input name="orientation" type="radio" value="male" />男
+            <input name="orientation" type="radio" value="female" />女
+        </p>
+        <p>爱好：
+            <input name="hobby" type="checkbox" value="running" />跑步
+            <input name="hobby" type="checkbox" value="handmade" />手作
+            <input name="hobby" type="checkbox" value="travel" />旅行
+
+            <p>评论：
+                <textarea name="text" placeholder="请输入..." maxlength="200"></textarea>
+            </p>
+            <p>我的car：
+                <select name="cars">
+                    <option value="BMW">宝马</option>
+                    <option value="ferrari">法拉利</option>
+                    <option value="hummer" selected="selected">悍马</option>
+
+                </select>
+                <p>
+                    <input type="submit" value="提交">
+                </p>
+
+
+    </form>
+</body>
+
+</html>
