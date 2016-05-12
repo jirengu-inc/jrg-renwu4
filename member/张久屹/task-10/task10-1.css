@@ -1,0 +1,60 @@
+html,body {
+  margin: 0;
+  padding: 0;
+}                 
+#header {
+  width: 100%;                   
+  height: 50px;
+  background: black;     
+}
+.logo {
+  height: 50px;
+  width: 38%;
+  background: url(http://i4.buimg.com/9faec746b41a62bf.png)0 5px no-repeat;
+  background-size:contain;
+  float: left;
+}
+.daohang {
+  color: #fff;       /* 我总觉得这个样式写的有问题， */
+  width: 60%;
+  float:right;       /*  但我看不出来问题在哪，老师帮我指出来吧？ */
+  height:50px;             
+}
+li {
+  list-style: none;
+  font-size: 20px;
+  float: left; 
+  margin:0 40px;
+}
+
+.content {
+  width: 900px;
+  height:600px;
+  margin:10px auto 0 auto;
+}
+
+.zuo {
+  height:600px;
+  width: 200px;
+  background: #E6E6FA;
+  float: left;
+}
+.you {
+  height: 200px;
+  width:690px;
+  background: #E6E6FA;
+  margin-left: 10px;
+  float: left;
+}
+#wei {
+  width: 100%;
+  height: 50px;
+  background: black;
+  color: #fff;
+}
+.tx {
+  height:50px;
+  width: 600px;
+  text-align: center;
+  line-height: 50px;       
+}
