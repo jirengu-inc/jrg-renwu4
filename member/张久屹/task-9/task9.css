@@ -11,8 +11,8 @@
   line-height: 36px;
   border-radius: 6px;
   padding: 6px;
-  border: none;
-  unline:
+  border: none;   /*去掉边框*/
+  outline:none;   /*清楚鼠标按下后边框的蓝色线条*/
 }
 .btn:hover {
   background: #c14d21;
