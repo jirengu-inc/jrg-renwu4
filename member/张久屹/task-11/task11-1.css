@@ -5,7 +5,6 @@ body,html,ul{
 }
 .header {
   background: #BDBDBD;   /* 设置导航栏背景色 */
-  overflow: auto;         /* 将此父容器变成BFC不受浮动影响 */
 }
 li a{
   text-decoration:none;    /* 清除a链接下划线 */
@@ -15,38 +14,24 @@ li {
   list-style: none;       /* 清楚所有li默认样式 */
 }
 .bar>li {
-  padding:0 10px;           /*设置内边距，让hover的时候背景颜色没有缝隙*/
+  position: relative;
+  padding:0 10px;           
   float: left;              
-  line-height: 30px;         /*设定行距更美观*/
+  line-height: 30px;        
 }
 .bar>li:hover {
   background: #A7A7A7;     
 }
-.child1,.child2,.child3 {
-  display: none;                /*平时下拉菜单是脱离文档流的*/
+.child {
+  left: 0;
+  top: 100%;
+  display: none;              
   background: #fff;
   border: 1px solid #A7A7A7;      
-  position: absolute;        /*绝对定位,脱离文档流、调整菜单位置*/
+  position: absolute;        
 }
-.child1 {
-  left: 0;
-  /*top: 100%;*/            /*老师,这点为什么我设100%就跑没影了？*/
-}
-.child2 {
-  left: 52px;
-  /*top: 100%; */                     /*调整下拉菜单水平位置*/
-}
-.child3 {
-  left:120px;
-}
-.li1:hover .child1{
+.lt:hover .child{
   display:block;
-}
-.li2:hover .child2{                  /*当鼠标悬浮在导航元素上时*/
-  display: block;                  /*下拉菜单变为块级元素出现*/
-}
-.li3:hover .child3{
-  display: block;
 }
 .bar .nc{
   padding: 0 5px;               

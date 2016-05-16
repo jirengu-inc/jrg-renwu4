@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>三角形</title>
+		<style>
+		.tooltip {
+			width:180px;
+			height:90px;
+			border:2px #ccc solid;
+			margin-top:40px;
+			position:relative;
+		}	
+		.caret-top {
+			width:0px;
+			height:0px;
+			border-top:15px solid transparent;
+			border-right:15px solid transparent;
+			border-left:15px solid transparent;
+			border-bottom:15px solid #ccc;
+			position:absolute;
+			top:-30px;
+			left:10px;
+		}
+		.caret-topright {
+			width:0px;
+			height:0px;
+			border-top:10px solid red;
+			border-right:10px solid red;
+			border-left:10px solid transparent;
+			border-bottom:10px solid transparent;
+			position:absolute;
+			right:0px;
+		}
+		.caret-top1 {
+			width:0px;
+			height:0px;
+			border-top:15px solid transparent;
+			border-right:15px solid transparent;
+			border-left:15px solid transparent;
+			border-bottom:15px solid white ;
+			position:absolute;
+			top:-28px;
+			left:10px;
+		}	
+			
+		</style>
+	</head>
+	<body>
+		<div class="tooltip">
+			<div class="caret-top"></div>
+		</div>
+		<div class="tooltip">
+			<div class="caret-topright"></div>
+		</div>
+		<div class="tooltip">
+			<div class="caret-top"></div>
+			<div class="caret-top1"></div>
+		</div>
+	</body>
+</html>
