@@ -1,0 +1,41 @@
+body,html,ul{       
+  margin: 0;           /* body和ul默认的外边距 */
+  padding: 0;            /* 和内边距清除 */
+  font-family:微软雅黑;   /* 设置字体 */
+}
+.header {
+  background: #BDBDBD;   /* 设置导航栏背景色 */
+}
+li a{
+  text-decoration:none;    /* 清除a链接下划线 */
+  color: black;            /* 设置a字体颜色 */
+}
+li {
+  list-style: none;       /* 清楚所有li默认样式 */
+}
+.bar>li {
+  position: relative;
+  padding:0 10px;           
+  float: left;              
+  line-height: 30px;        
+}
+.bar>li:hover {
+  background: #A7A7A7;     
+}
+.child {
+  left: 0;
+  top: 100%;
+  display: none;              
+  background: #fff;
+  border: 1px solid #A7A7A7;      
+  position: absolute;        
+}
+.lt:hover .child{
+  display:block;
+}
+.bar .nc{
+  padding: 0 5px;               
+}
+.nc:hover {
+  background: #D2CDCE;
+}
