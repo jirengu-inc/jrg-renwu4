@@ -21,11 +21,11 @@
   	<!--单选框：所有选项中只能选一个，因此同组单选按钮name属性值必须相同-->
 
   	<p>爱好：
-  	  <input type="checkbox" name="dota">dota
-  	  <input type="checkbox" name="trip">旅游
-  	  <input type="checkbox" name="pet" checked="checked">宠物
+  	  <input type="checkbox" name="hobby" value="dota">dota
+  	  <input type="checkbox" name="hobby" value="trip">旅游
+  	  <input type="checkbox" name="hobby" value="pet" checked="checked">宠物
   	</p>
-  	<!--复选框：可多选，checked属性表示默认选择-->
+  	<!--复选框：可多选，checked属性表示默认选择,相同name可以使后台直接获取数组信息-->
 
   	<p>评论：
   	  <textarea name="text" placeholder="请输入..." rows="10" cols="30"></textarea>
