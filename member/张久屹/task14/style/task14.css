@@ -36,16 +36,14 @@ a{
 	text-align: center;
 }
 #header{
-	height: 241px;
 	text-align: center;
-	border: 1px transparent solid;
+	overflow: hidden;
 }
 .text-main{
 	width: 960px;
 	margin: 80px auto;
 }
 #content{
-	height: 459px;
 	background: #337ab7;
 	color: #fff;
 	overflow: auto;
@@ -116,11 +114,11 @@ a{
 #bg h1{
 	margin: 160px auto;
 	color: #fff;
-	font-weight: 900;
-	font-size: 50px;
+	font-weight: 700;
+	font-size: 60px;
 }
 #main{
-	height: 897px;
+	min-height: 897px;
 	overflow: auto;
 }
 #main h2{
@@ -137,13 +135,13 @@ a{
 #main img{
 	width: 457px;
 	height: 304px;
-	margin-left: 29px;
+	margin-left:17px;
 	margin-top: 25px;
 }
 #main .warp-bar{
 	overflow: auto;
 	margin: 0 auto 30px auto;
-	width: 1000px;
+	width: 960px;
 }
 #main .fly{
 	font-size: 14px;
@@ -159,7 +157,6 @@ a{
 }
 #contact{
 	background: #337ab7;
-	height: 222px;
 	color: #fff;
 	overflow: hidden;
 }
@@ -183,7 +180,6 @@ a{
 }
 
 #footer{
-	min-height: 452px;
 	overflow: hidden;
 }
 #footer .warp{
