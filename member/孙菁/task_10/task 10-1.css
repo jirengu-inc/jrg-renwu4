@@ -1,0 +1,97 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-05-19 23:13:10
+ * @version $Id$
+ */
+
+/*reset*/
+* {
+	margin:0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+
+/*public*/
+.fl{float: left;}
+.fr{float: right;}
+.clear{
+	overflow: hidden;
+	zoom: 1;
+}
+.center{margin: 0 auto;}
+.bac{background: #333333;}
+.width{width: 920px;}
+.nav a,.friends-link a{
+	display: inline-block;
+	font-weight: bold;
+	color: #fff;
+}
+.aside,.main{
+	background: #eee;
+}
+.main h2,.main p{
+	color: #656565;
+	font-weight: bold;	
+}
+
+#header{
+	height: 70px;
+}
+#content{
+	height: 760px;
+	padding: 20px;
+}
+#footer{
+	height: 60px;
+}
+
+/*header*/
+.nav{
+	line-height: 70px;
+}
+.nav li{
+	float: left;
+}
+.nav a{
+	font-size: 26px;
+	margin-left: 50px;
+}
+
+/*content*/
+.aside{
+	width: 200px;
+	height: 740px;
+	margin-right:20px;
+}
+.main{
+	width: 700px;
+	height: 300px;
+}
+.main h2{
+	font-size: 40px;
+	margin: 70px 0 0 20px;
+}
+.main p{
+	font-size: 20px;
+	line-height: 30px;
+	margin:40px 0 0 20px;
+}
+
+/*footer*/
+.friends-link{
+	line-height: 60px;
+}
+.friends-link li{
+	float: left;
+}
+.friends-link a{
+	font-size: 20px;
+	margin-right: 50px;
+}
