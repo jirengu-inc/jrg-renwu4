@@ -312,6 +312,7 @@ a{
   float: left;
 }
 #content .father>input{
+  font-family: 微软雅黑;
   display: block;
   margin-top: 20px;
   width: 468px;
@@ -325,7 +326,7 @@ a{
   width:490px;
 }
 #content textarea{
-  font-family: monospace;
+  font-family: 微软雅黑;
   width: 455px;
   height: 165px;
   border-radius:5px;
