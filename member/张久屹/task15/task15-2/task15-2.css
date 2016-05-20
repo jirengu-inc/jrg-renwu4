@@ -54,7 +54,6 @@ a{
   background: url(image/header-bg.jpg);
   background-position: center center;
   background-size: cover;
-/*  background-attachment: scroll;*/
   padding: 250px 0;
   text-align: center;
   color: #fff;
@@ -76,7 +75,6 @@ a{
 }
 #services .wrap{
   width: 1000px;
- /* background: yellow;*/
   overflow: hidden;
   margin: 0 auto;
 }
@@ -121,16 +119,14 @@ a{
 #main{
   background: #f7f7f7;
   padding: 100px 0;
-/*  overflow: auto;*/
 }
 #main .wrap{
   width: 1000px;
-  overflow: auto;
+  overflow: hidden;
   margin: 0 auto;
   text-align: center;
 }
 .layout .father{
-  /*overflow: auto;*/
   margin-left: -20px;
 }
 #main .father>li{
@@ -201,7 +197,6 @@ a{
   margin-top: 80px;
 }
 #about li:nth-of-type(2)>.list{
-  /*background: yellow;*/
   float: right;
   text-align: left;
 }
@@ -209,7 +204,6 @@ a{
   float: right;
 }
 #about li:nth-of-type(4)>.list{
-  /*background: yellow;*/
   float: right;
   text-align: left;
 }
@@ -230,10 +224,8 @@ a{
   height: 160px;
   border-radius: 100%;
   margin: 25px auto;
- /* padding: 10px;*/
 }
 #about .story>p{
-  /*background: red;*/
   color: #fff;
   font-weight: 600;
   line-height: 25px;
@@ -312,7 +304,6 @@ a{
   float: left;
 }
 #content .father>input{
-  font-family: 微软雅黑;
   display: block;
   margin-top: 20px;
   width: 468px;
@@ -326,7 +317,7 @@ a{
   width:490px;
 }
 #content textarea{
-  font-family: 微软雅黑;
+  font-family: arial, verdana, sans-serif;
   width: 455px;
   height: 165px;
   border-radius:5px;
