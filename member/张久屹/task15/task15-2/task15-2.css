@@ -1,0 +1,376 @@
+html,body,ul{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+  font-family:"Roboto Slab","Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+li{
+	list-style: none;
+}
+a{
+  text-decoration: none;      
+  color: #fff;
+}
+#top{
+  background: #222;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+#top:after{
+  content:"";
+  display: block;
+  clear: both;
+}
+#top .wrap{
+  width: 1000px;
+  margin: 0 auto;
+}
+#top .logo{
+  float:left;
+  cursor:pointer;
+  padding:5px;
+  margin: 10px;
+  color: #FFD700;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+#top .bar{
+  float: right;
+}
+#top li{
+  float: left;
+  margin: 10px;
+  padding:13px;
+  border-radius: 5px;
+}
+#top li:hover a{
+  color: yellow;
+}
+#banner{
+  background: url(image/header-bg.jpg);
+  background-position: center center;
+  background-size: cover;
+/*  background-attachment: scroll;*/
+  padding: 250px 0;
+  text-align: center;
+  color: #fff;
+  font-size: 2em;
+  margin-top:64px;
+}
+#banner .wrap>a{
+  background: #fed136;
+  padding:20px 30px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+#banner .wrap>a:hover{
+  background: #FFD700;
+}
+#services{
+  padding: 80px 0;
+  text-align: center;
+}
+#services .wrap{
+  width: 1000px;
+ /* background: yellow;*/
+  overflow: hidden;
+  margin: 0 auto;
+}
+#services .wrap li{
+  position: relative;
+  width: 320px;
+  background: #FFF;
+  padding: 30px 0;
+  float: left;
+  margin-left: 20px;
+}
+#services .iconfont{
+  font-size: 80px;
+  color: #FFD700;
+}
+#services .shopping{
+  position: absolute;
+  left: 133px;
+  top: 43px;
+  color: #fff;
+  font-size: 50px;
+}
+#services .cp{
+  position: absolute;
+  left: 134px;
+  top: 39px;
+  color: #fff;
+  font-size: 52px;
+}
+#services .suo{
+  position: absolute;
+  left: 134px;
+  top: 39px;
+  color: #fff;
+  font-size: 52px;
+}
+#services p{
+  color: #776868;
+  font-size: 13px;
+  line-height: 23px;
+}
+#main{
+  background: #f7f7f7;
+  padding: 100px 0;
+/*  overflow: auto;*/
+}
+#main .wrap{
+  width: 1000px;
+  overflow: auto;
+  margin: 0 auto;
+  text-align: center;
+}
+.layout .father{
+  /*overflow: auto;*/
+  margin-left: -20px;
+}
+#main .father>li{
+  width: 320px;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  background: #fff;
+  position: relative;
+}
+#main img{
+  width: 320px;
+}
+#main .iconfont{
+  background: yellow;
+  color: #fff;
+  padding: 83px 130px;
+  position: absolute;
+  font-size: 60px;
+  top: 0;
+  left: 0;
+  opacity: 0;
+/*  display: none;*/
+}
+#main .iconfont:hover{
+  opacity: 0.8;
+  transition: 0.5s;
+}
+#about .wrap{
+  position: relative;       /*做辅助线*/
+  width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 80px 0;
+
+}
+#about .kong{
+  position: absolute;
+  width: 498px;
+  border-right: 2px solid #ccc;
+  left: 0;
+  top: 400px;
+  z-index: 4;
+   height: 1100px;
+}
+#about .list{
+  width: 364px;
+  text-align: right;
+  float: left;
+}
+#about .tu{
+  position: relative;
+  z-index: 6;
+  width: 160px;
+  height: 160px;
+  border: 5px #E6E5E5 solid;
+  border-radius: 100%;
+  overflow: hidden;
+  float: left;
+  margin: 25px 50px;
+}
+#about .father{
+  
+  overflow: auto;
+}
+#about li{
+  overflow: auto;
+  margin-top: 80px;
+}
+#about li:nth-of-type(2)>.list{
+  /*background: yellow;*/
+  float: right;
+  text-align: left;
+}
+#about li:nth-of-type(2)>.tu{
+  float: right;
+}
+#about li:nth-of-type(4)>.list{
+  /*background: yellow;*/
+  float: right;
+  text-align: left;
+}
+#about li:nth-of-type(4)>.tu{
+  float: right;
+}
+#about h4{
+  line-height: 6px;
+}
+#about .list>p{
+  line-height: 25px;
+  color: #4A4949;
+}
+#about .story{
+  background: #fed136;
+  border: 5px #E6E5E5 solid;
+  width: 160px;
+  height: 160px;
+  border-radius: 100%;
+  margin: 25px auto;
+ /* padding: 10px;*/
+}
+#about .story>p{
+  /*background: red;*/
+  color: #fff;
+  font-weight: 600;
+  line-height: 25px;
+  margin-top: 45px;
+}
+#contact{
+  background: #f7f7f7;
+  padding: 80px 0;
+}
+#contact .wrap{
+  text-align: center;
+  margin: 0 auto;
+  width: 1000px;
+  overflow: auto;
+ 
+}
+#contact .list{
+  overflow: hidden;
+  height: 220px;
+  width: 220px;
+  border-radius: 100%;
+  margin: 0 auto;
+}
+#contact li{
+  width: 320px;
+  float: left;
+  margin-left: 20px;
+  padding-bottom: 30px;
+  padding-top: 50px;
+}
+#contact ul{
+  overflow: auto;
+  margin-left: -20px;
+}
+#contact a{
+  font-size: 40px;
+  margin: 0 5px;
+  color: black;
+}
+#contact h3{
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+
+#contact a:hover{
+  color: yellow;
+  transition: 0.5s;
+}
+#contact .wrap>p{
+  color: #777;
+}
+#panels{
+  text-align: center;
+  padding: 30px;
+}
+#panels img{
+  margin: 10px 23px;
+}
+#content{
+  background: #222;
+  background-image: url(image/map-image.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 100px;
+}
+#content .wrap{
+  color: #fff;
+  width: 1000px;
+  margin: 40px auto;
+  overflow: auto;
+}
+#content .father{
+  width:490px;
+  float: left;
+}
+#content .father>input{
+  display: block;
+  margin-top: 20px;
+  width: 468px;
+  height: 46px;
+  border-radius:5px;
+  padding-left: 15px;
+}
+#content .father2{
+  padding-top: 20px;
+  float: right;  
+  width:490px;
+}
+#content textarea{
+  font-family: monospace;
+  width: 455px;
+  height: 165px;
+  border-radius:5px;
+  margin: 0;
+  color: black;  
+  padding: 15px;  
+}
+#content a{
+  background: #FFA500;
+  padding: 20px 35px;
+  border-radius:5px;
+  font-weight: 600;
+  margin-bottom: 40px;
+}
+#content a:hover{
+   opacity: .7;
+}
+#footer{
+  padding: 30px 0;
+}
+#footer .wrap{
+  width: 960px;
+  margin: 0 auto;
+  overflow: auto;
+}
+#footer li{
+  width: 315px;
+  height: 50px;
+  text-align: center;
+  float: left;
+}
+#footer .list>a{
+  font-size: 40px;
+  margin: 0 5px;
+  color: black;
+}
+#footer .list>a:hover{
+  color: yellow;
+  transition: 0.5s;
+}
+#footer .father>a{
+  color: #fed136;
+  line-height: 50px;
+}
+#footer .father>a:hover{
+  color: #fec503;
+  text-decoration: underline;
+}
