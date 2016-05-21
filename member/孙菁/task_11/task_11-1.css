@@ -1,0 +1,57 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-05-20 22:48:50
+ * @version $Id$
+ */
+
+/*reset*/
+* {
+	margin:0;
+	padding: 0;
+}
+ul {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+
+
+.nav{
+	width: 600px;
+	margin:0 auto;
+}
+.nav>li{
+	float: left;
+	text-align: center;
+}
+
+.nav>li>a{
+	display: inline-block;
+	padding:10px 30px;
+	background: #CBCBCB;
+	color: #434343;
+	font-weight: bold;
+}
+
+.nav>li>a:hover{
+    background: #AAAAAA;
+}
+.child{
+	border: 1px solid #CBCBCB;
+	display: none;
+} 
+.nav>li:hover .child{          /*之前该选择器写成".nav>li>a:hover .child"，下拉菜单没效果*/
+    display: block;            /*因为按照XHTML标准，<a>中是不能出现ul的，是一句不合法的规则*/
+}
+.child a{
+	display: inline-block;
+	width: 100%;
+	color: #434343;
+	padding:5px 0;
+}
+.child a:hover{
+	background: #CBCBCB;
+}
