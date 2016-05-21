@@ -1,0 +1,366 @@
+html,body,div,ul,li{
+  margin:0;
+  padding:0;
+ font-family: Arial, Helvetica, sans-serif;
+}
+html,body{
+  height:100%;
+  width:100%;
+}
+*{
+  box-sizing:border-box;
+}
+.layout{
+  width:1140px;
+  margin:0 auto;
+  overflow: auto;
+}
+ul,li{
+  list-style-type:none;
+}
+a{
+  text-decoration:none;
+}
+.clear:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+#first-page{
+  background:url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/header-bg.jpg) no-repeat;
+  background-size:cover;
+  height:100%;
+  width:100%;    
+}
+.first-page-font{
+  color:white;
+}
+.first-page-text{
+  padding-top:250px;
+  text-align:center;
+  font-size:2em;
+}
+.first-page-text h2{
+  font-style:italic;
+}
+.first-page-text h1{
+  font-weight:bolder;
+}
+#nav{
+  background:#252429;
+  width:100%;
+  position:fixed;
+  left:0;
+  top:0;
+  z-index:10;
+}
+#nav h2{
+  display:inline-block;
+  float:left;
+}
+#nav h2 a{
+  color:#FFFAA0;
+}
+#nav h2 a:hover{
+  color:#FFE27F;
+}
+#nav li{
+  margin-right:30px;
+  margin-top:20px;
+  float:right;
+}
+#nav li a{
+  color:white;
+}
+#nav li a:hover{
+  color:#FFE27F;
+}
+.btn{
+  display:block;
+  margin:0 auto;
+  width:200px;
+  height:60px;
+  line-height:60px;
+  background:#FFD742;
+  color:white;
+  border-radius:5px;
+}
+.first-page-text .btn:hover{
+  background:#FFC400;
+}
+.smaller-headline{
+  font-size:40px;
+  margin-top:100px;
+}
+.paragraph{
+  font-style:italic;
+  color:#ccc;
+  margin-bottom:50px;
+}
+.big-size-text{
+  text-align:center;
+}
+.box{
+  width:100px;
+  height:100px;
+  line-height: 100px;
+  border:1px solid #FED136;
+  background-color: #FED136; 
+  border-radius:100px;
+  margin:0 auto; 
+  text-align: center; 
+  color: white;
+  font-size: 60px;
+}
+#second-page{
+  padding-bottom:150px;
+  padding-top:150px;
+}
+.list-style{
+  float:left;
+  width:33.3333%;
+  padding:15px;
+}
+#second-page ul li p{
+  color:#aaa; 
+}
+#second-page ul{
+  margin-left:-1px;
+}
+#second-page ul:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+#products{
+  background:#F7F7F7;
+  padding-top:100px;
+  text-align:center;
+}
+#products>ul{
+  margin-bottom:50px;
+}
+#products ul:after{
+  content:'';
+  display:block;
+  clear:both;
+}
+#products img{
+  display:block;
+  width:100%;
+  height:auto;
+}
+#products li{
+  padding:5px 15px 30px;
+}
+#products .img-container{
+  position:relative;
+  text-align:center;
+  border-bottom:1px solid transparent;
+}
+#products .img-veil{
+  position:absolute;
+  left:0;
+  top:0;
+  width:100%;
+  height:253px;
+  line-height: 253px;
+  background:#fec503;
+  opacity:0;
+  z-index:2;
+  text-align: center;
+  color: white;
+  font-size: 100px;
+}
+#products .img-veil:hover{
+  opacity:0.8;
+}
+#products h4{
+  font-size:25px;
+  color:#333;
+}
+#about{
+  padding-top:150px;
+  padding-bottom:150px;
+  text-align:center;
+}
+#about li{
+  padding-top:50px;
+  padding-bottom:50px;
+}
+#about .list-text-left{
+  width:40%;
+  float:left;
+  text-align:right;
+}
+#about .list-text-right{
+  width:40%;
+  float:right;
+  text-align:left;
+}
+#about .list-photo{
+  width:20%;
+  text-align:center;  
+}
+#about .list-photo-left{
+  float:left;
+}
+#about .list-photo-right{
+  float:right;
+}
+.list-photo img{
+  margin:0 auto;
+  width:159px;
+  height:159px;
+  border:5px solid #ddd;
+  border-radius:159px;  
+}
+.circle{
+  background:#FED136;
+  border:5px solid #ddd;
+  width:159px;
+  height:159px;
+  line-height:36px;
+  margin-top:40px;
+  margin:0 auto;
+  text-align:center;
+  border-radius:159px;
+  color:white;
+  font:30px bold #ddd;
+}
+#forth-page{
+  background:#F7F7F7;
+  padding-top:100px;
+  padding-bottom:100px;
+  text-align:center;
+}
+#forth-page ul{
+  float:left;
+  width:33.33%;
+}
+#forth-page ul h6{
+  margin-top:20px;
+  margin-bottom: 5px;
+  font-size:18px;
+  color:#333;
+  font-weight:bold;
+}
+#forth-page img{
+  margin:0 auto;
+  width:225px;
+  height:225px;
+  border:1px solid transparent;
+  border-radius:225px;  
+}
+#forth-page .layout>p{
+  color:#ccc;
+  margin-top: 20px;
+  width:750px;
+  margin:0 auto;
+}
+#forth-page .share{
+  margin: 0 auto;
+}
+.share i{
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: black;
+  border:1px solid transparent;
+  border-radius: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+  margin: 10px;
+}
+.share i:hover{
+  background-color:#FFFF00;
+}
+.aside li{
+  padding-left:15px;
+  padding-right:15px;
+  width:25%;
+  float:left;
+}
+.aside li img{
+  margin:50px auto;
+  vertical-align:middle;
+}
+.leader{
+  margin-bottom: 40px;
+}
+#contact{
+  padding:150px 0;
+  background:url(http://book.jirengu.com/jirengu-inc/jrg-renwu4/member/%E5%BC%A0%E4%B9%85%E5%B1%B9/task15/task15-2/image/map-image.png) no-repeat center center;
+  background-size:cover;
+  background:#222;
+  text-align:center;
+}
+#contact .main{
+  color: #fff;
+  width: 1000px;
+  margin: 40px auto;
+  overflow: auto;
+}
+#contact .small-form{
+	float: left;
+	width: 490px;
+}
+#contact .small-form>input{
+  display:block;
+  margin-top:20px;
+  width:460px;
+  height:45px;
+  padding-left:15px;
+  border-radius:5px;
+}
+#contact .big-form{
+  float: right;
+  width: 490px;
+  padding-top: 20px;
+}
+#contact textarea{
+  font-family:arial, verdana, sans-serif;
+  width:455px;
+  height:180px;
+  border-radius:5px;
+  margin:0;
+  color:black;  
+  padding:15px; 
+}
+#contact a:hover{
+  background:#FFE27F;
+}
+#footer .wrap{
+  width: 960px;
+  margin: 0 auto;
+  overflow: auto;
+}
+#footer p{
+	margin: 0;
+	padding: 0;
+}
+#footer li{
+  width: 315px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  float: left;
+}
+#footer .list>a{
+  font-size: 40px;
+  margin: 0 5px;
+  color: black;
+}
+#footer .list>a:hover{
+  color: yellow;
+  transition: 0.5s;
+}
+#footer .final>a{
+  color: #fed136;
+}
+#footer .final>a:hover{
+  color: #fec503;
+  text-decoration: underline;
+}
