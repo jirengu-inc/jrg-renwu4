@@ -1,0 +1,230 @@
+html,body{
+	height:100%;
+	margin:0;
+	padding:0;
+	font-family:"Arial","Times New Roman"
+	font-size:18px;
+	line-height:18px;
+}
+
+/*公共样式*/
+ul,li{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+hr{
+	width:140px;
+}
+.clear:after{
+	content:"";
+	display:block;
+	clear:both;
+	height:0;
+}
+.layout{
+	margin:0 auto;
+	width:960px;
+	text-align:center;
+}
+.btn{
+	text-decoration:none;
+	display:inline-block;
+	height:50px;
+	line-height:50px;
+	background:#9b9698;
+	color:#ffffff;
+	padding:0 10px;
+	margin-top:10px;
+}
+
+
+/*header*/
+#header{
+	width:100%;
+	height:100%;
+	background:url(../images/bg.jpg) no-repeat center center;
+	position:relative;
+	background-size:cover;
+	display:table;
+}
+#header .header-content{
+	text-align:center;
+	display:table-cell;
+	vertical-align:middle;
+}
+.header-content h1{
+	font-size:50px;
+	font-weight:bold;
+}
+.header-content a{
+	text-decoration:none;
+	color:black;
+	display:inline-block;
+	width:120px;
+	height:40px;
+	background-color:#6d7d84;
+	line-height:40px;
+	padding:0 10px;
+}
+.header-content a:hover{
+	background-color:#363e41;
+}
+
+/*intro*/
+#intro{
+	padding:50px;
+}
+#intro p{
+	word-spacing:-6px;
+}
+#intro span{
+	color:#6ea5cb;
+}
+
+/*services*/
+#services{
+	padding:50px 0;
+	background-color:#337ab7;
+}
+#services ul{
+	margin-top:30px;
+}
+#services ul li{
+	float:left;
+	width:240px;
+}
+#services a{
+	text-decoration:none;
+	display:inline-block;
+	width:100px;
+	height:30px;
+	line-height:30px;
+	padding:2px;
+	background-color:#ffffff;
+	color:black;
+}
+#services a:hover{
+	background-color:#d6e4f0;
+}
+#services i{
+	font-size:40px;
+	color:#337ab7;
+}
+#services span{
+	display:inline-block;
+	width:100px;
+	height:100px;
+	background-color:#ffffff;
+	border-radius:100px;
+	-webkit-border-radius:100px;
+	text-align:center;
+	line-height:100px;
+	-webkit-transition:0.4s linear;
+	transition:0.4s ease-in;
+}
+#services span:hover{
+	-webkit-transform:rotate(360deg);
+	transform:rotate(360deg);
+}
+#services h1{
+	color:#ffffff;
+}
+
+#services h4,
+#services p{
+	color:#ffffff;
+}
+
+/*callout*/
+#callout{
+	height:400px;
+	width:100%;
+	display:table;
+	background:url(../images/callout.jpg) no-repeat center center;
+	text-align:center;
+}
+
+#callout p{
+	display:table-cell;
+	vertical-align:middle;
+	font-size:50px;
+	color:#ffffff;
+}
+
+/*work*/
+#work{
+	padding:50px 0;
+}
+
+#work li{
+	width:460px;
+	float:left;
+	padding:10px 10px;
+	transition:1s;
+}
+#work img{
+	width:460px;
+}
+#work li:hover{
+	opacity:0.7;
+	filter:alpha(opacity:70);
+}
+#work a:hover{
+	background-color:#4c4c4c;
+}
+
+/*click*/
+#click{
+	padding:50px 0;
+	background-color:#337ab7;
+}
+#click h3{
+	color:#ffffff;
+}
+
+#click .btn1{
+	background:#ffffff;
+	color:#3a3a3c;
+}
+#click .btn1:hover{
+	background:#d6e4f0;
+}
+#click .btn2{
+	background:#1d4b6c;
+}
+#click .btn2:hover{
+	background:#0f2436;
+}
+
+/*footer*/
+#footer{
+	padding:100px 0;
+}
+#footer .adress{
+	line-height:5px;
+	font-size:16px;
+}
+#footer .tel{
+	line-height:5px;
+	margin-top:30px;
+	font-size:16px;
+}
+#footer a{
+	text-decoration:none;
+}
+#footer ul{
+	margin:30px 20px 30px 0;
+}
+#footer li{
+	display:inline-block;
+	padding-left:20px;
+}
+#footer .contact i{
+	font-size:30px;
+	color:#337ab7;
+}
+#footer .contact i:hover{
+	color:#23527c;
+}
+
