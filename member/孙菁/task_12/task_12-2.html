@@ -16,6 +16,9 @@
 			height: 40px;
 			background: #ccc;
 		}
+		#content{
+			padding:0 200px;
+		}
 		#content:after{
 			content: '';
 			display: block;
@@ -24,7 +27,6 @@
 		.main{
 			background:pink;
 			float: left;
-			padding:0 200px;
 		}
 		.side_l,.side_r{
 			width: 200px;
@@ -34,10 +36,14 @@
 		.side_l{
 			background: red;
 			margin-left: -100%;
+			position: relative;
+			left:-200px;
 		}
 		.side_r{
 			background: yellow;
 			margin-left: -200px;
+			position: relative;
+			right: -200px;
 		}
 	</style>
 </head>
@@ -45,9 +51,9 @@
   <div class="wrap">
   	<div id="header">头部</div>
   	<div id="content">
-  	  <div class="main">左浮动，宽度自适应，左右两边内边距要大于等于侧边栏的宽度，保证足够侧边栏上来（此模块在文档流中必须放在侧边栏前面保证优先渲染）</div>
-      <div class="side_l">左浮动，width=200px，margin-left:-100%（左外边距与父元素同宽，从而能定位在最左边）</div> 
-      <div class="side_r">左浮动，width=200px，margin-left:-自身宽度（左外边距与自身同宽，使自己能上升一行）</div>		
+  	  <div class="main">左浮动，宽度自适应，父元素左右两边内边距要大于等于侧边栏的宽度，保证足够侧边栏上来（此模块在文档流中必须放在侧边栏前面保证优先渲染）</div>
+      <div class="side_l">左浮动，width=200px，margin-left:-100%</div> 
+      <div class="side_r">左浮动，width=200px，margin-left:-自身宽度</div>		
   	</div>
   	<div id="footer">尾部</div>
   </div>	
