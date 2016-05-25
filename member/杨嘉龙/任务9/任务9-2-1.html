@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>任务9-2</title>
+		<style>
+		.load-bar{
+		font-size:20px;
+		font-family:"黑体";
+		}
+		.btn {
+		display:inline-block;
+		height:40px;
+		}
+		span{
+		display:inline-block;
+		height:28px;
+		padding-left:30px;   background:url(http://7xpvnv.com2.z0.glb.qiniucdn.com/060722e7-ff03-4deb-ba22-17602fa6481a.png) no-repeat;
+		}
+		/* 通过设置内边距的方式使得span标签左侧预留一块空间，放置icon*/
+		.btn:hover{
+		cursor:pointer;
+		}
+		.btn-1 span{
+		background-position:1px -5px;
+		}
+		.btn-2 span{
+		background-position:-1px -47px;
+		}
+		.btn-3 span{
+		background-position:-3px -95px;
+		}
+		.btn-1 span:hover{
+		background-position:0 -140px;
+		}
+		.btn-2 span:hover{
+		background-position:-6px -188px;
+		}
+		.btn-3 span:hover{
+		background-position:1px -233px;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="load-bar">
+			<div class="btn btn-1">
+				<span>前进</span>
+			</div>
+			<div class="btn btn-2">
+				<i></i>
+				<span>开始</span>
+			</div>
+			<div class="btn btn-3">
+				<span>停止</span>
+			</div>
+		</div>
+	</body>
+</html>
