@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Document</title>
+	<style>
+		.middle{
+			background-color: green;
+			min-height:200px;
+			float: left;
+			width: 100%;		
+		
+		}
+		.wrap{
+			padding:0 200px;
+			min-width: 200px;
+		}
+		.left{
+			float: left;		
+			background-color: red;
+			width: 200px;
+			min-height: 100px;
+			margin-left: -100%;			
+			position: relative;
+			left: -200px;
+		}
+		.right{
+			float: left;				
+			background-color: blue;
+			width: 200px;
+			min-height: 100px;
+			margin-left: -200px;
+			position: relative;
+			right: -200px;
+		}
+		.wrap::after{			
+			content:"";
+			display: block;
+			clear: both;
+		}
+		.header{
+			height: 50px;
+			background-color: #ccc;
+		}
+		.footer{
+			height: 50px;
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="wrap">
+	<div class="middle">
+			<p>测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本 测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+		</div>
+		<div class="left">
+			<p>测试文本 测试文本 测试文本 测试文本 测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			
+		</div>
+		
+		
+		<div class="right">
+			<p>测试文本 测试文本 测试文本 测试文本 测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+		</div>
+	</div>
+	<div class="footer"></div>
+</body>
+</html>
