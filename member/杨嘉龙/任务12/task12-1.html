@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+    ul,li{
+    margin:0;
+    padding:0;
+    list-style:none;
+    }
+    .ct{
+    border:1px solid #eee;
+    width:600px;
+    background:#eee;
+    margin:50px auto;
+    }
+    ul:after{
+    content:"";
+    display:table;
+    clear:both;
+    }
+    li{
+    width:180px;
+    height:130px;
+    margin:10px 10px;
+    background:lightgreen;
+    float:left;
+    }
+    li:first-child,li:nth-child(4){
+    position:relative;
+    left:-10px;
+    }
+    li:nth-child(3),li:nth-child(6){
+    position:relative;
+    right:-10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="ct">
+      <div class="box">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+
+若愚老师，使用负边距做这道题，虽然看了参考的代码，
+但是还是想不太通，所以我是用定位的方法去解决。
