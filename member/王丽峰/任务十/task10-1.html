@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>两栏布局</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+	html,body,ul{
+		margin:0;
+		padding:0;
+		font-family: "微软雅黑";
+	}
+	#header,#footer{
+		background:#333;
+		height:60px;
+	}
+	ul{
+		float:right;
+		margin-right:100px;
+	}
+	li{
+		float:left;
+		list-style:none;
+		color:#fff;
+		font-weight: bold;
+		line-height: 60px;
+		padding-left:40px;
+	}
+	.logo{
+		float:left;
+		clear:right;
+		margin-left:150px;
+	}
+	.container{
+		margin:10px 0 auto;
+	}
+	.container .aside{
+		background:#eee;
+		width:200px;
+		height: 480px;
+		float:left;
+		margin-left:200px;
+	}
+	.container .main{
+		background:#eee;
+		width:700px;
+		height:220px;
+		margin-left:10px;
+		float:left;
+	}
+	.clearfix:after{
+		content:"";
+		display: block;
+		clear:both;
+	}
+	a{
+		text-decoration: none;
+		cursor:pointer;
+		color:#fff;
+	}
+	a:hover{
+		color:#00ff00;
+	}
+	.description {
+		padding-left: 20px;
+		margin-top:-10px;
+	}
+	.description h2{
+		margin-top:20px;
+	}
+	.link {
+		margin-left:200px;
+		line-height: 60px;
+	}
+	.link span{
+		padding:20px;
+	}
+	.clear:after{
+		content:"";
+		display: block;
+		clear:both;
+	}
+
+</style>
+</head>
+<body>
+    <div id="header">
+    	<div class="bar clearfix">
+    		<a href="http://jirengu.com">
+    			<img src="http://cdn.jirengu.com/public/logo-tiny.png" class="logo" alt="饥人谷">
+    		</a>
+    		<ul class="clearfix">
+    			<li><a href="#">技能</a></li>
+    			<li><a href="#">经历</a></li>
+    			<li><a href="#">作品</a></li>
+    			<li><a href="#">关于</a></li>
+    		</ul>
+    	</div>
+    </div>
+    <div class="container clear">
+		<div class="aside"></div>
+		<div class="main">
+			<div class="description">
+				<h2>我的作品</h2>
+				<p><strong>生活很美好</strong></p>
+				<p><strong>心情不错</strong></p>
+				<p><strong>代码写的很漂亮</strong></p>
+			</div>
+		</div>
+    </div>
+    <div id="footer">
+    	<div class="link">
+  			<span><a href="http://jirengu.com">饥人谷</a></span>
+			<span><a href="#">JSCODE</a></span>
+			<span><a href="#">JSBIN</a></span>
+    	</div>
+    </div>
+</body>
+</html>
+<!--以上代码题考察了两栏布局的写法，告诉我们布局的思路：由面及点；还使用了浮动以及清除浮动个，这两个知识点掌握不太扎实，多练习。
+学会使用属性class，但是注意不要滥用，争取用最少代码解决问题。>
