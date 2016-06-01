@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> task 15-1</title>
+	<link rel="stylesheet" href="./iconfont/iconfont.css">
+	<style>
+	/*公用css*/
+		html,body,ul,div{
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			font-size: 16px;
+		}
+		a{
+			text-decoration: none;
+			color: #777;
+		}
+		ul,li{
+			list-style: none;
+		}
+		.clear:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.container{
+			width: 1170px;
+			margin: 0 auto;
+			/*border: 1px solid red;*/
+			
+		}
+	/*header*/
+		#header{
+			background-color: white;
+			position: fixed;
+			left: 0;
+			top: 0;
+			border: 1px solid;
+			width: 100%;
+			z-index:10;			
+		}
+
+		#header .navbar{
+			padding: 20px;
+		}
+
+		#header .navbar>li{
+			float: left;
+			padding: 0 10px;
+		}
+
+		#header .works{
+			position: relative;
+
+		}
+		#header .myworks{
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 100%;
+			margin-left: 0px;
+			border: 1px solid;
+			padding: 0 10px;
+		}
+		#header .myworks li{
+			margin: 6px 0;
+			width: 100%;
+		}
+		#header .works:hover>ul{
+			background-color: white;
+			display: block;
+		}
+		#header .myworks>li:hover{
+			background-color: #ccc;
+		}
+
+	/*main*/
+		#main .main-intro{
+			
+			padding: 100px 0;
+			background-color: #b84d45;
+			color: white;
+		}
+		#main .main-intro .container{
+			margin-top: 30px;
+			text-align: left;			
+		}
+		#main .works-home .container{
+			text-align: left;
+			height: 30px;
+			background-color: rgb(245, 245, 245);
+			border-radius: 3px;
+			margin-top: 30px;
+		}
+		#main .works-home a{
+			color: #b84d45;
+			font-weight: bold;
+		}
+		#main .works{
+			margin-top: 10px;
+		}
+		#main .works ul>li{
+			width: 390px;
+			height: 430px;
+			float: left;
+			
+		}
+		#main .works li>div{
+			width: 360px;
+			height: 400px;
+			
+			margin-left: 10px;
+			margin-top:10px;
+			margin-bottom: 30px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		#main .works li img{
+			width: 100%;
+			height: auto;
+
+		}
+		#main a:hover{
+			opacity: 0.5;
+		}
+		#main .btn{
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			padding: 6px 12px;
+		}
+		#main .btn:hover{
+			background-color: #ccc;
+		}
+		#main .callme{
+			background-color: #b84d45;
+			padding: 20px;
+			color: white;
+		}
+	/*footer*/
+		#footer{
+			padding: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="container">
+			<ul class="clear navbar">
+				<li><a href="">饥人谷</a></li>
+				<li class="works"><a href="" >我的作品</a>
+					<ul class="clear myworks" >
+						<li><a href=""><i class="iconfont">&#xe619;</i>作品1</a></li>
+						<li><a href=""><i class="iconfont">&#xe7cf;</i>作品2</a></li>
+						<li><a href=""><i class="iconfont">&#xe604;</i>作品3</a></li>
+						<li><hr></li>
+						<li>作品4</li>
+					</ul>
+				</li>
+				<li><a href="">博客</a></li>
+				<li><a href="">项目</a></li>
+				<li><a href="">关于我</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="main">
+		<div class="main-intro">
+			<div class="container">
+				<h1>这是张文春的页面</h1>
+				<p>我可以为自己带袋盐么？</p>
+			</div>
+		</div>
+		<div class="works-home">
+			<div class="container">
+				<a href="#">首页</a><span>/我的作品</span>
+			</div>
+		</div>
+		<div class="works">
+			<div class="container">
+				<ul class="clear">
+					<li>
+						<div>
+							<a href="#"><img src="./img/creative.jpg" alt="creative"></a>
+							<h3>Creative</h3>
+							<p>A one page creative theme.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/agency.jpg" alt="agency"></a>
+							<h3>Agency</h3>
+							<p>A one page agency theme.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/freelancer.jpg" alt="freelancer"></a>
+							<h3>Freelancer</h3>
+							<p>A one page freelancer theme.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/grayscale.jpg" alt="grayscale"></a>
+							<h3>Grayscale</h3>
+							<p>A multipurpose one page theme.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/landing-page.jpg" alt="landing-page"></a>
+							<h3>Landing Page</h3>
+							<p>A clean, functional landing page theme.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/stylish-portfolio.jpg" alt="stylish-portfolio"></a>
+							<h3>Stylish Portfolio</h3>
+							<p>A stylish Bootstrap portfolio theme.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/full-width-pics.jpg" alt="full-width-pisc"></a>
+							<h3>Full Width Pics</h3>
+							<p>Full width picture backgrounds.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/one-page-wonder.jpg" alt="one-page-wonder"></a>
+							<h3>One Page Wonder</h3>
+							<p>A simple one page website template.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/half-slider.jpg" alt="half-silder"></a>
+							<h3>Half Slider</h3>
+							<p>A half page image slider template.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#"><img src="./img/full-slider.jpg" alt="full-silder"></a>
+							<h3>Full Slider</h3>
+							<p>A full page image slider template.</p>
+							<a href="" class="btn">查看</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="callme">
+			<div class="contianer">
+				<h2>想更详细的了解我？</h2>
+				<p>下载简历，打我电话找我吧</p>
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="container">
+			<hr>
+			<p>模板来自<a href="http://startbootstrap.com/template-categories/landing-pages/">start Bootstrap.</a></p>
+		</div>
+
+	</div>
+</body>
+</html>
