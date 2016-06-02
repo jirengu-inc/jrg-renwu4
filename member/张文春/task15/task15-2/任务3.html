@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task15-2</title>
+	<link rel="stylesheet" href="./iconfont/iconfont.css">
+	<style>
+		/*公用css*/
+		html,body,ul,li{
+			margin: 0;
+			padding: 0;
+			text-align: center;
+			font-size: 16px;
+		}
+		html,body{
+			width: 100%;
+			height: 100%;
+		}
+		a{
+			text-decoration: none;
+					}
+		ul,li{
+			list-style: none;
+		}
+		h2{
+			font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			font-size: 40px;
+		}
+		h4{
+			font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+			font-size: 18px;
+		}
+		p{
+			font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			font-size: 16px;
+			color: rgb(120,120,120);
+		}
+		.clear:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.container{
+			
+			margin: 0 auto;
+			/*border: 1px solid red;*/
+			width: 1170px;
+			overflow: auto;
+			
+		}
+		.img-hover{
+			transition: opacity 0.7s;
+		}
+		.img-hover:hover{
+			opacity: 0.7;
+		}
+		.btn{
+			padding: 20px 40px;
+
+			color: #fff;
+			background-color: #fec503;
+			border-radius: 5px;
+			cursor: pointer;
+
+
+
+		}
+	/*#header	*/
+		#header{
+			width: 100%;
+			background-color: black;
+			padding: 20px 0;
+			position: fixed;
+			left: 0;
+			top: 0;	
+			z-index: 99;					
+		}
+		#header .logo{
+			float: left;
+		}
+		#header .logo>a{
+			font-family: 'Kaushan Script', 'Helvetica Neue', Helvetica, Arial, cursive;
+			font-size: 28px;
+			color: rgb(254, 209, 54);
+			font-style: italic;
+
+		}
+		#header .navbar{
+			font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+			font-size: 20px;
+			float: right;
+		}
+		#header .navbar li{
+			color: white;
+			float: left;
+			padding-left: 20px;
+		}
+		#header .navbar a{
+			color: white;
+		}
+	/*#main	*/
+	#main{
+		/*color: white;*/
+	
+		height: 100%;
+		
+	}
+	#main .welcome{
+		background: url("./img/header-bg.jpg") no-repeat center center;
+		background-size: cover;
+		width: 100%;
+		height: 100%;
+		color: white;
+		border: 5px solid green;
+	}
+	#main .welcome .container{
+
+		padding: 20px 0;
+		position: relative;
+		top: 40%;
+
+	}
+	#main .welcome h1{
+		font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif: ;
+		font-size: 40px;
+	}
+	#main .welcome p{
+		font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 75px;
+	}
+	#main .welcome a{
+		font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 18px;
+		border: 20px,40px;
+		background-color: #fed136;
+		border-radius: 5px;
+		padding: 20px 40px;
+	}
+	/*#main.services*/
+	.services{
+		width: 100%;
+		height: 100%;
+		color: black;	
+		}
+	.services .container{
+		/*border: 1px solid green;*/
+		position: relative;
+		top: 20%;
+	}
+	.services h2{
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 40px;
+	}
+	.services h4{
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 20px;
+
+	}
+	.services p{
+		font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-size: 16px;
+		color: rgb(120,120,120);
+	}
+	.services i{
+		font-size: 50px;
+		padding: 10px;
+		color: #fed136;
+		border: 5px solid;
+		border-radius: 100px;
+	}
+	.services .serv-text{
+	width: 100%;
+	margin-top: 100px;
+	margin-bottom: 80px;
+
+	}
+	.services .serv-1{
+	width: 380px;
+	float: left;
+	border-radius: 5px;
+	margin-left: 5px;
+	}
+	/*#main .portfolio*/
+	.portfolio{
+		color: black;
+		background-color: rgba(247,247,247,1);
+	}
+	.portfolio h2{
+		font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 40px;
+	}
+	.portfolio h4{
+		font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+		font-size: 18px;
+	}
+	.portfolio p{
+		font-family: 'Droid Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-size: 16px;
+		color: rgb(120,120,120);
+	}
+	.portfolio .container{
+		padding: 30px 0;
+		margin-top: 20px;
+	}
+	.por-item{
+		position: relative;
+		width: 360px;
+		overflow: hidden;
+		min-height: 360px;
+		float: left;
+		padding: 0 10px;
+		margin-bottom: 30px;
+		margin-left: 8px;
+
+	}
+	.por-item .por-img img{
+
+		width: 360px;
+		height: 260px;
+		
+		position:relative;
+		z-index: 1;
+	}
+	.por-item .por-hover{
+		background-color: #fed136;
+		position: absolute;
+		top: 0;
+		float: left;
+		z-index: 5;
+		width: 100%;
+		height: 260px;
+		opacity: 0;
+		transition: opacity 0.8s;
+
+	}
+	.por-item .por-hover:hover{
+		opacity: 0.7;
+	}
+	.por-item .por-cap{
+		
+		margin: 0 auto;
+	}
+	.por-item .por-icon{
+		position: absolute;
+		top: 45%;
+	}
+	.por-item .por-hover i{
+		position: absolute;
+		top: 50%;	
+	}
+	/*#main .about*/
+
+	.about img{
+		width: 156px;
+		height: 156px;
+		border: 3px solid #ccc;
+		border-radius: 300px;
+		position: relative;
+		z-index: 5;
+	}
+
+	.about ul{
+		position:relative;
+	}
+	.about li{
+		padding: 50px;
+	}
+	.about-text{
+		width: 350px;
+		position: absolute;
+	}
+	.about li:nth-child(1)>.about-text,
+	.about li:nth-child(3)>.about-text{
+		
+		text-align: right;
+		left: 10%;
+		
+	}
+	.about li:nth-child(2)>.about-text,
+	.about li:nth-child(4)>.about-text{
+		text-align: left;
+		left: 58%;
+	}
+	.about li:nth-child(5) div{
+		width: 100px;
+		height: 100px;
+		padding: 28px;
+		background-color: #fed136;
+		border: 3px solid #ccc;
+		border-radius: 300px;
+		position: relative;
+		z-index: 5;
+		margin: 0 auto;
+		color: white;
+
+	}
+	.about ul:after{
+		content: "";
+		width: 0px;
+		border: 2px solid #f1f1f1;
+		position: absolute;
+		top: 100px;
+		bottom: 100px;
+		left: 50%;
+		z-index: 0;
+	}
+/*.team*/
+	.team{
+		background: #f7f7f7;
+		height: 100%;
+		overflow: hidden;
+
+	}
+	.team-text{
+		margin-top: 10%;	
+
+	}
+	.team .team-trim{
+		width: 300px;
+		float: left;
+		margin-left: 70px;
+		margin-top: 50px;
+		margin-bottom: 50px;
+	}
+	.team-text{
+		/*margin-left: 130px;*/
+	}
+	.team-trim img{
+		border: 8px solid white;
+		border-radius: 300px;
+	}
+
+	.team-end{
+		
+		clear: both;
+	}
+	.team-end>p{
+		margin-top: 200px;
+		padding:0 330px ;
+
+	}
+	/*partner*/
+	.partner{
+
+	}
+
+	.part-img{
+		margin-left: 50px;
+		float: left;
+		padding: 50px 0;
+	}
+	.part-img:first-child{
+		margin-left: 150px;
+	}
+	/*contact*/
+	.contact{
+		height: 100%;
+		background: url(./img/map-image.png);
+		background-color: black;
+	}
+	.contact-text{
+		margin-top: 15%;
+		margin-bottom: 5%;
+		color: white;
+	}
+	.contact-form>div{
+		float: left;	
+	}
+	.contact-input{
+		width: 555px;
+	}
+	.contact .input-text{
+		width: 500px;
+		height: 20px;
+		padding: 20px;
+		margin-top: 20px;
+		border-radius: 5px;
+	}
+	.contact textarea{
+		width: 500px;
+		height: 190px;
+		padding: 20px;
+		margin-top: 20px;
+		margin-left: 50px;
+		border-radius: 5px;
+	}
+	.contact .btn{
+		margin-top: 50px;
+	}
+/*#footer*/
+	#footer{
+		height: 100px;
+		background-color: red;
+		opacity: 0.8;
+	}
+	
+	</style>
+</head>
+<body>
+	<div id="header" class="clear">
+		<div class="container">
+			<div class="logo"><a href="#">Start Bootstrap</a></div>
+			<div class="navbar">
+				<ul class="clear">
+					<li><a href="#">SERVICES</a></li>
+					<li><a href="#">PROTFOLIO</a></li>
+					<li><a href="#">ABOUT</a></li>
+					<li><a href="#">TEAM</a></li>
+					<li><a href="#">CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="main" class="clear">
+		<div class="welcome">
+			<div class=" container">
+				<h1>Welcome To Our Studio!</h1>
+				<p>IT'S NICE TO MEET YOU</p>
+				<a href="">TELL ME MORE</a>				
+			</div>
+		</div>
+		<div class="services">
+			<div class="container">
+				<div class="serv-text">
+					<h2>SERVICES</h2>
+					<p>Lorem ipsum dolor sit amet consectetur.</p>
+				</div>
+				<div class="serv-1">
+					<i class="iconfont">&#xe60f;</i>
+					<h4>E-Commerce</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="serv-1">
+					<i class="iconfont">&#xe618;</i>
+					<h4>Responsive Design</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>				
+				<div class="serv-1">
+					<i class="iconfont">&#xe626;</i>
+					<h4>Web Security</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+				</div>
+			</div>
+		</div>
+		<div class="portfolio " >
+			<div class="container clear">
+				<div class="por-text">
+					<h2>PORTFOLIO</h2>
+					<p>Lorem ipsum dolor sit amet consectetur.</p>	
+				</div>
+				<div class="por-item">
+					<div class="por-img"><img src="./img/roundicons.png" alt=""></div>
+					<div class="por-hover"><i class="iconfont">&#xe604;</i></div>
+			
+					<div class="por-cap">
+						<h4>Round Icons</h4>
+						<p>Graphic Design</p>
+					</div>
+				</div>
+				<div class="por-item">
+					<div class="por-img"><img src="./img/roundicons.png" alt=""></div>
+					<div class="por-hover"><i class="iconfont">&#xe604;</i></div>
+			
+					<div class="por-cap">
+						<h4>Startup Framework</h4>
+						<p>Website Design</p>
+					</div>
+				</div>
+				<div class="por-item">
+					<div class="por-img"><img src="./img/roundicons.png" alt=""></div>
+					<div class="por-hover"><i class="iconfont">&#xe604;</i></div>
+			
+					<div class="por-cap">
+						<h4>Treehouse</h4>
+						<p>Website Design</p>
+					</div>
+				</div>
+				<div class="por-item">
+					<div class="por-img"><img src="./img/roundicons.png" alt=""></div>
+					<div class="por-hover"><i class="iconfont">&#xe604;</i></div>
+			
+					<div class="por-cap">
+						<h4>Golden</h4>
+						<p>Website Design</p>
+					</div>
+				</div>
+				<div class="por-item">
+					<div class="por-img"><img src="./img/roundicons.png" alt=""></div>
+					<div class="por-hover"><i class="iconfont">&#xe604;</i></div>
+			
+					<div class="por-cap">
+						<h4>Escape</h4>
+						<p>Website Design</p>
+					</div>
+				</div>
+				<div class="por-item">
+					<div class="por-img"><img src="./img/roundicons.png" alt=""></div>
+					<div class="por-hover"><i class="iconfont">&#xe604;</i></div>
+			
+					<div class="por-cap">
+						<h4>Dreams</h4>
+						<p>Website Design</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="about">
+			<div class="container">
+				<div class="about-intro">
+					<h2>ABOUT</h2>
+					<p>Lorem ipsum dolor sit amet consectetur.</p>					
+				</div>
+				<ul class="clear">
+					<li>
+						<div class="about-text">
+							<h4>2009-2011 </h4>	 
+							<h4>Our Humble Beginnings</h4>
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+						</div>
+						<div class="about-img"><img src="./img/1.jpg" alt="" class="img-hover"></div>
+					</li>
+					<li>
+						<div class="about-text">
+							<h4>2009-2011 </h4>	 
+						<h4>Our Humble Beginnings</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+						</div>
+						<div class="about-img"><img src="./img/2.jpg" alt="" class="img-hover"></div>
+					</li>
+					<li>
+						<div class="about-text">
+							<h4>2009-2011 </h4>	 
+						<h4>Our Humble Beginnings</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+						</div>
+						<div class="about-img"><img src="./img/3.jpg" alt="" class="img-hover"></div>
+					</li>
+					<li>
+						<div class="about-text">
+							<h4>2009-2011 </h4>	 
+						<h4>Our Humble Beginnings</h4>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+						</div>
+						<div class="about-img"><img src="./img/4.jpg" alt="" class="img-hover"></div>
+					</li>
+					<li>
+						<div class="about-img img5"><h4>BE PART OF OUR STORY!</h4></div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="team">
+			<div class="container clear">
+				<div class="team-text">					
+					<h2>OUR AMAZING TEAM</h2>
+					<p>Lorem ipsum dolor sit amet consectetur.</p>
+				</div>
+				<div class="team-trim">
+					<a href=""><img src="./img/5.jpg" alt="" class="img-hover"></a>
+					<h4>Kay Garland</h4>
+					<p>Lead Designer</p>
+				</div>
+				<div class="team-trim">
+					<a href=""><img src="./img/6.jpg" alt="" class="img-hover"></a>
+					<h4>Larry Parker</h4>
+					<p>Lead Marketer</p>
+
+				</div>
+				<div class="team-trim">
+					<a href=""><img src="./img/7.jpg" alt="" class="img-hover"></a>
+					<h4>Diana Pertersen</h4>
+					<p>Lead Developer</p>
+				</div>
+				<div class="team-end">
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p>
+				</div>
+			</div>
+		</div>
+		<div class="partner">
+			<div class="container clear">
+				<div class="part-img"><a href="#"><img src="./img/envato.jpg" alt="" class="img-hover"></a></div>
+				<div class="part-img"><a href="#"><img src="./img/designmodo.jpg" alt="" class="img-hover"></a></div>
+				<div class="part-img"><a href="#"><img src="./img/themeforest.jpg" alt="" class="img-hover"></a></div>
+				<div class="part-img"><a href="#"><img src="./img/creative-market.jpg" alt="" class="img-hover"></a></div>
+			</div>
+		</div>
+		<div class="contact">
+			<div class="container">
+				<div class="contact-text">
+					<h2>CONTACT US</h2>
+					<p>Lorem ipsum dolor sit amet consectetur.</p>
+				</div>
+				<form action="#" class="contact-form clear">
+					<div class="contact-input">
+						<input type="text" class="input-text" name="name" placeholder="YOUR NAME*">
+						<input type="text" class="input-text" name="email" placeholder="YOUR EMAIL*">
+						<input type="text" class="input-text" name="phone" placeholder="YOUR PHONE*"> 
+					</div>
+					<div class="contact-textarea">
+						<textarea name="messange" id="contact-ta" cols="30" rows="10" placeholder="YOUR MESSAGE*"></textarea>
+					</div>
+					<button type="submit" class="btn">SEND MESSAGE</button>
+				</form>
+			</div>
+		</div>	
+	</div>
+
+	<div id="footer" >
+		<!-- <div class="container clear">
+			<div class="copyright"><p>Copyright © Your Website 2014</p></div>
+			<div class="footer-btn">
+				<i class="iconfont">&#xe604;</i>
+				<i class="iconfont">&#xe604;</i>
+				<i class="iconfont">&#xe604;</i>
+			</div>
+			<div class="footer-link">
+				<a href="">11111111111</a>
+				<a href="">1111111111111111</a>
+			</div>
+		</div> -->
+	</div>
+</body>
+</html>
