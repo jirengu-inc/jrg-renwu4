@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+
+    div{
+      width: 200px;
+      height: 100px;
+      border: 2px solid #ccc;
+      margin: 30px auto;
+      position: relative;
+    }
+
+    .triangle-top1:after{
+      content: "";
+      position: absolute;
+      border: 15px solid;
+      top: -30px;
+      left: 10px;
+      border-color: transparent transparent #ccc transparent;
+    }
+
+    .triangle-right-top:after{
+      content: "";
+      position: absolute;
+      border: 10px solid;
+      top: 0px;
+      right: 0px;
+      border-color: red red transparent transparent;
+    }
+    .triangle-top2:after{
+      content: "";
+      position: absolute;
+      border: 15px solid;
+      top: -30px;
+      left: 10px;
+      border-color: transparent transparent #ccc transparent;
+    }
+    .triangle-top2:before{
+      content: "";
+      position: absolute;
+      border: 15px solid;
+      top: -27px;
+      left: 10px;
+      border-color:transparent transparent #fff transparent;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="triangle-top1"></div>
+  <div class="triangle-right-top"></div>
+  <div class="triangle-top2"></div>
+</body>
+</html>
