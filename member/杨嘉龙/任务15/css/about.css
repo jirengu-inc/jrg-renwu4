@@ -1,0 +1,51 @@
+
+#about ul{
+  position: relative;
+}
+#about li{
+position:relative;
+margin-bottom:100px;
+}
+.ct-about-left{
+position:absolute;
+top:-30px;
+left:140px;
+width:300px;
+text-align:right;
+}
+.ct-about-right{
+position:absolute;
+top:-30px;
+left:760px;
+width:300px;
+text-align:left;
+}
+#about img{
+background:#fed136;
+width:150px;
+height:150px;
+border-radius:50%;
+border:8px solid #eee;
+}
+.about-circle{
+margin:0 auto;
+width:150px;
+height:150px;
+background:#fed136;
+border-radius:50%;
+border:8px solid #eee;
+}
+.about-circle h3{
+padding:35px 0;
+color:white;
+}
+.line-bar{
+width: 2px;
+height: 1100px;
+background:#eee;
+position:absolute;
+top: 90px;
+left: 600px;
+z-index:-1;
+
+}
