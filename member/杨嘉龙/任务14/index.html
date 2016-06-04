@@ -1,236 +1,126 @@
 <!DOCTYPE html>
-<html lang="zh-ch">
-	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" href="css/iconfont/iconfont.css">
-		<link rel="stylesheet" href="css/spritesheet.css">
-		<style>
-		html,body {
-			margin:0;
-			padding:0;
-			width: 100%;
-			height:100%;
-		}
-		h1{
-			font:bold 40px/1 "microsoft yahei";
-			margin:30px 0;
-		}
-		h2{
-			font:bold 30px/1 "microsoft yahei";
-			margin:30px 0;
-		}
-		p{
-			font-size: 16px;
-			margin:20px 0;
-		}
-		.v-h-align{
-			display: table-cell;
-			vertical-align: middle;
-			text-align: center;
-		}
-		a.button{
-			text-decoration: none;
-			font-size: 16px;
-			padding: 10px 20px;
-			border-radius: 3px;
-			margin:0 10px;
-		}
-		a.bg-white{
-			color:black;
-			background-color:#fff;
-		}
-		a.bg-white:hover{
-			background-color:rgba(0,0,0,0.2);
-		}
-		a.bg-gray{
-			color:white;
-			background-color:rgba(0,0,0,0.2);
-		}
-		a.bg-gray:hover{
-			background-color:rgba(255,255,255,0.7);
-		}
-		span.iconfont{
-			color:#337ab7;
-			font-size:40px;
-			word-spacing:3px;
-		}
-		span.iconfont:hover{
-			color:gray;
-			cursor:pointer;
-		}
-		
-		#home-page{
-			display:table;
-			width: 100%;
-			height: 100%;
-			background:url(image/home-page.jpg) no-repeat center center scroll;
-			background-size: cover;
-		}
-		#self-intro,#skill,#motto,#works,#extra,#contact {
-			display:table;
-			width: 100%;
-			padding:30px 0;
-		}
-		#self-intro{
-			height:200px;
-			background:url(image/self-intro.jpg) no-repeat center center scroll;
-			background-size: cover;
-		}
-		#skill{
-			background-color: rgb(51, 122, 183);
-		}
-		.skill-ct .circle{
-			width: 100px;
-			height: 100px;
-			background: white;
-			border-radius: 50px;
-		}
-		.skill-ct{
-			padding:20px 0px;
-			width:260px;
-			float:left;
-			margin:20px 20px;
-		}
-		.skill-ct>.circle{
-			margin:0 auto;
-		}
-		.inner-wrap-skill{
-			width:1200px;
-			margin:20px auto;
-		}
-		.inner-wrap-works{
-			width: 900px;
-			margin:20px auto;
-		}
-		#motto{
-			padding:0;
-			color:white;
-			height:300px;
-			background:url(image/motto.jpg) no-repeat center center scroll;
-			background-size: cover;
-		}
-		.motto-layer{
-			background-color: rgba(0,0,0,0.2);
-		}
-		#extra{
-			background-color: rgb(51, 122, 183);
-		}
-		hr{
-			width:100px;
-		}
-		.clearfix:after{
-			content: "";
-			display: table;
-			clear:both;
-		}
-		.work-ct{
-			width:410px;
-		    height:300px;
-		    float:left;
-		    margin:20px;
-		}
-		img{
-			width:410px;
-			height:300px;
-		}
-		img:hover{
-			opacity: 0.9;
-			background: white;
-		}
-		</style>
-	</head>
-	<body>
-		<div id ="home-page">
-			<div class="v-h-align">
-				<h1>我是Teren</h1>
-				<p>做一个有思想的工程师</p>
-				<a href="#" class="button bg-gray">更多</a>
-			</div>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Task14</title>
+	<link rel="stylesheet" href="css/nomalize.css">
+	<link rel="stylesheet" href="css/button.css">
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<link rel="stylesheet" href="css/index.css">
+
+	
+</head>
+<body>
+	<div id="header">
+  		<div class="container">
+  			<h1>我是Teren</h1>
+  			<p>做一个有思想的工程师</p>
+  			<a href="#" class="btn btn-bg-gray">更多</a>
+  		</div>
+</div>
+<div id="main"></div>
+	<div id="intro">
+		<div class="container">
+			<h2>运动发烧·学习中毒·阅读感冒</h2>
+			<p>一个想要创造未来的梦想家</p>
 		</div>
-		<div id="self-intro">
-			<div class="v-h-align">
-				<h2>运动发烧·学习中毒·阅读感冒</h2>
-				<p>一个想要创造未来的梦想家</p>
+	</div>
+	<div id="skill">
+		<div class="container">
+			<h2>我的技能</h2>
+			<hr/>
+			<div class="outer-wrap">
+				<ul class="wrap clearfix">
+					<li class="item">
+						<div class="inner-wrap">
+							<div class="circle">
+								<i class="iconfont">&#xe7bb;</i>
+							</div>
+							<h3>Html&Css&JavaScript&PHP</h3>
+							<a href="#" class="btn btn-bg-white">基础语言</a>
+						</div>
+					</li>
+					<li class="item">
+						<div class="inner-wrap">
+							<div class="circle">
+								<i class="iconfont">&#xe600;</i>
+							</div>
+							<h3>BootStrap&React</h3>
+							<a href="#" class="btn btn-bg-white">开发框架</a>
+						</div>
+					</li>
+					<li class="item">
+						<div class="inner-wrap">
+							<div class="circle">
+								<i class="iconfont">&#xe7d5;</i>
+							</div>
+							<h3>Vim&WebStorm&Git</h3>
+							<a href="#" class="btn btn-bg-white">使用工具</a>
+						</div>
+					</li>
+					<li class="item">
+						<div class="inner-wrap">
+							<div class="circle">
+								<i class="iconfont">&#xe61b;</i>
+							</div>
+							<h3>博客&项目&实习</h3>
+							<a href="#" class="btn btn-bg-white">作品欣赏</a>
+						</div>
+					</li>
+				</ul>
 			</div>
+		</div>	
+	</div>
+	<div id="motto">
+		<div class="container">
+			<h2>求知若饥 虚心若谷</h2>
+			<p>努力成为自己的英雄</p>
 		</div>
-		<div id="skill">
-			<div class="wrap v-h-align">
-				<h2>我的技能</h2>
-				<hr/>
-				<div class="inner-wrap-skill clearfix">
-					<div class="skill-ct">
-						<div class="circle"><i class="spritesheet language "></i></div>
-						<p>Html&Css&JavaScript&PHP</p>
-						<a href="#" class="button  bg-white">基础语言</a>
-					</div>
-					<div class="skill-ct">
-						<div class="circle"><i class="spritesheet frame"></i></div>
-						<p>BootStrap&React</p>
-						<a href="#" class="button  bg-white">开发框架</a>
-					</div>
-					<div class="skill-ct">
-						<div class="circle"><i class="spritesheet tool"></i></div>
-						<p>Vim&WebStorm&Git</p>
-						<a href="#" class="button  bg-white">使用工具</a>
-					</div>
-					<div class="skill-ct">
-						<div class="circle"><i class="spritesheet production"></i></div>
-						<p>博客&项目&实习</p>
-						<a href="#" class="button  bg-white">作品欣赏</a>
-					</div>
-				</div>
+	</div>
+	<div id="works">
+		<div class="container">
+			<h2>我的作品</h2>
+			<hr/>
+			<div class="outer-wrap">
+				<ul class="wrap clearfix">
+					<li class="item">
+						<img src="image/work-ct-1.jpg" alt="">
+					</li>
+					<li class="item">
+						<img src="image/work-ct-2.jpg" alt="">
+					</li>
+					<li class="item">
+						<img src="image/work-ct-3.jpg" alt="">
+					</li>
+					<li class="item">
+						<img src="image/work-ct-4.jpg" alt="">
+					</li> 
+				</ul>
 			</div>
+			<a href="#" class="btn btn-bg-gray">更多作品</a>
 		</div>
-		<div id="motto">
-			<div class="motto-layer v-h-align">
-				<h2>Stay hungry Stay foolish</h2>
-			</div>
+	</div>
+	<div id="extra">
+		<div class="container">
+			<h3>更多干货·请关注</h3>
+			<a href="#" class="btn btn-bg-white">我的博客</a>
+			<a href="#" class="btn btn-bg-gray">我的GitHub</a>
 		</div>
-		<div id="works">
-			<div class="wrap v-h-align">
-				<h2>我的作品</h2>
-				<hr/>
-				<div class="inner-wrap-works clearfix">
-					<div class="work-ct">
-						<a href="#">
-							<img src="image/work-ct-1.jpg" alt="phone">
-						</a>
-					</div>
-					<div class="work-ct">
-						<a href="#">
-							<img src="image/work-ct-2.jpg" alt="keyboard">
-						</a>
-					</div>
-					<div class="work-ct">
-						<a href="#">
-							<img src="image/work-ct-3.jpg" alt="keyboard">
-						</a>
-					</div>
-					<div class="work-ct">
-						<a href="#">
-							<img src="image/work-ct-4.jpg" alt="keyboard">
-						</a>
-					</div>
-				</div>
-				<a href="#" class="button bg-gray">更多作品</a>
-			</div>
-		</div>
-		<div id="extra">
-			<div class="v-h-align">
-				<h2>更多干货·请关注</h2>
-				<a href="#" class="button bg-white">我的部落格</a>
-				<a href="#" class="button bg-gray">我的GitHub</a>
-			</div>
-		</div>
-		<div id="contact">
-			<div class="v-h-align">
-				<h2>个人信息</h2>
-				<p>广州市天河区幼稚园</p>
-				<p class="iconfont">&#xe625; 18202026126</p>
-				<p class="iconfont">&#xe705; terenyeung@gmail.com</p>
-				<span class="iconfont">&#xe607; </span> <span class="iconfont">&#xe873; </span><span class="iconfont">&#xe619;</span>
-				<p>Copyright &nbsp; www.teren.com 2016</p>
-			</div>
-		</div>
-	</body>
+	</div>
+
+<div id="footer">
+	<div class="container">
+		<h3>我的信息</h3>
+		<p>广州市天河区幼稚园</p>
+		<p>18202026126</p>
+		<a href="#" class="email">ternenceyeung@gmail.com</a>
+		<br/>
+		<a href="#" class="iconfont">&#xe607;</a>
+		<a href="#" class="iconfont">&#xe873;</a>
+		<a href="#" class="iconfont">&#xe609;</a>
+		<hr/>
+		<p>Copyright &copy; www.teren.com 2016</p>
+	</div>
+</div>
+</body>
 </html>
