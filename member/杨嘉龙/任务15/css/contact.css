@@ -1,0 +1,50 @@
+#contact{
+      background-color: ;
+    background: #222  url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/map-image.png) no-repeat center center;
+  background-size:cover;
+}
+
+#contact h2{
+  color:white;
+}
+#contact p{
+  color:white;
+}
+.contact-left,.contact-right{
+  width:570px;
+  float:left;
+}
+
+#contact input{
+  border:none;  
+  width:500px;
+  padding:20px 20px;
+margin:20px;
+  border-radius: 5px;
+}
+
+#contact textarea{
+  padding:20px 20px;
+  margin:20px;
+  border:none;
+   border-radius: 5px;
+  
+}
+
+button{
+   border:none;
+   border-radius: 5px;
+  color: white;
+  font: bold 20px "microsoft yahei";
+  background: #fed136;
+  padding:15px;
+}
+button:hover{
+  cursor:pointer;
+  background: #fec000;
+  transition: all .5s;
+}
+textarea{
+  width:570px;
+  height:205px;
+}

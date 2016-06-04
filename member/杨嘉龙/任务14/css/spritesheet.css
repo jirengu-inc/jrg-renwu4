@@ -1,0 +1,21 @@
+i.spritesheet{
+		position:relative;
+		top:15px;
+		left:15px;
+		float:left;
+        width:70px;
+        height:70px;
+		background: url(../image/spritesheet.png) no-repeat;
+	}
+	i.language{
+		background-position: -75px -3px;
+	}
+	i.frame{
+		background-position: -75px -76px;
+	}
+	i.tool{
+		background-position: -1px -3px;
+	}
+	i.production{
+		background-position: -1px -74px;
+	}
