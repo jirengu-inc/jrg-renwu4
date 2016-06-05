@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./icon/iconfont.css">
+	<style>
+	html,body,h1,p,h3,h2,ul,li,i{
+		margin:0;
+		padding:0;
+	
+	}
+	html,body{
+		height: 100%;
+	}
+	a{
+		text-decoration:none;
+	}
+	li{
+		list-style: none;
+	}
+
+	.layout{
+		width:900px;
+		margin:0 auto;
+		border: 1px solid;
+	}
+	#header{
+		height:100%;
+		width:100%;
+		position:relative;
+		background:url(img/bg.jpg) no-repeat ;
+		background-size: cover;
+		display: table;
+	}
+	.wrap{
+	    display:table-cell;
+        text-align: center;
+        vertical-align: middle;
+	
+	}
+	.wrap h1{
+		font-weight: bold;
+		margin:10px;
+	
+	}
+	.wrap p{
+		margin-bottom:10px;
+	}
+   .wrap .btn{
+      background:rgba(0,0,0,0.3);
+      width: 60px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      color: #fff;
+     display: inline-block;
+  }
+  .wrap .btn:hover{
+     background: #000;
+  }
+   #main .intro{
+   	text-align: center;
+   	padding:50px 0;
+   }
+   #main .myskill{
+   	background: #337AB7;
+   	width: 100%;
+   	text-align: center;
+   	color: #fff;
+   	padding-top: 20px;
+   }
+   .bg{
+   	background: url(img/callout.jpg) no-repeat;
+   	background-size: cover;
+   }
+   .bg h2{
+     padding:150px 0;
+   }
+  
+   .myworks{
+   	text-align: center;
+   }
+   #footer .other{
+     	background: #337AB7;
+   	  width: 100%;
+   	 text-align: center;
+   	 color: #fff;
+   	 padding-top: 20px;
+   }
+   .skill-list:after{
+      content: '';
+      display:block;
+      clear:both;
+   }
+   .skill-list>i{
+   	width: 100px;
+    float: left;
+   
+   }
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="wrap" >
+			<h1>我是吴秀芳</h1>
+		    <p>做个有梦想的工程师</p>
+		    <a href="#" class="btn">更多</a>
+		</div>
+	</div>
+	<div id="main">
+		<div class="intro layout">
+			<h3>一句话简介</h3>
+			<p>这里是我的简介，可以对自己做个简单的介绍。这里的背景图自己找个合适的，后期学完 js 可以做成轮播或者渐变，或者加入一些 CSS3的特效</p>
+		</div>
+
+		<div class="myskill layout">
+			<h2>我的技能</h2>
+			<hr style="color: #fff;width:100px" />
+			<div class="skill-list ">
+			
+				  <i class="  iconfont">&#xe687;</i>
+			
+			 
+			       <i class=" iconfont">&#xe661;</i>
+			
+				  <i class=" iconfont">&#xe65d;</i>
+		
+		    
+		          <i class="iconfont">&#xe65f;</i>
+		   
+			</div>
+		</div>
+		<div class="bg">
+		  <h2>这里换个背景图，写一句个性的话</h2>
+		</div>
+		<div class="myworks layout">
+		    <h3>我的作品</h3>
+			<ul>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			<li>1</li>
+			</ul>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="other">
+			<h2>还有其他好东西</h2>
+			<div class="btn">233</div>
+			<div class="btn">233</div>
+		</div>
+		<div class="last">一些相关信息</div>
+	</div>
+
+</body>
+</html>
