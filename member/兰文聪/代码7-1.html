@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>form表单</title>
+</head>
+<body>
+<form name="MyForm" action="#" method="post">
+    姓名：<input type="text" name="userName" placeholder="用户名"/><br/>
+    密码：<input type="password" name="password"/><br/>
+    性别：<input type="radio" name="sex" value="male" />男
+          <input type="radio" name="sex" value="female"/>女
+          <br/>
+    取向：<input type="radio" name="sexOrientation" value="male" />男
+          <input type="radio" name="sexOrientation" value="female" />女
+          <br/>
+    爱好：<input type="checkbox" name="dota" />dota
+          <input type="checkbox" name="travel" checked/>旅游
+          <input type="checkbox" name="pat" checked/>宠物
+          <br/>
+    评论：<textarea name="discuss" placeholder="ddd"></textarea><br/>
+    我的car：
+          <select name="myCar">
+              <option value="萨博" seclected>萨博</option>
+              <option value="法拉利" >法拉利</option>
+              <option value="雷克萨斯" >雷克萨斯</option>
+              <option value="凯迪拉克" >凯迪拉克</option>
+              <option value="兰博基尼" >兰博基尼</option>
+          </select>
+          <input type="submit" value="提交" />
+</form>
+</body>
+</html>
