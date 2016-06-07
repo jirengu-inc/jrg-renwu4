@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<style>
+		/*清除默认样式*/
+		body,ul,li,h1,p{
+			margin:0;padding:0;
+		}
+		a{text-decoration: none;color:white;}
+		a:hover{cursor: pointer;}
+		ul,li{list-style: none;}
+		/*设置公共样式*/
+		body{
+			font:14px/1.5 "Microsoft Yahei","微软雅黑",sans-serif;
+			color:#AAA;
+		}
+		.wrap{
+			width:900px;margin:0 auto;
+		}
+		/*设置内容样式*/
+		#header {background-color:#333;height:50px;line-height:50px;}
+		/*header不用清除浮动是因为设置了高度*/
+		#header img{height:40px;float:left;}
+		#header ul{float:right;}
+		#header li{float:left;margin-left:16px;}
+		#header a{display:inline-block;width:46px;line-height: 50px;text-align: center;}
+		#header a:hover{background-color: #FFF;color:black;}
+		#content {margin-top: 10px;height:500px;}
+		#content:after{
+			content:".";display: table;clear:both;/*直接父元素清除浮动*/
+		}
+		.aside{ width:190px;min-height:500px;float: left;margin-right: 10px;
+			background-color: #EEE;}
+		.main{float:left;width:640px;background-color: #EEE;padding:20px;}
+		#footer {background-color:#333;height:50px;line-height:50px;}
+		#footer li{float:left;margin-right:16px;}
+		#footer a{display:inline-block;line-height: 44px;}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="wrap">
+			<a href="#" ><img src="logo-tiny.png"/></a>
+			<ul>
+				<li><a>技能</a></li>
+				<li><a>经历</a></li>
+				<li><a>作品</a></li>
+				<li><a>关于</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="content">
+		<div class="wrap">
+			<div class="aside"></div>
+			<div class="main">
+				<h1>我的作品</h1>
+				<p>生活很美好</p>
+				<p>心情不错</p>
+				<p>代码写的很漂亮</p>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="wrap">
+			<ul>
+				<li><a href="#">饥人谷</a></li>
+				<li><a href="#">JSCODE</a></li>
+				<li><a href="#">JSBIN</a></li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
