@@ -18,8 +18,9 @@
 
     .wrapper{
       width: 200px;
-      height: 30px;
-      border: 1px solid;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
       position: absolute;
       top:50%;
       left: 50%;
@@ -31,7 +32,7 @@
       width: 60px;
       height: 30px;
       line-height: 30px;
-      float: left;
+      display: inline-block;
     }
 
     .forward:hover,.start:hover,.stop:hover{
@@ -39,52 +40,40 @@
       cursor: pointer;
     }
 
-    .forward-icon{
-      width: 30px;
-      height: 30px;
+    .forward-icon,.start-icon,.stop-icon{
+      width: 32px;
+      height: 32px;
       float: left;
-      background: url("task-9.png") 0 -218px ;
-      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .forward:hover,.start:hover,.stop:hover{
+      color: #A366BE;
+      cursor: pointer;
+    }
+
+    .forward-icon{
+      background: url("task-9.png") 0 -84px;
     }
 
     .forward:hover .forward-icon{
-      width: 30px;
-      height: 30px;
-      float: left;
-      background: url("task-9.png") 0 -1060px ;
-      background-size: cover;
+      background: url("task-9.png") 0 -126px;
     }
 
     .start-icon{
-      width: 30px;
-      height: 30px;
-      float: left;
       background: url("task-9.png") 0 0 ;
-      background-size: cover;
     }
 
     .start:hover .start-icon{
-      width: 30px;
-      height: 30px;
-      float: left;
-      background: url("task-9.png") 0 -842px ;
-      background-size: cover;
+      background: url("task-9.png") 0 -42px;
     }
 
     .stop-icon{
-      width: 30px;
-      height: 30px;
-      float: left;
-      background: url("task-9.png") 0 -437px ;
-      background-size: cover;
+      background: url("task-9.png") 0 -168px ;
     }
 
     .stop:hover .stop-icon{
-      width: 30px;
-      height: 30px;
-      float: left;
-      background: url("task-9.png") 0 -1093px ;
-      background-size: cover;
+      background: url("task-9.png") 0 -210px ;
     }
   </style>
 </head>
