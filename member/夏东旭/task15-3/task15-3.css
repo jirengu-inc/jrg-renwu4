@@ -1,0 +1,204 @@
+body,ul,li,h1,h2{
+	padding: 0;
+	margin:0;
+}
+body{
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+.navbar{
+	height: 100px;
+	position: fixed;
+	width: 100%;
+	display: table;
+	top:0;
+	z-index: 2;
+	background: transparent;
+	line-height: 50px;
+}
+.nav-scroll-state{
+	height: 70px;
+	background-color: #27262B;
+	/*background-color: red;*/
+}
+.vertical-center{
+	display: table-cell;
+	vertical-align: middle;
+}
+.container{
+	width: 1140px;
+	margin: 0 auto;
+}
+.nav-logo{
+	color: #FEC503;
+	text-transform:capitalize;
+	font-size: 2em;
+	font-family: "Kaushan Script";
+}
+.nav-list{
+	float: right;
+}
+.clearfix::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.nav-item{
+	display: inline-block;
+}
+.nav-item>a{
+	padding:15px;
+	letter-spacing: 1px;
+	color: white;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	position: relative;
+	top:3px;
+}
+.active{
+	background-color:#fec503;
+ 	border-radius: 3px;
+}
+.nav-item .active:hover{
+	background-color: #FEBF11;
+	color: white;
+}
+.nav-item>a:hover{
+	color: #fec503;
+}
+
+.intro{
+	height: 750px;
+	background: url(imgs/intro-bg.jpg) center center no-repeat;
+	background-size: cover;
+}
+.intro .container{
+	padding-top:300px;
+	color: white;
+	text-align: center; 
+}
+.intro .up-sub-title{
+	font-style: italic;
+	font-size: 40px;
+	text-transform: capitalize;
+	font-family: "Droid Serif";
+	margin-bottom: 25px;
+}
+.intro .main-title{
+	font-size: 70px;
+	text-transform: uppercase;
+	margin-bottom: 50px;
+}
+.btn{
+	color: white;
+    background-color: #fed136;
+    text-transform: uppercase;
+    font-weight: 700;
+    border-radius: 3px;
+    font-size: 18px;
+    padding: 20px 40px;
+}
+.btn:hover{
+	background-color:#FEC503; 
+}
+.service{
+	padding: 150px 0;
+	text-align: center;
+}
+.section-title{
+	font-size: 40px;
+	text-transform: uppercase;
+	color: #333;
+}
+.section-description{
+	font-style: italic;
+	font-family: Arial;
+	font-weight: 400;
+	color: #999;
+	font-size: 16px;
+}
+.service-item{
+	width: 360px;
+	height: 243px;
+	float: left;
+	margin-left: 30px;
+}
+.service-list{
+	margin: 75px 0 0 -30px;
+}
+.round-wrapper{
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	background-color: #FED136;
+	border-radius: 56px;
+}
+.service .round-wrapper .iconfont{
+	color: white;
+	font-size: 53px;
+	line-height: 100px;
+}
+.item-title{
+	text-transform: capitalize;
+	color: #333;
+}
+.item-description{
+	color: #777;
+	font-size: 15px;
+}
+.portfolio{
+	padding: 150px 0;
+	background-color: #F7F7F7;
+	text-align: center;
+}
+.portfolio-list{
+	margin: 75px 0 0 -30px;
+}
+.portfolio-item{
+	width: 360px;
+	height:357px;
+	float: left;
+	background-color: white;
+	margin: 0 0 30px 30px;
+	position: relative;
+}
+.portfolio-item>a>img{
+	width: 360px;
+}
+.portfolio-item>a{
+	display: block;
+}
+.hover-content{
+	position: absolute;
+	height: 260.09px;
+	width: 360px;
+	top:0;
+	text-align: center;
+	background-color: rgba(254,209,54,.9);
+	opacity: 0;
+	transition: opacity 1s;
+}
+.portfolio-item>a:hover > .hover-content{
+	opacity: 1;
+}
+.hover-content .iconfont{
+	font-size: 50px;
+	font-weight: 900;
+	line-height: 260.09px;
+	color: white
+}
+.portfolio-item .item-title{
+	margin-bottom: 0;
+}
+.portfolio-item .item-description{
+	text-transform: capitalize;
+	margin:0;
+	font-size: 16px;
+	font-style: italic;
+}

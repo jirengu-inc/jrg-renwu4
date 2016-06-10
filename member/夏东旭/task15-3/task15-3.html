@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="task15-3.css">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+</head>
+<body>
+	<div class="navbar">
+		<div class="vertical-center">
+			<div class="container clearfix">
+				<a href="#" class="nav-logo">start bootstrap</a>
+				<ul class="nav-list">
+					<li class="nav-item"><a href="#" class="for-js-use">services</a></li
+					><li class="nav-item"><a href="#" class="for-js-use">portfolio</a></li
+					><li class="nav-item"><a href="#" class="for-js-use">about</a></li
+					><li class="nav-item"><a href="#" class="for-js-use">team</a></li
+					><li class="nav-item"><a href="#" class="for-js-use">contact</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="intro">
+		<div class="container">
+			<h2 class="up-sub-title">welcome to our studio!</h2>
+			<h1 class="main-title">it's nice to meet you</h1>
+			<a href="#" class="btn">tell me more</a>
+		</div>
+	</div>
+	<div class="service">
+		<div class="container">
+			<h2 class="section-title">services</h2>
+			<p class="section-description">Lorem ipsum dolor sit amet consectetur.</p>
+			<ul class="service-list clearfix">
+				<li class="service-item">
+					<div class="round-wrapper">
+						<i class="iconfont">&#xe627;</i>
+					</div>
+					<h3 class="item-title">e-commerce</h3>
+					<p class="item-description">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+					</p>
+				</li>
+				<li class="service-item">
+					<div class="round-wrapper">
+						<i class="iconfont">&#xe675;</i>
+					</div>
+					<h3 class="item-title">responsive design</h3>
+					<p class="item-description">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+					</p>
+				</li>
+				<li class="service-item">
+					<div class="round-wrapper">
+						<i class="iconfont">&#xe746;</i>
+					</div>
+					<h3 class="item-title">web security</h3>
+					<p class="item-description">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+					</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="portfolio">
+		<div class="container">
+			<h2 class="section-title">portfolio</h2>
+			<p class="section-description">Lorem ipsum dolor sit amet consectetur.</p>
+			<ul class="portfolio-list clearfix">
+				<li class="portfolio-item">
+					<a href="#">
+						<img src="imgs/roundicons.png" alt="Round Icons" class="portfolio-pic"><div class="hover-content"><i class="iconfont">&#xe60e;</i></div>
+					</a>
+					<h3 class="item-title">round icon</h3>
+					<p class="item-description">graphic design</p>
+				</li>
+				<li class="portfolio-item">
+					<a href="#">
+						<img src="imgs/startup-framework.png" alt="Startup Framework" class="portfolio-pic"><div class="hover-content"><i class="iconfont">&#xe60e;</i></div>
+					</a>
+					<h3 class="item-title">startup framework</h3>
+					<p class="item-description">website design</p>	
+				</li>
+				
+				<li class="portfolio-item">
+					<a href="#">
+						<img src="imgs/treehouse.png" alt="Treehouse" class="portfolio-pic"><div class="hover-content"><i class="iconfont">&#xe60e;</i></div>
+					</a>
+					<h3 class="item-title">treehouse</h3>
+					<p class="item-description">website design</p>
+				</li>
+				<li class="portfolio-item">
+					<a href="#">
+						<img src="imgs/golden.png" alt="Golden" class="portfolio-pic"><div class="hover-content"><i class="iconfont">&#xe60e;</i></div>
+					</a>
+					<h3 class="item-title">golden</h3>
+					<p class="item-description">website design</p>
+				</li>
+				<li class="portfolio-item">
+					<a href="#">
+						<img src="imgs/escape.png" alt="Escape" class="portfolio-pic"><div class="hover-content"><i class="iconfont">&#xe60e;</i></div>
+					</a>
+					<h3 class="item-title">escape</h3>
+					<p class="item-description">website design</p>
+				</li>
+				<li class="portfolio-item">
+					<a href="#">
+						<img src="imgs/dreams.png" alt="Dreams" class="portfolio-pic"><div class="hover-content"><i class="iconfont">&#xe60e;</i></div>
+					</a>
+					<h3 class="item-title">dreams</h3>
+					<p class="item-description">website design</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="about-info"></div>
+	<div class="team-info"></div>
+	<div class="contact-us"></div>
+	<div class="footer"></div>
+	<script>
+		window.onscroll=function (){
+			var scrollTop=document.getElementsByTagName("body")[0].scrollTop;
+			console.log(scrollTop);
+			var classModifier=function(className,indexOfClass,behavior/*add or remove*/,manipulatedClass){
+				var _classList=document.getElementsByClassName(className)[indexOfClass].classList;
+				if(behavior==="add"){
+					return _classList.add(manipulatedClass);
+				}
+				if(behavior==="remove"){
+					return _classList.remove(manipulatedClass);
+				}
+			}
+			if(scrollTop>260){
+				classModifier("navbar",0,"add","nav-scroll-state");
+			}else{
+				classModifier("navbar",0,"remove","nav-scroll-state");
+			}
+			if(scrollTop<686){
+				classModifier("for-js-use",0,"remove","active");
+			}
+			if(scrollTop<1400&&scrollTop>686){
+				classModifier("for-js-use",0,"add","active");
+				classModifier("for-js-use",1,"remove","active");
+			}
+			if(scrollTop>1400){
+				classModifier("for-js-use",1,"add","active");
+				classModifier("for-js-use",0,"remove","active");
+			}
+
+		}
+	</script>
+</body>
+</html>
