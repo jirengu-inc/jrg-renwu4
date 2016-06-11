@@ -1,0 +1,144 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-11 20:18:59
+ * @version $Id$
+ */
+html,body{
+		height: 100%;
+		font-size: 14px;
+		color: #333;
+
+	}
+	html,body,ul,li,h1,h2,h3,h4,h5,h6{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+	}
+	.wrap{
+		width: 960px;
+		margin: 0 auto;
+	}
+	.h1{
+		font-size:60px;
+		margin-top:14px;
+		margin-bottom:14px;
+	}
+	.h2{
+		font-size:30px;
+		margin-top:14px;
+		margin-bottom:14px;
+		font-weight: normal;
+	}
+	#header p{
+		font-size:20px;
+	}
+	#about p{
+		font-size: 20px;
+	}
+	#header .btn{
+		text-decoration: none;
+		font-size:20px;
+		color: #fff;
+		display: block;
+		padding: 5px 10px;
+		background-color: #787E84;
+		width: 40px;
+		margin-left:auto;
+		margin-right: auto;
+	}
+	.btn{
+		text-decoration: none;
+		font-size:20px;
+		color: #fff;
+		display: block;
+		padding: 5px 10px;
+		background-color: #787E84;
+		width: 80px;
+		margin-left:auto;
+		margin-right: auto;
+	}
+	#header{
+		width: 100%;
+		height: 100%;
+		position: relative;
+		display: table;
+		background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/14/img/bg.jpg) no-repeat center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+	.text-vertical-center{
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	}
+	#content #about{
+		padding: 50px 0;
+		text-align: center;
+	}
+	
+	#services .container{
+		text-align: center;
+	}
+	#services{
+		background-color: #337AB7;
+	}
+	#services ul:after{
+		display: block;
+		content: '';
+		clear: both;
+	}
+	#services li{
+		float: left;
+		background-color: red;
+		width: 220px;
+		margin-right: 20px;
+	}
+	#services h2{
+		margin-top:0;
+		padding-top: 10px;
+	}
+	#words{
+		background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/14/img/callout.jpg)
+		no-repeat center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+	#words h1{
+		font-size: 60px;
+		padding: 150px 0;
+		color: #fff;
+	}
+	#works ul{
+		margin-left: -30px;
+	}
+	#works ul:after{
+		display: block;
+		content: "";
+		clear: both;
+	}
+	#works li{
+		float: left;
+		width: 465px;
+		margin-right: 30px;
+
+	}
+	#other{
+		background-color: #337AB7;
+		text-align: center;
+	}
+	#other .container{
+		padding-top:60px;
+		padding-bottom: 60px;
+	}
+	#other h3{
+		font-size:20px;
+		color: #fff;
+
+	}
+	#footer .container{
+		text-align: center;
+	}
