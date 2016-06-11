@@ -8,6 +8,9 @@
 /*navigation*/
 #navigation{
 	width:100%;
+	border-bottom: 1px solid #aaa;
+	position:fixed;
+	background: #fff;
 }
 #navigation .container{
 	width:1160px;
