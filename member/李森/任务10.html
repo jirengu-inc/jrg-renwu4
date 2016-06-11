@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>任务10</title>
+  <style>
+    body,html{
+      margin: 0;
+      padding: 0;
+    }
+    a{
+      display: inline;
+      text-decoration: none;
+      color: #fff;
+    }
+    #header,#footer{
+      background: #333;
+    }
+    #header:after,#content:after{
+      content: " ";
+      display: block;
+      visibility: hidden;
+      clear: both;
+    }
+     .header-c,#content,.footer-c{
+      width: 900px;
+      margin: 0 auto; 
+    }
+    .header-c .nav{
+      float: right;
+      list-style: none;
+    }
+    .header-c .logo,.nav li{
+      float: left;
+      
+    }
+    .header-c .nav li a{
+      padding: 22px 10px;
+      line-height: 28px;
+      margin-right: 10px;
+    }
+    .header-c .nav li a:hover{
+      background: #fff;
+      color: #000;
+    }
+    #content{
+      margin-top: 10px;
+    }
+    .aside,.main{
+      float: left;
+      background: #eee;
+    }
+    .aside{
+      width: 200px;
+      height: 600px;
+    }
+    .main{
+      width: 670px;
+      margin-left: 10px;
+      padding: 20px 10px 15px ;
+    }
+    .main p{
+       line-height: 10px;
+    }
+    #footer a{
+      margin-left: 10px;
+      line-height: 40px;
+    }
+
+  
+  </style>
+</head>
+<body>
+       <!--头部-->
+    <div id="header">
+      <div class="header-c">
+        <a  href="#"><img class="logo" src="img/logo-tiny.png" alt="饥人谷logo" /></a>
+        <ul class="nav">
+         <li><a href="#">技能</a></li>
+         <li><a href="#">经历</a></li>
+         <li><a href="#">作品</a></li>
+         <li><a href="#">关于</a></li>
+        </ul>
+      </div>  
+    </div>
+    <!--内容-->
+    <div id="content">
+      <div class="aside">
+        </div>
+        <div class="main">
+         <h2>我的作品</h2>
+         <p>生活很美好</p>
+         <p>心情不错</p>
+         <p>代码写的很漂亮</p>
+        </div>
+    </div>
+     <!--页脚-->
+    <div id="footer">
+      <div class="footer-c">
+        <a href="#">饥人谷</a> <a href="#">JSCODE</a> <a href="#">JEBIN</a>
+      </div>
+    </div>
+
+
+</body>
+</html>

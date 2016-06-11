@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>雪碧图</title>
+  <style>
+    .img{
+      height: 16px;
+      padding-left: 16px ;
+      display: inline-block; 
+      cursor:pointer;
+      margin-left: 48px;
+      background: url(img/result.png) 0 0 no-repeat;
+    }
+    .img:hover{
+      color: #a663be;
+    }
+    .advance::after{
+      content: "前进";
+    }
+    .advance:hover{
+       background-position: -144px 1px;
+    }
+    .start::after{
+      content: "开始";
+    } 
+    .start{
+       background-position: -48px 0;
+    }
+    .start:hover{
+       background-position: -192px 1px;  
+    }
+    .cease::after{
+       content:"停止";
+    }
+    .cease{
+       background-position: -96px 0;
+    }
+    .cease:hover{
+      background-position: -240px 1px;
+    }
+  </style>
+    
+    
+</head>
+<body>
+    <div class="img advance"></div> 
+    <div class="img start"></div> 
+    <div class="img cease"></div> 
+</body>
+</html>
