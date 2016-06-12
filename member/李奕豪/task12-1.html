@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>浮动和负边距应用</title>
+    <style>
+        #box{
+            background:#ccc;
+            display:inline-block;
+        }
+        #content,#content1{
+            background:#ccc;
+            width:700px;
+            margin:20px 0px;
+        }
+        #content:after,#content1:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        #content .main,#content1 .main1{
+            width:100%;
+            height:200px;
+
+            float:left;
+        }
+        #content .aside, #content1 .aside1{
+
+            width:200px;
+            height:200px;
+            background:blue;
+            float:left;
+            margin-left:-100%;
+            opacity:0.2
+        }
+        #content .center,#content1 .center1{
+            width:200px;
+            height:200px;
+            background:pink;
+            float:left;
+            margin-left:-450px;
+        }
+        #content .right,#content1 .right1{
+            width:200px;
+            height:200px;
+            background:yellow;
+            float:left;
+            margin-left:-200px;
+            opacity:0.5
+        }
+
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="content">
+        <div class="main"></div>
+        <div class="aside"></div>
+        <div class="center"></div>
+        <div class="right"></div>
+    </div>
+    <div id="content1">
+        <div class="main1"></div>
+        <div class="aside1"></div>
+        <div class="center1"></div>
+        <div class="right1"></div>
+    </div>
+</div>
+</body>
+</html>

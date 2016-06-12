@@ -1,0 +1,288 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-11 20:18:59
+ * @version $Id$
+ */
+    html,body{
+		height: 100%;
+		font-size: 14px;
+		color: #333;
+
+	}
+	html,body,ul,li,h1,h2,h3,h4,h5,h6{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+	}
+	.wrap{
+		width: 960px;
+		margin: 0 auto;
+	}
+	.h1{
+		font-size:60px;
+		margin-top:14px;
+		margin-bottom:14px;
+	}
+	.h2{
+		font-size:30px;
+		margin-top:14px;
+		margin-bottom:14px;
+		font-weight: normal;
+	}
+	#header p{
+		font-size:20px;
+		margin-bottom: 24px;
+	}
+	#header h1{
+		font-size:60px;
+		margin-top:14px;
+		margin-bottom:24px;
+	}
+	#about p{
+		font-size: 20px;
+	}
+	#header .btn{
+		text-decoration: none;
+		font-size:20px;
+		color: #fff;
+		display: block;
+		padding: 5px 10px;
+		background-color: #787E84;
+		width: 40px;
+		margin-left:auto;
+		margin-right: auto;
+	}
+	#header{
+		width: 100%;
+		height: 100%;
+		position: relative;
+		display: table;
+		background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/14/img/bg.jpg) no-repeat center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+	}
+	#header .container{
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	}
+	#content #about{
+		padding: 50px 0;
+		text-align: center;
+	}
+	
+	#services .container{
+		text-align: center;
+		padding-top:50px;
+		padding-bottom: 70px;
+	}
+	#services h2{
+		color: #fff;
+	}
+	#services hr{
+		width: 100px;
+	}
+	#services{
+		background-color: #337AB7;
+	}
+	#services ul:after{
+		display: block;
+		content: '';
+		clear: both;
+	}
+	#services ul{
+		padding-top:10px;
+	}
+	#services li{
+		float: left;
+		width: 210px;
+		margin-right: 20px;
+	}
+	#services h2{
+		margin-top:0;
+		padding-top: 10px;
+	}
+	#services .iconfont{
+		font-size: 60px;
+		padding-top:20px;
+		display: block;
+		color: #337AB7;
+	}
+	#services span{
+		border: 1px solid #fff;
+		display: block;
+		width: 100px;
+		height: 100px;
+		margin:0 auto;
+		border-radius: 100px;
+		background-color: #fff;
+	}
+	#services h4{
+		margin-top: 20px;
+		color: #fff;
+	}
+	#services p{
+		color: #fff;
+		font-family: cursive;
+		margin-bottom: 30px;
+	}
+	#services .btn{
+		text-decoration: none;
+		font-size:14px;
+		color: #333;
+		display: block;
+		padding: 8px 10px;
+		background-color: #fff;
+		width: 80px;
+		margin-left:auto;
+		margin-right: auto;
+		font-family: cursive;
+	}
+	#words{
+		background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/14/img/callout.jpg)
+		no-repeat center center;
+		-webkit-background-size: cover;
+		background-size: cover;
+		text-align: center;
+	}
+	#words h1{
+		font-size: 60px;
+		padding: 150px 0;
+		color: #fff;
+	}
+	#works ul{
+		margin-left: -30px;
+		position: relative;
+		left: 30px;
+	}
+	#works ul:after{
+		display: block;
+		content: "";
+		clear: both;
+	}
+	#works li{
+		/*border: 1px solid;*/
+		float: left;
+		width: 465px;
+		margin-right: 30px;
+		margin-top: 30px;
+
+	}
+	#works a{
+		display: block;
+	}
+	#works img{
+		width: 465px;
+	}
+	#works .container{
+		padding: 60px 0;
+	}
+
+	#works h3{
+		text-align: center;
+		font-size: 32px;
+		font-weight: normal;
+
+	}
+	#works hr{
+		width: 100px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		border:0;
+		border-bottom: 1px solid #eee;
+		height: 0;
+	}
+	#works .btn{
+		text-decoration: none;
+		font-size:14px;
+		color: #fff;
+		display: block;
+		width: 56px;
+		background-color: #787E84;
+		padding: 10px 15px;
+		margin-top: 30px;
+		margin-left:auto;
+		margin-right: auto;
+
+	}
+	#other{
+		background-color: #337AB7;
+		text-align: center;
+	}
+	#other .container{
+		padding-top:60px;
+		padding-bottom: 60px;
+	}
+	#other h3{
+		font-size:30px;
+		font-weight: normal;
+		color: #fff;
+	}
+	#other ul{
+		width: 280px;
+		margin:0 auto;
+	}
+	#other ul:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#other li{
+		float: left;
+	}
+	#other .btn{
+		text-decoration: none;
+		font-size:20px;
+		color: #333;
+		display: block;
+		width: 100px;
+		background-color: #fff;
+		padding: 10px 10px;
+		margin-top: 30px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	#other .btn:hover{
+		color: #fff;
+		background-color: #333;
+	}
+	#footer .container{
+		text-align: center;
+		padding-top: 60px;
+		padding-bottom:50px;
+	}
+	#footer h4{
+		font-size: 20px;
+	}
+	#footer .phone{
+		font-size: 12px;
+	}
+	#footer .email{
+		text-decoration: none;
+		color: #337AB7;
+	}
+	#footer .email:hover{
+		text-decoration: underline;
+	}
+	#footer a{
+		text-decoration: none;
+		display: inline-block;
+		padding-right: 10px;
+	}
+	#footer .qq,#footer .github,#footer .weibo{
+		font-size: 50px;
+		color: #337AB7;
+
+	}
+	#footer hr{
+		width: 100px;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		border:0;
+		border-bottom: 1px solid #eee;
+		height: 0;
+	}
