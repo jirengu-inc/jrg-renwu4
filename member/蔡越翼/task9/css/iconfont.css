@@ -2,34 +2,25 @@ body,a{
 	margin:0;
 	padding:0;
 }
-.btn{
-	display: inline-block;
-	width:40px;
-	padding-left:20px;
-	font:16px/100% "微软雅黑";
-	background-image: url(../images/result-icon.png);
-	background-repeat: no-repeat;
+@font-face { 
+	font-family: 'stop';
+	src: url('../font/stop.eot');/* IE9*/ 
+  	src: url('../font/stop.eot') format('embedded-opentype'),/* IE6-IE8 */ 
+    url('../font/stop.woff2') format('woff2'),
+    url('../font/stop.woff') format('woff'),/* chrome、firefox */ 
+    url('../font/stop.ttf') format('truetype'),/* chrome、firefox、opera、Safari, Android, iOS 4.2+*/ 
+    url('../font/stop.svg') format('svg');/* iOS 4.1- */ 
+    font-weight: normal;
+    font-style: normal;
+} 
+.iconfont{
+	font-family: "stop" !important;
+	font-size:16px;
+}
+.icon{
 	text-decoration: none;
 	color:black;
 }
-.play{
-	background-position: 0px 0px;
-}
-.play:hover{
-	background-position: 0px -26px;
-	color:#A662BE;
-}
-.begin{
-	background-position: 0px -52px;
-}
-.begin:hover{
-	background-position: 0px -78px;
-	color:#A662BE;
-}
-.stop{
-	background-position: 0px -130px;
-}
-.stop:hover{
-	background-position: 0px -104px;
-	color:#A662BE;
+.icon:hover{
+	color:#A663BE;
 }
