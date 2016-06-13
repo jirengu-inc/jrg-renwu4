@@ -1,0 +1,133 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-13 09:24:49
+ * @version $Id$
+ */
+html,body,ul{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 14px;
+	font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color:#333;
+}
+.wrap{
+	width: 1000px;
+	margin: 0 auto;
+}
+.container-pad{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+#header{
+	background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/header-bg.jpg)
+	no-repeat center center;
+	background-size: cover;
+
+}
+#nav .logo{
+	display: block;
+	float: left;
+	font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+	color:#FED136;
+	font-size: 30px;
+}
+#nav ul li{
+	float: left;
+}
+#nav ul{
+	float: left;
+	padding-left: 360px;
+}
+#nav ul li a{
+	display: block;
+	color:#fff;
+	font-size: 16px;
+	padding: 8px 10px;
+	text-transform:uppercase;
+}
+#nav ul li a:hover{
+	color:#FED136;
+}
+#welcome{
+}
+#welcome .container{
+	padding-top: 173px;
+	padding-bottom: 150px;
+	text-align: center;
+}
+#welcome h2{
+	font-size:40px;
+	color: #fff;
+	font-family: "Axure Handwriting";
+
+	 }
+#welcome h3{
+	font-size: 60px;
+	color: #fff;
+}
+#welcome a{
+	display: block;
+	color: #fff;
+	padding: 15px 5px;
+	background: #FED136;
+	width: 150px;
+	margin: 0 auto;
+	font-weight: bold;
+	border-radius: 3px;
+	font-size: 16px;
+}
+#welcome a:hover{
+	background-color:rgb(254,197,3);
+}
+#content{}
+#services .container{
+	padding: 70px 0;
+	text-align: center;
+} 
+#services h2{
+	font-size: 36px;
+	margin-bottom: 10px;
+
+}
+#services p{
+	color: #777;
+	font-size: 16px;
+}
+#services ul{
+	margin-top: 40px;
+	margin-left: -20px;
+}
+#services li{
+	float: left;
+	width: 320px;
+	margin-left: 20px;
+}
+#services span{
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	background-color: #FED136;
+	margin: 0 auto;
+}
+#portfolio .container{
+	padding: 100px 0;
+	text-align: center;
+	background-color: #F7F7F7;
+}
