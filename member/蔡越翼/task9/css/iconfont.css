@@ -1,0 +1,35 @@
+body,a{
+	margin:0;
+	padding:0;
+}
+.btn{
+	display: inline-block;
+	width:40px;
+	padding-left:20px;
+	font:16px/100% "微软雅黑";
+	background-image: url(../images/result-icon.png);
+	background-repeat: no-repeat;
+	text-decoration: none;
+	color:black;
+}
+.play{
+	background-position: 0px 0px;
+}
+.play:hover{
+	background-position: 0px -26px;
+	color:#A662BE;
+}
+.begin{
+	background-position: 0px -52px;
+}
+.begin:hover{
+	background-position: 0px -78px;
+	color:#A662BE;
+}
+.stop{
+	background-position: 0px -130px;
+}
+.stop:hover{
+	background-position: 0px -104px;
+	color:#A662BE;
+}
