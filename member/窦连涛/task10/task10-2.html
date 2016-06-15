@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task10-2</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .tooltip, .tooltip2,.tooltip3{
+      width: 200px;
+      height: 100px;
+      border:1px solid #ccc;
+      margin-top:30px;
+      margin-left: 30px;
+      border-radius: 5px;
+      position: relative;
+    }
+    .tooltip2 {
+      border-radius: 0px;
+    }
+    .tooltip::before{
+      content: '';
+      display: block;
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      top:-20px;
+      left:14px;
+      border-top: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #ccc;
+      border-left: 10px solid transparent;
+    }
+
+    .tooltip2::before{
+      content: '';
+      display: block;
+      width: 0px;
+      height: 0px;
+      position: absolute;
+      top:0px;
+      right:0px;
+      border-top: 7px solid red;
+      border-right: 7px solid red;
+      border-bottom: 7px solid transparent;
+      border-left: 7px solid transparent;
+    }
+
+    .tooltip3::before{
+      content: '';
+      display: block;
+      width: 15px;
+      height: 15px;
+      position: absolute;
+      top:-9px;
+      left:19px;
+      border-top:1px solid #ccc;
+      border-left:1px solid #ccc;
+      transform: rotate(45deg);
+      background: #FFF;
+    }
+  </style>
+</head>
+<body>
+  <div class="tooltip">
+  </div>
+
+  <div class="tooltip2">
+  </div>
+
+  <div class="tooltip3">
+  </div>
+</body>
+</html>
