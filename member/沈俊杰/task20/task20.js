@@ -108,7 +108,7 @@ console.log(flag); //不会输出
 for(var i=0;i<5;i++){
 	(function(n){
 		setTimeout(function(){
-        	console.log('delayer:' + n );
-    	}, 0);
+        		console.log('delayer:' + n );
+    		}, 0);
 	})(i);  
 }
