@@ -155,6 +155,9 @@ c
     	height: 300px;
     	margin-bottom: 20px;
     }
+    .portfolio-list img:hover{
+    	opacity: 0.6;
+    }
     .about{
        padding: 150px 0;
    	   text-align: center;
