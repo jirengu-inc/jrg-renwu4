@@ -82,7 +82,7 @@ function walkWays(n) {
 
 // 6-8 参照了jquery的extend
 function extend(isDeep, target, clone) {
-	var i, name, src, copy, copyIsArray, options
+	var i, name, src, copy, options
 	length = arguments.length;
 
 	if (typeof target !== "object" && typeof target !== "function") target = {};
