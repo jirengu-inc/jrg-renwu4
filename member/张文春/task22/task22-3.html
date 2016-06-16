@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">鼠标放置查看图片2</li>
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img"></div>
+<script>
+//todo ...
+var ct = document.querySelector(".ct"),
+ img1 = document.querySelector(".img");
+   ct.addEventListener("mouseover",function(e){
+    var imgsrc = e.target.getAttribute("data-img");
+    img1.innerHTML = "<img src="+imgsrc+" />";
+      
+  });
+</script>
+</body>
+</html>
