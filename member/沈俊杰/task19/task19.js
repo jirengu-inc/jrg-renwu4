@@ -2,17 +2,17 @@
 function getIntv(time) {
 
 	var DAY_TIMESTAMP = 60 * 60 * 24 * 1000,
-			HOUS_TIMESTAMP = 60 * 60 * 1000,
-			MIN_TIMESTAMP = 60 * 1000,
-			SEC_TIMESTAMP = 1000;
+	    HOUS_TIMESTAMP = 60 * 60 * 1000,
+	    MIN_TIMESTAMP = 60 * 1000,
+	    SEC_TIMESTAMP = 1000;
 
 	var time = +new Date(time),
-			now = +new Date(),
-			intv = time - now,
-			day = Math.floor(intv / DAY_TIMESTAMP),
-			hous = Math.floor((intv - day * DAY_TIMESTAMP) / HOUS_TIMESTAMP);
-	min = Math.floor((intv - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP) / MIN_TIMESTAMP);
-	sec = Math.floor((intv - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP - min * MIN_TIMESTAMP) / SEC_TIMESTAMP);
+            now = +new Date(),
+	    intv = time - now,
+	    day = Math.floor(intv / DAY_TIMESTAMP),
+	    hous = Math.floor((intv - day * DAY_TIMESTAMP) / HOUS_TIMESTAMP);
+	    min = Math.floor((intv - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP) / MIN_TIMESTAMP);
+	    sec = Math.floor((intv - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP - min * MIN_TIMESTAMP) / SEC_TIMESTAMP);
 
 	return "还有" + day + "天" + hous + "小时" + min + "分钟" + sec + "秒";
 }
@@ -20,9 +20,9 @@ function getIntv(time) {
 // 2
 function getChsDate(time) {
 	var time = new Date(time),
-			year = _num2char(time.getFullYear().toString()),
-			mon = _num2char((time.getMonth() + 1).toString(), true),
-			day = _num2char((time.getDate()).toString(), true);
+	    year = _num2char(time.getFullYear().toString()),
+	    mon = _num2char((time.getMonth() + 1).toString(), true),
+	    day = _num2char((time.getDate()).toString(), true);
 
 	return year + "年" + mon + "月" + day + "日";
 
@@ -47,9 +47,9 @@ function getChsDate(time) {
 // 3
 function getLastNDays(num) {
 	var now = +new Date(),
-			intv = num * 24 * 60 * 60 * 1000,
-			lDayTimestamp = now - intv,
-			lDayObj = new Date(lDayTimestamp);
+	    intv = num * 24 * 60 * 60 * 1000,
+	    lDayTimestamp = now - intv,
+	    lDayObj = new Date(lDayTimestamp);
 
 	return lDayObj.getFullYear() + "-" + (lDayObj.getMonth() + 1) + "-" + lDayObj.getDate();
 }
@@ -57,7 +57,7 @@ function getLastNDays(num) {
 // 4
 var Runtime = (function() {
 	var startTime = 0,
-			endTime = 0;
+	    endTime = 0;
 	return {
 		start: function() {
 			startTime = +new Date();
