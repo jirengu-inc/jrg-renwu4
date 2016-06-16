@@ -52,7 +52,14 @@ function arrFind(arr,value){
   if ( !Array.isArray(arr) ) {
     throw arr + " is not Array";
   }
-  return arr.indexOf(value);
+  var idx = -1;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      idx = i;
+      break;
+    }
+  }
+  return idx;
 }
 
 // 4
@@ -112,6 +119,7 @@ function filterNumericInPlace(arr){
   for (var i = 0; i < arr.length; i++) {
     if (typeof arr[i] !== "number") {
       arr.splice(i,1);
+      i--;
     }
   }
 }
