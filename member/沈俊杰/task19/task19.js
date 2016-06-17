@@ -20,17 +20,18 @@ function getIntv(time) {
 // 2
 function getChsDate(time) {
 	var time = new Date(time),
-	    year = _num2char(time.getFullYear().toString()),
-	    mon = _num2char((time.getMonth() + 1).toString(), true),
-	    day = _num2char((time.getDate()).toString(), true);
+	    year = _num2char(time.getFullYear()),
+	    mon = _num2char((time.getMonth() + 1), true),
+	    day = _num2char((time.getDate()), true);
 
 	return year + "年" + mon + "月" + day + "日";
 
-	function _num2char(str, boolen) {
+	function _num2char(num, boolen) {
+		var str = num.toString();
 		var _arr = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
 		var _s = "";
 		for (var i = 0, length = str.length; i < length; i++) {
-			if (+str >= 10 && boolen) {
+			if ( num >= 10 && boolen) {
 				if (i === 0) {
 					_s += (str.charAt(i) === "1" ? "" : _arr[str.charAt(i)]) + _arr[10];
 				} else {
