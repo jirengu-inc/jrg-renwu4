@@ -79,7 +79,7 @@ function getMinItvl() {
 		i++;
 		if( i === 1000 ) {
 		clearInterval(clock);
-	   	console.log((+new Date()-start)/i);
+	   	console.log((+new Date()-start)/i); //这里只能做到单纯的打印么，能否做到 var MinItvl = getMinItVL() 这样的形式
 	   }
 	   clock=setTimeout(arguments.callee,0);
    },0);
