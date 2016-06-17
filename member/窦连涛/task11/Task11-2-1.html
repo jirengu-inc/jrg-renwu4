@@ -13,18 +13,19 @@
 			height: 40px;
 			background: red;
 		}
-		#content {
-			width: 100%;
-		}
+
 		#content .aside{
 			width:200px;
 			float:left;
 			background: rgba(2,2,252,0.2);
+			margin-left:-100%;
+
 		}
 		#content .main {
 			background: pink;
 			float: left;
-			margin-left: -100%;
+			position: relative;
+			left:200px;
 		}
 		#content:after {
 			content:'';
@@ -36,8 +37,7 @@
 <body>
 	<div id="header">header</div>
     <div id="content">
-        <div class="aside">aside</div>
-        <div class="main">
+    	 <div class="main">
             我是main
             我是main 我是main 我是main 我是main
             我是main 我是main 我是main 我是main
@@ -64,6 +64,8 @@
             我是main 我是main 我是main 我是main
             我是main 我是main 我是main 我是main
         </div>
+        <div class="aside">aside</div>
+       
     </div>
     <div id="footer">footer</div>
 </body>
