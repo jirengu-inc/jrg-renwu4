@@ -1,20 +1,23 @@
 // 1
 function getIntv(time) {
 
-	var DAY_TIMESTAMP = 60 * 60 * 24 * 1000,
-	    HOUS_TIMESTAMP = 60 * 60 * 1000,
-	    MIN_TIMESTAMP = 60 * 1000,
-	    SEC_TIMESTAMP = 1000;
+	var DAY_TIMESTAMP = 60 * 60 * 24,
+	    HOUS_TIMESTAMP = 60 * 60,
+	    MIN_TIMESTAMP = 60;
 
-	var time = +new Date(time),
-            now = +new Date(),
+	var time = Math.round(+new Date(time)/1000),
+      	    now = Math.round(+new Date()/1000),
 	    intv = time - now,
-	    day = Math.floor(intv / DAY_TIMESTAMP),
-	    hous = Math.floor((intv - day * DAY_TIMESTAMP) / HOUS_TIMESTAMP);
-	    min = Math.floor((intv - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP) / MIN_TIMESTAMP);
-	    sec = Math.floor((intv - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP - min * MIN_TIMESTAMP) / SEC_TIMESTAMP);
+	    day = Math.floor(Math.abs(intv) / DAY_TIMESTAMP),
+	    hous = Math.floor((Math.abs(intv) - day * DAY_TIMESTAMP) / HOUS_TIMESTAMP);
+	    min = Math.floor((Math.abs(intv) - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP) / MIN_TIMESTAMP);
+	    sec = Math.floor((Math.abs(intv) - day * DAY_TIMESTAMP - hous * HOUS_TIMESTAMP - min * MIN_TIMESTAMP));
 
-	return "还有" + day + "天" + hous + "小时" + min + "分钟" + sec + "秒";
+  	if (intv >= 0) {
+    		return "还有" + day + "天" + hous + "小时" + min + "分钟" + sec + "秒";
+  	}else {
+    		return "已经超过" + day + "天" + hous + "小时" + min + "分钟" + sec + "秒";
+  	}
 }
 
 // 2
