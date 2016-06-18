@@ -30,7 +30,7 @@ html,body{
     width: 960px;
 }
 #header p{
-    margin: 10px;
+    margin: ;
     font-size: 1.5rem;
 }
 #header a{
@@ -47,7 +47,7 @@ html,body{
     background-color:#73D14C;
 }
 #content .about{
-    width: 900px;
+    width: 960px;
     margin: 0 auto;
     text-align: center;
     color:#000000
@@ -73,7 +73,7 @@ html,body{
     margin: 10px auto;
 }
 #content ul{
-    width: 900px;
+    width: 960px;
     margin: 0 auto;
 }
 #content ul:after{
@@ -84,7 +84,7 @@ html,body{
 #content .skills li{
     float:left;
     width:200px;
-    margin:10px;
+    margin:20px;
 }
 .skills li span{
     width: 100px;
@@ -118,7 +118,7 @@ html,body{
    background-color:#FBE201;
 }
 #content .words{
-    background-image: url(img2/xiaotu/yantianhu.jpg);
+    background-image: url(img/yantianhu.jpg);
     background-size: cover;
     background-position: center;
     padding: 100px 0;
@@ -127,7 +127,7 @@ html,body{
     font-size: 30px;
 }
 #content .works{
-    width: 900px;
+    width: 960px;
     margin: 0 auto;
     text-align: center;
 }
@@ -138,7 +138,9 @@ html,body{
     width: 150px;
     margin: 10px auto;
 }
-
+#content .works ul{
+    width: 900px;
+}
 #content li{
     width:400px;
     float:left;
@@ -194,7 +196,7 @@ html,body{
     background-color:#FBE201;
 }
 #footer .container{
-    width: 900px;
+    width: 960px;
     margin: 0 auto;
     text-align: center;
     padding: 10px 0;
