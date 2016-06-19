@@ -62,7 +62,7 @@
 	<script type="text/javascript">
 		var Utils= {
 	trim:function(str){
-		return str.replace(/^\s+|\s+$/g);
+		return str.replace(/^\s+|\s+$/g,'');
 	},
 	hasClass:function(ele,cls){
 		return ele.className.search(new RegExp('\\b'+cls+'\\b'));
