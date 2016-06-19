@@ -8,10 +8,12 @@
       margin:0;
       padding:0;
     }
+
     .task9{
       width: 200px;
       height: 200px;
-      border: 1px solid;
+      line-height: 200px;
+
       position: absolute;
       top:50%;
       left: 50%;
@@ -19,75 +21,60 @@
       margin-top:-100px;
     }
 
-    .wrapper {
-      width: 150px;
+    .wrapper{
+      width:200px;
       height: 40px;
-      line-height: 40px;
-      text-align: center;
-      position: absolute;
-      top:50%;
-      left: 50%;
-      margin-left: -75px;
-      margin-top:-20px;
-    }
-    div.forward,div.start,div.stop{
-      width: 30px;
-      height: 30px;
       display: inline-block;
-      margin-top: 5px;
-      cursor: pointer;
+      clear:both;
+    }
+
+    ul li{
+      list-style: none;
+      float:left;
+      width: 65px;
+      height: 35px;
+      text-align: right;
+      line-height: 35px;
     }
 
     .forward {
-      background-image: url(task-9.png);
-      background-position: 0px -219px;
-      background-size:cover;
-    }
-
-    .forward:hover{
-      background-image: url(task-9.png);
-      background-position: 0px -1061px;
-      background-size:cover;
+      background: url('task-9.png') 0px -84px no-repeat;
     }
 
     .start {
-      background-image: url(task-9.png);
-      background-position: 0px 0px;
-      background-size:cover;
-    }
-
-    .start:hover {
-      background-image: url(task-9.png);
-      background-position: 0px -842px;
-      background-size:cover;
+      background: url('task-9.png') 0px 0px no-repeat;
     }
 
     .stop {
-      background-image: url(task-9.png);
-      background-position: 0px -438px;
-      background-size:cover;
+      background: url('task-9.png') 0px -168px no-repeat;
     }
 
-    .stop:hover {
-      background-image: url(task-9.png);
-      background-position: 0px -1093px;
-      background-size:cover;
+    .forward:hover{
+      color: #9D55B8;
+      cursor: pointer;
+      background: url('task-9.png') 0px -126px no-repeat;
+    }
+
+    .start:hover{
+      color: #9D55B8;
+      cursor: pointer;
+      background: url('task-9.png') 0px -42px no-repeat;
+    }
+
+    .stop:hover{
+      color: #9D55B8;
+      cursor: pointer;
+      background: url('task-9.png') 0px -210px no-repeat;
     }
   </style>
 </head>
 <body>
   <div class="task9">
-    <div class="wrapper">
-      <div class="forward">
-
-      </div>
-      <div class="start">
-
-      </div>
-      <div class="stop">
-
-      </div>
-    </div>
+    <ul class="wrapper">
+      <li class="forward">前进</li>
+      <li class="start">开始</li>
+      <li class="stop">停止</li>
+    </ul>
   </div>
 </body>
 </html>

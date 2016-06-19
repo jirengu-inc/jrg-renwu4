@@ -96,11 +96,12 @@
 	}
 	#services ul{
 		padding-top:10px;
+		margin-left: -20px;
 	}
 	#services li{
 		float: left;
-		width: 210px;
-		margin-right: 20px;
+		width: 225px;
+		margin-left: 20px;
 	}
 	#services h2{
 		margin-top:0;
@@ -156,8 +157,6 @@
 	}
 	#works ul{
 		margin-left: -30px;
-		position: relative;
-		left: 30px;
 	}
 	#works ul:after{
 		display: block;
@@ -165,10 +164,9 @@
 		clear: both;
 	}
 	#works li{
-		/*border: 1px solid;*/
 		float: left;
 		width: 465px;
-		margin-right: 30px;
+		margin-left: 30px;
 		margin-top: 30px;
 
 	}

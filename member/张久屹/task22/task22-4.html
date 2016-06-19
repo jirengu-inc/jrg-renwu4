@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>task22-4</title>
+</head>
+  <style>
+  .father{
+    width: 606px; 
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+  }
+  .warp li{
+    margin: 0;
+    float: left;
+    height: 30px;
+    width: 200px;
+    list-style: none;
+    border: 1px solid;
+    text-align: center;
+    line-height: 30px;
+  }
+  .father>.con{
+    background: #ccc;
+  }
+  .content{
+    display:none;
+    height: 250px;
+    padding: 13px;
+    border: 1px solid;
+    width: 578px;
+  }
+  .warp>.con{
+    display: block;
+  }
+  
+  </style>
+<body>
+  <div class="warp">
+    <ul class="father">
+      <li class="con">tab1</li>
+      <li>tab2</li>
+      <li>tab3</li>
+    </ul>
+    <div class="content con ">内容1</div>
+    <div class="content  ">内容2</div>
+    <div class="content  ">内容3</div>
+  </div>
+  
+ <script>
+       var kill ={   
+  
+       hasClass: function (el,cls){
+        var tr = new RegExp('\\b'+cls +'\\b','g');
+        return tr.test(el.className);
+       },
+      //结果返回布尔值
+        
+       addClass: function (el,cls){
+        if(!kill.hasClass(el,cls)){
+          el.className += " "+cls;
+        }
+       },
+      //检查className有无目标，没有则添加
+
+       removeClass: function (el,cls){
+        var tr = new RegExp('\\b'+cls +'\\b','g');
+        if(kill.hasClass(el,cls)){
+          el.className =el.className.replace(tr,'');
+        }
+       }
+      //检查className有无目标，有则删除
+      };
+
+
+var li= document.querySelectorAll('li');
+var ct= document.querySelectorAll('.content');
+
+
+li[0].addEventListener('click',function(){
+  kill.addClass(li[0],'con');
+  kill.removeClass(li[1],'con');
+  kill.removeClass(li[2],'con');
+  kill.addClass(ct[0],'con');
+  kill.removeClass(ct[1],'con');
+  kill.removeClass(ct[2],'con');
+});
+
+li[1].addEventListener('click',function(){
+  kill.addClass(li[1],'con');
+  kill.removeClass(li[0],'con');
+  kill.removeClass(li[2],'con');
+  kill.addClass(ct[1],'con');
+  kill.removeClass(ct[0],'con');
+  kill.removeClass(ct[2],'con');
+});
+
+li[2].addEventListener('click',function(){
+  kill.addClass(li[2],'con');
+  kill.removeClass(li[0],'con');
+  kill.removeClass(li[1],'con');
+  kill.addClass(ct[2],'con');
+  kill.removeClass(ct[0],'con');
+  kill.removeClass(ct[1],'con');
+});
+//这个方法挺笨的。。但是我只理解这种方法
+//随后我再研究新方法吧。
+
+   
+ </script>
+  
+
+</body>
+</html>
