@@ -1,124 +1,138 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<style>
-			.modal-dialog{
+			.modal-dialog {
 				display: none;
 			}
+			
 			.modal-dialog .cover {
-			    position: fixed;
-			    top: 0;
-			    left: 0;
-			    right: 0;
-			    bottom: 0;
-			    background-color: #000;
-			    opacity: 0.4;
-			    z-index: 99;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #000;
+				opacity: 0.4;
+				z-index: 99;
 			}
+			
 			.modal-dialog .modal-ct {
-			    position: fixed;
-			    top: 50%;
-			    left: 50%;
-			    transform: translate(-50%, -50%);
-			    -webkit-transform: translate(-50%, -50%);
-			    width: 400px;
-			    border-radius: 3px;
-			    background: #fff;
-			    z-index: 100;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				-webkit-transform: translate(-50%, -50%);
+				width: 400px;
+				border-radius: 3px;
+				background: #fff;
+				z-index: 100;
 			}
+			
 			.modal-dialog .modal-ct .header {
-			    position: relative;
-			    height: 36px;
-			    line-height: 36px;
-			    border-bottom: 1px solid #ccc;
+				position: relative;
+				height: 36px;
+				line-height: 36px;
+				border-bottom: 1px solid #ccc;
 			}
+			
 			.modal-dialog .modal-ct .header h3 {
-			    margin: 0;
-			    padding-left: 10px;
-			    font-size: 16px;
+				margin: 0;
+				padding-left: 10px;
+				font-size: 16px;
 			}
+			
 			.modal-dialog .modal-ct .header .close {
-			    position: absolute;
-			    right: 10px;
-			    top: 10px;
-			    line-height: 1;
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				line-height: 1;
 			}
+			
 			.modal-dialog a {
-			    text-decoration: none;
-			    color: #333;
+				text-decoration: none;
+				color: #333;
 			}
+			
 			.modal-dialog .modal-ct .content {
-			    padding: 10px;
+				padding: 10px;
 			}
+			
 			.modal-dialog .modal-ct .footer {
-			    padding: 10px;
-			    border-top: 1px solid #eee;
+				padding: 10px;
+				border-top: 1px solid #eee;
 			}
+			
 			.modal-dialog .modal-ct .footer .btn {
-			    float: right;
-			    margin-left: 10px;
+				float: right;
+				margin-left: 10px;
 			}
+			
 			.modal-dialog a {
-			    text-decoration: none;
-			    color: #333;
+				text-decoration: none;
+				color: #333;
 			}
 		</style>
 	</head>
+
 	<body>
 		<div class="btn-group">
-	    	<button id="btn-modal">click me</button>
-	    </div>
-	
-	    <div id="modal-1" class="modal-dialog">
-	    	<div class="cover"></div>
-	    	<div class="modal-ct">
-		        <div class="header">
-		          <h3>标题</h3>
-		          <a class="close" href="#">×</a>
-		        </div>
-		        <div class="content">
-		        	<p>内容内容内容内容内容内容内容内容内容</p>
-		        </div>
-		        <div class="footer">
-		          <a class="btn btn-confirm" href="#">确定</a>
-		          <a class="btn btn-cancel" href="#">取消</a>
-		        </div>
-	      	</div>  
-	    </div>
-	    
-	    <script>
-	    		
-		var btn = document.querySelector('#btn-modal'),
-		    modal = document.querySelector('#modal-1'),
-		    modalCt = document.querySelector('#modal-1 .modal-ct');
-		
-		btn.addEventListener('click', function(e){
-		    e.stopPropagation();
-		    showModal(modal);
-		});
-		
-		modalCt.addEventListener('click', function(e){
-		   e.stopPropagation();
-		   if( hasClass(e.target, 'close') || hasClass(e.target, 'btn-cancel') ){
-		       hideModal(modal);
-		   } 
-		});
-		
-		document.body.addEventListener('click', function(){
-		    hideModal(modal);
-		});
-		
-		function showModal(modal){
-		    modal.style.display = 'block';
-		}
-		function hideModal(modal){
-		    modal.style.display = 'none';
-		}
-		function hasClass (ele, cls){
-		    return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
-		}
-	    </script>
+			<button id="btn-modal">click me</button>
+		</div>
+
+		<div id="modal-1" class="modal-dialog">
+			<div class="cover"></div>
+			<div class="modal-ct">
+				<div class="header">
+					<h3>标题</h3>
+					<a class="close" href="#">×</a>
+				</div>
+				<div class="content">
+					<p>内容内容内容内容内容内容内容内容内容</p>
+				</div>
+				<div class="footer">
+					<a class="btn btn-confirm" href="#">确定</a>
+					<a class="btn btn-cancel" href="#">取消</a>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			var btn = document.querySelector('#btn-modal'),
+				modal = document.querySelector('#modal-1'),
+				modalCt = document.querySelector('#modal-1 .modal-ct');
+
+			btn.addEventListener('click', function(e) {
+				e.stopPropagation();
+				showModal(modal);
+			});
+
+			modalCt.addEventListener('click', function(e) {
+				e.stopPropagation();
+				if (hasClass(e.target, 'close') || hasClass(e.target, 'btn-cancel')) {
+					hideModal(modal);
+				}
+			});
+
+			document.body.addEventListener('click', function() {
+				hideModal(modal);
+			});
+
+			function showModal(modal) {
+				modal.style.display = 'block';
+			}
+
+			function hideModal(modal) {
+				modal.style.display = 'none';
+			}
+
+			function hasClass(ele, cls) {
+				return !!ele.className.match(new RegExp('\\b' + cls + '\\b'));
+			}
+		</script>
 	</body>
+
 </html>

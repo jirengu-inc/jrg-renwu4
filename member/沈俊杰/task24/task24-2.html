@@ -1,73 +1,78 @@
 <!doctype html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8" />
-	<title>task24-2</title>
-	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-</head>
-<body>
-	<ul id="list">
-		<li>1</li>
-		<li>2</li>
-		<li>3</li>
-	</ul>
-	<button id="load_more">load more</button>
-	
-	<script>
-		var LEN = 6;
-		var btn = document.querySelector("#load_more");
-		var list = document.querySelector("#list");
-		
-		btn.addEventListener("click",function(){
-			ajax({
-				url:"getMore",
-				data:{start:document.querySelectorAll("#list li").length,length:LEN},
-				type:"get",
-				success:function(data){
-					if(data.status === 1){
-						data.data.forEach(function(value){
-							var li = document.createElement("li");
-							li.innerHTML = value;
-							list.appendChild(li);
-						})
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>task24-2</title>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<ul id="list">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<button id="load_more">load more</button>
+
+		<script>
+			var LEN = 6;
+			var btn = document.querySelector("#load_more");
+			var list = document.querySelector("#list");
+
+			btn.addEventListener("click", function() {
+				ajax({
+					url: "getMore",
+					data: {
+						start: document.querySelectorAll("#list li").length,
+						length: LEN
+					},
+					type: "get",
+					success: function(data) {
+						if (data.status === 1) {
+							data.data.forEach(function(value) {
+								var li = document.createElement("li");
+								li.innerHTML = value;
+								list.appendChild(li);
+							})
+						}
 					}
-				}
+				})
 			})
-		})
-		
-		
-		function ajax(opts){
-			var xhr = new XMLHttpRequest();
-		
-			xhr.onreadystatechange = function(){
-				if(xhr.readyState === 4 ){
-					if( ( xhr.status >= 200 && xhr.status < 300 ) || xhr.status === 304 ){
-						var response = JSON.parse(xhr.responseText);
-						opts.success(response);
-					}else{
-						opts.error();
+
+			function ajax(opts) {
+				var xhr = new XMLHttpRequest();
+
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === 4) {
+						if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+							var response = JSON.parse(xhr.responseText);
+							opts.success(response);
+						} else {
+							opts.error();
+						}
 					}
 				}
+				var data = "";
+				for (var key in opts.data) {
+					data += key + "=" + opts.data[key] + "&";
+				}
+				data = data.substr(0, data.length - 1);
+
+				var type = opts.type.toLowerCase(),
+					url = opts.url;
+
+				if (type === "get") {
+					xhr.open(type, url + "?" + data, true);
+					xhr.send();
+				} else if (type === "post") {
+					xhr.open(type, url, true);
+					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					xhr.send(data);
+				}
 			}
-			var data = "";
-			for (var key in opts.data) {
-				data += key + "=" + opts.data[key] + "&";
-			}
-			data = data.substr(0,data.length - 1);
-			
-			var type = opts.type.toLowerCase(),
-				url = opts.url;
-		
-			if( type  === "get" ){
-				xhr.open(type, url + "?" + data, true);
-				xhr.send();
-			}else if( type === "post" ){
-				xhr.open(type, url, true);
-		        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		        xhr.send(data);
-			}
-		}
-	</script>
-	
-</body>
+		</script>
+
+	</body>
+
 </html>
