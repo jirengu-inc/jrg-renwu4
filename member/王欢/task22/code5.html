@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>code5</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    #btn{
+      margin: 50px;
+    }
+    .modal{
+       display:none; 
+      
+    }
+    .modal .modal-bg{
+      position:fixed;
+      top:0;
+      right:0;
+      bottom:0;
+      left:0;
+      background: #000;
+      opacity:0.3;
+    }
+    .modal .modal-panel{
+      position:fixed;
+      background: #fff;
+      width: 300px;
+      font-size:14px;
+      border-radius:5px;
+      left:50%;
+      margin-left:-150px;
+    }
+    .modal a{
+      text-decoration:none;
+      color:inherit;
+    }
+    .header{
+      padding:10px;
+      border-bottom:1px solid #ccc;
+      font-size:16px;
+    }
+    .header .close{
+      /* display:block; */
+      position:absolute;
+      right:5px;
+      top:10px;
+      font-size:14px;
+    }
+    .content{
+      padding:10px;
+    }
+    .footer{
+      padding:10px;
+      border-top:1px solid #ccc;
+      text-align:right;
+    }
+    .footer a{
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="点我" id="btn">
+  <div class="modal">
+    <div class="modal-bg"></div>
+    <div class="modal-panel">
+      <div class="header">
+        我是标题
+        <a class="close" href="#">×</a>
+      </div>
+      <div class="content">
+        我是内容
+      </div>
+      <div class="footer">
+        <a href="" class="cancel">取消</a>
+        <a href="">确定</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    var btnClick = document.getElementById('btn');
+    var modal = document.querySelector('.modal')
+    var modalPanel = document.querySelector('.modal-panel')
+    btn.addEventListener('click',function(){
+        modal.style.display = 'block';
+    })
+    modalPanel.addEventListener('click',function(e){
+        e.preventDefault();
+        if (e.target.className == 'close' || e.target.className == 'cancel') {
+          modal.style.display = 'none';
+        }
+    })
+    document.querySelector('.modal-bg').addEventListener('click',function(){
+      modal.style.display = 'none';
+    })
+  </script>
+</body>
+</html>
