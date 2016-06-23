@@ -1,0 +1,29 @@
+<!Doctype html>
+<meta charset="utf-8">
+<html>
+<head>
+	<script type="">
+		window.onload=function(){
+			var oCt=document.querySelector('.ct');
+			var oImgp=document.querySelector('.img-preview');
+			oCt.addEventListener('mouseover',function(e){
+				var e=e||window.event;
+				var dateImg=e.target.getAttribute('data-img');
+				oImgp.innerHTML='<img src="'+dateImg+'">'
+			})
+
+
+
+
+		}
+	</script>
+</head>
+<body> 
+	<ul class="ct">
+	    <li data-img="1.jpg">鼠标放置查看图片1</li>
+	    <li data-img="2.jpg">鼠标放置查看图片2</li>
+	    <li data-img="3.jpg">鼠标放置查看图片3</li>
+	</ul>
+	<div class="img-preview"></div>
+</body>
+</html>

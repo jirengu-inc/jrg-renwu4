@@ -1,0 +1,46 @@
+<!Doctype html>
+<meta charset="utf-8">
+<html>
+<head>
+	<script type="">
+		window.onload=function(){
+			var oFb=document.querySelector('.fb');
+			var oEb=document.querySelector('.eb');
+			var oUl=document.querySelector('.ul1');
+			var oMg=document.getElementsByTagName('input')[0];
+			var aLi=oUl.getElementsByTagName('li');
+
+			oEb.addEventListener('click',function(){
+				if(!oMg.value==''){
+					var oLi=document.createElement('li');
+					oLi.innerText=oMg.value;
+					oUl.appendChild(oLi);
+				}
+			})
+	
+			oFb.addEventListener('click',function(){
+				if(!oMg.value==''){
+					var oLi=document.createElement('li');
+					oLi.innerText=oMg.value;
+					oUl.insertBefore(oLi,aLi[0]);
+				}
+			})
+
+			oUl.addEventListener('click',function(e){
+					var e=e||window.event;
+					console.log(e.target.innerText)
+			})
+			}
+	</script>
+</head>
+<body> 
+	<input class="message" type="text" placeholder="请吐槽">
+	<button class="fb">开头时添加</button>
+	<button class="eb">结尾时添加</button>
+	<ul class="ul1">
+		<li>这里是</li>
+		<li>饥人谷</li>
+		<li>前端6班</li>
+	</ul>
+</body>
+</html>
