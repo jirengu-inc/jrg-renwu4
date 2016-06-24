@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>task24-2</title>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<h3>注册</h3>
+		<ul>
+			<li>
+				<span>用户名</span>
+				<input type="text" id="username">
+			</li>
+			<li>
+				<span>密码</span>
+				<input type="password" id="psw">
+			</li>
+			<li>
+				<span>再输一次</span>
+				<input type="password" id="psw_r">
+			</li>
+		</ul>
+		<button id="btn">注册</button>
+
+		<script>
+			var lock = true;
+
+			$("#btn").addEventListener("click", function() {
+				if (!lock) {
+					return;
+				}
+				lock = false;
+				ajax({
+					url: "register",
+					data: {
+						name: $("#username").value,
+						psw: $("#psw").value,
+						psw_r: $("#psw_r").value,
+					},
+					type: "post",
+					success: function(data) {
+						if (data.status === 1) {
+							alert("注册成功");
+						} else {
+							alert($("#username").value + "已被注册");
+						}
+						lock = true;
+					}
+				});
+			}, false);
+
+			function ajax(opts) {
+				var xhr = new XMLHttpRequest();
+
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === 4) {
+						if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+							var response = JSON.parse(xhr.responseText);
+							opts.success(response);
+						} else {
+							opts.error();
+						}
+					}
+				}
+				var data = "";
+				for (var key in opts.data) {
+					data += key + "=" + opts.data[key] + "&";
+				}
+				data = data.substr(0, data.length - 1);
+
+				var type = opts.type.toLowerCase(),
+					url = opts.url;
+
+				if (type === "get") {
+					xhr.open(type, url + "?" + data, true);
+					xhr.send();
+				} else if (type === "post") {
+					xhr.open(type, url, true);
+					xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+					xhr.send(data);
+				}
+			}
+
+			function $(str) {
+				return document.querySelector(str);
+			}
+		</script>
+
+	</body>
+
+</html>

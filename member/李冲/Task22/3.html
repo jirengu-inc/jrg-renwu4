@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/escape.png">鼠标放置查看图片2</li>
+    <li data-img="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/portfolio/golden.png">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+    var ct = document.querySelector('.ct'),
+        view = document.getElementsByClassName("img-preview")[0];
+    ct.addEventListener('mouseover',function(e){
+          if (e.target.nodeName.toLowerCase() === "li") {
+                          view.innerHTML = "<img src='" + e.target.getAttribute("data-img") + "'>";
+                      }})
+    ct.addEventListener("mouseleave", function(e) {
+				view.innerHTML = "";
+			});
+</script>
+</body>
+</html>
