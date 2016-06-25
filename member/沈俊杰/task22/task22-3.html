@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>task22-3</title>
+	</head>
+
+	<body>
+		<ul class="ct">
+			<li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+			<li data-img="http://cdn.jirengu.com/book.jirengu.com/img/12.jpg">鼠标放置查看图片2</li>
+			<li data-img="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">鼠标放置查看图片3</li>
+		</ul>
+		<div class="img-preview"></div>
+
+		<script>
+			var ct = document.getElementsByClassName("ct")[0],
+				imgView = document.getElementsByClassName("img-preview")[0];
+
+			ct.addEventListener("mouseover", function(e) {
+				var target = e.target;
+				if (target.nodeName.toLocaleLowerCase() === "li") {
+					imgView.innerHTML = "<img src='" + target.getAttribute("data-img") + "'>";
+				}
+			});
+			ct.addEventListener("mouseleave", function(e) {
+				imgView.innerHTML = "";
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>两栏布局</title>
+		<style>
+		  #header,#footer {
+		  	height:40px;
+		  	background:red;
+		  }
+		  #content #aside {
+		  	width:200px;
+		  	height:30px;
+		  	background:blue;
+		  	opacity: 0.3;
+		  	float:left;
+           }
+            #content #main {
+            min-height:500px;
+            background:pink;
+            overflow: auto;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="header">header</div>
+		<div id="content">
+			<div id="aside"></div>
+			<div id="main">
+			我是main
+			我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main
+			我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main
+			我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main
+			我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main我是main
+			</div>
+			<div id="footer">footer</div>
+		</div>
+	</body>
+</html>

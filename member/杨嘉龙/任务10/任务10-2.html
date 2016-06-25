@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>10-2</title>
+		<style>
+			.triangle{
+		border:10px solid gray;
+		height:0;
+		width:0;
+		}
+		.rectangle{
+		width:150px;
+		height:80px;
+		border:1px solid #ccc;
+		margin:20px;
+		}
+		.triangle-1{
+		border-top:10px solid transparent;
+		border-right:10px solid transparent;
+		border-left:10px solid transparent;
+		position:absolute;
+		top:-20px;
+		left:5px;
+		}
+		.rectangle-1{
+		position:relative;
+		}
+		.triangle-2{
+		border-top:7px solid red;
+		border-right:7px solid red;
+		border-bottom:7px solid transparent;
+		border-left:7px solid transparent;
+		position:absolute;
+		top:0px;
+		right:0px;
+		}
+		.rectangle-2{
+		position:relative;
+		}
+		.caret-rotate{
+		width:15px;
+		height:15px;
+		transform:rotate(45deg);
+		position:absolute;
+		top:-9px;
+		left:10px;
+		border-left:1px solid #ccc;
+		border-top:1px solid #ccc;
+		background:#fff;
+		}
+		.rectangle-3{
+		position:relative;
+		
+		}
+		</style>
+	</head>
+	<body>
+		<div class="rectangle rectangle-1">
+			<div class="triangle triangle-1"></div>
+		</div>
+		<div class="rectangle rectangle-2">
+			<div class="triangle triangle-2"></div>
+		</div>
+		<div class="rectangle rectangle-3">
+			<div class="caret-rotate"></div>
+		</div>
+	</body>
+</html>
+
+<!-- 代码小结：
+收获：
+1.知道通过border去设计三角形
+2.定位属性的应用
+2.关于设计tootip的一点小技巧 -->

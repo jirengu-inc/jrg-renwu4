@@ -1,0 +1,482 @@
+  html,body,ul,li,p,a,h1,h2,h3,h4,h5{
+    margin:0;
+    padding:0;
+    font-family: "Helvetica Neue",Helvetica, serif,sans-serif;
+  }
+  a{text-decoration: none;}
+  li{list-style:none;}
+  .setting-width{
+    width: 1150px;
+    margin: 0 auto;
+  }
+  html,body{height:100%;}
+/*header部分css*/
+  #header{
+    height: 100%;
+    background-image: url(../img/header/header-bg.jpg);
+    background-size:100% 110%;
+    background-repeat: no-repeat;
+  }
+  .setting-back{
+    background-color: #222;
+    position:fixed;
+    width:100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .nav>ul .caption{
+    float: left;
+    line-height: 70px;
+  }
+  .nav .caption>a{
+    font-family: cursive,serif,sans-serif;
+    font-size: 35px;
+    color: #fed136;
+  }
+  .nav>ul .nav-child{
+    font-size: 14px;
+    float: right;
+    line-height: 70px;
+    padding-left: 40px;
+  }
+  .nav-child a{
+    font-size: 14px;
+    color: #fff;
+  }
+  .nav-child a:hover{
+   color: #fed136;
+  }
+  .nav>ul::after{
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  #header .header-child{
+    color: #fff;
+    text-align: center;
+    padding-top: 20%;
+  }
+  .header-child h3{
+    font-size: 40px;
+    font-family:"Droid Serif",cursive,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    margin-bottom: 5px;
+  }
+  .header-child h1{
+    font-size: 75px;
+    margin-bottom:70px;
+  }
+  .header-child a{
+    color: #fff;
+    border-radius: 5px;
+    padding: 25px 40px;
+    font-size: 20px;
+    background-color: #fed136;
+  }
+
+/*主题内容部分CSS*/
+  /*主题内容第一部分css*/
+  .services{ padding: 160px 0; }
+  .services>h2{
+    text-align: center;
+    font-size: 35px;
+    color: #444;
+    margin-bottom: 20px;
+  }
+  .services>p{
+    text-align: center;
+    font-size: 20px;
+    font-family: cursive,serif,sans-serif;
+    color: #555;
+    margin-bottom: 80px;
+  }
+  .services>ul li{
+    width: 351px;
+    line-height: 1.5em;
+    text-align: center;
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .services>ul::after {
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+  .services>ul span{
+    display: block;
+    background-color: #fed136;
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .services>ul span i{
+    color: #fff;
+    font-size: 40px;
+    line-height: 100px;
+  }
+  .services>ul h4{
+    font-size: 20px;
+    color: #333;
+    margin: 20px 0;
+  }
+  .services>ul p{
+    font-size: 14px;
+    color: #777;
+    font-family: fantasy,serif,sans-serif;
+  }
+  /*主题内容第二部分css*/
+  .work {
+    padding-top:150px;
+    padding-bottom: 120px;
+    background-color: #eee;
+    text-align: center;
+  }
+  .work h3{
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+  .work p{
+    font-size: 20px;
+    font-family: cursive,serif,sans-serif;
+    color: #555;
+  }
+  .work ul{margin-top: 70px;}
+  .work li{
+    width: 353px;
+    float: left;
+    margin-bottom:30px;
+    margin-left: 15px;
+    margin-right: 15px;
+    background-color: #fff;
+  }
+  .work ul:after{
+    content:" ";
+    display: block;
+    clear: both;
+  }
+  .work li>p{ padding-bottom: 30px;}
+  .work li img{
+    width: 100%;
+  }
+  .work li a{
+    display: block;
+    position: relative;
+  }
+  .masking-out i{
+
+    width: 60px;
+    height: 60px;
+    font-size: 60px;
+    font-weight: bold;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+  }
+  .work .masking-out{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 353px;
+    height: 100%;
+    background-color: rgba(254, 209, 54,0.2);
+    transition:all 0.2s;
+    transition-timing-function: ease-in-out;
+    visibility:hidden;
+  }
+  .work a:hover .masking-out{
+    background-color: rgba(254, 209, 54, 0.9);
+    visibility:visible;
+  }
+  .work li h4{
+    font-size: 20px;
+    color:#333;
+    padding-top: 30px;
+  }
+  /*主体内容第三部分css*/
+  .history{
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+  .history>h3{
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 20px;
+    margin-top: 100px;
+  }
+  .history>p{
+    text-align: center;
+    font-size: 20px;
+    color: #777;
+    font-family: cursive,serif,sans-serif;
+    margin-bottom: 70px;
+  }
+  .history ul{
+    position: relative;
+  }
+  .history li::before{
+    content: " ";
+    width: 2px;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #ccc;
+    left: 50%;
+    margin-left: -1px;
+    z-index: -1;
+  }
+  .history li{
+    padding: 0 30px;
+  }
+  .history li::after{
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  .history li img{
+    width: 150px;
+    height: 150px;
+    border: 10px solid #eee;
+    border-radius: 150px;
+  }
+  .text-left {  text-align: right; }
+  .text-left img{
+    float:right;
+    margin-right: 460px;
+  }
+  .text-right img{
+    float: left;
+    margin-left: 460px;
+  }
+  .history li h4{
+    font-size: 16px;
+    line-height: 1.5em;
+    color: #444;
+  }
+  .history li p{
+    font-size: 14px;
+    font-family: fantasy,serif,sans-serif;
+    line-height: 1.5em;
+    color: #777;
+    margin-top:10px;
+  }
+  .history .text-left .strut-l
+  {
+    overflow: auto;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-bottom: 100px;
+  }
+  .history .text-right .strut-r
+  {
+    overflow: auto;
+    padding-right: 50px;
+    padding-left: 50px;
+    margin-bottom: 100px;
+  }
+  .history-laster{
+    display: table;
+    float: right;
+    margin-right: 460px;
+  }
+  .history ul:after{
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  .history-laster span{
+    color:#fff;
+    display:table-cell;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    font-weight: bold;
+    border:10px solid #eee;
+    border-radius: 150px;
+    background-color: #fed136;
+    vertical-align: middle;
+  }
+
+  /*主题内容第四部分css*/
+  .team{
+    width: 100%;
+    background-color: #eee;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    text-align: center;
+  }
+  .team h3{
+    font-size: 40px;
+    margin-bottom: 15px;
+  }
+  .setting-width>p:nth-child(2){
+    font-size: 16px;
+    font-family: cursive,serif,sans-serif;
+    color: #777;
+    margin-bottom: 70px;
+  }
+
+  .team ul li{
+    width: 383px;
+    float: left;
+  }
+  .team ul:after{
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  .team li img{
+    width: 230px;
+    height: 230px;
+    border: 10px solid #fff;
+    border-radius: 230px;
+  }
+  .team li>h4{
+    font-size: 20px;
+    margin-top: 25px;
+    line-height: 1.75;
+  }
+  .team li>p{
+    font-size: 14px;
+    color: #777;
+    font-family:  fantasy,serif,sans-serif;
+    line-height: 1.75;
+  }
+  .team li i{
+    font-size: 40px;
+    color: #222;
+    padding: 0 10px;
+    line-height: 60px;
+    transition: all 0.5s;
+  }
+  .team a:hover i{
+    color: #fed136;
+  }
+  .team p:last-child{
+    width: 750px;
+    color: #777;
+    line-height: 1.75em;
+    font-family: fantasy,serif,sans-serif;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
+  /*主体第五部分css，logo部分*/
+  .logo{
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  .logo li{
+    float: left;
+    width: 25%;
+    text-align: center;
+  }
+  .logo ul:after{
+    content: " ";
+    display: block;
+    clear: both;
+  }
+
+/*页面脚部CSS部分*/
+  /*第一部分，表单*/
+
+  #footer .footer-child{
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-image: url(../img/back/map-image.png);
+    background-color: #222;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+  .footer-child h3{
+    font-size: 40px;
+    margin-bottom: 15px;
+    color: #fff;
+  }
+  .setting-width>p:nth-child(2){
+    font-size: 16px;
+    font-family: cursive,serif,sans-serif;
+    color: #777;
+    margin-bottom: 70px;
+  }
+ form .form-left{
+   float:left;
+   margin-bottom: 25px;
+ }
+ .form-left p input{
+   font-weight: bold;
+   font-size: 14px;
+    width: 560px;
+    padding: 25px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    box-sizing: border-box;
+  }
+
+  .setting-width form>textarea{
+    font-size: 14px;
+    float: right;
+    box-sizing: border-box;
+    width: 560px;
+    height: 263px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  form::after{
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  .footer-child .setting-width>a{
+    padding: 25px 40px;
+    background-color: #fed136;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  .footer-child .setting-width>a:hover{
+    background-color: #fec000;
+  }
+
+  /*脚部第二部分CSS*/
+  .relation{
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .relation ul li{
+    float: left;
+    width: 383px;
+    text-align: center;
+    box-sizing: border-box;
+    line-height: 40px;
+  }
+  .relation ul:after{
+    content: " ";
+    display: block;
+    clear: both;
+  }
+  .relation .relation-app i{
+    font-size: 40px;
+    color: #222;
+    padding: 0 5px;
+    transition: all 0.5s;
+  }
+  .relation .relation-app i:hover{
+    color: #fed136;
+  }
+  .relation li:last-child a{
+    color: #fed136;
+    padding: 0 5px;
+  }
+  .relation li:last-child a:hover{
+    color:#fec000;
+    text-decoration: underline;
+  }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>BFC原理实现两栏布局</title>
+	<style>
+		body,div{
+			margin:0;padding:0;
+		}
+		body{
+			font:20px/1.5 "Microsoft Yahei";
+		}
+		#header{
+			height:60px;
+			background-color: red;
+			color:black;
+			width:800px;
+		}
+		.aside{
+			float:left;
+			background-color: #EEE;
+			color:#AAA;
+			width:200px;
+		}
+		.main{
+			width:600px;
+			color:#000;
+			background-color: pink;
+			overflow:auto;
+
+		}
+		#footer{
+			height:60px;
+			background-color: red;
+			width:800px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="content">
+		<div class="aside">aside</div>
+		<div class="main">
+			我是main
+			我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+			我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+			我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+			我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+			我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main
+		</div>
+	</div>
+	<div id="footer"></div>
+
+</body>
+</html>

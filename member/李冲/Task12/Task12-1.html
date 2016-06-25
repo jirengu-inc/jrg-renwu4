@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    html,body,ul,li,.main{
+      margin:0;
+      padding:0;
+    }
+    li{
+      list-style:none;
+    }
+    .style1{
+      width:1000px;
+      margin:0 auto;
+    }
+    #content{
+      margin-top:30px;     
+    }
+    #content .main{
+      background:#ccc;
+      padding:10px 0;
+    }
+    #content .panels:after{
+      content:'';
+      display:block;
+      clear:both;
+    }
+    #content .panels{
+     margin-left:-30px;/*老师，我在style开始时已经将用到的属性内外边距设为零了，li的左外边距为30px，这里怎么要偏移-70才能达到效果呢*/
+    }
+    #content .panels>li{
+      float:left;
+      margin-left:30px;
+      margin-top:10px;
+      width:313px;
+      height:80px;
+      background:green;
+    }
+  </style>
+</head>
+<body>
+<div id="content" class="style1">
+  <div class="main">
+    <ul class="panels">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>

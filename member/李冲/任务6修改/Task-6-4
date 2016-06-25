@@ -1,0 +1,8 @@
+    .center{/*定义类选择器“center”*/
+         display: table-cell;// block; inline; inline-blick; none; table-cell;/*陈列方式：表格式、块状元素形式、行内元素形式、内连块状元素、不显示*/ 
+	 width: 200px;/*宽度*/
+	 height: 200px;/*高度*/
+         vertical-align: middle;/*内容竖直方向上居中（只有在display中应用“table-cell”时，才有用）。*/
+         text-align: center;/*文本水平居中*/
+         background-color: #ccc;/*背景颜色为灰色*/
+						      

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>7-1</title>
+	</head>
+	<body>
+		<form action="POST">
+			姓名：<input type="text" placeholder="用户名">
+			<br>
+			密码：<input type="password">
+			<br>
+			性别：
+			<input type="radio" name="sex" id="male" checked><label for="male">男</label>
+			<input type="radio" name="sex" id="female"><label for="female">女</label>
+			<br>
+			取向：
+			<input type="radio" name="Orientation" id="guy"><label for="guy">男</label>
+			<input type="radio" name="Orientation" id="gal" checked><label for="gal">女</label>
+			<br>
+			爱好：
+			<input type="checkbox" name="habit" id="dota"><label for="dota">dota</label>
+			<input type="checkbox" name="habit" id="traveling" checked><label for="traveling">旅游</label>
+			<input type="checkbox" name="habit" id="pets" checked><label for="pets">宠物</label>
+			<br>
+			评论：
+			<textarea cols="30" rows="10" placeholder="ddd"></textarea>
+			<br>
+			我的car：
+			<select>
+				<option value="saab">萨博</option>
+				<option value="volvo">沃尔沃</option>
+				<option value="opel">欧佩尔</option>
+				<option value="audi">奥迪</option>
+			</select>
+			<button type="submit">提交</button>
+		</form>
+	</body>
+</html>

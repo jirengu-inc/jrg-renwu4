@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style>
+    html,body{
+      margin:0;
+      padding:0;
+    }
+    #task{
+      margin-bottom:30px;
+    }
+    #header,#footer,#content,box,box1,box2{
+      margin:0;
+      padding:0;
+    }
+    #header,#footer{
+     height:50px;
+     background:#ccc;
+    }
+    #content{
+     width:100%;
+     border:1px solid black;
+    }
+    #content{
+      overflow:auto;
+    }
+    .box{
+      width:100%;
+      height:200px;
+      float:left;
+    }
+    .box .ct{
+      height:200px;
+      background:green;
+      margin:0 300px;
+    }
+    .box .ct1{
+      height:200px;
+      background:green;
+      margin-right:300px;
+    }
+    .box1{
+      width:300px;
+      height:200px;
+      background:red;
+      float:left;
+      margin-left:-100%;
+    }
+    .box2{
+      width:300px;
+      height:200px;
+      background:yellow;
+      float:left;
+      margin-left:-300px;
+    }
+  </style>
+</head>
+<body>
+  <div id="task">
+   <div id="header">头部</div>
+   <div id="content">
+     <div class="box">
+       <div class="ct">双飞翼布局是指两边定宽，中间栏宽度自适应的三栏布局。中间栏需要设定一个子元素，通过给子元素设定margin值来达到三栏的效果。</div>
+     </div>
+     <div class="box1">左侧边栏，固定宽度</div>
+     <div class="box2">右侧边栏，固定宽度</div>
+   </div>
+  <div id="footer">尾部</div>
+ </div>
+ <div id="task">
+  <div id="header">头部</div>
+   <div id="content">
+     <div class="box">
+       <div class="ct1">双飞翼布局是指两边定宽，中间栏宽度自适应的三栏布局。中间栏需要设定一个子元素，通过给子元素设定margin值来达到三栏的效果。</div>
+     </div>
+     <div class="box2">右侧边栏，固定宽度</div>
+   </div>
+  <div id="footer">尾部</div>
+ </div>   
+</body>
+</html>

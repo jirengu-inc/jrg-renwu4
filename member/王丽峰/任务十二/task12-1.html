@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>负边距</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+	html,body,ul,li{
+		margin:0;
+		padding:0;
+	}
+	.container{
+		height:200px;
+		width:800px;
+		background: rgb(204,204,204);
+	}
+	li{
+		list-style: none;
+	}
+	.nav{
+		margin-left:-25px;
+	}
+	.container .nav:after{
+		content:'';
+		display: block;
+		clear:both;
+	}
+	.nav li{
+		width:250px;
+		height:70px;
+		float:left;
+		margin-left:25px;
+		margin-top:20px;
+		background: green;
+	}
+
+</style>
+</head>
+<body>
+    <div class="container">
+    	<ul class="nav">
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+</body>
+</html>

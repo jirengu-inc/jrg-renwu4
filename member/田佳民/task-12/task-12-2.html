@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+      *{
+          padding: 0;
+          margin: 0;
+      }
+      .header,.footer{
+        background: grey;
+        height: 50px;
+      }
+      .container{
+         padding:0 100px;
+      }
+      .container:after{
+          content:"";
+          display: block;
+          clear: both;
+      }
+      .main{
+
+          background:  red;
+          float:left;
+          width: 100%;
+          
+      }
+      .aside{
+          width: 100px;
+          height: 100px;
+          background: blue;
+          float:left;
+          margin-left: -100%;
+          position: relative;
+          left:-100px;
+
+      }
+    .extra{
+        width: 100px;
+        height: 100px;
+        background: green;
+        float:left;
+        margin-left: -100px;
+        position: relative;
+        left:100px;
+    }
+</style>
+
+
+</head>
+<body>
+      <div class="header">header</div>
+      <div class="container">
+          <div class="main">
+            wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap wrap
+          </div>
+          <div class="aside">aside</div>
+          <div class="extra">extra</div>
+      </div>
+      <div class="footer">footer</div>
+</body>
+</html>

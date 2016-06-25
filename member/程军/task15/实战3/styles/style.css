@@ -1,0 +1,420 @@
+@font-face {font-family: 'iconfont';
+    src: url('iconfont.eot'); /* IE9*/
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont.woff') format('woff'), /* chrome、firefox */
+    url('iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+html,body {
+	margin: 0;
+	padding: 0;
+	height:100%;
+	width:100%;
+}
+body {
+	font-family: "Montserrat,"Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	color:#000;
+}
+div,p,ul,li {
+	padding: 0px;
+	margin:0px;
+}
+h1,h2,h3 {
+	font-weight: bold;
+}
+h1{
+	font-size: 70px;
+}
+h2 {
+	font-size: 40px;
+	margin:10px auto;
+}
+h3 {
+	margin:10px auto;
+	font-size: 30px;
+}
+h4 {
+	font-style: italic;
+	font-size: 1.5em;
+	opacity: 0.9;
+}
+h1,h2,h3,h4,p {
+	text-align: center;
+}
+li {
+	list-style-type: none;
+}
+a {
+	color: #fff;
+	text-align: none;
+	text-decoration: none;
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.layout {
+	width: 1150px;
+	margin: 0px auto;
+}
+.btn {
+	display: block;
+	text-align: center;
+}
+
+.text-center {
+	text-align: center;
+}
+.table {
+	display: table;
+	height: 100%
+}
+.vertical-middle {
+	display: table-cell;
+	vertical-align: middle;
+
+}
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#top {
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: #222;
+	height:80px;
+	opacity: 0.9;
+}
+
+#top ul {
+	position: absolute;
+	top: 0%;
+	right: 10%;
+	margin: 15px;
+	margin-right: 0px;
+}
+#top li {
+	float: left;
+	line-height: 50px;
+	padding-right: 10px;
+	padding-left: 10px;
+	text-align: center;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+#top div>a {
+	display: block;
+	margin: 15px;
+	line-height: 50px;
+	color:#FED135;
+	font-size: 2em;
+	font-weight: bold;
+	font-style: italic;
+}
+#top li:hover a {
+	color:#FED135; 
+}
+#top li:focus {
+	background-color:red;
+}
+#header {
+	width:100%; 
+	height: 120%;
+	background: url(../images/header-bg.jpg) 0 -50px no-repeat;
+	background-size: cover;
+	color: #fff;
+}
+#header p {
+	font-size: 2.5em;
+	font-style: italic;;
+}
+#header h1 {
+	margin:20px auto;
+}
+#header a {
+	margin: 0 auto;
+	width: 220px;
+	height: 70px;
+	background-color: #FED136;
+	line-height: 70px;
+	font-size: 2em;
+	font-weight: bold;
+}
+#header a:hover {
+	background-color: yellow;
+}
+#servers {
+	margin: 150px auto;
+	color: #FED136;	
+}
+#servers h2 {
+	font-size: 2.5em;
+	text-align: center;
+}
+#servers h4 {
+	color: #000;
+	opacity: 0.9;
+}
+#servers ul {
+	margin: 0px -15px;
+}
+#servers li {
+	width: 330px;
+	margin: 20px 30px;
+	float: left;
+}
+#servers span  {
+	margin: 10px auto;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	background-color:#FED136;
+	color: #fff;
+}
+#servers i {
+	font-size: 50px;
+	line-height: 100px;
+}
+#servers ul h3 {
+	height: 30px;
+	margin: 15px auto;
+	line-height: 30px;
+	font-size: 1.5em;
+	text-align: center;
+}
+#servers ul p {
+	text-align: center;
+	color: #000;
+	font-size: 1.1em;
+	opacity: 0.7;
+}
+#portifolio {
+	margin:100px auto;
+	color: #000;
+	opacity: 0.9;
+}
+#portifolio p {
+	font-size: 1.5em;
+	font-style: italic;
+}
+#portifolio ul {
+	
+	margin: 30px -10px;
+}
+#portifolio li {
+	float: left;
+	width:360px;
+	margin:20px 15px; 
+}
+
+#portifolio img {
+	width: 360px;
+	height: 260px;
+}
+#portifolio a {
+	position: relative;
+}
+#portifolio a:hover span {
+	display: block;
+	position:absolute;
+	width: 360px;
+	height: 260px;
+	background-color: #fed136;
+	z-index: 50;
+	top: -248px;
+	left: 0;
+	opacity: 0.9;
+}
+#about {
+	margin: 250px auto;
+}
+.rows {
+	margin: 70px auto;
+}
+.text-right {
+	width: 40%;
+	height: 180px;
+	float: left;
+}
+.text-right h3 {
+	font-size: 1.5em;
+	text-align: right;
+}
+.text-right p {
+	text-align: right; 
+	font-size: 1.2em;
+	line-height: 1.5em;
+	opacity: 0.7;
+}
+.pic {
+	width: 20%;
+	float: left;
+}
+.circle-pic  {
+	margin: 20px auto;
+	width: 150px;
+	height: 150px;
+	overflow: hidden;
+	border-radius: 75px;
+}
+.text-left {
+	width: 40%;
+	float: right;
+}
+.text-left h3 {
+	font-size: 1.2em;
+	text-align: left;
+}
+.text-left p {
+	margin:5px auto;
+	text-align: left; 
+	font-size: 1.2em;
+	opacity: 0.8;
+}
+.circle-text {
+	position: relative;
+	margin: 70px auto;
+	background-color: #FED136;
+	font-size: 1.3em;
+	font-weight: bold;
+	color: #fff;
+}
+.center-vertical {
+	position: absolute;
+	width: 50%;
+	height: 50%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+#team ul {
+}
+#team  li {
+	margin: 40px 40px;
+	float: left;
+	width: 300px;
+}
+#team span {
+	margin: 20px auto;
+	display: block;
+	width: 220px;
+	height: 220px;
+	border-radius: 110px;
+	overflow: hidden;
+}
+#team {
+	padding-top:150px ;
+	padding-bottom: 150px;
+	background-color: #F7F7F7;
+}
+#team p {
+	line-height: 2.5em;
+	font-size: 1.2em;
+	color: #333;
+
+}
+#team  i {
+	font-size:1.5em;
+}
+#team>p {
+	line-height: 1.2em;
+	font-size: 1.2em;
+}
+#envo ul {
+	margin: 0px -40px;
+	height: 150px;
+}
+#envo li   {
+	float: left;
+	margin: 0px 40px;
+}
+#contact {
+	width: 100%;
+	height: 100%;
+	background-color: #222;
+	background-image: url("../images/map-image.png");
+	padding-top: 100px;
+}
+#contact h2 {
+	color: #fff;
+}
+#contact h4 {
+	color: #6C6F6F;
+}
+form{
+	margin: 70px -10px;
+}
+input[type="text"] {	
+	display: block;
+	margin: 0px;
+	width: 550px;
+	height: 60px;
+	border-radius: 5px;
+}
+input[type="summit"] {
+	display: block;
+	margin:15px auto;
+	width: 240px;
+	height: 70px;
+	border: none;
+	border-radius: 5px;
+	line-height: 70px;
+	text-align: center;
+	background-color:#FED136;
+	font-size: 2em;
+	color: #fff;
+}
+input[type="summit"]:hover {
+	background-color: yellow;
+}
+#message {
+	width: 550px;
+	height: 225px;
+	border-radius: 5px;
+	float: right;
+}
+#footer {
+	height: 100px;
+	line-height: 100px;
+}
+#footer div {
+	height: 100%
+}
+#footer ul {
+	width: 1150px;
+}
+#footer li {
+	line-height: 100px;
+	width: 33%;
+	font-size: 1.2em;
+	float: left;
+}
+#footer li a {
+	color:#FED136;
+	margin-left: 20px;
+}
+#footer li i {
+	font-size: 1.8em;
+}
+#footer li i:hover {
+	color: yellow;
+}
+#footer li a:hover {
+	text-decoration: underline;
+}
+#footer li:nth-child(2) {
+	text-align: center;
+}
+#footer li:last-child {
+	text-align: right;
+}

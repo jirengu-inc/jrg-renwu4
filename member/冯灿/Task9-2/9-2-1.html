@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>9-2-1</title>
+	<style media="screen">
+		.btn {
+			display: inline-block;
+			font-size: 2em;
+			margin: 5px;
+		}
+
+		.sprite {
+			background-image: url(spritesheet.png);
+			background-repeat: no-repeat;
+			display: inline-block;
+		}
+
+		.btn:hover {
+			cursor: pointer;
+			color: purple;
+		}
+
+		.sprite-forward {
+			width: 25px;
+			height: 25px;
+			background-position: -5px -5px;
+		}
+
+		.btn:hover > .sprite-forward {
+			height: 25px;
+			width: 25px;
+			background-position: -40px -5px;
+		}
+
+
+		.sprite-pause {
+			width: 24px;
+			height: 25px;
+			background-position: -5px -40px;
+		}
+
+		.btn:hover > .sprite-pause{
+			width: 26px;
+			height: 25px;
+			background-position: -39px -40px;
+		}
+
+		.sprite-play {
+			width: 24px;
+			height: 25px;
+			background-position: -74px -5px;
+		}
+
+		.btn:hover > .sprite-play {
+			width: 24px;
+			height: 24px;
+			background-position: -75px -40px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="playerBtn">
+		<div class="btn">
+			<div class="sprite sprite-forward"></div><span>前进</span>
+		</div>
+		<div class="btn">
+			<div class="sprite sprite-play"></div><span>开始</span>
+		</div>
+		<div class="btn">
+			<div class="sprite sprite-pause"></div><span>停止</span>
+		</div>
+	</div>
+</body>
+
+</html>

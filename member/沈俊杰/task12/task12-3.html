@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task12-3</title>
+  <style>
+    body{min-width: 750px}
+
+    header,footer{
+      height: 30px;
+      background: #ccc;
+    }
+
+    .content{
+      padding: 0 0 0 260px;
+    }
+
+    .content::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+
+    .content>div{
+      float: left;
+    }
+
+    .content .main{
+      width: 100%;
+      height: 500px;
+      background: green;
+    }
+
+    .content .left{
+      margin-left: -100%;
+      background: red;
+      width: 260px;
+      height: 400px;
+      position: relative;
+      left: -260px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>头部</header>
+  <div class="content">
+
+    <div class="main"> main </div>
+    <div class="left"> 左侧边栏 </div>
+
+  </div>
+  <footer>尾部</footer>
+</body>
+</html>

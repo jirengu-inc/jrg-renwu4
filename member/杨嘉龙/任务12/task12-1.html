@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+    ul,li{
+    margin:0;
+    padding:0;
+    list-style:none;
+    }
+    .ct{
+    border:1px solid #eee;
+    width:600px;
+    background:#eee;
+    margin:50px auto;
+    }
+    ul:after{
+    content:"";
+    display:table;
+    clear:both;
+    }
+    li{
+    width:180px;
+    height:130px;
+    margin:10px 10px;
+    background:lightgreen;
+    float:left;
+    }
+    li:first-child,li:nth-child(4){
+    position:relative;
+    left:-10px;
+    }
+    li:nth-child(3),li:nth-child(6){
+    position:relative;
+    right:-10px;
+    }
+    </style>
+  </head>
+  <body>
+    <div class="ct">
+      <div class="box">
+        <ul>
+          <li>1</li>
+          <li>2</li>
+          <li>3</li>
+          <li>4</li>
+          <li>5</li>
+          <li>6</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
+
+若愚老师，使用负边距做这道题，虽然看了参考的代码，
+但是还是想不太通，所以我是用定位的方法去解决。
+
+
+revise-1：
+现在已经懂得如何利用负边距去实现页面效果了，具体代码在审查元素时可以看见。
+但还存在1个问题，就是为什么.panels添加负边距后li可以上移，这跟圣杯布局的负边距存在一定的差异，我在代码的注释中给予了猜测，老师你看对不对？
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+  html,body,ul,li{
+  margin:0;
+  padding:0;
+  text-align:center;
+  font:30px/1 "黑体";
+  color:white;
+}
+
+li{
+  list-style:none;
+}
+
+div.ct{
+  background:pink;
+  width:1000px;
+  margin:50px auto;
+}
+
+ul.panels{
+  content:"";
+  display:table;
+  clear:both;
+  padding:20px 0;
+  margin-left:-20px;
+  /* border:2px solid black; */
+  /* 这里直接在li的父容器中添加负边距是因为子元素li会受到负边距的影响，因为由于ul不存在BFC,所以li把ct看做是自己的容器。 */
+}
+
+div>ul>li{
+  width:320px; /* (1000-20*2)/3=320 */
+  height:100px;
+  background:lightgreen;
+  float:left;
+  margin:10px 0;
+  margin-left:20px;
+}
+  </style>
+</head>
+<body>
+<div class="ct">
+  <ul class="panels">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+  </ul>
+</div>
+</body>
+</html> -->

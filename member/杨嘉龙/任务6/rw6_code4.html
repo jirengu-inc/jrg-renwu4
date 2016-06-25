@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+	.wrap{
+		width:500px;
+		margin:0 auto;/* margin后面如果只有两个参数的话，第一个表示top和bottom，第二个表示left和right
+		因为0 auto，表示上下边界为0，左右则根据宽度自适应相同值（即居中） */
+	}
+</style>
+</head>
+<body>
+<div id="header">
+<div class="wrap">这里是标题</div>
+</div> 
+<div id="content">
+	<div class="wrap">这里是内容</div>
+</div>
+<div id="footer">
+<div class="wrap">这里是footer</div>   
+</div>
+</body>
+</html><!-- 整段代码的作用是将不同父容器中的.wap元素进行水平居中处理 -->

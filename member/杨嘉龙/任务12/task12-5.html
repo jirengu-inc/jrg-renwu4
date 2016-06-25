@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+    .wrap{
+  font:20px/1 "microsoft yahei";
+  text-align:center;
+  width:100%;
+  margin:100px auto;
+}
+.head,.footer{
+  width:100%;
+  height:40px;
+  background:#eee;
+}
+.main:after{
+  content:"";
+  display:table;
+  clear:both;
+}
+.center{
+  width:100%;
+  height:400px;
+/*   background:lightgreen; */
+  float:left;
+}
+.sidebar-left,.sidebar-right{
+  width:200px;
+  height:500px;
+  background:lightblue;
+  float:left;
+}
+.sidebar-left{
+  margin-left:-100%;
+}
+.sidebar-right{
+  margin-left:-200px;
+} 
+.center .box{
+  margin:0 200px 0 0;
+  height:400px;
+  background:lightgreen;
+}
+  </style>
+</head>
+<body>
+<div class="wrap">
+<div class="head">head</div>
+  <div class="main">
+    <div class="center">
+      <div class="box">center</div></div>
+    <div class="sidebar-right">sidebar-right</div>
+  </div>
+  <div class="footer">footer</div>
+    </div>
+</body>
+</html>

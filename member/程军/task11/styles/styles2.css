@@ -1,0 +1,32 @@
+*{
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px;
+}
+
+#header{
+	height: 80px;
+	background-color: red;
+	font-size: 3em;
+}
+/*#content{
+	overflow: auto;
+}     */        /*利用父容器清除浮动*/
+.aside{
+	float: left;
+	width: 40%;
+	height:50px;
+	font-size: 2em;
+	background-color: #CEC6C6;
+}
+.main{
+	width: 60%;
+	background: #EF6A6A;
+	float:right;
+	font-size: 1.5em;
+}
+#footer{clear: both;  		/* 清除浮动*/
+	height: 80px;
+	background-color: red;
+	font-size:3em;
+}
