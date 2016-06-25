@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+<title>task22-5</title>
+<style>
+.modal-warp {
+  display: none;
+}
+.cover {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  opacity: 0.3;
+}
+.warp{
+  background: #fff;
+  position:absolute;
+  width: 350px;
+  border-radius: 5px;
+  height: 165px;
+  left: 50%;
+  top: 50%;
+  margin-left: -175px;
+  margin-top: -83px;
+}
+.head {
+  margin: 6px;
+  font-weight: bold;
+}
+.head>a{
+  text-decoration: none;
+  color:black;
+  margin-left: 233px;
+}
+.child {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 6px;
+}
+.foot {
+  padding: 6px 6px 6px 250px;
+}
+.foot>a {
+  color:black;
+  margin: 6px;
+  text-decoration: none;
+}
+  
+  </style>
+</head>
+<body>
+	<div class="ct">
+		<button class="btn">点我1</button>
+	</div>
+	<div id="moddal" class="modal-warp">
+		<div class="cover btn1"></div>
+		<div class="warp">
+			<div class="head">
+              我是标题1
+              <a class="btn1" href="#">&#10005</a>
+          </div>
+			<div class="child">
+				<p>我是内容1</p>
+				<p>我是内容1</p>
+			</div>
+			<div class="foot">
+				<a class="btn1" href="#">取消</a><a href="#">确定</a>
+			</div>
+		</div>
+	</div>
+
+<script>
+//定义所需要的变量
+  var ct = document.querySelector('.ct'),
+    moda = document.querySelector('#moddal'),
+    btn = document.querySelectorAll('.btn1');//btn为类数组对象
+
+
+ct.addEventListener('click',function(){
+  moda.className='';
+});
+//遍历btn类数组为每个子元素绑定点击事件
+for(var i =0; i<btn.length; i++) {
+  btn[i].addEventListener('click',function(){
+    moda.className='modal-warp';  //加上CSS样式变为none
+  } );  
+}
+</script>
+</body>
+</html>

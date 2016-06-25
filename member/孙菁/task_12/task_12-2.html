@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 12-2</title>
+	<style>
+	    *{
+	    	margin:0;
+	    	padding:0;
+	    }
+	    .wrap{
+	    	width: 960px;
+	    	margin:0 auto;
+	    }
+		#header,#footer{
+			height: 40px;
+			background: #ccc;
+		}
+		#content{
+			padding:0 200px;
+		}
+		#content:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.main{
+			background:pink;
+			float: left;
+		}
+		.side_l,.side_r{
+			width: 200px;
+			height: 100px;
+			float: left;
+			position: relative;
+		}
+		.side_l{
+			background: red;
+			margin-left: -100%;
+			left:-200px;
+		}
+		.side_r{
+			background: yellow;
+			margin-left: -200px;
+			right: -200px;
+		}
+	</style>
+</head>
+<body>
+  <div class="wrap">
+  	<div id="header">头部</div>
+  	<div id="content">
+  	  <div class="main">左浮动，宽度自适应，父元素左右两边内边距要大于等于侧边栏的宽度，保证足够侧边栏上来（此模块在文档流中必须放在侧边栏前面保证优先渲染）</div>
+      <div class="side_l">左浮动，width=200px，margin-left:-100%</div> 
+      <div class="side_r">左浮动，width=200px，margin-left:-自身宽度</div>		
+  	</div>
+  	<div id="footer">尾部</div>
+  </div>	
+</body>
+</html>

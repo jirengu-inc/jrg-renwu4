@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>html3</title>
+		<style>
+			.myWeb{
+				border:1px solid #CCC;
+				width:200px;height:80px;
+				text-align:center;
+			}
+			.myContent{
+				font-size:14px;line-height: 80px;
+				color:#F0F;border-radius: 1px solid red;
+			}
+			.dialog{
+				border:1px solid #CCC;	
+			}
+			.header{
+				height:40px;text-align:left;padding-left:10px;
+				font-size:16px;color:#F00;border-bottom: #CCC solid 1px;
+			}
+			.content{
+				height:100px;
+
+			}
+			.content a{
+				transition:color 1s;
+			}
+			.content a:link{
+				text-decoration:none;color:blue;
+			}
+			.content a:hover{
+				color:red;
+			}
+			.footer{
+				height:50px;text-align:center;
+			}
+			.footer .btn{
+				border:1px solid #CCC;border-radius: 3px;padding:4px 3px;
+				display:inline-block;
+			}
+			.mytable{
+				text-align: center;font-family: "微软雅黑","黑体";width:500px;
+				cellspacing:0px;border-collapse:collapse;
+
+			}
+			.mytable tr{transition: background-color 1s;}
+			.mytable tr:hover{
+				background-color:#ddd;
+
+			}
+			.mytable th{
+				font-weight: bold;background:rgb(34,170,170);border:1px solid #CCC;
+				height:50px;
+			}
+			.mytable td{
+				font-weight: bold;border:1px solid #CCC;height:50px;
+			}
+		</style>
+	</head>
+	<body>
+		<!--代码题1-->
+		<div class = "myWeb">
+			<span class = "myContent" >这里是饥人谷</span>
+		</div>
+		<div class = "myWeb">
+			<p class = "myContent">这是p标签的效果</p>
+		</div>
+		<div class = "myWeb">
+			<p class = "myContent" style="margin:0;">这是p标签的margin设为0的效果</p>
+		</div>
+
+		<!--代码题2-->
+		<div class="dialog">
+    		<div class="header">
+      			<h3>我是标题</h3>
+      			<a class="close" title="关闭" href="#">X</a>
+    		</div>
+    		<div class="content">
+         		<h3>欢迎来到<a href="http://jirengu.com">饥人谷</a></h3>
+         		<p>在这个大家庭你能快乐的学到更多前端技能</p>
+    		</div>
+    		<div class="footer">
+         		<a class="btn btn-cancel" href="#">取消</a>
+         		<a class="btn btn-confirm" href="#">确认</a>
+    		</div>
+  		</div>
+
+  		<!--代码题3-->
+  		<table class = "mytable">
+  			<tr>
+  				<th>姓名</th><th>性别</th>
+  			</tr>
+  			<tr>
+  				<td>小明</td><td>男</td>
+  			</tr>
+  			<tr>
+  				<td>小花</td><td>女</td>
+  			</tr>
+  		</table>
+
+	</body>
+</html>

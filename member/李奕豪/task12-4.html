@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>双飞翼布局-三栏式布局</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #header{
+            height: 40px;
+            background: red;
+            margin-bottom: 20px;
+        }
+        #content{
+            border:1px solid;
+        }
+        #content:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        #content .main{
+            width:100%;
+            height:400px;
+            float:left;
+        }
+        #content .main .box{
+            height:300px;
+            background:pink;
+            margin-left:210px;
+            margin-right:210px;
+        }
+        #content .aside{
+
+            width:200px;
+            height:200px;
+            background:blue;
+            float:left;
+            margin-left:-100%;
+        }
+        #content .right{
+
+            width:200px;
+            height:200px;
+            background:yellow;
+            float:left;
+            margin-left:-200px;
+        }
+        #footer{
+            height: 40px;
+            background: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="header"></div>
+<div id="content">
+    <div class="main">
+        <div class="box"></div>
+    </div>
+    <div class="aside"></div>
+    <div class="right"></div>
+</div>
+<div id="footer"></div>
+</body>
+</html>

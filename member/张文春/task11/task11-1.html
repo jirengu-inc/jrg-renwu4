@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task11-1</title>
+	<style>
+		html,body,ul,li,a{
+			margin:0;
+			padding:0;
+			font-size: 14px;
+		}
+		ul{
+			list-style: none;
+		}
+		.mylist{
+			border-bottom: 1px solid #ccc;
+			
+		}
+		.mylist:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		a{
+			text-decoration: none;
+		}
+		.mylist>li{
+			float: left;
+			padding: 0 10px;
+			line-height: 40px;
+			position: relative;
+		}
+		.mylist>li>ul{
+			display: none;
+			position: absolute;
+			left: 0;
+			top: 100%;
+			border:1px solid #ccc;
+
+		}
+		.mylist>li>ul>li{
+			min-width: 80px;
+			text-align: center;
+		}
+		.mylist>li:hover{
+			background: #ccc;
+		}
+		.mylist>li:hover>ul{
+			display: block;
+		}
+		.mylist>li>ul>li:hover{
+			background-color: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<ul class="mylist">
+		<li>
+			<a href="">前端</a>
+			<ul>
+			 <li><a href="">JavaScript</a></li>
+		     <li><a href="">CSS</a></li>
+		     <li><a href="">HTML</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="">服务端</a>
+			<ul>
+		     <li><a href="">Node</a></li>
+		     <li><a href="">PHP</a></li>
+		     <li><a href="">Java</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="">前端工具</a>
+			<ul>
+		     <li><a href="">Sublime</a></li>
+		     <li><a href="">WebStrom</a></li>
+		     <li><a href="">Git</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="">HTML</a>
+		</li>
+		<li>
+			<a href="">NODE</a>
+		</li>
+	</ul>
+</body>
+</html>

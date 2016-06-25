@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tas24-2</title>
+	<style>
+		html,body,ul,li,a{
+			margin:0;
+			padding: 0;
+			text-align: center;
+		}
+		li{
+			border: 1px solid #ccc;
+			margin: 3px 10px;
+			font-size: 20px;
+			text-align: center;
+			line-height: 20px;
+			list-style: none;
+		}
+		a{	display: inline-block;
+			text-decoration: none;
+			width: 100px;
+			color: black;
+			border: 1px solid #ccc;
+			margin-top: 20px;
+			font-size: 20px;
+			background-color: #ccc;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+<body>
+	<ul id="ct">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<input type="text" class="num">
+	<a href="#" class="btn">加载更多</a>
+
+	<script>
+
+	/*定义接口
+	1) url:
+	2) 入参: { start: 2, len: 6 }
+	3) 回参: 
+	{
+	  status: 1, //1代表正常，0代表出错
+	  data: [2,3,4,5,6,7]
+	}*/
+		//封装AJAX
+		var isLocked = false;
+		function ajax(opts){
+			var url = opts.url,
+				type = opts.type.toLowerCase(),
+
+				dataStr = '';
+
+				for (key in opts.data) {
+					dataStr += key + '=' + opts.data[key] + '&';
+				}
+				dataStr = dataStr.substr(0,dataStr.length-1);
+				
+				if (type === 'get') {
+					url = url+'?'+dataStr;
+				}
+
+				var xhr = new XMLHttpRequest();
+				xhr.open(type,url);
+				if (type === 'get') {
+					xhr.send();
+				}else{
+				xhr.setRequestHeader('Content-Type','application/x-www-form-ulencoded');	
+				xhr.send(dataStr);
+
+				}
+
+				xhr.onreadystatechange = function(){
+					if (xhr.readyState === 1) {
+						isLocked = true;
+					}
+					if (xhr.readyState === 4 ) {
+						if (xhr.status === 200) {
+							opts.success(JSON.parse(xhr.responseText));
+							isLocked = false;
+						}
+						else{
+							//console.log('error' + xhr.status);
+							opts.error();
+							isLocked = false;
+						}
+					}
+				}			
+
+		}
+		//实现变色
+		var content = document.querySelector('#ct');
+		content.addEventListener('mouseover',function(e) {
+			if (e.target.tagName.toLowerCase() === 'li') {
+			e.stopPropagation();
+			//console.log(e.target.tagName.toLowerCase()==='li');
+			e.target.style.backgroundColor="green";	
+			}
+			
+		});
+		content.addEventListener('mouseout',function(e){
+			if (e.target.tagName.toLowerCase() === 'li') {
+			e.stopPropagation();
+			e.target.style.backgroundColor="white";
+			}	
+		});
+
+		//实现添加
+		var btn = document.querySelector('.btn');
+		var lineNum = document.querySelector('.num');
+
+		
+		btn.addEventListener('click',function(){
+			//console.log(content);
+			if (!isLocked) {
+			var liLen =content.children.length;
+			console.log(liLen);
+			console.log(lineNum.value);
+			ajax({
+				url:'/loadMore',
+				type:'get',
+				data:{
+					start:liLen+1,
+					len:lineNum.value
+				},
+				success:function(ret){
+					success(ret);
+				},
+				error:function(){
+					error();
+				}
+			});
+			}
+		});
+		function success(ret){
+			console.log(ret);
+			for (var i = 0; i < ret.data.length; i++) {
+				var newLi = document.createElement('li');
+				newLi.innerText = '内容'+ret.data[i];
+				console.log(newLi);
+				content.appendChild(newLi);
+				ret.data[i]
+			}
+			
+
+		}
+		function error(){
+			console.log('error');
+		}
+	</script>
+</body>
+</html>

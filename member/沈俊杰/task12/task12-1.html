@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task12-1</title>
+  <style>
+    body,html,ul{padding: 0;  margin: 0;}
+    ul{list-style: none;}
+
+    .main{
+      width: 960px;
+      margin: 0 auto;
+      background: #ccc;
+    }
+    .main ul{
+      margin-left: -30px;
+    }
+    .main ul::after{
+      content: "";
+      display: block;
+      clear: both;
+    }
+    .main ul li{
+      float: left;
+      width:300px;
+      height: 100px;
+      background: red;
+      margin:10px 0 10px 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+      <li>6</li>
+    </ul>
+  </div>
+</body>
+</html>

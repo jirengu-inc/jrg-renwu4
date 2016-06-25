@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.middle{
+			background-color: green;
+			min-height:200px;
+			float: left;
+			width: 100%;		
+		
+		}
+		.right{
+			float: left;				
+			background-color: blue;
+			width: 200px;
+			margin-left: -200px;
+			
+		}
+		.wrap::after{			
+			content:"";
+			display: block;
+			clear: both;
+		}
+		.header{
+			height: 50px;
+			background-color: #ccc;
+		}
+		.footer{
+			height: 50px;
+			background-color: #ccc;
+		}
+		.inner{
+			margin: -16px 200px -16px 0;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="wrap">
+		<div class="middle">
+			<div class="inner">
+				<p>测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本 测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+				<p>测试文本</p>
+			
+			</div>
+		</div>
+		
+		
+		
+		<div class="right">
+			<p>测试文本 测试文本 测试文本 测试文本 测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+			<p>测试文本</p>
+		</div>
+	</div>
+	<div class="footer"></div>
+</body>
+</html>

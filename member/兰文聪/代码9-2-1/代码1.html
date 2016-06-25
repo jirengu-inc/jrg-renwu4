@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>代码1</title>
+<style>
+    li,p{
+        display: inline-block;
+        list-style:none;
+        margin-left: 40px;
+        cursor: pointer;
+    }
+    .next{
+        background: url(合成图.png) 6px 7px no-repeat;
+    }
+    .start{
+        background: url(合成图.png) 5px -82px no-repeat;
+    }
+    .stop{
+        background: url(合成图.png) 0px -39px no-repeat;
+    }
+    .next:hover{
+        background: url(合成图.png) 5px -128px no-repeat;
+        color: #b65ab6;
+    }
+    .start:hover{
+        background: url(合成图.png) 0px -219px no-repeat;
+        color: #b65ab6;
+    }
+    .stop:hover{
+        background: url(合成图.png) 4px -173px no-repeat;
+        color: #b65ab6;
+    }
+</style>
+</head>
+<body>
+   <div>
+       <ul>
+           <li class="next">
+               <p>前进</p>
+           </li>
+           <li class="start">
+               <p>开始</p>
+           </li>
+           <li class="stop">
+               <p>停止</p>
+           </li>
+       </ul>
+   </div> 
+</body>
+</html>

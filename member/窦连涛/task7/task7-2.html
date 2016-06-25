@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task7-2</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    html{
+      font-size: 62.5%;
+      font-family: "Microsoft Yahei";
+    }
+
+    #register{
+      width: 980px;
+      margin: 3rem auto;
+      border: 1px solid #ccc;
+    }
+
+    form,table{
+      margin: 0 auto;
+    }
+
+    .comments textarea {
+      font-size: 2rem;
+    }
+
+    .comments td:nth-child(1){
+      vertical-align: bottom;
+    }
+
+    .car td{
+      padding: 0;
+    }
+
+    .car select{
+      width: 150px;
+      padding: 0;
+    }
+
+    .hobby {
+      font-size: 1.5rem;
+    }
+
+    td {
+      font-size: 2rem;
+      height: 3rem;
+      padding: 1rem .5rem;
+    }
+
+    td input{
+      padding: .5rem 0.2rem;
+      font-size: 2rem;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="register">
+      <form action="" method="post">
+        <table>
+          <tr>
+            <td>姓名&nbsp;:</td>
+            <td><input type="text" name="user" placeholder="用户名"></td>
+          </tr>
+          <tr>
+            <td>密码&nbsp;:</td>
+            <td><input type="password" name="psw"></td>
+          </tr>
+          <tr>
+            <td>性别&nbsp;:</td>
+            <td>
+              <input type="radio" name="sex" value="male" checked="">&nbsp;&nbsp;男&nbsp;&nbsp;
+              <input type="radio" name="sex" value="female" class="sex">&nbsp;&nbsp;女
+            </td>
+          </tr>
+          <tr>
+            <td>取向&nbsp;:</td>
+            <td>
+              <input type="radio" name="sexs" value="male">&nbsp;&nbsp;男&nbsp;&nbsp;
+              <input type="radio" name="sexs" value="female" class="sex" checked="">&nbsp;&nbsp;女
+            </td>
+          </tr>
+          <tr>
+            <td>爱好&nbsp;:</td>
+            <td class="hobby">
+              <input type="checkbox" name="hobby[]" value="LOL">LOL
+              <input type="checkbox" name="hobby[]" value="Dota2">Dota2
+              <input type="checkbox" name="hobby[]" value="CS">CS
+            </td>
+          </tr>
+          <tr class="comments">
+            <td>评论&nbsp;:</td>
+            <td >
+              <textarea name="intro" placeholder="评论......" cols="30" rows="10"></textarea
+            </td>
+          </tr>
+          <tr>
+            <td>我的Car&nbsp;:</td>
+            <td class="car">
+              <select class="" name="car">
+                <option value="benz">奔驰</option>
+                <option value="bwm">宝马</option>
+                <option value="volov">沃尔沃</option>
+              </select>
+              <input type="submit" value="提交">
+            </td>
+
+          </tr>
+        </table>
+      </form>
+  </div>
+</body>
+</html>

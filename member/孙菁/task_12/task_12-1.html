@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 12-1</title>
+	<style>
+	    *{
+	    	margin:0;
+	    	padding:0;
+	    }
+	    li{
+	    	list-style: none;
+	    }
+		#main{
+			width: 900px;
+			margin:0 auto;
+			margin-top: 30px;
+		}
+		.wrap{
+			background: #ccc;
+			padding:10px 0;
+		}
+		.panels{
+			margin-left: -20px; /*因为li的margin-left，ul被撑开太大了*/
+		}                        /*总宽度超过900px*/
+		.panels:after{
+            content: '';
+            display: block;
+            clear: both;
+		}
+		.panels li{
+            float: left;
+            background: #004210;
+            margin:10px 0 0 20px;
+            width: 286px;       /*(900-20*2)/3*/
+            height: 80px;
+		}
+	    
+	    
+	</style>
+</head>
+<body>
+  <div id="main">
+  	<div class="wrap">
+  		<ul class="panels">
+  			<li>1</li>
+  			<li>2</li>
+  			<li>3</li>
+  			<li>4</li>
+  			<li>5</li>
+  			<li>6</li>
+  		</ul>
+  	</div>
+  </div>
+</body>
+</html>

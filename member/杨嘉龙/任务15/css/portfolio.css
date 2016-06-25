@@ -1,0 +1,40 @@
+#portfolio{
+	width: 100%;
+	background: #eee;
+}
+#portfolio .ct-box{
+	position: relative;
+	width: 380px;
+	height: 380px;
+	background: white;
+	margin:10px;
+}
+
+#portfolio img{
+	width: 380px;
+	height: 274px;
+}
+
+#portfolio .layer{
+	width: 380px;
+	height: 274px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	visibility: hidden;
+}
+
+#portfolio .layer img{
+	 width: 80px;
+	 height: 80px;
+	 margin: 97px 0;
+}
+
+#portfolio .ct-box:hover >.layer{
+	visibility: visible;
+	background: rgba(254, 209, 54,0.8);
+	transition: all .5s;
+	cursor: pointer;
+}
+
+

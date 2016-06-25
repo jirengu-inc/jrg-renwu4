@@ -1,0 +1,57 @@
+	.title{
+		background-color: #333333;
+	}
+	.navigation{
+		float: right;
+		margin-right: 150px;
+	}
+	.logo{
+		margin-left: 170px;
+	}
+	.navigationli{
+		list-style: none;
+		float: left;
+		margin-right: 50px;
+
+	}
+	a{
+		text-decoration: none;
+		color: #fff;
+	}
+	.wrap{
+		margin: 0 auto;
+		width: 910px;
+		overflow: hidden;
+	}
+	.divleft{
+		width: 200px;
+		float: left;
+		background-color: #eeeeee;
+		height: 500px;
+		margin-right: 10px;
+	}	
+	.divright{
+		width: 700px;
+		float: left;
+		background-color: #eeeeee;
+		height: 200px;
+		color:#5a5a5a;
+	}
+	.divright p{
+		font-size: 15px;
+	}
+
+	.bottom{
+		background-color:#333333;
+		overflow: hidden;
+	}
+	.bottom ul{
+		overflow: hidden;
+		margin-left: 120px;
+	}
+	.bottomli{
+		list-style: none;
+		float: left;
+		margin-left: 30px;
+
+	}
