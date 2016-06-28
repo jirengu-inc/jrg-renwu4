@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<style>
+* {
+	margin:0px;
+	padding: 0;
+}
+.ct {
+	width: 500px;
+	margin: 0 auto;
+}
+input {
+	width: 200px;
+	height:30px;
+}
+li {
+	list-style: none;
+	height: 80px;
+	background: #57CEE0;
+}
+.btn {
+	overflow: hidden;
+	width: 60px;
+	height:30px;
+	border:1px solid #000; 
+	border-radius: 5px;
+	background: #fff;
+
+}
+.sco {
+	position: fixed;
+	left: 50%;
+	font-size: 30px;
+}
+.col {
+	border: 1px solid #333;
+	width: 100px;
+	height: 100px;
+}
+#sel {
+	width: 60px;
+	height: 30px;
+}
+</style>
+<div class="sco">
+	0
+</div>
+<ul>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+<div class="ct"><input type="text">
+
+<button class="btn">点击</button>
+<select name="num" id="sel">
+	<option value="111">1</option>
+	<option value="222">2</option>
+	<option value="333">3</option>
+	<option value="444">4</option>
+</select>
+</div>
+<div class="col">
+</div>
+	<li></li>
+	<li></li>
+	<li></li>
+</ul>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" id="111"></script>
+ <script>
+
+	$('.btn').on('click',function(){
+		setTimeout(function(){
+			$('.btn').css({"background-color":"blue"})
+		},1500);
+		setTimeout(function(){
+			$('.btn').css({"background-color":"red"})
+		},500);
+	});
+		$(document).on("scroll",function(){
+		var  $cur=$(document).scrollTop()
+		$(".sco").text("滚动条滚动距离:"+$cur)
+	});
+		$(".col").on("mouseenter",function(){
+			$(this).css({"background-color":"blue"})
+		})
+		$(".col").on("mouseleave",function(){
+			$(this).css({"background-color":"#FFF"})
+		})
+	$("input").on("mousedown",function(){
+		$(this).css({'border-color':'blue'})
+	});
+	$("input").on("keyup",function(){
+		$(this).val($(this).val().toUpperCase());
+	})
+	$("input").on("focusout",function(){
+		$(this).css({'border-color':'#fff'});
+		console.log($(this).val());
+	})
+	$("#sel").on("change",function(){
+			console.log($(this).val())
+	})
+		
+
+</script>
+</body>
+</html>
+
+
+ 

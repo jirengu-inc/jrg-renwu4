@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>code3</title>
+	<style>
+		* {
+		    box-sizing: border-box;
+		}
+		body {
+		    font-size: 14px;
+		}
+
+		dd {
+		    margin-left: 86px;
+		    margin-bottom: 10px;
+		}
+		dt {
+		    width: 86px;
+		    float: left;
+		    height: 24px;
+		    line-height: 24px;
+		}
+		input {
+		    height: 24px;
+		    line-height: 24px;
+		    padding-left: 10px;
+		    border: 1px solid #ccc;
+		    border-radius: 3px;
+		}
+		input.error{
+			border-color: red;
+		}
+		.msg{
+			margin-top: 10px;
+			margin-bottom: 10px;
+			color: #aaa;
+			height: 12px;
+		    font-size: 12px;
+		}
+		#submit{
+			background: none;
+			padding: 7px 6px;
+			line-height: 0;
+		}
+	</style>
+</head>
+<body>
+	<h3>注册</h3>
+	<form action="code3.php" method="post">
+		<dl>
+			<dt>用户名</dt>
+			<dd>
+				<input type="text" name="username" placeholder="请输入用户名">
+				<span class=" msg msgName">只能是字母、数字、下划线，3-10个字符(hello 是已经被注册过的用户)</span>
+			</dd>
+			
+			<dt>密码</dt>
+			<dd>
+				<input type="password" name="psd" >
+				<span class="msg msgPsd">大写字母、小写、数字、下划线最少两种，6-15个字符</span>
+			</dd>
+			
+			<dt>确认密码</dt>
+			<dd>
+				<input type="password" name="psd1">
+				<span class="msg msgPsd1"></span>
+			</dd>
+			
+			<dd><input type="submit" value="注册" id="submit"></dd>
+		</dl>
+
+	</form>
+
+	<script src='ajax.js'></script>
+	<script>
+		var usernameEl = document.querySelector('input[name="username"]');
+		var psdEl = document.querySelector('input[name="psd"]');
+		var psd1El = document.querySelector('input[name="psd1"]');
+
+		var usernameMsg = document.querySelector('.msgName');
+		var psdMsg = document.querySelector('.msgPsd');
+		var psd1Msg = document.querySelector('.msgPsd1');
+
+		var btn = document.getElementById('submit');
+
+		usernameEl.addEventListener('change',function(){
+			checkUsername() && ajaxUsername();
+		});
+		psdEl.addEventListener('change',function(){
+			checkPsd();
+		});
+		psd1El.addEventListener('change',function(){
+			checkPsd1();
+		})
+
+		btn.addEventListener('click',function(e){
+			if (checkUsername() && checkPsd() && checkPsd1() ) {
+				ajaxUsername();
+			}else{
+				e.preventDefault();
+			}
+		});
+
+		function checkUsername(){
+			var username = usernameEl.value;
+			if (!trim(username) || trim(username) == "") {
+				changeMsg(usernameMsg,'用户名不能为空','red');
+				return false;
+			}
+			if(!/^\w{3,10}$/.test(username)){
+				changeMsg(usernameMsg,'用户名格式不正确','red');
+				return false;
+			}
+			return true;
+		}
+		function ajaxUsername(){
+			var username = usernameEl.value;
+			ajax({
+				url:'code3.php',
+				type:'get',
+				data:{
+					username:username
+				},
+				success:function(data){
+
+					if (!data.result) {
+						changeMsg(usernameMsg,data.content,'red');
+						btn.disabled = true;
+						return false;
+					}else{
+						btn.disabled = false;
+						changeMsg(usernameMsg,'用户名可用','inherit');
+					}
+
+				},
+				error:function(){
+					console.log('error');
+				}
+			});
+		}
+		function checkPsd(){
+			var psd = psdEl.value;
+			if (!trim(psd)){
+				console.log(psd)
+				changeMsg(psdMsg,'密码格式不正确','red');
+				return false;
+			}
+		    if (!isLegalPassword(psd)) {
+		    	changeMsg(psdMsg,'密码格式不正确','red')
+		    	return false;
+		    }
+		    changeMsg(psdMsg,'密码输入正确','inherit')
+		    return true;
+		}
+		function isLegalPassword(str){
+			if(str.length < 6 || str.length > 16){
+				return false;
+			}
+			//如果包含上述四种以外的字符，false
+			if(/[^A-Za-z_0-9]/.test(str)){
+				return false;
+			}
+			//如果全为大写、小写、下划线、数字, false
+			if( /(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(str) ){
+				return false;
+			}
+			return true;
+		}
+		function checkPsd1(){
+			var psd1 = psd1El.value;
+			var psd = psdEl.value;
+			if (psd !== psd1) {
+				changeMsg(psd1Msg,'密码输入不一致','red')
+				return false;
+			}
+			changeMsg(psd1Msg,'一致','inherit')
+			return true;
+		}
+
+		function trim(str){
+		  return str.replace(/^\s+|\s+$/g, "")
+		}
+		function changeMsg(el,test,color){
+			el.innerHTML = test;
+			el.style.color = color;
+		}
+
+	</script>
+</body>
+</html>
