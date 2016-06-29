@@ -75,6 +75,11 @@ a{
 #nav li a:hover{
   color:#FFE27F;
 }
+#nav:after{
+  content: "";
+  display: block;
+  clear: both;
+}
 .btn{
   display:block;
   margin:0 auto;

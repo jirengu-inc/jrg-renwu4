@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task27-1</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+		html,body,ul,li,.container,.img-ct{
+			margin:0;
+			padding: 0;
+			
+		/*	width: 500PX;
+			height: 500PX;*/	
+		}
+		html,body,.container,.img-ct{
+			width: 100%;
+			height: 100%;
+		}
+		ul,li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.clear:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.container{
+			position: relative;
+			overflow: hidden;
+		}
+		.img-ct{
+			position: absolute;
+		}
+		.img-ct {
+			/*width: 100%;
+			height: 100%;*/
+		}
+		.img-ct li{
+			/*position: absolute;
+			display: none;*/
+			height: 100%;
+			position: relative;
+			float: left;
+		
+		}
+		
+		.arrow{
+			position: absolute;
+			top: 50%;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #ccc;
+			border-radius: 20px;
+			line-height: 20px;
+			background: #ccc;
+			text-align: center;
+		}
+		.arrow:hover{
+			opacity: 0.4;
+		}
+		.pre{
+			left: 10%;
+		}
+		.next{
+			right: 10%;
+		}
+		
+		.bullet{
+			width: 100%;
+			height: 30px;
+			position: absolute;
+			left: 50%;
+			margin-left: -46px;
+			bottom: 10px;
+		}
+		.bullet li{
+			
+			width: 15px;
+			height: 5px;
+			border: 1px solid #ccc;
+			background: #ccc;
+			border-radius: 5px;
+			display: inline-block;
+			cursor: pointer;
+		}
+		.active{
+			opacity: 0.3;
+		}
+
+		.bg{ 
+
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+		}
+	</style>
+</head>
+<body>
+	<div class="container clear">
+		<ul class="img-ct clear">				
+			<li>
+				<div class="bg a1" data-src='http://cdn.jirengu.com/book.jirengu.com/img/26.jpg'></div>
+			</li>
+			<li>
+				<div class="bg a2" data-src='http://cdn.jirengu.com/book.jirengu.com/img/25.jpg'></div>
+			</li>
+			<li>
+				<div class="bg a3" data-src='http://cdn.jirengu.com/book.jirengu.com/img/24.jpg'></div>
+			</li>
+			<li> 
+				<div class="bg a4" data-src='http://cdn.jirengu.com/book.jirengu.com/img/23.jpg'></div>
+			</li>
+		</ul>
+		<a href="#" class="arrow pre"><</a>
+		<a href="#" class="arrow next">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		
+
+		<script>
+			var $container = $('.container'),
+				$ct = $('.img-ct'),
+				$items = $ct.children(),
+				$pre = $('.pre'),
+				$next = $('.next'),
+				$bullet = $('.bullet'),
+				// imgWidth = $items.width();
+				imgWidth = $(window).width();
+				imgCount = $items.size();
+
+				$ct.append($items.first().clone());
+				$ct.prepend($items.last().clone());
+				   $ct.find('li').css('width',imgWidth);
+				   $ct.find('.a').css('width',imgWidth);
+				var imgRealCount = $ct.children().size();
+				$ct.css({
+					left:0-imgWidth,width:imgRealCount*imgWidth
+				});
+			var curidx = 0;
+			var islocked = false;
+
+			$next.on('click',function(e){
+				// e.preventDefault();
+				playNext();
+
+			});
+			$pre.on('click',function(){
+				playPro();
+			})
+			$bullet.find('li').on('click',function(){
+				$this = $(this);
+
+				// play($this.index());
+				var num = $this.index();
+				if (num>curidx) {
+					playNext(num-curidx);
+				}else if(num<curidx){
+					playPro(curidx-num);
+				}
+			})
+			setBg(1);
+			// play(0);
+			 autoPlay();
+			function playNext(idx){
+				if (islocked) return;
+				islocked = true;
+				idx = idx||1;
+				setBg(curidx+2);
+				$ct.animate({left:'-='+(imgWidth*idx)},function(){
+					curidx = curidx+idx;
+					if (curidx ===imgCount) {
+						$ct.css({left:0-imgWidth});
+						curidx = curidx%imgCount;
+					}
+					setBullet();
+					islocked = false;
+				})
+			}
+			function playPro(idx){
+				if (islocked) {return};
+				islocked = true;
+				idx = idx||1;
+				setBg(curidx);
+				$ct.animate({left:'+='+(imgWidth*idx)},function(){
+					curidx = curidx-idx;
+					if (curidx ===-1) {
+						//curidx = imgCount;
+						$ct.css({left:0-imgWidth*imgCount});
+						curidx = imgCount-1;
+					}
+					setBullet();
+					islocked = false;
+				})
+			}
+	
+			function setBullet(){
+				$bullet.find('li').removeClass('active');
+				$bullet.find('li').eq(curidx).addClass('active');
+			}
+			
+			function setBg(idx){
+				idx = idx||0;
+				var $thisImg = $('.bg').eq(idx);
+				var imgUrl = $thisImg.attr('data-src');
+				if ($thisImg.data('isSetBg')) return;
+				$thisImg.css('background-image', 'url('+imgUrl+')');
+				$thisImg.data('isSetBg',true);
+			}
+			function autoPlay(){
+				clock = setInterval(function(){
+					playNext();
+				},2000)
+			}
+			function stopAuto(){
+				clearInterval(clock);
+			}
+
+		</script>
+	</div>
+</body>
+</htm

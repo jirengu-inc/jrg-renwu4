@@ -1,0 +1,260 @@
+html,body,ul,li,h1{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	height: 100%;
+}
+
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+.clare::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+  /*内容垂直居中*/
+#header{
+	display: table;
+	width: 100%;
+	height: 100%;
+	background: url(img/bg.jpg) no-repeat center center scroll;
+}
+   /*内容水平居中*/
+.header-c{
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+.header-c h1{
+	font-size: 4rem;
+}
+.header-c p{
+	font-size: 1.5rem;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+.header-c a{
+	font-size: 1.5rem;
+	display: inline-block;
+	padding: 12px 14px;
+	background: #6c7d83;
+	color: #fff;
+}
+.header-c a:hover{
+	background: #353e41;
+}
+/*简短介绍，个性签名：定高，文本水平居中*/
+.brief-in,.individuality{
+	display: table;
+    height: 240px;	
+	width: 100%;
+	vertical-align: middle;
+	font-size: 2rem;
+}
+.brief-in-c,.individuality-c{
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	font-size: 2rem;
+}
+.brief-in{
+	background: #fff url(img/bg8.png) center center  no-repeat;
+	background-size: 100% 240px;
+}
+.individuality{	
+	background: #fff url(img/bg9.png) center center  no-repeat;
+	background-size: 100% 240px;
+}
+
+
+/*盒子水平居中*/
+#skill{
+	background: #337ab7;
+	color: #fff;
+	text-align: center;
+	padding: 60px 0;
+}/*li 内，icon图片圆形显示*/
+#skill .icon{
+	display: inline-block;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+}/*li内插入背景图片*/
+#skill .bg1{
+	background: #fff url(img/cloud.png) center center no-repeat;
+}
+#skill .bg2{
+	background: #fff url(img/指南针.png) center center no-repeat;
+}
+#skill .bg3{
+	background: #fff url(img/烧瓶.png) center center no-repeat;
+}
+#skill .bg4{
+	background: #fff url(img/dun.png) center center no-repeat;
+}/*水平线定宽*/
+#skill hr{
+	width: 116px;
+}/*英文单词间距缩小3像素*/
+#skill p{
+	word-spacing: -3px;
+}/*对应技能按钮*/
+#skill a{
+	display: inline-block;
+	color: #000;
+	background: #fff;
+	padding: 10px;
+}
+#skill a:hover{
+	background: #d6e4f0;
+}
+/*“我的技能”定宽居中*/
+#skill .skill-nav{
+	width: 960px;
+	margin: 0 auto;
+}
+
+#skill ul li{
+	width: 232px;
+	float: left;
+	margin-left: 8px;
+}
+/*我的作品*/
+#sample-reels{
+	margin: 0 auto;
+	padding: 60px 0 60px;
+	text-align: center;
+	width: 960px;
+}/*下面的两条水平线*/
+#sample-reels hr,#footer hr{
+	width: 100px;
+	color: #eee;
+	opacity: .15;
+	margin: 15px auto;
+}
+#sample-reels h1{
+	font-weight: normal;/*去掉字体加粗*/
+}
+#sample-reels .btn{
+	display: inline-block;
+	color: #fff;
+	padding: 10px;
+	background: #999;
+}
+#sample-reels .btn:hover{
+	background: #4c4c4c;
+}
+/*定死图片显示及其包裹层的宽高*/
+.sample,.sample img{
+	width: 460px;
+	height: 306px;
+}
+/*作品图片左浮动*/
+.sample{
+	float: left;
+	margin: 0 0 30px 30px;
+}
+.sample:hover{
+	opacity: .8; 
+}
+/*margin: 0 0 30px 30px;后 使其重新垂直居中*/
+.negative-value-margin{
+	margin-left: -25px;
+}
+  /*“其他”盒子*/
+#other{
+	color: #fff;
+	padding: 60px 0 60px;
+	text-align: center;
+	background: #337ab7;
+}
+#other a{
+	display: inline-block;
+	padding: 10px;
+	margin-left: 10px;
+}
+/*博客*/
+#other .blog{
+	color: #000;
+	background: #fff;
+}
+#other .blog:hover{
+	background: #d8e4f0;
+}
+/*github*/
+#other .git{
+	color: #fff;
+	background: #1f4961;
+}
+#other .git:hover{
+	background: #0f2436;
+}
+/*页脚*/
+#footer{
+	text-align: center;
+	padding: 60px 0 60px;
+}
+/*电话号前插入“电话”图片*/
+#footer .telephone::before{
+	content: url(img/icon-dianhua.png);
+	display: inline-block;
+	vertical-align:middle;/*图片与文本顶部对齐*/
+	width: 16px;
+	height: 16px;
+	margin-right: 6px;
+}
+/*邮件地址前插入“信封”图片*/
+#footer .mail::before{
+	content: url(img/信封.png);
+	display: inline-block;
+	vertical-align:middle;/*图片与文本顶部对齐*/
+	width: 16px;
+	height: 16px;
+	margin-top: -2px;/*有点歪，调了下位置*/
+	margin-right: 6px;
+}
+#footer .mail a{
+    color: #337ab7;
+}
+#footer .mail a:hover{
+	color: #23527c;
+	text-decoration: underline; 
+}
+#footer .icon-logo li,
+.icon-logo li a{
+	display: inline-block;
+	width: 60px;
+	height: 60px;	
+}
+.telephone,.mail {
+	margin: 5px 0 5px;
+}
+/* 个人qq github sina图片样式链接*/
+.icon-logo ul{
+	padding: 30px 0 5px;
+	margin-left: -20px;
+}
+/*插入一张雪碧图*/
+.icon-logo li{
+	margin-left: 20px;
+	background: #fff url(img/result-logo.png) no-repeat;
+}
+.icon-logo .qq:hover{
+	background-position: -211px 0;
+}
+.icon-logo .github{
+	background-position: -70px 0;
+}
+.icon-logo .github:hover{
+	background-position: -281px 0;
+}
+.icon-logo .sina{
+	background-position: -140px 0;
+}
+.icon-logo .sina:hover{
+	background-position: -351px 0;
+}

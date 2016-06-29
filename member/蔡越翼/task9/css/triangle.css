@@ -1,0 +1,37 @@
+body,div{
+	margin:0;
+	padding:0;
+}
+div{
+	margin-left:3px;
+	margin-bottom:30px;
+}
+.size{
+	width:0;
+	height:0;
+	border-width:30px;
+	border-style:solid;
+}
+.full{
+	border-color:#0600FF #FFFF00 #008B00 #FF0400;
+}
+.top{
+	border-color:#0600FF transparent transparent transparent;
+}
+.left{
+	border-color:transparent transparent transparent #FF0400;
+}
+.right{
+	border-color:transparent #FFFF00 transparent transparent;
+}
+.bottom{
+	border-color:transparent transparent #008B00 transparent;
+}
+.left-bottom{
+	border-width:20px;
+	border-color:transparent transparent #FF0400 #FF0400;
+}
+.right-bottom{
+	border-width:20px;
+	border-color:transparent #008B00 #008B00 transparent;
+}

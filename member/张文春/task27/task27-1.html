@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task27-1</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+		html,body,ul,li{
+			margin:0;
+			padding: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.clear:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.container{
+			position: relative;
+			width: 310px;
+			height: 260px;
+			border: 1px solid #ccc;
+		}
+		.img-ct{
+
+		}
+		.img-ct img{
+			width: 310px;
+			height: 260px;
+		}
+		.img-ct li{
+			position: absolute;
+			display: none;
+		}
+		
+		.arrow{
+			position: absolute;
+			top: 50%;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #ccc;
+			border-radius: 20px;
+			line-height: 20px;
+			background: #ccc;
+			text-align: center;
+		}
+		.arrow:hover{
+			opacity: 0.4;
+		}
+		.pre{
+			left: 10%;
+		}
+		.next{
+			right: 10%;
+		}
+		
+		.bullet{
+			position: absolute;
+			left: 50%;
+			margin-left: -46px;
+			bottom: 10px;
+		}
+		.bullet li{
+			
+			width: 15px;
+			height: 5px;
+			border: 1px solid #ccc;
+			background: #ccc;
+			border-radius: 5px;
+			display: inline-block;
+		}
+		.active{
+			opacity: 0.3;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="img-ct clear">				
+			<li data-id=0><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
+			<li data-id=1><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
+			<li data-id=2><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a></li>
+			<li data-id=3><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a></li>
+		</ul>
+		<a href="#" class="arrow pre"><</a>
+		<a href="#" class="arrow next">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		
+
+		<script>
+			var $container = $('.container'),
+				$ct = $('.img-ct'),
+				$items = $ct.children(),
+				$pre = $('.pre'),
+				$next = $('.next'),
+				$bullet = $('.bullet'),
+				imgCount = $items.length;
+
+
+
+			var curidx = 0;
+			var islocked = false;
+			$next.on('click',function(e){
+				// e.preventDefault();
+				playNext();
+
+			});
+			$pre.on('click',function(){
+				playPro();
+			})
+			$bullet.find('li').on('click',function(){
+				$this = $(this);
+				play($this.index());
+			})
+
+			play(0);
+			autoPlay();
+			function playNext(){
+				play((curidx + 1)%imgCount);
+			}
+			function playPro(){
+				play((curidx -1)%imgCount);
+			}
+			function play(idx) {
+				if (islocked) return;
+				islocked = true;
+				$items.eq(curidx).fadeOut(500);
+				$items.eq(idx).fadeIn(500,function(){
+					islocked = false;
+				});
+				curidx = idx;
+				setBullet();
+			}
+			function setBullet(){
+				$bullet.find('li').removeClass('active');
+				$bullet.find('li').eq(curidx).addClass('active');
+			}
+			
+			function autoPlay(){
+				clock = setInterval(function(){
+					playNext();
+				},2000)
+			}
+			function stopAuto(){
+				clearInterval(clock);
+			}
+
+		</script>
+	</div>
+</body>
+</html>

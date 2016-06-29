@@ -1,0 +1,264 @@
+/*icon-font*/
+@font-face {font-family: 'iconfont';
+    src: url('iconfont.eot'); /* IE9*/
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont.woff') format('woff'), /* chrome、firefox */
+    url('iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.icon-font{
+    font-family:"iconfont" !important;
+    font-size:32px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+    color: #337ab7;
+}
+/*css reset*/
+html,body,ul{
+  margin: 0;
+  padding: 0;
+}
+h1,h2,h3,h4,h5,h6{margin: 10px 0;}
+ul,ol{
+  list-style: none;
+}
+
+/*common*/
+
+html,body{
+  height: 100%;
+}
+
+.btn{
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+  padding: 0 15px;
+  line-height: 2em;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  transition: 0.4s;
+}
+
+/*header start*/
+
+header{
+  height: 100%;
+  text-align: center;
+  position: relative;
+  background: url(../img/bg.jpg) no-repeat center;
+  box-sizing: border-box;
+}
+
+header > div{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+header > div > h1{
+  font-size: 56px;
+}
+
+header > div > p{
+  font-size: 22px;
+}
+
+
+header > div > a:hover{
+  background: rgba(0, 0, 0, 0.8);
+}
+
+/*header end*/
+
+/*about start*/
+.about{
+  padding: 50px 100px;
+  text-align: center;
+}
+
+.about h3{
+  font-size: 36px;
+}
+/*about end*/
+
+/*skill start*/
+.skill{
+  color: #fff;
+  padding: 50px 0px;
+  text-align: center;
+  background: #337ab7;
+}
+.skill h3{
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+.skill .line{
+  max-width: 100px;
+  border-bottom: 1px solid #fff;
+  margin: 0 auto;
+}
+.skill ul{
+  min-width: 200px;
+  overflow: hidden;
+  width: 80%;
+  margin: 30px auto 0;
+}
+.skill ul li{
+  float: left;
+  padding: 0 50px;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+}
+@media (min-width: 1050px) {
+  .skill ul li{width: 25%;}
+}
+@media (min-width: 640px) and (max-width: 1050px) {
+  .skill ul li{width: 50%;}
+}
+@media (max-width: 640px){
+  .skill ul li{width: 100%;}
+}
+.skill .round{
+  background: #fff;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.skill .icon-font{
+  line-height: 100px;
+  font-size: 50px;
+}
+.skill a{
+  background: #fff;
+  color: #999;
+  line-height: 35px;
+  display: inline-block;
+  padding: 0 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.skill a:hover{
+  background: #ccc;
+  color: #fff;
+}
+/*skill end*/
+
+/*what start*/
+.what{
+  display: table;
+  width: 100%;
+  height: 400px;
+  background: url(../img/callout.jpg) no-repeat center;
+}
+.what h3{
+  margin: 0;
+  color: #fff;
+  font-size: 54px;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+/*what end*/
+
+/*myworks start*/
+
+.myworks{
+  padding: 50px 0;
+  text-align: center;
+}
+.myworks h3{
+  text-align: center;
+  font-size: 34px;
+}
+.myworks .line{
+  max-width: 100px;
+  border-bottom: 1px solid #ccc;
+  margin: 0 auto;
+}
+.myworks ul{
+  width: 75%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.myworks ul li{
+  float: left;
+  height: 300px;
+  padding: 20px;
+  box-sizing: border-box;
+  margin-top: 20px;
+  transition: 300ms;
+}
+.myworks ul li:hover{
+  opacity: 0.7;
+}
+@media (min-width: 960px) {
+  .myworks ul li{width: 50%;}
+}
+@media (max-width: 960px){
+  .myworks ul li{width: 100%;}
+}
+.myworks ul li>a{
+  display: block;
+  height: 260px;
+}
+.myworks ul li>a>img{
+  width: 100%;
+  height: 100%;
+}
+.myworks .btn{
+  margin-top: 30px;
+  border: 1px solid #ccc;
+  line-height: 1.5em;
+}
+.myworks .btn:hover{
+  background: #fff;
+  line-height: 1.5em;
+  border: 1px solid #ccc;
+  color: #000;
+}
+/*myworks end*/
+
+
+/*other start*/
+.other{
+  background: #337ab7;
+  color: #fff;
+  padding: 50px 0;
+  text-align: center;
+}
+.other h3{font-size: 30px}
+
+.other > div{
+  width: 260px;
+  margin: 30px auto 0;
+  color: #000;
+  font-size: 0;
+}
+
+.other > div > a{
+  display: inline-block;
+  padding: 0 20px;
+  font-size: 30px;
+  line-height: 2em;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.other > div > a.blog{
+  background: #fff;
+}
+.other > div > a.github{
+  background: #89CA94;
+  margin-left: 20px
+}
+.other > div > a:hover{
+  opacity: 0.9;
+  border-radius: 15px;
+}
+
+/*other end*/

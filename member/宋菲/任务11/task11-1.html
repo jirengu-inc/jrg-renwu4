@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+html, body, ul, li {
+	margin: 0;
+	padding: 0;
+}
+ul, li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: #000;
+}
+.nav {
+	line-height: 40px;
+}
+.nav>li {
+	float: left;
+	position: relative;
+}
+.nav>li>a {
+	display: block;
+	height: 40px;
+	padding: 0 8px;
+	background-color: rgb(203, 203, 203);
+	width: 60px;
+	font-size: 14px;
+	text-align: center;
+}
+.nav>li>a:hover {
+	background-color: rgb(170, 170, 170);
+}
+.nav>li>ul {
+	display: none;
+}
+.nav>li:hover>ul {
+	display: block;
+	border: 1px solid #ccc;
+	position: absolute;
+	top: 100%;
+	left: 0;
+}
+.nav>li:hover>ul>li {
+
+}
+
+.nav>li:hover>ul>li>a{
+	display: block;
+	font-size: 14px;
+	height: 40px;
+	padding: 0 8px;
+	text-align: center;
+}
+.nav>li:hover>ul>li>a:hover{
+	background-color: rgb(170, 170, 170);
+}
+
+</style>
+</head>
+<body>
+<ul class="nav">
+	<li>
+		<a href="#">前端</a>
+		<ul>
+			<li>
+				<a href="#">javascript</a>
+			</li>
+			<li>
+				<a href="#">html</a>
+			</li>
+			<li>
+				<a href="#">css</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">服务端</a>
+		<ul>
+			<li>
+				<a href="#">node</a>
+			</li>
+			<li>
+				<a href="#">php</a>
+			</li>
+			<li>
+				<a href="#">java</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">前端工具</a>
+		<ul>
+			<li>
+				<a href="#">sublime</a>
+			</li>
+			<li>
+				<a href="#">webstrom</a>
+			</li>
+			<li>
+				<a href="#">git</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		<a href="#">HTML</a>
+	</li>
+	<li>
+		<a href="#">NODE</a>
+	</li>
+</ul>
+</body>
+</html>

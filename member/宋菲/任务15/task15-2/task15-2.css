@@ -1,0 +1,409 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-06-13 09:24:49
+ * @version $Id$
+ */
+html,body,ul{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-size: 14px;
+	font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color:#333;
+}
+.wrap{
+	width: 1000px;
+	margin: 0 auto;
+}
+.container-pad{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+#header{
+	background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/header-bg.jpg)
+	no-repeat center center;
+	background-size: cover;
+
+}
+#nav .logo{
+	display: block;
+	float: left;
+	font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+	color:#FED136;
+	font-size: 30px;
+}
+#nav ul li{
+	float: left;
+}
+#nav ul{
+	float: left;
+	padding-left: 360px;
+}
+#nav ul li a{
+	display: block;
+	color:#fff;
+	font-size: 16px;
+	padding: 8px 10px;
+	text-transform:uppercase;
+}
+#nav ul li a:hover{
+	color:#FED136;
+}
+#welcome{
+}
+#welcome .container{
+	padding-top: 173px;
+	padding-bottom: 150px;
+	text-align: center;
+}
+#welcome h2{
+	font-size:40px;
+	color: #fff;
+	font-family: "Axure Handwriting";
+
+	 }
+#welcome h3{
+	font-size: 60px;
+	color: #fff;
+}
+#welcome a{
+	display: block;
+	color: #fff;
+	padding: 15px 5px;
+	background: #FED136;
+	width: 150px;
+	margin: 0 auto;
+	font-weight: bold;
+	border-radius: 3px;
+	font-size: 16px;
+}
+#welcome a:hover{
+	background-color:rgb(254,197,3);
+}
+#content{}
+#services .container{
+	padding: 70px 0;
+	text-align: center;
+} 
+#services h2{
+	font-size: 36px;
+	margin-bottom: 10px;
+
+}
+#services p{
+	color: #777;
+	font-size: 16px;
+}
+#services ul{
+	margin-top: 40px;
+	margin-left: -20px;
+}
+#services li{
+	float: left;
+	width: 320px;
+	margin-left: 20px;
+}
+#services span{
+	display: block;
+	width: 100px;
+	height: 100px;
+	border-radius: 100px;
+	background-color: #FED136;
+	margin: 0 auto;
+}
+#services span i{
+	color: #fff;
+	font-size:50px;
+	font-weight: bold;
+	display: block;
+	padding-top: 20px;
+}
+#portfolio{
+	background-color: #F7F7F7;
+}
+#portfolio .container{
+	padding: 100px 0 120px;
+	text-align: center;
+	
+}
+#portfolio ul{
+		margin-left: -20px;
+		margin-top: 60px;
+	}
+	#portfolio li{
+		float: left;
+		margin-left: 20px;
+		margin-bottom: 30px;
+		background: #fff;
+	}
+	#portfolio img{
+		width: 320px;
+	}
+	#portfolio a{
+		display: block;
+		position: relative;
+	}
+	#portfolio .img-hover{
+		display: none;
+		position: absolute;
+		width: 320px;
+		height: 231px;
+		background: rgb(254,209,54);
+		text-align: center;
+	}
+	#portfolio .img-hover i{
+		position: relative;
+		top: 50%;
+		margin-top: -20px;
+		display: block;
+		color: #fff;
+		font-size: 40px;
+	}
+	#portfolio a:hover .img-hover{
+		display: block;
+		background: rgba(254,209,54,.8);
+	}
+	#portfolio p{
+		color:#777;
+	}
+	#about .container{
+	padding: 100px 0;
+	text-align: center;
+}
+#about h2{
+	font-size: 30px;
+}
+#about p{
+	font-size: 16px;
+	color:#777;
+	margin-bottom: 30px;
+}
+#about ul{
+	position: relative;
+}
+#about ul:before{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	content: "";
+	width: 2px;
+	background-color: #f1f1f1;
+	z-index: -1;
+}
+#about ul li{
+	position: relative;
+	margin-top: 80px;
+}
+#about ul li img{
+	width: 140px;
+	padding: 8px;
+	background: rgb(241,241,241);
+	border-radius: 50%;
+
+}
+#about ul li .word-wrap{
+	position: absolute;
+	width: 400px;
+	top: 0;
+}
+#about ul li h4{
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.word-wrap1,.word-wrap3
+{
+	text-align: right;
+}
+.word-wrap2,.word-wrap4
+{
+	text-align: left;
+	position: absolute;
+	right: 0;
+}
+.img-wrap5{
+	width: 140px;
+	height: 140px;
+	border: 8px solid rgb(241,241,241);
+	background: rgb(254,209,54);
+	border-radius: 50%;
+	margin: 0 auto;
+
+}
+.img-wrap5 span{
+	display: block;
+	padding: 35px 20px 40px;
+	font-size: 20px;
+	color: #fff;
+	font-weight: bold;
+}
+#team{
+	background-color: rgb(247,247,247);
+}
+#team .container{
+	padding: 100px 0;
+	text-align: center;
+}
+#team h1{
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+#team p{
+	font-size: 16px;
+	color: #777;
+	margin-top: 10px;
+}
+#team ul{
+	margin-left: -125px;
+	margin-top: 80px;
+}
+#team ul li{
+	float: left;
+	margin-left: 125px;
+}
+#team ul li img{
+	width: 250px;
+	border-radius: 50%;
+}
+#team ul li h4{
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+#team ul li p{}
+#team ul li a{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgb(34,34,34);
+	margin-left: 6px;
+	margin-right: 6px;
+
+}
+#team ul li a:hover{
+	background: rgb(254,209,54);
+}
+#team ul li a i{
+	display: block;
+	padding-top: 5px;
+	color:#fff;
+	font-size: 26px;
+}
+#team .short{
+	padding-top: 60px;
+	width: 800px;
+	margin: 0 auto;
+}
+#logo{
+	padding: 25px 0;
+}
+#logo a img{
+	padding: 5px;
+	margin: 0 18px;
+}
+#map{
+	background: url(http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/map-image.png)
+	no-repeat center center;
+	background: #eee;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+#map .container{
+	padding: 100px 0;
+	text-align: center;
+}
+#map .text{
+	float: left;
+}
+.name,.email,.phone{
+	padding: 20px;
+	width: 430px;
+	margin-bottom: 30px;
+	border-radius: 3px;
+	border: 1px solid #fff;
+}
+#map textarea{
+	float: left;
+	margin-left: 60px;
+	width: 455px;
+	height: 228px;
+	border: 1px solid #fff;
+}
+#map h1{
+	font-size: 40px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#map p{
+	color: #777;
+	font-size: 16px;
+	margin-bottom: 60px;
+}
+#map .btn{
+	display: block;
+	color: #fff;
+	padding: 15px 5px;
+	background: #FED136;
+	width: 150px;
+	margin: 0 auto;
+	font-weight: bold;
+	border-radius: 3px;
+	font-size: 16px;
+	border:none;
+}
+#map .btn:hover{
+	background-color:rgb(254,197,3);
+}
+#footer{
+	padding: 20px 0;
+}
+
+#footer .picture{
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background: rgb(34,34,34);
+	margin-left: 6px;
+	margin-right: 6px;
+
+}
+#footer span{
+	margin-right: 200px;
+}
+
+#footer .picture:hover{
+	background: rgb(254,209,54);
+}
+#footer .picture i{
+	display: block;
+	padding-top: 5px;
+	padding-left: 5px;
+	color:#fff;
+	font-size: 26px;
+}
+#footer .last{
+	color:#FED136; 
+}
+#footer .last:hover{
+	color:rgb(254,197,3);
+	text-decoration: underline;
+}
+#footer .last1{
+	margin-left: 240px;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>6 green block</title>
+	<style>
+		html,body,div,ul,li{
+			margin:0;padding:0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		.outer{
+			background:#DDD;width:640px;
+			padding-bottom: 10px;
+			margin:0 auto;
+		}
+		.outer:after{
+			content:'';
+			display:block;
+			clear:both;
+		}
+		.inner{
+			margin-left:-20px;
+
+		}
+		li{
+			width:200px;height:80px;
+			margin-top:10px;
+			margin-left:20px;
+			background:green;
+			float:left;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="inner">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
