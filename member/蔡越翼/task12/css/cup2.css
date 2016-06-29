@@ -1,0 +1,30 @@
+html,body,div{
+	margin:0;
+	padding:0;
+}
+#header,#footer{
+	height: 40px;
+	background-color: gray;
+}
+#content{
+	padding-left: 200px;
+}
+#content:after{
+	content:"";
+	display: block;
+	clear: both;
+}
+#content .main{
+	float:left;
+	width:100%;
+	background-color: green;
+}
+#content .aside{
+	position: relative;
+	float: left;
+	width:200px;
+	height: 100px;
+	left: -200px;
+	margin-left: -100%;
+	background-color:red;
+}

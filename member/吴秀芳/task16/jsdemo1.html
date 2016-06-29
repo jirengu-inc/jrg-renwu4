@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	   /*console.log(a);
+	  var a;
+	 
+	  a = 1;
+	  console.log(a);
+
+	 var a = 1;
+	  var b = 2;
+	  console.log('hello');
+	  var b="hello",
+	  c="world";*/
+	    function isNumber(el){
+	    	if(typeof(el)==="number"){
+              return"true";
+	    	}
+	    	else{
+	    		return"false";
+	    	}
+		 }
+		function isString(el){
+		    if(typeof(el)==="string"){
+               return"true";
+		    }
+		    else{
+		    	return"false";
+		    }
+		}
+		function isBoolean(el){
+		    if(typeof(el)==="boolean"){
+              return"true";
+		    }
+		    else{
+		    	return"false";
+		    }
+		}
+		function isFunction(el){
+		    if(typeof(el)==="function"){
+              return"true";
+		    }
+		    else{
+		    	return"false";
+		    }
+		}
+
+		var a = 2,
+		    b = "jirengu",
+		    c = false;
+		alert( isNumber(a) );  //true
+		alert( isString(a) );  //false
+		alert( isString(b) );  //true
+		alert( isBoolean(c) ); //true
+		alert( isFunction(a)); //false
+		alert( isFunction( isNumber ) ); //true
+	</script>
+</body>
+</html>

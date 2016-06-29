@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>模态框</title>
+		<style>
+		html,body,p,h3 {
+			padding:0px;
+			margin:0px;
+			box-sizing:border-box;
+		}
+		body,html{
+			height:100%;
+			width:100%;
+		}
+		a {
+			text-decoration: none;
+		}
+		.clearfix:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		#btn {
+			margin:10px;
+		}
+		.modal-ct {
+			width:400px;
+			height:200px;
+			border:1px solid #ccc;
+			border-radius: 5px;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-left:-200px;
+			margin-top:-100px;
+			display:none;
+		}
+		.modal-ct .header {
+			height:30px;
+			line-height:30px;
+			border-bottom:1px solid #ccc;
+
+		}
+		.modal-ct .header h3 {
+			float:left;
+		}
+		.modal-ct .header a {
+			float:right;
+			padding-right:10px;
+		}
+		.modal-ct .content {
+			padding:50px 0px;
+		}
+		.modal-ct .footer {
+			height:30px;
+			border-top:1px solid #ccc;
+			line-height:30px;
+			}
+		.modal-ct .footer .btn {
+			float:right;
+			display:block;
+			padding:0px 10px;
+			}
+		</style>
+	</head>
+	<body>
+		 <button id="btn">点我</button>
+		 <div class="modal">
+			<div class="modal-ct">
+				<div class="header clearfix">
+					<h3>我是标题</h3>
+					<a class="close" href="#">x</a>
+				</div>
+				<div class="content">
+					<p>我是内容1</p>
+					<p>我是内容1</p>
+				</div>
+				<div class="footer clearfix">
+					<a class="btn btn-confrim" href="#">确认</a>
+					<a class="btn btn-cancel" href="#">取消</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			var btn=document.getElementById("btn");
+			var modalCt=document.querySelector(".modal-ct")
+			function hasClass (ele, cls){
+				var regex=new RegExp('\\b'+cls+'\\b')
+				var str=ele.className;
+				return str.match(regex);
+            }
+			function showModal(modalCt) {
+				modalCt.style.display="block"
+			}
+			function hiddenModal(modalCt){
+				modalCt.style.display="none"
+			}
+			btn.addEventListener("click",function(e) {
+				e.stopPropagation();
+				showModal(modalCt);
+			});
+			modalCt.addEventListener("click",function(e) {
+				console.log(e) 
+				e.stopPropagation();
+				if(hasClass(e.target,"close")||hasClass(e.target,"btn-cancel")||hasClass(e.target,"modal")) {
+					hiddenModal(modalCt);
+				}});
+			document.body.addEventListener("click",function(e) {
+				console.log(e);
+				hiddenModal(modalCt);
+			});
+
+				
+		</script>
+	</body>
+</html>
