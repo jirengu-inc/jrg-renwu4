@@ -104,14 +104,13 @@ html,body{
   height: 112px;
   background: #FFF;
   border-radius: 50%;
-  margin: 0 44px;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 112px;
 }
 
 .skill-intro li .icon .iconfont {
-  font-size: 60px !important;
-  display: inline-block;
-  margin-top: 21px;
-  margin-left: 26px;
+  font-size: 60px;
   color:#337AB7;
 }
 
@@ -154,9 +153,11 @@ html,body{
   font-size: 50px;
 }
 /*我的作品*/
+.works-wrap {
+  text-align: center;
+}
 
 .works-wrap h3{
-  text-align: center;
   font-size: 40px;
 }
 
@@ -188,12 +189,19 @@ html,body{
   width: 440px;
 }
 
-.works-wrap>a{
+.works-item li a{
   display: block;
+}
+
+.works-item li a:hover{
+  opacity: 0.7;
+}
+
+.works-wrap>a{
+  display: inline-block;
   width: 70px;
   padding:10px;
   background: rgba(0, 0, 0, 0.4);
-  margin:0 auto;
   color: #FFF;
 }
 
