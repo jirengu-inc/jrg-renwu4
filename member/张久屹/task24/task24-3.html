@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+  <style>
+   body{
+    padding:40px;
+   }
+  .rt p{
+  	font-size: 12px;
+  	color: #ccc;
+    margin: 8px 0;
+  }
+  #father{
+    overflow: auto;
+    width:400px;
+  }
+  .lt{
+    float:left;
+    width:100px;
+  }
+  .rt{
+    float:left;
+  }
+  .lt p{
+    font-size:15px;
+  }
+  .lt>p:first-child{
+    margin:2px 0 35px 0;
+  }
+  .lt>p:last-child{
+    margin-top:33px;
+  }
+  #btn{
+    margin-left:100px;
+    margin-top: 25px;
+  }
+
+  </style>
+</head>
+<body>
+	
+	
+	<h3>注册</h3>
+	<div id="father">
+		<div class="lt">
+			<p>用户名：</p>
+			<p>密码：</p>
+			<p>再输一次：</p>
+		</div>
+		<div class="rt">
+			<input  id="user" type="text" placeholder="用户名(hunger被注册过)">
+			<p class="p1">只能是字母、数字、下划线，3-10个字符</p>
+			<input class="pwd" type="password"><br>
+      <p class="p1">大写字母、小写、数字、下划线最少两种，6-15个字符</p>
+			<input class="pwd" type="password" placeholder="在输入一次密码">
+      <p class="p1"><br></p>
+		</div>
+	</div>
+    <button id="btn">注册</button>
+
+    <script>
+    var user = document.querySelector('#user'),
+        pwd = document.querySelectorAll(".pwd"),
+        btn = document.querySelector('#btn'),
+        p1 = document.querySelectorAll('.p1');
+
+    user.addEventListener('change',function(){
+      if(user.value.match(/\w{2,9}\S/g) == user.value){
+        return p1[0].innerHTML="用户名可用";
+      }else{
+        return p1[0].innerHTML="用户名格式不正确";
+      }
+    });
+    //user的正则
+
+    user.addEventListener('change',function(){  //绑定ajax
+      ajax({
+        url:'task24-3.php',
+        type: 'get',
+        //传递类型
+        datatype: 'json',//text,json
+        data:{
+          username: user.value,
+        },
+        success: function(data){
+          dealWith(data);
+        },
+        error: function(){
+          console.log('出错了。。。。')
+        }
+      }); 
+    });
+
+    function ajax(opts){
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange=function(){
+        if(xmlhttp.readyState==4 && xmlhttp.status==200){
+          var json = xmlhttp.responseText;
+          //解析后台响应的json数据
+          opts.success(json);
+        }
+        if(xmlhttp.status == 404){
+          opts.error();
+        }
+      }
+      var dataStr= '';
+      for(var key in opts.data){
+        dataStr += key + '=' +opts.data[key] + '&';
+      }
+      dataStr = dataStr.substr(0,dataStr.length-1);
+      if(opts.type.toLowerCase() == 'post'){
+        xmlhttp.open(opts.type,opts.url,true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(dataStr);
+      }
+      if(opts.type.toLowerCase() == 'get'){
+        xmlhttp.open(opts.type,opts.url + '?' +dataStr,true);
+        xmlhttp.send();
+      }   
+    }
+    function dealWith(str){
+      if(str == 1){
+        p1[0].innerHTML="用户已注册";
+      } 
+    };
+
+    pwd[0].addEventListener('change',function(){
+      if (pwd[0].value.length < 6 || pwd[0].value.length > 16) {
+        p1[1].innerHTML="密码格式不正确";
+        return;
+      }
+      //如果包含上述四种以外的字符，false
+      if (/[^\w]/.test(pwd[0].value)) {
+        p1[1].innerHTML="密码格式不正确";
+        return;
+      }
+      //如果全为大写、小写、下划线、数字, false
+      if (/(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(pwd[0].value)) {
+        p1[1].innerHTML= "密码格式不正确";
+        return;
+      }else{
+        p1[1].innerHTML= "fuck!";
+        return;
+      }
+    });
+    //首次次密码的正则
+
+    pwd[1].addEventListener('change',function(){
+
+      if (pwd[1].value.length < 6 || pwd[1].value.length > 16) {
+        p1[2].innerHTML="密码格式不正确";
+        return;
+      }
+      //如果包含上述四种以外的字符，false
+      if (/[^\w]/.test(pwd[1].value)) {
+        p1[2].innerHTML="密码格式不正确";
+        return;
+      }
+      //如果全为大写、小写、下划线、数字, false
+      if (/(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(pwd[1].value)) {
+        p1[2].innerHTML= "密码格式不正确";
+        return;
+      }
+      if(pwd[1].value==pwd[0].value){
+        p1[2].innerHTML= "fuck!";
+        return;
+      }else{
+        p1[2].innerHTML= "两次密码输入不一致";
+        return;
+      }
+    });
+    //第二次密码的正则
+
+    btn.addEventListener('click',function(){
+      if(p1[0].innerHTML== "用户名可用" && p1[1].innerHTML== "fuck!" && pwd[1].value==pwd[0].value ){
+        alert("正在注册~")
+      }else if(pwd[1].value!==pwd[0].value){
+        p1[2].innerHTML= "两次密码输入不一致";
+        return;
+      }
+    });
+    //基本完美
+
+
+    </script>
+
+</body>
+</html>
