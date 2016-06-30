@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>code1</title>
+  <style>
+  	*{
+	  margin: 0;
+	  padding: 0;
+	  box-sizing:border-box;
+	}
+	a{
+	  text-decoration:none;
+	  color:inherit;
+	}
+	ul,li{
+	  list-style:none;
+	}
+
+	.container{
+	 width: 200px;
+	}
+	ul{
+	  position: relative; 
+	  background: red;
+	  color:#fff;
+	  font-size: 14px;
+	}
+	.ct{
+	  position:relative;
+	  top:1px;
+	}
+	.ct a{
+	  display:block;
+	  padding:10px;
+	  margin:0 10px;
+	  border-bottom:1px dotted #fff;
+	  padding-left:10px;
+	}
+	.ct a:last-child{
+	  border-bottom:none;
+	}
+	.ct .iconfont{
+	  position:absolute;
+	  right:10px;
+	  top:10px;
+	}
+	.ct .panel{
+	  display:none;
+	  position:absolute;
+	  left:100%;
+	  top:0;
+	  background: #fff;
+	  color:#000;
+	  width: 200px;
+    border: 1px solid #ddd;
+	}
+	.panel li{
+	  float:left;
+	  padding:10px;
+	  width: 25%;
+	}
+	.ct:hover .panel{
+	  display:block;
+	}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <ul>
+      <li class="ct">
+        <a href="">珠宝玉器</a>
+        <span class='iconfont'>></span>
+        <ul class="panel">
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+        </ul>
+      </li>
+      <li class="ct">
+        <a href="">珠宝玉器</a>
+        <span class='iconfont'>></span>
+        <ul class="panel">
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+        </ul>
+      </li>
+      <li class="ct">
+        <a href="">珠宝玉器</a>
+        <span class='iconfont'>></span>
+        <ul class="panel">
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+        </ul>
+      </li>
+      <li class="ct">
+        <a href="">珠宝玉器</a>
+        <span class='iconfont'>></span>
+        <ul class="panel">
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+        </ul>
+      </li>
+      <li class="ct">
+        <a href="">珠宝玉器</a>
+        <span class='iconfont'>></span>
+        <ul class="panel">
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+          <li>翡翠</li>
+        </ul>
+      </li> 
+    </ul>
+  </div>
+</body>
+</html>
