@@ -60,9 +60,9 @@
 	  padding:10px;
 	  width: 25%;
 	}
-	.ct:hover .panel{
+/*	.ct:hover .panel{
 	  display:block;
-	}
+	}*/
 
   </style>
 </head>
@@ -126,5 +126,14 @@
       </li> 
     </ul>
   </div>
+
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    $('.ct').on('mouseover',function(){
+        $(this).find('.panel').css({'display':'block'});
+    }).on('mouseleave',function(){
+        $(this).find('.panel').css({'display':'none'});;
+    })
+  </script>
 </body>
 </html>
