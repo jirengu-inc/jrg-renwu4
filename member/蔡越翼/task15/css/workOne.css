@@ -1,0 +1,149 @@
+/*消除浏览器默认样式*/
+html,
+body,
+ul,
+li,
+p {
+	margin: 0;
+	padding: 0;
+}
+/*设置字体*/
+body { font:14px '黑体'; }
+/*a链接的默认样式*/
+a{
+	text-decoration: none;
+	color: #000;
+}
+/*li的默认样式*/
+li{
+	float: left;
+	padding: 0 10px;
+	list-style: none;
+}
+/*内容固定宽度1000px*/
+.container {
+	width: 1000px;
+	margin: 0 auto;
+}
+/*清除浮动*/
+.clearfix:after {
+	content:"";
+	display: block;
+	clear: both;
+}
+
+/*header块*/
+#header .nav-wrap { line-height: 50px; }
+.nav-wrap .main-page {
+	float: left;
+	font-size: 18px;
+}
+.nav-wrap .nav {
+	float: left;
+	margin-left: 10px;
+}
+.nav .nav-list { position: relative; }
+.nav-list:hover .child-nav { display: block; }
+.nav a { 
+	display: inline-block;
+	color: #939393; 
+}
+.nav a:hover { color:#4B4848; }
+.nav-list .child-nav {
+	position: absolute;
+	left: 0;
+	display: none;
+}
+.child-nav>li {
+	width: 100%; 
+	padding: 0 15px; 
+	background-color: #fff;
+}
+.child-nav .over:hover { background-color: #BFBCBC; }
+.child-nav .special { border-top: 1px solid #4B4848; }
+#header .require {
+	padding-top:60px;
+	padding-bottom: 60px;
+	background-color: #B84D45;
+}
+.require .h1 {
+	padding: 0;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 60px;
+	color: #fff;
+	font-weight: normal;
+	
+}
+.require .p {
+	margin-top: 40px;
+	font-size: 24px;
+	color: #fff;
+}
+
+/*content块*/
+#content .content-wrap {
+	margin-top: 30px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+.content-wrap .work-column {
+	padding-left: 15px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	text-align: left;
+	line-height: 40px;
+	background-color: #F2F3F3;
+}
+.work-column .home-page { color: red; }
+.home-page:hover { text-decoration: underline; }
+.content-wrap .works { margin-left: -35px; }
+.works .works-list {
+	width: 300px;
+	height: 350px;
+	padding: 4px;
+	margin-left: 35px;
+	margin-bottom: 35px;
+	border:1px solid #ECECEC;
+	border-radius: 5px;
+}
+.works-list>img{
+	width: 298px;
+	border: 1px solid #ECECEC;
+}
+.works-list>img:hover { opacity: 0.5; }
+.works-list .btn {
+	display: inline-block;
+	margin:20px auto;
+	padding: 8px;
+	color: #747373;
+	border-radius: 5px;
+	border:1px solid #ECECEC;
+}
+.works-list .btn:hover {
+	color: #000;
+}
+/*contact块*/
+#contact {
+	padding-top:60px;
+	padding-bottom: 60px;
+	text-align: center;
+	color: #fff;
+	background-color: #B84D45;
+}
+#contact .more {
+	margin-top:0;
+	font-size:28px;
+}
+#contact .download { font-size:20px; }
+/*footer块*/
+#footer {
+	padding:50px 0;
+	text-align: center;
+}
+#footer .hr {
+	margin:20px 0;
+	border-top:1px solid #F2F3F3;
+}
+#footer .ref { color: red; }
+
