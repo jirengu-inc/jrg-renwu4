@@ -187,6 +187,12 @@ body{
 #more p{
 	margin-bottom: 10px;
 }
+#more a{
+	color:#FFF;
+}
+#more a:hover{
+	color:#333;
+}
 #more .btn-red{
 	background-color: transparent;
 	border: 1px solid #FFF;
