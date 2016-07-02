@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>code3</title>
+
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			margin: 10px;
+		}
+		.list{
+			overflow: hidden;
+			list-style: none;
+		}
+		.list li{
+	        width: 134px;
+		    float: left;
+		    margin: 10px;
+		    height: 50px;
+		    line-height: 50px;
+		    border: 1px solid #ddd;
+		    text-align: center;
+		}
+		a{
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.more{
+			padding: 10px;
+			display: inline-block;
+			color: red;
+			border: 1px solid red;
+			border-radius: 5px;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	</style>
+</head>
+<body>
+	<ul class="list">
+		<li><a href="">内容1</a></li>
+		<li><a href="">内容2</a></li>
+	</ul>
+	<a href="#" class="more">加载更多</a>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		var lodingLock = false;
+		$('.more').on(' click',function(e){
+			var $this = $(this)
+			if (lodingLock) {
+				return;
+			}
+			lodingLock = true;
+			$this.html('加载中');
+			e.preventDefault();
+			var len = 6;
+			var start = $('.list').children().size()+1;
+			var url = 'code3.php?start='+start+'&len='+len;
+			$.get(url,function(data){
+				var data = JSON.parse(data).data;
+				for(var key in data){
+					$('.list').append('<li><a href="#">'+data[key]+'</a></li>');
+				}
+				$this.html('加载更多');
+				lodingLock = false;
+			});				
+		});
+		$('.list').on('mouseover','li',function(){
+			$(this).css({
+				'background':'pink'
+			});
+		}).on('mouseleave','li',function(){
+			$(this).css({
+				'background':'none'
+			});
+		});
+	</script>
+</body>
+</html>
