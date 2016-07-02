@@ -5,13 +5,12 @@
   <title>task25-1</title>
   <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
   <style>
-  	#wrap{
-	  width: 180px;
-	  padding:0 10px;
-	  background: #c7171e;
-	  font-size:12px;
+  #wrap{
+	  font-size:14px;
 	}
-	li{
+	ul,li{
+    margin: 0;
+    padding: 0;
 	  list-style: none;
 	}
 	a{
@@ -19,30 +18,38 @@
 	  text-decoration:none;
 	}
 	.list{
-	  list-style: none;
-	  padding: 10px 0 10px 10px;
-	  border-bottom: 1px solid 	#de272e;
+    width: 180px;
+	  padding: 0 20px;
+	  background: #c7171e;
 	  color: #fff;
 	  position: relative;
 	  cursor:pointer;
 	}
-	li>span{
+  .list>a{
+    color: #fff;
+    border-bottom: 1px solid  #de272e;
+    line-height: 40px;
+    display: block;
+    width: 185px;
+  }
+	.list span{
 	  float: right;
 	  font-weight: bold;
 	}
 	.father{
-	  width:180px;
+	  width:200px;
 	  color: black;
 	  position: absolute;
 	  background: #fff;
-	  left:190px;
+	  left:220px;
 	  border: 1px solid #ccc;
 	  top:0px;
 	  display: none; 
 	}
 	.father>li{
+    font-size: 13px;
 	  float: left;
-	  margin: 10px 40px 10px 10px;
+	  margin: 12px 30px;
 	}
 	.list.show .father{
 	  display: block;
@@ -51,7 +58,7 @@
 </head>
 <body>
 <ul id="wrap">
-  <li class="list">珠宝玉器<span>></span>
+  <li class="list"><a href="#">珠宝玉器<span>></span></a>
     <ul class="father">
       <li><a href="#">翡翠</a></li>
       <li><a href="#">玉石</a></li>
@@ -62,9 +69,10 @@
       <li><a href="#">琥珀</a></li>
       <li><a href="#">和田</a></li>
       <li><a href="#">琥珀</a></li>
+      <li><a href="#">琥珀</a></li>
     </ul>
   </li>
-  <li class="list">珠宝玉器<span>></span>
+  <li class="list"><a href="#">珠宝玉器<span>></span></a>
     <ul class="father">
       <li><a href="#">翡翠</a></li>
       <li><a href="#">玉石</a></li>
@@ -74,7 +82,7 @@
       <li><a href="#">钻石</a></li>
     </ul>
   </li>
-  <li class="list">珠宝玉器<span>></span>
+  <li class="list"><a href="#">珠宝玉器<span>></span></a>
     <ul class="father">
       <li><a href="#">翡翠</a></li>
       <li><a href="#">玉石</a></li>
@@ -82,7 +90,7 @@
       <li><a href="#">水晶</a></li>
     </ul>
   </li>
-  <li class="list">珠宝玉器<span>></span>
+  <li class="list"><a href="#">珠宝玉器<span>></span></a>
     <ul class="father">
       <li><a href="#">翡翠</a></li>
       <li><a href="#">玉石</a></li>
@@ -92,7 +100,7 @@
       <li><a href="#">钻石</a></li>
     </ul>
   </li>
-  <li class="list">珠宝玉器<span>></span>
+  <li class="list"><a href="#">珠宝玉器<span>></span></a>
     <ul class="father">
       <li><a href="#">翡翠</a></li>
       <li><a href="#">玉石</a></li>
