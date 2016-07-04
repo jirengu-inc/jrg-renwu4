@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	* {
+		padding: 0px;
+		margin: 0px;
+	}
+	
+	li {
+		position: relative;
+		width: 200px;
+		height: 30px;
+		border: 1px solid #eee;
+		line-height:30px;
+		background: #A71717; 
+	}
+	table {
+		visibility: hidden;
+		position: absolute;
+		left: 100%;
+		top:0;
+		border: 1px solid #ccc;
+	}
+	.shows {
+		visibility: visible;
+	}
+	li a {
+		padding-left: 10px;
+		text-decoration: none;
+		color: #fff;
+	}
+	li span {
+		margin-left: 100px;
+		color: #fff;
+	}
+	td {
+		width: 100px;
+		height: 20px;
+		text-align: center;
+	}
+	</style>
+</head>
+<body> 
+
+	<ul class="ct">
+		<li><a href="#">珠宝玉器</a><span>></span>
+		<table>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+			</table>		
+		</li>
+			<li><a href="#">珠宝玉器</a><span>></span>
+		<table>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+			</table>		
+		</li>
+			<li><a href="#">珠宝玉器</a><span>></span>
+		<table>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+			</table>		
+		</li>
+			<li><a href="#">珠宝玉器</a><span>></span>
+		<table>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+			</table>		
+		</li>
+			<li><a href="#">珠宝玉器</a><span>></span>
+		<table>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+				<tr>
+					<td>翡翠</td>
+					<td>宝石</td>
+				</tr>
+			</table>		
+		</li>
+	</ul>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+		 </script>
+	<script>
+	$(".ct").on("mouseenter","li",function(){
+			 $(this).find("table").addClass("shows");
+			 $(this).siblings().find("table").removeClass("shows");
+	})
+	</script>
+</body>
+</html>
+	

@@ -1,0 +1,169 @@
+html,body,ul,li{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+.between{
+	width: 1000px;
+	margin: 0 auto;
+}
+.center-c{
+	text-align: center;
+}
+.clear::after{
+	content: "";
+	display: block;
+	clear: both;
+}
+#header .top-nav{
+	background: #fff;
+	border-bottom: 1px solid #eee;
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+#header .nav>li{
+	float: left;
+	margin-left: -18px;
+	background: #fff;
+    position: relative;
+}
+ .nav>li>a{
+ 	color: #777;
+ 	padding: 18px 28px 18px 18px;
+ 	line-height: 50px;
+ }
+ .icon{
+ 	background: url(img/result5.png) no-repeat;
+ }
+ .bg1{
+ 	background-position: 78px 16px;
+ }
+ .bg1:hover{
+  	background-position: 78px -34px;
+  }
+  .icon.bg1{
+  	margin: auto 10px auto auto;
+  }
+.nav li:hover .two-nav{
+	display: block;
+}
+.nav>li>a:hover{
+	color: #000;
+}
+.nav .big,.nav .big:hover{
+ 	font-size: 20px;
+ 	color: #777;
+ }
+ .two-nav{
+ 	width: 164px;
+	background: #fff;
+	display: none;
+	position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 5px 0 10px; 
+	border: 1px solid #eee;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+.two-nav>li>a{	
+	line-height: 30px;
+	padding: 8px 74px 8px 34px;
+}
+.two-nav>li>a:hover{
+	background: #ccc;
+}
+.two-nav .icon2::before{
+	content: url(img/地球.png);
+	position: relative;
+	top: 2px;
+	right: 8px;
+}
+.two-nav .icon3::before{
+	content: url(img/五角星.png);
+	position: relative;
+	top: 2px;
+	right: 8px;
+}
+.two-nav .icon4::before{
+	content: url(img/购物车.png);
+	position: relative;
+	top: 2px;
+	right: 8px;
+}
+.two-nav .icon5{
+	padding: 16px  0 0 28px;
+    font-size: 14px;
+    color: #777;
+    border-top: 1px solid #eee;
+}
+#header .bewrite{
+	margin-top: 50px;
+	padding: 20px 0;
+	background: #bb4d45;
+}
+#main{
+	padding: 30px 0;
+}
+#main .bread-nav{
+	padding: 10px 0;
+	background: #f5f5f5;
+}
+.bread-nav a{
+	color: #777;
+}
+.bread-nav a sapn{
+	color: red;
+	margin-left: 15px;
+}
+.sample-reels .works{
+	float: left;
+    margin: 20px 0 0 20px;
+	padding: 4px 4px 30px 4px;
+	text-align: center;
+	border: 1px solid #777;
+	border-radius: 4px;
+}
+.sample-reels ul{
+	margin-left: -20px;
+}
+.sample-reels img{
+	width: 310px;
+	height: 200px;
+}
+.sample-reels h1{
+	margin-bottom: 8px;
+}
+.sample-reels .btn{
+	width: 50px;
+	padding: 6px 0;
+	border: 1px solid #777;
+	border-radius: 4px;
+	margin: 0 auto;
+	cursor:pointer; 
+}
+.sample-reels .btn:hover{
+	background: #e6e6e6;
+}
+#footer .connection{
+	margin-top: 20px;
+	background: #bb4d45;
+}
+#footer .connection-c{
+	padding: 20px 0;
+}
+#footer .copr{
+	margin-top: 30px;
+	border-top: 1px solid #eee;
+	padding: 18px 0 40px;
+}
+#footer .copr span{
+	color: #c74d45;
+}
