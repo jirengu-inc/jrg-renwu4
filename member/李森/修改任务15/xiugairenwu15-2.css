@@ -33,6 +33,8 @@ a {
 }
 #header .top-nav{
 	padding: 20px 0;
+	width: 1200px;
+	margin: 0 auto;
 }
 .top-nav>a.logo{
     color: #fec503;
