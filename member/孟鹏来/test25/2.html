@@ -1,0 +1,361 @@
+<!Doctype html>
+<meta charset="utf-8">
+<html>
+<head>
+	<style type="text/css">
+		ul{
+			list-style:none;
+			padding:0;
+			margin:0;
+		}
+		a{
+			text-decoration:none;
+		}
+		.clear:after{
+			display:block;
+			content:"";
+			height:0;
+			clear:both;
+		}
+		.tab{
+			margin-bottom: 50px;
+		}
+		.pannel{
+			border:1px solid #ccc;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			width:215px;
+		}
+		.pannel>li{
+			float:left;
+			padding:10px 10px;
+		}
+		.pannel-pr{
+			border:1px solid #ccc;
+			width:864px;
+			display:none;
+		}
+		.pannel-pr>li{
+			width:220px;
+			float:left;
+			border:1px solid #ccc;
+			padding:20px;
+			margin-right:20px;
+			margin-bottom:20px;
+			position: relative;
+
+		}
+		.pannel-pr>li a{
+			display:inline-block;
+		}
+		.pannel-pr>li:hover .cover{
+			opacity: 1;
+		}
+		.hover{
+			background:#ccc;
+			color:#ffffff;
+		}
+		.cover{
+			position:absolute;
+			top:0;
+			left:0;
+			bottom:0;
+			right:0;
+			background:rgba(0,0,0, 0.3);
+			transition: all 0.3s;
+			opacity:0;
+		}
+		.cover .btn{
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-50%,-50%);
+			border:1px solid #c81623;
+			color:#c81623;
+			padding:10px 15px;
+			border-radius: 3px;
+			text-align: center;
+			background:#fff;
+			cursor:pointer;
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script>
+		$(function(){
+			$('.pannel li').on('click',function(){
+				$index=$(this).index();
+				$(this).addClass('hover').siblings().removeClass('hover');
+
+				$(this).parents('.tab').find('.pannel-pr').css('display','none');
+				$(this).parents('.tab').find('.pannel-pr').eq($index).css('display','block');
+			})
+		})
+	</script>
+
+</head>
+<body> 
+	<div class="tab">
+		<ul class="pannel clear">
+			<li>热门
+				<span>|</span>
+			</li>
+			<li>珠宝
+				<span>|</span>
+			</li>
+			<li>奢侈</li>
+		</ul>
+		<div>
+			<ul class="pannel-pr clear" style="display:block">
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<ul class="pannel-pr clear">
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="jxl.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<ul class="pannel-pr clear">
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="jz.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="jz.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="tab">
+		<ul class="pannel clear">
+			<li>热门
+				<span>|</span>
+			</li>
+			<li>珠宝
+				<span>|</span>
+			</li>
+			<li>奢侈品2</li>
+		</ul>
+		<div>
+			<ul class="pannel-pr clear" style="display:block">
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<ul class="pannel-pr clear">
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="jxl.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<ul class="pannel-pr clear">
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="jz.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="jz.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<a href="#">藏美千足金和田玉金镶玉路路通吊坠</a>
+					<span>$1699.00</span>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!Doctype html>
+<meta charset="utf-8">
+<html>
+<head>
+	<style type="text/css">
+		body{
+			color:#ffffff;
+		}
+		a{
+			text-decoration:none;
+			color:black;
+		}
+		.firstLi>a{
+			text-decoration:none;
+			color:#ffffff;
+		}
+		ul{
+			list-style: none;
+			padding:0px;
+			margin:0px;
+			width:200px;
+		}
+		#wrap>ul>li{
+			padding:10px 30px 10px 10px;
+			background-color:#c7171e;
+			border-bottom: 1px dotted #de272e;
+			clear:both;
+			position:relative;
+		}
+		#wrap>ul>li span{
+			float:right;
+		}
+		#wrap>ul>li .pannel{
+			position:absolute;
+			top:0;
+			left:200px;
+			border:1px solid #ccc;
+			color:black;
+			width:210px;
+			font-size:12px;
+			display:none;
+		}
+		.pannel li{
+			width:55px;
+			float:left;
+			display:inline-block;
+			padding:10px 20px 10px 20px;
+		}
+		.show{
+			background:red;
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script>
+		$(function(){
+			$('.firstLi').on('mouseover',function(){
+				$(this).find('.pannel').css('display','block');
+			}).on('mouseout',function(){
+				$(this).find('.pannel').css('display','none');
+			});
+		})
+	</script>
+
+</head>
+<body> 
+	<div id="wrap">
+		<ul class="firstUl">
+			<li class="firstLi">
+				<a href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="pannel">
+					<li><a href="#">翡翠</a></li>
+					<li><a href="#">宝石</a></li>
+					<li><a href="#">玛瑙</a></li>
+					<li><a href="#">钻石</a></li>
+					<li><a href="#">和田</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">珍珠</a></li>
+					<li><a href="#">针具</a></li>
+					<li><a href="#">琥珀</a></li>
+					<li><a href="#">琥珀</a></li>
+				</ul>
+			</li>
+
+			<li class="firstLi">
+				<a href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="pannel">
+					<li><a href="#">和田</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">珍珠</a></li>
+					<li><a href="#">针具</a></li>
+					<li><a href="#">琥珀</a></li>
+					<li><a href="#">琥珀</a></li>
+				</ul>
+			</li>
+			<li class="firstLi">
+				<a href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="pannel">
+					<li><a href="#">和田</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">珍珠</a></li>
+					<li><a href="#">针具</a></li>
+				</ul>
+			</li>
+			<li class="firstLi">
+				<a href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="pannel">
+					<li><a href="#">和田</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">珍珠</a></li>
+					<li><a href="#">针具</a></li>
+					<li><a href="#">琥珀</a></li>
+					<li><a href="#">琥珀</a></li>
+				</ul>
+			</li>
+			<li class="firstLi">
+				<a href="#">珠宝玉器</a>
+				<span>></span>
+				<ul class="pannel">
+					<li><a href="#">和田</a></li>
+					<li><a href="#">玉石</a></li>
+					<li><a href="#">珍珠</a></li>
+					<li><a href="#">针具</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

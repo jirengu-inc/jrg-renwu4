@@ -1,0 +1,207 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>code4</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	
+		<style type="text/css">
+
+		
+		html,body,ul,li,p{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		html, body, .carousel{
+			height: 100%;
+			width: 100%;
+		}
+
+		.carousel{
+			position: relative;
+			overflow: hidden;
+		}
+		.carousel .img-list{
+			height: 100%;
+			position: absolute;
+			/*width: 1000000px;*/
+		}
+		.carousel .img-list li{
+			height: 100%;
+			float: left;
+			/*position: relative;*/
+		}
+		.carousel .img-list li .content{
+			display: table-cell;
+		    vertical-align: middle;
+		    text-align: center;
+		    font-size: 30px;
+		}
+
+		.bullet{
+			position: absolute;
+			left: 50%;
+			bottom: 10px;
+			transform: translateX(-50%);
+
+		}
+		.bullet li{
+		    display: inline-block;
+		    padding: 8px;
+		    background: rgba(0,0,0,0.5);
+		    margin: 2px;
+		    border-radius: 10px;
+		}
+		.bullet li:hover{
+			cursor: pointer;
+		}
+		.bullet li.active{
+			background: red;
+		}
+		</style>
+
+	</head>
+	<body>
+	<div class="carousel">
+		<ul class="img-list">
+			<li style="display: table;background: url('images/full-1.jpg') center center no-repeat;background-size: cover;">
+				<div class="content">
+					<h1>this is first</h1>
+				</div>
+			</li>
+			<li style="display: table;background: url('images/full-2.jpg') center center no-repeat;background-size: cover;">
+				<div class="content">
+					<h1>this is second</h1>
+				</div>
+			</li>
+			<li style="display: table;background: url('images/full-3.jpg') center center no-repeat;background-size: cover;">
+				<div class="content">
+					<h1>this is third</h1>
+				</div>
+			</li>
+			<li style="display: table;background: url('images/full-4.jpg') center center no-repeat;background-size: cover;">
+				<div class="content">
+					<h1>this is fourth</h1>
+				</div>
+			</li>
+		</ul>
+		<ul class="bullet">
+			
+		</ul>
+	</div>
+	</body>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+
+		(function($){
+
+			$.fn.carousel = function(){
+				var $this = $(this);
+				var $imgList = $this.find('.img-list'),
+					$list = $imgList.children(),
+					$bullet = $this.find('.bullet'),
+					width = $(window).width(),
+					count = $imgList.children().size(),
+					currIdx = 0,
+					clock,
+					isAnimate = false;
+					
+				$list.css({'width':width})
+
+				$imgList.append($list.first().clone());
+				$imgList.prepend($list.last().clone());
+
+				
+				var realCount = $imgList.children().size();
+				
+				$imgList.css({
+					'width':width*realCount,
+					'left':-width
+				});
+
+				bullet();
+				playAuto();
+
+				$bullet.on('click','li',function(){
+					stopAuto();
+					var idx = $(this).index();
+					if(idx > currIdx){
+						playNext(idx - currIdx);
+					}else if(idx < currIdx){
+						playPrev(currIdx - idx);
+					}
+					playAuto();
+				})
+				function playNext(idx){
+					var idx = idx || 1;
+					if (isAnimate) { return;}
+					isAnimate = true;
+					$imgList.animate({
+						'left':'-='+width*idx
+					},500,function(){
+						currIdx = (currIdx + idx)%count;
+						if (currIdx == 0) {
+							$imgList.css({
+								'left':-width
+							});
+							currIdx = 0;
+						}
+						setBullet();
+						isAnimate = false;
+					});	
+				}
+				function playPrev(idx){
+					var idx = idx || 1;
+					if (isAnimate) {return;}
+					isAnimate = true;
+					$imgList.animate({
+						'left':'+='+width*idx
+					},500,function(){
+						currIdx = (count + currIdx - idx)%count;
+						if (currIdx == count-1) {
+							$imgList.css({
+								'left':-width*count
+							});
+							currIdx = count-1;
+						}
+						setBullet();
+						isAnimate = false;
+					});	
+				}
+
+				function bullet(){
+					console.log($bullet)
+					for (var i = 0; i < count; i++) {
+						$bullet.append('<li></li>');
+					}
+					$bullet.children().first().addClass('active');	
+				}
+				function setBullet(){
+					$bullet.children().removeClass('active')
+						   .eq(currIdx).addClass('active')
+				}
+				function playAuto(){
+					clock = setInterval(function(){
+						playNext()
+					},3000);
+				}
+				function stopAuto(){
+					clearInterval(clock);
+				}
+			}
+			
+		})(jQuery)
+
+		$('.carousel').carousel();
+		</script>
+	</html>

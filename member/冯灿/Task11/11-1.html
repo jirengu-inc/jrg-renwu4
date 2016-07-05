@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>11-1</title>
+        <style>
+        html, body, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+        }
+        .nav {
+            background: rgb(203, 203, 203);
+            width: fit-content;
+            font-size: 14px;
+            line-height: 14px;
+        }
+        .nav > ul > li {
+            display: inline-block;
+        }
+        .outter {
+            padding: 10px;
+            position: relative;
+        }
+        .outter:hover {
+            background: rgb(169, 169, 169);
+            cursor: pointer;
+        }
+        .inner {
+            display: none;
+        }
+        .outter:hover .inner {
+            position: absolute;
+            background: white;
+            display: block;
+            top: 100%;
+            left: 0;
+            border: 1px solid #EEE;
+        }
+       .outter:hover li {
+            display: block;
+            padding: 5px;
+       }
+       .outter:hover li:hover {
+            background: #EEE;
+       }
+        </style>
+    </head>
+    <body>
+        <div class="nav">
+            <ul>
+                <li class="outter">
+                    前端
+                    <ul class="inner">
+                        <li><a href="">HTML</a></li>
+                        <li><a href="">CSS</a></li>
+                        <li><a href="">JavaScript</a></li>
+                    </ul>
+                </li><li class="outter">
+                服务端
+                <ul class="inner">
+                    <li><a href="">Node</a></li>
+                    <li><a href="">PHP</a></li>
+                    <li><a href="">Java</a></li>
+                </ul>
+            </li><li class="outter">
+            前端工具
+            <ul class="inner">
+                <li><a href="">Sublime</a></li>
+                <li><a href="">WebStorm</a></li>
+                <li><a href="">Git</a></li>
+            </ul>
+        </li><li class="outter">HTML
+        </li><li class="outter">NODE</li>
+    </ul>
+</div>
+</body>
+</html>

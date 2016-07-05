@@ -15,11 +15,7 @@ a{
 	color: #000;
 }
 /*li的默认样式*/
-li{
-	float: left;
-	padding: 0 10px;
-	list-style: none;
-}
+li{ list-style: none; }
 /*内容固定宽度1000px*/
 .container {
 	width: 1000px;
@@ -34,13 +30,17 @@ li{
 
 /*header块*/
 #header .nav-wrap { line-height: 50px; }
-.nav-wrap .main-page {
+.nav-wrap .logo {
 	float: left;
 	font-size: 18px;
 }
 .nav-wrap .nav {
 	float: left;
 	margin-left: 10px;
+}
+.nav>li {
+	float: left;
+	padding: 0 10px;
 }
 .nav .nav-list { position: relative; }
 .nav-list:hover .child-nav { display: block; }
@@ -99,6 +99,7 @@ li{
 .home-page:hover { text-decoration: underline; }
 .content-wrap .works { margin-left: -35px; }
 .works .works-list {
+	float: left;
 	width: 300px;
 	height: 350px;
 	padding: 4px;
@@ -146,4 +147,5 @@ li{
 	border-top:1px solid #F2F3F3;
 }
 #footer .ref { color: red; }
+
 

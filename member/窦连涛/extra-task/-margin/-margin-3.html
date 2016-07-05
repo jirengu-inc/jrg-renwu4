@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>负margin</title>
+	<style>
+		.wrap2{
+		    width:322px;
+		    border:dashed 1px orange;
+		}
+
+		.wrap2 .inner{
+			overflow:hidden;
+			margin-right:-10px;
+		}
+
+		.wrap2 .item{
+			float:left;
+			width:100px;
+			height:100px;
+			margin:10px 10px 10px 0;
+			background:blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap2">
+	  <div class="inner">
+	        <div class="item"></div>
+	        <div class="item"></div>
+	        <div class="item"></div>
+	        <div class="item"></div>
+	        <div class="item"></div>
+	        <div class="item"></div>
+	  </div>
+	</div>
+</body>
+</html>
