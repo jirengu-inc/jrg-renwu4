@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <title>code1</title>
+  <style>
+  	*{
+	  margin: 0;
+	  padding: 0;
+	}
+	body{
+	  margin: 50px;
+	}
+	.carousel{
+	  width: 200px;
+	  height: 200px;
+	  overflow:hidden;
+	  position:relative;
+	}
+	ul{
+	  list-style:none;
+	  
+	}
+	.img-list{
+		position:relative;
+	}
+	.img-list li{
+	  position:absolute;
+	  top:0;
+	  left:0;
+	  display: none;
+	}
+	.img-list li img{
+	  width: 200px;
+	  height: 200px;
+	}
+	.arrow{
+	  position:absolute;
+	  top:50%;
+	  transform:translateY(-50%);
+	  padding: 8px 11px;
+	  background: rgba(0,0,0,0.3);
+	  color:#fff;
+	  border-radius:20px;
+	  /*z-index:2;*/
+	}
+	.arrow:hover{
+	  background: rgba(0,0,0,0.7);
+	}
+	.prev{
+	  left:10px;
+	}
+	.next{
+	  right:10px;
+	}
+	.bullet{
+		position: absolute;
+		left: 50%;
+		bottom: 10px;
+		transform: translateX(-50%);
+
+	}
+	.bullet li{
+	    display: inline-block;
+	    padding: 5px;
+	    background: rgba(0,0,0,0.5);
+	    margin: 2px;
+	    border-radius: 10px;
+	}
+	.bullet li:hover{
+		cursor: pointer;
+	}
+	.bullet li.active{
+		background: #fff;
+	}
+
+  </style>
+</head>
+<body>
+<div class="carousel">
+  <ul class="img-list">
+    <li><a href=""><img src="images/1.gif" alt=""></a></li>
+    <li><a href=""><img src="images/2.gif" alt=""></a></li>
+    <li><a href=""><img src="images/3.gif" alt=""></a></li>
+    <li><a href=""><img src="images/4.gif" alt=""></a></li>
+    <li><a href=""><img src="images/5.gif" alt=""></a></li>
+  </ul>
+  <div class="arrow prev"><</div>
+  <div class="arrow next">></div>
+  <ul class="bullet"></ul>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	(function($){
+		$.fn.carousel = function(){
+			var $this = $(this),
+				$list = $this.find('.img-list').children(),
+				$bullet = $this.find('.bullet'),
+				currIdx = 0,
+				size = $list.size(),
+				clock,
+				isAnimate = false;
+			
+
+			bullet();
+			play(0);
+
+			autoPlay();
+			
+			$this.find('.next').on('click',function(){	
+				playNext();
+			});
+			$this.find('.prev').on('click',function(){
+				play((currIdx-1)%size)
+			});
+			$bullet.on('click','li',function(){
+				play($(this).index())
+			})
+			function playNext(){
+				play((currIdx+1)%size);
+			}
+			function play(idx){
+				if (isAnimate) {return;}
+				isAnimate = true;
+				stopPlay();
+				$list.eq(currIdx).fadeOut(500);
+				$list.eq(idx).fadeIn(500,function(){
+					isAnimate = false;
+				});
+				currIdx = idx;
+				setBullet();
+				autoPlay();
+			}
+			function autoPlay(){
+				clock = setInterval(function(){
+					playNext()
+				},5000);
+			}
+			function stopPlay(){
+				clearInterval(clock);
+			}
+			function setBullet(){
+				$bullet.children().eq(currIdx).addClass('active').siblings().removeClass('active')
+			}
+			function bullet(){
+				for (var i = 0; i < size; i++) {
+					$bullet.append('<li></li>');
+				}
+			}
+		};
+	})(jQuery)
+	$('.carousel').carousel();
+</script>
+</body>
+</html>

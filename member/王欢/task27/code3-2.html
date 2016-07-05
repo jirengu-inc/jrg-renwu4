@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <title>code3-2</title>
+  <style>
+  	*{
+	  margin: 0;
+	  padding: 0;
+	}
+	body{
+	  margin: 50px 0 0 200px;
+	}
+	.carousel{
+	  width: 200px;
+	  height: 200px;
+	  overflow:hidden;
+	  position:relative;
+	}
+	.img-list{
+		list-style:none;
+	  	position: relative;
+	}
+	.img-list li{
+	  float: left;
+	}
+	.img-list li img{
+	  width: 200px;
+	  height: 200px;
+	}
+	.arrow{
+	  position:absolute;
+	  top:50%;
+	  transform:translateY(-50%);
+	  padding: 8px 11px;
+	  background: rgba(0,0,0,0.3);
+	  color:#fff;
+	  border-radius:20px;
+	  /*z-index:2;*/
+	}
+	.arrow:hover{
+	  background: rgba(0,0,0,0.7);
+	}
+	.prev{
+	  left:10px;
+	}
+	.next{
+	  right:10px;
+	}
+	.bullet{
+		position: absolute;
+		left: 50%;
+		bottom: 10px;
+		transform: translateX(-50%);
+
+	}
+	.bullet li{
+	    display: inline-block;
+	    padding: 8px;
+	    background: rgba(0,0,0,0.5);
+	    margin: 2px;
+	    border-radius: 10px;
+	}
+	.bullet li:hover{
+		cursor: pointer;
+	}
+	.bullet li.active{
+		background: #fff;
+	}
+
+  </style>
+</head>
+<body>
+<div class="carousel">
+  <ul class="img-list">
+  	<li><a href=""><img src="images/0.gif" alt=""></a></li>
+    <li><a href=""><img src="images/1.gif" alt=""></a></li>
+    <li><a href=""><img src="images/2.gif" alt=""></a></li>
+    <li><a href=""><img src="images/3.gif" alt=""></a></li>
+  </ul>
+  <div class="arrow prev"><</div>
+  <div class="arrow next">></div>
+  <ul class="bullet"></ul>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	(function($){
+		$.fn.carousel = function(){
+			var $this = $(this),
+			$imgList = $this.find('.img-list'),
+			$list = $imgList.children(),
+			$next = $this.find('.next'),
+			$prev = $this.find('.prev'),
+			$bullet = $this.find('.bullet'),
+			width = $list.width(),
+			count = $list.size(),
+			currIdx = 0,
+			clock,
+			isAnimate = false;
+
+		$imgList.css({
+			'width':width*count
+		});
+
+		bullet();
+
+		playAuto();
+
+		$next.on('click',function(){
+			stopAuto();
+			playNext();
+			playAuto();
+		});
+		$prev.on('click',function(){
+			stopAuto();
+			playPrev();
+			playAuto();
+		});
+		$bullet.on('click','li',function(){
+			stopAuto();
+			var idx = $(this).index();
+			if (idx > currIdx) {
+				playNext(idx - currIdx);
+			}
+			if (idx < currIdx) {
+				playPrev(currIdx - idx);
+			}
+			playAuto();
+		});
+
+		function playNext(idx){
+			var idx = idx || 1;
+			if (isAnimate) {return;}
+			isAnimate = true;
+			$imgList.animate({'left':'-='+width*idx},1000,function(){
+				currIdx = (currIdx+idx)%count;
+				for (var i = 0; i < idx; i++) {
+					$imgList.append($imgList.children().first())
+				}
+				$imgList.css({'left':0})
+				setBullet();
+				isAnimate = false;
+			});
+		}
+		function playPrev(diff){
+			var diff = diff || 1;
+			if (isAnimate) {return;}
+			isAnimate = true;
+			for (var i = 0; i < diff; i++) {
+				$imgList.prepend($imgList.children().last())
+			}
+
+			$imgList.css({'left':-width*diff})
+			$imgList.animate({'left':0},1000,function(){
+				currIdx = (currIdx+count-diff)%count;
+				setBullet();
+				isAnimate = false;
+			});
+		}
+		function bullet(){
+			for (var i = 0; i < count; i++) {
+				$bullet.append('<li></li>');
+			}
+			$bullet.children().first().addClass('active');
+		}
+		function setBullet(){
+			$bullet.children().removeClass('active')
+				   .eq(currIdx).addClass('active');
+		}
+		function playAuto(){
+			clock = setInterval(function(){
+				playNext();
+			},3000);
+		}
+		function stopAuto(){
+			clearInterval(clock);
+		}
+		}
+	})(jQuery)
+
+
+	$('.carousel').carousel();
+</script>
+</body>
+</html>
