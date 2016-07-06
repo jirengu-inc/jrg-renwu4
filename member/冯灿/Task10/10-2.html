@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>10-2</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            margin: 20px;
+            position: relative;
+            border: 1px solid rgb(198, 198, 198);
+        }
+        .triangle {
+            width: fit-content;
+            position: absolute;
+        }
+        .grey {
+            border-left: 15px solid transparent;
+            border-bottom: 15px solid grey;
+            border-right: 15px solid transparent;
+            top: -15px;
+            left: 10px;
+        }
+        .red {
+            border-top: 20px solid red;
+            border-left: 20px solid transparent;
+            right: 0px;
+        }
+        .white {
+            border-left: 15px solid transparent;
+            border-bottom: 15px solid white;
+            border-right: 15px solid transparent;
+            top: -14px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="triangle grey"></div>
+    </div>
+    <div class="box">
+        <div class="triangle red"></div>
+    </div>
+    <div class="box">
+        <div class="triangle grey"></div>
+        <div class="triangle white"></div>
+    </div>
+</body>
+</html>

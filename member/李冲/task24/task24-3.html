@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>注册用户名</title>
+<style>
+ html,body,p{
+  margin: 0;
+  padding: 0;
+ }
+ body{
+  padding-left: 20px;
+  padding-top: 20px;
+ }
+ .header{
+  font-weight: bold;
+  margin-bottom: 15px;
+ }
+ .inc{
+  float: left;
+  height: 30px;
+  line-height: 30px;
+ }
+ #ct{
+  width: 450px;
+ }
+ input{
+  display: block;
+  height: 25px;
+  width: 273px;
+  line-height: 25px;
+  margin-left: 80px;
+ }
+ button{
+  margin-left:150px;
+ }
+ .comment{
+   height:30px;
+   line-height: 30px;
+   color: #ccc;
+   padding-left: 113px;
+ }
+</style>
+</head>
+<body>
+  <p class="header">注册</p>
+  <form id = "register">
+    <div id = "ct">
+      <p class="inc">用户名:</p>
+      <input type="text" placeholder="用户lccc已被注册" id="username">
+      <p class="explain comment">只能是字母，数字，4-16个字符</p>
+      <p class="inc">密码:</p>
+      <input type="password" id="password1">
+      <p class="comment">随便写，5-15个字符就行</p>
+      <p class="inc">再来一遍:</p>
+      <input type="password" placeholder="再次输入密码" id = "password2">
+      <p class="comment">注意两次一致哦</p>
+    </div>
+    <button>注册</button>
+  </form>
+  <script>
+     var ct = document.querySelector('#ct'),
+         username = document.querySelector('#username'),
+         pwd1 = document.querySelector('#password1'),
+         pwd2 = document.querySelector('#password2'),
+         btn = document.querySelector('button'),
+         explain = document.querySelector('.explain'),
+         msgPwd1 = document.querySelectorAll('.comment')[1],
+         msgPwd2 = document.querySelectorAll('.comment')[2];
+     username.addEventListener('change',function(){//文本更改时触发事件
+    if(!(username.value).match(/^\w{4,16}$/)){
+         explain.innerHTML = "用户名格式错误!";
+      }
+    else{
+        ajax({
+          url:'register',
+          type:'post',
+          data:{
+               name:username.value,
+               pwd:pwd1.value
+             },
+          success:function(ret){
+            dealwith(ret);
+          },
+          error:function(){
+            console.log('出错了...')
+          }
+        });
+       };
+      })    
+      function ajax(opts){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState === 4 && xhr.status === 200){
+            var json = JSON.parse(xhr.responseText);
+            //将后台响应的text数据转化为json
+            opts.success(json);
+          }
+          if(xhr.status === 404){
+            opts.error();
+          }
+        }
+        var dataStr = '';
+        for(var key in opts.data){
+          dataStr += key + '=' + opts.data[key] + '&';
+        }
+        dataStr = dataStr.substr(0,dataStr.length-1);
+        xhr.open(opts.type,opts.url);
+        xhr.setRequestHeader('Content-Type','appication/x-www-form-urlencoded');
+        xhr.send(dataStr);
+      }
+      function dealwith(ret){
+        if (ret.status == 1) {
+          var reg = /^[0-9A-Za-z]{3,10}$/;
+          if(reg.test(username.value)){
+            explain.innerHTML ="用户名可用";
+            username.style.borderColor = "grey";
+          }else{
+            explain.innerHTML = "用户名格式不正确";
+            username.style.borderColor = "red";
+          }}
+          else if (ret.status == 0){
+            username.style.borderColor = "red";
+            explain.innerHTML = "用户名已存在";
+          }    
+        }
+
+      pwd1.addEventListener('change',function(e){
+         e.stopPropagation();
+         if(pwd1.value.length == 0){
+          pwd1.style.borderColor = "red";
+          msgPwd1.innerText = "密码不能为空";
+         }
+         var regexp2 = /^[a-z]$|^\d$|^[A-Z]$|^_$/,
+             val = pwd1.value;
+             if (val.length < 6 || val.length >15){
+               pwd.style.borderColor="red";
+               msgPwd1.innerText="1";
+               return;
+             }
+            else if(regexp2.test(val)){
+              msgPwd1.innerText="2";
+              
+              return;
+            }else{
+              msgPwd1.innerText="请牢记密码";
+              pwd.style.borderColor="grey";
+            }
+      })
+      pwd2.addEventListener("change",function(){
+          var againVal = pwd2.value;
+          if (againVal == pwd1.value){
+            msgPwd2.innerText = "好样的";
+          }else{
+            msgPwd2.innerText = "wrong";
+          }
+      })
+      btn.addEventListener("click",function(){
+          if(explain.innerText == "用户名可用" && msgPwd2 == "好样的"){
+            alert("注册成功");
+          }else{
+            alert("注册失败");
+          }
+      })
+  </script>
+</body>
+</html>

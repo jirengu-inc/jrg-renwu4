@@ -1,0 +1,179 @@
+<!Doctype html>
+<meta charset="utf-8">
+<html>
+<head>
+	<style type="text/css">
+		ul{
+			list-style:none;
+			padding:0;
+			margin:0;
+			text-align: center;
+		}
+		a{
+			text-decoration: none;
+		}
+		.clear:after{
+			display:block;
+			content:"";
+			height:0;
+			clear:both;
+		}
+		.wrap{
+			width:900px;
+			margin:0 auto;
+		}
+		ul li{
+			float:left;
+			border:1px solid #ccc;
+			margin:10px;
+			padding:10px;
+			width:200px;
+			position:relative;
+		}
+		.wrap ul li:hover .cover{
+			opacity: 1;
+		}
+		.cover{
+			position:absolute;
+			top:0;
+			left:0;
+			bottom:0;
+			right:0;
+			background:rgba(0,0,0, 0.3);
+			transition: all 0.3s;
+			opacity:0;
+		}
+		.cover .btn{
+			position:absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-50%,-50%);
+			border:1px solid #c81623;
+			color:#c81623;
+			padding:10px 15px;
+			border-radius: 3px;
+			text-align: center;
+			background:#fff;
+			cursor:pointer;
+		}
+		.btn1{
+			display:inline-block;
+			padding:10px;
+			border:1px solid red;
+			color:red;
+			border-radius: 5px;
+		}
+		pre{
+			margin-left:80px;
+			margin-top:50px;
+		}
+		h4{
+			margin-left:190px;
+		}
+	</style>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script>
+		var products = [
+    		{
+        		img: 'jz.png',
+        		name: '珂兰 黄金手 猴哥款',
+        		price: '￥405.00'
+    		},
+
+    		{
+        		img: 'jz.png',
+        		name: '珂兰 黄金转运珠 猴哥款',
+        		price: '￥100.00'
+    		},
+
+    		{
+        		img: 'jz.png',
+        		name: '珂兰 黄金手链 3D猴哥款',
+        		price: '￥45.00'
+    		}
+		];
+
+		function createHtml(opts){
+			var str='';
+			str+='<li>';
+			str+='<div class="cover"><a href="#" class="btn">立即抢购</a></div>';
+			str+='<img src="'+opts.img+'">';
+			str+='<div>'+opts.name+'</div>';
+			str+='<div>'+opts.price+'</div>';
+			str+='</li>';
+			return str;
+		}
+
+
+
+
+		$(function(){
+			$('.btn1').on('click',function(e){
+				e.preventDefault();	
+				$.each(products,function(key,value){
+					var str=createHtml(value);
+					$('.ul1').append(str);
+				})
+			})
+		})
+	</script>
+
+</head>
+<body> 
+	
+	<div class="wrap">
+		<div class="layout">
+			<h2>珠宝首饰</h2>
+			<ul class="clear ul1">
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<div>藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div>$1699.00</div>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<div>藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div>$1699.00</div>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<div>藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div>$1699.00</div>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<div>藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div>$1699.00</div>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<div>藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div>$1699.00</div>
+				</li>
+				<li>
+					<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+					<img src="zs.png">
+					<div>藏美千足金和田玉金镶玉路路通吊坠</div>
+					<div>$1699.00</div>
+				</li>
+			</ul>
+		</div>
+		<a href="#" class="btn1">添加</a>
+	</div>
+	<pre>
+		$(' .prod').on('mouseenter', function(e){
+			  $(this).addClass('hover');
+			});
+		$(' .prod').on('mouseleave', function(e){
+  			$(this).removeClass('hover');
+		});
+		如果使用这种代码会导致新添加的标签没有鼠标移入效果
+	</pre>
+	<h4><a href="understand.html">作业中没有特别应用代理也实现了作业中要求的效果，做了个小例子理解代理</a></h4>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js">
+</script>
+  <meta charset="utf-8">
+  <title>jq常用方法（task26-2）</title>
+  <style>
+  #father{
+    width: 400px;
+    height: 2000px;
+    margin: auto;
+  }
+  #btn,.rd{
+    height: 150px;
+    width: 200px;
+    border: 2px solid;
+  }
+  input{
+    height: 20px;
+    width: 220px;
+  }
+  #scroll{
+    height: 50px;
+    width: 100px;
+    background: yellow;
+    position: fixed;
+    top: 0;
+    right: 0;
+  }
+
+  </style>
+</head>
+<body>
+  <div id="father">
+      <div id="btn">我是btn,快来点我啊！！</div>
+      <br><br>
+      <div id="scroll">我是距离</div>
+      <br><br>
+      <div class="rd">放上来变红</div>
+      <br><br>
+      <input type="text" id="ipt" placeholder="文字变大，并出现在控制台">
+      <br><br>
+      <div class="wrap">
+        <select name="selt" id="slt"> 
+            <option value="深圳啊">深圳啊</option>
+            <option value="广州啊">广州啊</option>
+            <option value="上海啊">上海啊</option>
+            <option value="北京啊">北京啊</option>
+        </select>
+        <br>&darr;&darr;<br>
+        <input type="text" id="ipt2" placeholder="选择的内容出现在这里">
+      </div>
+  </div>
+
+  
+  
+  <script>
+
+    $('#btn').on('click',function(){ 
+        $('#btn').css('background', "red");  
+        setTimeout(function(){
+             $('#btn').css('background', "blue");  
+        }, 1000);
+    });
+    //当点击\$btn 时，让\$btn 的背景色变为红色再变为蓝色
+
+    $(document).scroll(function() {
+      $("#scroll").text($(document).scrollTop()+"px");
+    });
+    //当窗口滚动时，获取垂直滚动距离
+
+    $('.rd').on("mouseenter",function(){
+        $(this).css("background","red");
+    });
+    $('.rd').on("mouseleave",function(){
+        $(this).css("background","#fff");
+    });
+    //当鼠标放置到\$div上，把\$div背景色改为红色，移出鼠标背景色变为白色
+
+    $('#ipt').on("focus",function(){
+        $(this).css("outline-color","blue");
+    });
+    $('#ipt').on('keyup',function(){
+        $(this).val($(this).val().toLocaleUpperCase());
+    });
+    $('#ipt').on('blur',function(){
+         console.log($(this).val());
+    });
+    // 当鼠标激活 input输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+
+    $('#slt').on('change',function(){
+        $('#ipt2').val($(this).find('option:selected').val());
+    });
+    //当选择 select 后，获取用户选择的内容
+  </script>
+
+</body>
+</html>

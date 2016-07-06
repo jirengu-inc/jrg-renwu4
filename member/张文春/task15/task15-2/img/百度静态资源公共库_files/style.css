@@ -1,0 +1,382 @@
+html {
+	min-height : 101%;
+	background : url("imgs/bg.jpg");
+}
+
+a {
+	color: #3276b1;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#main {
+	min-width : 470px;
+	position : relative;
+}
+
+#header {
+	border-bottom: 1px solid #285e8e;
+	background: #3276b1;
+	box-shadow: 0 3px 9px 0 rgba(0, 0, 0, 0.1), 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+	overflow : hidden;
+}
+
+/******************************************************
+ *
+ * navigation
+ *
+ ******************************************************/
+ 
+#navlist{
+	float: right;
+	margin-right: 10%;
+}
+
+#navlist li{
+	display : inline-block;
+	text-transform: uppercase;
+	padding: 1em 0.3em;
+	font-size: 0.9em;
+	text-align: center;
+}
+
+#navlist li a{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-transition: color .5s;
+	text-decoration: none;
+	color: #eee;
+}
+
+#navlist li a:hover{
+	color: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+#navlist li .active{
+	color: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+#logo {
+	float : left;
+	margin-left: 10%;
+	font-size: 1.4em;
+	line-height: 1.2em;
+	text-transform : uppercase;
+	color: #eee;
+	cursor : pointer;
+}
+
+#logo span {
+	font-family : verdana;
+	letter-spacing : 1px;
+	padding-left : 2px;
+	vertical-align: bottom;
+}
+
+.ff {
+	font-family: "Microsoft Yahei", "微软雅黑", "Helvetica Neue", "adobe雅黑", "helvetica neue", tahoma, "hiragino sans gb", stheiti, "wenquanyi micro hei", \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
+}
+
+/******************************************************
+ *
+ * intro
+ *
+ ******************************************************/
+
+#intro {
+	margin : 2% 10% 0%;
+}
+
+#intro img {
+	vertical-align : middle;
+	margin-right : 1em;
+	margin-bottom : 1em;
+	cursor : pointer;
+}
+
+/******************************************************
+ *
+ * search
+ *
+ ******************************************************/
+
+#search {
+	
+}
+
+#searchbox {
+	margin: 2% 10%;
+	width: 78%;
+	padding: 10px 14px 10px 10px; 
+	border: 1px solid #3276b1;
+	line-height: 1.5em;
+	border-radius: 3px;
+}
+
+#resultbox {
+	margin: 0% 10%;
+	width: 80%;
+}
+
+::-moz-selection{
+	background : #3276b1;
+	color : #fff;
+}
+
+::selection{
+	color : #fff;
+	background : #3276b1;
+}
+
+#resultbox dt {
+	overflow : hidden;
+	width : 100%;
+	border-bottom: 2px solid #dddddd;
+}
+
+#resultbox dt h3{
+	margin : 0;
+	float : left;
+	width : 25%;
+	font-size : 1.2em;
+	padding-left : 0.25%;
+	padding-bottom: 8px;
+	line-height : 1.5em;
+	-webkit-user-select: none;
+}
+
+#resultbox dt div{
+	float : left;
+	width : 74.5%;
+	padding-right : 0.25%;
+	padding-bottom: 8px;
+	font-weight : bold;
+	font-size : 1.2em;
+	line-height : 1.5em;
+}
+
+
+#resultbox dd {
+	overflow : hidden;
+	width : 100%;
+	padding : 0;
+	margin : 0;
+	line-height : 2em;
+	border-bottom : 1px solid #ddd;
+}
+
+#resultbox dd:nth-child(2n){
+	background-color : #f9f9f9;
+}
+
+#resultbox dd h3{
+	margin : 0;
+	float : left;
+	width : 25%;
+	font-weight : normal;
+	padding-left : 0.25%;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	-webkit-user-select: none;
+	font-size : 14px;
+}
+
+#resultbox dd a{
+	color: #3276b1;
+	text-decoration: none;
+	padding : 0 5px;
+	display : inline-block;
+	cursor: pointer;
+}
+
+#resultbox dd a:hover{
+	text-decoration: underline;
+}
+
+#resultbox dd div{
+	float : left;
+	padding : 8px 0;
+	width : 64.5%;
+	padding-right : 0.25%;
+	word-break:break-all;
+}
+
+/******************************************************
+ *
+ * footer
+ *
+ ******************************************************/
+
+#footer {
+	margin : 3% 10% 0%;
+	text-align : center;
+	font-size: 0.9em;
+	color: #888;
+	font-family: Georgia,serif;
+	font-style: italic;
+}
+
+#footer a{
+	color: #3276b1;
+	text-decoration: none;
+	padding-left : 10px;
+	display : inline-block;
+	margin-bottom: 4%;
+}
+
+#footer a:hover {
+	text-decoration: underline;
+}
+
+
+
+/******************************************************
+ *
+ * description
+ *
+ ******************************************************/
+
+#desc {
+	max-width : 800px;
+	margin : 0 auto;
+	font-family: "Microsoft Yahei", "微软雅黑", "Helvetica Neue", "adobe雅黑", "helvetica neue", tahoma, "hiragino sans gb", stheiti, "wenquanyi micro hei", \5FAE\8F6F\96C5\9ED1, \5B8B\4F53, sans-serif;
+}
+
+#desc h3 {
+	border-top : 1px solid #ddd;
+	padding-top : 1em;
+	margin-top : 2em;
+	font-size : 1.7em;
+}
+
+#desc #t1{
+	border-top : none;
+	margin-top : 3em;
+}
+
+#desc dt {
+	line-height : 1.5em;
+	font-weight : bold;
+	margin-top : 1em;
+}
+
+#desc dd {
+	line-height : 1.2em;
+	margin : 0;
+	padding : 6px 0;
+	letter-spacing : 0.5px;
+}
+
+#desc p {
+	line-height : 1.5em;
+	letter-spacing : 0.5px;
+}
+
+#desc em {
+	margin: 0;
+	border: 1px solid #ddd;
+	background-color: #f8f8f8;
+	border-radius: 3px;
+	padding: 0;
+	font-family: Consolas, "Liberation Mono", Courier, monospace;
+	font-size: 12px;
+}
+
+#desc em:before, #desc em:after{
+	content: "\00a0";
+	letter-spacing: -0.2em;
+}
+
+#desc strong{
+	font-style : italic;
+}
+
+#desc strong:before{
+	content: "* ";
+}
+
+#desc pre {
+	margin-bottom : 1em;
+}
+
+/******************************************************
+ *
+ * page : lib detail 
+ *
+ ******************************************************/
+#libbox {
+	margin : 2% 10%;
+}
+
+#libintro {
+	margin-bottom : 1%;
+	padding: 1em 2em;
+}
+
+#libintro h1{
+	font-size : 2.4em;
+	margin : 0;
+	line-height : 2em;
+}
+
+#libintro p {
+	line-height : 1em;
+}
+
+#libintro i {
+	font-family : Tahoma,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+#libintro a {
+	color : #fff;
+}
+
+#libselect {
+	border : 1px solid #3276b1;
+	line-height : 1.5em;
+	margin: 0 2em;
+	width: 90%;
+	border-radius : 3px;
+	position: relative;
+}
+
+#libversion {
+	margin-left : 1em;
+}
+
+#libvers {
+	margin: 0 2em;
+}
+
+#libvers h4 {
+	margin : 0;
+	padding : 1em 0;
+}
+
+#libvers ul {
+	background: #fff;
+	border : 1px solid #3276b1;
+	padding : 1em;
+	max-height: 142px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	width: 92%;
+}
+
+#libvers li:nth-child(2n) {
+	background-color: #f9f9f9;
+}
+
+#libvers li {
+	overflow: hidden;
+	width: 100%;
+	padding: 4px 0px;
+	margin: 0;
+	line-height: 2em;
+	border-bottom: 1px solid #ddd;
+	color: #333;
+}

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>task25-2</title>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js">
+  </script>
+  <style>
+
+  ul,li,p{
+	  padding: 0;
+	  margin: 0;
+	  font-size: 12px;
+	}
+	a{
+	  text-decoration: none;
+    color: black;
+	}
+	ul:after{
+	  content: "";
+	  display: block;
+	  clear: both;
+	}
+	li{
+	  list-style: none;
+	  float: left;
+	}
+  #bar>li:last-child{
+    border-right: 1px solid #ccc;
+  }
+   #bar>li:first-child{
+    border-left: 1px solid #ccc;
+  }
+	#bar>li{
+	  padding: 7px 0;
+    border-top: 1px solid #ccc;
+    border-radius: 3px 3px 0px 0px;
+	}
+	#bar a{
+	  padding: 0 12px;
+	}
+	#bar>li:nth-child(2) a{
+	  border-left: 1px solid #ccc;
+	  border-right: 1px solid #ccc;
+	}
+	.wrap{
+	  width: 646px;
+	  border: 1px solid #ccc;	
+	}
+	.father{
+	  margin-left: -20px;
+	  margin-top: -20px; 
+    display: none;
+	}
+	.father>.list{
+	  border: 1px solid #ccc;
+	  width: 200px;
+	  height: 200px;
+	  text-align: center;
+	  position: relative;
+	  margin-left: 20px;
+	  margin-top: 20px;
+	}
+	.child{
+	  text-align: left;
+	  padding: 5px 20px;
+	}
+	.father .main{
+	  height: 35px;
+	}
+	.father  .money{
+	  color: red;
+	}
+	.panels{
+	  background:rgba(0, 0, 0, 0.3);
+	  width: 200px;
+	  height: 200px;
+	  position: absolute;
+	  top: 0px;
+	  display: none;
+	}
+	.father>li a{
+	  color: red;
+	  border: 1px solid red;
+	  border-radius: 3px;
+	  padding: 10px 20px;
+	  background: #fff;
+	  display: block;
+	  width: 60px;
+	  margin: 78px auto;
+	}
+	.father>li:hover .panels{
+	  display: block;
+	}
+  .bg{
+    background: #ccc;
+  }
+  li.bg a{
+    color: red;
+  }
+
+  .father.show{
+    display: block;
+  }
+
+
+  </style>
+</head>
+<body>
+  <div id="content">
+    <ul id="bar">
+      <li class="bg"><a class="" href="#">热门</a></li>
+      <li><a href="#">珠宝首饰</a></li>
+      <li><a href="#">奢侈品</a></li>
+    </ul>
+    <div class="wrap"> 
+      <ul class="father show">
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+      </ul>
+      <ul class="father">
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/c57121745ee4c18b.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1639.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$169.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$99.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+      </ul>
+      <ul class="father">
+        <li class="list">
+          <img src="http://i2.piimg.com/567571/b27dd5b70526c6e9.jpg" alt="">
+          <div class="child">
+            <p class="main">藏金镶玉路路通吊坠</p>
+            <p class="money">$699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉吊坠</p>
+            <p class="money">$1899.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金路路通吊坠</p>
+            <p class="money">$1639.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i2.piimg.com/567571/b27dd5b70526c6e9.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足镶玉路路通吊坠</p>
+            <p class="money">$1099.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金吊坠</p>
+            <p class="money">$199.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+  <br><br>
+
+  <div id="content">
+    <ul id="bar">
+      <li class="bg"><a href="#">热门</a></li>
+      <li><a href="#">珠宝首饰</a></li>
+      <li><a href="#">奢侈品2</a></li>
+    </ul>
+    <div class="wrap"> 
+      <ul class="father show">
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+      </ul>
+      <ul class="father">
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/c57121745ee4c18b.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1639.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$169.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$99.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+      </ul>
+      <ul class="father">
+        <li class="list">
+          <img src="http://i2.piimg.com/567571/b27dd5b70526c6e9.jpg" alt="">
+          <div class="child">
+            <p class="main">藏金镶玉路路通吊坠</p>
+            <p class="money">$699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉吊坠</p>
+            <p class="money">$1899.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金路路通吊坠</p>
+            <p class="money">$1639.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i2.piimg.com/567571/b27dd5b70526c6e9.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金和田玉镶玉路路通吊坠</p>
+            <p class="money">$1699.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足镶玉路路通吊坠</p>
+            <p class="money">$1099.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+        <li class="list">
+          <img src="http://i1.piimg.com/567571/347df04c52d185f6.jpg" alt="">
+          <div class="child">
+            <p class="main">藏美千足金吊坠</p>
+            <p class="money">$199.00</p>
+          </div>
+          <div class="panels">
+              <a href="#">立即抢购</a>
+            </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+
+
+
+
+  <script>
+    $('#bar>li').on('click',function(e){
+      e.preventDefault();
+      var idx = $(this).index();   
+      //.index()返回指定元素相对于其他指定元素的 index 位置
+      $(this).addClass('bg'); 
+      $(this).siblings().removeClass('bg');
+
+      $(this).parents('#content').find('.father').removeClass('show');
+      $(this).parents('#content').find('.father').eq(idx).addClass('show');
+      // 选中对应下标的元素添加class
+      //.parents()返回被选元素的所有祖先元素
+    });
+
+
+  </script>
+
+</body>
+</html>
