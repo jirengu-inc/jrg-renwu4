@@ -4,56 +4,63 @@
 	    <title>javascript入门</title>
 	    <script>
 	        function isNumber(el){
-	    		  return typeof el == "number"? true:false;
-			    }
-    			function isString(el){
-    			    return typeof el == "string"? true:false;
-    			}
-    			function isBoolean(el){
-    			    return typeof el == "boolean"? true:false;
-    			}
-    			function isFunction(el){
-    			   return typeof el == "function"? true:false;
-    			}
-    			var a = 2,
-    			    b = "jirengu",
-    			    c = false;
+	    		return typeof el == "number"? true:false;
+			}
+    		function isString(el){
+    			return typeof el == "string"? true:false;
+    		}
+    		function isBoolean(el){
+    			return typeof el == "boolean"? true:false;
+    		}
+    		function isFunction(el){
+    			return typeof el == "function"? true:false;
+    		}
+    		var a = 2,
+    			b = "jirengu",
+    			c = false;
     			
-    			console.log( isNumber(a) );  //true
-    			console.log( isString(a) );  //false
-    			console.log( isString(b) );  //true
-    			console.log( isBoolean(c) ); //true
-    			console.log( isFunction(a)); //false
-    			console.log( isFunction( isNumber ) ); //true
+    		console.log( isNumber(a) );  //true
+    		console.log( isString(a) );  //false
+    		console.log( isString(b) );  //true
+			console.log( isBoolean(c) ); //true
+			console.log( isFunction(a)); //false
+			console.log( isFunction( isNumber ) ); //true
     			
-    			console.log(1+1); //1+1=2
-    			console.log("2"+"4"); //"24"，字符串拼接
-    			console.log(2+"4"); //"24",有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接
-    			console.log(+new Date());//1467773594923,从1970.01.01到当前时间的毫秒数,是一个number
-    			console.log(typeof(+"4"));//number,在只有一个字符串参数的时候会尝试将其转换为数字，加法操作符希望操作数是数字
-    			console.log(typeof("4"));//string
+			console.log(1+1); //1+1=2
+			console.log("2"+"4"); //"24"，字符串拼接
+    		console.log(2+"4"); //"24",有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接
+    		console.log(+new Date());//1467773594923,从1970.01.01到当前时间的毫秒数,是一个number
+    		console.log(typeof(+"4"));//number,在只有一个字符串参数的时候会尝试将其转换为数字，加法操作符希望操作数是数字
+			console.log(typeof("4"));//string
 
-    			var a=1;
-    			console.log(a+++a); //3：相当于 (a++)+a,2+1=3。此时右边的a还采用上一条语句中的值，为1。
-    			console.log(a);//2：上一条语句中，改变了a的值。此时a的值为2。
-    			console.log(typeof a+2);//number2,因为typeof比+有更高的优先级。
-    			console.log(typeof (a+2));//number
+    		var a=1;
+    		console.log(a+++a); //3：相当于 (a++)+a,2+1=3。此时右边的a还采用上一条语句中的值，为1。
+    		console.log(a);//2：上一条语句中，改变了a的值。此时a的值为2。
+			console.log(typeof a+2);//number2,因为typeof比+有更高的优先级。
+			console.log(typeof (a+2));//number
     
-    			//遍历数组，打印数组每一项的平方
-    			var arr = [3,4,5];
-    			for (var i in arr){
-    				console.log( arr[i] * arr[i] );
-    			}
+    		//遍历数组，打印数组每一项的平方
+    		var arr = [3,4,5];
+    		for (var i in arr){
+    			console.log( arr[i] * arr[i] );
+			}
     
-    			//遍历 JSON, 打印里面的值
-    			var obj = {
-    	  			name: 'hunger',
-    				sex: 'male',
-    				age: 28
-    			}
-    			for (var i in obj){
-    				console.log( i+":",obj[i]);
-    			}
+    		//遍历 JSON, 打印里面的值
+    		var obj = {
+    	  		name: 'hunger',
+    			sex: 'male',
+    			age: 28
+    		}
+    		for (var i in obj){
+    			console.log( i+":",obj[i]);
+    		}
+
+            //下面代码的输出是? 为什么
+            console.log(a1); //undefined
+            var a1 = 1;
+            console.log(a1);
+            console.log(b1);//前面声明过b="jirengu",因此此处换为b1。由于b1没有声明,因此结果为：ReferenceError: b1 is not defined
+            /*该输出结果的原因是变量a1被提升*/
       </script>
 	</head>
 	<body>
