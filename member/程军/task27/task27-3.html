@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		html,body,ul,li{
+			margin:0;
+			padding: 0;
+		}
+		html, body,.container,.img-ct {
+			width: 100%;
+			height: 100%
+		}
+		ul, li{
+			list-style: none;
+		}
+		
+		.clear:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.container{
+			position: relative;
+			overflow: hidden;
+		}
+		.img-ct {
+			position: absolute;
+
+			
+		}
+		.bullet{
+			position: absolute;
+			left: 50%;
+			bottom: 10px;
+			transform:translateX(-50%);
+			
+		}
+		.img-ct li {
+			float: left;
+			height: 100%;
+			background-size: cover;
+			background-position: center,center;
+			background-repeat: no-repeat; 
+		}
+		
+		.bullet li{
+			width: 15px;
+			height: 5px;
+			border: 1px solid #ccc;
+			background: #ccc;
+			border-radius: 5px;
+			display: inline-block;
+		}
+		.active{
+			opacity: 0.5;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="img-ct clear">	
+			<li>
+				<div  data-img="http://cdn.jirengu.com/book.jirengu.com/img/6.jpg "></div>
+			</li>
+			<li>
+				<div data-img="http://cdn.jirengu.com/book.jirengu.com/img/7.jpg"></div>
+			</li>
+			<li>
+				<div data-img="http://cdn.jirengu.com/book.jirengu.com/img/8.jpg"></div>
+			</li>
+			<li>
+				<div data-img="http://cdn.jirengu.com/book.jirengu.com/img/9.jpg"></div>
+			</li>
+		</ul>
+		<ul class="bullet">  
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		 <script>
+			var $container=$(".container"),
+				$item=$(".img-ct").children(),
+				$bullet=$(".bullet"),
+				$imgCount=$item.length,
+				$ctWidth=$(window).width();
+				var $item=$(".img-ct").children()
+				$(".img-ct").prepend($item.eq($imgCount-1).clone())
+				$(".img-ct").append($item.eq(0).clone());
+				$(".img-ct").find("li").width($ctWidth)
+				 $(".img-ct").css({ "width":$ctWidth*($imgCount+2),"left":0-$ctWidth})
+				
+				 var cur=0;
+				var islocked=false;
+			$bullet.on('click',"li" ,function(){
+				var idx = $(this).index();
+				if(cur<idx){
+					playNext(idx-cur)
+				}
+				if(cur>idx){
+					playPre(cur-idx)
+				}
+				
+			});
+			setBgd(1);
+			auto();
+			function setBgd(cur){
+				$data=$(".img-ct").find("div").eq(cur).attr("data-img");
+				$bgd=$(".img-ct").find("li").eq(cur).css({"background-image":"url("+$data+")"})
+			}
+			function playNext(idx){
+				if(islocked) return;
+				var idx=idx || 1
+				islocked=true;
+					$(".img-ct").animate({left:"-="+($ctWidth*idx)},function(){
+						cur=(cur+idx)%$imgCount;
+						
+				if(cur===0){
+					$(".img-ct").css({"left":0-$ctWidth})
+		
+				}
+				setBgd(cur+1);
+				console.log("ok")
+				islocked=false;
+				 setBullte();
+			})	
+				
+				
+
+			}
+
+			function playPre(idx){
+				if(islocked) return;
+				var idx=idx || 1
+				islocked=true;
+				$(".img-ct").animate({left:"+="+($ctWidth*idx)},function(){
+						cur=($imgCount+cur-idx)%$imgCount;
+				if(cur===($imgCount-1)){
+					$(".img-ct").css({"left":-$ctWidth*$imgCount})
+				}
+				setBgd(cur+1);
+				islocked=false;
+				 setBullte();
+				})
+			}
+			
+
+			function setBullte(){
+					$bullet.find("li").removeClass("active")
+							.eq(cur).addClass("active");
+							
+			}
+			function auto (){
+				var clock=setInterval(function(){
+					playNext();;
+				},2000)
+
+			}
+			function stop(){
+				clearInterval(clock);
+			}
+
+		</script>
+</body>
+
+</html>
