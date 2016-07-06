@@ -56,11 +56,11 @@
     		}
 
             //下面代码的输出是? 为什么
-            console.log(a1); //undefined
+            console.log(a1); //undefined，a1已经声明，还没赋值。JS在执行前会把所有的变量和函数提前声明
             var a1 = 1;
             console.log(a1);
             console.log(b1);//前面声明过b="jirengu",因此此处换为b1。由于b1没有声明,因此结果为：ReferenceError: b1 is not defined
-            /*该输出结果的原因是变量a1被提升*/
+            /*该输出结果的原因是变量a1的声明被提升，但赋值没有被提升*/
       </script>
 	</head>
 	<body>
