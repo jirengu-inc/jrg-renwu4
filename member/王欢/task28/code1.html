@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>code1</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			margin: 10px;
+			color: #fff;
+			font-size: 30px;
+			text-align: center;
+		}
+		.header{
+			height: 50px;
+			margin-bottom: 20px;
+			background: rgb(100,50,30)
+		}
+		.nav{
+			height: 30px;
+			background: rgb(200,50,200);
+		}
+		.content{
+			background: #ddd;
+			height: 800px;
+			overflow: auto;
+		}
+		.content .aside{
+			float: left;
+			width: 200px;
+			height: 500px;
+			background: yellow;
+			margin: 10px;
+		}
+		.content .main{
+			background: pink;
+			min-height: 700px;
+			overflow: hidden;
+			margin: 10px;
+		}
+		.footer{
+			background: red;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		header
+	</div>
+	<div class="nav">nav</div>
+	<div class="content">
+		<div class="aside"> aside</div>
+		<div class="main"> main</div>
+	</div>
+	<div class="footer">footer</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		(function($){
+			$.fn.stickUp = function(){
+				var $nav = $(this)
+				elTop = $nav.offset().top,
+				$cloneEl = $nav.clone().insertBefore($nav).css({'display':'none'}),
+				width = $nav.width();
+
+			$(window).on('scroll',function(){
+				var scrollTop = $(this).scrollTop();
+				if (scrollTop >= elTop) {
+					$cloneEl.css({
+						'display':'block',
+						'position':'fixed',
+						'top':0,
+						'width':width
+					});
+				}else{
+					$cloneEl.css({
+						'display':'none'
+					});
+				}
+			});
+			}
+		})(jQuery)
+		
+		$('.nav').stickUp();
+	</script>
+</body>
+</html>

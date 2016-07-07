@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <ul class="ct">
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">鼠标放置查看图片2</li>
+    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div>
+    <script>
+    var wrap = document.getElementsByClassName('ct')[0];
+    var imgPre = document.getElementsByClassName('img-preview')[0];
+    var li = document.getElementsByTagName('li');
+
+    for(var i=0; i<li.length; i++){
+    li[i].addEventListener('mouseenter', function(){
+       var dataImg = this.getAttribute('data-img');
+       imgPre.innerHTML = '<img src="' + dataImg + '">'
+    });
+    }
+    </script>
+</body>
+</html>

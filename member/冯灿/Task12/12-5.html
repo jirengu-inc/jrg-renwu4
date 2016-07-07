@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>12-5</title>
+		<style>
+			header, footer {
+  				background: #CCC;
+  				height: 50px;
+			}
+			.ct::after {
+  				content:'';
+  				display: block;
+  				clear: both;
+			}
+			.box1 {
+  				width: 100%;
+  				height: 200px;
+  				float: left;
+			}
+			.wrap {
+  				background: red;
+  				height: 100%;
+  				margin-left: 200px;
+			}
+			.box2 {
+  				width: 200px;
+  				height: 200px;
+  				background: blue;
+  				float: left;
+  				margin-left: -100%;
+			}
+		</style>
+	</head>
+	<body>
+		<header>header</header>
+		<div class="ct">
+			<div class="box1">
+				<div class="wrap">content</div>
+			</div>
+			<div class="box2">side1</div>
+		</div>
+		<footer>footer</footer>
+	</body>
+</html>

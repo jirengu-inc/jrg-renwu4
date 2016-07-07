@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+  *{
+    margin: 0px;
+    padding:0px;
+  }
+ li {
+    list-style-type: none;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin: 10px auto;
+    font-size: 20px;
+    padding: 10px;
+  }
+   li:hover {
+    background: green;
+   }
+   .btn {
+    display: block;
+    margin: 20px auto;
+    height: 40px;
+    width: 100px;
+    border:1px solid #CCC;
+    border-radius: 10px;
+    background: #fff;
+    text-align: center;
+    line-height: 40px;
+    text-decoration: none;
+    color: #000;
+    }
+  </style> 
+</head>
+<body>
+<ul class="ct">
+    <li>内容1</li>
+    <li>内容2</li>
+</ul>
+<a href="javascript:void(0)" class="btn">加载更多</a></div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" id="111"></script>
+<script>
+  var $btn=$(".btn");
+    if(isVisible($btn)){
+      load()
+    }
+  $(window).on("scroll",function(){
+      load()
+  })
+  function load(){
+    if(isVisible($btn)){
+   var curLen=$("li").length+1;
+     $.get("/loadMore",{start:curLen,len:20},function(ret){
+      for(var i=0,leng=ret.data.length;i<leng;i++){
+        var $li=$("<li>"+ret.data[i]+"</li>")
+        $(".ct").append($li)
+      }
+  })
+    }
+  }
+ 
+       function isVisible(el){   // el为juerry对象
+        $distanceH=el.offset().top,
+        height=$(window).height(),
+            $top=$(window).scrollTop(),
+             cur= $top+height,
+             off=$top-$distanceH;
+            if(cur>$distanceH){
+                if(off<0){            //判断是否在消失
+                    return true;
+                }
+            }
+                return false;     
+ }
+</script>
+</script>
+</body>
+</html>
