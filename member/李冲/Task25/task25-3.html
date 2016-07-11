@@ -153,8 +153,41 @@
  	$('#list').on('mouseleave','.detail',function(){
  	    $(this).removeClass('view');
  	})
- 	$('.layout .btn').on('click',function(){
- 		$('#list').append($('<li class="detail"><div class="cover"><a href="">立即购买</a></div><div><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt=""><p>珂兰 猴哥猴哥猴哥</p><p class="money">￥1699.00</p></div></li><li class="detail"><div class="cover"><a href="">立即购买</a></div><div><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt=""><p>没错，还是猴哥</p><p class="money">￥199.00</p></div></li><li class="detail"><div class="cover"><a href="">立即购买</a></div><div><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt=""><p>最后了，我还是猴哥0.0</p><p class="money">￥699.00</p></div></li>'))
+ 	// $('.layout .btn').on('click',function(){
+ 	// 	$('#list').append($('<li class="detail"><div class="cover"><a href="">立即购买</a></div><div><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt=""><p>珂兰 猴哥猴哥猴哥</p><p class="money">￥1699.00</p></div></li><li class="detail"><div class="cover"><a href="">立即购买</a></div><div><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt=""><p>没错，还是猴哥</p><p class="money">￥199.00</p></div></li><li class="detail"><div class="cover"><a href="">立即购买</a></div><div><img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt=""><p>最后了，我还是猴哥0.0</p><p class="money">￥699.00</p></div></li>'))
+ 	// })
+ 	var products = [
+        {
+	        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+			name: '珂兰 黄金手 猴哥款',
+			price: '￥405.00'
+        },{
+	        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+	        name: '珂兰 黄金转运珠 猴哥款',
+	        price: '￥100.00'
+        },{
+	        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+	        name: '珂兰 黄金转运珠 猴哥款',
+	        price: '￥45.00'
+        }
+ 	];
+ 	function addHtml(opts){
+ 		var add = '';
+ 		add += '<li class="detail">';
+    	add +=	     '<div class="cover"><a href="">立即购买</a></div>';
+    	add +=	  '<div>';
+    	add +=	        '<img src="' + opts.img +'" alt="">';
+    	add +=	        '<p>' + opts.name + '</p>';
+    	add +=	        '<p class="money">' + opts.price + '</p>';
+    	add +=	  '</div>';
+    	add +=	'</li>';
+    	return add;
+ 	}
+ 	$('.layout .btn').on('click',function(e){
+        e.preventDefault();
+        for(k in products){
+        	$('#list').append(addHtml(products[k]));
+        }
  	})
  </script>    
 </body>
