@@ -372,6 +372,9 @@ footer {
 }
 footer .row {
 	margin: 5px auto;
+	line-height: 40px;
+	float: left;
+	width: 33.333%;
 }
 footer ul {
 	list-style: none;
