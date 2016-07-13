@@ -318,7 +318,7 @@ html, body {
 	padding: 100px 0;
 	text-align: center;
 	background: url(../images/map-image.png) no-repeat center center scroll;
-	background-size: cover;
+	background-position: center;
 	background-color: #222;
 	color: #FFF;
 }
