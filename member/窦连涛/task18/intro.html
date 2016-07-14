@@ -109,6 +109,9 @@ sqrt 平方根
 random
 返回给定范围内的随机数
 
-function getRondomArbitrary (){
-
+/*
+写一个函数，获取从min都max之间的随机整数，包括min包括max （***）
+*/
+function max_random(min,max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
