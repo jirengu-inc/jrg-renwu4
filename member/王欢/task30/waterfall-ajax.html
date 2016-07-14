@@ -90,22 +90,21 @@
 			$(window).on('scroll',function(){
 				clock && clearTimeout(clock);
 				clock = setTimeout(function(){
-					me.isShow(me.$node) && me.checkShow();
+					 me.checkShow();
 				},300)
 			})
 		},
 		checkShow: function() {
 		    var me = this;
 		    this.$node.each(function() {
-
 		      var $cur = $(this);
-		      if (  me.isShow($cur) ) {
+		      if (me.isShow($cur) ) {
 		        me.handler && me.handler.call(this, this);
 		      }
 		    });
 		},
-		isShow:function(){
-			var nodeH = this.$node.offset().top,
+		isShow:function($node){
+			var nodeH = $node.offset().top,
 				winH = $(window).height(),
 				scrollH = $(window).scrollTop();
 			if (nodeH < winH+scrollH) {
