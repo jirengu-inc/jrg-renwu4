@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 25 QA5</title>
+	<script src="C:\PROJECT\jrg-renwu4\jquery-3.0.0.min.js"></script>
+	<style>
+		#hish,
+		#fade,
+		#slide {
+			border: 1px solid #E27272;
+			padding: 10px;
+			width: 550px;
+			height: 210px;
+			margin-bottom: 10px;
+		}
+	    button {
+	    	width: 100px;
+	    	height: 30px;
+	    	border: 1px solid #ccc;
+	    	border-radius: 3px;
+	    	background: #fff;
+	    }
+		.mdiv1,
+		.mdiv2,
+		.mdiv3,
+		.fdiv1,
+		.fdiv2,
+		.fdiv3,
+		.sdiv1,
+		.sdiv2,
+		.sdiv3 {
+			width: 50px;
+			height: 50px;
+			background: #E27272;
+			margin-top: 10px;
+		}
+		.mdiv2,
+		.fdiv2,
+		.sdiv2 { width: 80px; }
+		.mdiv3,
+		.fdiv3,
+		.sdiv3 { width: 110px; }
+	</style>
+</head>
+<body>
+	<div id="hish">
+		<button class="hide">隐藏</button>
+		<button class="show">显示</button>
+		<button class="orderHide">按顺序隐藏</button>
+		<button class="oederShow">按顺序显示</button>
+		<button class="toggle">隐藏/显示</button>
+		<div class="mdiv1"></div>
+		<div class="mdiv2"></div>
+		<div class="mdiv3"></div>
+	</div>
+
+	<div id="fade">
+		<button class="fadeOut">集体淡出</button>
+		<button class="fadeIn">集体淡入</button>
+		<button class="fadeToggle">淡入/淡出</button>
+		<button class="fadeTo">渐变到透明度</button>
+		<div class="fdiv1"></div>
+		<div class="fdiv2"></div>
+		<div class="fdiv3"></div>
+	</div>
+
+	<div id="slide">
+		<button class="slideUp">集体滑出</button>
+		<button class="slideDown">集体滑入</button>
+		<button class="slideToggle">滑入/滑出</button>
+		<div class="sdiv1"></div>
+		<div class="sdiv2"></div>
+		<div class="sdiv3"></div>
+	</div>
+	
+
+	<script>
+		//隐藏元素，$(selector).hide(speed,callback);    (动画持续多久，动画完成时执行的函数)
+		//本质上是修改dom.style.display属性
+		$(".hide").on('click',function(){
+			$(".mdiv1").hide(300,function(){
+				console.log( "隐藏完成！" );
+			});
+		});
+		//显示元素，$(selector).show(speed,callback);
+		$(".show").on('click',function(){
+			$(".mdiv1").show(300,function(){
+				console.log( "显示完成！" );
+			});
+		});
+		//当一个元素动画完成之后在回调函数内启动下一个元素动画
+		$(".orderHide").on('click',function(){
+			$(".mdiv1").hide(300,function(){
+				$(".mdiv2").hide(300,function(){
+					$(".mdiv3").hide(300,function(){
+						console.log( "按顺序隐藏完成！" );
+			        });
+			    });
+			});
+		});
+		//当一个元素动画完成之后在回调函数内启动下一个元素动画
+		$(".oederShow").on('click',function(){
+			$(".mdiv3").show(300,function(){
+				$(".mdiv2").show(300,function(){
+					$(".mdiv1").show(300,function(){
+						console.log( "按顺序显示完成！" );
+			        });
+			    });
+			});
+		});
+		//切换元素的隐藏、显示
+		$(".toggle").on('click',function(){
+			$(".mdiv3").toggle(300);
+		});
+		//淡出，队列形式执行
+		$(".fadeOut").on('click',function(){
+			$(".fdiv1").fadeOut(2000);
+			$(".fdiv2").fadeOut(3000);
+			$(".fdiv3").fadeOut(4000);
+		});
+		//淡入
+		$(".fadeIn").on('click',function(){
+			$(".fdiv3").fadeIn(2000);
+			$(".fdiv2").fadeIn(3000);
+			$(".fdiv1").fadeIn(4000);
+		});
+		//切换淡入、淡出，元素不透明度一旦达到0，display样式属性设置为none 
+		$(".fadeToggle").on('click',function(){
+			$(".fdiv1").fadeToggle(2000);
+			$(".fdiv2").fadeToggle(2000);
+			$(".fdiv3").fadeToggle(2000);
+		});
+		//动画调整透明度
+		$(".fadeTo").on('click',function(){
+			$(".fdiv1").fadeTo(2000,0.2);
+			$(".fdiv2").fadeTo(3000,0.4);
+			$(".fdiv3").fadeTo(4000,0.6);
+		});
+		//滑出，高度值达到0的时候，display 样式属性被设置为none
+		$(".slideUp").on('click',function(){
+			$(".sdiv1").slideUp(1000);
+			$(".sdiv2").slideUp(1500);
+			$(".sdiv3").slideUp(2000);
+		});
+		//滑入动画，匹配元素的高度
+		$(".slideDown").on('click',function(){
+			$(".sdiv1").slideDown(1000);
+			$(".sdiv2").slideDown(1500);
+			$(".sdiv3").slideDown(2000);
+		});
+		//切换滑入滑出
+		$(".slideToggle").on('click',function(){
+			$(".sdiv1").slideToggle(1000);
+			$(".sdiv2").slideToggle(1500);
+			$(".sdiv3").slideToggle(2000);
+		});
+	</script>
+</body>
+</html>
