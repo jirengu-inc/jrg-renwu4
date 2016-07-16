@@ -1,0 +1,207 @@
+html, body, p, h1, h2, h3, h4, h5, h6, ul, ol {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	height: 100%;
+	width: 100%;
+}
+body {
+	font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+hr.short {
+	max-width: 100px;
+}
+.text-vertical-center {
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+.table {
+	display: table;
+}
+.btn-dark {
+	text-decoration: none;
+	border-radius: 0;
+	color: #fff;
+	background-color: rgba(0,0,0,0.4);
+	padding: 13px;
+	font-size: 18px;
+}
+.btn-dark:hover, .btn-dark:focus, .btn-dark:active {
+	color: #fff;
+	background-color: rgba(0,0,0,0.7);
+}
+.btn-light {
+	padding: 10px;
+	text-decoration: none;
+    border-radius: 0;
+    color: #333;
+    background-color: rgb(255,255,255);
+    font-size: 13px;
+}
+
+.btn-light:hover,
+.btn-light:focus,
+.btn-light:active {
+    color: #333;
+    background-color: rgba(255,255,255,0.8);
+}
+/*header*/
+#top {
+	background: url(../images/header-bg.jpg) no-repeat center center scroll;
+    background-size: cover;
+	height: 100%;
+	width: 100%;
+	display: table;
+	font-size: 1.5em;
+	color: rgba(0,0,0,0.75);
+	line-height: 2.75em;
+}
+#top h1 {
+	font-size: 2.5em;
+}
+#top h3 {
+	font-size: 24px;
+	font-weight: 500;
+}
+/*about*/
+#about {
+	display: table;
+	width: 100%;
+	line-height: 2.75em;
+	padding: 50px 0;
+	color: rgba(0,0,0,0.75);
+}
+#about h2 {
+	font-size: 30px;
+	font-weight: 500;
+}
+#about p {
+	font-size: 21px;
+	font-weight: 300;
+}
+#about a {
+	text-decoration: none;
+	color: #337ab7;
+}
+#about a:hover, #about a:focus {
+	text-decoration: underline;
+	color: #23527c;
+}
+/*services*/
+#services {
+	width: 100%;
+	background-color: #337ab7;
+	color: #FFF;
+	padding: 50px 0;
+	text-align: center;
+}
+#services h2 {
+	font-size: 30px;
+	font-weight: 500;
+}
+#services h3 {
+	font-size: 20px;
+	font-weight: 500;
+}
+#services p {
+	font-size: 12px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+#services .item {
+	display: inline-block;
+	margin-left: 40px;
+	margin-right: 40px;
+}
+#services .item p {
+	max-width: 150px;
+	text-align: center;
+}
+/*callout*/
+#callout {
+	background: url(../images/callout-bg.jpg) no-repeat center center scroll;
+	background-size: cover;
+	padding: 150px 0;
+	display: table;
+	width: 100%;
+	color: #FFF;
+	font-size: 3em;
+}
+/*works*/
+#works {
+	padding: 50px 0;
+	width: 100%;
+	text-align: center;
+}
+#works hr {
+	opacity: 0.3;
+}
+#works h2 {
+	font-size: 30px;
+	font-weight: 500;
+}
+#works a {
+	display: inline-block;
+	margin: 10px;
+	font-size: 14px;
+}
+#works a:hover {
+	opacity: 0.8;
+}
+
+/*actions*/
+#actions {
+	background-color: #337ab7;
+	padding: 50px 0;
+	color: white;
+}
+#actions a {
+	font-size: 16px;
+	padding: 12px;
+	margin: 10px;
+}
+#actions h2 {
+	font-size: 25px;
+	font-weight: 500;
+	margin: 20px;
+}
+/*footer*/
+footer {
+	padding: 50px 0;
+	text-align: center;
+	color: rgba(0,0,0,0.75);
+}
+footer h4 {
+	font-size: 18px;
+}
+footer h5 {
+	font-size: 15px;
+	font-weight: 500;
+}
+footer li {
+	display: inline-block;
+	list-style: none;
+	margin: 5px;
+}
+footer a, footer a:visited {
+	color: #337ab7;
+	text-decoration: none;
+}
+footer a:hover, footer a:focus {
+	color: #23527c;
+	text-decoration: underline;
+}
+footer hr.short {
+	opacity: 0.3;
+}
+footer p {
+	opacity: 0.6;
+	padding: 5px;
+	font-size: 14px;
+}

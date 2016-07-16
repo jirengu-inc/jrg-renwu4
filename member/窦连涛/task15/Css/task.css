@@ -139,7 +139,6 @@ h1,h2,h3,h4,h5,h6{
   float: left;
 }
 
-
 .service-detail-content .icon{
   width: 112px;
   height: 112px;
@@ -184,12 +183,27 @@ h1,h2,h3,h4,h5,h6{
 .portfolio-img li {
   float: left;
   padding: 0 15px;
+  margin-bottom: 30px;
 }
 
 .portfolio-img li .port-detail{
   display: block;
   width: 360px;
-  background: #FCE503;
+  position: relative;
+}
+
+.mask {
+  width: 360px;
+  height: 260px;
+  display: none;
+  position: absolute;
+  top:0;
+  left:0;
+  background: rgba(254, 209, 54, 0.7);
+}
+
+.portfolio-img li .port-detail:hover .mask {
+  display: block;
 }
 
 .portfolio-img li img{
@@ -197,6 +211,7 @@ h1,h2,h3,h4,h5,h6{
   vertical-align: bottom;
   /*去有留白*/
 }
+
 
 .port-content {
   padding: 25px;

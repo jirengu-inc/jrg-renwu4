@@ -64,12 +64,16 @@
 			var start = $('.list').children().size()+1;
 			var url = 'code3.php?start='+start+'&len='+len;
 			$.get(url,function(data){
-				var data = JSON.parse(data).data;
-				for(var key in data){
-					$('.list').append('<li><a href="#">'+data[key]+'</a></li>');
+				var data = JSON.parse(data);
+				if (data.status === 1) {
+					data = data.data;
+					for(var key in data){
+						$('.list').append('<li><a href="#">'+data[key]+'</a></li>');
+					}
+					$this.html('加载更多');
+					lodingLock = false;
 				}
-				$this.html('加载更多');
-				lodingLock = false;
+				
 			});				
 		});
 		$('.list').on('mouseover','li',function(){
