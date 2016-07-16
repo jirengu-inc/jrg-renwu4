@@ -324,25 +324,29 @@
 	</div>
 
 	<script>
-		$("ul.tab li").on('click',function(){
-			var $this = $(this),
-			    $idx = $this.index();
+		$(function(){
+			$("ul.tab li,ul.tab li a").on('click',function(evt){
+				evt.preventDefault();               //取消浏览器默认行为，避免每次点击按钮都回到最上面
+				var $this = $(this),
+				    $idx = $this.index();
 
-			$this.addClass("active");
-			$this.siblings('li').removeClass('active');
+				$this.addClass("active");
+				$this.siblings('li').removeClass('active');
 
-			$this.parents("div").find('ul.items').hide();
-			$this.parents("div").find('ul.items').eq($idx).show();
-			
-		});
+				$this.parents("div").find('ul.items').hide();
+				$this.parents("div").find('ul.items').eq($idx).show();
+				
+			});
 
-		$("ul.items li").on('mouseover',function(){
-			$(this).find('div').addClass('cover');
-		});
+			$("ul.items li").on('mouseover',function(){
+				$(this).find('div').addClass('cover');
+			});
 
-		$("ul.items li").on('mouseleave',function(){
-			$(this).find('div').removeClass('cover');
-		});
+			$("ul.items li").on('mouseleave',function(){
+				$(this).find('div').removeClass('cover');
+			});
+		})
+		
 	</script>		
 </body>
 </html>
