@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>LazyLoading</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		ul{
+			list-style: none;
+			margin:0;
+			padding: 0;
+		}
+		.ct li{	
+			width: 210px;
+			height: 300px;
+			border: 1px solid #eee;
+			float:left;
+			margin:0 20px 40px 20px;
+			line-height: 300px;
+			position: relative;
+			
+		}
+		.ct img{
+			width: 210px;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+
+		}
+		.ct{
+			margin: 0 auto;
+			width: 756px;
+		}
+		.ct::after{
+			display: block;
+			content: "";
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+	<ul class="ct">
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+		<li><img src="loading.gif" alt=""></li>
+	</ul>
+	<script>
+		(function($){
+			$.fn.lazyload=function(url){
+				var that=this,
+					clock;
+				this.each(function(){
+					showPic($(this),url);
+				})
+				$(window).on("scroll",function(){
+					if(clock){
+						clearTimeout(clock);
+					}
+					clock=setTimeout(function(){
+						that.each(function(){
+							showPic($(this),url);
+						})
+					},500)
+				});
+				return this;
+			}
+			function isVisible($node){
+				var windowHeight=$(window).height(),
+					selfTop=$node.offset().top,
+					selfHeight=$node.height(),
+					scrollTop=$(window).scrollTop();
+				if(scrollTop>(selfTop-windowHeight)&&scrollTop<(selfHeight+selfTop)){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			function showPic($node,url){
+				if((!$node.attr("loaded"))&&isVisible($node)){
+					$node.find("img").attr("src",url);
+					$node.attr("loaded",true);
+				}
+			}
+		}(jQuery));
+
+
+			$("li").lazyload("pet.jpg");
+	</script>
+</body>
+</html>
