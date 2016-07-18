@@ -103,18 +103,13 @@ li {
 	width: 30%;
 	height: 320px;
 	border: 1px solid #CCC;
-}
-#works .left, #works .center {
 	float: left;
 }
-#works .right {
-	float: right;
+#works .row {
+	margin: 30px 0;
 }
 #works .center {
 	margin: 0 4.7%;
-}
-#works .second-line {
-	margin-top: 2%;
 }
 #works .box img {
 	width: 300px;
