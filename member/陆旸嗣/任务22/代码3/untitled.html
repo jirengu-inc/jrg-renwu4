@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ct">
+	    <li src="./img/1.JPG">鼠标放置查看图片1</li>
+	    <li src="./img/2.JPG">鼠标放置查看图片2</li>
+	    <li src="./img/3.JPG">鼠标放置查看图片3</li>
+    </ul>
+   <div class="img-preview"></div>
+</body>
+
+<script type="text/javascript">
+//复杂方式
+	// var a=document.querySelector(".ct");
+	// var b=a.children;
+	// var img=document.createElement("img");
+	// var imgPreview=document.querySelector(".img-preview");
+	// imgPreview.appendChild(img);
+	// img.setAttribute("width","500px");
+	// img.setAttribute("height","300px");
+	// function show(){
+	// 	for(var i=0;i<b.length;i++){
+	// 		b[i].onmouseover=function(){
+	// 			img.src=this.getAttribute("src");
+	// 		}
+	// 	}
+	// }
+	// a.addEventListener("mouseover",show);
+
+//简单方法
+	var a=document.querySelector(".ct");
+	var b=document.querySelector(".img-preview");
+	a.addEventListener("mouseover",show)
+	function show(e){
+		var src=e.target.getAttribute("src");
+		b.innerHTML='<img src="'+src+'">';
+	}
+</script>
+</html>
