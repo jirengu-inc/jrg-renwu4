@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<link href="" rel="stylesheet">
+<style>
+	.active{
+		color: red;
+        font-size: 30px;
+	}
+	.btn{
+		text-decoration: none;
+		background-color: #ccc;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+		display: inline-block;
+		height: 30px;
+		line-height: 30px;
+        padding: 3px 10px;
+        text-align: center;
+        margin:5px;
+        color: black;
+        cursor: pointer;    
+	}
+</style>
+</head>
+<body>
+   <h2>本题我是借鉴同学的表达方式来完成的</h2>
+    <fieldset>
+        <legend>1.添加删除class</legend>
+	    <div class="demo1">demo1</div>
+	    <a href="###" class="btn add">添加class</a>
+	    <a href="###" class="btn del">删除class</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.add').on('click',function(){
+    		$('.demo1').addClass('active');
+    	});
+    	$('.del').on('click',function(){
+    		$('.demo1').removeClass('active');
+    	});
+    </script>
+    <fieldset>
+        <legend>2.展示隐藏元素</legend>
+	    <div class="demo2">demo2</div>
+	    <a href="###" class="btn display">展示</a>
+	    <a href="###" class="btn hid">隐藏</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.display').on('click',function(){
+    		$('.demo2').show();
+    	});
+    	$('.hid').on('click',function(){
+    		$('.demo2').hide();
+    	});
+    </script>
+    <fieldset>
+        <legend>3.修改属性</legend>
+	    <div class="demo3"><img src="http://img0.pconline.com.cn/pconline/1508/13/6824500_006_thumb.jpg" id="start" alt="修改前" title="img1"></div>
+	    <a href="###" class="btn displayAttr">展示图片信息</a>
+	    <a href="###" class="btn replaceAttr">修改图片</a>
+	    <p class="message"></p>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	(function(){
+            var $imgElement = $('#start');
+            $('.displayAttr').on('click',function(){
+            	var imgId = $imgElement.attr('id'),
+                    imgSrc = $imgElement.attr('src'),
+                    imgAlt = $imgElement.attr('alt'),
+                    imgTitle = $imgElement.attr('title');
+              $('.message').html('图片id:' + imgId + '<br />src:' + imgSrc + '<br />title:' + imgTitle)        
+            });
+            $('.replaceAttr').on('click',function(){
+            	$imgElement.attr('id','end');
+            	$imgElement.attr('src','http://www.qq1234.org/uploads/allimg/140822/3_140822151428_1-lp.jpg');
+            	$imgElement.attr('title','modify');
+            });
+    	})()
+    </script>
+    
+    <fieldset>
+        <legend>4.添加自定义属性</legend>
+	    <div class="demo4"></div>
+	    <a href="###" class="btn add1">添加自定义属性</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.add1').on('click',function(){
+    		var $attribute = $('.demo4');
+    		$attribute.attr('data-src','我是属性data-src的值');
+    		return $attribute.html($attribute.attr('data-src'))
+    	});
+    </script>
+    <fieldset>
+        <legend>5.开头添加元素</legend>
+	    <div class="ct demo5">world</div>
+	    <a href="###" class="btn add3">开头添加元素</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.add3').on('click',function(){
+    		var $ctAdd = $('.demo5');
+    		$ctAdd.prepend($('<span>hello&nbsp</span>'));
+    	});
+    </script>
+    <fieldset>
+        <legend>6.结尾添加元素</legend>
+	    <div class="ct demo6">hello</div>
+	    <a href="###" class="btn add4">结尾添加元素</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.add4').on('click',function(){
+    		var $ctAdd1 = $('.demo6');
+    		$ctAdd1.append($('<span>&nbspworld</span>'));
+    	});
+    </script>
+    <fieldset>
+        <legend>7.删除元素</legend>
+	    <a href="###" class="btn delAtt">删除这个按钮</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.delAtt').on('click',function(){
+    		$(this).remove();
+    	});
+    </script>
+    <fieldset>
+        <legend>8.清空内容</legend>
+	    <div class="ct8">hello</div>
+	    <a href="###" class="btn del-text">清空内容</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.del-text').on('click',function(){
+    		$('.ct8').empty();
+    	});
+    </script>
+    <fieldset>
+        <legend>9.在$ct里改变html内容</legend>
+	    <div class="ct9">hello</div>
+	    <a href="###" class="btn add-btn">变按钮</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.add-btn').on('click',function(){
+    		$('.ct9').html('<div class="ct9 btn">我变成按钮了</div>');
+    	});
+    </script>
+    <fieldset>
+        <legend>10.获取、设置$node 的宽度、高度(分别不包括内边距、包括内边距、包括边框、包括外边距)</legend>
+	    <div class="ct10" style="border:1px solid #ccc; float:left;">
+	    	<div class="node1" style="width:100px;height:100px;padding:10px;margin:10px;background:yellow;">
+	    		<span style="background:red;display:block;">
+	    			padding:10px;
+	    			border:1px;
+	    			margin:10px;
+	    			width:100px;
+	    			height:100px;
+	    		</span>
+	    	</div>
+            <input class="wid" type="text" placeholder='设置宽度' style="display:block;float:left;width:80px;">
+            <input class="heig" type="text" placeholder='设置高度' style="display:block;float:left;width:80px;">
+	    </div>
+	    <div class="result" style="float:left;margin:10px;"></div>
+	    <a href="###" class="btn getAtt">得到属性</a>
+	    <a href="###" class="btn setAtt">设置属性</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.getAtt').on('click',function(){
+    		var $ct10 = $('.ct10');
+    		var inText = '<p>';
+    		    inText += '不包括内边距的宽度:' + $ct10.width();
+    		    inText += '<br />包括内边距的宽度:'+ $ct10.innerWidth();
+    		    inText += '<br />包括边框的宽度:' + $ct10.outerWidth();
+                inText += '<br />包括外边距的宽度:' + $ct10.outerWidth(true);
+                inText += '<br />不包括内边距的高度:' + $ct10.height();
+                inText += '<br />包括内边距的高度:' + $ct10.innerHeight();
+                inText += '<br />包括边框的高度:' + $ct10.outerHeight();
+                inText += '<br />包括外边距的高度:' + $ct10.outerHeight(true) + '</p>';
+                $('.result').html(inText);
+    	})
+        $('.setAtt').on('click',function(){
+        	var $node = $('.node1');
+        	var wid = $('.wid').val();
+        	var heig = $('.heig').val();
+        	$node.width(wid).height(heig);
+        })
+    </script>
+    <fieldset>
+        <legend>11.获取窗口滚动条垂直滚动距离</legend>
+	    <div class="ct11"></div>
+	    <a href="###" class="btn scroll">滚动距离</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.scroll').on('click',function(){
+    		$('.scroll').prev().html($(window).scrollTop())
+    	});
+    </script>
+    <fieldset>
+        <legend>12.获取$node 到根节点水平、垂直偏移距离</legend>
+	    <div class="ct12">我的位置</div>
+	    <div></div>
+	    <a href="###" class="btn scrol">距离</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.scrol').on('click',function(){
+    		var x = $('.ct12').offset().left,
+    		    y = $('.ct12').offset().top;
+    		$(this).prev().html('水平距离为:' + x + '<br>垂直距离:' + y);    
+    	});
+    </script>
+    <fieldset>
+        <legend>13.修改$node 的样式，字体颜色设置红色，字体大小设置14px</legend>
+	    <div class="ct13" style="font-size:20px;">我变为红色</div>
+	    <a href="###" class="btn change-style">改变样式</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.change-style').on('click',function(){
+    		var $ct13 = $('.ct13'); 
+    		$ct13.css({"color":"red","font-size":"14px"})
+    	});
+    </script>
+    <fieldset>
+        <legend>14.遍历节点，把每个节点里面的文本内容重复一遍</legend>
+	    <div class="ct14">
+             <p>hello</p>
+             <p>hunger</p>
+             <p>valley</p>
+	    </div>
+	    <a href="###" class="btn for-each">遍历再复制</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.for-each').on('click',function(){
+    		var $ct14 = $('.ct14'); 
+    		$ct14.children().each(function(){
+    			$ct14.append($(this).clone());
+    		})
+    	});
+    </script>
+    <fieldset>
+        <legend>15.从$ct里查找class为item的子元素</legend>
+	    <div class="ct15">
+             <p class="item">hello</p>
+             <p>hunger</p>
+             <p class="item">valley</p>
+	    </div>
+	    <a href="###" class="btn search-item">查找class为item的元素</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.search-item').on('click',function(){
+    		$('.ct15').find('.item').css({'color':'red'})
+    	})
+    </script>
+    <fieldset>
+        <legend>16.获取$ct 里面的所有孩子</legend>
+	    <div class="ct16">科目
+             <div class="item">
+                   文科
+                   <p style="background:yellow">语言</p>
+                   <p>哲学</p>
+             </div>
+             <div class="item">
+                   理科
+                   <p>数学</p>
+                   <p>物理</p>
+             </div>
+	    </div>
+	    <a href="###" class="btn search-children">查找所有子元素</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.search-children').on('click',function(){
+    		$('.ct16').children().css({'color':'red'})
+    	})
+    </script>
+    <fieldset>
+        <legend>
+            17.对于$node，向上找到class为”.ct“的父亲，然后从该父亲找到”.panel“的孩子
+        </legend>
+	    <div class="ct17">我的class为ct，我是父亲
+             <div class="node3" style="background:yellow">
+                   我是class为node,ct的孩子
+                   <p>语言</p>
+                   <p>哲学</p>
+             </div>
+             <div class="panel" style="color:red">
+                   我是class为panel，ct的孩子，node的同辈元素
+                   <p>数学</p>
+                   <p>物理</p>
+             </div>
+	    </div>
+	    <a href="###" class="btn find-child">子到父再到另外一个子元素</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.find-child').on('click',function(){
+    		$('.node3').parents('.ct17').find('.panel').css({'background':'yellow'})
+    	})
+    </script>
+    <fieldset>
+        <legend>
+            18.获取选择元素的数量
+        </legend>
+	    <div class="ct18">我的class为ct，我是父亲
+             <div style="background:yellow">
+                   我是class为node,ct的孩子
+                   <p>语言</p>
+                   <p>哲学</p>
+             </div>
+             <div style="color:red">
+                   我是class为panel，ct的孩子，node的同辈元素
+                   <p>数学</p>
+                   <p>物理</p>
+             </div>
+	    </div>
+	    <a href="###" class="btn count">弹出p元素的数量</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.count').on('click',function(){
+    		$('.ct18').find('p').text('我是p标签里的内容');
+    		alert($('.ct18').find('p').size());
+
+    	})
+    </script>
+    <fieldset>
+        <legend>
+            19.获取当前元素在兄弟中的排行
+        </legend>
+	    <div class="ct19">我的class为ct，我是父亲
+             <div style="background:yellow">
+                   我是class为node,ct的孩子
+                   <p>语言</p>
+                   <p>哲学</p>
+                   <p class="mathmatic">数学</p>
+                   <p>物理</p>
+             </div>
+	    </div>
+	    <a href="###" class="btn brother">弹出”数学“在父元素中的位置</a>
+	</fieldset> 
+	<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>  
+    <script>
+    	$('.brother').on('click',function(){
+    		alert($('.mathmatic').index());
+    	})
+    </script>
+</body>
+</html>

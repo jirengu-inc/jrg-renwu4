@@ -1,0 +1,135 @@
+<!doctype>
+<html>
+	<meta charset="utf-8">
+	<title>瀑布流布局</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.wrap{
+			position: relative;
+			width: 90%;
+			margin: 0 auto;
+			font-size: 30px;
+			text-align: center;
+		}
+		.item{
+			position: absolute;
+			width: 190px;
+			margin-top: 10px;
+			margin-right: 10px;
+			transition: all .5s;
+		}
+		.h1{
+			height: 100px;
+		}
+		.h2{
+			height: 130px;
+		}
+		.h3{
+			height: 190px;
+		}
+		.h4{
+			height: 280px;
+		}
+		.h5{
+			height: 330px;
+		}
+
+		.bg1{
+			background-color: red;
+		}
+		.bg2{
+			background-color: green;
+		}
+		.bg3{
+			background-color: yellow;
+		}
+		.bg4{
+			background-color: pink;
+		}
+		.bg5{
+			background-color: blue;
+		}
+
+	</style>
+	<body>
+		<div class="wrap">
+			<div class="item h2 bg1">1</div>
+			<div class="item h1 bg2">2</div>
+			<div class="item h5 bg3">3</div>
+			<div class="item h4 bg4">4</div>
+			<div class="item h3 bg5">5</div>
+
+			<div class="item h4 bg3">6</div>
+			<div class="item h5 bg4">7</div>
+			<div class="item h1 bg2">8</div>
+			<div class="item h2 bg1">9</div>
+			<div class="item h3 bg5">10</div>
+			
+
+			<div class="item h1 bg1">11</div>
+			<div class="item h4 bg4">12</div>
+			<div class="item h5 bg5">13</div>
+			<div class="item h2 bg2">14</div>
+			<div class="item h3 bg3">15</div>
+
+			<div class="item h4 bg1">16</div>
+			<div class="item h5 bg3">17</div>
+			<div class="item h2 bg3">18</div>
+			<div class="item h1 bg4">19</div>
+			<div class="item h3 bg5">20</div>
+		</div>
+
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script type="text/javascript">
+
+			var waterFall = {
+				init:function($ct){
+					this.$ct = $ct;
+
+					this.setEl();
+					this.bind();
+				},
+				bind:function(){
+					var me = this;
+					$(window).on('resize',function(){
+						me.setEl();
+					})
+				},
+				setEl:function(){
+					var me = this;
+					me.wrapWidth = me.$ct.width();
+					me.itemWidth = me.$ct.find('.item').outerWidth(true);
+					me.column = Math.floor(me.wrapWidth/me.itemWidth);
+					me.columnArr = [];
+
+					for(var i=0;i<me.column;i++){
+						me.columnArr.push(0);
+					}
+					me.$ct.find('.item').each(function(){
+						var minIdx = me.getMinIdx(me.columnArr);
+						$(this).css({
+							'top':me.columnArr[minIdx],
+							'left':me.itemWidth*minIdx
+						})
+						me.columnArr[minIdx] += $(this).outerHeight(true);
+					})
+				},
+				getMinIdx:function(arr){
+					var min = arr[0],
+						idx = 0;
+					for(var i=0;i<arr.length;i++){
+						if(arr[i] < min){
+						  min = arr[i];
+						  idx = i;
+						}
+					}
+					return idx;
+				}
+			}
+			waterFall.init($('.wrap'));
+		</script>
+	</body>
+</html>

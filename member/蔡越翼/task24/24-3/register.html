@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>register</title>
+	<style>
+		html,
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		.wrap {
+			margin: 30px;
+			font-size: 14px;
+		}
+		.info dt {
+			float: left;
+			line-height: 30px;
+		}
+		.info dd {
+			margin-left: 70px;
+			margin-bottom: 10px;
+			font-size: 12px;
+			color: #ccc;
+			border-radius: 2px;
+		}
+		.info .validate {
+			height: 10px;
+		}
+		.info .name,
+		.info .pwd {
+			padding: 6px;
+			border: 1px solid #ccc;
+			border-radius: 2px;
+		}
+		.info input.error { border-color:red; }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<h3>注册</h3>
+		<form action="">
+			<dl class="info">
+				<dt>用户名：</dt>
+				<dd><input class="name" id="userName" type="text" placeholder="用户名(hunger被注册过)"></dd>
+				<dd class="validate" id="userinfo"> 只能是字母、数字、下划线、3-10字符</dd>
+				<dt>输入密码:</dt>
+				<dd><input id="pwd" class="pwd" type="password"></dd>
+				<dd class="validate">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+				<dt>确认密码:</dt>
+				<dd><input id="rePwd" class="pwd" type="password" placeholder="确认密码"></dd>
+				<dd class="validate"></dd>
+				<dd><button id="btn">注册</button></dd>
+			</dl>
+			
+		</form>
+	</div>
+	<script src="ajax.js"></script>
+	<script src="class.js"></script>
+	<script>
+		var userName = document.getElementById('userName'),
+			pwd = document.getElementById('pwd'),
+			rePwd = document.getElementById('rePwd'),
+			register = document.getElementById('btn'),
+			userInfo = document.querySelectorAll('.validate')[0],
+			pwdInfo = document.querySelectorAll('.validate')[1],
+			rePwdInfo = document.querySelectorAll('.validate')[2];
+		userName.addEventListener('change',function(){
+			testName() && isExit();
+		});
+		pwd.addEventListener('change',function(){
+			testPwd();
+		});
+		rePwd.addEventListener('change',function(){
+			checkPwd();
+		})
+		//提交表单
+		register.addEventListener('click',function(e){
+			e.preventDefault();
+			if(testName() && testPwd() && checkPwd()){
+				isExit(function(canUse){
+					if(canUse){
+						alert('正在注册');
+					}
+				});
+			}
+		});
+		//验证用户名是否合法
+		function testName(){
+			var user = userName.value;
+			if(!isLegalName(user)){
+				userInfo.innerText = "用户名格式不正确";
+				addClass(userName,'error');
+				return false;
+			}else {
+				userInfo.innerText="";
+				removeClass(userName,'error');
+				return true;
+			}
+		}
+		//检测用户名是否已存在
+		function isExit(exit){
+			 ajax({
+				url: 'register.php',
+				type: 'get',
+				data: {username:userName.value},
+				success: function(json){
+					if(json.msg === 0){           //0 表示已存在
+						userInfo.innerText='用户已存在';
+						addClass(userName,'error');
+						exit&&exit(false);
+					}
+					else if(json.msg === 1 ){     //1 表示可用
+						userInfo.innerText='';
+						removeClass(userName,'error');
+						exit&&exit(true);
+					}
+				},
+				error: function(){
+					alert('系统异常');
+				}
+			});
+		}
+		//验证密码格式
+		function testPwd(){
+			var userPwd = pwd.value;
+			if(!isValidPwd(userPwd)){
+				pwdInfo.innerText = '密码格式不正确';
+				addClass(pwd,'error');
+				return false;
+			}
+			else{
+				pwdInfo.innerText = '';
+				removeClass(pwd,'error');
+				return true;
+			}
+		}
+		//确认密码
+		function checkPwd(){
+			var one = pwd.value,
+				two = rePwd.value;
+			if(!isValidPwd(two)){
+				rePwdInfo.innerText = '密码格式不正确';
+				addClass(rePwd,'error');
+				return false;
+			}
+			else if(!(one === two)){
+				rePwdInfo.innerText = "两次密码输入不一致";
+				addClass(rePwd,'error');
+				return false;
+			}
+			else{
+				rePwdInfo.innerText = "";
+				removeClass(rePwd,'error');
+				return true;
+			}
+		}
+		//用户名正则匹配
+		function isLegalName(value){
+			return !!value.match(/^[a-zA-Z0-9]{3,10}$/);
+		}
+		// 密码正则匹配
+		function isValidPwd(str){
+    		var reg = /\W/;
+    		var single = /^[0-9]+$|^[a-z]+$|^[A-Z]+$|^_+$/;
+    		if(str.length < 6 || str.length >15){
+        		return false;
+   		 	}
+    		if(reg.test(str) || single.test(str)){
+        		return false;
+    		}
+    		return true;
+		}
+	</script>
+</body>
+</html>

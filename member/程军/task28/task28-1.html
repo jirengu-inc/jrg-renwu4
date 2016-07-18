@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Documennt</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			margin: 10px;
+			color: #fff;
+			font-size: 30px;
+			text-align: center;
+		}
+		.header{
+			height: 50px;
+			margin-bottom: 20px;
+			background: #ccc;
+		}
+		.nav{
+			height: 30px;
+			background: red;
+		}
+		.content{
+			height: 800px;
+			overflow: auto;
+		}
+		.content .aside{
+			float: left;
+			width: 200px;
+			height: 500px;
+			background: yellow;
+			margin: 10px;
+		}
+		.content .main{
+			background: pink;
+			min-height: 700px;
+			overflow: hidden;
+			margin: 10px;
+		}
+		.footer{
+			background: red;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		header
+	</div>
+	<div class="nav">nav</div>
+	<div class="content">
+		<div class="aside"> aside</div>
+		<div class="main"> main</div>
+	</div>
+	<div class="footer">footer</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		
+			$.fn.stickUp=function(){
+				var $cur=this,
+				$top=$cur.offset().top, //获取顶部距离
+				$width=$cur.width(),
+				$left=$cur.offset().left,
+				$nav=$cur.clone();
+				$nav.css({"position":"fixed","left":$left,"top":"0","width":$width,"display":"none"});
+				$cur.after($nav);
+				$(window).on("scroll",function(){
+					var $scroll=$(document).scrollTop(); //滚动距离
+					if($scroll>$top){
+							$cur.css({"opacity":"0"});
+							$nav.css({"display":"block"});
+						
+						}
+						if($scroll<$top){
+							$cur.css({"opacity":"1"});
+							$nav.css({"display":"none"});
+					}
+				})
+			}
+			$('.nav').stickUp();	
+		
+	</script>
+</body>
+</html>
