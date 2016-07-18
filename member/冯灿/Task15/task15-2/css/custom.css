@@ -304,6 +304,11 @@ html, body {
 #team .list-inline {
 	margin: 15px 0;
 }
+#team .row > p#info {
+	font-size: 16px; 
+	width: 40%; 
+	margin: 0 auto;
+}
 /*clients*/
 .client {
 	display: inline-block;
