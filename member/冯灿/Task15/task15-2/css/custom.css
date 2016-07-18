@@ -86,9 +86,11 @@ html, body {
 	width: 100%;
 	color: #FFF;
 	text-align: center;
+	display: table;
 }
 #header .container{
 	vertical-align: middle;
+	display: table-cell;
 }
 #header .btn {
 	display: inline-block;
