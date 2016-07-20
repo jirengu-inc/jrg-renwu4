@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task17-6-10</title>
+  <script>
+  // function fn(fn2){
+  //     console.log(fn2);
+  //     /*
+  //     function fn2(){
+  //         console.log('fnnn2');
+  //     }
+  //     */
+  //     var fn2 = 3;
+  //     console.log(fn2);// 3
+  //     console.log(fn);
+  //   /* 作用域链
+  //       function fn(fn2){
+  //    console.log(fn2);
+  //    var fn2 = 3;
+  //    console.log(fn2);
+  //    console.log(fn);
+  //    function fn2(){
+  //         console.log('fnnn2');
+  //         }
+  //      }
+  //     */
+  //     function fn2(){
+  //         console.log('fnnn2');
+  //     }
+  //   }
+  //   fn(10);
+
+  // var fn = 1;
+  // function fn(fn){
+  //      console.log(fn);
+  // }
+  // console.log(fn(fn));
+  // /*
+  // var fn;
+  // function fn(fn){
+  //      console.log(fn);
+  // };
+  // 此时的fn 是一个函数 那么接下来
+  // fn = 1 ;
+  // fn 又变成了一个数字了
+  // fn(fn) 肯定不是一个函数了 所以会报错
+  // 告诉 fn 不是一个函数
+  // */
+
+  //作用域
+// console.log(j);
+// console.log(i);
+// for(var i=0; i<10; i++){
+//     var j = 100;
+// }
+// console.log(i);
+// console.log(j);
+/*
+for 之前
+console.log(j); undefined
+console.log(i); undefined
+虽然for循环后有花括号 但是不能形成作用域
+JS里能形成作用域的 只有函数
+for 之后
+console.log(i); 10
+console.log(j); 100
+*/
+
+// fn();
+// var i = 10;
+// var fn = 20;
+// console.log(i);
+// function fn(){
+//     console.log(i);
+//     var i = 99;
+//     fn2();
+//     console.log(i);
+//     function fn2(){
+//         i = 100;
+//     }
+// }
+// /*
+// var i;
+// function fn(){
+//     console.log(i);//undefined
+//     var i = 99;
+//     fn2(); 变为全局变量 i = 100
+//     console.log(i); // 100
+//     function fn2(){
+//         i = 100;
+//     }
+// }
+// fn();
+// i=10; // i又重新定义为10
+// fn=20;
+// console.log(i) //
+// */
+
+   var say = 0;
+   (function say(n){
+       console.log(n); //10 9 8 7 6 5 4 3 2 在快速函数中 形成自己独立的空间 不受外界影响
+       if(n<3) return;
+       say(n-1);
+   }( 10 ));
+   console.log(say); // 0
+   /*
+
+
+
+
+   */
+  </script>
+</head>
+<body>
+
+</body>
+</html>

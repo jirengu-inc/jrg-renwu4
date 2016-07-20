@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task22-4</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    *{
+    	margin: 0;
+    	padding: 0;
+    }
+    .clear:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+	#tab {
+		width: 600px;
+		border: 1px solid #ccc;
+		margin-top: 20px;
+		margin-left: 20px;
+	}
+	ul.tabs li {
+		float: left;
+		width: 199px;
+        list-style: none;
+        text-align: center;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        border-bottom: 1px solid #ccc;
+        border-right: 1px solid #ccc;
+        cursor: pointer;
+	}
+	ul.tabs .active {
+		background: #eee;
+	}
+	ul.tabs li:last-child {
+		border-right: none;
+	}
+	div.cont {
+		display: none;
+		height: 247px;
+		padding: 10px;
+	}
+	#tab .active {
+		display: block;
+	}
+</style>
+</head>
+<body>
+	<div id="tab">
+		<ul class="tabs clear">
+			<li class="active">tab1</li>
+			<li>tab2</li>
+			<li>tab3</li>
+		</ul>
+        <div class="cont active">内容1</div>
+        <div class="cont">内容2</div>
+        <div class="cont">内容3</div>
+	</div>
+
+	<script>
+		var package = {
+
+    		hasClass: function(elm,cls){
+        		return !!elm.className.match(new RegExp("\\b"+cls+"\\b"));
+    		},
+    		addClass: function(elm,cls){
+    			if(elm.length && elm.length > 0){
+    				for(var i=0;i<elm.length;i++){
+    					package.singleAddClass(elm[i],cls);
+    				}
+    			}else{
+    					package.singleAddClass(elm,cls);
+    			}
+    		},
+    		removeClass: function(elm,cls){
+    			if(elm.length && elm.length > 0){
+    				for(var i=0;i<elm.length;i++){
+    					package.singleRemoveClass(elm[i],cls)
+    				}
+    			}else{
+    					package.singleRemoveClass(elm,cls);
+    			}
+    		},
+    		singleAddClass: function(elm,cls){
+    			if( !package.hasClass(elm,cls)){
+    				elm.className += " " + cls;
+    			}
+    		},
+    		singleRemoveClass: function(elm,cls){
+    			elm.className = elm.className.replace(new RegExp("\\b"+cls+"\\b","g")," ");
+    		},
+    		indexOf: function(elm){
+    			var parent = elm.parentElement,
+    			    siblings = parent.children;
+    			for(var i=0;i<siblings.length;i++){
+    				if(elm === siblings[i]){
+    					return i;
+    				}
+    			}
+    			return -1;
+    		}
+    	};
+
+
+		var ul = document.querySelector(".tabs");
+
+    	ul.addEventListener("click",function(evt){
+    		var target = evt.target,
+    		    lis = ul.children,
+    		    index = package.indexOf(target),
+    		    divs = document.querySelectorAll(".cont");
+
+    		if(index > -1){
+    			package.removeClass(lis,"active");
+    			package.addClass(target,"active");
+    			package.removeClass(divs,"active");
+    			package.addClass(divs[index],"active");
+    		}
+    	});
+    	//不是太熟练，要多加练习
+	</script>
+</body>
+</html>

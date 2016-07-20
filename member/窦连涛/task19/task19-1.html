@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task19</title>
+  <script>
+  /*写一个函数getIntv，获取从当前时间到指定日期的间隔时间*/
+  function getIntv(str){
+     var newStr1 = new Date(str);
+     var newStr2 = +new Date();
+     var newStr3 = newStr1 - newStr2;
+     var day = 24*60*60*1000;
+     var hour = 60*60*1000;
+     var minute = 60*1000;
+     var second = 1000;
+     var days = Math.floor(newStr3/day);
+     newStr3 -= days*day;
+     var hours = Math.floor(newStr3/hour);
+     newStr3 -= hours*hour;
+     var minutes = Math.floor(newStr3/minute);
+     newStr3 -= minute*minutes;
+     var seconds = Math.floor(newStr3/second);
+     return "距离"+str+"还有"+days+"天"+hours+"小时"+minutes+"分钟"+seconds+"秒";
+  }
+  /*把数字日期改成中文日期*/
+  function getChsDate(str){
+    var arr = [];
+    arr[0] = str.slice(0,4);
+    arr[1] = str.slice(5,7);
+    arr[2] = str.slice(8,10);
+    var newStr = transyear(arr[0])+"年"+trans(arr[1])+"月"+trans(arr[2])+"日";
+    return newStr;
+  }
+
+  function transyear(str){
+    var arrdate = ['零','一','二','三','四','五','六','七','八','九','十'];
+    var arr = str.split("");
+    var year = [];
+    for (var i = 0; i < arr.length; i++) {
+      switch (arr[i]) {
+        case "0":
+          year[i] = "零";
+          break;
+        case "1":
+          year[i] = "一";
+          break;
+        case "2":
+          year[i] = "二";
+          break;
+        case "3":
+          year[i] = "三";
+          break;
+        case "4":
+          year[i] = "四";
+              break;
+        case "5":
+          year[i] = "五";
+              break;
+        case "6":
+          year[i] = "六";
+          break;
+        case "7":
+          year[i] = "七";
+          break;
+        case "8":
+          year[i] = "八";
+          break;
+        case "9":
+          year[i] = "九";
+          break;
+        default:
+      }
+    }
+    return year = year.join("");
+  }
+
+  function trans(str){
+    var arrdate1 = ['一','二','三','四','五','六','七','八','九','十'];
+    var arrdate2 = ['十一','十二','十三','十四','十五','十六','十七','十八','十九','二十'];
+    var arrdate3 = ['二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十',"三十一"];
+    var arrdate = arrdate1.concat(arrdate2).concat(arrdate3);
+    var result = [];
+
+    switch(str){
+      case "01":
+        result = arrdate[0];
+        break;
+        case "02":
+          result = arrdate[1];
+          break;
+          case "03":
+            result = arrdate[2];
+            break;
+            case "04":
+              result = arrdate[3];
+              break;
+              case "05":
+                result = arrdate[4];
+                break;
+                case "06":
+                  result = arrdate[5];
+                  break;
+                  case "07":
+                    result = arrdate[6];
+                    break;
+                    case "08":
+                      result = arrdate[7];
+                      break;
+                      case "09":
+                        result = arrdate[8];
+                        break;
+                        case "10":
+                          result = arrdate[9];
+                          break;
+                          case "11":
+                            result = arrdate[10];
+                            break;
+                            case "12":
+                              result = arrdate[11];
+                              break;
+                              case "13":
+                                result = arrdate[12];
+                                break;
+                                case "14":
+                                  result = arrdate[13];
+                                  break;
+                                  case "15":
+                                    result = arrdate[14];
+                                    break;
+                                    case "16":
+                                      result = arrdate[15];
+                                      break;
+                                      case "17":
+                                        result = arrdate[16];
+                                        break;
+                                        case "18":
+                                          result = arrdate[17];
+                                          break;
+                                          case "19":
+                                            result = arrdate[18];
+                                            break;
+                                            case "20":
+                                              result = arrdate[19];
+                                              break;
+                                              case "21":
+                                                result = arrdate[20];
+                                                break;
+                                                case "22":
+                                                  result = arrdate[21];
+                                                  break;
+                                                  case "23":
+                                                    result = arrdate[22];
+                                                    break;
+                                                    case "24":
+                                                      result = arrdate[23];
+                                                      break;
+                                                      case "25":
+                                                        result = arrdate[24];
+                                                        break;
+                                                        case "26":
+                                                          result = arrdate[25];
+                                                          break;
+                                                          case "27":
+                                                            result = arrdate[26];
+                                                            break;
+                                                            case "28":
+                                                              result = arrdate[27];
+                                                              break;
+                                                              case "29":
+                                                                result = arrdate[28];
+                                                                break;
+                                                                case "30":
+                                                                  result = arrdate[29];
+                                                                  break;
+                                                                  case "31":
+                                                                    result = arrdate[30];
+                                                                    break;
+
+    }
+    return result;
+  }
+
+
+  /*把数字日期改成中文日期 由于上面的方法是自己的方法，觉得太笨了，所以参考了王丽峰的作业*/
+  function getChsDates(str){
+    var arr=['零','一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十','三十一'];
+    var date=new Date(str);
+    var year=date.getFullYear().toString();//将年份转化成字符串
+    var month=date.getMonth();
+    var day=date.getDate();
+    var str=[];
+    for(var i=0;i < year.length;i++){//循环遍历字符串
+        str+=arr[year[i]];
+    }
+    str+="年"+arr[month+1]+"月"+arr[day]+"日";
+    return str;
+    }
+// var str=getChsDate('2015-01-08');
+// console.log(str);//二零一五年一月八日
+
+  /*写一个函数获取n天前的日期*/
+  function getLastNDays(num){
+    var today = Date.now();
+    var oneday = 24 * 60 * 60 * 1000;
+    var days = oneday * num;
+    var result = new Date(today-days);
+    return "" + result.getFullYear() + "-" + parseInt(result.getMonth()+1) + "-" + result.getDate() ;
+  }
+  /*完善如下代码，用于获取执行时间如：*/
+  var Runtime = (function(){
+        var timestart,timend;
+        return {
+            start: function(){
+              timestart = +new Date();
+            },
+            end: function(){
+              timend = +new Date();
+            },
+            get: function(){
+              return timend - timestart + "毫秒";
+            }
+        };
+    }());
+    // Runtime.start();
+    // for (var i = 0; i < 10000; i++) {
+    //   console.log(i);
+    // }
+    // Runtime.end();
+    // console.log(  Runtime.get() );
+    /*递归算法*/
+    function upstairs(n){
+      if (n == 1){
+        return 1;
+      }else if (n == 2) {
+        return 2;
+      }else{
+        return upstairs(n-1)+upstairs(n-2);
+      };
+    }
+
+
+    /*写一个json对象深拷贝的方法，json对象可以多层嵌套，值可以是字符串、数字、布尔、json对象中的任意项*/
+    function jsonCopy(obj){
+      var newObj = {};
+      for (var x in obj) {
+        if (typeof obj[x] === "object") {
+          newObj[x] = jsonCopy(obj[x])
+        }else{
+          newObj[x] = obj[x];
+        }
+      }
+      return newObj;
+    }
+
+    /*写一个数组深拷贝的方法，数组里的值可以是字符串、数字、布尔、数组中的任意项目*/
+    function arrCopy(arr){
+      var newArr = [];
+      for (var i = 0; i < arr.length; i++) {
+        if(typeof arr[i] === "object" && arr[i] instanceof Array){
+          newArr[i] = arrCopy(arr[i])
+        }else{
+          newArr[i] = arr[i];
+        }
+      }
+      return newArr;
+    }
+
+
+    function deepCopy(copy){
+      var newCopy;
+      if(typeof copy === "objec" && copy instanceof Array){
+        var newCopy = [];
+        for (var i = 0; i < arr.length; i++) {
+          if(typeof arr[i] === "object" && copy instanceof Array){
+            newCopy[i] = deepCopy(arr[i]);
+          }else{
+            newArr[i] = arr[i];
+          }
+        }
+      }else if(typeof copy === "objec" && copy instanceof Array === false){
+        var newCopy = {} ;
+        for (var x in obj) {
+          if (typeof copy[x] === "object" && copy instanceof Array === false) {
+            newObj[x] = jsonCopy(obj[x])
+          }else{
+            newObj[x] = obj[x];
+          }
+        }
+      }else{
+        newCopy = copy;
+      }
+
+      return newCopy;
+    }
+  </script>
+</head>
+<body>
+</body>
+</html>

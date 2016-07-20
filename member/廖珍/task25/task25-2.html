@@ -1,0 +1,461 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>tab</title>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+		<style>
+			html,body,ul,li,p {
+				padding:0;
+				margin:0;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			ul {
+				list-style:none;
+			}
+			a {
+				text-decoration:none;
+				color:#666;
+			}
+			.clearfix:after {
+				content:"";
+				display: block;
+				clear:both;
+			}
+			.mod-tab {
+				position:relative;
+				margin:30px;
+			}
+			.mod-tab .tabs {
+				float:left;
+				border:1px solid #ccc;
+				border-bottom:none;
+				border-radius:3px 3px 0 0;
+			}
+			.mod-tab .tabs li {
+				float:left;
+				padding:8px 0;
+			}
+			.mod-tab .tabs li a {
+				padding:0 10px;
+				border-right:1px solid #ccc;
+			}
+			.mod-tab .tabs li:last-child a {
+				border:none;
+			}
+			.mod-tab .tabs .active {
+				background:#ccc;
+			}
+			.mod-tab .tabs .active a {
+				color:#c81623;
+			}
+			.panel-ct {
+				width:702px;
+				border:1px solid #ccc;
+			}
+			.panel {
+				display:none;
+			}
+			.panel-ct .active {
+				display:block;
+			}
+			.prod {
+				position:relative;
+				float:left;
+				width:220px;
+				padding:10px 20px;
+				margin-right:20px;
+				margin-top:20px;
+				border:1px solid #ccc;
+				background:#fff;
+				text-align:center;
+				padding:20px;
+			}
+			.cover {
+				position:absolute;
+				top:0;
+				right:0;
+				bottom:0;
+				left:0;
+				background:rgba(0,0,0,0.3);
+				opacity: 0;
+			}
+			.cover .btn {
+				position:absolute;
+				top:50%;
+				left:50%;
+				border:1px solid #c81623;
+				color:#c81623;
+				text-align:center;
+				background:#fff;
+				display:block;
+				width:80px;
+				height:30px;
+				line-height:30px;
+				border-radius:3px;
+				margin-left:-40px;
+				margin-top:-15px;
+			}
+			.prod-ct {
+				margin-right:-20px;
+				margin-top:-20px;
+			}
+			.prod.hover .cover {
+				opacity: 1;
+			}
+			.prod .prod-name {
+				font-size:14px;
+				text-align:left;
+				padding:5px 0px;
+			}
+			.prod .prod-price {
+				color:#c81623;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="mod-tab">
+			<div class="tabs-ct clearfix">
+				<ul class="tabs">
+					<li class="active"><a href="#">热门</a></li>
+					<li><a href="#">珠宝首饰</a></li>
+					<li><a href="#">奢侈品</a></li>
+				</ul>
+			</div>
+			<ul class="panel-ct clearfix">
+				<li class="panel active">
+					<ul class="prod-ct clearfix">
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li><li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li><li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li><li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li>
+					</ul>
+
+				</li>
+				<li class="panel">
+					<ul class="prod-ct">
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+								<p class="prod-name">藏金镶玉路路通吊坠</p>
+								<p class="prod-price">￥699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1800.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1639.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥699.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥169.00</p>
+					             <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥99.00</p>
+                             </a>
+                      </li>
+					</ul>
+				</li>
+				<li class="panel">
+					<ul class="prod-ct">
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+								<p class="prod-name">藏金镶玉路路通吊坠</p>
+								<p class="prod-price">￥699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1800.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1639.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥699.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥169.00</p>
+					             <li class="prod">
+                             <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥99.00</p>
+                             </a>
+                      </li>
+					</ul>
+
+				</li>
+			</ul>
+		</div>
+
+		<div class="mod-tab">
+			<div class="tabs-ct clearfix">
+				<ul class="tabs">
+					<li class="active"><a href="#">热门</a></li>
+					<li><a href="#">珠宝首饰</a></li>
+					<li><a href="#">奢侈品2</a></li>
+				</ul>
+			</div>
+			<ul class="panel-ct clearfix">
+				<li class="panel active">
+					<ul class="prod-ct clearfix">
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li><li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li><li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li><li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+								<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+								<p class="prod-price">￥1699.00</p>
+							</a>
+						</li>
+					</ul>
+
+				</li>
+				<li class="panel">
+					<ul class="prod-ct">
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+								<p class="prod-name">藏金镶玉路路通吊坠</p>
+								<p class="prod-price">￥699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1800.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1639.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥699.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥169.00</p>
+					             <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥99.00</p>
+                             </a>
+                      </li>
+					</ul>
+				</li>
+				<li class="panel">
+					<ul class="prod-ct">
+						<li class="prod">
+							<div class="cover"><a href="#" class="btn">立即抢购</a></div>
+							<a href="#">
+								<img src="http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg" alt="">
+								<p class="prod-name">藏金镶玉路路通吊坠</p>
+								<p class="prod-price">￥699.00</p>
+							</a>
+						</li>
+						<li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1800.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img12.360buyimg.com/N3/jfs/t2302/181/1562193880/220016/88a978ef/56cbbc11Nd6d3b04b.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥1639.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥699.00</p>
+                             </a>
+                        </li>
+                        <li class="prod">
+                             <div class="cover"><a class="btn" href="">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥169.00</p>
+					             <li class="prod">
+                             <div class="cover"><a class="btn" href="#">立即抢购</a></div>
+                             <a href="#">
+					             <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+					             <p class="prod-name">藏美千足金和田玉金镶吊坠</p>
+					             <p class="prod-price">￥99.00</p>
+                             </a>
+                      </li>
+					</ul>
+
+				</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".mod-tab .tabs li").on("click",function() {
+			var $cur=$(this);
+			var idx=$cur.index();
+			$cur.siblings().removeClass("active");
+			$cur.addClass("active");
+			$cur.parents(".mod-tab").find(".panel").removeClass("active");
+			$cur.parents(".mod-tab").find(".panel").eq(idx).addClass("active");
+			$(".prod-ct .prod").on("mouseenter",function() {
+				$(this).addClass("hover");
+			})
+			$(".prod-ct .prod").on("mouseleave",function() {
+				$(this).removeClass("hover");
+			})
+		});
+	</script>
+</html>

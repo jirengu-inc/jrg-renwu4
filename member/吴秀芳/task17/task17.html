@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+
+	   // 1
+		function getInfo(name, age, sex){
+        console.log('name:',name);
+        console.log('age:', age);
+        console.log('sex:', sex);
+        console.log(arguments);
+        arguments[0] = 'valley';
+        console.log('name', name);
+    }
+
+    getInfo('hunger', 28, '男');
+    getInfo('hunger', 28);
+    getInfo('男');
+    
+/*代码输出结果
+   age: 28
+    sex: 男
+    Arguments[3]
+	 name valley
+	 name: hunger
+	 age: 28
+	 sex: undefined
+	 Arguments[2]
+	 name valley
+	 name: 男
+	 age: undefined
+	 sex: undefined
+	 Arguments[1]
+	 name valley */
+
+
+    // 2
+	function sumOfSquares(){
+  	var sum=0;
+  	for(i=0;i<arguments.length;i++){
+        sum=sum +(arguments[i]*arguments[i]);
+  	}
+  	return sum;
+   }
+   console.log (sumOfSquares(2,3,4));   // 29
+   console.log(sumOfSquares(1,3));   // 10
+
+
+   // 3
+   console.log(a);
+	    var a = 1;
+	    console.log(b);
+	    /*
+	     输出结果是undefined，b is not defined
+         因为变量前置，相当于
+         var a;
+         console.log(a);
+         a=1;
+         console.log(b);
+	    */ 
+
+
+	// 4
+	    sayName('world');
+		    sayAge(10);
+		    function sayName(name){
+		        console.log('hello ', name);//hello world
+		    }
+		    var sayAge = function(age){
+		        console.log(age);
+		    };
+		    /*
+              输出结果为：
+ hello world
+ TypeError: sayAge is not a function
+ 相当于：
+     var sayAge；
+     function sayName(name){
+        console.log('hello ', name);
+      } 
+        sayName('world');
+		sayAge(10);
+		sayAge = function(age){
+		        console.log(age);//报错，声明了该变量，但未赋值，为undefined,undefined不能调用。
+		    };
+		    */ 
+
+
+
+  //5
+   function fn(){}
+    var fn = 3;
+    console.log(fn);
+       /*
+     输出结果为：3
+     相当于：
+       var fn ;
+       function fn(){}
+        fn = 3;
+        console.log(fn);
+       */ 
+
+
+ // 6
+   function fn(fn2){
+       console.log(fn2);
+       var fn2 = 3;
+       console.log(fn2);
+       console.log(fn);
+       function fn2(){
+            console.log('fnnn2');
+        }
+     }
+    fn(10);
+    /* 
+    输出结果：
+   function fn2(){
+            console.log('fnnn2');
+        }
+     3
+   function fn(fn2){
+       console.log(fn2);
+       var fn2 = 3;
+       console.log(fn2);
+       console.log(fn);
+       function fn2(){
+            console.log('fnnn2');
+        }
+     }
+  相当于：
+     function fn(fn2){
+     var fn2；
+     function fn2(){
+            console.log('fnnn2');
+        }
+      console.log(fn2);//输出函数fn2
+      fn2=3;
+      console.log(fn2);//3
+       console.log(fn);//输出函数fn
+        fn(10);
+    */ 
+
+
+
+    //7
+    var fn = 1;
+    function fn(fn){
+         console.log(fn);
+    }
+    console.log(fn(fn)); 
+    /* 
+    输出结果：报错，fn is not a function
+    相当于：
+     var fn；
+      function fn(fn){
+         console.log(fn);
+    }
+      fn=1;
+       console.log(fn(fn)); 
+    */ 
+
+
+
+    // 8
+     //作用域
+    console.log(j);
+    console.log(i);
+    for(var i=0; i<10; i++){
+        var j = 100;
+    }
+    console.log(i);
+    console.log(j);
+    /*
+    for循环不会前置，
+    相当于：
+    var i;
+    var j;
+    console.log(j);//输出undefined
+    console.log(i);//输出undefined
+    for(var i=0; i<10; i++){
+        var j = 100;
+    }
+    console.log(i);//i循环加到10
+    console.log(j);//输出100
+
+    */ 
+
+
+
+    // 9
+     fn();
+    var i = 10;
+    var fn = 20;
+    console.log(i);
+    function fn(){
+        console.log(i);
+        var i = 99;
+        fn2();
+        console.log(i);
+        function fn2(){
+            i = 100;
+        }
+    }
+    /*
+     相当于：
+     var i;
+     var fn;
+     function fn(){
+     	var i;
+	     function fn2(){
+	       i = 100;
+	     }
+	     console.log(i);//var i；只声明，没有赋值，输出undefined
+	     i = 99;
+	      fn2();
+	      console.log(i);//调用fn2(),输出100(调用fn2(),覆盖了i=99)
+     }
+      fn();
+      i = 10;
+      fn = 20;
+      console.log(i);
+    */ 
+
+
+    
+    //10
+      var say = 0;
+    (function say(n){
+        console.log(n);
+        if(n<3) return;//当n=2时，仍会被输出一次
+        say(n-1);
+    }( 10 ));
+    console.log(say);//立即执行函数的声明不会提升，不会把say的值改成函数，变量say仍为0
+    /*
+    function say(n)为立即执行函数，无需调用立即执行。里面通过判断传入的参数n的值是否小于3，来结束函数，或者递归函数say(n),且每递归一次，n的值会比上一次的值减少1，因此输出的结果为：
+     9 8 7 6 5 4 3 2 0
+
+
+    */ 
+	</script>
+</body>
+</html>

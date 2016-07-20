@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>task25-3</title>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+		<style>
+			html,body,p,ul,li,h1 {
+				padding:0;
+				margin:0;
+			}
+			ul {
+				list-style:none;
+			}
+			a {
+				color:#666;
+				text-decoration:none;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			.clearfix:after {
+				content:"";
+				display: block;
+				clear:both;
+			}
+			.ct {
+				width:800px;
+				margin:30px auto;
+			}
+			.prod-ct .prod{
+				position:relative;
+				width:220px;
+				padding:20px;
+				border:1px solid #ccc;
+				text-align:center;
+				margin-right:20px;
+				margin-top:20px;
+				float:left;
+
+			}
+			.prod-ct .prod .cover {
+				position:absolute;
+				top:0;
+				right:0;
+				bottom:0;
+				left:0;
+				background:rgba(0,0,0,0.3);
+				opacity:0;
+			}
+			.prod-ct .prod .cover .btn {
+				position:absolute;
+				top:50%;
+				left:50%;
+				width:80px;
+				height:30px;
+				line-height:30px;
+				margin-left:-40px;
+				margin-top:-15px;
+				color:#c81623;
+				border:1px solid #ccc;
+				border-radius:3px;
+			}
+			.prod-ct .prod.hover .cover {
+				opacity: 1;
+			}
+		    .prod-ct .prod .prod-name {
+		    	text-align:left;
+		    	font-size:14px;
+		    	padding:5px 0px;
+		    }
+		    .prod-ct .prod .prod-price {
+		     	color:#c81623;
+		     }
+		    .btn1 {
+		    	border:1px solid #c81623;
+		    	padding:10px;
+		    	color:#c81623;
+		    	border-radius:3px;
+		    	background:#fff;
+		    	margin-top:10px;
+		    	display:block;
+		    	float:left;
+		    }
+		</style>
+	</head>
+	<body>
+		<div class="ct">
+			<h1>珠宝首饰</h1>
+			<ul class="prod-ct clearfix">
+				<li class="prod">
+					<div class="cover">
+						<a class="btn" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+						<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="prod-price">￥1699.00</p>
+					</a>
+				</li>
+				<li class="prod">
+					<div class="cover">
+						<a class="btn" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+						<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="prod-price">￥1699.00</p>
+					</a>
+				</li>
+				<li class="prod">
+					<div class="cover">
+						<a class="btn" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+						<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="prod-price">￥1699.00</p>
+					</a>
+				</li>
+				<li class="prod">
+					<div class="cover">
+						<a class="btn" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+						<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="prod-price">￥1699.00</p>
+					</a>
+				</li>
+				<li class="prod">
+					<div class="cover">
+						<a class="btn" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+						<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="prod-price">￥1699.00</p>
+					</a>
+				</li>
+				<li class="prod">
+					<div class="cover">
+						<a class="btn" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+						<p class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="prod-price">￥1699.00</p>
+					</a>
+				</li>
+			</ul>
+			<a class="btn1" href="#">添加</a>
+		</div>
+	</body>
+	<script>
+		$(".prod-ct .prod").on("mouseenter",function() {
+			$(this).addClass("hover")
+		});
+		$(".prod-ct .prod").on("mouseleave",function() {
+			$(this).removeClass("hover")
+		});
+		var products=[
+			{
+				img:'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+				name:"柯兰 黄金手 猴哥款",
+				price:"￥405.00"
+			},{
+				img:'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+				name:"柯兰 黄金转运珠 猴哥款",
+				price:"￥45"
+			},
+			{
+				img:'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+				name:"柯兰 黄金手链 3D猴哥款",
+				price:"￥45.00"
+			}
+			
+		];
+		function getProdHtml(prod) {
+			var html="";
+			html+='<li class="prod">';
+			html+=  '<div class="cover"><a class="btn" href="#">立即抢购</div>';
+			html+=     '<a href="#">';
+			html+=        '<img src="'+prod.img+'">';
+			html+=        '<p class="prod-name">'+prod.name+'</div>'
+			html+=        '<p class="prod-price">'+prod.price+'</p>'
+			html+=     '</a>';
+			html+= '</li>';
+			return html;
+		}
+			$(".btn1").on("click",function(e) {
+				e.preventDefault();
+				$.each(products,function(idx,prod) {
+					var html=getProdHtml(prod);
+					$(".prod-ct").append(html);
+				});
+			});
+
+
+	</script>
+</html>

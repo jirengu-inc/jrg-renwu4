@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 25-1</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<link rel="stylesheet" href="iconfont/iconfont.css">
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.clear:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		ul.itemLst {
+			margin-top: 10px;
+			margin-left: 10px;
+			width: 200px;
+		}
+		ul.itemLst>li {
+			background: #F08080;
+			position: relative;	
+		}
+		ul.itemLst>li>a {
+			display: inline-block;
+			border-bottom: 1px solid #E27272;
+			width: 160px;
+			padding: 8px 10px;
+			margin: 0 10px;
+			color: #fff;
+		}
+		ul.childLst1,
+		ul.childLst2,
+		ul.childLst3,
+		ul.childLst4,
+		ul.childLst5 {
+			position: absolute;
+			left: 200px;
+			width: 160px;
+			border: 1px solid #ccc;
+			top: 0;
+			display: none;
+		}
+		ul.childLst1>li,
+		ul.childLst2>li,
+		ul.childLst3>li,
+		ul.childLst4>li,
+		ul.childLst5>li {
+			float: left;
+		}
+		ul.childLst1>li>a,
+		ul.childLst2>li>a,
+		ul.childLst3>li>a,
+		ul.childLst4>li>a,
+		ul.childLst5>li>a {
+			display: inline-block;
+			width: 70px;
+			text-align: center;
+			margin: 8px 5px;
+			color: #333;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="itemLst">
+		<li>
+			<a href="#">运动/户外<i class="iconfont">&#xe60c;</i></a>
+			<ul class="childLst1 clear">
+				<li><a href="">冲锋衣</a></li>
+				<li><a href="">登山鞋</a></li>
+				<li><a href="">望远镜</a></li>
+				<li><a href="">速干衣</a></li>
+				<li><a href="">山地车</a></li>
+				<li><a href="">护具</a></li>
+				<li><a href="">游泳</a></li>
+				<li><a href="">羽毛球</a></li>
+				<li><a href="">瑜伽</a></li>
+				<li><a href="">跑步机</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">游戏/动漫<i class="iconfont">&#xe60c;</i></a>
+			<ul class="childLst2 clear">
+				<li><a href="">魔兽</a></li>
+				<li><a href="">高达模型</a></li>
+				<li><a href="">漫展门票</a></li>
+				<li><a href="">复仇者联盟</a></li>
+				<li><a href="">手办</a></li>
+				<li><a href="">守望先锋</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">家具/装饰<i class="iconfont">&#xe60c;</i></a>
+			<ul class="childLst3 clear">
+				<li><a href="">沙发</a></li>
+				<li><a href="">布艺窗帘</a></li>
+				<li><a href="">餐桌</a></li>
+				<li><a href="">装饰画</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">汽车/二手车<i class="iconfont">&#xe60c;</i></a>
+			<ul class="childLst4 clear">
+				<li><a href="">公车拍卖</a></li>
+				<li><a href="">SUV</a></li>
+				<li><a href="">二手车拍卖</a></li>
+				<li><a href="">GPS导航</a></li>
+				<li><a href="">胎压监测</a></li>
+				<li><a href="">安全锤</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">美妆/洗护<i class="iconfont">&#xe60c;</i></a>
+			<ul class="childLst5 clear">
+				<li><a href="">面膜</a></li>
+				<li><a href="">洗发水</a></li>
+				<li><a href="">防晒</a></li>
+				<li><a href="">眼霜</a></li>
+			</ul>
+		</li>
+	</ul>
+
+	<script>
+		$("ul.itemLst>li").on('mouseover',function(){
+			$(this).find("ul").show();
+		});
+		$("ul.itemLst>li").on('mouseleave',function(){
+			$(this).find("ul").hide();
+		});
+	</script>
+</body>
+</html>

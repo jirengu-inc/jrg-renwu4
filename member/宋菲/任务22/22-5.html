@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,75 +9,68 @@
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
 <style>
-.modal-dialog {
+.modal-dialog{
   display: none;
+  position: relative;
 }
-.modal-dialog .bt {
-  display: inline-block;
-  padding: 3px 6px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  font-size: 14px;
-}
-.modal-dialog a {
-  text-decoration: none;
-  color: #333;
-}
-.modal-dialog .cover {
+.modal-dialog .cover{
+  background: #ccc;
   position: fixed;
-  top: 0;
   left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
-  background-color: #000;
-  opacity: 0.4;
-  z-index: 99;
+  z-index: -1;
+  opacity: 0.6;
 }
-.modal-dialog .modal-ct {
+.modal-dialog .modal-ct{
+  width: 400px;
+  height: 180px;
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  -webkit-transform: translate(-50%,-50%);
-  width: 400px;
-  border-radius: 3px;
-  background: #fff;
-  z-index: 100;
+  margin-left: -200px;
+  margin-top: -90px;
+  border: 1px solid #ccc;
+  background: #eee;
+  border-right: 3px;
 }
-.modal-dialog .modal-ct .header {
-  position: relative;
-  height: 36px;
-  line-height: 36px;
+.modal-dialog .modal-ct .header{
   border-bottom: 1px solid #ccc;
-}
-.modal-dialog .modal-ct .header h3 {
-  margin: 0;
-  padding-left: 10px;
-  font-size: 16px;
-}
-.modal-dialog .modal-ct .header .close {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  line-height: 1;
-}
-.modal-dialog .modal-ct .content {
-  padding: 10px;
-}
-.modal-dialog .modal-ct .footer {
-  padding: 10px;
-  border-top: 1px solid #eee;
-}
-.modal-dialog .modal-ct .footer:after {
-  content: '';
-  display: table;
-  clear: both;
-}
-.modal-dialog .modal-ct .footer .btn {
-  float: right;
+  height: 40px;
+  line-height: 40px;
   margin-left: 10px;
 }
+.modal-dialog .modal-ct .header:after{
+  display: block;
+  content: '';
+  clear: both;
 
+}
+.modal-dialog .modal-ct .header h3{
+  float: left;
+  margin-left: 10px;
+  margin: 0;
+}
+.modal-dialog .modal-ct .header a{
+  float: right;
+  margin-right: 20px;
+  text-decoration: none;
+  color:#000;
+}
+.modal-dialog .modal-ct .content{
+  margin-top: 20px;
+  margin-left: 10px;
+  border-bottom: 1px solid #ccc;
+}
+.modal-dialog .modal-ct .footer{
+  margin-left: 300px;
+  margin-top: 10px;
+}
+.modal-dialog .modal-ct .footer a{
+  text-decoration: none;
+  color:#000;
+}
 </style>
 </head>
 <body>
@@ -88,7 +82,7 @@
       <div class="modal-ct">
         <div class="header">
           <h3>我是标题一</h3>
-          <a href="#" class="close"></a>
+          <a href="#" class="close">X</a>
         </div>
         <div class="content">
           <p>我是内容一</p>

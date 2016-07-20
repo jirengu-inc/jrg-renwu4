@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>珠宝展示</title>
+	<style>
+		ul,
+		li,
+		p {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		body { font-size: 12px; }
+		a {
+			text-decoration: none;
+			color: #000;
+		}
+		.clearfix:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.hide { display: none; }
+		.wrap { margin-bottom: 20px; }
+		.tab {
+			border: 1px solid #ccc;
+			width: 172px;
+			border-radius: 2px 2px 0 0;
+			border-bottom: none;
+			box-sizing: border-box;
+		}
+		.tab .tab-list {
+			float: left;
+			padding: 10px 0;
+		}
+		.tab .tab-list.hover { background-color: #ccc; }
+		.tab .tab-list >a {
+			display: block;
+			padding: 0 10px;
+			border-right: 1px solid #ccc;
+		}
+		.tab .tab-list:last-child a { border: none; }
+		.content {
+			width:700px;
+			border: 1px solid #ccc;
+			
+		}
+		.goods {
+			margin-left: -20px;
+			margin-bottom: -20px;
+		}
+		.goods li {
+			position:relative;
+			float: left;
+			width: 220px;
+			padding: 15px 20px; 
+			border: 1px solid #eee;
+			margin-left: 20px;
+			margin-bottom: 20px;
+			text-align: center;
+			box-sizing: border-box;
+		}
+		.goods li:hover .cover { opacity: 1; }
+		.goods .goods-name{ text-align: left; }
+		.goods .goods-price {
+			text-align: left;
+			color: red;
+		}
+		.goods .cover {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: rgba(204,204,204,0.8);
+			opacity: 0;
+		}
+		.goods .goods-buy {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			display: block;
+			padding: 15px;
+			border: 1px solid red;
+			color: red;
+			border-radius: 4px;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="tab clearfix">
+			<li class="tab-list hover"><a href="#">热门</a></li>
+			<li class="tab-list"><a href="#">珠宝首饰</a></li>
+			<li class="tab-list"><a href="#">奢侈品</a></li>
+		</ul>
+		<div class="content">
+			<ul class="goods clearfix">
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+			</ul>
+			<ul class="goods hide clearfix">
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/bb.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/bb.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+			</ul>
+			<ul class="goods clearfix hide">
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/c.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/c.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="wrap">
+		<ul class="tab clearfix">
+			<li class="tab-list hover"><a href="#">热门</a></li>
+			<li class="tab-list"><a href="#">珠宝首饰</a></li>
+			<li class="tab-list"><a href="#">奢侈品</a></li>
+		</ul>
+		<div class="content">
+			<ul class="goods clearfix">
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+			</ul>
+			<ul class="goods hide clearfix">
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/bb.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/bb.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+			</ul>
+			<ul class="goods clearfix hide">
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/c.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/c.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+				<li>
+					<div class="cover">
+						<a class="goods-buy" href="#">立即抢购</a>
+					</div>
+					<a href="#">
+						<img src="./img/aa.jpg">
+						<p class="goods-name">藏美千足金和田玉金镶玉路路通吊坠</p>
+						<p class="goods-price">￥1699.00</p>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$(function(){
+			var $tabs = $('.tab .tab-list');
+			$tabs.on('click',function(event){
+				event.preventDefault();
+				var $this = $(this);
+				$idx = $this.index();
+				$this.addClass('hover').siblings().removeClass('hover');
+				$this.parents('.wrap').find('.goods').eq($idx).removeClass('hide').siblings().addClass('hide');
+			});
+		});
+	</script>
+</body>
+</html>
