@@ -72,10 +72,10 @@
 						len:18
 					},
 					success: function(json){
-						Success(json);
+						success(json);
 					},
 					error: function(){
-						Error();
+						error();
 					},
 					complete: function(){
 						locked = false;
@@ -84,7 +84,7 @@
 				});
 				}
 			}
-			function Success(json){
+			function success(json){
 				json = JSON.parse(json);
 				if(json.status === 1){
 					for(var i = 0; i<json.data.length; i++){
@@ -97,7 +97,7 @@
 					alert('获取数据失败');
 				}
 			}
-			function Error(){
+			function error(){
 				alert('系统异常');
 			}
 			function isVisible($node){

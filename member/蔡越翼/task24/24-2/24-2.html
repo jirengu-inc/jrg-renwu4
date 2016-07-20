@@ -90,15 +90,14 @@
 					len: 6
 				},
 				success: function(json){
-					Success(json);
+					success(json);
 				},
 				error: function(){
-					Error();
+					error();
 				}
 			});
-			status = 0;
 		});
-		function Success(json){
+		function success(json){
 			if(json.status === 0){
 				for(var i = 0; i<json.data.length; i++){
 					var newLi = document.createElement('li');
@@ -109,9 +108,11 @@
 			}else{
 				alert('获取数据失败');
 			}
+			status = 0;
 		}
-		function Error(){
+		function error(){
 			alert('系统异常');
+			status = 0;
 		}
 	</script>
 </body>
