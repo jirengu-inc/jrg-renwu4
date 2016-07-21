@@ -76,6 +76,7 @@ hr.short {
 	line-height: 2.75em;
 	padding: 50px 0;
 	color: rgba(0,0,0,0.75);
+	text-align: center;
 }
 #about h2 {
 	font-size: 30px;
@@ -128,10 +129,10 @@ hr.short {
 	background: url(../images/callout-bg.jpg) no-repeat center center scroll;
 	background-size: cover;
 	padding: 150px 0;
-	display: table;
 	width: 100%;
 	color: #FFF;
 	font-size: 3em;
+	text-align: center;
 }
 /*works*/
 #works {
