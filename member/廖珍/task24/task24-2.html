@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>加载更多</title>
+		<style type="text/css">
+		body html {
+			padding:0px;
+			margin:0px;
+		}
+		
+         .content-list {
+         	padding:10px 0px 10px 10px;
+         	border:1px solid #ccc;
+         	margin-top:10px;
+         	border-radius: 5px
+         }
+         .content-list:hover {
+         	cursor: pointer;
+         	background:pink;
+         }
+         #btn {
+         	display:block;
+         	width:80px;
+         	padding:10px 0px 10px 0px;
+         	text-align:center;
+         	border:1px solid rgb(228, 27, 68);
+         	color:rgb(228, 27, 68);
+         	border-radius: 3px;
+         	margin:10px auto;
+         	text-decoration:none
+         }
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<div class="content-list">内容1</div>
+			<div  class="content-list">内容2</div>
+			<a id="btn" href="#">加载更多</a>
+		</div>
+		<script>
+			var content=document.getElementById("content");
+			var btn=document.getElementById("btn");
+			var curs=2;
+			var islocked=false;
+			btn.addEventListener("click",function() {
+				if(islocked) {
+					return;
+				}
+				islocked=true;
+				ajax({
+					url:"task24-2.php",
+					type:"get",
+				    data: {
+				    	present:curs;
+				    	len:3
+				    },
+				    success:function(json){
+				    	onSuccess(json);
+				    },
+				    error:function() {
+				    	onError();
+				    }
+
+				});
+			});
+			function onSuccess(json) {
+				for(i=0;i<json.data.length;i++) {
+					var div=document.createElement("div");
+					div.innerText=""+json.data[i];
+					content.appendChild(p);
+				}
+				cur+=3;
+				islocked=false;
+			}
+			function onError() {
+				alert("异常")；
+				islocked=false
+			}
+		</script>
+	</body>
+</html>

@@ -23,9 +23,7 @@
 			text-align: left;
 			border: 1px solid #000;
 		}
-		.content>li:hover {
-			background-color: green;
-		}
+		.content>li:hover { background-color: green; }
 		.btn {
 			display: inline-block;
 			padding: 10px;
@@ -47,23 +45,28 @@
 	</div>
 	<script>
 		$(function(){
-			var content = $('.content');
+			var content = $('.content'),
+				btn = $('.btn'),
 				cur = 3,
-				locked = false;
-			$('.btn').on('click',function(e){
-				e.preventDefault();
-				if(locked){
-					return;
+				clock;
+			show();
+			$(window).on('scroll',function(){
+				if(clock){
+					clearTimeout(clock);
 				}
-				locked = true;
-				$(this).text('加载中..');
-				e.preventDefault();
-				$.ajax({
+				clock = setTimeout(function(){
+					if(!isVisible(btn)) return;
+					show();
+				},500);
+			});
+			function show(){
+				if(isVisible(btn)){
+					$.ajax({
 					url: '26-3.php',
 					type: 'get',
 					data: {
 						start:cur,
-						len:6
+						len:18
 					},
 					success: function(json){
 						success(json);
@@ -76,7 +79,8 @@
 						$('.btn').text('加载更多');
 					}
 				});
-			});
+				}
+			}
 			function success(json){
 				json = JSON.parse(json);
 				if(json.status === 1){
@@ -85,13 +89,23 @@
 						newLi.text(json.data[i]);
 						content.append(newLi);
 				}
-					cur += 6;
+					cur += 18;
 				}else{
 					alert('获取数据失败');
 				}
 			}
 			function error(){
 				alert('系统异常');
+			}
+			function isVisible($node){
+				var winTop = $(window).scrollTop(),
+					winH = $(window).height(),
+					nodeTop = $node.offset().top;
+    			if(nodeTop < winTop + winH){
+        			return true;
+    			}else{
+        			return false;
+    			}
 			}
 		});
 	</script>
