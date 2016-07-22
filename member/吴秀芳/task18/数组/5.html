@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	   var obj = {
+			  className: 'open menu'
+			};
+           
+             
+			function addClass(obj,val){
+				 var arr=obj.className.split(' ');
+				for(var i=0;i<arr.length;i++){
+                if(val===arr[i]){
+
+                    return obj;
+                    
+                }
+               
+            }
+              obj.className += ' ' + val;//添加空格，增加可读性
+              return obj;
+			}
+			addClass(obj, 'new') // obj.className='open menu new'
+			addClass(obj, 'open')  // 因为open已经存在，此操作无任何办法
+			addClass(obj, 'me') // obj.className='open menu new me'
+			console.log(obj.className)  // "open menu new me"
+
+
+        function removeClass(obj,val){
+        	 var arr2=obj.className.split(' ');
+        	   for(var i=0;i<arr2.length;i++){
+        	      if(val===arr2[i]){
+		                 arr2.splice(i,1);
+		                 obj.className=arr2.join(' ');
+		                 i--;//删除后，i也相应-1，这一步不要漏掉
+		                 return obj;
+        	    }
+             }
+            return obj;
+        }
+
+			 removeClass(obj, 'open') // obj.className='menu new me'
+			 console.log(obj);
+			 console.log(obj.className);
+			 removeClass(obj, 'blabla')  // 不变
+			 console.log(obj);
+			 console.log(obj.className);
+
+	</script>
+</body>
+</html>
