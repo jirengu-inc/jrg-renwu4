@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task22-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style type="text/css">
+	.ct{
+		width:150px;
+		height:100px;
+		background:pink;
+		padding-top:20px;
+	}
+</style>
+</head>
+<body>
+    <ul class="ct">
+	    <li>这里是</li>
+	    <li>饥人谷</li>
+	    <li>前端6班</li>
+	</ul>
+
+	<input class="ipt-add-content" placeholder="添加内容"/>
+	<button id="btn-add-start">开头添加</button>
+	<button id="btn-add-end">结尾添加</button>
+
+	<script>
+
+	//获取元素
+	var ct=document.querySelector('.ct');
+		btnStart=document.querySelector('#btn-add-start'),
+		btnEnd=document.querySelector('#btn-add-end'),
+		textBox=document.querySelector('.ipt-add-content'),
+		lists=document.getElementsByClassName('ct')[0].getElementsByTagName('li');
+
+	btnStart.addEventListener('click',function(){//开始添加事件
+		var string=textBox.value;//
+		if(string.length==0){
+			alert("输入的字符串不能为空。");
+		}else{
+			var newli=document.createElement('li');//创建li元素
+			newli.innerText=string;
+			ct.insertBefore(newli,ct.firstChild);
+		}
+		
+	});
+
+	btnEnd.addEventListener('click',function(){//结尾添加事件
+		var string=textBox.value;//
+		if(string.length==0){
+			alert("输入的字符串不能为空。");
+		}else{
+			var newli=document.createElement('li');//创建li元素
+			newli.innerText=string;
+			ct.appendChild(newli,ct.lastChild);
+		}
+		
+	});
+
+	ct.addEventListener('click', function(e){
+		if(e.target.tagName.toLowerCase() === 'li'){
+		   console.log(e.target.innerText);
+		}
+    });//这种写法还不太熟悉，好好掌握下
+
+	
+	</script>
+</body>
+</html>

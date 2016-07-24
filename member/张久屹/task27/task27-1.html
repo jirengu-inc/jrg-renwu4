@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>task27-1渐变轮播</title>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js
+"></script>
+<style>
+	ul,li{
+		padding:0;
+		margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	.wrap{
+		position: relative;
+		width: 360px;
+		height: 200px;
+		overflow: hidden;
+	}
+	.wrap .img-ct{
+		position: relative;
+		width: 360px;
+		height: 200px;
+	}
+	.wrap .img-ct li{
+		position: absolute;
+		display: none;
+	}
+
+	img{
+		height: 200px;
+		width: 360px;
+	}
+	.arrow{
+		position: absolute;
+		background: black;
+		text-decoration: none;
+		line-height: 60px;
+		height: 60px;
+		width: 60px;
+		top: 50%;
+		color: #fff;
+		border-radius: 50%;
+		margin-top: -30px;
+		text-align: center;
+		font-size: 28px;
+		font-weight: bold;
+		opacity: 0.4;
+	}
+	.arrow:hover{
+		opacity: 1;
+	}
+	.pre{
+		left: 10px;
+	}
+	.next{
+		right: 10px;
+	}
+	ul.bullet{
+		position: absolute;
+		left: 50%;
+		bottom: 14px;
+		transform: translateX(-50%);
+	}
+	ul.bullet li{
+		background: #fff;
+		height: 8px;
+		width: 20px;
+		display: inline-block;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	ul.bullet>.active{
+		background: #777;
+	}
+
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="img-ct">
+			<li><a href="#"><img src="http://i2.piimg.com/567571/737cb6a7bc36ede4.png" alt=""></a></li>
+			<li><a href="#"><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-15/77240528.jpg" alt=""></a></li>
+			<li><a href="#"><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-15/31096653.jpg" alt=""></a></li>
+			<li><a href="#"><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-15/23478018.jpg" alt=""></a></li>
+			
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script>
+		var $ct = $('.img-ct'),
+			$items = $ct.children(),
+			$pre = $('.pre'),
+			$next = $('.next'),
+			$bullet = $('.bullet'),
+			$imgCount = $ct.children().size();
+
+		var curIdx = 0;
+		$items.first().show();
+		var ready = false;
+
+		$next.on('click',function(){
+			playNext();
+		})
+
+		$pre.on('click',function(){
+			playPre();
+		})
+
+		$bullet.children().on('click',function(){
+		    var idx = $(this).index();
+			play(idx);
+		})
+
+
+		function autoPlay(){
+			setInterval(function(){
+				playNext();
+			},2000);
+		}
+
+
+		autoPlay();//自动轮播
+
+
+
+		function playNext(){
+			play((curIdx+1)%$imgCount);
+		}
+		function playPre(){
+			play((curIdx-1)%$imgCount);
+		}
+		function play(idx){
+			if(!ready){
+				ready = true;
+				$items.eq(curIdx).fadeOut(500);
+				$items.eq(idx).fadeIn(500,function(){
+					ready = false;
+				});
+				curIdx = idx;
+				setBullet();
+			}		
+		}
+
+		function setBullet(){
+			$bullet.find('li').removeClass('active').eq(curIdx).addClass('active');
+		}
+
+
+	</script>
+</body>
+</html>

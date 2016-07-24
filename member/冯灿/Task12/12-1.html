@@ -7,7 +7,6 @@
 			.outter {
 				background: #DDD;
 				overflow: auto;
-				padding: 10px 0;
 				width: 75%;
 				margin:0 auto;
 			}
@@ -17,25 +16,27 @@
 				background: #BBB;
 				float: left;
 			}
-			.three, .six {
-				float: right;
-			}
-			.two, .five {
+			.mid {
 				margin: 0 2%;
 			}
-			.four, .five, .six {
-				margin-top: 20px;
+			.row {
+				margin: 10px 0;
+				overflow: auto;
 			}
 		</style>
 	</head>
 	<body>
 		<div class="outter">
-			<div class="box one">1</div>
-			<div class="box two">2</div>
-			<div class="box three">3</div>
-			<div class="box four">4</div>
-			<div class="box five">5</div>
-			<div class="box six">6</div>
+			<div class="row">
+				<div class="box">1</div>
+				<div class="box mid">2</div>
+				<div class="box">3</div>
+			</div>
+			<div class="row">
+				<div class="box">4</div>
+				<div class="box mid">5</div>
+				<div class="box">6</div>
+			</div>
 		</div>
 	</body>
 </html>
