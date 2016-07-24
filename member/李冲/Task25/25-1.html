@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<link href="" rel="stylesheet" href="">
+<script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+<style>
+	ul,li{
+		list-style: none;
+	}
+    #nav{
+    	padding: 8px 0px 8px 10px;
+    	text-decoration: none;
+        display: block;
+    	color: white;
+    	width: 180px;
+    	border-bottom: 1px solid #de272e;
+    }
+    ul{
+    	width: 200px;
+    	padding: 0;
+    	border:1px solid #ccc;
+        position: absolute;
+        top: 0;
+        left:200px;
+    	display: none;
+    }
+    li{
+    	padding:10px 36px;
+    	font-size: 14px;
+    }
+    li a{
+    	text-decoration: none;
+    	color: black;
+    }
+    ul,li{
+    	float: left;
+    	margin-top: 0;
+    }
+    .wrap{
+    	position: relative;
+    	width: 200px;
+        background-color: #C7171E;
+    }
+    .wrap:after{
+    	display: block;
+    	content: '';
+    	clear: both;
+    }
+    .wrap .icon-angle-right{
+    	position: absolute;
+    	top:5px;
+    	left:180px;
+    	color:white;
+    }
+    .wrap.hover .item{
+    	display: block;
+    }
+</style>
+</head>
+<body>
+  <div class="wrap">
+   <a href="" id="nav">珠宝玉器</a>
+   <span class="icon-angle-right">></span>
+    <ul class="item">
+    	<li><a href="">玉石</a></li>
+    	<li><a href="">珠宝</a></li>
+    	<li><a href="">玛瑙</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+        <li><a href="">珠宝</a></li>
+    </ul>
+  </div>
+  <div class="wrap">  
+   <a href="" id="nav">珠宝玉器</a>
+   <span class="icon-angle-right">></span>
+    <ul class="item">
+    	<li><a href="">翡翠</a></li>
+    	<li><a href="">珠宝</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">玛瑙</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    </ul>
+  </div>
+  <div class="wrap"> 
+   <a href="" id="nav">珠宝玉器</a>
+   <span class="icon-angle-right">></span>
+    <ul class="item">
+    	<li><a href="">翡翠</a></li>
+    	<li><a href="">珠宝</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">玛瑙</a></li>
+    </ul>
+  </div>
+  <div class="wrap">   
+   <a href="" id="nav">珠宝玉器</a>
+   <span class="icon-angle-right">></span>
+    <ul class="item">
+    	<li><a href="">翡翠</a></li>
+    	<li><a href="">珠宝</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">玛瑙</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">钻石</a></li>
+    </ul>
+  </div>
+  <div class="wrap">   
+   <a href="" id="nav">珠宝玉器</a>
+   <span class="icon-angle-right">></span>
+    <ul class="item">
+    	<li><a href="">翡翠</a></li>
+    	<li><a href="">珠宝</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">玛瑙</a></li>
+    </ul>
+  </div>
+  <div class="wrap">      
+   <a href="" id="nav">珠宝玉器</a>
+   <span class="icon-angle-right">></span>
+    <ul class="item">
+    	<li><a href="">玉石</a></li>
+    	<li><a href="">珠宝</a></li>
+    	<li><a href="">玛瑙</a></li>
+    	<li><a href="">和田</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    	<li><a href="">钻石</a></li>
+    </ul>
+  </div> 
+  <script>
+  	var $list = $('.wrap'),
+  	    $item = $('.item')
+  	$list.on('mouseenter',function(){
+  		$(this).addClass('hover');
+  	})
+  	$list.on('mouseleave',function(){
+  		$(this).removeClass('hover');
+  	});	
+  </script>   
+</body>
+</html>

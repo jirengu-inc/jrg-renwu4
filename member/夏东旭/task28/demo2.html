@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>plugin demo2</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="plugin.js"></script>
+	<style>
+		.header{
+			height: 50px;
+			background-color: blue;
+			margin-bottom: 10px;
+			
+		}
+		.main{
+			width: 800px;
+			margin: 0 auto;
+		}
+		.footer{
+			height: 50px;
+			background-color: yellow;
+			margin-top: 100px;
+		}
+		.nav{
+			height: 50px;
+			background-color: red;
+			border:1px solid pink;
+		}
+		.content{
+			width:600px; 
+			background-color: purple;
+			float: right;
+			height: 100%;
+		}
+		.aside{
+			width: 100px;
+			float: left;
+			height: 100%;
+			background-color: pink;	
+		}
+		.ct{
+			height: 400px;
+			background-color: #ccc;
+		}
+		.ct::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="header">header</div>
+	<div class="main">	
+		<div class="nav">nav1<a href="http://www.baidu.com" target="_blank">百度</a></div>
+		<div class="ct">
+			<div class="aside">aside</div>
+			<div class="content">content</div>
+		</div>
+		
+		<div class="nav">nav2<a href="http://www.sina.com" target="_blank">新浪</a></div>
+		<div class="ct">
+			<div class="aside">aside</div>
+			<div class="content">content</div>
+		</div>
+		<div class="nav">nav3</div>
+		<div class="ct">
+			<div class="aside">aside</div>
+			<div class="content">content</div>
+		</div>
+	</div>
+	<div class="footer">footer</div>
+	<script>
+		$('.nav').stickup();
+	</script>
+</body>
+</html>

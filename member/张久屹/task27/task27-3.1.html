@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>task27-3</title>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js
+"></script>
+<style>
+	ul,li{
+		padding:0;
+		margin: 0;
+	}
+	li{
+		list-style: none;
+	}
+	.wrap{
+		position: relative;
+		width: 860px;
+		height: 500px;
+		overflow: hidden;
+	}
+	.wrap .img-ct{
+		position: absolute;
+	}
+	.wrap .img-ct:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.wrap .img-ct li{
+		float: left;
+	}
+
+	img{
+		height: 500px;
+		width: 860px;
+	}
+	.arrow{
+		position: absolute;
+		background: black;
+		text-decoration: none;
+		line-height: 60px;
+		height: 60px;
+		width: 60px;
+		top: 50%;
+		color: #fff;
+		border-radius: 50%;
+		margin-top: -30px;
+		text-align: center;
+		font-size: 28px;
+		font-weight: bold;
+		opacity: 0.4;
+	}
+	.arrow:hover{
+		opacity: 1;
+	}
+	.pre{
+		left: 10px;
+	}
+	.next{
+		right: 10px;
+	}
+	ul.bullet{
+		position: absolute;
+		left: 50%;
+		bottom: 14px;
+		transform: translateX(-50%);
+	}
+	ul.bullet li{
+		background: #fff;
+		height: 8px;
+		width: 40px;
+		display: inline-block;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+	ul.bullet>.active{
+		background: #777;
+	}
+
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="img-ct">
+			<li><a href="#"><img src="http://i2.piimg.com/567571/737cb6a7bc36ede4.png" alt=""></a></li>
+			<li><a href="#"><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-15/77240528.jpg" alt=""></a></li>
+			<li><a href="#"><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-15/31096653.jpg" alt=""></a></li>
+			<li><a href="#"><img src="http://7xrn7f.com1.z0.glb.clouddn.com/16-6-15/23478018.jpg" alt=""></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script>
+
+	var  $ct = $('.img-ct'),
+		 $liems = $ct.children(),
+		 $pre = $('.pre'),
+		 $next = $('.next'),
+		 $bullet = $('.bullet'),
+		 $imgLeng = $liems.size(),
+		 $imgWidth = $liems.width();
+
+
+	//console.log($imgWidth*$imgLeng);
+
+	var curIdx = 0;
+	var ready = false;
+
+
+	$ct.append($liems.first().clone());
+	$ct.prepend($liems.last().clone());
+	$ct.css({left: 0-$imgWidth , width: $imgWidth*$ct.find('li').size()});
+	//console.log($ct.find('li').size());
+
+
+	$bullet.find('li').on('click',function(){
+		var idx = $(this).index();
+		if(idx > curIdx){
+			next(idx - curIdx);
+		}else if(idx < curIdx){
+			pre(curIdx - idx)
+		}
+	});
+
+	function setbullet(){
+		$bullet.find('li').eq(curIdx).addClass('active').siblings().removeClass('active');
+	}
+		
+	$next.on('click',function(){
+		next();
+	});
+
+	function next(num){
+		var num = num || 1;
+		if(!ready){
+			ready = true;
+			$ct.animate({left: '-='+ (num * $imgWidth)},function(){
+				curIdx = (curIdx + num)%$imgLeng; //求余数
+				if(curIdx ===0){
+					$ct.css({left: 0-$imgWidth});
+				}
+				ready = false;
+				setbullet();
+			})
+		}		
+	}
+		
+
+	$pre.on('click',function(){
+		pre();
+	});
+
+	function pre(num){
+		var num = num || 1;
+		if(!ready){
+			ready = true;
+			$ct.animate({left: '+='+(num * $imgWidth)},function(){
+				curIdx = (curIdx - num)%$imgLeng; //余数-1%4结果为-1
+				if(curIdx === -1){
+					curIdx = 3;
+					$ct.css({left: 0-$imgLeng*$imgWidth});	
+				}
+				ready = false;
+				setbullet();
+			})
+		}
+	}
+
+	function setAuto(){
+		setInterval(function(){
+			pre();
+		},3000)
+	}
+	setAuto();
+	</script>
+
+</body>
+</html>

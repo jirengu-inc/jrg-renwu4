@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>加载更多</title>
+		<style>
+			.item {
+				border:1px solid #ccc;
+				padding:8px;
+				margin:10px;
+				border-radius:3px;
+			}
+			.c {
+				text-align:center;
+			}
+			.btn {
+				width:100px;
+				padding:10px;
+				border:1px solid #ccc;
+				border-radius:3px;
+				margin:0px auto;
+				background:#fff;
+
+                 }
+                .btn:hover {
+                	color:pink;
+                	border:1px solid pink;
+                }
+                .active {
+                	background:pink;
+                }
+		</style>
+	</head>
+	<body>
+		<div class="ct">
+			<div class="item">内容1</div>
+			<div class="item">内容2</div>
+		</div>
+		<div class="c">
+		     <button class="btn">加载更多</button>
+		</div>
+	</body>
+	<script src="ajax.js"></script>
+	<script type="text/javascript">
+		var cur=2,
+		    LEN=3,
+		    btn=document.querySelector(".btn"),
+		    ct=document.querySelector(".ct"),
+		    item=document.querySelector(".item"),
+		    ready=true;
+		btn.addEventListener("click",function(e){
+			e.preventDefault();
+			if(!ready) {
+				return;
+			};
+			ready=false;
+			btn.innerText="Loading....";
+			ajax({
+				url:"getMore.php",
+				type:"get",
+				dataType:"json",
+				data: {
+					start:cur,
+					len:LEN
+				},
+			success:function(json) {
+				onSuccess(json);
+			},
+			error:function() {
+				alert("系统异常");
+			}
+		});
+
+		})
+		function onSuccess(json) {
+				ready=true;
+				btn.innerText="加载更多"
+				for(key in json.data) {
+				var newE1=document.createElement("div");
+				newE1.innerHTML=json.data[key]；
+				newE1.className="item";
+				ct.appendChild(newE1)
+			}
+				cur+=4;
+			}
+
+	</script>
+</html>
