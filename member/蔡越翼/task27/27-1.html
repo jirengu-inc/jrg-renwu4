@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渐变轮播</title>
+	<style>
+		html,
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		li { list-style: none; }
+		a { text-decoration: none; }
+		.carousel {
+			position: relative;
+			width: 310px;
+			height: 209px;
+		}
+		.carousel .img-ct li{
+			display: none
+		}
+		.img-ct img {
+			position: absolute;    /*重叠*/
+			width: 310px;
+			height: 209px;
+		}
+		.carousel .arrow {
+			position: absolute;
+			top: 50%;
+			display: block;
+			width: 30px;
+			height: 30px;
+			margin-top: -15px;
+			text-align: center;
+			line-height: 30px;
+			color: #fff;
+			border-radius: 50%;
+			background-color: #68605A;
+		}
+		.carousel .pre { left: 10px; }
+		.carousel .next { right: 10px; }
+		.carousel .bullet {
+			position: absolute;
+			left: 50%;
+			bottom: 10px;
+			transform: translate(-50%);
+		}
+		.carousel .bullet li{
+			display: inline-block;
+			width: 16px;
+			height: 4px;
+			border-radius: 4px;
+			background-color: #fff;
+		}
+		.bullet li.active { background-color: #666; }
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="img-ct">
+			<li>
+				<a href="#"><img src="./img/a.jpg" alt="a"></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/b.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/c.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/d.jpg" alt=""></a>
+			</li>
+		</ul>
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		<ul class="bullet">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+		</ul>
+	</div>
+	<script>
+		var $img = $('.img-ct li'),
+			$pre = $('.pre'),
+			$next = $('.next'),
+			$bullet = $('.bullet li'),
+			$imgCount = $img.length,
+			$isAnimate = false,
+			$curIdx;
+		play(0);
+		autoPlay();
+		$next.on('click',function(){
+			playNext();
+		});
+		$pre.on('click',function(){
+			playPre();
+		})
+		$bullet.on('click',function(e){
+			play($(this).index());
+		})
+		function autoPlay(){
+			setInterval(function(){
+				playNext();
+			},2000);
+		}
+		function play(idx){
+			if($isAnimate){
+				return;
+			}
+			$isAnimate = true;
+			$img.eq($curIdx).fadeOut(500);
+			$img.eq(idx).fadeIn(500);
+			$curIdx = idx;
+			bullet(idx);
+			$isAnimate = false;
+		}
+		function playNext(){
+			play(($curIdx+1+$imgCount)%$imgCount);
+		}
+		function playPre(){
+			play(($curIdx-1+$imgCount)%$imgCount);
+		}
+		function bullet(idx){
+			$bullet.eq(idx).addClass('active').siblings().removeClass('active');
+		}
+	</script>
+</body>
+</html>

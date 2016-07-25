@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 26-2</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+		*{box-sizing: border-box;}
+		.item {
+			width: 500px;
+			border: 1px solid #F08080;
+			padding: 20px 10px;
+			margin-bottom: 20px;
+		}
+		.btn {
+			padding: 10px;
+			background: #fff;
+			color: #666;
+			border: 1px solid #666;
+			border-radius: 3px;
+		}
+		input.txt {
+			height: 28px;
+			border: 1px solid #666;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+<body>
+	<!-- 单击按钮改变背景色 -->
+	<div class="item changeColor">
+		<button class="btn changeColor">Change Color</button>
+		点击按钮改变背景色
+	</div>
+
+	<!-- 获取窗口垂直滚动距离 -->
+	<div class="item scrollTop">
+		<button class=" btn scrollTop">Get ScrollTop</button>
+	</div>
+
+	<!-- 更改div背景色 -->
+	<div class="item changebg">
+		鼠标滑过我会变色哦！
+	</div>
+
+	<!-- 文本框动作 -->
+	<div class="item txt">
+		<input class="txt" type="text">
+	</div>
+
+	<!-- 显示select的内容 -->
+	<div class="item select">
+		<p class="select">我的选择是：</p>
+		<select class="select" name="fruits">
+			<option value="西瓜">西瓜</option>
+			<option value="葡萄">葡萄</option>
+			<option value="哈密瓜">哈密瓜</option>
+			<option value="桃子">桃子</option>
+		</select>
+	</div>
+
+
+	<script>
+		//单击按钮改变背景色
+		$("button.changeColor").on('click',function(){
+			$this = $(this);
+			$this.css('background','#F08080');
+			setTimeout(function(){
+				$this.css('background','#B0E0E6');
+			},1000);
+			
+		});
+
+		//获取窗口垂直滚动距离
+		$("button.scrollTop").on('click',function(){
+			$("div.scrollTop").append( "窗口垂直滚动距离:"+$("body").scrollTop() );
+		});
+
+		//更改div背景色
+		$("div.changebg").on('mouseover',function(){
+			$(this).css('background','#F08080');
+		});
+		$("div.changebg").on('mouseleave',function(){
+			$(this).css('background','');
+		});
+
+		//文本框动作
+		$("input.txt").on('focusin',function(){      //获得焦点
+			$(this).css('border-color','#B0E0E6');
+		});
+		$("input.txt").on('focusout',function(){      //失去焦点
+			$(this).css('border-color','#666');
+			console.log( $(this).val() );
+		});
+		$("input.txt").on('keyup',function(){                 //输入内容
+			$(this).val( $(this).val().toUpperCase() );       //获取值变为大写后再重新设置值
+		});
+
+		//显示select的内容
+		$("select.select").on('change',function(){
+			$("p.select").text( "我的选择是：" + $(this).val() );
+		});
+	</script>
+</body>
+</html>

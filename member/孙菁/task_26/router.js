@@ -60,3 +60,21 @@ app.get('/user', function(req, res) {
 		username: '饥人谷'
 	});
 });
+
+/*
+  task 26-3 加载更多
+ */
+app.get('/more', function(req, res) {
+	var start = parseInt(req.query.start),   
+        num = parseInt(req.query.num),
+        li = "";
+        console.log(typeof start);
+    for(var i=start;i<start+num;i++){
+    	li += "<li>内容"+(i+1)+"</li>";
+    }
+
+	res.send({
+		status: 1,
+		msg: li
+	});
+});
