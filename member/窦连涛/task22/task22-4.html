@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+  </ul>
+  <input class="ipt-add-content" placeholder="添加内容" />
+  <button id="btn-add-start">开头添加</button>
+  <button id="btn-add-end">结尾添加</button>
+<script>
+var ct = document.getElementsByClassName('ct');
+var start = document.getElementById('btn-add-start');
+var end = document.getElementById('btn-add-end');
+var cons = document.getElementsByClassName('ipt-add-content')[0].value;
+start.addEventListener('click',function(){
+    var con = document.getElementsByClassName('ipt-add-content')[0].value;
+    var ct = document.getElementsByClassName('ct');
+    var ctid = ct[0].setAttribute('id','uid');
+    var iid = document.getElementById('uid');
+    var el = document.createElement('li');
+    var eltext = document.createTextNode(con);
+    el.appendChild(eltext);
+    var cr = iid.insertBefore(el,iid.firstChild);
+    cr.addEventListener('click',function(){
+      console.log(this.innerText);
+    },false)
+},false);
+
+end.addEventListener('click',function(){
+  var con = document.getElementsByClassName('ipt-add-content')[0].value;
+  var ct = document.getElementsByClassName('ct');
+  var ctid = ct[0].setAttribute('id','uid');
+  var iid = document.getElementById('uid');
+  var el = document.createElement('li');
+  var eltext = document.createTextNode(con);
+  el.appendChild(eltext);
+  var cr = iid.appendChild(el);
+  cr.addEventListener('click',function(){
+    console.log(this.innerText);
+  },false)
+},false);
+
+
+for (var i = 0; i < ct[0].children.length; i++) {
+  ct[0].children[i].addEventListener('click',function(){
+    console.log(this.innerText);
+  },false);
+}
+
+</script>
+</body>
+</html>

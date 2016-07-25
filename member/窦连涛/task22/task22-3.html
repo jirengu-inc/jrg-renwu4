@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM</title>
+  <style>
+    *{
+      margin:0;
+      auto:0;
+    }
+
+    li{
+      list-style: none;
+    }
+  </style>
+</head>
+<body>
+  <ul class="ct">
+      <li>这里是</li>
+      <li>饥人谷</li>
+      <li>前端6班</li>
+  </ul>
+<script>
+//有如下代码，要求当点击每一个元素li时控制台展示该元素的文本内容。不考虑兼容
+var  ct = document.getElementsByClassName('ct');
+for(var i = 0 ; i < ct[0].children.length ; i++){
+  ct[0].children[i].addEventListener('click',function(){
+    console.log(this.innerText);
+  },false)
+}
+
+</script>
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+1 事件注册（给对象注册事件监听函数）
+2 触发事件
+3 按照事件预案去做这个事情
+
+
+添加事件的几种方式
+
+1 HTML 内嵌
+2 JavaScript指定事件处理程序
+
+addEventListener
+removeEventListener
+
+IE
+attachEvent
+detachEvent
+
+this不一样
+
+Dom 事件

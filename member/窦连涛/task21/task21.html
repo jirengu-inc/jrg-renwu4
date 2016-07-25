@@ -17,7 +17,7 @@
   // console.log(trim(" +1*2/34-^ "));
 
   function addClass(el, cls){
-    
+
   }
 
   function hasClass(el, cls) {
@@ -62,36 +62,36 @@
    return true;
   }
 
-  //写一个正则表达式，得到如下字符串里所有的颜色（#121212）
+  // 写一个正则表达式，得到如下字符串里所有的颜色（#121212）
   // var re = /#[0-9A-Fa-f]{6}/g;
   // var subj = "color: #121212; background-color: #AA00ef; width: 12px; bad-colors: f#fddee #fd2 "
   // alert( subj.match(re) )  // #121212,#AA00ef
-
-  //下面代码输出什么? 为什么? 改写代码，让其输出hunger, world.
+  //
+  // 下面代码输出什么? 为什么? 改写代码，让其输出hunger, world.
   // var str = 'hello  "hunger" , hello "world"';
   // var pat =  /".*"/g;
   // str.match(pat);  // "hunger" , hello "world" 贪婪模式
   //
   // // 修改如下
   // var pat =  /".*?"/g;;
-
-  //补全如下正则表达式，输出字符串中的注释内容. (可尝试使用贪婪模式和非贪婪模式两种方法)
+  //
+  // 补全如下正则表达式，输出字符串中的注释内容. (可尝试使用贪婪模式和非贪婪模式两种方法)
   // var str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
   // re = /<!--[\w]*-->/g
   // str.match(re)// '<!-- My -- comment \n test -->', '<!---->'
-
-  //非贪婪模式
+  //
+  // 非贪婪模式
   // var str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
   // re = /<!--[\W\w]*?-->/g
   // str.match(re)// '<!-- My -- comment \n test -->', '<!---->'
-
-  //贪婪模式
+  //
+  // 贪婪模式
   // var str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
   // re = /<!--[^>]*-->/g
   // str.match(re)// '<!-- My -- comment \n test -->', '<!---->'
-
-
-  //补全如下正则表达式
+  //
+  //
+  // 补全如下正则表达式
   // var re = /<[^>]+>/g
   // var str = '<> <a href="/"> <input type="radio" checked> <b>';
   // str.match(re) // '<a href="/">', '<input type="radio" checked>', '<b>'
