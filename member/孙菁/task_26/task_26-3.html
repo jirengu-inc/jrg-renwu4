@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 26-3</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+	    *{
+	    	margin: 0;
+	    	padding: 0;
+	    }
+		ul.cont {
+			width: 600px;
+			margin: 10px auto;
+		}
+		ul.cont li{
+			list-style: none;
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-bottom: 10px;
+			border-radius: 3px;
+			cursor: pointer;
+		}
+		ul.cont li:hover {
+			background: #E27272;
+		}
+		a.more {
+			display: block;
+			width: 80px;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			margin: 10px auto;
+			border: 1px solid #E27272;
+			border-radius: 3px;
+			text-decoration: none;
+			color: #E27272;
+			cursor: pointer;
+		}
+		
+	</style>
+</head>
+<body>
+	<ul class="cont">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<a class="more" href="#">加载更多</a>
+
+	<script>
+		var flag = false;
+		$("a.more").on('click',function(evt){
+			evt.preventDefault();
+			if(flag){
+				return;
+			}
+			flag = true;
+			$("a.more").text("加载中...");
+			$.ajax({
+				url:'/more',
+				type:'get',
+				data:{start:$(".cont").children().length,
+				      num:5},
+				success:function(obj){
+					$("ul.cont").append(obj.msg);
+				},
+				error:function(){
+					console.log("error");
+				}
+			});
+		});
+		
+		
+	</script>
+</body>
+</html>
