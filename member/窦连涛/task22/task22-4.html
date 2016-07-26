@@ -14,44 +14,74 @@
   <button id="btn-add-start">开头添加</button>
   <button id="btn-add-end">结尾添加</button>
 <script>
+// 第一种方法
+// var ct = document.getElementsByClassName('ct');
+// var start = document.getElementById('btn-add-start');
+// var end = document.getElementById('btn-add-end');
+// var cons = document.getElementsByClassName('ipt-add-content')[0].value;
+// start.addEventListener('click',function(){
+//     var con = document.getElementsByClassName('ipt-add-content')[0].value;
+//     var ct = document.getElementsByClassName('ct');
+//     var ctid = ct[0].setAttribute('id','uid');
+//     var iid = document.getElementById('uid');
+//     var el = document.createElement('li');
+//     var eltext = document.createTextNode(con);
+//     el.appendChild(eltext);
+//     var cr = iid.insertBefore(el,iid.firstChild);
+//     cr.addEventListener('click',function(){
+//       console.log(this.innerText);
+//     },false)
+// },false);
+//
+// end.addEventListener('click',function(){
+//   var con = document.getElementsByClassName('ipt-add-content')[0].value;
+//   var ct = document.getElementsByClassName('ct');
+//   var ctid = ct[0].setAttribute('id','uid');
+//   var iid = document.getElementById('uid');
+//   var el = document.createElement('li');
+//   var eltext = document.createTextNode(con);
+//   el.appendChild(eltext);
+//   var cr = iid.appendChild(el);
+//   cr.addEventListener('click',function(){
+//     console.log(this.innerText);
+//   },false)
+// },false);
+//
+//
+// for (var i = 0; i < ct[0].children.length; i++) {
+//   ct[0].children[i].addEventListener('click',function(){
+//     console.log(this.innerText);
+//   },false);
+// }
+
+// 第二种方法
 var ct = document.getElementsByClassName('ct');
+ct[0].setAttribute('id','uid');
+var element = document.getElementById('uid');
 var start = document.getElementById('btn-add-start');
 var end = document.getElementById('btn-add-end');
-var cons = document.getElementsByClassName('ipt-add-content')[0].value;
-start.addEventListener('click',function(){
-    var con = document.getElementsByClassName('ipt-add-content')[0].value;
-    var ct = document.getElementsByClassName('ct');
-    var ctid = ct[0].setAttribute('id','uid');
-    var iid = document.getElementById('uid');
-    var el = document.createElement('li');
-    var eltext = document.createTextNode(con);
-    el.appendChild(eltext);
-    var cr = iid.insertBefore(el,iid.firstChild);
-    cr.addEventListener('click',function(){
-      console.log(this.innerText);
-    },false)
-},false);
-
+start.addEventListener('click',add,false);
 end.addEventListener('click',function(){
-  var con = document.getElementsByClassName('ipt-add-content')[0].value;
-  var ct = document.getElementsByClassName('ct');
-  var ctid = ct[0].setAttribute('id','uid');
-  var iid = document.getElementById('uid');
-  var el = document.createElement('li');
-  var eltext = document.createTextNode(con);
-  el.appendChild(eltext);
-  var cr = iid.appendChild(el);
-  cr.addEventListener('click',function(){
-    console.log(this.innerText);
-  },false)
+  add('end');
 },false);
 
-
-for (var i = 0; i < ct[0].children.length; i++) {
-  ct[0].children[i].addEventListener('click',function(){
-    console.log(this.innerText);
-  },false);
+function add(status) {
+  var cons = document.getElementsByClassName('ipt-add-content')[0].value;
+  if(cons === '') return;
+  var el = document.createElement('li');
+  var eltext = document.createTextNode(cons);
+  el.appendChild(eltext);
+  if(status === 'end'){
+    cr = element.appendChild(el);
+  }else{
+    cr = element.insertBefore(el,element.firstChild);
+  }
 }
+
+element.addEventListener('click',function(e){
+  console.log(e.target.innerText);
+},false);
+
 
 </script>
 </body>
