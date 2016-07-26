@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>task-22-3</title>
+    </head>
+    <body>
+        <ul class="ct">
+                <li data-img="img/1.jpg">鼠标放置查看图片1</li>
+                <li data-img="img/2.jpg">鼠标放置查看图片2</li>
+                <li data-img="img/3.jpg">鼠标放置查看图片3</li>
+        </ul>
+        <div class="img-preview"></div>
+        <script>
+            //获取元素
+            var lis=document.getElementsByTagName('li');
+                 pic=document.getElementsByClassName(`img-preview`)[0];
+
+            for(var i=0;i<lis.length;i++){//遍历li标签
+                lis[i].addEventListener('mouseenter',function(){
+                    var img=this.getAttribute('data-img');
+                    pic.innerHTML='<img src=" '+img+' ">'
+                });
+            }
+
+
+        </script>
+    </body>
+</html>
