@@ -32,7 +32,7 @@
 			}
 		}
 	}
-
+	var heightArray=[];
 	$.fn.waterfall=function(){
 		var that=this,
 			$parent=this.parent();
