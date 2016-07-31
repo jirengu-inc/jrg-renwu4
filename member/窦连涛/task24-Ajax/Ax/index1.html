@@ -15,17 +15,40 @@
   <div class="container">
     <h1>server-mock使用说明</h1>
     <pre>
-1. mock init, 生成使用范例
+1. 执行 mock init, 生成使用范例
 2. 修改 router.js, 设置数据接口响应格式
 3. 写模板或者 html 文件，包含 ajax 接口
 4. mock start 启动服务器，在浏览器输入 http://localhost:8080/页面或者路由地址
 5. 审查元素查看请求
     </pre>
+
+    <input type="text" id="test" placeholder="test">
+    <button id="button">点击</button>
+
+    <input type="text" id="tests" placeholder="tests">
+    <button id="buttons">点击</button>
   </div>
 
 
   	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+    var ts = document.getElementById('button');
+
+    ts.addEventListener('click',function(){
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function(){
+        if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+          document.getElementById('test').value = xmlhttp.responseText;
+        }
+      }
+      xmlhttp.open("GET","/test",false);
+      xmlhttp.send();
+
+    },false);
+
+    console.log(1111);
+
+
   	$.get('/h').done(function(ret){
   		console.log(ret);
   	});
