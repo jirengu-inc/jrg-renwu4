@@ -24,9 +24,11 @@ var waterfall = {
 			min = obj.min;
 		el.css({
 			top:min,
-			left:this.itemW*idx
+			left:this.itemW*idx,
+			opacity:1
 		});
 		this.colSumHeight[idx] = this.colSumHeight[idx] + el.outerHeight(true);
+		this.ct.height(Math.max.apply(null,this.colSumHeight));
 	},
 	min: function(arr){
 		var idx = 0,
