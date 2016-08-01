@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+	<head>
+		<title>task26-2</title>
+		<meta charset="utf-8">
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+		<style>
+			html,body {
+				padding:0;
+				margin:0;
+			}
+			.btn {
+				background:#ccc;
+				padding:8px;
+				margin:30px;
+				border:1px solid #ccc;
+				border-radius:3px;
+			}
+			
+			
+			.test1 {
+				border:1px solid #ccc;
+				border-radius:3px;
+				width:600px;
+				height:40px;
+				line-height:40px;
+				margin:30px;
+			}
+			.text {
+				margin:30px;
+			}
+			.text input {
+				border:1px solid #ccc;
+			}
+			.test2 {
+				margin:30px;
+			}
+			.box {
+				width:500px;
+				height:500px;
+				background-color:yellow;
+				margin:30px;
+			}
+			.btn2 {
+				margin:30px;
+			}
+		</style>
+	</head>
+	<body>
+		<button class="btn">点我变红再变蓝</button>
+		<div class="test1">当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</div>
+		<div class="text">
+			用户名：
+		    <input type="text" name="username">
+		</div>
+		<div class="test2">
+			<select name="fruit">
+				<option>苹果</option>
+				<option>香蕉</option>
+				<option>菠萝</option>
+			</select>
+			<button class="btn1">获取select值</button>
+		</div>
+		<div class="box">
+			
+		</div>
+		<button class="btn2">获取垂直高度</button>
+
+	</body>
+	<script>
+		$(".btn").on("click",function(e) {
+			var $this=$(this);
+			$this.css("background-color","red");
+			setTimeout(function() {
+				$this.css("background-color","blue")
+			},500);
+		});
+		$(".test1").on("mouseenter",function() {
+			$(".test1").css("background-color","red")
+		})
+		$(".test1").on("mouseleave",function() {
+			$(".test1").css("background-color","#fff")
+		})
+		$(".text input").on("focus",function() {
+			$(".text input").css("border","1px solid blue")
+		})
+		$(".text input").on("blur",function() {
+			$(".text input").css("border","1px solid #ccc")
+		})
+		$(".text input").on("keyup",function() {
+			$(this).val($(this).val().toUpperCase())
+			console.log($(this).val())
+		})
+		$(".btn1").on("click",function() {
+			$(".test2").append($('select[name="fruit"]').val());
+		})
+		$(".btn2").on("click",function() {
+			var topHei=$(".box").scrollTop();
+			$(".box").append(topHei)
+		})
+	</script>
+</html>
