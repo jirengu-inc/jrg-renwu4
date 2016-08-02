@@ -1,0 +1,15 @@
+$(selector).animate({param},speed,callback)
+
+JQ DOM 获取
+
+1 text() 元素文本内容
+2 html() 包括HTML标记
+3 val() 设置或返回表单字段的值
+4 attr() 设置或返回表单元素的属性
+
+元素的添加和删除
+
+append()  被选元素的结尾插入内容
+prepend() 前面
+after() 在被选元素之后插入内容
+before() 在被选元素之前
