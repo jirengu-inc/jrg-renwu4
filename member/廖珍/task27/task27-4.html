@@ -211,21 +211,20 @@
 
 		}
 		function playPre(idx) {
-			if(!isAnimate) {
-				return;
-			}
-			var idx=idx || 1;
-			isAnimate=false;
-			setBg(curIdx);
-			$ct.animate({left:"+="+(imgWidth*imgCount)},function() {
-				curIdx=(imgCount+curIdx-idx)%imgCount;
-				if(curIdx==(imgCount-1)) {
-					$ct.css({left:0-imgCount*imgWidth})
+					if(!isAnimate){
+						return;
+					}
+					isAnimate=false;
+					var idx=idx || 1;
+					$ct.animate({left:"+="+(imgWidth*idx)},function(){
+						curIdx=(imgCount+curIdx-idx)%imgCount;
+						if(curIdx==(imgCount-1)) {
+							$ct.css({left:0-imgWidth*imgCount});
+						}
+						isAnimate=true;
+						setBullent();						
+					});
 				}
-				isAnimate=true;
-				setBullent();
-			});
-			}
 			function setBullent() {
 				$bullent.children().removeClass("active")
 									.eq(curIdx).addClass("active")
@@ -237,9 +236,16 @@
 				var imgUrl=$cover.attr("data-bg-img");
 				if($node.data("isBgSet")) {
 					return;
-				}
+				}//不太明白这个的具体作用，下面把它的值设为了true，那不是每次都return出来了吗？
 				$cover.css("background-image",'url('+imgUrl+')');
 				$node.data("isBgSet",true);
 			}
+			/*.carousel {
+			position:relative;
+			width:310px;//老师我不太明白，为什么这里还要设置高度和宽度，不是已经设置了100%吗，我试过如果不设的话，会有多个图片在页面上
+			height:206px;
+			overflow:hidden;
+		}*/
+		
 	</script>
 </html>
