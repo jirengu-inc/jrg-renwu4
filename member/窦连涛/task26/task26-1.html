@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>JQ方法</title>
+  <style>
+    *{
+      margin: 0;
+      padding:0;
+    }
+
+    li{
+      list-style: none;
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    #ChangeColor{
+      width: 100%;
+      height: 50px;
+      border:1px solid gray;
+    }
+
+    #distance,#blur{
+      margin-top: 50px;
+    }
+
+    #bg{
+      width:200px;
+      height: 200px;
+      border:1px solid #CCC;
+      margin-top: 50px;
+      margin-bottom:100px;
+    }
+  </style>
+</head>
+<body>
+  <div id="ChangeColor">
+    <button type="button" id="button">改变颜色</button>
+  </div>
+
+
+  <ul class="ct">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+
+  <div id="distance">
+    <input type="text" id="dis" value="">
+  </div>
+
+  <div id="bg">
+
+  </div>
+
+
+
+  <input type="text" id="blur" value="">
+  <input type="text" id="hobbys">
+  <select name="hobby" id="hobby">
+    <option value="footerball">足球</option>
+    <option value="backetball">篮球</option>
+    <option value="ping-pong">乒乓球</option>
+    <option value="volleyball">排球</option>
+    <option value="billiard ball">台球</option>
+  </select>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+   //当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+    $(function(){
+      $('#button').on('click',function(){
+        $('#ChangeColor').css('background-color','red');
+        setTimeout(function(){
+          $('#ChangeColor').css('background-color','blue');
+        },1000)
+      })
+    })
+  //当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+  //当窗口滚动时，获取垂直滚动距离
+    $(function(){
+      $(window).scroll(function(){
+        var $ct = $(this).scrollTop();
+        $('#dis').val($ct);
+      })
+    })
+  //当窗口滚动时，获取垂直滚动距离
+  //当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色
+  $(function(){
+    $('#bg').on('mouseover',function(){
+      $(this).css('background-color',"red");
+    })
+    $('#bg').on('mouseout',function(){
+      $(this).css('background-color',"");
+    })
+  })
+  //当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色
+
+  //当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+  $(function(){
+    $('#blur').on('focus',function(){
+      var _this = $(this);
+      _this.css({"outline":'none',"outline":"1px solid red"});
+      _this.on('keyup',function(){
+        _this.val(_this.val().toUpperCase());
+      })
+    })
+  })
+  //当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+  //当选择 select 后，获取用户选择的内容
+  $(function(){
+    $('#hobby').on('change',function(){
+      $('#hobbys').val($(this).children('option:selected').val());
+    })
+  })
+  //当选择 select 后，获取用户选择的内容
+  </script>
+</body>
+</html>
