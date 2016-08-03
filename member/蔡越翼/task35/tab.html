@@ -44,7 +44,7 @@
 	</style>
 </head>
 <body>
-	<div class="container ct1">
+	<div class="container">
 		<ul class="tab">
 		<li class="active">我是1</li>
 		<li>我是2</li>
@@ -56,7 +56,7 @@
 		<div class="panel">容器3</div>
 		<div class="panel">容器4</div>
 	</div>
-	<div class="container ct2">
+	<div class="container">
 		<ul class="tab">
 		<li class="active">我是1</li>
 		<li>我是2</li>
@@ -73,20 +73,21 @@
 		$(function(){
 			function Tab($node){
 				this.tab = $node.find('.tab');
+				this.panel = $node.find('.panel');
+				this.bind();
 			}
-			Tab.prototype.init = function(){
-				this.tab.on('click','li',function(event){
+			Tab.prototype.bind = function(){
+				var cur = this;
+				cur.tab.on('click','li',function(event){
 					event.preventDefault();
 					var $this = $(this);
 					var $idx = $this.index();
 					$this.addClass('active').siblings().removeClass('active');
-					$this.parents('.container').find('.panel').eq($idx).addClass('active').siblings().removeClass('active');
+					cur.panel.eq($idx).addClass('active').siblings().removeClass('active');
 				});
 			}
-			var tab1 = new Tab($('.ct1'));
-			var tab2 = new Tab($('.ct2'));
-			tab1.init();
-			tab2.init();
+			new Tab($('.container').eq(0));
+			new Tab($('.container').eq(1));
 		});
 	</script>
 </body>

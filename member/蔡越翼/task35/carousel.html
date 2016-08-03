@@ -137,7 +137,7 @@
 	<script>
 	$(function(){
 		function Carousel(carousel){
-			this.$carousel = $(carousel);
+			this.$carousel = carousel;
 			this.$ct = this.$carousel.find('.img-ct');
 			this.$pre = this.$carousel.find('.pre');
 			this.$next = this.$carousel.find('.next');
@@ -145,6 +145,7 @@
 			this.$count = this.$ct.children().length;
 			this.$isAnimate = false;
 			this.$curIdx = 0;
+			this.init();
 		}
 		Carousel.prototype = {
 			init:function(){
@@ -191,12 +192,9 @@
 				},2000);
 			}
 		}
-		var carousel1 = new Carousel('.carousel1');
-    	var carousel2 = new Carousel('.carousel2');
-    	var carousel3 = new Carousel('.carousel3');
-    	carousel1.init();
-    	carousel2.init();
-    	carousel3.init();
+		new Carousel($('.carousel').eq(0));
+    	new Carousel($('.carousel').eq(1));
+    	new Carousel($('.carousel').eq(2));
 	});
 	</script>
 </body>

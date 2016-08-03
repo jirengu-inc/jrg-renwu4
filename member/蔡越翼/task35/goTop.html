@@ -47,6 +47,7 @@
 		function GoTop(ct){
 			this.ct = ct;
 			this.target = $('<div class="goTop">回到顶部</div>');
+			this.init();
 		}
 		GoTop.prototype = {
 			init: function(){
@@ -70,8 +71,7 @@
 				});
 			}
 		}
-		var p1 = new GoTop($('.wrap'));
-		p1.init();
+		new GoTop($('.wrap'));
 	</script>
 </body>
 </html>
