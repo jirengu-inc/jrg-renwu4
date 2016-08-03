@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab</title>
+	<style>
+		html,
+		body,
+		ul,
+		li{
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			width:400px;
+			margin-bottom: 20px;
+			border:1px solid #CBCBCB;
+		}
+		.tab:after {
+			content:"";
+			display: block;
+			clear:both;
+		}
+		.tab li {
+			float: left;
+			width: 25%;
+			padding: 20px;
+			text-align: center;
+			list-style: none;
+			cursor: pointer;
+			box-sizing: border-box;
+			border-right:1px solid #CBCBCB;
+			border-bottom:1px solid #CBCBCB;
+		}
+		.tab>li:last-child { border-right: none; }
+		.tab .active{ background-color: #EDEDED; }
+		.panel {
+			width:480px;
+			height: 200px;
+			display: none;
+			padding: 20px;
+		}
+		.container>.active{ display: block; }
+	</style>
+</head>
+<body>
+	<div class="container ct1">
+		<ul class="tab">
+		<li class="active">我是1</li>
+		<li>我是2</li>
+		<li>我是3</li>
+		<li>我是4</li>
+		</ul>
+		<div class="panel active">容器1</div>
+		<div class="panel">容器2</div>
+		<div class="panel">容器3</div>
+		<div class="panel">容器4</div>
+	</div>
+	<div class="container ct2">
+		<ul class="tab">
+		<li class="active">我是1</li>
+		<li>我是2</li>
+		<li>我是3</li>
+		<li>我是4</li>
+		</ul>
+		<div class="panel active">容器1</div>
+		<div class="panel">容器2</div>
+		<div class="panel">容器3</div>
+		<div class="panel">容器4</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$(function(){
+			function Tab($node){
+				this.tab = $node.find('.tab');
+			}
+			Tab.prototype.init = function(){
+				this.tab.on('click','li',function(event){
+					event.preventDefault();
+					var $this = $(this);
+					var $idx = $this.index();
+					$this.addClass('active').siblings().removeClass('active');
+					$this.parents('.container').find('.panel').eq($idx).addClass('active').siblings().removeClass('active');
+				});
+			}
+			var tab1 = new Tab($('.ct1'));
+			var tab2 = new Tab($('.ct2'));
+			tab1.init();
+			tab2.init();
+		});
+	</script>
+</body>
+</html>

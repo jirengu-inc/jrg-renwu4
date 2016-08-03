@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>渐变轮播</title>
+	<style>
+		html,
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		li { list-style: none; }
+		a { text-decoration: none; }
+		.carousel {
+			position: relative;
+			width: 310px;
+			height: 209px;
+			margin-bottom: 20px;
+		}
+		.carousel .img-ct li{
+			display: none
+		}
+		.img-ct img {
+			position: absolute;    /*重叠*/
+			width: 310px;
+			height: 209px;
+		}
+		.carousel .arrow {
+			position: absolute;
+			top: 50%;
+			display: block;
+			width: 30px;
+			height: 30px;
+			margin-top: -15px;
+			text-align: center;
+			line-height: 30px;
+			color: #fff;
+			border-radius: 50%;
+			background-color: #68605A;
+		}
+		.carousel .pre { left: 10px; }
+		.carousel .next { right: 10px; }
+		.carousel .bullet {
+			position: absolute;
+			left: 50%;
+			bottom: 10px;
+			transform: translate(-50%);
+		}
+		.carousel .bullet li{
+			display: inline-block;
+			width: 16px;
+			height: 4px;
+			border-radius: 4px;
+			background-color: #fff;
+		}
+		.bullet li.active { background-color: #666; }
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+	<div class="carousel carousel1">
+		<ul class="img-ct">
+			<li>
+				<a href="#"><img src="./img/a.jpg" alt="a"></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/b.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/c.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/d.jpg" alt=""></a>
+			</li>
+		</ul>
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		<ul class="bullet">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+		</ul>
+	</div>
+
+	<div class="carousel carousel2">
+		<ul class="img-ct">
+			<li>
+				<a href="#"><img src="./img/a.jpg" alt="a"></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/b.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/c.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/d.jpg" alt=""></a>
+			</li>
+		</ul>
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		<ul class="bullet">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+		</ul>
+	</div>
+
+	<div class="carousel carousel3">
+		<ul class="img-ct">
+			<li>
+				<a href="#"><img src="./img/a.jpg" alt="a"></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/b.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/c.jpg" alt=""></a>
+			</li>
+			<li>
+				<a href="#"><img src="./img/d.jpg" alt=""></a>
+			</li>
+		</ul>
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		<ul class="bullet">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+		</ul>
+	</div>
+	<script>
+	$(function(){
+		function Carousel(carousel){
+			this.$carousel = $(carousel);
+			this.$ct = this.$carousel.find('.img-ct');
+			this.$pre = this.$carousel.find('.pre');
+			this.$next = this.$carousel.find('.next');
+			this.$bullet = this.$carousel.find('.bullet');
+			this.$count = this.$ct.children().length;
+			this.$isAnimate = false;
+			this.$curIdx = 0;
+		}
+		Carousel.prototype = {
+			init:function(){
+				this.bind();
+				this.play(0);
+				this.autoPlay();
+			},
+			bind:function(){
+				var cur = this;
+				cur.$next.on('click',function(){
+					cur.playNext();
+				});
+				cur.$pre.on('click',function(){
+					cur.playPre();
+				});
+				cur.$bullet.on('click','li',function(){
+					cur.play($(this).index());
+				});
+			},
+			play:function(idx){
+				if(this.$isAnimate){
+					return;
+				}
+				this.$isAnimate = true;
+				this.$ct.find('li').eq(this.$curIdx).fadeOut(500);
+				this.$ct.find('li').eq(idx).fadeIn(500);
+				this.$isAnimate = false;
+				this.$curIdx = idx;
+				this.setBullet();
+			},
+			playNext:function(){
+				this.play((this.$curIdx+1+this.$count)%this.$count);
+			},
+			playPre:function(){
+				this.play((this.$curIdx-1+this.$count)%this.$count);
+			},
+			setBullet:function(){
+				this.$bullet.children().removeClass('active').eq(this.$curIdx).addClass('active');
+			},
+			autoPlay:function(){
+				var cur = this;
+				var clock = setInterval(function(){
+					cur.playNext();
+				},2000);
+			}
+		}
+		var carousel1 = new Carousel('.carousel1');
+    	var carousel2 = new Carousel('.carousel2');
+    	var carousel3 = new Carousel('.carousel3');
+    	carousel1.init();
+    	carousel2.init();
+    	carousel3.init();
+	});
+	</script>
+</body>
+</html>

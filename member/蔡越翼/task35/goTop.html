@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>goTop</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<style>
+		body,
+		html {
+			margin: 0;
+			padding :0;
+		}
+		.wrap {
+			position: relative;
+		}
+		.content {
+			padding :40px;
+			border:1px solid gray;
+		}
+		.goTop {
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			display: none;
+			padding: 15px;
+			border: 1px solid red;
+			cursor: pointer;
+		}
+	</style>
+</head>
+	<div class="wrap">
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+		<div class="content">内容</div>
+	</div>
+<body>
+	<script>
+		function GoTop(ct){
+			this.ct = ct;
+			this.target = $('<div class="goTop">回到顶部</div>');
+		}
+		GoTop.prototype = {
+			init: function(){
+				this.create();
+				this.bindEvent();
+			},
+			create: function(){
+				this.ct.append(this.target);
+			},
+			bindEvent: function(){
+				var cur = this;
+				$(window).on('scroll',function(){
+					if($(this).scrollTop() > 200){
+						cur.target.show();
+					}else{
+						cur.target.hide();
+					}
+				});
+				cur.target.on('click',function(){
+					$(window).scrollTop(0);
+				});
+			}
+		}
+		var p1 = new GoTop($('.wrap'));
+		p1.init();
+	</script>
+</body>
+</html>
