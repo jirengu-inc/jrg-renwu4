@@ -136,13 +136,13 @@
 	}
 
 
-	//拼接数据字符串
+	//拼接数据字符串  <a href='"+arr[i].url+"'    '+list[i].url+'
 	function readerData(list){
 		var tpl = '',
 			$nodes;
 		for(var i = 0; i< list.length;i++){
 			tpl += '<li class="list">';
-			tpl += '<a href="#" class="link"><img src="'+list[i].img_url+'"alt=""></a>';
+			tpl += '<a href="'+list[i].url+'" class="link"><img src="'+list[i].img_url+'"alt=""></a>';
 			tpl += '<h4 class="header">'+list[i].short_name+'</h4><hr>';
 			tpl += '<p class="desp">'+list[i].short_intro+'</p>';
 			tpl += '</li>';
@@ -167,6 +167,8 @@
 			listHeight.length = listHeight.length;	 		
 		}
 
+
+		console.log(listHeight.length);
 		$nodes.each(function(){
 			var $cur = $(this);
 			$(this).find('img').on('load',function(){
