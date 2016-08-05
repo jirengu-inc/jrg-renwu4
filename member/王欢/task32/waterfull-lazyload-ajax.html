@@ -41,6 +41,7 @@
 			border-radius: 4px;
 			box-shadow: 0px 0px 7px #B9B6B6;
 			opacity: 0;
+			transition: all 0.5s;
 		}
 		.news-list .news img{
 			width: 100%;
@@ -81,7 +82,7 @@
 	<script>
 		var $container = $('.container .news-list'),
 			currPage = 1,
-			num = 20
+			num = 15
 		var water_arr = [];
 		var $more = $('.more');
 		getData();
@@ -129,7 +130,7 @@
 			}
 		}
 
-		
+
 		function addToHTML(data){
 			var $newNode = createNode(data);
 
