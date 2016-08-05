@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		ul{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color: inherit;
+		}
+		.clearfix:after{
+			display: block;
+			content: '';
+			clear: both;
+		}
+		.container{
+			width: 1060px;
+			margin: 0 auto;
+		}
+		.news-list{
+		    margin-left: -20px;
+		    position: relative;
+		    left: 20px;
+		}
+		.news-list .news{
+			position: absolute;
+			width: 250px;
+			margin-right: 20px;
+			margin-bottom: 20px;
+			float: left;
+			padding: 10px;
+			border: 1px solid #CAC6C6;
+			border-radius: 4px;
+			box-shadow: 0px 0px 7px #B9B6B6;
+			opacity: 0;
+		}
+		.news-list .news img{
+			width: 100%;
+		}
+		.news-list .news .title{
+		    font-size: 16px;
+		    border-bottom: 1px solid #DFDFDF;
+		    line-height: 2;
+		    max-height: 33px;
+		}
+		.news-list .news .ct{
+		    color: #757272;
+		    font-size: 12px;
+		    margin: 10px 0;
+		    line-height: 1.5;
+
+		}
+
+		
+	</style>
+</head>
+<body>
+	<div class="container">
+		<ul class="news-list clearfix">
+<!-- 			<li class="news test">
+				<img src="http://www.sinaimg.cn/dy/slidenews/5_t160/2016_30/453_79971_519116.jpg" alt="">
+				<h1 class="title">印度小猴汽车挡风镜臭美</h1>
+				<p class="ct">一只臭美的小猴趴在汽车挡风镜上照镜子，看到镜中的自己还忍不住凑上去就亲。</p>
+			</li> -->
+		</ul>
+
+		<button class="more" style="display:block;padding:10px 15px;visibility:hidden;"></button>
+
+	</div>
+	
+
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script>
+		var $container = $('.container .news-list'),
+			currPage = 1,
+			num = 20
+		var water_arr = [];
+		var $more = $('.more');
+		getData();
+
+		$more.on('click',function(){
+			getData();
+		})
+
+		var clock = null;
+		$(window).on('scroll',function(){
+			clock && clearTimeout(clock);
+			clock = setTimeout(function(){
+				getData();
+			},500)
+		})
+		
+		function getData(){
+			var url =  "http://platform.sina.com.cn/slide/album_tech";
+			$.ajax({
+				url:url,
+				dataType:'jsonp',
+				jsonp:'jsoncallback',
+				data:{
+					app_key:1271687855,
+					num:num,
+					page:currPage
+				},
+				success:function(data){
+					addToHTML(data.data);
+					currPage++;
+				}
+
+			});
+		}
+
+		function isShow($node){
+			var windowH = $(window).height();
+			var scrollTop = $(window).scrollTop();
+			var nodeH = $node.offset().top;
+
+			if (nodeH <= scrollTop + windowH) {
+				return true
+			}else{
+				return false;
+			}
+		}
+
+		
+		function addToHTML(data){
+			var $newNode = createNode(data);
+
+			var imgNum=$newNode.find('img').length;
+			$newNode.find('img').load(function(){
+			    if(!--imgNum){
+			    	//当图片全部加载完成后开始执行
+			        waterfull($newNode);
+			    }
+			});
+
+			
+		}
+
+		// 将获取到的数据按照瀑布流的方式排列
+		function waterfull($nodes){
+			var containerWidth = $container.width();
+			var listWidth = $container.children().outerWidth(true);
+			var count = Math.floor(containerWidth/listWidth);
+			
+			
+			if (water_arr.length == 0) {
+				for(var i = 0;i<count;i++){
+					water_arr.push(0)
+				}
+			}
+			$nodes.each(function(){
+					var $cur = $(this)
+					var min = getMin(water_arr);
+					$cur.css({
+						'left':min.idx*listWidth,
+						'top':min.value,
+						'opacity':1
+					})
+
+					water_arr[min.idx] += $cur.outerHeight(true);
+					$container.height(Math.max.apply(null,water_arr));				
+			});
+
+		}
+		//获取数组的最小值以及下标
+		function getMin(arr){
+			var min = {
+				value:arr[0],
+				idx:0
+			}
+			for(var i=0;i<arr.length;i++){
+				if(arr[i] < min.value){
+					min.value = arr[i];
+					min.idx = i;
+				}
+			}
+			return min;
+		}
+
+		//将获取到的数据添加到页面中
+		function createNode(data){
+			var html="";
+			for(var i =0;i< data.length;i++){
+				html += '<li class="news">';
+				html += '<img src="'+data[i].img_url+'" alt="">';
+				html += '<h1 class="title">'+data[i].short_name+'</h1>'
+				html += '<p class="ct">'+data[i].short_intro+'</p>';
+				html += '</li>';
+			}
+			$nodes = $(html);
+			$container.append($nodes);
+			return $nodes;
+		}
+	</script>
+</body>
+</html>
