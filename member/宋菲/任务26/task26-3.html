@@ -102,8 +102,6 @@ $loadMoreBtn.on('click', function(e){
 
   function onError(){
     alert('系统异常');
-    isLoading =false;
-
     $loadMoreBtn.data('isLoading',false)
             .text('加载更多');
   }
