@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <meta charset="utf-8">
+  <title>构造函数切换tab</title>
+<style>
+	html{
+		font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+	}
+	ul,li{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+	}
+	#tab{
+		width: 900px;
+	}
+	.tab-head{
+		border: 1px solid #333;
+		width: 900px;
+		margin: auto;
+	}
+	.tab-head:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#tab .list:nth-child(2){
+		border-left: 1px solid #333;
+		border-right: 1px solid #333;
+	}
+	#tab .list{
+		float: left;
+		height: 30px;
+		width: 33.26%;
+		line-height: 30px;
+		text-align: center;
+		cursor:pointer;
+	}
+	.content{
+		padding: 20px;
+		height:500px;
+		border: 1px solid #333;
+		width: 860px;
+		display: none;
+	}
+	.list.active{
+		background: #ccc;	
+	}
+	.content.show{
+		display: block;
+	}
+</style>
+</head>
+<body>
+	<div id="tab">
+		<ul class="tab-head">
+			<li class="list active">tab1</li>
+			<li class="list">tab2</li>
+			<li class="list ">tab3</li>
+		</ul>
+		<div class="content show">内容1</div>
+		<div class="content">内容2</div>
+		<div class="content">内容3</div>
+	</div>
+
+
+	<script>
+		function Cutover($tab){
+			this.$list = $tab.find('.list');
+			this.$content = $tab.find('.content');
+			this.bind();
+		}
+
+		Cutover.prototype = {
+
+			bind: function(){
+				var me = this;
+				me.$list.on('click',function(){
+					var idx = $(this).index();  //获取每个点击元素的下标
+					$(this).addClass('active').siblings().removeClass('active');
+					me.$content.removeClass('show');
+					me.$content.eq(idx).addClass('show');
+				})
+			}
+
+		}
+		var $tab = $('#tab');
+		var tab1 = new Cutover($tab);
+
+	</script>
+
+</body>
+</html>
