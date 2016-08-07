@@ -174,12 +174,14 @@
                   }
               })
 
-              $next.on('click',function(){
+              $next.on('click',function(e){
+                 e.preventDefault();
                  playNext();
               })
 
-              $pre.on('click',function(){
-                  playPre();
+              $pre.on('click',function(e){
+                 e.preventDefault();
+                 playPre();
               })
 
               // autoPlay();
