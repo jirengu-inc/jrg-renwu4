@@ -13,7 +13,7 @@ function removeClass(obj, preSub) {
   for (var i = 0; i < names.length; i++) {
     if (preSub === names[i]) {
       names.splice(i, 1);
-      break;
+      --i;
     }
   }
   obj.className = names.join(" ");
