@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>基本轮播</title>
+  <style>
+   html,body,div,ul,li{
+     margin:0;
+     padding: 0;
+   }
+
+   li{
+     list-style: none;
+   }
+
+   a{
+     text-decoration: none;
+   }
+
+   #curousel {
+     width: 520px;
+     height: 280px;
+     overflow: hidden;
+     position: relative;
+   }
+
+   #curousel .img-ct {
+     position: absolute;
+   }
+
+   #curousel .img-ct:after{
+     content:'';
+     display: block;
+     clear: both;
+   }
+
+   #curousel .img-ct li{
+    width: 520px;
+    height: 280px;
+    float: left;
+   }
+
+   .arrow {
+     width: 30px;
+     height: 30px;
+     line-height: 30px;
+     text-align: center;
+     position: absolute;
+     top:50%;
+     margin-top:-15px;
+     border-radius: 50%;
+     background: #eee;
+     opacity: 0.8;
+     box-shadow: 0 0 2px #999;
+   }
+
+   .next {
+     left:10px;
+   }
+
+   .pre {
+     right:10px;
+   }
+
+   .bullet {
+     position: absolute;
+     bottom:10px;
+     left:50%;
+     transform: translateX(-50%);
+   }
+
+   #curousel .bullet li{
+     width: 40px;
+     height: 8px;
+     background: #FFF;
+     display: inline-block;
+     cursor: pointer;
+     border-radius: 2px;
+   }
+
+   #curousel .bullet li.active {
+     background: #CCC;
+   }
+  </style>
+</head>
+<body>
+    <div id="curousel">
+      <ul class="img-ct">
+        <li data-id=0 > <a href="#"><img src="image/1.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/2.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/3.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/4.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/5.jpg" alt=""></a></li>
+      </ul>
+      <a href="#" class="arrow next"> < </a>
+      <a href="#" class="arrow pre" > > </a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+      $(function(){
+        var $ct = $('.img-ct'),
+            $next = $('.next'),
+            $pre = $('.pre'),
+            $items = $ct.children(),
+            $imgCount = $ct.children().size(),
+            $imgWidth = $ct.find('li').width(),
+            $bullet = $('.bullet');
+
+
+            $ct.append($items.first().clone());
+            $ct.prepend($items.last().clone());
+            var $imgRealCount = $ct.children().size();
+            $ct.css({left:0 - $imgWidth,width:$imgWidth * $imgRealCount});
+
+            var curId = 0;
+            var isAnimate = false;
+
+            $bullet.on('click','li',function(){
+                var idx = $(this).index();
+                if(idx > curId){
+                  playNext(idx - curId);
+                }else if(idx < curId){
+                  playPre(curId - idx);
+                }
+            })
+
+            $next.on('click',function(){
+               playNext();
+            })
+
+            $pre.on('click',function(){
+                playPre();
+            })
+
+            autoPlay();
+
+            function autoPlay(){
+              clock = setInterval(function(){
+                playNext();
+              },3000);
+            }
+
+            function stopAuto(){
+              clearIntervel(clock);
+            }
+
+            function playNext(idx){
+              var idx = idx || 1;
+              if(!isAnimate){
+                isAnimate = true;
+                $ct.animate({left:"-=" + $imgWidth * idx},function(){
+                  curId = (curId + idx ) % $imgCount;
+                  if(curId === 0){
+                    $ct.css({left : 0 - $imgWidth});
+                  }
+                  isAnimate = false;
+                  setBullet();
+                })
+              }
+            }
+
+            function playPre(idx){
+              var idx = idx || 1;
+              if(!isAnimate){
+                isAnimate = true;
+                $ct.animate({left: "+=" + $imgWidth * idx},function(){
+                  curId = ($imgCount + curId - idx) % $imgCount;
+                  if(curId === $imgCount -1){
+                    $ct.css({left : 0 - ($imgWidth*$imgCount)});
+                  }
+                  isAnimate = false;
+                  setBullet();
+                })
+              }
+            }
+
+            function setBullet(){
+              $bullet.find('li').removeClass('active').eq(curId).addClass('active');
+            }
+      })
+    </script>
+</body>
+</html>

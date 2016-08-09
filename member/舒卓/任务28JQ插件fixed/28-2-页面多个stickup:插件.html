@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>28-1</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"> </script>
+    <style media="screen">
+      #header{
+        height: 50px;
+        background: #065279;
+      }
+
+      .content{
+        background: #2e4e7e;
+        margin-top: 30px;
+        padding:  0 10px;
+      }
+      .content::after{
+        content: " ";
+        display: block;
+        clear: both;
+      }
+      .nav{
+        height: 40px;
+        background: #a1afc9;
+      }
+      .aside{
+        width: 10%;
+        min-height: 500px;
+        margin-top: 20px;
+        float: left;
+        background: #44cef6;
+      }
+      .main{
+        float: left;
+        width: 85%;
+        min-height: 800px;
+        margin-left: 5%;
+        margin-top: 20px;
+        background: #1685a9;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="header">head</div>
+    <div class="content">
+      <div class="nav nav1">导航</div>
+      <div class="aside">侧边栏</div>
+      <div class="main">主内容栏</div>
+    </div>
+
+    <div id="header">head</div>
+    <div class="content">
+      <div class="nav nav2">导航22222</div>
+      <div class="aside">侧边栏</div>
+      <div class="main">主内容栏</div>
+    </div>
+
+    <div id="header">head</div>
+    <div class="content">
+      <div class="nav nav3">导航333333</div>
+      <div class="aside">侧边栏</div>
+      <div class="main">主内容栏</div>
+    </div>
+
+
+    <script type="text/javascript">
+      $.fn.fixeding = function(){
+        var $cur = this,
+            curH = $cur.height(),
+            curW = $cur.width(),
+            offsetTop = $cur.offset().top,
+            offsetLeft = $cur.offset().left;
+
+        var $div = $cur.clone()
+                   .css('opacity',0)
+                   .insertBefore($cur)
+                  .hide();
+
+        $(window).on('scroll',function(){
+          var scrollTop = $(this).scrollTop();
+
+          if (scrollTop >= offsetTop) {
+            if(!isFixed()){
+              setFixed();
+            }
+          }else {if (isFixed){
+            unsetFixed();
+           }
+          }
+        });
+
+        function isFixed(){
+          return !!$cur.attr('data-fixed');
+        }
+
+        function setFixed(){
+          $cur.attr('data-fixed',true)
+              .css({
+                'position':'fixed',
+                'top':0,
+                'left': offsetLeft,
+                'width':curW,
+                'height':curH,
+                'margin':0
+              });
+            $div.show();
+        }
+        function unsetFixed(){
+          $cur.removeAttr('data-fixed').removeAttr('style');
+          $div.hide();
+        }
+      };
+
+      $('.nav1').fixeding();
+      $('.nav2').fixeding();
+      $('.nav3').fixeding();
+
+    </script>
+  </body>
+</html>

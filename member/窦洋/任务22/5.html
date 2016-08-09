@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+    html,body,div{
+      margin:0;
+      padding:0;
+    }
+    /*.modal-dialog{
+      display:none;
+    }*/
+    .knock{
+      border:1px solid #ccc;
+      margin:20px;
+      border-radius:2px;
+    }
+    #modal{
+      width:400px;
+      position:absolute;
+      left:50%;
+      top:50%;
+      margin:-100px 0 0 -200px;
+      font-size:20px;
+      border:1px solid #ccc;
+      background: white;
+      z-index: 1000;
+      }
+      .modal-dialog{
+        display:none;
+      }
+      .header{
+        width:100%;
+        border-bottom:1px solid black;
+        overflow:hidden;
+      }
+
+      .title-1{
+        float: left;
+        margin:10px;
+      }
+      .close{
+        margin:10px;
+        float:right;
+        text-decoration:none;
+      }
+      .footer{
+        width:100%;
+        border-top:1px solid #ccc;
+        overflow:hidden;
+      }
+      .footer>a{
+        float:right;
+        margin:10px;
+        text-decoration:none;
+      }
+      .cover{
+         position: fixed;
+         top: 0;
+         left: 0;
+         right: 0;
+         bottom: 0;
+         background-color: #000;
+         opacity: 0.4;
+         z-index: 100;
+         display: none;
+     }
+     .active{
+       display: block;
+     }
+    </style>
+  </head>
+  <body>
+    <button class="knock" type="button" name="button">点我</button>
+   <div id="main">
+    <div class="cover"></div>
+    <div id="modal" class="modal-dialog">
+      <div class="header">
+        <h3 class="title-1">我是标题</h3>
+        <a class="close" href="#">×</a>
+      </div>
+      <div class="contener">
+        <p>内容1</p>
+        <p>内容2</p>
+      </div>
+      <div class="footer">
+        <a class="confirm" href="#">确定</a>
+        <a class="cancel" href="#">取消</a>
+      </div>
+    </div>
+  </div>
+    <script type="text/javascript">
+    function hasClass(obj , cls) {
+          var match = new RegExp('\\b' +cls + '\\b' , 'g')
+          return match.test(obj.className)
+      }
+      function addClass(obj , cls) {
+          if(!hasClass(obj , cls)) {
+              obj.className += ' ' + cls
+          }
+      }
+      function removeClass(obj , cls) {
+          if(hasClass(obj , cls)) {
+              var match = new RegExp('\\b' + cls +'\\b' , 'g')
+              obj.className = obj.className.replace(match , '')
+          }
+      }
+     var knock = document.getElementsByClassName('knock')[0],
+         modal = document.getElementsByClassName('modal-dialog')[0],
+         cover = document.getElementsByClassName('cover')[0];
+         knock.addEventListener('click',function(){
+           addClass(modal,'active')
+           addClass(cover,'active');
+         })
+     var close = document.getElementsByClassName('close')[0],
+         confirm = document.getElementsByClassName('confirm')[0],
+         concel = document.getElementsByClassName('cancel')[0];
+     close.addEventListener('click',function(){
+       removeClass(modal,'active')
+       removeClass(cover,'active')
+     })
+     concel.addEventListener('click',function(){
+       removeClass(modal,'active')
+       removeClass(cover,'active')
+     })
+     cover.addEventListener('click',function(){
+       removeClass(modal,'active')
+       removeClass(cover,'active')
+     })
+    </script>
+  </body>
+</html>
