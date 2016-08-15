@@ -4,7 +4,7 @@
 
 function diySetInterval(func, interval) {
   func();
-  setTimeout(arguments.callee, interval, func, interval);
+  return setTimeout(arguments.callee, interval, func, interval);
 }
 
 diySetInterval(function() {
