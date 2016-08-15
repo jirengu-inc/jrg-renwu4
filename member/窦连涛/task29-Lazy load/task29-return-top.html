@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>回到顶部</title>
+  <style>
+    html,body,div{
+      margin:0;
+      padding: 0;
+    }
+
+    .test {
+      width:300px;
+      height: 500px;
+      background: yellow;
+      margin:0 auto;
+      margin-bottom: 50px;
+    }
+
+    #gotop {
+      position: fixed;
+      bottom:10px;
+      right: 10px;
+      border:1px solid red;
+      padding:10px;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+    <div class="test"></div>
+    <div class="test"></div>
+    <div class="test"></div>
+    <div class="test"></div>
+    <div class="test"></div>
+    <div class="test"></div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    // 第一种方法
+    // $(function(){
+    //   var $goTop = $('<div id="gotop">回到顶部</div>');
+    //   $('body').append($goTop);// 添加到body末尾
+    //
+    //   $(window).on('scroll',function(){
+    //     $elTop = $goTop.offset().top;
+    //     $winScroll = $(window).scrollTop();
+    //
+    //     if($winScroll > 300){
+    //       $goTop.show();
+    //     }else{
+    //       $goTop.hide();
+    //     }
+    //
+    //   $goTop.on('click',function(){
+    //     $(window).scrollTop(0);
+    //   })
+    //
+    //   })
+    //
+    // })
+
+    //  第二种方法
+    // $(function(){
+    //   var goTop = {
+    //     init:function(){
+    //       if($('#gotop').length > 0) return;//先要查看元素是否存在 如果存在就退出
+    //       var $goTop = $('<div id="gotop">回到顶部</div>');//设置元素
+    //       $('body').append($goTop);// 添加到body末尾
+    //
+    //       this.goTop = $goTop;// 把gotop赋值给这个对象的属性
+    //       this.bind();
+    //     },
+    //     bind:function(){
+    //       var _this = this;// 这里的this 指的是对象 而在下面的里面 $this指的是window对象
+    //       $(window).on('scroll',function(){
+    //           $winScroll = $(window).scrollTop();
+    //
+    //           if($winScroll > 300){
+    //             _this.goTop.show();
+    //           }else{
+    //             _this.goTop.hide();
+    //           }
+    //
+    //         _this.goTop.on('click',function(){
+    //           $(window).scrollTop(0);
+    //         })
+    //       })
+    //     }
+    //   }
+    //
+    //   goTop.init();
+    //   goTop.init();
+    // })
+
+    $(function(){
+      var goTop = function(){
+        var $goTop = $('<div id="gotop">回到顶部</div>');//设置元素
+        $('body').append($goTop);// 添加到body末尾
+
+        function init(){
+          $(window).on('scroll',function(){
+              $winScroll = $(window).scrollTop();
+              if($winScroll > 300){
+                $goTop.show();
+              }else{
+                $goTop.hide();
+              }
+            $goTop.on('click',function(){
+              $(window).scrollTop(0);
+            })
+          })
+        }
+
+        return {
+            init:init,
+        }
+      }();
+
+      goTop.init();
+    })
+</script>
+</body>
+</html>
