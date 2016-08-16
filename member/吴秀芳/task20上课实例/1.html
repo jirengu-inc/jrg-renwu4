@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// demo1
+	// var delayer=setTimeout (function(){
+	// 	// body...
+	// 	console.log('1');
+	// },3000);
+	// var i=0;
+	// var clock=setInterval(function(){
+	// 	// console.log(i++);
+	// 	var d=new Date();
+	// 	console.log(d.getHours()+':'+d.getMinutes()+':'+d.getSeconds());
+	// },1000);
+	// console.log('delayer',delayer);
+	// console.log('clock',clock);
+	// function stop(){
+	// 	clearTimeout(delayer);
+	// 	clearInterval(clock);
+	// }
+
+    // 最小时间粒度
+
+   function getMini(){
+    	var i=0;
+    	var start=Date.now();
+    	var clock=setTimeout(function(){
+    		i++;
+    		if(i===1000){
+              clearInterval(clock);
+              var end=Date.now();
+              console.log((end-start)/i);
+    		}
+    		clock=setTimeout(arguments.callee,0)
+    	},0);
+    	
+    }
+    // setTimeout setInterval
+    // 1-----2-----3-----4
+    // 1+++--2+++--3+++--4 setInterval
+    // a+++-----b+++-----c
+  
+    // function usetime(){
+    // 	for(var i=0;i<1000;i++)
+    // 	{
+    // 	console.log('');
+    //     }
+    //    }
+   
+    // var i=0;
+    // function intv(){
+    // 	setTimeout(function(){
+    // 		usetime();
+    // 		console.log(i++);
+    // 		intv();
+    // 		},1000);
+    // }
+    // intv();
+    // var j=0;
+    // setInterval(function(){
+    // 	// usetime();
+    // 	// alert(1);
+    // 	console.log(j++);
+    // },1000);
+
+
+  // var a=1;
+  // setTimeout(function(){
+  // 	console.log('before',a);
+  // 	a=2;
+  // 	console.log('after',a);
+  // },0);
+  //   a=100;
+  //   console.log(a);
+
+
+  // call apply
+  Math.max(13,4,5);
+  var arr=[13,4,5];
+
+  Math.max.apply(null,arr);
+
+  [].slice.call(arguments,0,10);
+  Array.prototype.slice.call(arguments,0,10);
+	</script>
+</body>
+</html>

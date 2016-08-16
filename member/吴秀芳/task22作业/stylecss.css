@@ -1,0 +1,47 @@
+.mod-tab {
+  border: 1px solid #ccc;
+  width: 400px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.mod-tab * {
+  box-sizing: border-box;
+}
+.mod-tab ul,
+.mod-tab li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.mod-tab .tabs:after {
+  content: '';
+  height: 0;
+  display: table;
+  clear: both;
+}
+.mod-tab .tabs li {
+  float: left;
+  width: 33.3%;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+.mod-tab .tabs li:last-child {
+  border-right: none;
+}
+.mod-tab .tabs .active {
+  background: #eee;
+}
+.mod-tab .panel {
+  display: none;
+  height: 180px;
+  padding: 20px;
+}
+.mod-tab .active {
+  display: block;
+}
