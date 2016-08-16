@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>task-22-4</title>
+      <style>
+      *{
+          margin: 0;
+          padding: 0;
+          list-style: none;
+      }
+      .clear:after{
+        content: "";
+        display: block;
+        clear: both;
+     }
+      .container{
+          width: 600px;
+          border: 1px solid #ccc;
+          margin-top: 50px;
+          margin-left: 50px;
+      }
+    ul li{
+        float:left;
+        width: 199px;
+        text-align: center;
+        border-right: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 5px 0;
+        cursor: pointer;
+    }
+    ul li:last-child{
+        border-right: none;
+    }
+    ul .active {
+		background: #eee;
+	}
+    .content {
+		display: none;
+		height: 300px;
+		padding: 10px;
+	}
+    div .active{
+        display: block;
+    }
+      </style>
+    </head>
+    <body>
+     <div class="container">
+       <ul class="tabs clear">
+         <li class="active">tab1</li>
+         <li>tab2</li>
+         <li>tab3</li>
+       </ul>
+       <div class="content active">内容1</div>
+       <div class="content">内容2</div>
+       <div class="content">内容3</div>
+     </div>
+    <script type="text/javascript" src="js/Utils.js"></script>
+     <script>
+
+
+    var ul = document.querySelector(".tabs");
+
+   ul.addEventListener("click",function(e){
+   var target = e.target,
+       lis = ul.children,
+       index = Utils.indexOf(target),
+       divs = document.querySelectorAll(".content");
+
+   if(index > -1){
+       Utils.removeClass(lis,"active");
+       Utils.addClass(target,"active");
+       Utils.removeClass(divs,"active");
+       Utils.addClass(divs[index],"active");
+   }
+});
+     </script>
+    </body>
+</html>

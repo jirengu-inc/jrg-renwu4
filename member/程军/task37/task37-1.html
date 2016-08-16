@@ -1,0 +1,254 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	
+        html,
+        body {
+            height: 100%;
+        }
+         .dialog {
+            position: absolute;
+            z-index: 5000;
+            left: 50%;
+            top: 30%;
+            margin-left: -164px;
+            font-size: 14px;
+            padding-bottom: 10px;
+            border-radius: 5px;
+            background: #eee;
+            width: 328px;
+            box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.5);
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+        }
+        
+        .dialog .dialog-header {
+            padding: 10px 19px;
+            color: #fff;
+            background: #676666;
+        }
+        
+        .dialog .dialog-header h3 {
+            margin: 0;
+            font-size: 14px;
+        }
+        
+        .dialog .dialog-header .btn-close {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+            font-family: fantasy;
+            cursor: pointer;
+        }
+        
+        .dialog .dialog-content {
+            padding: 10px;
+            margin: 13px;
+            color: #666;
+            font-size: 11px;
+        }
+        
+        .dialog .dialog-footer {
+            text-align: center;
+        }
+        
+        a.btn {
+            position: relative;
+            text-align: center;
+            background-color: #e33100;
+            display: inline-block;
+            width: 50px;
+            padding: 5px 0 6px;
+            margin: 2px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 3px;
+        }
+        
+        a.btn:hover {
+            background-color: #c33100;
+        }
+        
+        .draggable {
+            opacity: 0.8;
+            cursor: move;
+        }
+        
+    
+    
+	</style>
+</head>
+<body>
+
+	<button class="ietm1">打开1</button>
+	<button class="ietm2">打开2</button>
+	<button class="ietm3">打开3</button>
+	<button class="ietm4">打开4</button>
+
+	<!-- <div class="dialog">
+		<div class="dialog-header"><h3>讥人谷</h3><i class="btn-close">x</i></div>
+		<div class="dialog-content"><ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul></div>
+		<div class="dialog-footer"><a href="#" class="btn">确定</a><a href="#" class="btn">取消</a> -->
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+	<script>
+//功能描述： 
+// 1. 可使用 dialog.open() 去打开弹窗
+// 2. 当点击确定、取消时可使用用户自定义事件
+// 3. dialog 可拖动
+// 4. 允许页面展示多个 dialog
+
+
+function Dialog(){
+	this.creatDom();
+	this.bindEvent();
+	};
+
+ Dialog.prototype={
+ 	data:{
+		    title: '',
+		    message: "",
+		    isShowCloseBtn: true,
+		    isShowConfirmBtn: true,
+		    onClose: function(){
+		      alert('close')
+		    },
+		    onConfirm: function(){
+		      alert('确定');
+		    }
+  },
+ 	open:function (opt){
+ 			this.dealData(opt);
+ 			this.setData();
+ 	},
+ 	dealData:function(opt){
+ 		if(typeof opt==='string'){opt=$.extend({},this.data,{message:opt})};
+ 		if(typeof opt==='object'){opt=$.extend({},this.data,opt)};
+ 		this.opt=opt;
+ 	},
+ 	creatDom:function(){
+ 		var node='<div class="dialog"><div class="dialog-header"><h3></h3><i class="btn-close">x</i></div><div class="dialog-content"></div><div class="dialog-footer"><a href="javascript:void(0)" class="btn">确定</a><a href="javascript:void(0)" class="btn">取消</a></div>';
+ 			this.$nodes=$(node);
+		$("body").append(this.$nodes);
+	
+ 	},
+ 	setData:function(){
+ 			$ct=this.$nodes
+		if(this.opt.title===''){
+			$ct.find('.dialog-header').hide()}
+			else {$ct.find('h3').html(this.opt.title);};
+		$ct.find(".dialog-content").html(this.opt.message)
+ 		if(!this.opt.isShowConfirmBtn){$ct.find('.btn').eq(0).hide()};
+		if(!this.opt.isShowCloseBtn){$ct.find('.btn-close').hide()};
+ 	},
+ 	bindEvent:function(){
+ 		var me=this;
+ 		this.$nodes.find('.btn-close').on('click',function(){	
+			me.opt.onClose();
+			me.$nodes.hide();
+	});
+ 		this.$nodes.find(".btn").eq(0).on('click',function(){
+ 			me.opt.onConfirm();
+ 			me.$nodes.hide();
+ 		});
+       this.$nodes.on('mousedown',function(e){
+                var that=$(this);
+              var  moveX=e.pageX-that.offset().left;
+              var moveY=e.pageY-that.offset().top;
+              console.log("ok")
+              that.addClass("draggable")
+                .data("move",{
+                    moveX:moveX,
+                    moveY:moveY
+                    });
+            })
+        $('body').on('mousemove',function(e){
+            if($('.draggable').length){
+                var $ct=$('.draggable'),
+                left=e.pageX-$ct.data("move").moveX,
+                top=e.pageY-$ct.data("move").moveY;
+                $ct.offset({
+                    left:left,
+                    top:top
+                })
+            }
+        })
+         $('body').on('mouseup',function(){
+           me.$nodes.removeClass('draggable')
+                            .removeData("move");
+         });
+ 	}
+ 	}
+
+
+var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+
+    $('.ietm1').on('click',function(){
+      var dialog1 = new Dialog();
+      dialog1.open({
+        title: 'hello',
+        message: '欢迎讥人谷',
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function(){
+          alert('close')
+        },
+        onConfirm: function(){
+          alert('确定');
+        }
+      });
+    });
+    $('.ietm2').on('click',function(){
+      var dialog2 = new Dialog();
+      dialog2.open({
+        title: '',
+        message: '<a href="">饥人谷</a>',
+        isShowCloseBtn: false,
+        isShowConfirmBtn: false,
+        onClose: function(){
+          alert('close')
+        },
+        onConfirm: function(){
+          alert('确定');
+        }
+      });
+    });
+    $('.ietm3').on('click',function(){
+      var dialog3 = new Dialog();
+      dialog3.open({
+        title: '窗口',
+        message: '你好',
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function(){
+          alert('close')
+        },
+        onConfirm: function(){
+          alert('确定');
+        }
+      });
+    });
+    $('.ietm4').on('click',function(){
+      var dialog4 = new Dialog();
+      dialog4.open({
+        title: '欢迎讥人谷',
+        message: tpl,
+        isShowCloseBtn: true,
+        isShowConfirmBtn: true,
+        onClose: function(){
+          alert('close')
+        },
+        onConfirm: function(){
+          alert('确定');
+        }
+      });
+    });
+
+	</script>
+</body>
+</html>

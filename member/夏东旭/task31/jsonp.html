@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>加载更多</title>
+	<style>
+		ul{
+			padding: 0;
+			margin: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;	
+		}
+		.btn{
+			height: 40px;
+			line-height: 40px;
+			width: 80px;
+			border:1px #E27272 solid;
+			color: #E27272;
+			display: block;
+			text-align: center;
+			margin: 10px auto;
+			border-radius:4px;
+		}
+		.btn>img{
+			width: 40px;
+			height: 40px;
+		}
+		.ct>li{
+			border-radius: 4px;
+			border: 1px solid #ccc;
+			padding: 10px;
+			margin-bottom: 10px;
+		}
+		.ct>li:hover{
+			color:#fff;
+			background-color:#F49484; 
+		}
+	</style>
+</head>
+<body>
+	<ul class="ct">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<a href="#" class="btn">加载更多</a>
+	<script>
+		var start=3;
+		var length=5;
+		var i=3;
+		var isloading=false;
+		document.querySelector(".btn").addEventListener("click",function(e){
+			e.preventDefault();
+			if(isloading){
+				return;
+			}
+			isloading=true;
+			this.innerHTML="<img src='loading.gif' />";
+				getJSONP({
+					url:"http://hsia1993.applinzi.com/demo/jsonp-loading.php",
+					data:{
+						start:start,
+						length:length
+					},
+					callback:"loadingHandle"
+				})
+			});
+
+		function loadingHandle(json){
+			console.log(json.data);
+			if(parseInt(json.status)===1){
+				for(var i=0;i<json.data.length;i++){
+					document.querySelector(".ct").innerHTML+='<li>内容'+json.data[i]+'</li>';
+				}
+				start+=length;
+				isloading=false;
+				document.querySelector(".btn").innerText="加载更多";
+			}
+		}
+		
+		function getJSONP(obj){
+			var dataString="",
+				script=document.createElement("script");
+				url="";
+			for(var attr in obj.data){
+				dataString+=attr+"="+obj.data[attr]+"&";
+			}
+			dataString=dataString.slice(0,-1);
+			url=obj.url+"?callback="+obj.callback+"&"+dataString;
+			script.src=url;
+			document.body.appendChild(script);
+			script.parentNode.removeChild(script);
+		}
+
+
+
+	</script>
+</body>
+</html>

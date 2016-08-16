@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>事件监听</title>
+</head>
+<body>
+  <input id="btnClick" type="button" value="Click Here" />
+
+  <script type="text/javascript">
+      var btnClick = document.getElementById('btnClick');
+      var handler=function() {
+          console.log(this);
+      }
+      btnClick.attachEvent('onclick', handler);
+  </script>
+</body>
+</html>

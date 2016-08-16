@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 28-1</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+		* { 
+			color: #fff;
+			font-weight: bold;
+			text-align: center;
+		}
+		.clear:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+		#header {
+			background: #FC9D9A;
+			height: 80px;
+			line-height: 80px;
+		}
+		#sub {
+			margin: 20px 0;
+		}
+		.nav {
+			background: #B9E3D9;
+			height: 40px;
+			line-height: 40px;
+		}
+		.content {
+			min-height: 900px;
+			background: #FFEBCD;
+			padding: 10px;
+		}
+		.aside {
+			float: left;
+			width: 100px;
+			min-height: 400px;
+			background: #FC9D9A;
+		}
+		.main {
+			overflow: auto;
+			min-height: 900px;
+			background: #F9CDAD;
+		}
+		#footer {
+			background: #FC9D9A;
+			height: 50px;
+			line-height: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="sub">
+		<div class="nav">nav</div>
+		<div class="content clear">
+			<div class="aside">aside</div>
+			<div class="main">main</div>
+		</div>
+	</div>
+	<div id="footer">footer</div>
+	
+	<script>
+		$.fn.stick = function(){
+			var $this = this,
+				$height = $this.height(),
+				$width = $this.width(),
+				offsetTop = $this.offset().top,
+				offsetLeft = $this.offset().left;
+
+			var $clone = $this.clone()
+						  	  .css({opacity:0})
+						      .insertBefore($this)
+						      .hide();
+
+			$(window).on('scroll',function(){
+				var srollTop = $(this).scrollTop();
+
+				if(srollTop >= offsetTop){
+					if( !isFixed() ){
+						setFixed();
+					}
+				}else{
+					if( isFixed() ){
+						unsetFixed();
+					}
+				}
+			});
+
+			function isFixed(){
+				return !!$this.attr("data-fixed");  //attr()匹配不到属性的时候返回undefined
+			}
+
+			function setFixed(){
+				$this.attr("data-fixed",true)
+					  .css({
+					  	position: 'fixed',
+					  	top: 0,
+					  	left: offsetLeft,
+					  	'z-index': 999,
+					  	width: $width,
+					  	margin: 0
+					  });
+				$clone.show();
+			}
+
+			function unsetFixed(){
+				$this.removeAttr('data-fixed')
+				      .removeAttr('style');
+				$clone.hide();
+			}
+		};
+
+		$(".nav").stick();
+	</script>
+</body>
+</html>

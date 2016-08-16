@@ -3,80 +3,86 @@
 	<head>
 		<meta charset="utf-8">
 		<title>加载更多</title>
-		<style type="text/css">
-		body html {
-			padding:0px;
-			margin:0px;
-		}
-		
-         .content-list {
-         	padding:10px 0px 10px 10px;
-         	border:1px solid #ccc;
-         	margin-top:10px;
-         	border-radius: 5px
-         }
-         .content-list:hover {
-         	cursor: pointer;
-         	background:pink;
-         }
-         #btn {
-         	display:block;
-         	width:80px;
-         	padding:10px 0px 10px 0px;
-         	text-align:center;
-         	border:1px solid rgb(228, 27, 68);
-         	color:rgb(228, 27, 68);
-         	border-radius: 3px;
-         	margin:10px auto;
-         	text-decoration:none
-         }
+		<style>
+			.item {
+				border:1px solid #ccc;
+				padding:8px;
+				margin:10px;
+				border-radius:3px;
+			}
+			.c {
+				text-align:center;
+			}
+			.btn {
+				width:100px;
+				padding:10px;
+				border:1px solid #ccc;
+				border-radius:3px;
+				margin:0px auto;
+				background:#fff;
+
+                 }
+                .btn:hover {
+                	color:pink;
+                	border:1px solid pink;
+                }
+                .active {
+                	background:pink;
+                }
 		</style>
 	</head>
 	<body>
-		<div id="content">
-			<div class="content-list">内容1</div>
-			<div  class="content-list">内容2</div>
-			<a id="btn" href="#">加载更多</a>
+		<div class="ct">
+			<div class="item">内容1</div>
+			<div class="item">内容2</div>
 		</div>
-		<script>
-			var content=document.getElementById("content");
-			var btn=document.getElementById("btn");
-			var curs=2;
-			var islocked=false;
-			btn.addEventListener("click",function() {
-				if(islocked) {
-					return;
-				}
-				islocked=true;
-				ajax({
-					url:"task24-2.php",
-					type:"get",
-				    data: {
-				    	present:curs;
-				    	len:3
-				    },
-				    success:function(json){
-				    	onSuccess(json);
-				    },
-				    error:function() {
-				    	onError();
-				    }
-
-				});
-			});
-			function onSuccess(json) {
-				for(i=0;i<json.data.length;i++) {
-					var div=document.createElement("div");
-					div.innerText=""+json.data[i];
-					content.appendChild(p);
-				}
-				cur+=3;
-				islocked=false;
-			}
-			function onError() {
-				alert("异常")；
-				islocked=false
-			}
-		</script>
+		<div class="c">
+		     <button class="btn">加载更多</button>
+		</div>
 	</body>
+	<script src="ajax.js"></script>
+	<script type="text/javascript">
+		var cur=2,
+		    LEN=3,
+		    btn=document.querySelector(".btn"),
+		    ct=document.querySelector(".ct"),
+		    item=document.querySelector(".item"),
+		    ready=true;
+		btn.addEventListener("click",function(e){
+			e.preventDefault();
+			if(!ready) {
+				return;
+			};
+			ready=false;
+			btn.innerText="Loading....";
+			ajax({
+				url:"getMore.php",
+				type:"get",
+				dataType:"json",
+				data: {
+					start:cur,
+					len:LEN
+				},
+			success:function(json) {
+				onSuccess(json);
+			},
+			error:function() {
+				alert("系统异常");
+			}
+		});
+
+		})
+		function onSuccess(json) {
+				ready=true;
+				btn.innerText="加载更多"
+				for(key in json.data) {
+				var newE1=document.createElement("div");
+				newE1.innerHTML=json.data[key]；
+				newE1.className="item";
+				ct.appendChild(newE1)
+			}
+				cur+=4;
+			}
+
+	</script>
 </html>
