@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>task-24-3</title>
+
+
+<style>
+*{
+    margin:0;
+    padding:0;
+}
+
+.content{
+    position: relative;
+    margin: 30px;
+}
+.content span{
+    float: left;
+}
+.content input{
+    position: absolute;
+    left: 90px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+}
+.content .msg{
+    position: absolute;
+    left: 90px;
+    top: 25px;
+    color:#ccc;
+    font-size: 10px;
+}
+.content::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+button{
+    margin-left: 150px;
+}
+</style>
+</head>
+<body>
+
+<div class="form-ct">
+		<h3>注册</h3>
+		<form  action="">
+			<div class="content">
+
+				    <span>用户名:</span>
+					<input id="username" type="text" placeholder="用户名123被注册过">
+                    <span class="msg msg-user">只能是字母、数字、下划线，3-10个字符</span>
+
+            </div>
+            <div class="content">
+
+				    <span>密码:</span>
+					<input type="password" id="password1" placehoder="密码">
+				    <span class="msg msg-pwd1">大写字母、小写、数字、6-15个字符</span>
+
+            </div>
+            <div class="content">
+
+				    <span> 再输一次:</span>
+					<input type="password" id="password2" placeholder="再输入一次密码">
+				    <span class="msg msg-pwd2"></span>
+
+            </div>
+				<button id="btn">注册</button>
+
+		</form>
+</div>
+<script src="ajax.js"></script>
+
+<script src="temp.js"></script>
+</body>
+</html><!--本注释用于清除实名认证提示

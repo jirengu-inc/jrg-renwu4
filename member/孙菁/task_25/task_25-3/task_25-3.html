@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 25-3</title>
+	<script src="..\jquery-3.0.0.min.js"></script>
+	<style>
+		/* reset */
+		* {
+			margin: 0;
+			padding: 0;	
+			font-size: 12px;
+			box-sizing: border-box;
+		}
+		li {list-style: none;}
+		a {
+			text-decoration: none;
+			color: #666;
+		}
+		/* end reset */
+
+		/* public */
+		.clear:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		/* end public */
+
+		div.layout {
+			width: 705px;
+			margin: 10px auto;
+		}
+		h1 {
+			font-size: 2em;
+			color: #666;
+		}
+		ul.items{ margin-left: -10px; }
+		ul.items li{
+			float: left;
+			position: relative;
+			padding: 10px;
+			margin: 10px;
+			border: 1px solid #eee;  
+		}
+		a.imme {
+			display: none;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -39px;
+			margin-top: -17px;
+			padding: 10px 15px;
+			border: 1px solid #c81623;
+			border-radius: 3px;
+			color: #c81623;
+			background: #fff;
+			cursor: pointer;
+		}
+		ul.items li p {
+			margin: 10px 0;
+			width: 192px;
+		}
+		ul.items li img {margin-left: 31px;}
+		ul.items li span {color: #c81623;}
+		a.add {
+			display: inline-block;
+			margin-top: 10px;
+			padding: 10px 15px;
+			border-radius: 3px;
+			color: #c81623;
+			border: 1px solid #c81623;
+			cursor: pointer;
+		}
+
+		/* dynamic */
+		div.cover {
+			position: absolute;          /*绝对定位之后，分别设置偏移量撑开div*/
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background: rgba(0,0,0,.3);
+		}
+		div.cover a.imme { display: block; }
+		/* end dynamic */
+	</style>
+</head>
+<body>
+	<div class="layout">
+		<h1>珠宝首饰</h1>
+		<ul class="items clear">
+			<li>
+				<div>
+					<a class="imme" href="#">立即抢购</a>
+				</div>
+				<a href="#"><img src="img/55b05e25N13d4ec5e.jpg"></a>
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<span>￥1699.00</span>			
+			</li>
+			<li>
+				<div>
+					<a class="imme" href="#">立即抢购</a>
+				</div>
+				<a href="#"><img src="img/55b05e25N13d4ec5e.jpg"></a>
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<span>￥1699.00</span>			
+			</li>
+			<li>
+				<div>
+					<a class="imme" href="#">立即抢购</a>
+				</div>
+				<a href="#"><img src="img/55b05e25N13d4ec5e.jpg"></a>
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<span>￥1699.00</span>			
+			</li>
+			<li>
+				<div>
+					<a class="imme" href="#">立即抢购</a>
+				</div>
+				<a href="#"><img src="img/55b05e25N13d4ec5e.jpg"></a>
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<span>￥1699.00</span>			
+			</li>
+			<li>
+				<div>
+					<a class="imme" href="#">立即抢购</a>
+				</div>
+				<a href="#"><img src="img/55b05e25N13d4ec5e.jpg"></a>
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<span>￥1699.00</span>			
+			</li>
+			<li>
+				<div>
+					<a class="imme" href="#">立即抢购</a>
+				</div>
+				<a href="#"><img src="img/55b05e25N13d4ec5e.jpg"></a>
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<span>￥1699.00</span>			
+			</li>
+		</ul>
+		<a class="add" href="#">添加</a>
+	</div>
+	
+	<script>
+		var products = [
+		    {
+		        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		        name: '珂兰 黄金手 猴哥款',
+		        price: '￥405.00'
+		    },
+		    {
+		        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		        name: '珂兰 黄金转运珠 猴哥款',
+		        price: '￥100.00'
+		    },
+		    {
+		        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		        name: '珂兰 黄金手链 3D猴哥款',
+		        price: '￥45.00'
+		    }
+		];
+
+		
+
+		$("ul.items").on('mouseover','li',function(){
+			$(this).find('div').addClass('cover');
+		});
+
+		$("ul.items").on('mouseleave','li',function(){
+			$(this).find('div').removeClass('cover');
+		});
+
+		$("a.add").on('click',function(evt){
+			evt.preventDefault();               //取消浏览器默认行为，避免每次点击按钮都回到最上面
+			var str = "";
+			
+			// for(var i=0;i<products.length;i++){
+			// 	str += '<li>';
+			// 	str += '<div><a class="imme" href="#">立即抢购</a></div>';
+			// 	str += ' <a href="#"><img src=" '+ products[i].img +' "></a> ';
+			// 	str += '<p>'+ products[i].name +'</p>';
+			// 	str += '<span>'+ products[i].price +'</span>';
+			// }
+
+
+			$.each(products,function(idx){
+				str += '<li>';
+				str += '<div><a class="imme" href="#">立即抢购</a></div>';
+				str += ' <a href="#"><img src=" '+ products[idx].img +' "></a> ';
+				str += '<p>'+ products[idx].name +'</p>';
+				str += '<span>'+ products[idx].price +'</span>';
+			});
+
+			$("ul.items").append(str);
+			
+		});
+	</script>
+	
+</body>
+</html>

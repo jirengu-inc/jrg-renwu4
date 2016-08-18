@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>26-2</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<style>
+		html,
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			margin: 20px;
+			height: 1000px;
+		}
+		.wrap {
+			position: fixed;
+			width: 700px;
+		}
+		.wrap .btn {
+			width: 100px;
+			height: 50px;
+			outline: none;
+		}
+		.wrap .bg {
+			padding: 10px 0;
+			margin-bottom: 10px;
+		}
+		.wrap .bg.hover {
+			background-color: red;
+		}
+		.wrap .ipt {
+			display: block;
+			margin-bottom: 10px;
+		}
+		.wrap .ipt.blue {
+			border-color: blue;
+		}
+		.wrap .getSelect {
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<button class="btn">$btn</button>
+		<p class="scroll">请滚动</p>
+		<div class="bg">当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色</div>
+		<input type="text" class="ipt" placeholder="请输入">
+		<select class="sel">
+			<option>html</option>
+			<option>js</option>
+			<option>css</option>
+		</select>
+		<span class="getSelect">请选择</span>
+	</div>
+	<script>
+		$(function(){
+			$('.btn').on('click',function(){
+				$this = $(this);
+				$this.css('background','red');
+				setTimeout(function(){
+					$this.css('background','blue');
+				},500);
+			});
+
+			$('.bg').on('mouseenter',function(){
+				$(this).addClass('hover');
+			});
+			$('.bg').on('mouseleave',function(){
+				$(this).removeClass('hover');
+			});
+
+			$('.ipt').on('keyup',function(){
+				$(this).val($(this).val().toUpperCase());
+			});
+			$('.ipt').on('focus',function(){
+				$(this).addClass('blue');
+			});
+			$('.ipt').on('blur',function(){
+				$(this).removeClass('blue');
+				console.log($(this).val());
+			});
+			$('.sel').on('change',function(){
+				$('.getSelect').text($(this).val());
+				console.log($(this).val());
+			});
+
+			var $oldRange = 0;
+			$(window).scroll(function(){
+				var current,range;
+				$range = $('body').scrollTop();
+				$newRange = $('body').scrollTop()-$oldRange;
+				$oldRange = $('body').scrollTop();
+				$('.scroll').text('滚动条距离顶部的距离：'+$range+' 本次滚动的距离' +$newRange);
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>stickup</title>
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+		<style>
+		ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		#father{
+			margin: 0 auto;
+			width: 900px;
+		}
+		#header{
+			background: red;
+			height: 50px;
+			margin-bottom: 20px;
+		}
+		.nav{
+			background: yellow;
+			height: 30px;
+			border: 1px solid;
+		}
+		.wrap:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.wrap{
+			margin-bottom: 20px;
+		}
+		.wrap>li{
+			float: left;
+		}
+		.aside{
+			background: pink;
+			margin-right: 20px;
+			width: 200px;
+			height: 400px;
+		}
+		.main{
+			background: blue;
+			height: 400px;
+			width: 680px;
+		}
+		.aside2{
+			background: yellow;
+		}
+		.aside3{
+			background: red;
+		}
+
+
+		</style>
+	</head>
+	<body>
+		<div id="father">
+			<div id="header">header</div>
+			<div class="nav">nav1</div>
+			<ul class="wrap">
+				<li class="aside">aside1</li>
+				<li class="main">main1</li>
+			</ul>
+
+			<div class="nav">nav2</div>
+			<ul class="wrap">
+				<li class="aside aside2">aside2</li>
+				<li class="main">main2</li>
+			</ul>
+
+			<div class="nav">nav3</div>
+			<ul class="wrap">
+				<li class="aside aside3">aside3</li>
+				<li class="main">main3</li>
+			</ul>
+
+			<div class="nav">nav4</div>
+			<ul class="wrap">
+				<li class="aside aside4">aside4</li>
+				<li class="main">main4</li>
+			</ul>
+
+			<div id="footer">footer</div>
+		</div>
+		
+
+
+		<script>
+		//使用each遍历实现达到对多个nav实行stickup的效果（nav只能用class标签）
+		$('.nav').each(function(){
+			var $cur = $(this),
+				curH = $cur.height(),
+				curW = $cur.width(),
+				offsetTop = $cur.offset().top,
+				offsetLeft = $cur.offset().left;
+
+			var $div = $cur.clone()
+						   .css('visibility','hidden')
+						   .insertBefore($cur)
+						   .hide();
+
+			$(window).on('scroll',function(){
+				var scrollTop = $(this).scrollTop();
+
+				if(scrollTop >= offsetTop){
+					if(!isFixed()){
+						setFixed();
+					}
+				}else {
+					if(isFixed){
+						unsetFixed();
+					}
+				}
+			});
+
+			function isFixed(){
+				return !!$cur.attr('data-fixed');
+			}
+
+			function setFixed(){
+				$cur.attr("data-fixed",true)
+					.css({
+						position: 'fixed',
+						top: 0,
+						left: offsetLeft,
+						'z-index': 9999,
+						width: curW,
+						margin: 0
+					});
+				$div.show();
+			}
+
+			function unsetFixed(){
+				$cur.removeAttr('data-fixed').removeAttr('style');
+				$div.hide();
+			}
+		});
+
+		
+		</script>
+
+	</body>
+</html>

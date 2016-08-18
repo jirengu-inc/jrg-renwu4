@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 25 QA6</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+		.box {
+			width: 500px;
+			height: 300px;
+			border: 1px solid #E27272;
+			margin-top: 10px;
+			padding: 5px;
+		}
+		button {
+			margin-top: 10px;
+			background: #fff;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			padding: 5px 8px;
+		}
+		.runner {
+			position: relative;
+			left: 0;
+			top: 0;
+			width: 50px;
+			height: 50px;
+			background: #E27272;
+		}
+	</style>
+</head>
+<body>
+	<button class="go">Go</button><br>
+
+	<button id="stoptt" class="butn">stop(true,true)</button>              <!-- 停止当前动画并清除队列，立即到当前目标值 -->
+	<button id="clf" class="butn">clearQueue().finish()</button><br>       <!-- 同上（ clearQueue()从队列删除所有未执行 ） -->
+
+	<button id="stoptf" class="butn">stop(true,false)</button>             <!-- 停止当前动画并清除队列,停止在当前运行的位置 -->
+	<button id="cls" class="butn">clearQueue().stop()</button><br>         <!-- 同上 -->
+
+	<button id="stopff" class="butn">stop(false,false)</button>            <!-- 仅停止当前动画，并立即执行队列 -->
+	<button id="stop" class="butn">stop()</button><br>                     <!-- 同上，默认stop(false,false) -->
+
+	<button id="stopft" class="butn">stop(false,true)</button><br>         <!-- 仅停止当前动画，立即到当前目标值 -->
+
+	<button id="finish" class="butn">finish()</button>                     <!-- 停止当前动画并清除队列，立即到动画最终目标值 -->
+
+	<div class="box">
+		<div class="runner"></div>
+	</div>	
+
+	<script>
+		var btns = {
+			stoptt:function(){
+				$("div.runner").stop(true,true);
+			},
+			clf:function(){
+				$("div.runner").clearQueue().finish();
+			},
+			stoptf:function(){
+				$("div.runner").stop(true,false);
+			},
+			cls:function(){
+				$("div.runner").clearQueue().stop();
+			},
+			stopff:function(){
+				$("div.runner").stop(false,false);
+			},
+			stop:function(){
+				$("div.runner").stop();
+			},
+			stopft:function(){
+				$("div.runner").stop(false,true);
+			},
+			finish:function(){
+				$("div.runner").finish();
+			}
+		};
+
+		$(".butn").on('click',function(){
+			btns[this.id]();
+		});
+
+		$(".go").on('click',function(){
+			$(".runner")
+				.animate({
+					left:'225px',
+					opacity:'0.5',
+					width:'80px',
+					height:'80px'
+				},2000)
+				.animate({
+					left:'450px',
+					opacity:'1',
+					width:'50px',
+					height:'50px'
+				},2000)
+				.animate({
+					top:'125px',
+					opacity:'0.5',
+					width:'50px',
+					height:'50px'
+				},1000)
+				.animate({
+					top:'250px',
+					opacity:'1',
+					width:'50px',
+					height:'50px'
+				},1000)
+				.animate({
+					left:'225px',
+					top:'220px',
+					opacity:'0.5',
+					width:'80px',
+					height:'80px'
+				},2000)
+				.animate({
+					left:'0',
+					top:'250px',
+					opacity:'1',
+					width:'50px',
+					height:'50px'
+				},2000)
+				.animate({
+					top:'125px',
+					opacity:'0.5',
+					width:'50px',
+					height:'50px'
+				},1000)
+				.animate({
+					top:'0',
+					opacity:'1',
+					width:'50px',
+					height:'50px'
+				},1000)
+		});
+	</script>
+</body>
+</html>

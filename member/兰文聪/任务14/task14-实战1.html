@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>实战1</title>
+    <link rel="stylesheet" href="./icon/iconfont.css"/>
+    <style>
+    /*-----------------------去除默认、通用样式分割线-----------------------*/
+    html,body,p,h1,ul,li{
+    margin: 0;
+    padding: 0;
+    }
+    html,body {
+    height: 100%;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    }
+    .layout{
+    width: 900px;
+    margin: 0 auto;
+    }
+    a,li{
+    text-decoration: none;
+    list-style: none;
+    }
+    hr{
+    width: 66px;
+    margin: 15px auto;
+    }
+    .clearfix:after{   /* 清除浮动 */
+    content: '';
+    display: block;
+    clear: both;
+    }
+    /*-----------------------按钮style 分割线-----------------------*/
+    .btn{
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    background-color: #bbb;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: black;
+    }  
+    .btn:active{
+    background-color: #e25f31;
+    }
+    .btn:hover{
+    background-color: #c14d21;
+    }
+    /*-----------------------header分割线-----------------------*/
+    #header{
+    width: 100%;
+    height: 100%;
+    background: url(./img/1.jpg) 0 0  no-repeat;
+    background-size: 100% 100%;
+    text-align: center;
+    display: table;
+    }
+    #header>.container-one>h1{
+    font-size: 60px;
+    }
+    #header>.container-one>.white{
+    color: white;
+    }
+    #header>.container-one{
+    display: table-cell;
+    vertical-align: middle;
+    }
+    #header>.container-one>.mark-button{
+    width:  130px;
+    height: 50px;
+    display: inline-block; /*使text-align：center生效并设置宽高*/
+    line-height: 50px;
+    border: 2px solid #ccc;
+    color: rgb(12,163,158);
+    font-weight: bold;
+    background: rgba(255,255,255,0.2);
+    border-radius: 40px/10px;
+    }
+    .mark-button:hover{
+        cursor: pointer;
+    }
+    /*-----------------------content-configure分割线-----------------------*/
+    .configure{
+    width: 100%;
+    min-height: 100px;
+    text-align: center;
+    padding-top: 50px;
+    background-color: rgba(10,20,20,0.5);
+    color: #fff;
+    }
+    /*-----------------------content-function分割线-----------------------*/
+    #content>.function{
+    width: 100%;
+    background-color: rgb(15,100,240);
+    color: white;
+    text-align: center;
+    }
+    #content>.function>.title-one{
+    display: inline-block;
+    padding-top: 50px;
+    }
+    #content>.function>.container>.clearfix>li>i{
+    font-size: 100px;
+    display: inline-block;
+    margin-bottom: 15px;
+    }
+    #content>.function>.container>.clearfix>li{
+    float: left;
+    padding-bottom: 30px;
+    padding-left: 45px;
+    }
+    /*-----------------------content-performance分割线-----------------------*/
+    #content>.performance{
+    width: 100%;
+    height: 50%;
+    background: url(img/11.jpg) 0 0  no-repeat;
+    background-size: 100% 100%;
+    color: #333;
+    text-align: left;
+    overflow:hidden;
+    }
+    #content>.performance>.container{
+    background: rgba(220,220,220,0.4);
+    height: 100%;
+    padding: 40px 0px;
+    }
+    /*-----------------------content-picture分割线-----------------------*/
+    #content>.picture{
+        text-align: center;
+    }
+    #content>.picture img{
+        width: 438px;
+        height: 300px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    #content>.picture li{
+        float: left;
+        margin-left:20px;
+        margin-bottom: 20px;
+    }
+    #content>.picture .production{
+        margin-left: -20px;
+    }
+    /*-----------------------content-remark分割线-----------------------*/
+    #content>.remark{
+        min-height: 100px;
+        background-color: rgb(15,100,240);
+        text-align: center;
+        padding: 20px;
+    }
+    /*-----------------------footer分割线-----------------------*/
+    #footer{
+    text-align: center;
+    margin: 40px 0;
+    }
+    </style>
+</head>
+<body>
+<div id="header"> <!-- header-首页大图容器 -->
+    <div class="container-one">
+        <h1 class="white">OnePlus3 Phone 急速旗舰</h1>
+        <h2 class="white">国产机中的战斗机</h2>
+        <a class="mark-button" href="#">喜欢就点赞</a>
+    </div>
+</div>
+<div id="content"> <!-- 中间主要内容区域 -->
+    <div class="configure"> <!-- 参数简述区块 -->
+    <strong>配置一览：DASH急速闪充/6GB+64GB/骄龙820/1600万急速美拍</strong></br>
+    <strong>更多<a href="http://www.oneplus.cn/product/oneplus3/specs">详细参数</a></strong>
+    </div>
+    <div class="function"> <!-- 功能简述区块 -->
+        <h2 class="title-one">强大的功能</h2>
+        <hr/>
+        <div class="container layout">
+            <ul class="clearfix">
+                <li>
+                    <i class="icon iconfont">&#xe698;</i><br/>
+                    <h2>Cpu</h2>
+                    <p>高通 Snapdragon 820 </p><br/>
+                    <strong><a class="btn" href="#">了解更多</a></strong>
+                </li>
+                <li>
+                    <i class="icon iconfont">&#xe60b;</i><br/>
+                    <h2>System</h2>
+                    <p>H2 OS 1.4 轻快稳省</p><br/>
+                    <strong><a class="btn" href="#">了解更多</a></strong>
+                </li>
+                <li>
+                    <i class="icon iconfont">&#xe651;</i><br/>
+                    <h2>Camera</h2>
+                    <p>before 8.0MP + after 16MP</p><br/>
+                    <strong><a class="btn" href="#">了解更多</a></strong>
+                </li>
+                <li>
+                    <i class="icon iconfont">&#xe628;</i><br/>
+                    <h2>Charge</h2>
+                    <p>VOOC DASH极速闪充</p><br/>
+                    <strong><a class="btn" href="#">了解更多</a></strong>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="performance"> <!-- 该机性能简述区块 -->
+        <div class="container">
+            <div class="layout">
+                <p>
+                <strong>亮点一:</strong> 
+                处理器为高通骁龙820，这颗芯片早已在三星S7、LG G5等国际旗舰上证明了它的威力，性能强大，功耗和发热控制得不错。内存方面，一加非常厚道，并没有以内存大小来区分高低配版本，而是只有一个版本6GB RAM+64GB ROM;<br/>
+                <strong>亮点二:</strong> 
+                屏幕方面为5.5英寸1080P三星AMOLED屏幕，AMOLED屏向来小编比较推崇，既省电又黑得深邃。摄像方面，前置800万像素支持极速美颜，后置是1600万像素的索尼IMX298;<br/>
+                <strong>亮点三:</strong> 
+                三围尺寸为152.7*74.7*7.35mm，158g，重量适中，支持双卡双待全网通，前置指纹识别，运行基于Android 6.0.1的氢OS 1.4,边缘整机最薄仅为4.9mm，事实上整部机子都非常轻薄仅7.35mm，比前代薄了27%;
+                <br/>
+                <strong>亮点四:</strong> 
+                快充方面，一加3的原理和VOOC快充原理一样，5V/4A低压闪充，30分钟可以冲到63%，不仅熄屏的时候充电飞快，甚至在边玩边充的时候也威力丝毫不减，一加非常良心地标配了闪充套装，此处应有掌声！
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="picture layout"> <!-- 机身图片展示区块 -->
+        <h2>机身照片</h2>
+        <hr/>
+        <div class="container">
+            <ul class="production clearfix">
+                <li>
+                    <img src="./img/2.jpg" alt="wuxiao"/>
+                </li>
+                <li>
+                    <img src="./img/3.jpg" alt="wuxiao"/>
+                </li>
+                <li>
+                    <img src="./img/4.jpg" alt="wuxiao"/>
+                </li>
+                <li>
+                    <img src="./img/5.jpg" alt="wuxiao"/>
+                </li>
+                <li>
+                    <img src="./img/6.jpg" alt="wuxiao"/>
+                </li>
+                <li>
+                    <img src="./img/7.jpg" alt="wuxiao"/>
+                </li>
+            </ul>
+            <strong><a class="btn" href="#">更多照片</a></strong>
+        </div>
+    </div>
+    <div class="remark"> <!-- 点击购买区块 -->
+        <div class="container">
+        <h4>这么多的介绍，不知道你是否心动了呢，心动就点击购买吧！</h4>
+        <strong><a class="btn" href="#">点击购买</a></strong>
+        <strong><a class="btn" href="http://www.oneplus.cn/">更多了解</a></strong>
+        </div>
+    </div>
+</div>
+<div id="footer"> <!-- footer-页脚联系方式区块 -->
+    <div class="container layout">
+        <h5>加入我们</h5>
+        <i class="icon iconfont">&#xe6d7;</i>:银河系地球村<br>
+        <i class="icon iconfont">&#xe640;</i>：001-9090960<br>
+        <i class="icon iconfont">&#xe60f;</i>：
+        <a href="#">name@qq.com</a><br>
+        <div class="icon">
+            <img src="./img/22.png" alt="wuxiao">
+        </div>
+        <p>Date of issue :Jul04-2016</p>
+    </div>
+</div>
+</body>
+</html>

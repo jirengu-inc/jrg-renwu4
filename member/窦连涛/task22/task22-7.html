@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  *{
+    padding:0;
+    margin:0;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .clear {
+    *zoom:1;
+  }
+
+  .clear:after{
+    content: '';
+    display: block;
+    clear:both;
+  }
+
+
+
+  #wrap{
+
+  }
+
+  #mask{
+    display: none;
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom:0;
+    left:0;
+    background: rgba(162, 162, 162, 0.5);;
+  }
+
+  .content {
+    width: 400px;
+    background: #FFF;
+    border:1px solid #ccc;
+    border-radius: 5px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-left: -200px;
+    margin-top:-98px;
+    display: none;
+  }
+
+  .content-header{
+    padding: 0px 20px;
+    line-height: 30px;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .content-header p{
+    display:inline-block;
+  }
+  .content-header a{
+    display: inline-block;
+    float: right;
+    color:#CCC;
+    font-size: 18px;
+  }
+
+  .content-con{
+    padding: 50px;
+    border-bottom: 1px solid #CCC;
+  }
+
+  .content-footer li{
+    line-height: 30px;
+    float: right;
+    padding-right: 10px;
+  }
+
+}
+  </style>
+</head>
+<body>
+  <button id="click">点我</button>
+  <div id="wrap">
+    <div id="mask"></div>
+    <div class="content">
+      <div class="content-header" >
+        <p>我是标题</p>
+        <a href="#" id="content-header">x</a>
+      </div>
+      <div class="content-con">
+        <p>我是内容</p>
+        <p>我是内容</p>
+      </div>
+      <ul class="content-footer clear">
+        <li><a href="#">确定</a></li>
+        <li><a href="#" id="cancel">取消</a></li>
+      </ul>
+    </div>
+  </div>
+<script>
+   var click = document.getElementById("click");
+   click.addEventListener('click',function(){
+      var mask = document.getElementById('mask');
+      var con = document.getElementsByClassName('content')[0];
+      mask.style.display='block';
+      con.style.display='block';
+   },false);
+   var con = document.getElementById('content-header');
+   con.addEventListener('click',function(){
+      var mask = document.getElementById('mask');
+      var con = document.getElementsByClassName('content')[0];
+      mask.style.display='none';
+      con.style.display='none';
+   },false);
+
+   var cancel = document.getElementById('cancel');
+   cancel.addEventListener('click',function(){
+      var mask = document.getElementById('mask');
+      var con = document.getElementsByClassName('content')[0];
+      mask.style.display='none';
+      con.style.display='none';
+   },false);
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	 arr = ["a", "b"];
+			arr.push( function() { 
+				alert(console.log('hello hunger valley'))
+				 } );
+			console.log(arr[arr.length-1]() ); // ?
+			/*
+              1.push()的作用是把括号里面的内容添加到arr[]的队尾
+              2.arr[arr.length-1]就是该函数，加上()就是调用了该函数。
+              3.console.log('hello hunger valley')控制台输出
+              hello hunger valley
+              4.alert(console.log('hello hunger valley'))；
+              由于console.log()没有返回值，是undefined，
+              因此alert undefined
+			*/ 
+          
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>懒加载</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<style>
+		html,
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		.wrap {
+			width: 800px;
+			margin: 0 auto;
+		}
+		.imgs:after {
+			content: '';
+			display: block;
+			clear:both;
+		}
+		.imgs li {
+			float: left;
+			margin: 10px;
+			list-style: none;
+			
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="imgs">
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+			<li><a href="#"><img src="./img/blank.jpg" data-src="./img/girl.jpg" alt=""></a></li>
+		</ul>
+	</div>
+	<script>
+		$(function(){
+			var imgs = $('.imgs img');
+			checkImg();
+			var clock;
+			$(window).on('scroll',function(){
+				if(clock){
+					clearTimeout(clock);
+				}
+				clock = setTimeout(function(){
+					checkImg();
+				},300);
+			});
+			function checkImg(){
+				imgs.each(function(){
+					var curImg = $(this);
+					if(isVisible(curImg)){
+						showImg(curImg);
+					}
+				});
+			}
+			function showImg($el){
+				$el.attr('src',$el.attr('data-src'));
+			}
+			function isVisible($node){
+				var winTop = $(window).scrollTop(),
+					winH = $(window).height(),
+					nodeTop = $node.offset().top;
+    			if(nodeTop < winTop + winH){
+        			return true;
+    			}else{
+        			return false;
+    			}
+			}
+		});
+	</script>
+</body>
+</html>

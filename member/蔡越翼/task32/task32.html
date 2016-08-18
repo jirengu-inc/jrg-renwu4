@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script src="waterfall.js"></script>
+	<script src="main.js"></script>
+	<title>load</title>
+		<style>
+		html,
+		body,
+		ul,
+		li,
+		p,
+		h3 {
+			margin: 0;
+			padding: 0;
+		}
+		.wrap {
+			width: 1000px;
+			margin: 0 auto;
+		}
+		.ct { position: relative; }
+		.ct .item {
+			position: absolute;
+			width: 200px;
+			padding: 10px;
+			margin: 0 20px 20px 0;
+			border: 1px solid #DFDFDF;
+			list-style: none;
+			opacity: 0;
+		}
+		.item img {
+			width: 200px;
+			margin-bottom: 10px;
+		}
+		.item .item-name {
+			padding-bottom: 10px;
+			font-size: 16px;
+			border-bottom: 1px solid #DFDFDF;
+		}
+		.item .item-intro {
+			margin-top: 10px;
+			color: #777371;
+			line-height: 1.5;
+			font-size: 12px;
+		}
+		.load { visibility: hidden; }
+		.hide { display: none; }
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="ct">
+			<!-- <li class="item">
+				<a href="#"><img src="" alt=""></a>
+				<h3 class="item-name"></h3>
+				<p class="item-intro"></p>
+			</li> -->
+			<li class="item hide"></li>
+		</ul>
+		<div class="load" id="load">load</div>
+	</div>
+</body>
+</html>
