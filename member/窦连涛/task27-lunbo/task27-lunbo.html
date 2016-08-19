@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>基本轮播</title>
+  <style>
+   html,body,div,ul,li{
+     margin:0;
+     padding: 0;
+   }
+
+   li{
+     list-style: none;
+   }
+
+   a{
+     text-decoration: none;
+   }
+
+  #curousel {
+    width: 520px;
+    height:280px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #curousel .img-ct{
+    position: absolute;
+  }
+
+  #curousel .img-ct:after{
+    content:'';
+    display: block;
+    clear:both;
+  }
+
+  #curousel .img-ct li{
+    float: left;
+  }
+
+  #curousel .img-ct img{
+    width: 520px;
+    height:280px;
+  }
+
+  .arrow{
+    position: absolute;
+    top:50%;
+    margin-top:-25px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background: #4E443C;
+    color:#FFF;
+    border-radius: 50px;
+    box-shadow: 0 0 2px #999;
+    opacity: 0.8;
+  }
+
+  .arrow:hover{
+    opacity: 1;
+  }
+
+  .pre {
+    right: 10px;
+  }
+
+  .next{
+    left: 10px;
+  }
+
+  #curousel .bullet{
+    position: absolute;
+    bottom:10px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #curousel .bullet li{
+    width: 40px;
+    height: 8px;
+    border-radius: 2px;
+    background:#FFF;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  #curousel .bullet li.active{
+    background: #666;
+  }
+
+  </style>
+</head>
+<body>
+    <div id="curousel">
+      <ul class="img-ct">
+        <li data-id=0 ><a href="#"><img src="image/1.jpg" alt=""></a></li>
+        <li data-id=0 ><a href="#"><img src="image/2.jpg" alt=""></a></li>
+        <li data-id=0 ><a href="#"><img src="image/3.jpg" alt=""></a></li>
+        <li data-id=0 ><a href="#"><img src="image/4.jpg" alt=""></a></li>
+        <li data-id=0 ><a href="#"><img src="image/5.jpg" alt=""></a></li>
+      </ul>
+      <a href="#" class="arrow next"> < </a>
+      <a href="#" class="arrow pre" > > </a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+      $(function(){
+
+        var $ct = $('.img-ct'),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $items = $ct.children(),
+            $bullet = $('.bullet'),
+            $imgWidth = $items.width(),
+            $curousel = $('#curousel'),
+            $imgCount = $ct.children().size();
+
+
+        $ct.prepend($items.last().clone());
+        $ct.append($items.first().clone());
+        var $imgRealCount = $ct.children().size();
+        $ct.css({left:0-$imgWidth,width:$imgRealCount*$imgWidth});
+
+        var curId = 0;// 设置游标ID
+        var isAnimate = false;  //是否在运动中
+
+        $('.next').click(function(){
+          playNext();
+        })
+
+        $pre.on('click',function(){
+          playPre();
+        })
+
+        $bullet.find('li').on('click',function(){
+          var idx = $(this).index();//当前点击的索引
+          play(idx);
+        })
+
+        function playNext(){
+          play((curId+1)%$imgCount);
+        }
+
+        function playPre(){
+          play(($imgCount + curId - 1)% $imgCount);
+        }
+
+        function play(idx){
+          if(isAnimate) return ;
+          isAnimate = true;
+          $items.eq(curId).fadeOut(1000);
+          $items.eq(idx).fadeIn(1000,function(){
+              isAnimate = false;
+          })
+          curId = idx;
+          setBullet();
+        }
+
+        function setBullet(){
+          $bullet.find('li').removeClass('active').eq(curId).addClass('active');
+        }
+
+        autoPlay();
+
+        function autoPlay(){
+          clock = setInterval(function(){
+            playNext();
+          },3000);
+        }
+
+        function stopAuto(){
+          clearIntervel(clock);
+        }
+
+
+
+      })
+    </script>
+</body>
+</html>

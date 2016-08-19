@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>加载更多</title>
+  <style>
+  ul,li{
+  margin: 0;
+  padding: 0;
+}
+#ct li{
+  list-style:none;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  cursor:pointer;
+}
+#load-more{
+	display: block;
+	margin: 10px auto;
+	text-align: center;
+	cursor: pointer;
+}
+#load-more img{
+	width: 40px;
+	height: 40px;
+}
+.btn{
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	width: 80px;
+	border: 1px solid #E27272;
+	border-radius: 3px;
+	text-align: center;
+	text-decoration: none;
+	color: #E27272;
+}
+.hover{
+  background: green;
+  color: #fff;
+}
+  </style>
+</head>
+<body>
+<ul id="ct">
+  <li>内容1</li>
+  <li>内容2</li>
+</ul>
+  <a id="load-more" class="btn" href="#">加载更多</a>
+</body>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+      var $ct = $('#ct'),
+      $btn = $('#load-more');
+      var clock;
+      $start = parseInt($ct.children().length);
+      $len = 15;
+
+      function loadMore(){
+
+        $.ajax({
+          url:'/lazy',
+          type:'get',
+          data:{start:$start,len:$len},
+          success:function(data){
+            if(data.status === 0){
+              for (var i = data.data[0]; i < data.data.length; i++) {
+                $el = $('<li>内容'+(i+1)+'</li>');
+                $ct.append($el);
+              }
+            }
+          }
+        })
+      }
+
+      function isVisible($node){
+          var $winH = $(window).height();// 视窗的高度
+          var $eTop = $($node).offset().top; // 元素的偏移高度
+          var $winScroll = $(window).scrollTop(); //视窗滚动的距离
+          if($winH + $winScroll > $eTop ){
+            return true;
+          }else{
+            return false;
+          }
+      }
+
+      loadMore();
+
+      $(window).on('scroll',function(){
+        if(isVisible($btn)){
+          if(clock){
+            clearTimeout(clock);
+          }
+          clock = setTimeout(function(){
+              loadMore();
+          },300)
+        }
+      })
+
+      $('#ct').on('mouseover','li',function(){
+        $(this).addClass('hover');
+      })
+      $('#ct').on('mouseout','li',function(){
+        $(this).removeClass('hover');
+      })
+
+      // $.ajax({
+      //   url:'/lazy',
+      //   type:'get',
+      //   data:{start:$start,len:$len},
+      //   success:function(data){
+      //     if(data.status === 0){
+      //       for (var i = data.data[0]; i < data.data.length; i++) {
+      //         $el = $('<li>内容'+(parseInt(i)+1)+'</li>');
+      //         $ct.append($el);
+      //       }
+      //     }
+      //   }
+      // })
+    })
+  </script>
+</html>

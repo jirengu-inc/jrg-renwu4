@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	 .ct{
+	 	width:200px;
+	 	height:80px;
+	 	border:1px solid #ccc;
+	 	background-color: yellow;
+	 }
+	 .state1{
+	 	width:100px;
+	 	height:100px;
+	 	background:blue;
+	 	border-radius:50px;
+	 	border:1px solid #ccc;
+	 }
+	 .state2{
+	 	width:200px;
+	 	height:100px;
+	 	background:yellow;
+	 	border:1px dotted #ccc;
+	 }
+	</style>
+</head>
+<body>
+	<div class="ct" style="color:red">
+         hello
+	</div>
+		<button id="btn1">蓝色</button>
+		<button id="btn2">红色</button>
+	
+	<script>
+	 var btn1=document.querySelector('#btn1'),
+	 btn2=document.querySelector('#btn2'),
+	 ct=document.querySelector('.ct');
+
+	 // btn1.addEventListener('click',function(){
+	 // 	 ct.style.borderRadius='10px';
+
+	 // });
+	 // btn2.addEventListener('click',function(){
+	 // 	ct.style.backgroundColor='red';
+	 // });
+
+     btn1.addEventListener('click',function(){
+	 	 // ct.className='state1';
+	 	// getComputedStyle(ct).width
+	    removeClass(ct,'state2');
+	    addClass(ct,'state1');
+	 });
+	 btn2.addEventListener('click',function(){
+	    ct.className='state2';
+	    removeClass(ct,'state1');
+	    addClass(ct,'state2');
+	 });
+
+
+    </script>
+</body>
+
+</html>

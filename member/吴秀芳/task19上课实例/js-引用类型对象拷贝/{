@@ -1,0 +1,13 @@
+{
+	"key":100,
+	"name":'hello',
+	"friends":[
+     { 
+        "name":haha
+     },
+     {
+        "name":xiaoxiao
+     }
+	]
+}
+//JASON格式的数据
