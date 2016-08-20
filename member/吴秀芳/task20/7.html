@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		for(var i=0;i<5;i++){
+			(function(){
+				var n=i;
+				setTimeout(function(){
+		          console.log('delayer:' + n );
+		     }, 0);
+	      console.log(i);
+			})()
+	    
+	   }
+
+	  //  	(function(){
+			// 	var n=i;
+			// 	setTimeout(function(){
+		 //          console.log('delayer:' + n);
+		 //     }, 0);
+	  //     console.log(i);
+			// })()
+
+			// (function(){
+			// 	var n=i;
+			// 	setTimeout(function(){
+		 //          console.log('delayer:' + n);
+		 //     }, 0);
+	  //     console.log(i);
+			// })()
+	</script>
+</body>
+</html>
