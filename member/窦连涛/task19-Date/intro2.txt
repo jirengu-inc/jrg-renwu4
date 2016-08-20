@@ -1,0 +1,14 @@
+基本类型和引用类型的区别
+
+对象 数组 函数 正则 都属于复杂类型
+
+浅拷贝 只是拷贝一层 对象
+直接for 循环就可以
+
+function objcopy(obj){
+  var newObj = {};
+  for(var x in obj){
+    newObj[x] = obj[x];
+  }
+  return newObj;
+}

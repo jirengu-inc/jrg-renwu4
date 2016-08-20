@@ -1,0 +1,69 @@
+DOM 通俗来讲 就是讲当前的页面解析成为了Js的一个对象模型。
+
+document
+
+head body
+
+activeElement(一般用不到)
+
+location 属性返回一个只读对象 提供了当前的URL信息
+
+document.location.href  地址栏的整个地址
+
+document.location.protocol 协议
+
+document.location.hash #fff （用于单页面（SPA==singlepage）的切换）
+
+document.location.reload 页面刷新
+
+document.location.assign 跳转到另外一个网页 window.open 或者给 location.href重新赋值
+
+document.write 会清空body 里面的内容
+
+Element
+
+查找
+
+属性 nodeName nodeType classname id children(只是获取HTML节点) childNodes(获取所有的节点) firstChild lastChild nextSibling previousSibling parentNode parentElement()
+
+一
+
+document.getElementById() document.getElementsByClassName() document.getElementByName()
+
+querySelector() 方法返回匹配指定的CSS选择器的元素节点。如果有多个节点满足匹配条件，则返回第一个匹配的节点。如果没有发现匹配的节点，则返回null。
+
+querySelectorAll() 方法返回匹配指定的CSS选择器的所有节点，返回的是NodeList类型的对象。NodeList对象不是动态集合，所以元素节点的变化无法实时反映在返回结果中。
+
+innerText innerHTML
+
+获取属性
+
+getAttribute();
+
+setAttribute();
+
+修改样式 .style
+
+修改
+
+document.body.appendChild()
+
+insertBefore()
+
+remove()
+
+clone()
+
+二
+
+创建元素
+
+createElement 并不是真正的在页面上显示 而是创建了一个对象
+
+createDocumentFragment() 大的代码端 只是做一次重绘
+
+HTML collection 和 Nodelist
+
+getComputedStyle(ct).width 不建议直接修改 而是添加样式
+
+removeClass addClass

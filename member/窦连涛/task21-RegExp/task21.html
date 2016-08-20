@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task-21</title>
+  <script>
+  // function trim(str){
+  //    var newStr;
+  //    var patt = /[^!|@|\+|\-|*|\/|\^|&|(|)|\s|#|%]/g;
+  //    newStr = str.match(patt);
+  //    newStr = newStr.join('');
+  //    return newStr;
+  // }
+  //
+  // console.log(trim(" S1234f dasfjl 1@#%&*"));
+  // console.log(trim(" @!1+2(34)! "));
+  // console.log(trim(" +1*2/34-^ "));
+
+  function addClass(el, cls){
+
+  }
+
+  function hasClass(el, cls) {
+
+  }
+
+  function removeClass(el, cls) {
+
+  }
+
+
+
+  function isEmail(str){
+    var patt = /\S+[\w]{3,16}@[\w]{3,16}\.{1}.{,10}(\S+)$/ig;
+    var result = patt.test(str);
+    return result;
+  }
+
+  function isPhoneNum(str){
+    var patt = /1[3578]\d{9}$/;
+    var result = patt.test(str);
+    return str;
+  }
+  //（长度6-20个字符，只能包括字母、数字、下划线）
+  function isValidUsername(str){
+    var patt = /\w{6,20}$/;
+    var result = patt.test(str);
+    return result;
+  }
+  //（长度6-20个字符，包括大写字母、小写字母、数字、下划线至少两种）
+  function isValidPassword(str){
+    if(str.length < 6 || str.length > 16){
+       return false;
+   }
+   if(/[^A-Za-z_0-9]/.test(str)){
+       return false;
+   }
+
+   if( /(^[a-z]+$)|(^[A-Z]+$)|(^_+$)|(^\d+$)/g.test(str) ){
+       return false;
+   }
+   return true;
+  }
+
+  // 写一个正则表达式，得到如下字符串里所有的颜色（#121212）
+  // var re = /#[0-9A-Fa-f]{6}/g;
+  // var subj = "color: #121212; background-color: #AA00ef; width: 12px; bad-colors: f#fddee #fd2 "
+  // alert( subj.match(re) )  // #121212,#AA00ef
+  //
+  // 下面代码输出什么? 为什么? 改写代码，让其输出hunger, world.
+  // var str = 'hello  "hunger" , hello "world"';
+  // var pat =  /".*"/g;
+  // str.match(pat);  // "hunger" , hello "world" 贪婪模式
+  //
+  // // 修改如下
+  // var pat =  /".*?"/g;;
+  //
+  // 补全如下正则表达式，输出字符串中的注释内容. (可尝试使用贪婪模式和非贪婪模式两种方法)
+  // var str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
+  // re = /<!--[\w]*-->/g
+  // str.match(re)// '<!-- My -- comment \n test -->', '<!---->'
+  //
+  // 非贪婪模式
+  // var str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
+  // re = /<!--[\W\w]*?-->/g
+  // str.match(re)// '<!-- My -- comment \n test -->', '<!---->'
+  //
+  // 贪婪模式
+  // var str = '.. <!-- My -- comment \n test --> ..  <!----> .. ';
+  // re = /<!--[^>]*-->/g
+  // str.match(re)// '<!-- My -- comment \n test -->', '<!---->'
+  //
+  //
+  // 补全如下正则表达式
+  // var re = /<[^>]+>/g
+  // var str = '<> <a href="/"> <input type="radio" checked> <b>';
+  // str.match(re) // '<a href="/">', '<input type="radio" checked>', '<b>'
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
