@@ -134,16 +134,19 @@
 			this.pre = $node.find('.pre');//上一个
 			this.next = $node.find('.next'); //下一个
 
-			var ct = this.ct = $node.find('.img-ct');//获取 UL
+			this.ct = $node.find('.img-ct');//获取 UL
 			this.items = this.ct.children(); //看有几个子元素
 			this.imgW = this.items.width();	// 每个元素的宽度
 			this.imgCount = this.items.size(); // 总共有几个子元素
 
-			ct.prepend(this.items.last().clone()); //把最后一个放到最前面
-    	ct.append(this.items.first().clone()); // 把第一个放到最后面
-    	this.imgRealCount = ct.children().size(); // 计算实际的个数
+			this.ct.prepend(this.items.last().clone()); //把最后一个放到最前面
+    	this.ct.append(this.items.first().clone()); // 把第一个放到最后面
+    	this.imgRealCount = this.ct.children().size(); // 计算实际的个数
       
-    	ct.css({left:0-this.imgW,width:this.imgRealCount*this.imgW}); // 
+    	this.ct.css({left:0-this.imgW,width:this.imgRealCount*this.imgW}); // 
+
+      this.curId = 0;
+      this.isAnimate = false;
      
     	this.bind();
      
@@ -153,33 +156,32 @@
 
 			bind: function(){
 				var _this = this;
-            this.curId = 0;
-            this.isAnimate = false;
+            
 
 				this.pre.on('click', function(){
-					_this.showPre();
+					_this.playPre();
 				});
 				this.next.on('click', function(){
-					_this.showNext();
+					_this.playNext();
 				});
 
         this.bullet.on('click','li',function(){
             var idx = $(this).index();
             if(idx > _this.curId){
-                _this.showNext(idx - _this.curId);
+                _this.playNext(idx - _this.curId);
             }else if(idx < _this.curId){
-                _this.showPre(idx - _this.curId);
+                _this.playPre(_this.curId - idx);
             }
         })
         
 			},
 
-			showPre: function(idx){
-				var idx = idx || 1;
-        var _this = this;
-          if(!this.isAnimate){
-            this.isAnimate = true;
-            this.ct.animate({left:"-=" + _this.imgW * idx},function(){
+      playNext:function(idx){
+          var idx = idx || 1;
+          var _this = this;
+          if(!_this.isAnimate){
+            _this.isAnimate = true;
+            _this.ct.animate({left:"-=" + _this.imgW * idx},function(){
               _this.curId = (_this.curId + idx ) % _this.imgCount;
               if(_this.curId === 0){
                 _this.ct.css({left : 0 - _this.imgW});
@@ -188,35 +190,36 @@
               _this.setBullet();
             })
           }
-			},
+      },
 
-			showNext: function(idx){
+      playPre:function(idx){
+        var idx = idx || 1;
         var _this = this;
-				var idx = idx || 1;
-            if(!this.isAnimate){
-              this.isAnimate = true;
-              this.ct.animate({left: "+=" + _this.imgW * idx},function(){
-                _this.curId = (_this.imgCount + _this.curId - idx) % _this.imgCount;
-                if(_this.curId === _this.imgCount -1){
-                  _this.ct.css({left : 0 - (_this.imgW*_this.imgCount)});
-                }
-                _this.isAnimate = false;
-                _this.setBullet();
-              })
+        if(!_this.isAnimate){
+          _this.isAnimate = true;
+          _this.ct.animate({left: "+=" + _this.imgW * idx},function(){
+            _this.curId = (_this.imgCount + _this.curId - idx) % _this.imgCount;
+            if(_this.curId === _this.imgCount -1){
+              _this.ct.css({left : 0 - (_this.imgW*_this.imgCount)});
             }
-			},
+            _this.isAnimate = false;
+            _this.setBullet();
+          })
+        }
+      },
 
-      setBullet:function(){
-        var _this = this;
-        this.bullet.find('li').removeClass('active').eq(_this.curId).addClass('active');
-      }
+      setBullet: function(){
+          this.bullet.find('li').removeClass('active').eq(this.curId).addClass('active');
+      },
+
+
 
 		};
 
 		var $node1 = $('.curousel').eq(0);
 		var $node2 = $('.curousel').eq(1);
 		var carousel1 = new Carousel($node1);
-		// var carousel2 = new Carousel($node2);
+		var carousel2 = new Carousel($node2);
 		// console.log($node1);
 		
 
