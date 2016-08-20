@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function People(name){
+			this.name = name;
+		}
+
+		People.prototype.sayName = function(){
+			console.log(this.name);
+		}
+
+		People.prototype.sname = "hello";
+
+		p1 = new People('DouLianTao');
+		p2 = new People('MaYanJie');
+
+		function isObj(obj,Func){
+
+			var proto = obj.__proto__;
+
+			do{
+				if(proto === Func.prototype) return true;
+				if(!proto) return false;
+			}while(proto = proto.__proto__);
+
+			return false;
+		}
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	  function objCopy(obj){
+	   var newObj={};
+	   for(key in obj){
+	   	if(boj[key]==='object'){
+	   		newObj[key]=objCopy(obj[key]);
+	   	}
+	     newObj[key]=obj[key];
+	   	}
+	   }
+	   return newObj;
+	  }
+	</script>
+</body>
+</html>
