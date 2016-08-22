@@ -1,14 +1,16 @@
 function getAvgAndMinTimeGranularity() {
-  var timeGranularities = [];
+  var runtimes = [],
+    timeGranularities = [];
   var times = 0;
   var timeIndex = setTimeout(function() {
-    var onceStartTime = Date.now();
+    runtimes.push(Date.now());
     if (times++ < 1000) {
       timeIndex = setTimeout(arguments.callee, 0);
-      var onceEndTime = Date.now();
-      timeGranularities.push(onceEndTime - onceStartTime);
     } else {
       clearTimeout(timeIndex);
+      for (var i = 0; i < runtimes.length - 1; i++) {
+        timeGranularities[i] = runtimes[i + 1] - runtimes[i]
+      }
       console.log("The average time granularity: ", (function() {
         var sum = 0;
         for (var i = 0; i < timeGranularities.length; i++) {
