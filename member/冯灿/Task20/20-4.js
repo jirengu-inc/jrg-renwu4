@@ -3,7 +3,7 @@ function getAvgAndMinTimeGranularity() {
   var times = 0;
   var timeIndex = setTimeout(function() {
     var onceStartTime = Date.now();
-    if (++times < 1000) {
+    if (times++ < 1000) {
       timeIndex = setTimeout(arguments.callee, 0);
       var onceEndTime = Date.now();
       timeGranularities.push(onceEndTime - onceStartTime);
