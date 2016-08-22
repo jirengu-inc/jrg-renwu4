@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+</head>
+<body>
+	<script>
+		// function fn(){
+		// 	var a = 123;
+
+		// 	function fninner(){
+		// 		console.log(a);
+		// 	};
+		// 	fninner();
+		// };
+		// fn();
+		// 
+		var obj1 = {
+			name:'douliantao',
+			fn:function(){
+				console.log(this);
+			}
+		}
+
+		obj1.fn(); // this 指的是obj1
+
+		var fn2 = obj1.fn;
+
+		fn2() // this 指的是window 执行环境变了
+		
+	</script>
+</body>
+</html>

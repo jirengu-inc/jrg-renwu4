@@ -1,0 +1,52 @@
+同源策略
+
+origin - 源
+location.origin
+
+git remote add origin // git
+
+1 URL
+      http: 默认端口 80
+      https: 默认端口 443
+      ftp:默认端口 21
+
+      协议方案名 服务器地址 服务器端口号 带层次的文件路径 查询字符串 片段标识符(通常来说锚点)
+      http://  www.baidu.com : 80 /dir/index.html? name=xiaoming#ch1
+      hash 跳转的时候会跳转到ch1的位置
+
+
+      源 指的是协议 域名 端口号
+
+      同源策略--- 浏览器的一个功能
+
+      不同源的客户端脚本 在没有授权的情况下 不能读写对方的资源
+
+      MAC hosts文件  /ect/hosts
+      WIN hosts文件  C:system32/drivers/etc/hosts/
+
+2 什么不是同源策略
+
+    a.com/index.html
+    可以引用b.com/main.js
+    可以引用b.com/style.css
+    可以引用b.com/logo.bng
+
+    但是a.com/main.js不可以访问b.com中的资源
+
+3 跨域
+
+    1 降域
+        让不同源的域名 变成同源的域名
+        域名设置必须是上N级
+        降域之后可以任意的访问数据和方法
+        只能针对IFRAME形式的跨域 同样的后缀域名
+
+    2 jsonp json with padding
+        动态的javascript
+        xxx({a:1})  padding + json + padding
+
+        jsonp 的问题
+              安全性问题
+              不可以用post获取数据
+    3 cors
+    4
