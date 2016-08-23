@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#btn{
+			display: block;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+<h1>当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</h1>
+ <button id="btn">点我，我就变颜色</button>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+$('#btn').on('click',function(){
+	$(this).css({backgroundColor:'red'});
+	setTimeout(function(){
+		$('#btn').css({backgroundColor:'blue'});
+	},1000);
+     			
+});
+</script>
+
+</body>
+</html>

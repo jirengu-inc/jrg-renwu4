@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>modal</title>
+	<style>
+		body,ul,li,p,button{margin:0;padding:0;font-family: "Microsoft Yahei"}
+		/*button{
+			border:none;color:#FFF;background-color:#2196f3;
+
+		}*/
+		a{text-decoration: none;color:#666;}
+		.show{
+			display:block;
+		}
+		.hide{
+			display:none;
+		}
+		#btn{
+			position: absolute;
+			text-align: center;
+			left:50%;
+			margin:20px;
+			border:none;
+			border-radius: 4px;
+			margin-left: -270px;
+			background: #2196f3;
+			width:100px;
+			height:40px;
+			color:#FFF;
+			font-size:16px;
+			line-height:40px;
+		}
+		.cover{
+			width:600px;
+			height:400px;
+			background-color:rgba(200,200,200,0.7);
+			position: absolute;
+			top:0;left:50%;
+			margin-left: -300px;
+		}
+		#modal{
+			width:300px;
+			height:160px;
+			border:1px solid #CCC;
+			position:absolute;
+			top:100px;left:50%;
+			margin-left: -150px;
+			background-color: #FFF;
+			border-radius: 4px;
+			padding-bottom: 20px;
+		}
+		#modal:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		.header{
+			border-bottom: 1px solid #AAA;
+			padding: 14px;
+
+		}
+		.header p{float:left;}
+		.header:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		#modal .close{
+			float: right;
+		}
+		#modal .ct{
+			padding:14px;
+		}
+		#modal .foot{
+			float:right;
+			padding:20px;
+		}
+		#modal .foot button{
+			height:30px; width:50px;margin-left: 10px;
+			border-radius: 4px;
+			border:none;
+			background-color: #2196f3;
+			color:#FFF;
+			font-size: 14px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="btn">
+		<button id="btn">请点我</button>
+	</div>
+	<div class="cover hide">
+	</div>
+	<div id="modal" class="hide">
+		<div class="header">
+			<p>我是标题</p>
+			<a class="close" href="#">X</a>
+		</div>
+		<div class="ct">
+			<p>我是内容一</p>
+			<p>我是内容二</p>
+		</div>
+		<div class="foot">
+			<button class="btn-cancel">取消</button>
+			<button class="btn-confirm">确定</button>
+		</div>
+	</div>
+	<script>
+		var btn = document.getElementsByClassName('btn')[0];
+		var modal = document.getElementById('modal');
+		var cover = document.getElementsByClassName('cover')[0];
+		var close = document.getElementsByClassName('close')[0];
+		var ctBtnCan = document.getElementsByClassName('btn-cancel')[0];
+		var ctBtnCon = document.getElementsByClassName('btn-confirm')[0];
+		function hasClass(ele,cls){
+			var reg = new RegExp( '(\\s|^)'+ cls + '(\\s|$)','g')
+			return reg.test(ele.className); 
+		}
+		function addClass(ele,cls){
+			if(hasClass(ele,cls)){
+				return;
+			}
+			else{
+				ele.className = ele.className + " " + cls;
+			}
+		}
+		function removeClass(ele,cls){
+			if(hasClass(ele,cls)){
+				var reg = new RegExp('(\\s|^)' + cls + '(\\s|$)' ,'g');
+				ele.className = ele.className.replace(reg,"");
+			}
+			else{
+				return;
+			}
+		}
+		function showModal(ele){
+			removeClass(modal,"hide");
+			removeClass(cover,"hide");
+			addClass(modal,"show");
+			addClass(cover,"show");
+		}
+		function hideModal(ele){
+			removeClass(modal,"show");
+			removeClass(cover,"show");
+			addClass(modal,"hide");
+			addClass(cover,"hide");
+		}
+		btn.addEventListener('click',showModal,false);
+		cover.addEventListener('click',hideModal,false);
+		close.addEventListener('click',hideModal,false);
+		ctBtnCan.addEventListener('click',hideModal,false);
+		ctBtnCon.addEventListener('click',hideModal,false);
+
+	</script>
+</body>
+</html>

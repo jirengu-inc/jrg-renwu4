@@ -1,0 +1,55 @@
+继承
+	1 工厂模式
+
+		虽然对象的内部的属性和方法 都一样，
+		但还是每个都需要单独定义 重复造轮子
+
+		var cate1 = {
+			name:"草莓味面包",
+			sayName : function(){
+				console.log(this.name);
+			}
+		}
+
+		var cate2 = {
+			name:"巧克力味面包",
+			sayName : function(){
+				console.log(this.name);
+			}
+		}
+
+		工厂模式:
+
+			function createCake(name,age){
+				var obj = {
+					name:name,
+					sayName : function(){
+						console.log(this.name);
+					}
+				}
+
+				return obj;
+			}
+
+			cake1 = createCake('草莓');
+			cake2 = createCake('巧克力');
+
+
+	2 构造函数模式
+
+			function Cake(name,age){
+				
+				this.name = name;
+				this.sayName = function(){
+					console.log(this.name);
+				}
+				
+			}
+
+			cake1 = new Cake('草莓');
+			cake2 = new Cake('巧克力');
+
+	3 原型模式
+
+		
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style>
+	    .ct{
+	    	margin: 0 auto;
+	    	width: 500px;
+	    	height: 200px;
+	    	background: #eee;
+	    	text-align: center;
+	    }
+	    select{
+	    	width: 100px;
+	    }
+		.select{
+			width: 500px;
+			height: 32px;
+			margin-top: 20px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div class='ct'>
+<hi>当选择 select 后，获取用户选择的内容</hi>
+ <h4>点击,选出你喜欢的水果</h4>
+  <select name="fruits" multiple="multiple">
+    <option>香蕉</option>
+    <option>苹果</option>
+    <option>葡萄</option>
+    <option>芒果</option>
+    <option>梨</option>
+    <option>杏</option>
+    <option>枣</option>
+  </select>
+ <div class='select'></div>
+</div>
+
+ <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+  $('option').on('click',function(){
+  	   var $text = $(this).text();
+  	   $('.select').css({display:'block'})
+  	   $('.select').html('您的选择是：'+$text);	
+  });
+
+</script>
+</body>
+</html>
