@@ -4,7 +4,11 @@
 	<meta charset = "utf-8">
 	<title>modal</title>
 	<style>
-		body,ul,li,p{margin:0;padding:0;}
+		body,ul,li,p,button{margin:0;padding:0;font-family: "Microsoft Yahei"}
+		/*button{
+			border:none;color:#FFF;background-color:#2196f3;
+
+		}*/
 		a{text-decoration: none;color:#666;}
 		.show{
 			display:block;
@@ -12,11 +16,20 @@
 		.hide{
 			display:none;
 		}
-		.btn{
+		#btn{
 			position: absolute;
+			text-align: center;
 			left:50%;
+			margin:20px;
+			border:none;
+			border-radius: 4px;
 			margin-left: -270px;
-			//z-index: 3;
+			background: #2196f3;
+			width:100px;
+			height:40px;
+			color:#FFF;
+			font-size:16px;
+			line-height:40px;
 		}
 		.cover{
 			width:600px;
@@ -35,6 +48,7 @@
 			margin-left: -150px;
 			background-color: #FFF;
 			border-radius: 4px;
+			padding-bottom: 20px;
 		}
 		#modal:after{
 			content:"";
@@ -61,6 +75,14 @@
 		#modal .foot{
 			float:right;
 			padding:20px;
+		}
+		#modal .foot button{
+			height:30px; width:50px;margin-left: 10px;
+			border-radius: 4px;
+			border:none;
+			background-color: #2196f3;
+			color:#FFF;
+			font-size: 14px;
 		}
 
 	</style>
