@@ -29,17 +29,16 @@
 			margin-left: -10px;
 		}
 		.pictureS>li{
-			width: 318px;
+			width: 320px;
 			float: left;
 			margin-left: 10px;
 			margin-top: 10px;
-			border: 1px solid;
 			text-align: center;
 		}
-
 		.pictureS img{
 			width: 318px;
 			height: 220px;
+			border: 1px solid;
 		}
 	</style>
 </head>
@@ -85,8 +84,14 @@
   <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
 
   <script>
+    var clock;
   	$(window).on('scroll',function(){
- 		    verdict();
+		    if(clock){
+				clearTimeout(clock);
+			}
+			 clock = setTimeout(function(){
+                verdict()
+		    },500);
   	})
   	verdict();
   	function verdict(){
