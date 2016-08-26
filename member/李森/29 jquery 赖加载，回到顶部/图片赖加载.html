@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>图片赖加载</title>
+	<style>
+		ul,li{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		h1{
+			text-align: center;
+		}
+		#ct{
+			width: 980px;
+			margin: 0 auto;
+			padding: 10px;
+			border: 1px solid red;
+			border-radius: 6px;
+		}
+		.pictureS:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.pictureS{
+			margin-top: -10px;
+			margin-left: -10px;
+		}
+		.pictureS>li{
+			width: 318px;
+			float: left;
+			margin-left: 10px;
+			margin-top: 10px;
+			border: 1px solid;
+			text-align: center;
+		}
+
+		.pictureS img{
+			width: 318px;
+			height: 220px;
+		}
+	</style>
+</head>
+<body>
+  <h1>图片赖加载</h1>
+  <div id="ct">
+	  <ul class="pictureS">
+	  	<li><img src="img/loading.gif" data-imgUrl="img/5.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/2.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/4.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/1.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/2.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/5.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/6.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/7.jpg"></li>
+	    <li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/4.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/2.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/1.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/5.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/7.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/1.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/2.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/5.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/6.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/7.jpg"></li>
+	    <li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/4.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/2.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/1.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/5.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/7.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/1.jpg"></li>
+	  	<li><img src="img/loading.gif" data-imgUrl="img/3.jpg"></li>
+        <li><img src="img/loading.gif" data-imgUrl="img/2.jpg"></li>	  	
+	  </ul>
+  </div>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+  <script>
+  	$(window).on('scroll',function(){
+ 		    verdict();
+  	})
+  	verdict();
+  	function verdict(){
+  		$('img').each(function(){
+  			var $el = $(this);
+  			if($el.attr('isLoad')){
+  				return
+  			}else if(isVisible($el)){
+	  			isShow($el);
+	  			isLoad($el);
+		    }
+  	    })
+  	}
+  	
+  	function isVisible($el){
+  		var $elT = $el.offset().top;
+  		var $winH = $(window).height();
+  		var $winGo = $(window).scrollTop();
+  		if($elT < $winH + $winGo){
+  			return true
+  		}else{
+  			return false
+  		}
+  	}
+  	
+  	function isShow($el){
+  		$el.attr('src',$el.attr('data-imgUrl'));
+  	}
+  	
+  	function isLoad($el){
+  		$el.attr('isLoad',true);
+  	}
+  </script>
+</body>
+</html>

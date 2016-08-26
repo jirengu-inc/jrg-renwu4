@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>回到顶部</title>
+	<style type="text/css">
+		.ct{
+			width: 32px;
+			margin: 0 auto ;
+			font-size: 32px;
+			border: 1px solid red;
+			border-radius: 8px;
+		}
+		#btn{
+			width: 80px;
+			line-height: 30px;
+			border: 1px solid red;
+			border-radius: 5px;
+			text-align: center;
+			color: red;
+			position: fixed;
+			right: 20px;
+			bottom: 50px;
+			cursor: pointer;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div class="ct">
+	向下滚动页面，当向下滚动的距离等于当前浏览器可视窗口高度的时，右下角出现[回到顶部]按钮，点击则回到顶部。
+</div>
+ <div id="btn">回到顶部</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+var playGo = function(el){
+	var clock;
+	var $el = el;
+	scroll();
+	function scroll(){
+		$(window).on('scroll',function(){
+		    if(clock){
+				clearTimeout(clock);
+			}
+			 clock = setTimeout(function(){
+			    if( isVisible() ){
+				    isShow($el);
+			    }else{
+			    	$el.hide();
+			    }
+		    },300);
+		});		
+	}
+    function isShow(el){
+    	el.show();
+    	el.on('click',function(){
+    		$(window).scrollTop(0);
+    	})
+    }
+	function isVisible(){
+		var $winH = $(window).height(),
+            $winGo = $(window).scrollTop();
+			if($winGo >= $winH){
+				console.log($winH);
+				return true;
+			}else{
+				return false;
+			}
+	}
+}
+playGo($('#btn'));
+</script>
+</body>
+</html>
