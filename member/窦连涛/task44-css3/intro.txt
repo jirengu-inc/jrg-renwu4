@@ -1,0 +1,87 @@
+
+CSS3 新特性
+		
+		边框
+
+			border-radius 
+
+			background 背景色设置渐变 背景图片大小可变 多张图片叠加
+
+			过渡和动画
+
+			变形 
+
+			3D 
+
+		阴影
+
+	CSS3 一般用于IE9 以上
+
+
+	1 文本效果
+
+		text-overflow 
+
+		text-shadow
+
+
+	边框
+
+		border-radius  前缀 -webkit-  -o- -ms-
+
+		border-shadow  水平偏移 垂直偏移 模糊距离 阴影大小(可选) 颜色(可选) insert(
+
+		可选)
+
+		border-image 很少用到
+
+	背景
+
+		background-size 调整图片的大小 cover resize 设置多个图片 但是图片是透明的 或者小图片
+
+		一般用于 背景颜色 渐变 背景图片 透明 
+
+	渐变
+
+		线性渐变 linear-gradient(red,blue) 方向和deg 颜色1，颜色2，颜色3 
+
+	@font-face {
+		font-family:xxx
+		src : 
+	}
+
+	div {
+		font-family:xxx
+	}
+
+
+
+	2D 转换
+
+		1 位置移动  比如 左移 上移
+		  transform:rotate(30deg)
+
+		2 放大 缩小 scale(水平方向，垂直方向) 整体的放大缩小
+
+
+		3 skew() 旋转
+
+		4 translate() 
+
+					transform-origin 相对于某一个点 
+
+
+	过渡
+
+		transition 
+
+	自定义动画 
+
+		@keyframes
+
+		from(background:red)
+
+		to(background:yellow)
+
+
+
