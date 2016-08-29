@@ -48,6 +48,7 @@
 	// 	function isVisible(el){
 	// 	var clock;
 	// 	var $el = el,
+	//      $elH = $el.height(),
 	// 		$elT = $el.offset().top,
 	// 	    $winH = $(window).height();
 		
@@ -58,7 +59,7 @@
 	// 	  	clearTimeout(clock);
 	// 	  }
 	// 	    clock = setTimeout(function(){
-	// 			if($winGo + $winH > $elT){
+	// 			if($winGo + $winH > $elT && $elT + $elH > $winGo){
 	// 				console.log('出来了');
 	// 				return true;
 	// 			}else{
