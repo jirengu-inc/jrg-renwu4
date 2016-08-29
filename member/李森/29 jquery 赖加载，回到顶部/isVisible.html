@@ -34,9 +34,10 @@
 
 	function isVisible($el){
 		var $elT = $el.offset().top,
+			$elH = $el.height(),
 		    $winH = $(window).height(),
 	        $winGo = $(window).scrollTop();
-			if($winGo + $winH > $elT){
+			if($winGo + $winH > $elT && $elT + $elH > $winGo){
 				return true;
 			}else{
 				return false;
