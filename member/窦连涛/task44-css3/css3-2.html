@@ -11,62 +11,64 @@
 
 		body {
 			background: #0dcecb;
+			font-family: "微软雅黑";
 		}
 
-		.load {
+		.load,
+		.load:before,
+		.load:after {
 			width: 10px;
 			height: 40px;
 			background: #FFF;
-			position: relative;
-			top:20px;
-			left: 50%;
-			animation: load 1s infinite ease-in-out;
-			animation-delay: 0.16s;
+			animation: load1 1s infinite ease-in-out;
 		}
 
+
+		.load:before,
 		.load:after{
+			position: absolute;
 			display: block;
 			content:'';
-			width: 10px;
-			height: 40px;
-			background: #FFF;
-			position: absolute;
-			top:0px;
-			left: -20px;
-			animation: load 1s infinite ease-in-out;
-			animation-delay: 0.32s;
+			top:0;
 		}
 
 		.load:before{
-			display: block;
-			content:'';
-			width: 10px;
-			height: 40px;
-			background: #FFF;
-			position: absolute;
-			top:0px;
-			left: 20px;
-			animation: load 1s infinite ease-in-out;
+			left:-15px;
 		}
 
-		@keyframes load{
-			0%,
-			80%,
-			100%{
-				box-shadow: 0 0 #fff;
-    			height: 50px;
-			}
-
-			10%{
-				box-shadow: 0 0 #fff;
-    			height: 40px;
-			}
+		.load:after{
+			left:15px;
+			animation-delay: 0.16s;
 		}
+
+		
+		.load {
+			text-indent: -9999px;
+			position: relative;
+			margin:100px auto;
+			font-size: 12px;
+			animation-delay: 0.32s;
+		}
+
+
+	    @keyframes load1 {
+	      0%,
+	      80%,
+	      100% {
+	        box-shadow: 0 0 #fff;
+	        /*这里是关键*/
+	        height: 40px;
+	      }
+	      10% {
+	        box-shadow: 0 -20px #fff;
+	        height: 50px;
+	      }
+	    }
+
 	</style>
 </head>
 <body>
-	<div class="load">
 		
-	</div>
-</body>
+	<div class="load">loading...</div>
+
 </html>
