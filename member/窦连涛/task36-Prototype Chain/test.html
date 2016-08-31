@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		String.prototype.getMostOften = function(){
+			var str = this;
+			var json = {};
+			for(i = 0;i < str.length;i++){
+				if(!json[str.charAt(i)]){
+					json[str.charAt(i)] = 1;
+				}else{
+					json[str.charAt(i)] += 1;
+				}
+			}
+			//存储出现次数最多的值和次数
+			var number = '';
+			var num = 0;
+
+			for(var i in json){
+				//如果当前项大于下一项
+				if(json[i] > num){
+					
+					num = json[i];
+					number = i;
+				}
+			}
+
+			return number;
+
+		}
+
+		var str = 'ahbbccdeddddfg';
+		console.log(str.getMostOften());
+		// function People(name){
+		// 	this.name = name;
+		// }
+
+		// People.prototype.sayName = function(){
+		// 	console.log(this.name);
+		// }
+
+		// People.prototype.sname = "hello";
+
+		// p1 = new People('DouLianTao');
+		// p2 = new People('MaYanJie');
+
+		function isObj(obj,Func){
+
+			var proto = obj.__proto__;
+
+			do{
+				if(proto === Func.prototype) return true;
+				if(!proto) return false;
+			}while(proto = proto.__proto__);
+
+			return false;
+		}
+		
+	</script>
+</body>
+</html>

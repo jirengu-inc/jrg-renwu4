@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>加载更多</title>
+<style>
+	ul,li{
+		margin:0;
+		padding:0;
+	}
+	#ct li{
+		list-style-type: none;
+		padding:10px;
+		border:1px solid #ccc;
+		margin-top:10px;
+		cursor:pointer;
+		font-family:"微软雅黑";
+	}
+	#ct li:hover{
+		background:pink;
+	}
+	#more{
+		display: block;
+		margin:20px auto;
+		text-align:center;
+		font-family:"微软雅黑";
+	}
+	#more img{
+		width:40px;
+		height:40px;
+	}
+	.btn{
+		display:inline-block;
+		border:1px solid #e27272;
+		height:40px;
+		width:80px;
+		line-height:40px;
+		text-decoration:none;
+		border-radius:3px;
+		color:#e27272;
+	}
+
+</style>
+</head>
+<body>
+	<ul id="ct">
+		<li>内容一</li>
+		<li>内容二</li>
+	</ul>
+	<a href="#" class="btn" id="more">加载更多</a>
+	<script type="text/javascript">
+
+	function ajax(obj){
+	    var xhr = new XMLHttpRequest();
+	    xhr.onreadystatechange = function(){
+	        if(xhr.readyState == 4 && xhr.status ==200){
+	            var json = JSON.parse(xhr.responseText.match(/{[^{]+}/)[0]);
+	            obj.success(json);
+	        }
+	        if(xhr.readyState == 404){
+	            obj.error();
+	        }
+	    };
+
+	    var dataStr = "";
+	    for(var k in obj.data){
+	        dataStr += k + "=" + obj.data[k] + "&";
+	    }
+	    dataStr = dataStr.substr(0, dataStr.length-1) ;
+	    console.log(dataStr);
+	    if(obj.type.toLowerCase() ==="get"){
+	        xhr.open(obj.type, obj.url+"?"+dataStr, true);
+	        xhr.send();
+	    }
+
+	    if(obj.type.toLowerCase() ==="post"){
+	        xhr.open(obj.type, obj.url, true);
+	        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+	        xhr.send(dataStr);
+	    }
+	}
+
+	var index = 2;
+    var ct= document.querySelector("#ct");
+    var btn = document.querySelector("#more");
+    var lock=false;
+
+    btn.addEventListener("click", function(e){
+        e.preventDefault();
+        if(lock){
+            return;
+        }
+        lock=true;
+
+        ajax({
+            url: "2.php",
+            type: "get",
+             data:{
+                 pageStart: index,
+                 len:5
+             },
+
+             success: function(res){
+                 success(res);
+             },
+
+             error: function(){
+                 error();
+             }
+        });
+
+        function success(res){
+            for(var i=0; i<res.data.length; i++){
+                var newLi=document.createElement("li");
+                newLi.innerText="内容"+res.data[i];
+                ct.appendChild(newLi);
+            }
+            
+            lock=false;
+            index += 5;
+
+        }
+
+        function error(){
+            alert("出错了!");
+            lock=false;
+        }
+
+
+    })
+
+
+</script>
+</body>
+</html>

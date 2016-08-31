@@ -1,0 +1,85 @@
+this 的几种场景
+
+总原则：就是调用函数的那个对象
+
+1 作为函数调用
+	
+	函数被调用时 this 绑定到全局变量 。 在浏览器中，全局对象就是window 。在node 的时候
+
+	就是global对象
+
+2 内部函数
+	
+	函数嵌套产生的内部函数 this 不是其父函数 仍然是全局变量 
+
+3 作为对象内的函数
+
+	this 调用是本对象
+
+4 setTimeout setInterval 里面的函数 
+	
+	this 指的是window
+
+5 DOM 对象绑定事件
+	
+	this 指的是事件源DOM 对象
+
+5 作为构造函数的调用
+
+	用new运算符 + 函数() == 构造函数 返回一个新的对象 this 指向这个对象
+
+	1 创建类的实例 把一个空对象的属性__proto__设置为F .prototype
+	2 初始化实例   函数F的参数被调用，关键字this设定为该实例
+	3 返回实例 
+
+7 Function.prototype.bind()
+
+	
+		 var obj1 = {
+		 	name:'douliantao',
+		 	fn:function(){
+		 		this.age = 123;
+		 		console.log(this);
+		 	}
+		 }
+
+		 obj1.fn(); // this 指的是obj1
+
+		 var fn2 = obj1.fn.bind(obj1);
+
+8 call apply 设置this
+	
+9 arguments 
+
+10 caller 指向哪个函数调用了它 指向了它的父容器
+
+11 callee arguments.callee 指向自身 
+
+12 三种变量 
+	
+	静态变量
+
+	私有变量
+
+	实例变量
+
+			function classA(){
+				var num = 1 ; // 私有变量
+				this.b = 2 ; // 实例变量
+
+			}
+
+			classA.c = 3 // 静态变量
+
+13 访问内部函数
+	
+		1 定义全局变量
+
+		2 返回值
+
+		3 闭包 
+
+
+
+
+
