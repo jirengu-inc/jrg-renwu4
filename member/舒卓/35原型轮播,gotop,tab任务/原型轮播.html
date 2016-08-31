@@ -219,12 +219,9 @@
       } ,
       move: function(){
         var me= this;
-        me.$ct.find('img').on('load',function(){
           clock = setInterval(function () {
-            me.playNext();
+            me.playNext()
           },2500);
-        })
-
       },
       stop:function () {
         clearInterval(clock)
