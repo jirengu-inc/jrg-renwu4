@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>瀑瀑流布局</title>
+	<style>
+		.ct{
+			position: relative;
+		}
+		.item{
+			position: absolute;
+			width: 220px;
+			margin-left: 5px;
+			margin-right: 5px;
+			margin-top: 10px;
+			transition: all 1s;
+		}
+		.one{
+			height: 120px;
+			background: yellow;
+		}
+		.two{
+			height: 180px;
+			background: blue;
+		}
+		.there{
+			height: 150px;
+			background: red;
+		}
+		.foure{
+			height: 220px;
+			background: green;
+		}
+		.fiver{
+			height: 300px;
+			background: pink;
+		}
+	</style>
+</head>
+<body>
+<div class="ct">
+	<div class="item foure">1</div>
+	<div class="item one">2</div>
+	<div class="item there">3</div>
+	<div class="item two">4</div>
+	<div class="item foure">5</div>
+	<div class="item fiver">6</div>
+	<div class="item there">7</div>
+	<div class="item one">8</div>
+	<div class="item fiver">9</div>
+	<div class="item there">10</div>
+	<div class="item foure">11</div>
+	<div class="item two">12</div>
+	<div class="item one">13</div>
+	<div class="item foure">14</div>
+	<div class="item fiver">15</div>
+	<div class="item one">16</div>
+	<div class="item foure">17</div>
+	<div class="item two">18</div>
+	<div class="item fiver">19</div>
+	<div class="item one">20</div>
+	<div class="item two">21</div>
+	<div class="item there">22</div>
+</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+var playGo = (function(){
+	function play(){
+		var $itemW = $('.item').outerWidth(true),
+		    $itemS = parseInt($(window).width()/$itemW),
+	        itemH = [];
+
+		for(var i=0; i<$itemS; i++){
+			itemH.push(0);
+		}
+
+		$('.item').each(function(){
+			var $me = $(this),
+	            idx = 0,
+			    minH = itemH[0];
+			for(var i=0; i<itemH.length; i++){
+				if(itemH[i] < minH){
+					idx = i;
+					minH = itemH[i];
+				}
+			}
+			$me.css({
+				left: $itemW*idx,
+				top: minH
+			});
+			itemH[idx] = $me.outerHeight(true) + itemH[idx]
+		});
+        
+        var $surplus = $(window).width() - itemH.length*$itemW
+		if($surplus < $itemW){
+			$('body').css('margin-left',$surplus/2)
+		}
+	}
+play()
+	$(window).on('resize', function(){
+		play();
+	})
+	return {
+		init:play
+	}
+})()
+playGo.init();
+
+
+// function play(){
+// 	var $itemW = $('.item').outerWidth(true),
+// 	    $itemS = parseInt($(window).width()/$itemW),
+//         itemH = [];
+
+// 	for(var i=0; i<$itemS; i++){
+// 		itemH.push(0);
+// 	}
+
+// 	$('.item').each(function(){
+// 		var $me = $(this),
+//             idx = 0,
+// 		    minH = itemH[0];
+// 		for(var i=0; i<itemH.length; i++){
+// 			if(itemH[i] < minH){
+// 				idx = i;
+// 				minH = itemH[i];
+// 			}
+// 		}
+// 		$me.css({
+// 			left: $itemW*idx,
+// 			top: minH
+// 		});
+// 		itemH[idx] = $me.outerHeight(true) + itemH[idx]
+// 	});
+// }
+
+//  play();
+
+// $(window).on('resize', function(){
+// 	play();
+// })
+
+
+
+
+ 	
+
+
+
+
+</script>
+</body>
+</html>

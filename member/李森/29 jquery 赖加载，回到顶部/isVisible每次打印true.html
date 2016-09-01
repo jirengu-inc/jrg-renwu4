@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>判断一个元素是否出现在窗口可视范围,每次出现都在控制台打印 true 。</title>
+	<style type="text/css">
+		body{
+			height: 1000px;
+		}
+		p{
+			width: 800px;
+			margin: 800px auto;
+			text-align: center;
+			font-size: 50px;
+		}
+		span{
+			color: #ae81ff;
+		}
+	</style>
+</head>
+<body>
+<p>我每次出现，控制台要打印<span>true</span></p>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+
+	// function isVisible(el){
+	// 	var clock;
+	// 	var $el = el,
+	// 		$elT = $el.offset().top,
+	// 	    $winH = $(window).height();
+		
+	// 	$(window).on('scroll',function(){
+	// 	  var $winGo = $(window).scrollTop();
+	// 	  if(clock){
+	// 	  	clearTimeout(clock);
+	// 	  }
+	//     clock = setTimeout(function(){
+	// 		if($winGo + $winH > $elT){
+	// 			console.log(true);
+	// 		}
+	//     },500);
+	// 	})
+	// }
+	// isVisible($('p'));
+
+var playGo = function(el){
+	var clock;
+	var $el = el;
+	scroll();
+	function scroll(){
+		$(window).on('scroll',function(){
+		    if(clock){
+				clearTimeout(clock);
+			}
+			 clock = setTimeout(function(){
+			    if( isVisible($el) ){
+				    console.log(true);
+			    }
+		    },500);
+		});		
+	}
+
+	function isVisible($el){
+		var $elT = $el.offset().top,
+			$elH = $el.height(),
+		    $winH = $(window).height(),
+	        $winGo = $(window).scrollTop();
+			if($winGo + $winH > $elT && $elT + $elH > $winGo){
+				return true;
+			}else{
+				return false;
+			}
+	}
+}
+playGo($('p'));
+</script>
+</body>
+</html>
