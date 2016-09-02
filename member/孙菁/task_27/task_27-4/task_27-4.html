@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 27-4 全屏轮播</title>
+	<script src="../jquery-3.0.0.min.js"></script>
+	<style>
+		/* reset */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		li { list-style: none; }
+		a { text-decoration: none; }
+		/* end reset*/
+
+		/* public */
+		.clear {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		html,
+		body,
+		div.carousel,
+		ul.items { 
+			height: 100%; 
+			width: 100%;
+		}
+		/* end public*/
+		
+		div.carousel { 
+			position: relative;
+			overflow: hidden;
+		}
+		ul.items { position: absolute; }
+		ul.items li {
+			height: 100%;
+			width: 100%;
+			float: left;
+			position: relative;
+		}
+		div.cover {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-position: center center;
+			background-size: cover;
+		}
+		div.describe {
+			position: relative;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			text-align: center;
+			color: #fff;
+			font-weight: bold;
+		}
+		div.describe h3 { 
+			font-size: 34px;
+			padding-bottom: 30px;
+		}
+		div.describe p {
+			font-size: 20px;
+			padding-top: 30px;
+		}
+		ul.carousel-nav {
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);    /*不写死width同上，用transform属性代替固定width时的margin-top达到水平居中*/
+			border-bottom: 10px;
+		}
+		ul.carousel-nav li {
+			display: inline-block;
+			width: 16px;
+			height: 4px;
+			background: #fff;
+			cursor: pointer;
+		}
+		ul.carousel-nav li.active { background: #666;}
+    </style>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="items clear">
+			<li>
+				<div class="cover" data-bg-img = "imgs/1.jpg"></div>
+				<div class="describe">
+					<h3>历史不是镜子</h3>
+					<p>历史是精子，牺牲亿万，才有一个活到今天</p>
+				</div>
+			</li>
+			<li>
+				<div class="cover" data-bg-img = "imgs/2.jpg"></div>
+				<div class="describe">
+					<h3>人生不是故事</h3>
+					<p>人生是事故，摸爬滚打，才不辜负功名尘土</p>
+				</div>
+			</li>
+			<li>
+				<div class="cover" data-bg-img = "imgs/3.jpg" ></div>
+				<div class="describe">
+					<h3>世界不是苟且</h3>
+					<p>世界是远方，行万里路，才能回到内心深处</p>
+				</div>
+			</li>
+			<li>
+				<div class="cover" data-bg-img = "imgs/4.jpg"></div>
+				<div class="describe">
+					<h3>未来不是岁数</h3>
+					<p>未来是礼物，读万卷书，才能看清皓月星空</p>
+				</div>
+			</li>
+			<li>
+				<div class="cover" data-bg-img = "imgs/5.jpg"></div>
+				<div class="describe">
+					<p>生活不止眼前的苟且，还有诗和远方的田野</p>
+					<p>你赤手空拳来到人世间，未找到那片海不顾一切</p>
+				</div>
+			</li>
+		</ul>
+
+		<ul class="carousel-nav">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script>
+		 //$(function(){
+			var $items = $("ul.items"),
+			    $lis = $items.children(),
+			    $cover = $("div.cover"),
+			    $nav = $("ul.carousel-nav"),
+			    imgWidth = $lis.width(),
+			    imgCount = $lis.length;
+
+		    $items.prepend( $lis.last().clone() );     //前后分别clone最后一张和第一张，保证无限循环
+		    $items.append( $lis.first().clone() );
+		    imgRealCount = $items.children().length;
+		    $items.find("li").css({ width: imgWidth});
+		    $lis.find(".cover").css({ width: imgWidth});
+		    $items.css({
+		    	width: imgRealCount*imgWidth,
+		    	left: 0 - imgWidth
+		    });
+
+		    var curIdx = 0,
+		    	isAnimate = false;
+
+		    $nav.find("li").on('click',function(){
+		    	var idx = $(this).index();
+		    	if(idx > curIdx){
+		    		playNext(idx - curIdx);
+		    	}else if(idx < curIdx){
+		    		playPre(curIdx - idx);
+		    	}
+		    });
+
+		    setBg(1);
+		    autoPlay();
+		    function autoPlay(){                     //自动轮播
+		    	clock = setInterval(function(){
+		    		playNext();
+		    	},3000);
+		    }
+
+		    //图片懒加载
+		    function setBg(idx){                                 //设置展示图片
+		    	var idx = idx || 0,
+		    		$li = $items.children().eq(idx),
+		    		$cover = $li.find(".cover"),
+		    		imgUrl = $cover.attr("data-bg-img");         //获取目标div的data-bg-img属性值
+		    	if( $li.data("isBgSet") )  return;
+		    	$cover.css( 'background-image','url(' + imgUrl + ')'  );         //设置css背景图片
+		    	$li.data('isBgSet',true);
+		    }
+
+		    function playPre(num){
+		    	var num = num || 1;
+
+		    	if(isAnimate) return;             
+		    	isAnimate = true;
+
+		    	setBg(curIdx);                 //curIdx初始值为0，setBg()初始显示图片下标为1
+		    	$items.animate({left: '+=' + (imgWidth*num)},500,function(){
+		    			curIdx = (imgCount + curIdx - num) % imgCount;
+		    			if(curIdx == imgCount-1){
+		    				$items.css({left: 0 - imgWidth * imgCount});
+		    			}
+		    			isAnimate = false;
+		    			setNav();
+		    	});		
+		    }
+
+		    function playNext(num){
+		    	var num = num || 1;
+
+		    	if(isAnimate) return;
+		    	isAnimate = true;
+		    		
+		    	setBg(curIdx+2);
+		    	$items.animate({left: '-=' + (imgWidth*num)},500,function(){
+		    			curIdx = (curIdx + num) % imgCount;
+		    			if(curIdx == 0){
+		    				$items.css({left: 0-imgWidth});
+		    				curIdx = 0;
+		    			}
+		    			isAnimate = false;
+		    			setNav();
+		    	});	
+		    }
+
+		    function setNav(){
+		    	$nav.find("li")
+		    		.removeClass('active')
+		    		.eq(curIdx).addClass('active');	
+		    } 
+
+		 //});
+    </script>
+</body>
+</html>

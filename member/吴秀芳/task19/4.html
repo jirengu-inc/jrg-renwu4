@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	var Runtime = (function(){
+   //code here ...
+	 var  startTime, endTime,doTime;
+      return {
+	        start: function(){
+	        startTime=Date.now();
+	          return startTime;    
+	        },
+	        end: function(){
+	            endTime=Date.now();
+	            return endTime;
+	        },
+	        get: function(){
+	            doTime=endTime- startTime;
+	           return  doTime;
+		        }
+	    };
+	}());
+	 Runtime.start();
+	 //todo somethint
+	 for(var i=0;i<100;i++){
+	  console.log(1);
+	 }
+	 Runtime.end();
+	 console.log(  Runtime.get() );
+</script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function isEmail(str){
+		var patt=/\S+@+\S+|\.\S+/;
+         return patt.test(str);
+     
+	}
+	 isEmail('haha@qq.com');
+	 console.log(isEmail('hah-a@qq.com'));
+	</script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>27-2</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style media="screen">
+      html,body,ul,li,a,img{
+        padding: 0;
+        margin: 0;
+      }
+      li{list-style:none;}
+      a{text-decoration:none;}
+
+      .wheel{
+        position: relative;
+        width: 400px;
+        height: 500px;
+        top:50px;
+        left: 400px;
+        overflow: hidden;
+      }
+      .wheel .ct{
+        position: absolute;
+      }
+      .wheel .ct li{
+        float: left;
+      }
+      .wheel .ct img{
+        width: 400px;
+        height: 500px;
+      }
+
+      .arrow{
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        top: 50%;
+        border-radius: 36px;
+        text-align: center;
+        background: #fff;
+        opacity: 0.6;
+      }
+      .arrow:hover{
+        opacity: 0.9;
+      }
+      .next{
+        right: 10px;
+      }
+      .pre{
+        left: 10px;
+      }
+      .wheel .tiny{
+        position: absolute;
+        left: 50%;
+        bottom: 10px;
+        transform: translateX(-50%);
+      }
+      .tiny li{
+        width: 25px;
+        height: 5px;
+        display: inline-block;
+        background: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .tiny li.active{
+        background: #456;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="wheel">
+      <ul class="ct">
+        <li><a href="#"><img src="http://www.youhuaaa.com/UploadFiles/images/Painting_Pic_Big/97/48191.jpg" alt=""></a></li>
+        <li><a href="#"><img src="http://www.youhuaaa.com/UploadFiles/images/Painting_Pic_Big/10/4975.jpg" alt=""></a></li>
+        <li><a href="#"><img src="http://www.youhuaaa.com/UploadFiles/images/Painting_Pic_Big/81/40473.jpg" alt=""></a></li>
+        <li><a href="#"><img src="http://www.youhuaaa.com/UploadFiles/images/Painting_Pic_Big/10/4964.jpg" alt=""></a></li>
+      </ul>
+      <a href="#" class="next arrow">></a>
+      <a href="#" class="pre arrow"><</a>
+      <ul class="tiny">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+      var $ct = $('.ct'),
+          $chil = $ct.children(),
+          $next = $('.next'),
+          $pre = $('.pre'),
+          imgWidth = $chil.width(),// 图片宽度
+          imgNum = $ct.children().size();   // 图片的个数
+
+
+      $ct.prepend($chil.last().clone());    // 复制最后一个元素到第一个元素前
+      $ct.append($chil.first().clone());    // 复制第一个元素到最后一个元素后
+      imgReal = $ct.children().size();      // clone 后图片的数量 这里是6个
+      $ct.css({left:0-imgWidth, width: imgReal*imgWidth}); //因复制元素，left是展示第一张图片，设置轮播总宽度
+
+
+
+// idx 是即将要跳转到的图片位置
+// curIdx 是当前显示图片位置.
+      var curIdx = 0;
+      var isAnimate = false;
+
+      $next.on('click',function(){
+        playNext();
+      })
+      $pre.on('click',function(){
+        playPre();
+      })
+
+      $('.tiny').find('li').on('click',function(){
+        var idx = $(this).index();
+        if (idx > curIdx) {
+          playNext(idx - curIdx);     // 例如 当前图位置为0 点击2 idx>curIdx  (2-0=2) 则传入参数playNext(2);
+        }else if (idx < curIdx) {
+          playPre(curIdx - idx);
+        }
+      })
+
+      function playNext(idx){
+        var idx = idx||1;            // 如果传入参数就用传入的idx ，没传就用 1
+        if(!isAnimate){              // 设置锁..将isAnimate 设为true时 是开锁,让动画执行，执行完成后设置为false
+          isAnimate= true;
+
+        $ct.animate({left:'-='+(imgWidth*idx)},function(){
+          curIdx = (curIdx+idx)%imgNum;   //求余数， 此以下三行代码是为了在最后一张图片滚到第一张，实现轮播
+          if(curIdx === 0){               //点击进入最后一长clone图片时，curIdx为0了， 表示这是最后一张图片点击到第一张图
+            $ct.css({left:0-imgWidth});   // 设置css，跳转展示第一张图片
+          }
+          // curIdx++;
+          // if(curIdx === imgNum){
+          //   $ct.css({left:0-imgWidth});
+          //   curIdx =0;
+          // }
+          isAnimate = false;
+          setTiny();
+        });
+      }
+     }
+
+      function playPre(idx){
+        var idx =idx||1;
+        if (!isAnimate) {
+          isAnimate = true;
+        $ct.animate({left:'+='+(imgWidth*idx)},function(){
+          curIdx = (imgNum+curIdx-idx)%imgNum; // 求余数， 此以下三行代码是为了在第一张图片往前滚到最后张，实现轮播
+          if (curIdx === (imgNum-1)) {         // 点击进入第一张clone图片时，这里curIdx为1了，表示第一张图片点击进入最后一张图片
+            $ct.css({left:0-imgWidth*imgNum}) //设置css，跳转展示最后一张图片，且其它图片也按顺序拿到前面
+          }
+          isAnimate = false;
+          setTiny();
+        });
+      }
+    }
+
+    function setTiny(){
+      $('.tiny').find('li').removeClass('active').eq(curIdx).addClass('active');
+    }
+
+// 自动播放
+    function move(){
+      clock = setInterval(function(){
+        playNext();
+      },2500);
+    }
+    function stop(){
+      cleatInterval(clock);
+    }
+    move();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+  </body>
+</html>

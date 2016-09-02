@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+  *{
+    padding:0;
+    margin:0;
+  }
+
+  li{
+    list-style: none;
+  }
+
+  a{
+    text-decoration: none;
+  }
+
+  .clear {
+    *zoom:1;
+  }
+
+  .clear:after{
+    content: '';
+    display: block;
+    clear:both;
+  }
+
+  #tab {
+    width: 400px;
+    border:1px solid #CCC;
+  }
+
+  #tab .tabs{
+    margin-left:-2px;
+    border-bottom: 1px solid #CCC;
+  }
+
+  #tab .tabs li{
+    height: 40px;
+    width: 133px;
+    float: left;
+    border-right:1px solid #eee;
+    line-height: 40px;
+    text-align: center;
+  }
+
+
+  .move {
+    background: #EEE;
+  }
+
+  .con div{
+    height: 300px;
+    display: none;
+  }
+  .cons {
+    height: 300px;
+    display: none;
+  }
+
+  .const {
+    height: 300px;
+    display: block;
+  }
+
+  .con div:first-of-type{
+    display: block;
+  }
+
+  .active {
+     display: block;
+  }
+  </style>
+</head>
+<body>
+
+  <div id="tab">
+    <ul class="tabs clear">
+      <li class="move">
+        <a href="#">Tab1</a>
+      </li>
+      <li>
+        <a href="#">Tab2</a>
+      </li>
+      <li>
+        <a href="#">Tab3</a>
+      </li>
+    </ul>
+    <div class="con">
+      <div >内容一</div>
+      <div >内容二</div>
+      <div >内容三</div>
+    </div>
+  </div>
+  <script>
+    var tab = document.getElementsByClassName('tabs')[0].children;
+    var con = document.getElementsByClassName('con')[0].children;
+
+    for (var i = 0; i < tab.length; i++) {
+      (function(i){
+        tab[i].addEventListener('click',function(){
+          var s = i;
+          for (var j = 0; j < tab.length; j++) {
+            tab[j].className = '';
+            con[j].className = 'cons';
+            con[j].style.display = 'none';
+          }
+          tab[s].className = 'move';
+          con[s].style.display = 'block'
+        },false)
+      })(i)
+    }
+  </script>
+</body>
+</html>

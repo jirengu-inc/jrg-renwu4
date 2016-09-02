@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>全屏轮播</title>
+	<style>
+	html,body,#carousel,.picture{
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		height: 100%;
+	}
+	ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	#carousel{
+		position: relative;
+		overflow: hidden;
+	}
+	#carousel .picture{
+		position: absolute;
+	}
+	.picture:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.picture li{
+		position: relative;
+		float: left;
+		height: 100%;
+	}
+	#carousel .cover{
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;		
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;		
+	}
+	.describe{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	#carousel .follow{
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}	
+	.follow li{
+		display: inline-block;
+		width: 16px;
+		height: 5px;
+		background: red;
+		border-radius: 5px;
+	}
+	.follow .hover{
+		background: green;
+	}
+	</style>
+</head>
+<body>
+<div id="carousel">
+	<ul class="picture">
+		<li><div class='cover' data-bg-img="img/q1.jpg"></div>
+			<div class="describe">
+				<h1>日出</h1>
+				<p>太阳一点点升起，阳光慢慢撒满大地</p>
+			</div>
+		</li>
+			<li><div class='cover' data-bg-img="img/q5.jpg"></div>
+			<div class="describe">
+				<h1>白云</h1>
+				<p>蓝色的天，衬托出云的白，这份景象需要人们的努力</p>
+			</div>
+		</li>
+		<li><div class='cover' data-bg-img="img/q4.jpg"></div>
+			<div class="describe">
+				<h1>自然</h1>
+				<p>清澈的湖水，倒映出天的色彩，这份景象需要人们的努力</p>
+			</div>
+		</li>		
+		<li><div class='cover' data-bg-img="img/q2.jpg"></div>
+			<div class="describe">
+				<h1>日落</h1>
+				<p>劳碌了一天，终于得以休息</p>
+			</div>
+		</li>		
+		<li><div class='cover' data-bg-img="img/q3.jpg"></div>
+			<div class="describe">
+				<h1>黄昏</h1>
+				<p>夜，快要来临，喧闹的一天正在逐步安静</p>
+			</div>
+		</li>
+	</ul>
+	<ul class="follow">
+		<li class="hover"></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+var play = function(){
+	var $picture = $('.picture'),
+		$pictureS = $picture.children(),
+		$follow =$('.follow'),
+		$imgS = $pictureS.length,
+		$imgWidth = $(window).width();
+
+	$picture.prepend($pictureS.last().clone());
+	$picture.append($pictureS.first().clone());
+
+	$picture.find('li').css('width', $imgWidth);
+	$picture.find('.cover').css('width', $imgWidth);
+	imgtotal = $picture.children().length;
+	$picture.css({left:0-$imgWidth,width:imgtotal*$imgWidth});
+	
+
+	  var curIdx = 0;
+      var isAnimate = false;
+	  
+	  $follow.find('li').on('click',function(){
+	  	 var $idx = $(this).index();
+	  	 if($idx > curIdx){
+	  	 	playNext($idx - curIdx);
+	  	 }else if($idx < curIdx){
+	  	 	playPre(curIdx - $idx);
+	  	 }
+	  });
+	  
+	  playGo();
+	  setBg(1);
+
+	function setBg(idx){
+		var idx = idx || 0,
+			$node = $picture.children().eq(idx)
+			$cover = $node.find('.cover'),
+			imgUrl = $cover.attr('data-bg-img');
+			console.log($node);
+		if($node.data('isBgSet')) return;	
+		$cover.css('background-image', 'url('+imgUrl+')');
+		$node.data('isBgSet', true);
+		
+	}
+
+	  function playPre(idx){
+	  	var idx = idx || 1;
+	  	if(isAnimate){return};
+	    isAnimate = true;
+	    setBg(curIdx);
+	  	$picture.animate({left: '+=' + ($imgWidth*idx)},function(){
+	  		curIdx = ($imgS + curIdx - idx)%$imgS;
+	  		if(curIdx === ($imgS - 1)){
+	  			$picture.css({left: 0-$imgWidth*$imgS});
+	  		}
+	  		isAnimate =false;
+	  		follow();
+	  	})
+	  }
+	  function playNext(idx){
+	  	var idx = idx || 1;
+	  	if(isAnimate){return}
+	    isAnimate = true;
+	    setBg(curIdx+2);
+	  	$picture.animate({left: '-=' + ($imgWidth*idx)},function(){
+	  		curIdx = (curIdx + idx)%$imgS;
+	  		if(curIdx === 0){
+	  			$picture.css({left: 0-$imgWidth});
+	  		}
+	  		isAnimate = false;
+	  		follow();
+	  	})
+	  }
+	
+	function follow(){
+		$follow.children().removeClass('hover')
+				.eq(curIdx).addClass('hover');
+	}
+
+	function playGo(){
+		colck = setInterval(function(){
+			playNext();
+		},3000);
+	}
+}
+play();
+
+</script>
+
+</body>
+</html>

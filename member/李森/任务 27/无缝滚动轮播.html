@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>无缝滚动轮播</title>
+	<style>
+		ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		#carousel,.picture img{
+			width: 500px;
+			height: 300px;
+		}
+		#carousel{
+			position: relative;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+		.picture{
+			position: absolute;
+		}
+		.picture:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.picture>li{
+			float: left;
+		}
+		.pre,.next{
+			width: 40px;
+			line-height: 40px;
+			display: block;
+			background: #000;
+			opacity: .2;
+			color: #fff;
+			font-size: 32px;
+			border-radius: 50px;
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			margin-top: -20px;
+		}
+		#carousel>a:hover{
+			opacity: .6;
+		}
+		.pre{
+			left: 10px;			l			
+		}
+		.next{			
+			right: 10px;
+		}
+		.follow:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.follow{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.follow>li{
+			width: 15px;
+			height: 6px;
+			display: inline-block;
+			background: red;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.follow .hover{
+			background: #3CB371;
+		}
+	</style>
+</head>
+<body>
+<div id="carousel">
+	<ul class="picture">
+		<li><a href="#"><img src="img/z1.jpg"></a></li>
+		<li><a href="#"><img src="img/z4.jpg"></a></li>
+		<li><a href="#"><img src="img/z6.jpg"></a></li>
+	</ul>
+	<a class="pre" href="#"><</a>
+	<a class="next" href="#">></a>
+	<ul class="follow">
+		<li class="hover"></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+ var play = function (){
+	var $picture = $('.picture'),
+		$pictureS = $picture.children(),
+		$pre = $('.pre'),
+		$next = $('.next'),
+		$follow =$('.follow'),
+		$imgS = $pictureS.length,
+		$imgWidth = $pictureS.width();
+
+	$picture.prepend($pictureS.last().clone());
+	$picture.append($pictureS.first().clone());
+	imgtotal = $picture.children().length;
+	$picture.css({left:0-$imgWidth,width:imgtotal*$imgWidth});
+
+
+	var curIdx = 0;
+	var isAnimate = false;
+
+	$pre.on('click',function(){
+		 playPre();
+	});
+	$next.on('click',function(){
+		 playNext();
+	});
+	$follow.find('li').on('click',function(){
+		 var $idx = $(this).index();
+		 if($idx > curIdx){
+		 	playNext($idx - curIdx);
+		 }else if($idx < curIdx){
+		 	playPre(curIdx - $idx);
+		 }
+	});
+
+	playGo();
+
+	function playPre(idx){
+		var idx = idx || 1;
+		if(isAnimate){return};
+	isAnimate = true;
+		$picture.animate({left: '+=' + ($imgWidth*idx)},function(){
+			curIdx = ($imgS + curIdx - idx)%$imgS;
+			if(curIdx === ($imgS - 1)){
+				$picture.css({left: 0-$imgWidth*$imgS});
+			}
+			isAnimate =false;
+			follow();
+		})
+	}
+
+	function playNext(idx){
+		var idx = idx || 1;
+		if(isAnimate){return}
+	isAnimate = true;
+		$picture.animate({left: '-=' + ($imgWidth*idx)},function(){
+			curIdx = (curIdx + idx)%$imgS;
+			if(curIdx === 0){
+				$picture.css({left: 0-$imgWidth});
+			}
+			isAnimate = false;
+			follow();
+		})
+	}
+
+
+	function follow(){
+		$follow.children().removeClass('hover')
+				.eq(curIdx).addClass('hover');
+	}
+
+	function playGo(){
+		colck = setInterval(function(){
+			playNext();
+		},2000);
+	}
+};
+play();
+
+
+</script>
+
+</body>
+</html>

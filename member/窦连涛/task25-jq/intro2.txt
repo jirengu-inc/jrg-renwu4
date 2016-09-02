@@ -1,0 +1,30 @@
+事件代理
+$('.wrap').on('click','.d',function(){
+    console.log($(this).html);
+})
+
+$('<p>hello</p>') 相当于创建了一个元素对象
+
+hide(speed,callback)
+
+show(speed,callback)
+
+toggle(speed,callback)
+
+speed : slow fast 毫秒数
+
+如果任何参数都不传的话，相当于修改 dom.style.display = block|none
+
+fadeIn //淡入
+
+fadeOut //淡出
+
+fadeToggle // 淡入淡出切换
+
+fadeTo // 渐变到透明度
+
+SlideDown // 滑入
+
+SlideUp // 滑出
+
+SlideToggle

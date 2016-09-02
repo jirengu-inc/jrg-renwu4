@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+ <style type="text/css">
+   ul,li{
+    margin: 0;
+    padding: 0;
+    }
+    li{
+    list-style: none;
+    }
+ 	.tab-c{
+ 		border: 1px solid #ccc;
+ 		width: 363px;
+ 		height: 239px;
+ 	}
+ 	.tab-c>.tabs>.tab{
+ 		width: 120px;
+ 		border-left: 1px solid #ccc;
+ 		border-bottom: 1px solid #ccc;
+ 		float: left;
+ 		text-align: center;
+ 		padding: 10px 0;
+ 	}
+ 	.tabs:after{
+ 		content: "";
+ 		display: block;
+ 		clear: both;
+ 	}
+ 	.tab-c>.ct{
+    width: 326px;
+    height: 200px;
+    padding: 20px;
+    display: none;
+ 	}
+  .tab-c .block{
+  	display: block;
+  }
+  .color{
+  	background: #ccc;
+  }
+ </style>
+<body>
+<div class="tab-c">
+   <ul class="tabs">
+   	<li class="tab">tab1</li>
+   	<li class="tab">tab2</li>
+   	<li class="tab">tab3</li>
+   </ul>
+   <div class="ct">内容1</div>
+   <div class="ct">内容2</div>
+   <div class="ct">内容3</div>
+   </div>
+  <script type="text/javascript">
+  
+  var tabli = document.querySelector('.tabs');
+
+tabli.addEventListener('click', function(e){
+   var target = e.target,
+       tabs = tabli.children,
+       index = Utils.indexOf(target),
+       tabct = document.querySelectorAll('.ct');
+       console.log(index);
+   if(index > -1){
+       Utils.removeClass(tabs, 'color');
+       Utils.addClass(target, 'color');
+       Utils.removeClass(tabct, 'block');
+       Utils.addClass(tabct[index], 'block');
+   } 
+});
+ var Utils = {
+
+    hasClass: function(ele, cls){
+        return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+    },
+    
+    addClass:function(ele, cls){
+      if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils.singleAddClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleAddClass(ele, cls);
+      }  
+    },
+    
+    removeClass:function(ele, cls){
+       if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils.singleRemoveClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleRemoveClass(ele, cls);
+      }   
+    },
+    
+    singleAddClass: function(ele, cls){
+        if(Utils.hasClass(ele,cls)) return;
+        ele.className += ' ' + cls;
+    },
+    
+    singleRemoveClass: function(ele, cls){
+        ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b', 'g'), '');
+    },
+    
+    indexOf: function(ele){
+        var tab = ele.parentElement,
+            siblings = tab.children;
+        for(var i=0; i<siblings.length; i++){
+            if(ele === siblings[i]) return i;
+        }
+        return -1;
+    }
+};
+</script>
+</body>
+</html>

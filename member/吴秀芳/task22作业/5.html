@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="btn-ground">
+	<button class="btn-modal">点我1</button>
+  </div>
+ <div id="modal">
+  <div class="cover"></div>
+   <div class="modal-1">
+  	<div class="header">
+  		<h3>我是标题1</h3>
+  		<a class="close" href="#">X</a>
+  	</div>
+  	<div class="content">
+  		<p>我是内容1</p>
+  		<p>我是内容1</p>
+  	</div>
+  	<div class="footer">
+  		<a class="btn" href="#">确定</a>
+  		<a class="btn" id="cancel" href="#">取消</a>
+  	</div>
+  </div>
+ </div>
+ <script>
+ var btn=document.querySelector('.btn-modal'),
+    modal=document.querySelector('#modal'),
+    close=document.querySelector('.close');
+    cancel=document.querySelector('#cancel');
+    cover=document.querySelector('.cover');
+  btn.addEventListener('click',function(){
+      modal.style.display='block';
+ });
+  close.addEventListener('click',function(){
+      modal.style.display='none';
+  });
+  cancel.addEventListener('click',function(){
+      modal.style.display='none';
+  });
+  cover.addEventListener('click',function(){
+      modal.style.display='none';
+  });
+ 
+ </script>
+</body>
+</html>

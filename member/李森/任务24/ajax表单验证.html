@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>注册表单</title>
+	<style type="text/css">
+		#ct{
+			width: 395px;
+			height: 242px;
+			border: 1px solid #ccc;
+			border-radius: 10px;
+			padding: 0 20px 70px 20px;
+			background: #00BFFF;
+			position: relative;
+		}
+		input{
+			width: 200px;
+			border-radius: 5px;
+		}
+		#ct h3{
+			text-align: center;
+		}
+		#text{
+			margin-left: 16px;
+		}
+		#psw{
+			margin-left: 32px;
+		}
+		.p{
+			color: #F0E68C;
+			font-size: 12px;
+			font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			margin-left: 82px;
+			margin-bottom: 20px;
+		}
+		#btn{
+			color: green;
+			width: 80px;
+ 			padding: 10px;			
+			border: none;
+			border-radius: 4px;
+			background: #FFE4B5;
+			position: absolute;
+			bottom: 20px;
+			left: 50%;
+			margin-left: -40px;
+		}
+	</style>
+</head>
+<body>
+<div id="ct">
+	<h3><strong>注册</strong></h3>
+	<form >
+		用户名：<input id="text" type="text" placeholder="请输入用户名（hunger）已注册">
+		<p class="p p1">只能是字母，数字，下划线，3-10个字符</p>
+		
+		密码：<input id="psw" type="password" placeholder="请输入密码">
+		<p class="p p2">大写字母，小写字母，数字，下划线最少两种，6-15个字符</p>
+		
+		在输一次：<input id="psw2" type="password" placeholder="再输一次密码">
+		<p class="p p3">要和上面的一样哦~~</p>
+		
+		<button id="btn">注册</button>
+    </form>
+</div>
+<script type="text/javascript" src="isValidFormat.js"></script>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+	var text = document.querySelector('#text'),
+		p1 = document.querySelector('.p1'),
+		psw = document.querySelector('#psw'),
+		p2 = document.querySelector('.p2'),
+		psw2 = document.querySelector('#psw2'),
+		p3 = document.querySelector('.p3'),
+		btn = document.querySelector('#btn');
+      
+	text.addEventListener('blur',function(){
+		JudgeUsername();
+ 	});
+
+ 	psw.addEventListener('blur',function(){
+        JudgePssword();
+    });
+
+    psw2.addEventListener('blur',function(){
+    	JudgePssword2();
+    });
+
+    btn.addEventListener('click',function(e){
+     	e.preventDefault();
+     	var text_value = text.value;
+     	var psw_value = psw.value;
+    	var psw2_value = psw2.value;
+     	isvalidregister(text_value,psw_value,psw2_value);
+     });
+
+      //判断用户名是否符合格式
+      function JudgeUsername(){
+		var text_value = text.value;
+ 		if(isValidUsername(text_value)){
+            p1.innerText = '格式正确，用户名可用！';
+            p1.style.color = 'green';
+ 		}else if(text_value === ''){
+ 			p1.innerText = '用户名不能为空！'
+ 			p1.style.color = 'red'; 			
+ 		}else{
+ 			p1.innerText = '只能是字母，数字，下划线，3-10个字符'
+ 			p1.style.color = 'red';
+ 		}
+ 		//判断用户名是否已被注册
+ 	 	ajax({
+			url: '/form',
+			type: 'get',
+			data: {
+				name: text_value
+			},
+			success: function(json){
+				onsuccess(json);
+			},
+			error: function(){
+				onerror();
+			}
+		});
+      }
+    
+     //如果已注册，则提示已注册
+    function onsuccess(json){
+		if(json.data){
+			console.log(json);
+			p1.innerText = '该用户名已被注册！'
+ 			p1.style.color = 'red'; 	
+		}
+	}
+	//服务器故障时的提示
+	function onerror(){
+		alert('出问题啦！，请稍候注册。');
+	}
+      
+	//判断密码是否符合格式
+    function JudgePssword(){
+    	var psw_value = psw.value;
+        if(psw_value === ''){
+        	p2.innerText = '密码不能为空！';
+            p2.style.color = 'red';
+        }else if(isValidPassword(psw_value)){
+            p2.innerText = '格式正确，密码可用！';
+            p2.style.color = 'green';
+ 		}else{
+ 			p2.innerText = '大写字母，小写字母，数字，下划线最少两种，6-15个字符'
+ 			p2.style.color = 'red';
+ 		}
+    }
+
+    //再次输入密码不一致时的提示
+ 	function JudgePssword2(){
+        var psw_value = psw.value;
+    	var psw2_value = psw2.value;
+    	if(psw2_value === ''){
+        	p3.innerText = '密码不能为空！';
+            p3.style.color = 'red';
+        }else if(issame(psw_value,psw2_value)){
+    		p3.innerText = '输入正确！';
+	 		p3.style.color = 'green';  
+    	}else{
+            p3.innerText = '与上面输入的不一致！';
+            p3.style.color = 'red';
+    	}
+ 	}
+
+ 	 	// 判断再次输入的密码是否一致
+     function issame(a,b){
+     	if(a === b){return true;}
+     }
+ 	
+
+ 	// 当点击注册时如果有为空的 或 格式不正确则点击按钮无效
+     function isvalidregister(name,psw,psw2){
+     	if( !isValidUsername(name) || !isValidPassword(psw) || !issame(psw,psw2)){
+            return
+     	}else if( name === '' || psw === '' || psw2 === '' ){
+     		return
+        }else{
+        return alert('稍等，注册中...');
+        }
+    }
+</script>
+</body>
+</html>

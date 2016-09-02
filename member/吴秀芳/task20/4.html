@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	// 写一个函数，计算setTimeout最小时间粒度
+	  function getMini(){
+    	var i=0;
+    	var start=Date.now();
+    	var clock=setTimeout(function(){
+    		i++;
+    		if(i===1000){
+              clearInterval(clock);
+              var end=Date.now();
+              console.log((end-start)/i);
+    		}
+    		clock=setTimeout(arguments.callee,0)
+    	},0);
+    	
+    }
+	</script>
+</body>
+</html>

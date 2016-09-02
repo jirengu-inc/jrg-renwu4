@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多个tab</title>
+	<style>
+	*{
+		margin:0;
+		padding: 0;
+	}
+	.clearfix::after{
+		clear: both;
+		content: "";
+		display: block;
+	}
+	.ct {
+		margin:30px auto;
+		width: 450px;
+	}
+	li {
+		list-style: none;
+		float: left;
+		width: 148px;
+		height: 30px;
+		line-height: 30px;
+		text-align: center;
+		border: 1px solid #ccc;
+	}
+	li a {
+		text-decoration: none;
+		color: #000;
+	}
+	.ietm {
+		display: none;
+		width: 448px;
+		height: 200px;
+		border: 1px solid;
+		border-color: #fff #ccc #ccc #ccc ;
+	}
+	.active {
+		display: block;
+	}
+	.click {
+		background: #C5C3C3;
+	}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul class="tabs clearfix">
+			<li class="tab click"><a href="javaScript:void(0)">1</a></li>
+			<li class="tab"><a href="javaScript:void(0)">2</a></li>
+			<li class="tab"><a href="javaScript:void(0)">3</a></li>
+		</ul>
+		<div class="ietm active">内容1</div>
+		<div class="ietm">内容2</div>
+		<div class="ietm">内容3</div>
+	</div>
+		<div class="ct">
+		<ul class="tabs clearfix">
+			<li class="tab click"><a href="javaScript:void(0)">1</a></li>
+			<li class="tab"><a href="javaScript:void(0)">2</a></li>
+			<li class="tab"><a href="javaScript:void(0)">3</a></li>
+		</ul>
+		<div class="ietm active">内容1</div>
+		<div class="ietm">内容2</div>
+		<div class="ietm">内容3</div>
+	</div>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" ></script>
+		<script>
+		function Tab($ct){
+			this.$tabs=$ct.find(".tabs");
+			this.$ietm=$ct.find(".ietm");
+			this.bind();
+		}
+		Tab.prototype = {
+			bind:function(){
+				var me=this;
+				me.$tabs.on('click',"li",function(){
+					var idx=$(this).index();
+					me.$tabs.find("li").removeClass("click");
+					$(this).addClass("click");
+
+					me.$ietm.removeClass("active");
+					me.$ietm.eq(idx).addClass("active");
+				});
+				}
+			}
+			var $ct1=$(".ct").eq(0);
+			var $ct2=$(".ct").eq(1)
+			var tab1= new Tab($ct1);
+			var tab2= new Tab($ct2);
+		</script>
+</body>
+</html>
