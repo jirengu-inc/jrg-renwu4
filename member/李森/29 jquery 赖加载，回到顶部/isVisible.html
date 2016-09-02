@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>判断一个元素是否出现在窗口可视范围</title>
+	<style type="text/css">
+		body{
+			height: 1000px;
+		}
+		p{
+			margin-top: 800px;
+		}
+	</style>
+</head>
+<body>
+<p>出现</p>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+	var clock;
+	var $el = $('p');
+	$(window).on('scroll',function(){
+	    if(clock){
+			clearTimeout(clock);
+		}
+		 clock = setTimeout(function(){
+		    if( isVisible($el) ){
+			    console.log('出来了');
+		    }
+	    },500);
+
+	});
+
+	function isVisible($el){
+		var $elT = $el.offset().top,
+			$elH = $el.height(),
+		    $winH = $(window).height(),
+	        $winGo = $(window).scrollTop();
+			if($winGo + $winH > $elT && $elT + $elH > $winGo){
+				return true;
+			}else{
+				return false;
+			}
+	}
+   
+
+	// 	function isVisible(el){
+	// 	var clock;
+	// 	var $el = el,
+	//      $elH = $el.height(),
+	// 		$elT = $el.offset().top,
+	// 	    $winH = $(window).height();
+		
+	// 	$(window).on('scroll',function(){
+	// 	  var $winGo = $(window).scrollTop();
+
+	// 	  if(clock){
+	// 	  	clearTimeout(clock);
+	// 	  }
+	// 	    clock = setTimeout(function(){
+	// 			if($winGo + $winH > $elT && $elT + $elH > $winGo){
+	// 				console.log('出来了');
+	// 				return true;
+	// 			}else{
+	// 				return false;
+	// 			}
+	// 	    },500);
+	// 	})
+	// }
+	// isVisible($('p'));
+</script>
+</body>
+</html>

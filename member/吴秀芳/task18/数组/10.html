@@ -28,7 +28,7 @@
 		   console.log( arr );
 		arr = filter(arr, function(val) { return val > 0 }); 
 		 // arr = [2] 过滤出大于0的整数
-		 console.log( arr );
+		 console.log( arr );//[3,4,2]
 		
 
 		// 方法2：
@@ -50,7 +50,7 @@
 		newarr = filter(arr, isNumeric); 
 		// arr = [3,4,-1, 2],过滤出数字
 		   console.log( newarr);
-		newarr= filter(arr, function(val) { return val > 0 }); 
+		newarr= filter(newarr, function(val) { return val > 0 }); 
 		 // arr = [2] 过滤出大于0的整数
 		 console.log( newarr);//[3,4,true,2]true是怎么来的呢？
 		
