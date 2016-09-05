@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>taskk28-2</title>
+  <style>
+  *{
+      margin: 0;
+      padding: 0;
+  }
+  #container{
+     width: 1000px;
+     margin: 0 auto;
+  }
+  #header{
+      background-color: #f54c4c;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+  }
+  .wrap{
+    padding: 10px 0;
+    background-color: #ec82ec;
+  }
+  .wrap:after{
+      content: '';
+      display: block;
+      clear: both;
+  }
+ .nav{
+     height: 50px;
+     background-color: #e0892d;
+     text-align: center;
+     line-height: 50px;
+     margin-bottom: 10px;
+ }
+ .aside{
+     width: 60px;
+     height: 200px;
+     background-color: #ceda2e;
+     line-height: 200px;
+     margin-right: 10px;
+     float:left;
+ }
+ .main{
+     height: 900px;
+     background-color: #3fda2e;
+     line-height: 900px;
+     text-align: center;
+     overflow: hidden;
+ }
+ #footer{
+     height: 30px;
+     background-color: #2e82da;
+     text-align: center;
+     line-height: 30px;
+ }
+  </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">header</div>
+        <div class="wrap">
+            <div class="nav">nav-1</div>
+            <div class="aside">aside</div>
+            <div class="main">main</div>
+        </div>
+        <div class="wrap">
+            <div class="nav">nav-2</div>
+            <div class="aside">aside</div>
+            <div class="main">main</div>
+        </div>
+        <div class="wrap">
+            <div class="nav">nav-3</div>
+            <div class="aside">aside</div>
+            <div class="main">main</div>
+        </div>
+        <div id="footer">footer</div>
+    </div>
+
+</body>
+    <script src="1.9.1jquery.js"></script>
+    <script>
+$('.nav').each(function(){
+    var $nav=$(this),
+          $offsetTop=$nav.offset().top,
+          $offsetLeft=$nav.offset().left,
+          $navWidth=$nav.width(),
+          $navHeght=$nav.height();
+
+        //   var $navClone=$nav.clone()
+        //                                       .css({visibility:'hidden',display:'none'})
+        //                                       .insertBefore($nav);
+
+    $(window).on('scroll',function(){
+        var scrollTop=$(this).scrollTop();
+        if(scrollTop>=$offsetTop){
+            if(!isFixed()){
+            setFixed();
+        }
+        }else{
+            if(isFixed()){
+            unFixed();
+            }
+        }
+    });
+
+    function isFixed(){
+     return $nav.data('data-fixed');
+   }
+
+    function setFixed(){
+        $nav.data('data-fixed', true)
+        $nav.css({
+            'position' : 'fixed' ,
+            'top' : 0,
+            'left' : $offsetLeft,
+            'width' : $navWidth,
+            'margin' : 0,
+            'z-index' : 2,
+        });
+        // $navClone.show();
+    }
+
+    function unFixed(){
+        $nav.data('data-fixed', false);
+        $nav.removeAttr('style');
+        // $navClone.hide();
+    }
+})
+    </script>
+</html>
