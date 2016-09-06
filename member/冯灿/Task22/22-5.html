@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>22-5</title>
+  <style media="screen">
+    html,
+    body,
+    p,
+    ul,
+    li,
+    table,
+    tr,
+    th,
+    td {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      position: relative;
+    }
+
+    div#greyGlass {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #000;
+      opacity: 0.4;
+      z-index: 99;
+      display: none;
+    }
+
+    div#alert {
+      display: none;
+      position: absolute;
+      z-index: 100;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0px;
+      background-color: white;
+      width: 400px;
+      height: 200px;
+      border-radius: 10px;
+    }
+
+    table,
+    table * {
+      box-sizing: border-box;
+    }
+
+    th,
+    td {
+      padding: 10px;
+    }
+
+    table>tbody td {
+      border-top: 1px solid #AAA;
+      border-bottom: 1px solid #AAA;
+    }
+
+    table>tfoot {
+      text-align: right;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    ul>li.btn {
+      cursor: pointer;
+    }
+
+    thead ul>li:first-child {
+      float: left;
+    }
+
+    thead ul>li:last-child {
+      float: right;
+    }
+
+    tfoot ul>li {
+      float: right;
+      padding: 0 5px;
+    }
+
+    ul::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+
+<body>
+  <button type="button" name="button" id="btn">点我</button>
+  <div id="greyGlass"></div>
+  <div id="alert">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <ul>
+              <li>标题</li>
+              <li class="btn">x</li>
+            </ul>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>内容</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td>
+            <ul>
+              <li class="btn">确定</li>
+              <li class="btn">取消</li>
+            </ul>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+
+  <script src="./EventUtil.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var btn = document.querySelector('button#btn');
+    var alertDiv = document.querySelector('div#alert');
+    var greyGlassDiv = document.querySelector('div#greyGlass');
+
+    EventUtil.addHandler(window, 'load', function(event) {
+      alertDiv.style.top = (window.innerHeight - 200) / 2 + 'px';
+      alertDiv.style.left = (window.innerWidth - 400) / 2 + 'px';
+    });
+    EventUtil.addHandler(btn, 'click', function(event) {
+      showAlert();
+    });
+    EventUtil.addHandler(alertDiv, 'click', function(event) {
+      if (event.target.nodeName.toLowerCase() == 'li' && event.target.classList.contains('btn')) {
+        closeAlert();
+      }
+      event.stopPropagation();
+    });
+    EventUtil.addHandler(greyGlassDiv, 'click', function(event) {
+      closeAlert();
+    });
+
+    function showAlert() {
+      alertDiv.style.display = "block";
+      greyGlassDiv.style.display = "block"
+    }
+
+    function closeAlert() {
+      alertDiv.style.display = 'none';
+      greyGlassDiv.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>
