@@ -145,6 +145,7 @@
       showAlert();
     });
     EventUtil.addHandler(alertDiv, 'click', function(event) {
+      event = EventUtil.getEvent(event);
       if (event.target.nodeName.toLowerCase() == 'li' && event.target.classList.contains('btn')) {
         closeAlert();
       }
