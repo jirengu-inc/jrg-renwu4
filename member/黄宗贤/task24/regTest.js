@@ -49,7 +49,7 @@ pass.addEventListener('change',function(){
 		checkp = false;
 		
 	}
-	if( pass.value != pass1.value) {
+	if( pass.value != pass1.value && pass1.value!="") {
 		console.log(1);
 		passMsg.innerText = "两次输入的密码需一致";
 		pass1.style.border = "1px solid red";
