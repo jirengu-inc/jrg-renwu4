@@ -45,10 +45,10 @@
 </body>
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
-	$(".liWrap").on("mouseover",function(){
+	$("#wrap").on("mouseover",".liWrap",function(){
 		$(this).find(".cover").css("display","block");
 	})
-	$(".liWrap").on("mouseleave",function(){
+	$("#wrap").on("mouseleave",".liWrap",function(){
 		$(this).find(".cover").css("display","none");
 	})
 	var products = [
@@ -67,13 +67,13 @@
     }
 ];
 
-	$("#btnMore").on("click",function(){
+	$("#btnMore").on("click",function(e){
+			e.preventDefault();
 		  	var html = ''
 		  	for (var i = 0;i<products.length;i++){
-		  		console.log(products[i].img);
 				html+='<li class="liWrap"><img src="'+products[i].img+'"><p>'+products[i].name+'</p><p class="price">'+products[i].price+'</p><div class="cover"><a href="#" class="btn">立即抢购</a></div></li>  '
 		  	}
 		  	$('#wrap').append($(html))
-	})
+	});
 </script>
 </html>
