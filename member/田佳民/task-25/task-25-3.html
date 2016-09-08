@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8">
+  <title>task-25-2</title>
+
+  <style>
+      *{
+          font-size: 14px;
+          font-family: '微软雅黑';
+      }
+     body{
+            width: 900px;
+            margin: 0 auto;
+     }
+    ul,li,p{
+             margin :0 ;
+             padding: 0;
+    }
+    ul,li{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+
+    .clearfix:after{
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    div.container{
+        width:576px;
+        margin: 0 auto;
+    }
+.addbtn{
+        margin-left:20px;
+        border: 1px solid #ff0000;
+        border-radius: 5px;
+        padding: 8px 15px;
+        color:#ff0000;
+    }
+    .wrap{
+        display:none;
+    }
+
+    ul.active{
+        display: block;
+    }
+    ul.wrap li{
+        float: left;
+        position: relative;
+        width: 150px;
+        margin: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+    }
+    ul.wrap .cover {
+        position:absolute;
+        top:0;
+        right: 0;
+        left:0;
+        bottom: 0;
+        background: rgba(0 ,0,0,0.3);
+        transition: all  500;
+        opacity: 0;
+    }
+    ul.wrap li.hover .cover{
+        opacity: 1;
+    }
+    ul.wrap .btn{
+        position: absolute;
+        left: 75px;
+        top: 86px;
+        margin-left: -28px;
+        margin-top: -10px;
+        border:1px solid #ff0000;
+        border-radius: 8px;
+        color:#ff0000;
+        padding: 5px 8px;
+        background-color: #fff;
+    }
+    ul.wrap p{
+        line-height: 25px;
+    }
+    ul.wrap .prodprice{
+        color: #ff0000;
+    }
+
+  </style>
+</head>
+<body>
+
+
+    <div class='container clearfix'>
+
+                            <ul class='wrap active'>
+                                <li class='prod'>
+                                    <div class='cover'><a class='btn' href="">立即抢购</a></div>
+                                    <img src="img/ring.jpg" alt="">
+                                    <p class='prodname'>钻戒</p>
+                                    <p class='prodprice'>￥1699.00</p>
+                                </li>
+                                <li class='prod'>
+                                    <div class='cover'><a class='btn' href="">立即抢购</a></div>
+                                    <img src="img/ring.jpg" alt="">
+                                    <p class='prodname'>钻戒</p>
+                                    <p class='prodprice'>￥1699.00</p>
+                                </li>
+                                <li class='prod'>
+                                    <div class='cover'><a class='btn' href="">立即抢购</a></div>
+                                    <img src="img/ring.jpg" alt="">
+                                    <p class='prodname'>钻戒</p>
+                                    <p class='prodprice'>￥1699.00</p>
+                                </li>
+                                <li class='prod'>
+                                    <div class='cover'><a class='btn' href="">立即抢购</a></div>
+                                    <img src="img/ring.jpg" alt="">
+                                    <p class='prodname'>钻戒</p>
+                                    <p class='prodprice'>￥1699.00</p>
+                                </li>
+                                <li class='prod'>
+                                    <div class='cover'><a class='btn' href="">立即抢购</a></div>
+                                    <img src="img/ring.jpg" alt="">
+                                    <p class='prodname'>钻戒</p>
+                                    <p class='prodprice'>￥1699.00</p>
+                                </li>
+                                <li class='prod'>
+                                    <div class='cover'><a class='btn' href="">立即抢购</a></div>
+                                    <img src="img/ring.jpg" alt="">
+                                    <p class='prodname'>钻戒</p>
+                                    <p class='prodprice'>￥1699.00</p>
+                                </li>
+
+                            </ul>
+                            <a href="" class="addbtn">添加</a>
+    </div>
+
+
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+
+var products = [
+	{
+		img: 'img2/gold.jpg',
+		prodname: '珂兰 黄金手 ',
+		prodprice: '￥405.00'
+	},{
+		img: 'img2/gold.jpg',
+		prodname: '珂兰 黄金转运珠 ',
+		prodprice: '￥100.00'
+	},{
+		img: 'img2/gold.jpg',
+		prodname: '珂兰 黄金手链 ',
+		prodprice: '￥45.00'
+	}
+];
+
+$(function(){
+     for (var k in products) {
+       var str = '';
+       str += '<li class="prod">';
+       str += '<div class="cover"><a class="btn" href="">立即抢购</a></div>';
+       str +='<img src="'+products[k].img+'"alt="">'
+       str +='<p class="prodname">'+products[k].prodname+'</p>'
+       str += '<div class="prodprice">'+products[k].prodprice+'</div>';
+       str += '</a></li>';
+       $('.addbtn').on('click',function(e){
+         e.preventDefault();
+         $('.wrap').append(str);
+       })
+     }
+})
+
+$('.wrap .prod').on('mouseenter', function(e){
+$(this).addClass('hover');
+});
+
+$('.prod').on('mouseleave', function(e){
+$(this).removeClass('hover');
+});
+</script>
+</html>
