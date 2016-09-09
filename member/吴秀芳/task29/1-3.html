@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	p{
+		line-height: 3;
+	}
+	#goTop{
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		border: 1px solid red;
+		padding: 10px;
+		cursor: pointer;
+		display: none;
+	}
+	</style>
+</head>
+<body>
+    <p>内容0</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容2</p>
+	<p>内容2</p>
+	<p>内容2</p>
+	<p>内容2</p>
+	<p>内容2</p>
+	<p>内容2</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容4</p>
+	<p>内容4</p>
+	<p>内容4</p>
+	<p>内容4</p>
+	<!-- <div id="goTop">回到顶部</div> -->
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <script>
+  	//用立即函数封装，防止泄露里面的变量
+  	var goTop=(function(){
+  		var $goTop=$('<div id="goTop">回到顶部</div>');
+  	   $('body').append($goTop);
+  	   function init(){
+  	   	$(window).on('scroll',function(){
+  		var offsetTop=$('body').scrollTop();
+  		if(offsetTop>100){
+  			$goTop.show();
+  		}else{
+  			$goTop.hide();
+  		}
+  	});
+  	   	$goTop.on('click',function(){
+  		$('body').scrollTop(0);
+  	});
+  	   }
+     return {
+
+     	init:init
+
+     	 }  
+
+  	})();
+  	goTop.init();
+  	goTop.init();
+  </script>
+</body>
+</html>

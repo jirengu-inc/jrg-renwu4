@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>25-1</title>
+	<link rel="stylesheet" type="text/css" href="./25-1css.css">
+</head>
+<body>
+<div id="wrap">
+	<ul>
+		<li class="first-box">
+			<a href="#" class="first-line">珠宝玉器</a>
+			<span class="icon"> > </span>
+			<ul class="second-box">
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+			</ul>
+		</li>
+		<li class="first-box">
+			<a href="#" class="first-line">珠宝玉器</a>
+			<span class="icon"> > </span>
+			<ul class="second-box">
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+			</ul>
+		</li>
+		<li class="first-box">
+			<a href="#" class="first-line">珠宝玉器</a>
+			<span class="icon"> > </span>
+			<ul class="second-box">
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+			</ul>
+		</li>
+		<li class="first-box">
+			<a href="#" class="first-line">珠宝玉器</a>
+			<span class="icon"> > </span>
+			<ul class="second-box">
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+				<li>翡翠</li>
+
+			</ul>
+		</li>
+	</ul>
+</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+		$(".first-box").on("mouseover",function(){
+	$(this).find(".second-box").css("display","block")
+})
+$(".first-box").on("mouseleave",function(){
+	$(this).find(".second-box").css("display","none")
+})
+</script>
+
+
+
+</html>
