@@ -68,51 +68,56 @@
 	</ul>
 
 	<script>
-		var clock;
-		$(window).on('scroll',function (argument) {
+		var lazyLoad = (function () {
 			// body...
-			//checkShow();
-			if (clock) {
-				clearTimeout(clock);
+			function checkShow($e,fun){
+				$e.each(function () {
+					// body...
+					var $cur = $(this);
+					if ($cur.attr('isLoaded')) {
+						return;
+					}
+					if (isShow($cur)) {
+						fun($cur);
+					}
+				});
 			}
-			clock = setTimeout(function () {
+
+			function isShow($e) {
 				// body...
-				checkShow();
-			},300)
-
-		})
-		checkShow();
-
-		function checkShow(){
-			$('.container img').each(function (argument) {
-				// body...
-				var $cur = $(this);
-				if ($cur.attr('isLoaded')) {
-					return;
+				var scrollH = $(window).scrollTop(),
+					winH = $(window).height(),
+					offsetT = $e.offset().top;
+				if (offsetT < scrollH + winH) {
+					return true;
+				}else{
+					return false;
 				}
-				if (isShow($cur)) {
-					showImg($cur);
-				}
-			});
-		}
-
-		function isShow($e) {
-			// body...
-			var scrollH = $(window).scrollTop(),
-				winH = $(window).height(),
-				offsetT = $e.offset().top;
-			if (offsetT < scrollH + winH) {
-				return true;
-			}else{
-				return false;
 			}
-		}
 
+			return{
+				init:checkShow
+			}
+		
+		})();
+			
 		function showImg($e) {
-			// body...
-			$e.attr('src',$e.attr('data-src'));
-			$e.attr('isLoaded',true);
-		}
+				// body...
+				$e.attr('src',$e.attr('data-src'));
+				$e.attr('isLoaded',true);
+			}
+
+		var clock,
+			$e = $('.container img')
+			$(window).on('scroll',function () {
+				if (clock) {
+					clearTimeout(clock);
+				}
+				clock = setTimeout(function () {
+					lazyLoad.init($e,showImg);
+				},300)
+			})
+		lazyLoad.init($e,showImg);
 	</script>
 </body>
 </html>
