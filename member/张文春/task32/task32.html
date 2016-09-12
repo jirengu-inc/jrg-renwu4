@@ -7,59 +7,60 @@
 	<script src="./waterfall.js"></script>
 	<script src="./lazyLoad.js"></script>
 	<style>
-	html,body,ul,li,p,div{
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	}
-	ul,li{
-		list-style: none;
-	}
+		html,body,ul,li,p,div{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		ul,li{
+			list-style: none;
+		}
 
-  .wrap{
-		margin: 0 auto;
-  }
+	  .wrap{
+			margin: 0 auto;
+	  }
 
-	.clearfix:after{
-		content: '';
-		display: block;
-		clear: both;
-	}
-	#pic-ct{
-		position: relative;
-	}
-	#pic-ct .item{
-		position: absolute;
-		padding: 0 0 10px 0;
-		width: 280px;
-		margin: 10px;
-		border: 1px solid #DFDFDF;
-		background: #FFF;
-		opacity: 0;
-		transition: all .8s;
-	}
-	#pic-ct .item img{
-	    margin: 10px;
-	    width: 260px;
-	}
-	#pic-ct .item .header{
-		height: 25px;
-	    margin: 0 12px;
-	    border-bottom: 1px solid #DBDBDB;
-	}
-	#pic-ct .desp{
-		font-size: 12px;
-		line-height: 1.8;
-	  margin: 10px 15px 0;
-	  color: #777371;
-	}
-	#load{
-		visibility: hidden;
-		height: 20px;
-	}
-	.hide{
-		display: none;
-	}
+		.clearfix:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#pic-ct{
+			position: relative;
+		}
+		#pic-ct .item{
+			position: absolute;
+			padding: 0 0 10px 0;
+			width: 280px;
+			margin: 10px;
+			border: 1px solid #DFDFDF;
+			background: #FFF;
+			opacity: 0;
+			transition: all .8s;
+		}
+		#pic-ct .item img{
+		    margin: 10px;
+		    width: 260px;
+		}
+		#pic-ct .item .header{
+			height: 25px;
+		    margin: 0 12px;
+		    border-bottom: 1px solid #DBDBDB;
+		}
+		#pic-ct .desp{
+			font-size: 12px;
+			line-height: 1.8;
+		  	margin: 10px 15px 0;
+		  	color: #777371;
+		}
+		#load{
+			/*visibility: hidden;*/
+			height: 20px;
+			border: 1px solid red;
+		}
+		.hide{
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -96,9 +97,13 @@
 //载入页面需要执行一次。
 	loadAndPlace();
 
+	
+	loadAndPlace();
+
 // 获取数据，并且摆放位置
 		  var curPage = 1,
-		  perPageCount = 10;
+		  perPageCount = 12;
+
 
 	function loadAndPlace(){
 		$.ajax({
@@ -133,8 +138,9 @@
 	$.when.apply(null,defereds).done(function() { //当所有的图片都执行 resolve 后，即全部图片加载后，执行下面的内容
 		console.log('new images all loaded ...');
 		//当节点里的图片全部加载后再使用瀑布流计算，否则会因为图片未加载 item 高度计算错误导致瀑布流高度计算出问题
+
 		lazyLoad.init($nodes,showIt);
-		 water.init($nodes);
+		water.init($nodes);
 	});
 }
 
