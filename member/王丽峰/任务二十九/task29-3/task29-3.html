@@ -57,9 +57,11 @@
     	$(window).on('scroll',function(e){
     		if(clock) clearTimeout(clock);
     		clock=setTimeout(function(){
-    			if(!isVisible($btn)) return;
+                if(!isVisible($btn)){
+                    return;
+                }
     			showWrap();
-    		},100)
+    		},100);
     	});
 
         showWrap();
