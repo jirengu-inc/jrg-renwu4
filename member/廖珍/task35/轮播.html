@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <title>多个轮播</title>
+    <style>
+      html,body {
+        margin:0;
+        padding:0;
+      }
+      ul,li {
+        list-style:none;
+        margin:0;
+        padding:0;
+      }
+      a {
+        text-decoration:none;
+      }
+      .carousel {
+        position:relative;
+        width:310px;
+        height:206px;
+        overflow:hidden;
+      }
+      .ct {
+        position:relative;
+        top:0;
+        left:0;
+      }
+      .item {
+        float:left;
+        width:310px;
+        height:206px;
+      }
+      .item img {
+        width:310px;
+        height:206px;
+      }
+      .arrow {
+        position:absolute;
+        width:30px;
+        height:30px;
+        border-radius:50%;
+        top:50%;
+        margin-top:-15px;
+        background:#ccc;
+        line-height:30px;
+        text-align:center;
+      }
+      .pre {
+        left:10px;
+      }
+      .next {
+        right:10px;
+      }
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class='carousel' id='c1'>
+      <ul class='ct'>
+        <li class='item'>
+          <a href='#'>
+            <img src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1474183882&di=f10d4a49396a88f3a5c4931a1fc4f75c&src=http://img5q.duitang.com/uploads/blog/201403/09/20140309132941_XHM4N.thumb.700_0.jpeg'>
+          </a>
+        </li>
+        <li class='item'>
+          <a href='#'>
+            <img src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1474183882&di=6c9fd6008c246ca13c9f09b85844761d&src=http://cdn.duitang.com/uploads/blog/201403/09/20140309132306_u5AXE.thumb.600_0.jpeg'>
+          </a>
+        </li>
+        <li class='item'>
+          <a href='#'>
+            <img src='http://a.hiphotos.baidu.com/zhidao/pic/item/f31fbe096b63f6246bdb4f378344ebf81a4ca37b.jpg'>
+          </a>
+        </li>
+        <li class='item'>
+          <a href='#'>
+            <img src='http://img2.3lian.com/2014/f4/70/d/54.jpg'>
+          </a>
+        </li>
+      </ul>
+      <a href='#' class='arrow pre'><</a>
+      <a href='#' class='arrow next'>></a>
+    </div>
+
+     <div class='carousel' id='c2'>
+      <ul class='ct'>
+        <li class='item'>
+          <a href='#'>
+            <img src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1474183882&di=f10d4a49396a88f3a5c4931a1fc4f75c&src=http://img5q.duitang.com/uploads/blog/201403/09/20140309132941_XHM4N.thumb.700_0.jpeg'>
+          </a>
+        </li>
+        <li class='item'>
+          <a href='#'>
+            <img src='https://ss0.bdstatic.com/94oJfD_bAAcT8t7mm9GUKT-xh_/timg?image&quality=100&size=b4000_4000&sec=1474183882&di=6c9fd6008c246ca13c9f09b85844761d&src=http://cdn.duitang.com/uploads/blog/201403/09/20140309132306_u5AXE.thumb.600_0.jpeg'>
+          </a>
+        </li>
+        <li class='item'>
+          <a href='#'>
+            <img src='http://a.hiphotos.baidu.com/zhidao/pic/item/f31fbe096b63f6246bdb4f378344ebf81a4ca37b.jpg'>
+          </a>
+        </li>
+        <li class='item'>
+          <a href='#'>
+            <img src='http://img2.3lian.com/2014/f4/70/d/54.jpg'>
+          </a>
+        </li>
+      </ul>
+      <a href='#' class='arrow pre'><</a>
+      <a href='#' class='arrow next'>></a>
+    </div>
+  </body>
+  <script>
+    function Carousel($carousel) {
+      this.$carousel=$carousel;
+      this.$ct=$carousel.find('.ct');
+      this.$pre=$carousel.find('.pre');
+      this.$next=$carousel.find('.next');
+      this.imgWidth=this.$ct.find('li').width();
+      this.imgCount=this.$ct.find('li').size();
+      this.$ct.prepend(this.$ct.children().last().clone());
+      this.$ct.append(this.$ct.children().first().clone());
+
+      this.imgRealCount=this.$ct.children().length;
+      this.$ct.css({width:this.imgRealCount*this.imgWidth});
+      curIdx=0;
+      this.bind();
+      console.log(this.$carousel);
+      console.log(this.$ct);
+      console.log(this.$pre);
+      console.log(this.$next);
+      console.log(this.imgWidth);
+      console.log(this.imgCount);
+      console.log(this.imgRealCount);
+    }
+
+    Carousel.prototype={
+      bind:function() {
+          var me=this;
+          me.$pre.on('click',function() {
+            me.playPre();
+          });
+          me.$next.on('click',function() {
+            me.playNext();
+          });
+      },
+      playPre:function() {
+        var me=this;
+          me.$ct.animate({left:'+='+(me.imgWidth)},function() {
+            curIdx=(me.imgCount+curIdx-1)%me.imgCount;
+            if(curIdx===(me.imgCount-1)) {
+              $ct.css({left:0-me.imgWidth*me.imgCount});
+            }
+          });
+      },
+      playNext:function() {
+        var me=this;
+        me.$ct.animate({left:'-='+(me.imgWidth)},function() {
+          curIdx++;
+          if(curIdx===me.imgCount) {
+            me.$ct.css({left:0-me.imgWidth});
+            curIdx=0
+          }
+        });
+      }
+    }
+
+    var c1=new Carousel($('#c1'));
+    var c2=new Carousel($('#c2'));
+  </script>
+</html>
+         

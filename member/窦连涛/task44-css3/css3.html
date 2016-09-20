@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Css3新特性</title>
+	<style>
+		* {
+			margin:0;
+			padding:0;
+		}
+
+		body {
+			background: #0dcecb;
+		}
+
+		#rec {
+			width:200px;
+			height: 100px;
+			border-radius: 30px;
+			background:pink;
+			margin: 20px;
+			color: #FFF;
+			text-align: center;
+			line-height: 100px;
+		}
+
+		#circle {
+			width: 100px;
+			height: 100px;
+			border:5px solid pink;
+			/*background:#FFF;*/
+			text-align: center;
+			margin: 20px;
+			color: #FFF;
+			border-radius: 50%;
+		}
+
+		#shadow {
+			width: 200px;
+			height: 200px;
+			background:pink;
+			text-align: center;
+			line-height: 200px;
+			margin: 20px;
+			color: #FFF;
+			box-shadow: 5px 5px 5px red;
+		}
+
+		#scale,#scale1,#scale2,#scale3 {
+			width: 100px;
+			height: 100px;
+			background:pink;
+			text-align: center;
+			line-height: 20px;
+			margin: 20px;
+			color: #FFF;
+			transition: all 2s;
+		}
+		#scale:hover{
+			transform: scale(2,2);
+		}
+
+		#scale1:hover{
+			transform: scale(.5,.5);
+		}
+
+		#scale2:hover{
+			transform: skew(30deg,30deg);
+		}
+
+		#scale3:hover{
+			transform: rotate(30deg);
+		}
+
+		#rotate,#rotate1{
+			width: 200px;
+			height: 200px;
+			background:pink;
+			text-align: center;
+			line-height: 20px;
+			margin: 20px;
+			color: #FFF;
+			transition: all 2s;
+		}
+
+		#rotate:hover{
+			transform:rotateX(120deg);
+		}
+
+		#rotate1:hover{
+			transform:translateX(30px);
+		}
+
+		#linear {
+			width: 200px;
+			height: 200px;
+			background:linear-gradient(red,yellow);
+			text-align: center;
+			line-height: 200px;
+			margin: 20px;
+			color: #FFF;
+		}
+
+		@keyframes myfirst{
+			from {background: red;}
+			to {background: yellow;}
+		}
+
+
+		#animate{
+			width: 200px;
+			height: 200px;
+			background:pink;
+			text-align: center;
+			line-height: 20px;
+			margin: 20px;
+			color: #FFF;
+			transition: all 2s;
+			animation: myfirst 5s;
+		}
+	</style>
+</head>
+<body>
+	<div id="rec">圆角矩形</div>
+	<div id="circle">圆形</div>
+	<div id="shadow">阴影</div>
+	<div id="scale">放大</div>
+	<div id="scale1">缩小</div>
+	<div id="scale2">偏移</div>
+	<div id="scale3">旋转</div>
+	<div id="rotate">3D旋转</div>
+	<div id="rotate1">3D旋转1</div>
+	<div id="linear">渐变</div>
+	<div id="animate">动画</div>
+</body>
+</html>

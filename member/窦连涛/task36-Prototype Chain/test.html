@@ -5,19 +5,50 @@
 	<title>test</title>
 </head>
 <body>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript">
-		function People(name){
-			this.name = name;
+
+		String.prototype.getMostOften = function(){
+			var str = this;
+			var json = {};
+			for(i = 0;i < str.length;i++){
+				if(!json[str.charAt(i)]){
+					json[str.charAt(i)] = 1;
+				}else{
+					json[str.charAt(i)] += 1;
+				}
+			}
+			//存储出现次数最多的值和次数
+			var number = '';
+			var num = 0;
+
+			for(var i in json){
+				//如果当前项大于下一项
+				if(json[i] > num){
+					
+					num = json[i];
+					number = i;
+				}
+			}
+
+			return number;
+
 		}
 
-		People.prototype.sayName = function(){
-			console.log(this.name);
-		}
+		var str = 'ahbbccdeddddfg';
+		console.log(str.getMostOften());
+		// function People(name){
+		// 	this.name = name;
+		// }
 
-		People.prototype.sname = "hello";
+		// People.prototype.sayName = function(){
+		// 	console.log(this.name);
+		// }
 
-		p1 = new People('DouLianTao');
-		p2 = new People('MaYanJie');
+		// People.prototype.sname = "hello";
+
+		// p1 = new People('DouLianTao');
+		// p2 = new People('MaYanJie');
 
 		function isObj(obj,Func){
 

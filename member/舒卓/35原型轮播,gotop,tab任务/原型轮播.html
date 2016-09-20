@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>原型轮播..</title>
+    <style>
+      *{
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      body,ul,li,img{
+        margin:0;
+        padding:0;
+        list-style: none;
+      }
+      a{
+        text-decoration: none;
+      }
+      .wheel{
+        position: relative;
+        margin:0 auto;
+        width: 600px;
+        height: 450px;
+        border:1px solid #006DB7;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+      .wheel .ct{
+        position: absolute;
+      }
+      .wheel .ct li{
+        float: left;
+      }
+      .ct:after{
+        content: " ";
+        display: block;
+        clear: both;
+      }
+      .wheel .ct img{
+        width:600px;
+        height:450px;
+        padding:10px;
+      }
+      .wheel .arrow{
+        position: absolute;
+        width: 30px;
+        height:30px;
+        line-height: 30px;
+        border-radius: 30px;
+        color: #fffdef;
+        background: #005580;
+        top:50%;
+        text-align: center;
+      }
+      .wheel .arrow:hover{
+        opacity:0.6;
+      }
+      .wheel .pre{
+        left:10px;
+      }
+      .wheel .next{
+        right:10px;
+      }
+      .wheel .tiny{
+        position: absolute;
+        bottom:20px;
+        left:50%;
+        transform: translateX(-50%);
+
+      }
+      .wheel .tiny li{
+        width:30px;
+        height: 10px;
+        float: left;
+        border:1px solid #9c5333;
+        -webkit-border-radius:3px;
+        -moz-border-radius:3px;
+        border-radius:3px;
+      }
+      .tiny li:hover{
+        background: #9c5333;
+        -webkit-transition: all 1s;
+        -moz-transition: all 1s;
+        -ms-transition: all 1s;
+        -o-transition: all 1s;
+        transition: all 1s;
+      }
+      .active {
+        background:#006DB7;
+      }
+    </style>
+  </head>
+  <body>
+  <div class="wheel wheel1">
+    <ul class="ct">
+      <li><a href="#"><img src="http://bz1080p.com/wp-content/uploads/2015/01/bz1080p.com_2015-01-22_11-56-11.jpg" alt=""></a></li>
+      <li><a href="#"><img src="http://images6.fanpop.com/image/photos/34100000/-Strong-World-one-piece-34106705-1024-768.jpg" alt=""></a></li>
+      <li><a href="#"><img src="http://att.bbs.duowan.com/forum/201406/18/124938m0t7i5i76bd87b8i.jpg" alt=""></a></li>
+      <li><a href="#"><img src="http://comment.u17i.com/2011/01/20/186622_1295509566_jJJJ8QIQwt0a.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="http://stuffpoint.com/one-piece/image/302984-one-piece-sabo-luffy-and-ace.jpg" alt="" /></a></li>
+    </ul>
+
+    <a href="javascript:void(0)" class="next arrow"> > </a>
+    <a href="javascript:void(0)" class="pre arrow"> < </a>
+
+    <ul class="tiny">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <div class="wheel wheel2">
+    <ul class="ct">
+      <li><a href="#"><img src="http://bz1080p.com/wp-content/uploads/2015/01/bz1080p.com_2015-01-22_11-56-11.jpg" alt=""></a></li>
+      <li><a href="#"><img src="http://images6.fanpop.com/image/photos/34100000/-Strong-World-one-piece-34106705-1024-768.jpg" alt=""></a></li>
+      <li><a href="#"><img src="http://att.bbs.duowan.com/forum/201406/18/124938m0t7i5i76bd87b8i.jpg" alt=""></a></li>
+      <li><a href="#"><img src="http://comment.u17i.com/2011/01/20/186622_1295509566_jJJJ8QIQwt0a.jpg" alt="" /></a></li>
+      <li><a href="#"><img src="http://stuffpoint.com/one-piece/image/302984-one-piece-sabo-luffy-and-ace.jpg" alt="" /></a></li>
+    </ul>
+
+    <a href="javascript:void(0)" class="next arrow"> > </a>
+    <a href="javascript:void(0)" class="pre arrow"> < </a>
+
+    <ul class="tiny">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <script>
+    function getCarousel(node){
+      this.$node = $(node);
+      this.$ct   = this.$node.find('.ct');
+      this.$chil  = this.$node.find(this.$ct.children());
+      this.$next  =this. $node.find('.next');
+      this.$pre   =this. $node.find('.pre');
+      this.$tiny  =this. $node.find('.tiny li');
+      imgWidth = this.$chil.width();
+      imgSum  = this.$ct.children().size();
+
+
+      this.$ct.prepend(this.$chil.last().clone());
+      this.$ct.append(this.$chil.first().clone());
+      imgReal = this.$ct.children().size();
+      this.$ct.css({
+        left: 0-imgWidth,
+        width: imgReal*imgWidth
+      });
+      this.bind();
+      this.move();
+
+    }
+
+    getCarousel.prototype = {
+      curIdx :0,
+      isAnimate :false,
+
+      bind:function(){
+        var me = this;
+        me.$next.on('click',function(){
+          me.playNext();
+        })
+
+        me.$pre.on('click',function(){
+         me. playPre();
+        })
+        me.$tiny.on('click',function(){
+          var idx = $(this).index();
+          if (idx > me.curIdx){
+            this.playNext(idx - me.curIdx);
+          }else if(idx < me.curIdx){
+            this.playPre(this.curIdx-idx);
+          }
+        })
+      },
+
+      playNext:function (idx) {
+        var me = this;
+        var idx = idx||1;
+        if (!me.isAnimate){
+          me.isAnimate = true;
+          me.$ct.animate({left:'-='+(imgWidth*idx)},function(){
+            me.curIdx=(me.curIdx+idx)%imgSum;
+            if (me.curIdx===0){
+             me.$ct.css({left:0-imgWidth});
+            }
+            me.isAnimate = false;
+            me.setTiny();
+          });
+        }
+
+      },
+      playPre:function (idx) {
+        var me = this;
+        var idx = idx||1;
+        if (!me.isAnimate){
+          me.isAnimate = true;
+          me.$ct.animate({left:'+='+(imgWidth*idx)},function () {
+            me.curIdx = (imgSum+me.curIdx-idx)%imgSum;
+            if (me.curIdx===(imgSum -1)){
+              me.$ct.css({left:0-imgWidth*imgSum})
+            }
+            me.isAnimate = false;
+            me.setTiny();
+          });
+        }
+      }  ,
+      setTiny:function(){
+        var me = this;
+        me.$tiny.removeClass('active').eq(me.curIdx).addClass('active');
+      } ,
+      move: function(){
+        var me= this;
+          clock = setInterval(function () {
+            me.playNext()
+          },2500);
+      },
+      stop:function () {
+        clearInterval(clock)
+      }
+    }
+
+    new getCarousel('.wheel1')
+    new getCarousel('.wheel2')
+  </script>
+
+
+  </body>
+</html>

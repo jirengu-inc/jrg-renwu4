@@ -1,0 +1,94 @@
+html5  下一代HTML的规范 主要体现在语义化方面
+
+		新元素
+
+			header 
+
+			main
+
+			footer 
+
+			figure
+
+			figcaption
+
+			meter 进度
+
+			nav 
+
+			section 段落
+
+			article 
+
+			aside 侧边栏
+
+			menu 
+
+		兼容性问题
+
+			<!--[if lt IE9]> 
+			<script src="http://apps.bdimg.com/libs/html5shiv/3.7/html5shiv.min.js"></script>
+			<![endif]-->
+
+			header , section , footer , aside , nav , main , article , figure {
+				display:block;
+			}
+
+		新属性
+
+		完全支持CSS3 
+
+		Video 和 Audio
+
+		2D/3D 制图
+
+		本地存储
+
+		本地SQL数据
+
+		WEB 应用 
+
+
+拖拽 
+
+	
+
+地理位置  geolocation  天气预报 定位到县
+
+
+video 只是支持Mp4 webM Ogg
+
+字幕 
+
+Audio 
+
+input 
+		: color 
+
+		: date 
+
+		: email
+
+		: number
+
+		: range
+
+		: search 
+
+		: tel
+
+		: mailto
+
+	LocalStorage SessionStorage
+
+	
+
+
+
+
+
+
+	
+
+
+
