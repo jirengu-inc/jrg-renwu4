@@ -91,6 +91,15 @@
 				color:#FFF;
 				cursor: pointer;
 			}
+			.test a{
+				display: block;
+				color:#333;
+				line-height: 24px;
+				font-size: 16px;
+			}
+			.test a:hover{
+				color:blue;
+			}
 		</style>
 	</head>
 	<body>
@@ -125,14 +134,18 @@
 				</ul>
 				<div class="addBtn">添加更多</div>
 			</div>
+			<div class="test">
+				<a href="#">点我会返回页面顶部,href="#"</a>
+				<a href="#!">点我不会动，href="#"</a>
+				<a href="javascript:void(0)">点我不会动，href="javascript:void(0)"</a>
+			</div>
 		</div>
 		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
 		<script>
-			$(".item").on("mouseenter",function(){
+			$(".goods").on("mouseenter",".item",function(e){	//注意要用事件代理，注意参数的写法
 				$(this).find(".cover").show();
-
 			});
-			$(".item").on("mouseleave",function(){
+			$(".goods").on("mouseleave",".item",function(e){
 				$(this).find(".cover").hide();
 			})
 
