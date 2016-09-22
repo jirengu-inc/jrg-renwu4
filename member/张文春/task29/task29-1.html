@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>task29-1</title>
+	<style type="text/css">
+		#go-top{
+			position: fixed;
+			right: 10px;
+			bottom: 10px;
+			border: 1px solid red;
+			padding: 10px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容4</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容1</p>
+	<p>内容5</p>
+	<p>内容1</p>
+	<p>内容6</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容4</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容1</p>
+	<p>内容5</p>
+	<p>内容1</p>
+	<p>内容6</p>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+//普通实现方法
+	// var $goTop = $('<div id="go-top">回到顶部</div>');
+	// $('body').append($goTop);
+
+	// $(window).on('scroll',function (e) {
+	// 	// body...
+	// 	var scrollT = $('body').scrollTop();
+	// 	if (scrollT > 100) {
+	// 		$goTop.show();
+	// 	}else{
+	// 		$goTop.hide();
+	// 	}
+	// })
+	// $goTop.on('click',function (e) {
+	// 	// body...
+	// 	$(window).scrollTop(0);
+	// })
+//简单封装
+	/*var GoTop = {
+		init:function () {
+			// body...
+			var $goTop = $('<div id="go-top">回到顶部</div>');
+			$('body').append($goTop);
+			this.$goTop = $goTop;
+			this.bind();
+		},
+		bind:function () {
+			// body...
+			var self = this;
+			$(window).on('scroll',function(){
+				var scrollT = $('body').scrollTop();
+				if (scrollT > 100) {
+					self.$goTop.show();
+				}else{
+					self.$goTop.hide();
+				}
+			});
+
+			this.$goTop.on('click',function () {
+				// body...
+				$(window).scrollTop(0);
+			});
+		}
+	}*/
+	
+
+//闭包
+	var GoTop = (function (e) {
+		// body...
+		var $goTop = $('<div id="go-top">回到顶部</div>');
+		$('body').append($goTop);
+
+		function init(e) {
+			// body...
+			$(window).on('scroll',function(){
+				var scrollT = $('body').scrollTop();
+				if (scrollT > 100) {
+					$goTop.show();
+				}else{
+					$goTop.hide();
+				}
+			});
+
+			$goTop.on('click',function () {
+				// body...
+				$(window).scrollTop(0);
+			});
+		}
+
+		return{
+			init:init
+		}
+	})();
+
+
+	GoTop.init();
+</script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>what</title>
+  <style>
+      .box{
+          border: 1px solid #ccc;
+          margin-bottom: 60px;
+      }
+      .active{
+         background: #ccc;
+      }
+      .codewrap{
+          border: 2px dotted red;
+      }
+  </style>
+</head>
+<body>
+
+
+          <div class='box'>
+                  <p>
+                    .addClass( className )
+                </p>
+                <p>
+                  .removeClass(className)
+                  </p>
+                  <div class='codewrap'>
+                      <pre>
+                            var     $bgchange=$('.bgchange');
+                                    $addbtn=$('.addbtn');
+                                    $removebtn=$('.removebtn');
+
+                                  $addbtn.on('click',function(){
+                                          $bgchange.addClass('active');
+                                  });
+                                  $removebtn.on('click',function(){
+                                          $bgchange.removeClass('active');
+                                  })
+                      </pre>
+                  </div>
+                <div class='bgchange'>背景改变</div>
+                <button class='addbtn'>删除背景</button>
+                <button class='removebtn'>删除背景</button>
+          </div>
+
+          <div class='box'>
+                  <p>
+                     .show()
+                </p>
+                <p>
+                     .hide()
+                  </p>
+                  <div class='codewrap'>
+                      <pre>
+                          var $sorh=$('.sorh');
+                                  $showbtn=$('.showbtn');
+                                  $hidebtn=$('.hidebtn');
+
+                              $showbtn.on('click',function(){
+                                  $sorh.show();
+                              })
+                              $hidebtn.on('click',function(){
+                                  $sorh.hide();
+                              })
+
+                      </pre>
+                  </div>
+                <div class='sorh'>展示与隐藏 </div>
+                <button class='showbtn'>展示按钮</button>
+                <button class='hidebtn'>隐藏按钮</button>
+          </div>
+
+          <div class='box'>
+                  <p>.attr( attributeName )
+
+                  </p>
+                  <div class='codewrap'>
+                      <pre>
+                          var $river=$('#river')
+                                  $attrichange=$('.attrichange')
+
+                                  $attrichange.on('click',function(){
+                                      $river.attr('id','cave');
+                                      $river.attr('src','img/2.jpg');
+                                      $river.attr('title','second');
+                                  })
+
+                      </pre>
+                  </div>
+                <div class='attrichange'>
+                    <img id='river' src="img/1.jpg" title='img1' alt="first">
+                </div>
+                <button class='attrichange'>转换</button>
+
+
+          </div>
+
+
+
+          <div class='box'>
+                  <p>
+                        <h3>在$ct内部最开头添加元素$node</h3>
+                        $ct.prepend($node);
+                  </p>
+                  <p>
+                      <h3>删除$node</h3>
+                      $node.remove();
+                  </p>
+                  <p>
+                      <h3>把$ct里内容清空</h3>
+                      $ct.empty();
+                  </p>
+                  <p>
+                      <h3>在$ct里设置html</h3>
+                      $ct.html();
+                  </p>
+
+                  <div class='codewrap'>
+                      <pre>
+                          <code>
+                          var $ppul=$('.ppul')
+                                  $ppbtn=$('.ppbtn')
+
+                              $ppbtn.on('click',function(){
+                                 $ppul.prepend(' <li>头部添加</li>')
+                              })
+                          <code>
+                      </pre>
+                  </div>
+                <div class='bgchange'>
+                        <ul class='ppul'>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                </div>
+                <button class='ppbtn'>头部添加</button>
+          </div>
+
+          <div class='box'>
+                  <p>
+                      <h3>在$ct内部最末尾添加元素$node</h3>
+                      $ct.append($node);
+                  </p>
+
+                  <div class='codewrap'>
+                      <pre>
+                          var $emul=$('.emul')
+                                  $embtn=$('.embtn')
+
+                              $embtn.on('click',function(){
+                                  $emul.empty();
+                              })
+                      </pre>
+                  </div>
+                <div class='bgchange'>
+                        <ul class='apul'>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                </div>
+                <button class='apbtn'>尾部添加</button>
+          </div>
+
+          <div class='box'>
+                  <p>
+                      <h3>删除$node</h3>
+                      $node.remove();
+                  </p>
+                  <div class='codewrap'>
+                      <pre>
+
+                      </pre>
+                  </div>
+                <div class='bgchange'>
+                        <ul >
+                            <li class='rmli'>被删除的元素</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                </div>
+                <button class='rmbtn'>删除</button>
+          </div>
+
+          <div class='box'>
+                  <p>
+                      <h3>把$ct里内容清空</h3>
+                      $ct.empty();
+                  </p>
+                  <div class='codewrap'>
+                      <pre>
+                          var $emul=$('.emul')
+                                  $embtn=$('.embtn')
+
+                              $embtn.on('click',function(){
+                                  $emul.empty();
+                              })
+                      </pre>
+                  </div>
+                <div class='bgchange'>
+                        <ul class='emul'>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                </div>
+                <button class='embtn'>清空</button>
+          </div>
+
+          <div class='box'>
+                  <p>
+                      <h3>在$ct里设置html</h3>
+                      $ct.html();
+                  </p>
+                  <div class='codewrap'>
+                      <pre>
+                          var     $innerHul=$('.innerHul')
+                                  $innerHbtn=$('.innerHbtn')
+
+                              $innerHbtn.on('click',function(){
+                                  $innerHul.html('<span>hello</span>')
+                              })
+                      </pre>
+                  </div>
+                <div class='bgchange'>
+                        <ul class='innerHul'>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                        </ul>
+                </div>
+                <button class='innerHbtn'>设置html</button>
+          </div>
+
+
+
+ <script src="1.9.1jquery.js"></script>
+<script>
+// 增加移除背景
+var  $bgchange=$('.bgchange');
+        $addbtn=$('.addbtn');
+        $removebtn=$('.removebtn');
+
+        $addbtn.on('click',function(){
+                $bgchange.addClass('active');
+        });
+        $removebtn.on('click',function(){
+                $bgchange.removeClass('active');
+        })
+
+//展示与隐藏
+var $sorh=$('.sorh');
+        $showbtn=$('.showbtn');
+        $hidebtn=$('.hidebtn');
+
+    $showbtn.on('click',function(){
+        $sorh.show();
+    })
+    $hidebtn.on('click',function(){
+        $sorh.hide();
+    })
+
+//获取元素$node 的 属性: id、src、title， 修改以上属性
+var $river=$('#river')
+        $attrichange=$('.attrichange')
+
+        $attrichange.on('click',function(){
+            $river.attr('id','cave');
+            $river.attr('src','img/2.jpg');
+            $river.attr('title','img2');
+        })
+
+//头部添加
+var $ppul=$('.ppul')
+        $ppbtn=$('.ppbtn')
+
+    $ppbtn.on('click',function(){
+        $ppul.prepend('<li>头部添加</li>')
+    })
+
+//尾部添加
+var $emul=$('.emul')
+        $embtn=$('.embtn')
+
+    $embtn.on('click',function(){
+        $emul.empty();
+    })
+
+//    删除
+var $rmli=$('.rmli')
+        $rmbtn=$('.rmbtn')
+
+    $rmbtn.on('click',function(){
+        $rmli.remove();
+    })
+
+//清空
+var $emul=$('.emul')
+        $embtn=$('.embtn')
+
+    $embtn.on('click',function(){
+        $emul.empty();
+    })
+
+//设置html
+var     $innerHul=$('.innerHul')
+        $innerHbtn=$('.innerHbtn')
+
+    $innerHbtn.on('click',function(){
+        $innerHul.html('<span>hello</span>')
+    })
+</script>
+</body>
+</html>

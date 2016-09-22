@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>懒加载</title>
+  <style>
+  .main{
+      width: 960px;
+      margin: 0 auto;
+  }
+  .box{
+      float: left;
+  }
+  </style>
+</head>
+<body>
+    <div class='main'>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/1.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+        <div class="box">
+            <img src="img/placehold.jpg" data-src='img/2.jpg'>
+        </div>
+
+    </div>
+    <script src='1.9.1jquery.js'></script>
+</body>
+<script>
+//先执行一次,加载好可视区的图片
+scrollShow();
+
+$(window).on('scroll',function(){
+setTimeout(function(){
+    scrollShow();
+},300);
+})
+
+//封装加载机制
+    function scrollShow(){
+        $('.main img').each(function(){
+            var $img =$(this);
+            if(isShow($img)){
+                showImg($img);
+            }
+        });
+    }
+
+//判断是否加载图片函数
+    function isShow($el){
+        var scrollTop = $(window).scrollTop(),
+            winH = $(window).height(),
+            boxH = $el.offset().top;
+        if(boxH<winH+scrollTop){
+             return true;
+        }else{
+            return false;
+        }
+    }
+
+//加载图片方法
+    function showImg($el){
+        $el.attr('src' , $el.attr('data-src'));
+    }
+
+</script>
+</html>
