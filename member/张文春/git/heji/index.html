@@ -2,91 +2,182 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>menubar</title>
-	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-	<style>
-		li{
-			list-style: none;
-		}
-		.item{
-			width: 1000px;
-			height: 600px;
-			padding: 10px;
-			border: 5px solid #ccc;
-			margin: 0 auto;
-			margin-top: 30px;
-
-		}
-		#item1{
-			background: red;
-		}
-		#item2{
-			background: green;
-		}
-		#item3{
-			background: yellow;
-		}
-		#item4{
-			background: #ccc;
-		}
-		#item5{
-			background: white;
-		}
-		.item p{
-			font-size: 100px;
-			text-align: center;
-		}
-		.menuRight{
-			position: fixed;
-			top: 200px;
-			left: 50%;
-			margin-left: 500px;
-		}
-		.menuRight li a:hover,
-		.menuRight li a.current{
-			background: #0088bb;
-			color: #fff;
-		}
-		.menuRight ul li{
-			width: 100px;
-			height: 60px;
-			border: 1px solid #ccc;
-			padding: 5px;
-			margin-top: 2px;
-			border-radius: 5px;
-			cursor: pointer;
-			text-align: center;
-		}
-		a{	display: inline-block;
-			width: 100px;
-			height: 60px;
-			text-decoration: none;
-			color: black;
-			line-height: 60px;
-			font-size: 30px;
-
-		}
-	</style>
+	<title>sidebar demo</title>
+	<link rel="stylesheet"  href="css/index.css">
+	<link rel="stylesheet"  href="css/iconfont.css">
+	<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+	<!-- <script src='js/index.js'></script> -->
+	<script src='js/index.js'></script>
 </head>
 <body>
-	<div class="item" id="item1" mydata='女装'><p>1F</p></div>
-	<div class="item" id="item2" mydata='男装'><p>2F</p></div>
-	<div class="item" id="item3" mydata='童装'><p>3F</p></div>
-	<div class="item" id="item4" mydata='电器'><p>4F</p></div>
-	<div class="item" id="item5" mydata='家具'><p>5F</p></div>
-	<div class="menuRight">
-		<ul>
-			<li><a href="#item1" class="current">1F</a></li>
-			<li><a href="#item2">2F</a></li>
-			<li><a href="#item3">3F</a></li>
-			<li><a href="#item4">4F</a></li>
-			<li><a href="#item5">5F</a></li>
-		</ul>
+
+
+	<div id="leftmenu">
+		<div id="sidebar">
+			<ul>
+				<li class="sidebar-item item-prof" mycon="con-prof">
+					<div>衣帽</div>
+				</li>
+				<li class="sidebar-item item-asset" mycon="con-asset">
+					<div>家电</div>
+				</li>
+				<li class="sidebar-item item-brand" mycon="con-brand">
+					<div>电脑</div>
+				</li>
+				<li class="sidebar-item item-broadcast" mycon="con-broadcast">
+					<div>手机</div>
+				</li>
+				<li class="sidebar-item item-foot" mycon="con-foot">
+					<div>家具</div>
+				</li>
+				<li class="sidebar-item item-calendar" mycon="con-calendar">
+					<div>杂货</div>
+				</li>
+			</ul>
+			<div id="closeBar">
+				<i class="iconfont">&#xe609</i>
+			</div>
+		</div>
+		<div class="nav-content con-prof ">
+			<div class="nav-icon">
+				<i class="iconfont">&#xe606</i>
+			</div>
+			<div>
+				<p>衣帽</p>
+			</div>
+		</div>
+		<div class="nav-content con-asset ">
+			<div class="nav-icon">
+				<i class="iconfont">&#xe606</i>
+			</div>
+			<div>
+				<p>家电</p>
+			</div>
+		</div>
+		<div class="nav-content con-brand ">
+			<div class="nav-icon">
+				<i class="iconfont">&#xe606</i>
+			</div>
+			<div>
+				<p>电脑</p>
+			</div>
+		</div>
+		<div class="nav-content con-broadcast ">
+			<div class="nav-icon">
+				<i class="iconfont">&#xe606</i>
+			</div>
+			<div>
+				<p>手机</p>
+			</div>
+		</div>
+		<div class="nav-content con-foot ">
+			<div class="nav-icon">
+				<i class="iconfont">&#xe606</i>
+			</div>
+			<div>
+				<p>家具</p>
+			</div>
+		</div>
+		<div class="nav-content con-calendar ">
+			<div class="nav-icon">
+				<i class="iconfont">&#xe606</i>
+			</div>
+			<div>
+				<p>杂货</p>
+			</div>
+		</div>
+
+		<div id="main">
+			<div class="item" id="item1" mydata='女装'><!-- <p>1F</p> -->
+				<img src="img/1.jpg" alt="">
+				<img class="go" src="img/6.jpg" alt="">
+			</div>
+			<div class="item" id="item2" mydata='男装'><img src="img/2.jpg" alt="">
+				<img class="go" src="img/6.jpg" alt="">
+			</div>
+			<div class="item" id="item3" mydata='童装'><img src="img/3.jpg" alt="">
+				<img class="go" src="img/6.jpg" alt="">
+			</div>
+			<div class="item" id="item4" mydata='电器'><img src="img/4.jpg" alt="">
+				<img class="go" src="img/6.jpg" alt="">
+			</div>
+			<div class="item" id="item5" mydata='家具'><img src="img/5.jpg" alt="">
+				<img class="go" src="img/6.jpg" alt="">
+			</div>
+			<div class="menuRight">
+				<ul>
+					<li><a href="#item1" class="current">1F</a></li>
+					<li><a href="#item2">2F</a></li>
+					<li><a href="#item3">3F</a></li>
+					<li><a href="#item4">4F</a></li>
+					<li><a href="#item5">5F</a></li>
+					<li id="stickTop"><a href="#item1">回到顶部</a></li>
+				</ul>
+			</div>
+		</div>
 	</div>
-	<script>
+
+<!-- <script>
+	
+		var sidebarIsClosed = false;
+		//开启主体
+		$('#sidebar li').on('click',function (e) {
+			// body...
+			var $this = $(this);
+			$('.nav-content').hide();
+			var mycon = "."+$this.attr('mycon');
+			$(mycon).show().addClass('nav-con-open');
+			// 	//jquery实现
+			// 	// $('.con-perf').animate({
+			// 	// 	opacity:'1',
+			// 	// 	left:'50px',
+			// 	// 	// 
+			// 	// });		 
+
+
+		});
+		//关闭bar
+		$('#closeBar').on('click',function (e) {
+			// body...
+			$this = $(this);
+			if (!sidebarIsClosed) {
+				$this.addClass('closeBar-a');
+				// $('#sidebar).css('left':'100px');
+				$('#sidebar').css('left','-100px');
+				$('.nav-content').hide();
+				sidebarIsClosed = true;
+			}else{
+				console.log(1);
+				$this.removeClass('closeBar-a');
+				$('#sidebar').css('left','0px');
+				sidebarIsClosed = false;
+			}
+		});
+		//关闭主体
+		$('.nav-content').on('click',function(e){
+			$this = $(this);
+			//是否是关闭按钮
+			if (e.target.tagName === 'I') {
+				$this.hide();
+				console.log($this);
+				// 
+				// $this.removeClass('nav-con-open'); 
+				// $this.css({left:'50px',opacity:'1'})
+				// $this.addClass('.nav-con-close');
+				
+
+				// console.log($this.offset().left);
+				// $this.animate({
+				// 	opacity:'0',
+				// 	left:'-100px',	
+				// });
+
+
+			}
+		});
 		var $menuList = $('.menuRight>ul>li'),
-			$menu = $('.menuRight'),
-			currentId = '';
+		$menu = $('.menuRight'),
+		currentId = '';
 		$menuList.on('click',function (e) {
 			var $this = $(this);
 			$this.addClass('current');
@@ -95,7 +186,7 @@
 		});
 		$(window).on('scroll',function(){
 			var scrollH = $('body').scrollTop(),
-				items = $('.item');
+			items = $('.item');
 			items.each(function($e){
 				var $this = $(this);
 				if (scrollH + 200 > $this.offset().top) {
@@ -105,12 +196,13 @@
 				}
 			});
 			var currentMenu = $menu.find('.current');
-				if (currentMenu.attr('href')!=currentId) {
-					console.log(currentMenu);
-					currentMenu.removeClass('current');
-					$menu.find("[href=" + currentId + "]").addClass("current");
-				}
-		});
-	</script>
+			if (currentMenu.attr('href')!=currentId) {
+				console.log(currentMenu);
+				currentMenu.removeClass('current');
+				$menu.find("[href=" + currentId + "]").addClass("current");
+			}
+		}); -->
+
+</script>
 </body>
 </html>
