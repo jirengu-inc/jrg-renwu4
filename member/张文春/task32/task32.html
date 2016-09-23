@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>task32</title>
+	<title>懒加载+瀑布流</title>
 	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script src="./waterfall.js"></script>
 	<script src="./lazyLoad.js"></script>
@@ -78,24 +78,27 @@
 				<!-- 用于计算 item 宽度和列数，但不展示出来-->
 				<li class="item hide"></li>
     	</ul>
-    	<div id="load">我是看不见的</div>
+    	<!-- <div id="load">我是看不见的</div> -->
 	</div>
 	<script>
 	
 	var clock;
 	$(window).on('scroll',function() {
-
+		var m = $('#pic-ct li:last-child');
+		console.log(m);
 		if(clock){
 	      clearTimeout(clock);
 	    }
+
 	    clock = setTimeout(function(){
-	      	if (lazyLoad.isShow($('#load'))) {
+	      	if (lazyLoad.isShow(m)) {
+	      	// if (lazyLoad.isShow($('#load'))) {
 				loadAndPlace();
 			}
 	    }, 200);
 	});
 //载入页面需要执行一次。
-	loadAndPlace();
+	// loadAndPlace();
 
 	
 	loadAndPlace();

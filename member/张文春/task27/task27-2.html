@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>task27-1</title>
+	<title>task27-2</title>
 	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 	<style>
 		html,body,ul,li{
@@ -96,8 +96,7 @@
 			<li></li>
 		</ul>
 	</div>	
-
-		<div class="container">
+	<div class="container">
 		<ul class="img-ct clear">				
 			<li data-id=0><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
 			<li data-id=1><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
@@ -113,8 +112,7 @@
 			<li></li>
 		</ul>
 	</div>	
-
-		<div class="container">
+	<div class="container">
 		<ul class="img-ct clear">				
 			<li data-id=0><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a></li>
 			<li data-id=1><a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a></li>
@@ -132,12 +130,13 @@
 	</div>	
 
 		<script>
-			var $container = $('.container'),
-				$ct = $('.img-ct'),
+		$.fn.carousel = function(){
+			var $this = $(this),
+				$ct = $this.find('.img-ct'),
 				$items = $ct.children(),
-				$pre = $('.pre'),
-				$next = $('.next'),
-				$bullet = $('.bullet'),
+				$pre = $this.find('.pre'),
+				$next = $this.find('.next'),
+				$bullet = $this.find('.bullet'),
 				imgCount = $items.length;
 
 
@@ -172,10 +171,6 @@
 				$items.eq(idx).fadeIn(500,function(){
 					islocked = false;
 				});
-				// $items.eq(curidx).fadeOut(500);
-				// $items.eq(idx).fadeIn(500,function(){
-				// 	islocked = false;
-				// });
 				curidx = idx;
 				setBullet();
 			}
@@ -192,6 +187,70 @@
 			function stopAuto(){
 				clearInterval(clock);
 			}
+
+
+		}
+
+		// $('.container').lunbo();
+		$('.container').each(function(){
+			$(this).carousel();
+		})
+			// var $container = $('.container'),
+			// 	$ct = $('.img-ct'),
+			// 	$items = $ct.children(),
+			// 	$pre = $('.pre'),
+			// 	$next = $('.next'),
+			// 	$bullet = $('.bullet'),
+			// 	imgCount = $items.length;
+
+
+
+			// var curidx = 0;
+			// var islocked = false;
+			// $next.on('click',function(e){
+			// 	// e.preventDefault();
+			// 	playNext();
+
+			// });
+			// $pre.on('click',function(){
+			// 	playPro();
+			// })
+			// $bullet.find('li').on('click',function(){
+			// 	$this = $(this);
+			// 	play($this.index());
+			// })
+
+			// play(0);
+			// autoPlay();
+			// function playNext(){
+			// 	play((curidx + 1)%imgCount);
+			// }
+			// function playPro(){
+			// 	play((curidx -1)%imgCount);
+			// }
+			// function play(idx) {
+			// 	if (islocked) return;
+			// 	islocked = true;
+			// 	$items.eq(curidx).fadeOut(500);
+			// 	$items.eq(idx).fadeIn(500,function(){
+			// 		islocked = false;
+			// 	});
+			// 	curidx = idx;
+			// 	setBullet();
+			// }
+			// function setBullet(){
+			// 	$bullet.find('li').removeClass('active');
+			// 	$bullet.find('li').eq(curidx).addClass('active');
+			// }
+			
+			// function autoPlay(){
+			// 	clock = setInterval(function(){
+			// 		playNext();
+			// 	},2000)
+			// }
+			// function stopAuto(){
+			// 	clearInterval(clock);
+			// }
 
 		</script>
 	

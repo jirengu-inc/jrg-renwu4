@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>menubar</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+		li{
+			list-style: none;
+		}
+		.item{
+			width: 1000px;
+			height: 600px;
+			padding: 10px;
+			border: 5px solid #ccc;
+			margin: 0 auto;
+			margin-top: 30px;
+
+		}
+		#item1{
+			background: red;
+		}
+		#item2{
+			background: green;
+		}
+		#item3{
+			background: yellow;
+		}
+		#item4{
+			background: #ccc;
+		}
+		#item5{
+			background: white;
+		}
+		.item p{
+			font-size: 100px;
+			text-align: center;
+		}
+		.menuRight{
+			position: fixed;
+			top: 200px;
+			left: 50%;
+			margin-left: 500px;
+		}
+		.menuRight li a:hover,
+		.menuRight li a.current{
+			background: #0088bb;
+			color: #fff;
+		}
+		.menuRight ul li{
+			width: 100px;
+			height: 60px;
+			border: 1px solid #ccc;
+			padding: 5px;
+			margin-top: 2px;
+			border-radius: 5px;
+			cursor: pointer;
+			text-align: center;
+		}
+		a{	display: inline-block;
+			width: 100px;
+			height: 60px;
+			text-decoration: none;
+			color: black;
+			line-height: 60px;
+			font-size: 30px;
+
+		}
+	</style>
+</head>
+<body>
+	<div class="item" id="item1" mydata='女装'><p>1F</p></div>
+	<div class="item" id="item2" mydata='男装'><p>2F</p></div>
+	<div class="item" id="item3" mydata='童装'><p>3F</p></div>
+	<div class="item" id="item4" mydata='电器'><p>4F</p></div>
+	<div class="item" id="item5" mydata='家具'><p>5F</p></div>
+	<div class="menuRight">
+		<ul>
+			<li><a href="#item1" class="current">1F</a></li>
+			<li><a href="#item2">2F</a></li>
+			<li><a href="#item3">3F</a></li>
+			<li><a href="#item4">4F</a></li>
+			<li><a href="#item5">5F</a></li>
+		</ul>
+	</div>
+	<script>
+		var $menuList = $('.menuRight>ul>li'),
+			$menu = $('.menuRight'),
+			currentId = '';
+		$menuList.on('click',function (e) {
+			var $this = $(this);
+			$this.addClass('current');
+			$this.siblings().removeClass('current');
+
+		});
+		$(window).on('scroll',function(){
+			var scrollH = $('body').scrollTop(),
+				items = $('.item');
+			items.each(function($e){
+				var $this = $(this);
+				if (scrollH + 200 > $this.offset().top) {
+					currentId = '#' + $this.attr('id');
+				}else{
+					return false;
+				}
+			});
+			var currentMenu = $menu.find('.current');
+				if (currentMenu.attr('href')!=currentId) {
+					console.log(currentMenu);
+					currentMenu.removeClass('current');
+					$menu.find("[href=" + currentId + "]").addClass("current");
+				}
+		});
+	</script>
+</body>
+</html>

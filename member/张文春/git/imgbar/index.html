@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片墙</title>
+	<style>
+		.container{
+			background: #aaa;
+			border: 1px solid #ccc;
+			position: relative;
+			min-height: 700px;
+		}
+		.clear:after{
+			content: "";
+			display:block;
+			clear: both;
+		}
+		ul{
+			list-style: none;
+		}
+		li{
+			position: absolute;
+			left: 800px;
+			top: 500px;
+			/*float: left;*/
+			transition: 2s;
+		}
+		li img{
+			border: 5px solid #fff;
+		}
+
+		.img1{
+			left: 550px;
+			top: 130px;
+			transform: rotate(30deg) scale(1);
+			z-index: 10;
+		}
+		.img2{
+			left: 400px;
+			top: 50px;
+			transform: rotate(50deg) scale(1);
+			z-index: 10;
+		}
+		.img3{
+			left: 670px;
+			top: 270px;
+			transform: rotate(70deg) scale(1);
+			z-index: 10;
+		}
+		.img4{
+			left: 800px;
+			top: 40px;
+			transform: rotate(80deg) scale(1);
+			z-index: 10;
+		}
+		.img5{
+			left: 160px;
+			top: 200px;
+			transform: rotate(90deg) scale(0.5);
+			z-index: 10;
+		}
+		.img6{
+			left: 390px;
+			top: 320px;
+			transform: rotate(30deg) scale(0.5);
+			z-index: 10;
+		}
+		.img7{
+			left: 640px;
+			top: 300px;
+			transform: rotate(50deg) scale(0.5);
+			z-index: 10;
+		}
+		.img8{
+			left: 800px;
+			top: 200px;
+			transform: rotate(80deg) scale(0.5);
+			z-index: 10;
+		}
+		li:hover{
+			/*border: 10px solid red;*/
+			transform: scale(1.4) rotate(0deg);
+			/*transform: rotate(0deg);*/
+			z-index: 999;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container clear">
+		<ul class="clear">
+			<li class="img1"><a href=""><img src="img/1.jpg" alt=""></a></li>
+			<li class="img2"><a href=""><img src="img/2.jpg" alt=""></a></li>
+			<li class="img3"><a href=""><img src="img/3.jpg" alt=""></a></li>
+			<li class="img4"><a href=""><img src="img/4.jpg" alt=""></a></li>
+			<li class="img5"><a href=""><img src="img/5.jpg" alt=""></a></li>
+			<li class="img6"><a href=""><img src="img/6.jpg" alt=""></a></li>
+			<li class="img7"><a href=""><img src="img/7.jpg" alt=""></a></li>
+			<li class="img8"><a href=""><img src="img/8.jpg" alt=""></a></li>
+		</ul>
+	</div>
+	<script src='http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js'></script>
+	<script>
+		
+	</script>
+</body>
+</html>
