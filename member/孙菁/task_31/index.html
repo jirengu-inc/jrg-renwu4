@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+	<script src="jquery-3.0.0.min.js"></script>
+</head>
+<body>
+	index
+	<script>
+		$.ajax({
+			url:'http://b.com/task_31/ajax.php',
+			type: 'get',
+			success:function(data){
+				console.log(data);
+			}
+		});
+	</script>
+</body>
+</html>

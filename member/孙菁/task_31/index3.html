@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index3</title>
+	<script src="jquery-3.0.0.min.js"></script>
+</head>
+<body>
+	index3
+	<script>
+		window.getInfo = function(res){
+			console.log(res);
+		}
+	</script>
+	<script>
+		var script = document.createElement('script');
+		script.src = "//b.com/task_31/data.php?callback=getInfo";
+		document.body.appendChild(script);
+	</script>
+</body>
+</html>

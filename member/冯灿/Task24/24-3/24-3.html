@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>24-3</title>
+  <style media="screen">
+    html,
+    body {
+      height: 100%;
+    }
+
+    div.container {
+      margin: 0 auto;
+      text-align: center;
+      height: 100%;
+    }
+
+    form {
+      margin: 100px;
+    }
+
+    table {
+      margin: auto;
+    }
+
+    table tr {
+      height: 50px;
+    }
+
+    table td:first-child {
+      text-align: right;
+    }
+
+    input#submit {
+      font-size: 20px;
+    }
+
+    span.tip {
+      color: #CCC;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <form class="register" action="" method="post" id="form">
+      <table>
+        <tr>
+          <td>
+            <span>用户名</span>
+          </td>
+          <td>
+            <input id="username" type="text" name="username" value=""><span class="tip">*用户名要求包括数字、字母或下划线，长度3至10个字符</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>密码</span>
+          </td>
+          <td>
+            <input id="password" type="text" name="password" value=""><span class="tip">*密码要求包括大写字母、小写字母、数字、下划线至少两种，长度6至15个字符</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span>确认密码</span>
+          </td>
+          <td>
+            <input id="passwordConfirm" type="text" name="passwordConfirm" value=""><span class="tip"></span>
+          </td>
+        </tr>
+      </table>
+      <input type="submit" name="submit" value="注册" id="submit">
+    </form>
+  </div>
+  <script src="./EventUtil.js" charset="utf-8"></script>
+  <script src="./ajax.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    (function() {
+      var submittable = 0;
+
+      var unInput = document.querySelector("input#username");
+      EventUtil.addHandler(unInput, "focus", function(event) {
+        unInput.nextSibling.textContent = "*用户名要求包括数字、字母或下划线，长度3至10个字符";
+        if (unInput.style.borderColor === "red") {
+          unInput.style.borderColor = "";
+        }
+      });
+      EventUtil.addHandler(unInput, "blur", function(event) {
+        if (unInput.value.length > 0) {
+          switch (true) {
+            case /\W/g.test(unInput.value):
+              unInput.nextSibling.textContent = "*用户名包含非法字符";
+              unInput.style.borderColor = "red"
+              break;
+            case unInput.value.length < 3 || unInput.value.length > 10:
+              unInput.nextSibling.textContent = "*用户名长度不符合要求";
+              unInput.style.borderColor = "red";
+              break;
+            default:
+              ajax({
+                url: "24-3.php",
+                type: "get",
+                data: {
+                  username: event.target.value
+                },
+                success: function(registed) {
+                  if (!registed) {
+                    submittable++;
+                  } else {
+                    unInput.nextSibling.textContent = "*用户名已被注册";
+                  }
+                },
+                error: function() {
+                  console.log("Something goes wrong.");
+                }
+              });
+              break;
+          }
+        }
+      });
+      // EventUtil.addHandler(unInput, "change", function(event) {
+      //   if (unInput.value.length > 0) {
+      //     switch (true) {
+      //       case /\W/g.test(unInput.value):
+      //         unInput.nextSibling.textContent = "*用户名包含非法字符";
+      //         unInput.style.borderColor = "red"
+      //         break;
+      //       case unInput.value.length < 3 || unInput.value.length > 10:
+      //         unInput.nextSibling.textContent = "*用户名长度不符合要求";
+      //         unInput.style.borderColor = "red";
+      //         break;
+      //       default:
+      //         submittable++;
+      //         break;
+      //     }
+      //   }
+      // });
+
+      var pwdInput = document.querySelector("input#password");
+
+      EventUtil.addHandler(pwdInput, "focus", function(event) {
+        pwdInput.nextSibling.textContent = "*密码要求包括大写字母、小写字母、数字、下划线至少两种，长度6至15个字符";
+        if (pwdInput.style.borderColor === "red") {
+          pwdInput.style.borderColor = "";
+        }
+      });
+
+      function isValidPassword(str) {
+        var passedFlags = 0;
+        if (/^\w{6,15}$/.test(str)) {
+          if (/\d/.test(str)) {
+            ++passedFlags;
+          }
+          if (/[a-z]/.test(str)) {
+            ++passedFlags;
+          }
+          if (/[A-Z]/.test(str)) {
+            ++passedFlags;
+          }
+          if (/[_]/.test(str)) {
+            ++passedFlags;
+          }
+        }
+        return passedFlags > 1 ? true : false;
+      }
+
+      EventUtil.addHandler(pwdInput, "blur", function(event) {
+        if (event.target.value.length > 0) {
+          if (!isValidPassword(event.target.value)) {
+            event.target.style.borderColor = "red";
+            event.target.nextSibling.textContent = "*密码格式不符合要求";
+          } else {
+            submittable++;
+          }
+        }
+      });
+      // EventUtil.addHandler(pwdInput, "change", function(event) {
+      //   if (!isValidPassword(event.target.value)) {
+      //     event.target.style.borderColor = "red";
+      //     event.target.nextSibling.textContent = "*密码格式不符合要求";
+      //   } else {
+      //     submittable++;
+      //   }
+      // });
+
+      var pwdConInput = document.querySelector("input#passwordConfirm");
+      EventUtil.addHandler(pwdConInput, "focus", function(event) {
+        event.target.nextSibling.textContent = "";
+        if (pwdConInput.style.borderColor === "red") {
+          pwdConInput.style.borderColor = "";
+        }
+      });
+      EventUtil.addHandler(pwdConInput, "blur", function(event) {
+        if (event.target.value.length > 0) {
+          if (event.target.value !== pwdInput.value) {
+            event.target.style.borderColor = "red";
+            event.target.nextSibling.textContent = "*两次密码输入不一致";
+          } else {
+            submittable++;
+          }
+        }
+      });
+      // EventUtil.addHandler(pwdConInput, "change", function(event) {
+      //   if (event.target.value !== pwdInput.value) {
+      //     event.target.style.borderColor = "red";
+      //     event.target.nextSibling.textContent = "*两次密码输入不一致";
+      //   } else {
+      //     submittable++;
+      //   }
+      // });
+
+      var form = document.querySelector("form#form");
+      EventUtil.addHandler(form, "submit", function(event) {
+        console.log(submittable);
+        if (submittable !== 3) {
+          EventUtil.preventDefault(event);
+          alert("请填写相关信息")
+        } else {
+          alert("注册成功");
+        }
+      });
+
+    })();
+  </script>
+</body>
+
+</html>

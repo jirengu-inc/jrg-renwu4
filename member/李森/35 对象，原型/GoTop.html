@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>创建一个 GoTop 对象</title>
+</head>
+<body>
+创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法 (难度: ****)
+ct属性，GoTop 对应的 DOM 元素的容器
+target属性， GoTop 对应的 DOM 元素
+bindEvent 方法， 用于绑定事件
+createNode 方法， 用于在容器内创建节点
+ <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+function GoTop(ct){
+	this.createNode(ct);
+}	
+GoTop.prototype = {
+	createNode:function(ct){
+		console.log(ct);
+	   ct.append('<div id="GoTop"><span class="text">回到顶部</span></div>')
+	   $('#GoTop').css({
+			width: '120px',
+			textAlign: 'center',
+			border: '1px solid red',
+			borderRadius: '5px',
+			position: 'fixed',
+			right: '40px',
+			bottom: '40px',
+			cursor: 'pointer',
+		});
+	   $('.text').css({
+			color: 'red',
+			fontSize: '22px',
+			lineHeight: '44px'
+		})
+	    this.bindEvent();
+	},
+	bindEvent:function(){
+		$('#GoTop').on('click',function(){
+			$(window).scrollTop(0)
+		})
+	}
+}
+
+new GoTop($('body'))
+
+
+// var GoTop = {
+// 	ct:function(){
+// 		$('body').append('<div id="GoTop"></div>');
+// 		$('#GoTop').css({
+// 			width: '120px',
+// 			textAlign: 'center',
+// 			border: '1px solid red',
+// 			borderRadius: '5px',
+// 			position: 'fixed',
+// 			right: '40px',
+// 			bottom: '40px',
+// 			cursor: 'pointer',
+// 		});
+// 		GoTop.createNode();	
+// 	},
+// createNode:function(){
+// 	$('#GoTop').append('<span class="text">回到顶部</span>')
+// 	$('.text').css({
+// 		color: 'red',
+// 		fontSize: '22px',
+// 		lineHeight: '44px'
+// 	})
+// 	GoTop.bindEvent();
+// },
+// bindEvent:function(){
+// 	$('#GoTop').on('click',function(){
+// 		$(window).scrollTop(0)
+// 	})
+// 	},
+// 	target:function(){
+
+// 	}
+// }
+
+// GoTop.ct()
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>构造函数轮播</title>
+	<style>
+		ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.ct,.picture img{
+			width: 280px;
+			height: 200px;
+		}
+		.ct{
+			position: relative;
+			overflow: hidden;
+		}
+		.picture{
+			position: relative;
+		}
+		.picture:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.picture>li{
+			float: left;
+		}
+		.pre,.next{
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			padding: 10px 15px;
+			border-radius: 50%;
+			color: #FFF;
+			background: rgba(15,15,15,.7);
+		}
+		.pre{
+			left: 10px;
+		}
+		.next{
+			right:10px;
+		}
+
+
+	</style>
+</head>
+<body>
+使用构造函数创建对象的方式完成轮播功能( 查看demo )，使用如下调用方式
+
+
+<div id="carousel1" class="ct">
+	<ul class="picture">
+		<li><a href='#'><img src='img/1.jpg' title="图片"></a></li>
+		<li><a href='#'><img src='img/2.jpg' title="图片"></a></li>
+		<li><a href='#'><img src='img/3.jpg' title="图片"></a></li>
+		<li><a href='#'><img src='img/4.jpg' title="图片"></a></li>
+	</ul>
+	<a href="javaScript:vido(0)" class="pre"><</a>
+	<a href="javaScript:vido(0)" class="next">></a>
+</div>
+<div id="carousel1" class="ct">
+	<ul class="picture">
+		<li><a href='#'><img src='img/1.jpg' title="图片"></a></li>
+		<li><a href='#'><img src='img/2.jpg' title="图片"></a></li>
+		<li><a href='#'><img src='img/3.jpg' title="图片"></a></li>
+		<li><a href='#'><img src='img/4.jpg' title="图片"></a></li>
+	</ul>
+	<a href="javaScript:vido(0)" class="pre"><</a>
+	<a href="javaScript:vido(0)" class="next">></a>
+</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+
+<script>
+	function Carousel($node){
+        this.$node = $node;
+	    this.$picture = $node.find('.picture');
+		var $picture = this.$picture;
+		this.$pre = $node.find('.pre');
+	    this.$next = $node.find('.next');
+		this.$imgL = $node.find('li').length;
+		this.$imgWidth = $node.find('li').width();
+		
+		$picture.css({width: this.$imgL * this.$imgWidth});
+		this.bindEvent();
+	}
+	Carousel.prototype = {
+		bindEvent: function(){
+			var me = this;
+			this.$pre.on('click',function(){
+		        me.playPre();
+			 });
+			 this.$next.on('click',function(){
+			 	me.playNext();
+			 });
+		},
+		playPre: function(){
+			this.$picture.prepend(this.$picture.children().last());
+		    this.$picture.css('left', 0-this.$imgWidth);
+			this.$picture.animate({'left': 0});			
+		},
+		playNext: function(){
+			var $picture = this.$picture;
+			$picture.animate({'left': 0-this.$imgWidth},function(){
+				$picture.append($picture.children().first());
+				$picture.css('left', 0);
+			});
+		}
+	};
+	
+$('.ct').each(function(){
+	new Carousel($(this))
+})
+
+
+	</script>
+
+
+
+
+</body>
+</html>

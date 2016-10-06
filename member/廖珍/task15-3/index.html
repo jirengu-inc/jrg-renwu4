@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>祝   生日快乐</title>
+	</head>
+	<style>
+		html,body,h1,h2,h3,h4,h5,h6,p,ul,li {
+			margin:0;
+			padding:0;
+		}
+		html,body {
+			width:100%;
+
+		}
+		*{
+			box-sizing:border-box;
+		}
+		ul,li {
+			list-style:none;
+		}
+		a {
+			text-decoration:none;
+			color:#76E8F2;
+		}
+		body {
+			background-image:linear-gradient(to bottom left,#7ca9d2,#DB8484,#E3E325);
+		}
+		.container {
+			width:1150px;
+			margin:0 auto;
+		}
+		.clearfix:after {
+			content:'';
+			display:block;
+			clear:both;
+		}
+		#header {
+			background-image:linear-gradient(to bottom left,#7ca9d2,#DB8484,#E3E325);
+			width:100%;
+			height:600px;
+			position:relative;
+		}
+		#header .logo {
+			position:absolute;
+			height:300px;
+			width:500px;
+			background-size:contain;
+			top:50%;
+			left:50%;
+			margin-top:-150px;
+			margin-left:-250px;
+			background:url(imgs/20150512104824270.png);
+			border-radius:50%;
+		}
+		#header .cake {
+			background:url(imgs/生日蛋糕logo.jpg);
+			background-size:cover;
+			width:30px;
+			height:30px;
+			position:absolute;
+		}
+		.pos1 {
+			left:9%;
+			top:30%;
+		}
+		.pos2 {
+			left:18%;
+			top:61%;
+		}
+		.pos3 {
+			left:75%;
+			top:60%;
+		}
+		.pos4 {
+			left:86%;
+			top:27%;
+		}
+		@keyframes style1 {
+			0% {width:30px;height:30px;}
+			50% {width:40px;height:40px;}
+			100%{width:50px;height:50px;}
+		
+		}
+		.style1 {
+			animation:4s style1 ease infinite;
+		}
+		@keyframes style2 {
+			0% {width:30px;height:30px;}
+			50% {width:50px;height:50px;}
+			100%{width:30px;height:30px;}
+		
+		}
+		.style2 {
+			animation:4s style2 ease infinite;
+		}
+		.happy {
+			position:absolute;
+			background:url(imgs/QQ截图20160918195909.png) no-repeat center center;
+			width:100px;
+			height:25px;
+			left:2%;
+			top:2%;
+		}
+		.content {
+			background-image:linear-gradient(to bottom left,#7ca9d2,#DB8484,#E3E325);
+			height:600px;
+		}
+		.content h1 {
+			color:#fff;
+		
+			text-align:center;
+			
+			padding:10px 0px;
+		}
+		.content .carousel {
+			padding:40px 0;
+		}
+		.active {
+			transform:scale(1.2,1.2);
+			transition:.2s;
+		}
+		.carousel-ct .panel {
+			float:left;
+			width:33.33%;
+			height:450px;
+			border:1px solid #ccc;
+			padding:15px 20px;
+			background:#fff;
+		}
+		.carousel-ct .panel>a {
+			height:100%;
+			padding:30px 26px;
+			display:block;
+			border:8px solid transparent;
+			
+			
+			
+		}
+		.carousel-ct .v1>a {
+		
+			background-image:linear-gradient(to bottom left,#7ca9d2,#DB8484,#E3E325);
+			
+		}
+		.carousel-ct .v2>a {
+			z-index:99;
+			background-image:linear-gradient(to bottom left,#7ca9d2,#DB8484,#E3E325);
+			
+		}
+		.carousel-ct .v3>a {
+			z-index:99;
+			background-image:linear-gradient(to bottom left,#7ca9d2,#DB8484,#E3E325);
+			
+		}
+		.panel p {
+			line-height:1.8;
+			font-weight:500;
+			font-size:18px;
+		}
+		.v3 p {
+			text-align:right;
+		}
+		
+		.about {
+			position:relative;
+
+		}
+
+		.about h1 {
+		color:#fff;
+	    margin-top:100px;
+	    margin-bottom:20px;
+	    font-weight:700;
+	    font-size:40px;
+	    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	    text-align:center;
+       }
+        .about .container>p {
+        	color:#fff;
+	    font-size:16px;
+	    font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+	    font-style: italic;
+	    text-align:center;
+
+	  }
+	   .about p {
+	    font-size:16px;
+	    font-family: "Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+	  }
+	  .about-list {
+	    position:relative;
+	    margin-top:50px;
+	  }
+  	 .about-list:before{
+	    display:block;
+	    content:'';
+	    width: 2px;
+	    position:absolute;
+	    top:0;
+	    bottom:0;
+	    left:50%;
+	    background: #f1f1f1;
+	    z-index:-1;
+	    margin-left:-10px;
+	}
+	.about-list .about-item {
+	    position:relative;
+	    margin-bottom:100px;
+	  }
+	    .about-list .about-item1 .about-desc{
+		  float: left;
+		  width: 370px;
+		  height:170px;
+		  text-align: right;
+		  line-height: 1.47;
+		  font-size: 14px;
+		  padding: 0 20px;
+		}
+		.about-list .about-item2 .about-desc{
+		  float: right;
+		  width: 400px;
+		  height:170px;
+		  text-align:left;
+		  line-height: 1.47;
+		  font-size: 14px;
+		  padding: 0 20px;
+		}
+		.about-list .about-item .about-img {
+	    width:170px;
+	    height:170px;
+	    border-radius: 100%;
+	    position:absolute;
+	    top:0;
+	    left:50%;
+	    margin-left:-100px;
+	   
+	    color:#fff;
+	   
+	  }
+	   .about-list .about-item .about-img img {
+	    width:170px;
+	    height:170px;
+	    border-radius: 100%;
+	  }
+	  .about-item h3 {
+	  	color:#fff;
+	  	font-size:22px;
+	  	margin:10px 0px;
+	  	font-size:500;
+	  }
+	  .about-item p {
+	  	color:#16F2EE;
+	  	font-size:18px;
+	  	margin:8px 0;
+	  	font-weight:400;
+	  	 font-style: italic;
+	  }
+	  .footer {
+	  	text-align:center;
+	  	padding:20px 0;
+	  	background-image:linear-gradient(to top right,#7ca9d2,#DB8484,#E3E325);
+	  }
+	  .footer h1 {
+	  	font-size:24px;
+	  	margin-bottom:20px;
+	  	color:#fff;
+	  }
+	  .footer p {
+	  	font-size:18px;
+	  	color:#16F2EE;
+	  }
+	</style>
+	<body>
+		<div id='header'>
+			<div class='logo'></div>
+			<div class='cake-ct'>
+				<div class='cake pos1 style1'></div>
+				<div class='cake pos2 style2'></div>
+				<div class='cake pos3 style1'></div>
+				<div class='cake pos4 style2'></div>
+			</div>
+			
+		</div>
+		<div class='content'>
+			<h1>说说心里话</h1>
+			<div class='carousel'>
+				<ul class='carousel-ct'>
+					<li class='panel v1'>
+						<a href='#' class='link'>
+							<h1>生日快乐</h1>
+							<p>首先我不确定你是否会打开这个网址</p>
+							
+							<p>尽管这样的静态网站特别简单</p>
+							<p>我也没有什么素材能做出惊天动地的效果</p>
+							<p>虽然简单,但并不代表我没有用心做</p>
+							<p>我不是一个设计师，我不能设计出让人耳目一新的效果</p>
+							<p>至少在色彩的搭配上，我花了很大功夫</p>
+							<p>我相信这样的礼物你肯定是第一次收到</p>
+						</a>
+					</li>
+					<li class='panel v2 active' >
+						<a href='#' class='link'>
+							<h1>我想陪你一起过生日</h1>
+							<p>那天我不该对你说那么难听的话</p>
+							<p>我知道你不是那样的人</p>
+							<p>那天那些话，是我生病了，心情很不好才说的</p>
+							<p>我知道你心里肯定在想，我想的不够多，觉得我们俩在一起不可能</p>
+							<p>或许觉得我太过于单纯</p>
+							<p>我只想陪你好好的过一个生日，但是这似乎也成为了不可能</p>
+						</a>
+					</li>
+					<li class='panel v3'>
+						<a href='#' class='link'>
+							<h1>我只想和你在一起</h1>
+							<p>我心里也知道我和你之间有太多的阻碍</p>
+							<p>但是我也没想过要放弃</p>
+							<p>我不知道我要怎么样才能说服你，不要去考虑那么多</p>
+							<p>感情的事本来就没有对与错</p>
+							<p>相遇本就不易，我希望我们都能珍惜彼此</p>
+							<p>很多时候，我放下了尊严，放下了个性，放下了固执，都只是因为放不下你</p>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class='about'>
+			<div class='container'>
+				<h1>ABOUT</h1>
+				<p>生命里有很多定数，在未曾预料的时候就已摆好了局</p>
+				<ul class='about-list'>
+					<li class='about-item about-item1 clearfix'>
+						<div class='about-desc'>
+							<h3>你最喜欢的水果头像</h3>
+							<p>想想你都好久没用过这张图做qq头像了，喜欢这张图，就是因为你以前的朋友都叫你菠萝吧,在你的生活里，你永远把你的兄弟朋友放在你最高的位置。</p>
+							<div class='about-img'>
+								<img src='imgs/20140906005748_HdrCT.thumb.224_0.jpeg'>
+							</div>
+						</div>
+					</li>
+					<li class='about-item about-item2 clearfix'>
+						<div class='about-desc'>
+							<h3>军训结束</h3>
+							<p>或许在城院的记忆你永远不会忘，那是因为这样有一群可爱的孩子，这里也有一群你和你志同道合的朋友，也是因为军训，我成为了你口中‘恶毒的学姐’，要不是军训，我们也不会认识</p>
+							<div class='about-img'>
+								<img src='imgs/hdImg_b02e4ca24e1d9e399b835872ad73d40f14743712078.jpg'>
+							</div>
+						</div>
+					</li>
+					<li class='about-item about-item1 clearfix'>
+						<div class='about-desc'>
+							<h3>毕业</h3>
+							<p>这图是我从别人那里盗的，科大的四年你也一辈子不会忘，战友情也忘不了，你说我比你爸妈还理解你退伍，那是站在的角度不同，不管你做什么决定，我都尊重你的决定，包括你留学</p>
+							<div class='about-img'>
+								<img src='imgs/mmexport1474372748222.jpg'>
+							</div>
+						</div>
+					</li>
+					<li class='about-item about-item2 clearfix'>
+						<div class='about-desc'>
+							<h3>邓紫棋</h3>
+							<p>我知道这是你很喜欢的一个歌手，不要问我为什么知道，我知道的事还不止这些，我也不知道为什么，我首先不喜欢邓紫琪，后面老听她的歌，觉得也不错。</p>
+							<div class='about-img'>
+								<img src='imgs/c9fcc3cec3fdfc03c35baeb7d73f8794a4c22699.jpg'>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class='footer'>
+			<h1>特别的祝福语</h1>
+			<p>从小我就不是一个擅长写作的人，我不会用很华丽的辞藻来表达感情，千言万语，化成这几百行代码组成的静态网页，</p>
+		</div>
+	</body>
+</html>

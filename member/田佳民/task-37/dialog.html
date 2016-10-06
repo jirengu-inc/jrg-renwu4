@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>dialog</title>
+  <style>
+  *{
+      padding: 0;
+      margin: 0;
+  }
+  a{
+      text-decoration: none;
+  }
+  ul,li{
+      list-style: none;
+  }
+  .wrap{
+      width: 500px;
+      text-align: center;
+      margin: 50px auto;
+  }
+  .btn{
+      padding: 8px;
+      margin: 0 5px;
+  }
+  .dialog{
+      position: absolute;
+      left: 50%;
+      top:50%;
+     transform: translate(-50%,-50%);
+      width: 400px;
+      border: solid 1px #ccc;
+     background: #fff;
+
+  }
+  .dialog-header{
+    height: 40px;
+    line-height: 40px;
+    background-color: #ccc;
+    padding:0px 5px;
+    font-size: 16px;
+
+  }
+  .dialog-header .title{
+      user-select:none;
+  }
+    .dialog-header .close{
+        position: absolute;
+        top: 0;
+        right: 10px;
+        color:#000;
+    }
+    .dialog-header .close:hover{
+        color:#f00;
+    }
+    .dialog-content{
+        padding: 15px 5px;
+        text-align: center;
+    }
+    .dialog-footer{
+        text-align: center;
+        padding: 5px 0;
+    }
+     .dialog-footer a{
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 3px;
+        margin: 5px;
+        background-color: #dc9d10;
+        color:#fff;
+        font-size: 16px;
+     }
+  </style>
+</head>
+<body>
+    <div class="wrap">
+            <button id="open1" class="btn">open1</button>
+            <button id="open2" class="btn">open2</button>
+            <button id="open3" class="btn">open3</button>
+            <button id="open4" class="btn">open4</button>
+            <button id="open5" class="btn">open5</button>
+    </div>
+    <!-- <div class="wrap">
+        <div class="dialog">
+            <div class="dialog-header">
+                <div class="title">标题</div>
+                <a href="#" class="close">X</a>
+            </div>
+            <div class="dialog-content">
+                内容
+            </div>
+            <div class="dialog-footer">
+                <a href="#" class="confirm">确定</a>
+                <a href="#" class="cancel">取消</a>
+            </div>
+        </div>
+    </div> -->
+</body>
+<script src="1.9.1jquery.js">    </script>
+<script type="text/javascript">
+function Dialog(){
+
+}
+
+Dialog.prototype={
+    defualts:{
+        title:'',
+        content:'默认内容',
+        isShowConfirmBtn:true,
+        isShowCancelBtn:true,
+    },
+    open:function(opts){
+        this.create();
+        this.setOpts(opts);
+        this.bindEvent();
+    },
+    setOpts:function(opts){
+        var settings=$.extend({},this.defualts,opts);
+    console.log(settings.isShowConfirmBtn)
+        if(!settings.title){
+            this.$dialog.find('.dialog-header ').hide();
+        }else{
+            this.$dialog.find('.dialog-header .title').text(settings.title);
+        }
+        this.$dialog.find('.dialog-content').html(settings.content);
+        if(settings.isShowConfirmBtn){
+            this.$dialog.find('.dialog-footer .confirm').show();
+        }else{
+            this.$dialog.find('dialog-footer .confirm').hide();
+        }
+        if(settings.isShowCancelBtn){
+            this.$dialog.find('.dialog-footer .cancel').show();
+        }else{
+            this.$dialog.find('.dialog-footer .cancel').hide();
+        }
+        if(settings.onConfirm){
+            this.$dialog.find('.dialog-footer .confirm').on('click',settings.onConfirm);
+        }
+        if(settings.onCancel){
+            this.$dialog.find('.dialog-footer .cancel').on('click',settings.onCancel);
+        }
+
+    },
+    create:function(){
+        var dialog='<div class="dialog">';
+        dialog+='<div class="dialog-header"><div class="title"></div><a href="#" class="close">X</a></div>';
+        dialog+='<div class="dialog-content"></div>';
+        dialog+='<div class="dialog-footer"><a href="#" class="confirm">确定</a><a href="#" class="cancel">取消</a></div></div>';
+        this.$dialog=$(dialog);
+        $(document.body).append(this.$dialog);
+    },
+    bindEvent : function(){
+        var that=this,
+         diaX,
+         diaY,
+         isMove=false;
+
+        that.$dialog.on('mousedown',function(e){
+            e.preventDefault();
+            diaX=e.pageX-$(this).offset().left;
+            diaY=e.pageY-$(this).offset().top;
+            isMove=true;
+        });
+        $(document).on('mousemove',function(e){
+            var moveX=e.pageX-diaX,
+                  moveY=e.pageY-diaY;
+            if(isMove){
+                that.$dialog.offset({
+                    left:moveX,
+                    top:moveY
+                })
+            }
+        });
+        $(document).on('mouseup',function(e){
+            isMove=false;
+        });
+        that.$dialog.find('.confirm').on('click',function(e){
+            e.preventDefault();
+            that.$dialog.hide();
+        });
+        that.$dialog.find('.cancel').on('click',function(e){
+            e.preventDefault();
+            that.$dialog.hide();
+        });
+        that.$dialog.find('.close').on('click',function(e){
+            e.preventDefault();
+            that.$dialog.hide();
+        });
+    }
+}
+
+    $('#open1').on('click',function(){
+        new Dialog().open();
+    });
+    $('#open2').on('click',function(){
+        new Dialog().open({
+            title:'hello-wold',
+            content:'内容可进行修改',
+            isShowConfirmBtn:false
+        });
+
+    });
+    $('#open3').on('click',function(){
+        new Dialog().open({
+            title:'hello-wold',
+            content:'<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>',
+            onConfirm:function(){
+                alert('确定')
+            },
+            onCancel:function(){
+                alert('取消')
+            }
+        })
+    })
+    $('#open4').on('click',function(){
+        new Dialog().open({
+            title:'春风自来',
+            content:'<a href="http://baidu.com">百度</a>',
+            isShowCancelBtn:false,
+            isShowConfirmBtn:false
+        });
+    });
+    $('#open5').on('click',function(){
+        new Dialog().open({
+            title:'你好',
+            content:'',
+            isShowCancelBtn:false
+        });
+    });
+
+//     var $dialog=$('.dialog'),
+//     diaX,
+//     diaY,
+//     isMove=false;
+//
+//     $('.dialog').on('mousedown',function(e){
+//         diaX=e.pageX-$(this).offset().left;
+//         diaY=e.pageY-$(this).offset().top;
+//         isMove=true;
+//     })
+//
+//     $(document).on('mousemove',function(e){
+//         var moveX=e.pageX-diaX,
+//              moveY=e.pageY-diaY;
+//         var maxX=$(window).width()-$('.dialog').outerWidth(),
+//               maxY=$(window).height()-$('.dialog').outerHeight(),
+//               maxLeft=Math.min( maxX , Math.max(0,moveX) ),
+//               maxRight=Math.min( maxY , Math.max(0,moveY) )
+//         if(isMove){
+//             $('.dialog').css({
+//                 cursor:'move',
+//                 left:maxLeft+'px',
+//                 top:maxRight+'px'
+//             })
+//         }
+//
+// });
+//
+//     $(document).on('mouseup',function(e){
+//         isMove=false;
+//     })
+
+
+</script>
+</html>
