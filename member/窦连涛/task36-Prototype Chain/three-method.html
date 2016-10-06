@@ -1,0 +1,239 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task23-4</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<style>
+	.mod-tab{
+		border: 1px solid #ccc;
+	}
+	.mod-tab * {
+		box-sizing: border-box;
+	}
+	.mod-tab ul,
+	.mod-tab li{
+		margin:0;
+		padding: 0;
+		list-style-type: none;
+	}
+	.tabs li{
+		float: left;
+		width: 33.3%;
+		height: 30px;
+		border-bottom: 1px solid #ccc;
+		border-right: 1px solid #ccc;
+		text-align: center;
+		cursor: pointer;
+	}
+	.mod-tab .tabs:after{
+		content:'';
+		display: block;
+		clear: both;
+	}
+	.mod-tab .tabs .active{
+		background: #eef;
+	}
+	.mod-tab .panel{
+		display: none;
+		height: 180px;
+		padding: 20px;
+	}
+	.mod-tab .active{
+		display: block;
+	}
+</style>
+<body>
+    <div class="mod-tab">
+     	<ul class="tabs">
+     		<li class="active">tab1</li>
+     		<li>tab2</li>
+     		<li>tab3</li>
+     	</ul>
+    	<div class="panel active">内容1</div>
+   		<div class="panel">内容2</div>
+    	<div class="panel">内容3</div>
+    </div>
+	
+    <div class="mod-tab">
+     	<ul class="tabs">
+     		<li class="active">tab1</li>
+     		<li>tab2</li>
+     		<li>tab3</li>
+     	</ul>
+    	<div class="panel active">内容1</div>
+   		<div class="panel">内容2</div>
+    	<div class="panel">内容3s</div>
+    </div>
+  <script>
+
+  var tabLis = document.querySelectorAll('.tabs li');
+  var tabPanels = document.querySelectorAll('.mod-tab .panel');
+  var TabLiCt = document.querySelector('.tabs');
+
+  TabLiCt.addEventListener('click', function(e){
+  	if(e.target.tagName.toLowerCase() === 'li'){
+	   	var target = e.target;
+	  	var index = [].indexOf.call(tabLis, target);
+
+	  	tabLis.forEach(function(li){
+	  		// console.log(li);
+	  		li.classList.remove('active');
+	  	});
+	  	tabLis[index].classList.add('active');
+
+	  	tabPanels.forEach(function(panel){
+	  		panel.classList.remove('active');
+	  	});
+	  	tabPanels[index].classList.add('active');
+  	}
+
+  })
+
+
+
+
+/*
+
+var Tab = (function(){
+
+	  function init(ct){
+
+		  var tabLis = ct.querySelectorAll('.tabs li');
+		  var tabPanels = ct.querySelectorAll('.mod-tab .panel');
+		  var TabLiCt = ct.querySelector('.tabs');
+
+		  TabLiCt.addEventListener('click', function(e){
+		  	if(e.target.tagName.toLowerCase() === 'li'){
+			   	var target = e.target;
+			  	var index = [].indexOf.call(tabLis, target);
+
+			  	tabLis.forEach(function(li){
+			  		li.classList.remove('active');
+			  	});
+			  	tabLis[index].classList.add('active');
+
+			  	tabPanels.forEach(function(panel){
+			  		panel.classList.remove('active');
+			  	});
+			  	tabPanels[index].classList.add('active');
+		  	}
+
+		  })	
+	  }
+
+	  var obj = {
+	  	init: init
+	  };
+	  return obj
+
+  })()
+
+  document.querySelectorAll('.mod-tab').forEach(function(ct){
+  	Tab.init(ct);
+  })
+
+*/
+
+/*
+
+var Tab = {
+	init: function(ct){
+		this.tabLis = ct.querySelectorAll('.tabs li');
+		this.tabPanels = ct.querySelectorAll('.mod-tab .panel');
+		this.TabLiCt = ct.querySelector('.tabs');
+		this.bind();
+	},
+
+	bind: function(){
+		var _this = this;
+	  this.TabLiCt.addEventListener('click', function(e){
+	  	if(e.target.tagName.toLowerCase() === 'li'){
+		   	var target = e.target;
+		  	var index = [].indexOf.call(_this.tabLis, target);
+
+		  	_this.tabLis.forEach(function(li){
+		  		li.classList.remove('active');
+		  	});
+		  	_this.tabLis[index].classList.add('active');
+
+		  	_this.tabPanels.forEach(function(panel){
+		  		panel.classList.remove('active');
+		  	});
+		  	_this.tabPanels[index].classList.add('active');
+	  	}
+
+	  })	
+	}
+}
+  document.querySelectorAll('.mod-tab').forEach(function(ct){
+  	Tab.init(ct);
+  })
+
+*/
+
+//   function Tab(ct){
+//  		this.tabLis = ct.querySelectorAll('.tabs li');
+// 		this.tabPanels = ct.querySelectorAll('.mod-tab .panel');
+// 		this.TabLiCt = ct.querySelector('.tabs');
+// 		this.bind();
+//   }
+
+//   Tab.prototype.bind = function(){
+//  		var _this = this;
+// 	  this.TabLiCt.addEventListener('click', function(e){
+// 	  	if(e.target.tagName.toLowerCase() === 'li'){
+// 		   	var target = e.target;
+// 		  	var index = [].indexOf.call(_this.tabLis, target);
+
+// 		  	_this.tabLis.forEach(function(li){
+// 		  		li.classList.remove('active');
+// 		  	});
+// 		  	_this.tabLis[index].classList.add('active');
+
+// 		  	_this.tabPanels.forEach(function(panel){
+// 		  		panel.classList.remove('active');
+// 		  	});
+// 		  	_this.tabPanels[index].classList.add('active');
+// 	  	}
+
+// 	  })	
+//   }
+
+// var Tabs = (function(){
+// 	return {
+// 		init: function(ct){
+// 			new Tab(ct);
+// 		}
+// 	}
+// })()
+
+
+
+//   document.querySelectorAll('.mod-tab').forEach(function(ct){
+//   	//new Tab(ct)	
+//   	Tabs.init(ct)
+//   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>
