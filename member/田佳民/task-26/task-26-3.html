@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>what</title>
+  <style>
+      .box{
+          border: 1px solid #ccc;
+          margin-bottom: 60px;
+      }
+      .colorbtn{
+          width:300px;
+          height:60px;
+      }
+    .roll{
+        margin: 0;
+        position: fixed;
+        top:0;
+        width: 100%;
+        background: #00ffd0;
+        line-height: 20px;
+        text-align: center;
+    }
+    .div{
+        width: 100px;
+        height: 100px;
+        border: 1px solid #ccc;
+    }
+    .forscroll{
+        width: 10px;
+        height: 800px;
+    }
+
+  </style>
+</head>
+<body>
+    <div class="roll">滚动条距离顶部<span class="px">0</span>像素</div>
+    <div class='box'>
+        <p>
+            当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+        </p>
+
+        <button class='colorbtn'>colorbtn变颜色按钮</button>
+    </div>
+
+    <div class='box'>
+        <p>
+            当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色
+        </p>
+        <div class="div">我是$div</div>
+    </div>
+
+    <div class='box'>
+        <p>
+            当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字
+        </p>
+        <input type="text" class="what">
+    </div>
+
+    <div class='box'>
+        <p>
+            当选择 select 后，获取用户选择的内容
+        </p>
+        <select class="sex" name="sex">
+            <option value="man">man</option>
+            <option value="woman">woman</option>
+            <option value="both">both</option>
+        </select>
+        <input type="text" class="sexval">
+    </div>
+
+    <div class="forscroll">
+
+    </div>
+
+
+
+
+
+<script src="1.9.1jquery.js"></script>
+<script>
+//当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+$colorbtn=$('.colorbtn')
+
+$colorbtn.on('click',function(){
+    $colorbtn.css({'background-color':'red'})
+    setTimeout(function(){
+        $colorbtn.css({'background-color':'blue'})
+    },500)
+})
+
+//当窗口滚动时，获取垂直滚动距离
+var $px=$('.px')
+
+$(window).scroll(function(){
+    $px.text($(window).scrollTop());
+})
+
+//当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色
+var $div=$('.div')
+
+$div.on('mouseenter',function(){
+    $div.css({"background-color":"red"});
+})
+$div.on("mouseleave",function(){
+	$div.css({"background-color":"#fff"});
+})
+
+//input
+var $what=$('.what')
+
+$what.on('focus',function(){
+    $what.css({"border":"3px solid blue"});
+    console.log($what.val())
+})
+$what.on('blur',function(){
+    $what.css({"border":"1px solid #ccc"});
+})
+$what.on('keyup',function(){
+    $what.val($what.val().toUpperCase())
+})
+
+//当选择 select 后，获取用户选择的内容
+var $sex=$('.sex')
+     $sexval=$('.sexval')
+
+     $sex.on('change',function(){
+         $sexval.val($('.sex option:selected').text())
+     })
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>继承</title>
+</head>
+<body>
+	<script type="text/javascript">
+		// function Person(name,age){
+		// 	var obj = {
+		// 		name:name,
+		// 		age:age,
+		// 		sayName : function(){
+		// 			console.log(this.name + this.age);
+		// 			}
+		// 	}
+
+		// 	return obj;
+		// }
+
+		// xm =Person('小名',13);
+		// xl = Person('小李',14);
+		// 
+		// function Person(name,age){
+		// 	this.name = name;
+		//     this.age = age ;
+		// 	this.sayName = function(){
+		// 		console.log(this.name + this.age );
+		// 	}
+		// }
+		// xm = new Person('小名',13);
+		// xl = new Person('小李',14);
+		// 
+		// function People(name,age){
+		//     this.name = name;
+		//     this.age = age ;
+		// }
+
+		// People.prototype.sayName={
+		//     other: '小红',
+		//     sayName: function(){
+		//         console.log('我是' + this.name);
+		//         console.log('我还有' + this.other);
+		//     }
+		// }
+
+
+		// xm = new People('小名',13);
+
+		// xl = Object.create(People.prototype,{name:{value:'小名'}});
+
+		// console.log(xm.hasOwnPerperty('name'));
+		// 
+		// 
+		// 
+		// 
+		// 
+		// 
+		function Person(name, sex){
+		    this.name = name;
+		    this.sex =sex;
+		}
+
+		Person.prototype.getName = function(){
+		    return this.name;
+		};    
+
+		function Male(name, sex, age){
+		   Person.call(this,name,sex);
+		   this.age = age ;
+		}
+
+		Male.prototype = Object.create(Person.prototype);
+
+		Male.prototype.printName = function(){
+			return Male.prototype.getName.call(this);
+		}
+		
+		Male.prototype.getAge = function(){
+		    console.log(this.age);
+		};
+
+		var ruoyu = new Male('若愚', '男', 27);
+		ruoyu.printName();
+
+
+		//
+		//
+		//
+		// 
+		// function People(name,age){
+		//     this.name = name;
+		//     this.age = age ;
+		// }
+
+		// People.prototype.sayName=function(age){
+		// 	return parseInt(this.age + age)  ;
+		// }
+
+		// function Meimei(name,age,sex){
+		// 	People.call(this,name,age);
+		// 	this.sex = sex ;
+		// }
+
+		// Meimei.prototype = Object.create(People.prototype);
+
+		// meimei = new Meimei('meimei',17,'女');
+
+		// console.log(meimei.sayName(10);
+		// 
+		// 
+		
+		function Create(obj){
+			if (typeof Object.create === 'function'){
+				return Object.create(obj);
+			}else{
+				function proto(){};
+		        proto.prototype = obj;
+		      	var objt = new proto();
+		      	proto.prototype = null;
+		    }
+		}
+	</script>
+</body>
+</html>

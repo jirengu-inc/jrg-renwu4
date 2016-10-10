@@ -17,6 +17,8 @@ var ct = document.querySelector(".ct"),
  img1 = document.querySelector(".img");
    ct.addEventListener("mouseover",function(e){
     var imgsrc = e.target.getAttribute("data-img");
+    console.log(e);
+    console.log(e.target);
     img1.innerHTML = "<img src="+imgsrc+" />";
       
   });

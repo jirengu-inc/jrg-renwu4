@@ -1,0 +1,61 @@
+git reset --hard HEAD 
+
+git log 
+
+共同开发 github 合作者
+
+或者把开发者 放到一个TEAM里面 
+
+解决冲突 conflict
+
+		搜索 "===="
+
+		>>>> 本地文件冲突
+
+		<<<< 远程文件冲突 
+
+
+		git commit -v
+
+		git commit -m '' 功能是相同的 
+
+
+pull 和 fetch 的区别 
+
+		fetch 不会合并你当前的工作目录 需要合并的时候再用merge 
+
+分支
+
+	新建分支 git branch xxx 
+	切换分支 git checkout xxx
+			git add .
+			git commit .
+			git push origin xxx:xxx (git push -u origin xxx) 
+
+
+
+	删除分支 先要合并分支
+			git checkout master 切换到主分支 
+			git meger f2
+			git branch -d f2 报错
+			不合并就删除
+			git branch -D f2
+
+	查看所有分支 
+
+			git branch -a 
+
+	删除远程分支
+
+			git push origin :f2 **origin 后面需跟空格**
+
+			
+	回溯历史
+
+			git reset --hard xxx  如果不加hard 硬盘的东西不会被改掉
+
+
+			git reflog
+
+			
+

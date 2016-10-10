@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>24-2</title>
+	<style media="screen">
+		div#content, div#action {
+			text-align: center;
+		}
+		p {
+			height: 30px;
+			line-height: 30px;
+			border: 1px solid #DDD;
+			cursor: pointer;
+		}
+		p:hover {
+			background-color: #EEE;
+		}
+		button#btn {
+			height: 40px;
+			width: 65px;
+			border-radius: 5px;
+			border: 1px solid red;
+			background-color: white;
+			color: red;
+			cursor: pointer;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="content">
+		<p>内容1</p>
+		<p>内容2</p>
+	</div>
+	<div id="action">
+		<button type="button" name="button" id="btn">加载更多</button>
+	</div>
+	<script src="./ajax.js" charset="utf-8"></script>
+	<script type="text/javascript">
+		var btn = document.querySelector("button#btn");
+		var content = document.querySelector("div#content");
+		var startNum = 2;
+		btn.addEventListener("click", function() {
+			btn.disabled = true;
+			ajax({
+				url: "index.php",
+				type: "get",
+				data: {
+					start: startNum,
+					length: 6
+				},
+				success: function(res) {
+					console.log(res);
+					for (var i = 0; i < this.data.length; i++) {
+						var newP = document.createElement("p");
+						newP.textContent = res[i];
+						content.appendChild(newP);
+						newP = null;
+					}
+					startNum += i;
+					btn.disabled = false;
+				},
+				error: function() {
+					console.log("Something goes wrong.");
+				}
+			})
+
+		});
+	</script>
+</body>
+
+</html>
