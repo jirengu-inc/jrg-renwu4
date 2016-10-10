@@ -95,6 +95,7 @@ span{
 	left: 0px;
 	border: 1px solid #f1f1f1;
 	display: none;
+	z-index: 999;
 }
 .provinceWrap {
 	overflow: hidden;
