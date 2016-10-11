@@ -40,4 +40,19 @@
 	 	占位		不占位			占位				 占位
 
 7  a 链接不会继承父元素的颜色 但会继承字体大小
-8  
+8  列表
+
+		UL 用于导航
+		OL 用于图书排行
+		LI 用于上面两者的嵌套
+9 list-style 可以用于去除前面的原点 可以添加在ul 上也可以添加再 li上
+10 块级元素 行内元素
+11 <button>提交</button>、<a class=“btn” href="#">提交</a>、<input type=“submit” value=“提交”> 三者有什么区别？
+12 radio 如何 分组?
+13 type=hidden隐藏域有什么作用? 举例说明
+
+14 table th tr td 
+15 form 表单
+
+
+	
