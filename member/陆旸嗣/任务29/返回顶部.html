@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>返回顶部</title>
+  <style>
+    #go-top{
+      position: fixed;
+      width: 100px;
+      height: 50px;
+      font-size: 15px;
+      color: red;
+      border:1px solid red;
+      bottom: 50px;
+      right: 0px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+  // var $goTop =$('<div id="go-top">返回顶部</div>');
+  // $("body").append($goTop);
+
+  // $(window).on("scroll",function(){
+  //   var $scroll=$("body").scrollTop();
+  //   if($scroll>100){
+  //     $("#go-top").show();
+  //   }else{
+  //     $("#go-top").hide();
+  //   }
+  // })
+  // $("#go-top").on("click",function(){
+  //   $("body").scrollTop(0);
+  // })    没有封装。
+
+  var Gotop=(function(){
+    var $goTop =$('<div id="go-top">返回顶部</div>');
+    $("body").append($goTop);
+
+    function init(){
+      $(window).on("scroll",function(){
+      var $scroll=$("body").scrollTop();
+      if($scroll>100){
+        $("#go-top").show();
+      }else{
+        $("#go-top").hide();
+      }
+    })
+    $("#go-top").on("click",function(){
+    $("body").scrollTop(0);
+  })
+    }
+    return{
+      a:init
+    }
+  })();//试一下封装
+  Gotop.a();
+</script>
+</html>
