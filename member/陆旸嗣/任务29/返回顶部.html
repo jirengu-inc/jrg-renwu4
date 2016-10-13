@@ -70,7 +70,7 @@
 
     function init(){
       $(window).on("scroll",function(){
-      var $scroll=$("body").scrollTop();
+      var $scroll=$(window).scrollTop();
       if($scroll>100){
         $("#go-top").show();
       }else{
