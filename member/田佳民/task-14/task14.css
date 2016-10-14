@@ -1,0 +1,230 @@
+
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+}
+html,body{
+    font-family: "微软雅黑";
+    height:100%;
+}
+#header{
+    display: table;
+    width: 100%;
+    height:100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-image: url(img/header-bg.png);
+    background-size: cover;
+}
+#header h1{
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 20px 0;
+}
+#header .container{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 960px;
+}
+#header p{
+    margin: ;
+    font-size: 1.5rem;
+}
+#header a{
+    border:1px solid white;
+    border-radius: 5px;
+    background-color: #333;
+    color: white;
+    font-size: 1rem;
+    padding: 6px 12px;
+    display: inline-block;
+    margin-top:  10px;
+}
+#header a:hover{
+    background-color:#73D14C;
+}
+#content .about{
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    color:#000000
+}
+#content .about h2{
+    margin-bottom: 10px;
+    color:#000000
+}
+#content .about p{
+    color:#000000
+}
+#content .skills{
+    background-color: #3080BC;
+
+}
+#content .container{
+    color:#fff;
+    text-align: center;
+    padding:50px 0;
+}
+#content .skills hr{
+    width: 150px;
+    margin: 10px auto;
+}
+#content ul{
+    width: 960px;
+    margin: 0 auto;
+}
+#content ul:after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#content .skills li{
+    float:left;
+    width:200px;
+    margin:20px;
+}
+.skills li span{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    display: inline-block;
+    border-radius: 60px;
+}
+.skills li .iconfont{
+    font-size: 80px;
+    color:#2196F3;
+}
+.skills li h4{
+    margin-top: 10px;
+    font-size: 1.5rem;
+}
+.skills li p{
+    margin-top: 10px;
+}
+.skills li a{
+    border:1px solid white;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000;
+    font-size: 1rem;
+    padding: 6px 12px;
+    display: inline-block;
+    margin-top:  10px;
+}
+.skills li a:hover{
+   background-color:#FBE201;
+}
+#content .words{
+    background-image: url(img/yantianhu.jpg);
+    background-size: cover;
+    background-position: center;
+    padding: 100px 0;
+}
+#content .words p{
+    font-size: 30px;
+}
+#content .works{
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+}
+#content .works h2{
+    margin-top: 20px;
+}
+#content .works hr{
+    width: 150px;
+    margin: 10px auto;
+}
+#content .works ul{
+    width: 900px;
+}
+#content li{
+    width:400px;
+    float:left;
+    margin: 25px;
+}
+.works li:hover{
+    opacity: 0.8;
+}
+#content .works .btn{
+    border:1px solid #044774;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000;
+    font-size: 1rem;
+    padding: 6px 12px;
+    display: inline-block;
+    margin: 10px;
+}
+#content .works .btn:hover{
+    background-color:#FBE201;
+}
+#other{
+    background:#F19D9C;
+
+}
+#other .container{
+    padding: 30px 0;
+    text-align: center;
+}
+#other h3{
+    font-size: 50px;
+    color:white;
+}
+#other ul{
+    width:300px;
+    margin: 0 auto;
+}
+#other li{
+    width: 100px;
+}
+#other .btn{
+    border:1px solid #044774;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    color: #000;
+    font-size: 1rem;
+    padding: 6px 12px;
+    display: inline-block;
+    margin: 10px;
+
+}
+#other .btn:hover{
+    background-color:#FBE201;
+}
+#footer .container{
+    width: 960px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 10px 0;
+}
+#footer .container h2{
+    font-size: 20px;
+    margin: 10px;
+}
+#footer .container ul{
+    width:183px;
+    margin: 0 auto;
+
+}
+#footer .container ul::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+#footer .container li{
+    float: left;
+    margin: 8px;
+}
+#footer .container .iconfont{
+    font-size: 45px;
+}
+#footer .container a{
+    color: #000;
+}
+#footer .container .iconfont:hover{
+    color: #03A9F4;
+}

@@ -1,0 +1,381 @@
+
+html,body,ul,li{
+    padding: 0;
+    margin:0;
+    font-family:"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    color:black
+}
+h2{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+p{
+    margin-bottom: 75px;
+    color: #777;
+}
+#nav{
+    width: 1000px;
+    margin: 0 auto;
+}
+#nav .nav-wrap{
+    height:50px;
+    line-height:50px;
+
+}
+.nav-wrap:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.main-nav{
+    color:yellow;
+    font-size: 30px;
+}
+.nav-ul{
+    float:right;
+}
+.nav-ul:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.nav-ul li{
+    float:left;
+    margin-left: 10px;
+}
+.nav-ul li a{
+    color:#fff;
+}
+#header{
+    background-image:url(img/header/header-bg.jpg);
+    background-size: cover;
+    height: 800px;
+
+}
+.header-wrap{
+    color:white;
+    text-align: center;
+    padding-top: 250px;
+    padding-bottom: 50px;
+}
+.header-wrap h1{
+    font-size: 45px;
+}
+.header-wrap p{
+    font-size: 80px;
+    margin-bottom: 60px;
+}
+.header-wrap a{
+    border: 1px solid #fed136;
+    padding:10px 15px;
+    background-color: #fed136;
+    color:#fff;
+    border-radius: 4px;
+    font-size: 20px;
+}
+.header-wrap a:hover{
+    opacity: 0.7;
+}
+#service{
+    width: 1000px;
+    margin: 0 auto;
+    padding: 70px 0;
+    text-align: center;
+}
+#service h2{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#service p{
+    margin-bottom: 75px;
+    color:#777;
+}
+.clear-fix:after{
+    content: '';
+    display: block;
+    clear: both;
+}
+#service ul{
+    margin-left: -20px;
+}
+#service li{
+    float: left;
+    width:320px;
+    margin-left: 20px;
+}
+#service li span{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: #FFE62F;
+    margin: 0 auto;;
+}
+#service li i{
+    display: block;
+    font-size: 50px;
+    color:#fff;
+    padding-top: 20px;
+}
+#portfilo{
+    background-color: #E9E7E7;
+    text-align: center;
+    padding:100px 0;
+
+}
+#portfilo .wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+#portfilo ul{
+    margin-top: 30px;
+    margin-left: -20px;
+}
+#portfilo li{
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 50px;
+    background-color: #fff;
+}
+#portfilo li a{
+    display: block;
+    position: relative;
+}
+#portfilo img{
+    width: 320px;
+    height: 230px;
+}
+#portfilo li .img-hover i{
+    position: relative;
+    top: 35%;
+    color: #fff;
+    font-size: 50px;
+}
+#portfilo li .img-hover{
+    display: none;
+}
+#portfilo li a:hover .img-hover{
+    display: block;
+    position: absolute;
+    width: 320px;
+    height: 230px;
+    text-decoration: center;
+    background-color: rgba(255, 211,62, 0.75);
+}
+
+#about{
+    width: 1000px;
+    margin: 0 auto;
+}
+#about .wrap{
+    padding: 100px 0;
+    text-align: center;
+}
+#about h2{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+#about p{
+    color: #777;
+    margin-bottom: 75px;
+}
+#about ul{
+
+}
+#about li{
+    position: relative;
+    margin-top: 80px;
+}
+#about img{
+    width: 140px;
+    padding: 7px;
+    background-color:#DDDDDD;
+    border-radius: 100px;
+}
+#about .word-wrap{
+    position: absolute;
+    width: 400px;
+    top:0;
+}
+#about h3{
+    font-size: 16px;
+    margin: 10px 0;
+}
+#about .word-wrap1{
+    text-align: right;
+}
+#about li .word-wrap2{
+    right:0;
+    text-align: left;
+}
+#about li .word-wrap3{
+    left:0;
+    text-align: right;
+}
+#about li .word-wrap4{
+    right:0;
+    text-align: left;
+}
+#about .word-wrap5{
+    width: 140px;
+    height: 140px;
+    background-color: #FED136;
+    border: 7px solid #DDDDDD;
+    border-radius: 100px;
+    margin: 0 auto;
+}
+#about .word-wrap5 span{
+    display: block;
+    padding: 40px 0;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+#about .line{
+    margin-top: 5px;
+    width: 3px;
+    height: 1000px;
+    background: #dddddd;
+    position: absolute;
+    left: 50%;
+}
+#team{
+    padding: 100px 0;
+    text-align: center;
+    background-color: #E9E7E7;
+}
+#team .wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+#team ul{
+    margin-left:-125px;
+
+}
+#team li{
+    float: left;
+    margin-left: 125px;
+}
+#team li img{
+    width: 250px;
+    border-radius: 125px;
+}
+#team p{
+    margin-bottom: 30px;
+}
+#team a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #222222;
+    color:#fff;
+    margin: 0 5px;
+}
+#team a i{
+    display: block;
+    font-size: 25px;
+    padding-top: 5px;
+}
+#team a:hover{
+    background-color: #F8C21F;
+}
+#contact .wrap{
+    width: 1000px;
+    margin: 0 auto;
+    padding: 30px;
+}
+#contact ul li{
+    float: left;
+    width: 250px;
+}
+#contact .text-wrap{
+    background: url(img/map-image.png) #222;
+    padding: 100px 0;
+    text-align: center;
+
+}
+#contact .form-wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+#contact .form-wrap h2{
+    color: #fff;
+}
+#contact .text{
+    float: left;
+}
+#contact .contact-text h2{
+    color:#fff;
+}
+#contact .text p{
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+#contact .input-text{
+    border: 1px solid #FFF;
+    width:450px;
+    padding: 10px;
+    border-radius: 3px;
+}
+#contact textarea{
+    float: left;
+    margin-left: 60px;
+    width: 400px;
+    height: 150px;
+    border: 1px solid #FFF;
+    border-radius: 3px;
+    padding: 10px;
+}
+#contact .btn{
+    color: #fff;
+    padding: 15px 5px;
+    background: #F9DA44;
+    width: 150px;
+    border-radius: 4px;
+    font-size: 16px;
+    border: none;
+}
+#contact .btn:hover{
+    background: #FBD105;
+    cursor: pointer;
+}
+#footer{
+    padding:20px 0;
+    width:1000px;
+    margin: 0 auto;
+}
+#footer span{
+    margin-right: 150px;
+}
+#footer .icon{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    background-color: #222222;
+    color:#fff;
+    margin:0 5px;
+}
+#footer a i{
+    display: block;
+    font-size: 25px;
+    padding-top: 5px;
+    padding-left: 7px;
+}
+#footer .icon:hover{
+    background-color: #F8C21F;
+}
+#footer .link{
+    color:#FDD139;
+    margin:0 5px;
+}
+#footer .policy{
+    margin-left: 150px;
+}

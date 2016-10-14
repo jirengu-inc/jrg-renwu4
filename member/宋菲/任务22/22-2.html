@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容"/>
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+    <script>
+    var wrap = document.getElementsByClassName('ct')[0];
+    var addStart = document.getElementById('btn-add-start');
+    var addEnd = document.getElementById('btn-add-end');
+    var addContent = document.getElementsByClassName('ipt-add-content')[0];
+    
+    
+    wrap.onclick=function(e){
+            console.log(e.target.innerText)
+        }
+    addEnd.addEventListener("click",function(){
+      var li = document.createElement('li');
+      li.innerText = addContent.value;
+      wrap.appendChild(li);
+    })
+    addStart.addEventListener('click',function(){
+      var li = document.createElement('li');
+      li.innerText = addContent.value;
+      wrap.insertBefore(li,wrap.firstChild);
+    })
+    </script>
+</body>
+</html>

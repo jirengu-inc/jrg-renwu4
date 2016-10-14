@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>画三角形</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+	.tooltip{
+		width:200px;
+		height:80px;
+		border:1px solid #ccc;
+		border-radius:3px;
+		margin:40px;
+		position: relative;
+
+	}
+	.caret-top{
+		position:absolute;
+		width:0px;
+		height:0px;
+		border-top:15px solid transparent;
+		border-right:15px solid transparent;
+		border-bottom:15px solid rgb(136,136,136);
+		border-left:15px solid transparent;
+		top:-30px;
+		left:20px;
+	}
+	.caret-trangle{
+		top:0px;
+		right:0px;
+		position:absolute;
+		width:0px;
+		height:0px;
+		border-top:20px solid #ff0000;
+		border-left:20px solid transparent;
+	}
+	.caret-rotate{
+		top:-10px;
+		left:15px;
+		position:absolute;
+		width:20px;
+		height:20px;
+		border-top:1px solid #ccc;
+		border-left:1px solid #ccc;
+		transform: rotate(45deg);
+		background-color: #fff;
+	}
+	
+</style>
+</head>
+<body>
+    <div class="tooltip">
+    	<div class="caret-top"></div>
+    </div>
+    <div class="tooltip">
+    	<div class="caret-trangle"></div>
+    </div>
+	<div class="tooltip">
+    	<div class="caret-rotate"></div>
+    </div>
+
+</body>
+</html>

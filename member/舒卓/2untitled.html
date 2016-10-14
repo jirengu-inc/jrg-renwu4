@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+/*		*{
+			margin: 0; padding: 0; font-size: 14px;
+		}
+		
+		
+		ul{
+			list-style: none;
+			width: 100px;
+
+		}
+		a {
+			text-decoration: none;
+			display: block;
+			height: 30px;
+			line-height:30px;
+			width: 100px;
+			background-color: #ccc;
+			margin-bottom: 2px;
+			text-indent: 10px;}
+			a:hover{
+				background-color:#911;
+				color: #222;
+					}*/
+	*{
+		margin: 0; padding: 0;font-size: 15px;
+	}
+	ul{
+		list-style: none;height: 50px;border-bottom: 5px solid #f60;padding-left: 30px;
+	}
+	li{
+		float: left;margin-top: 20px;
+	}
+	a{
+		text-decoration: none;
+		display: block;
+		height: 30px;
+		line-height:30px;
+		width: 120px;
+		background-color:#ccc;
+		color: red;
+		text-align: center;
+		background:url(images/xia.jpg);
+	}
+	.on,a:hover{
+		background-position: 0 -22px;
+		color: #999;
+
+	}
+
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			clearInterval(this.time)
+			var aA=document.getElementsByTagName("a");
+			for(var i=0;i<aA.length;i++){
+				aA[i].onmouseover=function(){
+					var This=this;
+					This.time=setInterval(function()
+					{
+						This.style.width=This.offsetWidth+6+"px"; 
+						if(This.offsetWidth>=160){
+							clearInterval(This.time)
+						} 
+					},30)
+				}
+			
+	
+				aA[i].onmouseout=function(){
+					clearInterval(this.time)
+					var This=this;
+					This.time=setInterval(function()
+					{
+						This.style.width=This.offsetWidth-1+"px"; 
+						if(This.offsetWidth<=120){
+							This.style.width="120px";
+							clearInterval(This.time)
+						} 
+					},30)
+				}
+			}
+		}
+			
+
+
+	</script>
+</head>
+<body>
+	<ul class="nav">
+		<li><a class="on" href="http://www.baidu.com">百度</a></li>
+		<li><a href="http://www.baidu.com">百度</a></li>
+		<li><a href="http://www.baidu.com">百度</a></li>
+		<li><a href="http://www.baidu.com">百度</a></li>
+		
+	</ul>
+</body>
+</html>

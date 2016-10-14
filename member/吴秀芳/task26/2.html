@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.second{
+		overflow: auto;
+		height: 80px;
+		line-height: 40px;
+		margin: 0 10px;
+		padding: 20px;
+	 }
+	 .borderColor{
+	 	border-color: blue;
+	 }
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+	<h3>
+		当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+	</h3>
+	<button class="btn">
+		点我
+	</button>
+	<hr>
+	<div class="second">
+         <p>当窗口滚动时，
+        获取垂直滚动距离,
+        并显示</p>
+         <p class='sc-n'>当前滚动垂直坐标：0 px</p>
+    </div>
+    <hr>
+    <div class="third">
+    	<p >当鼠标放置到$div 上，把$div 字体颜色色改为红色，移出鼠标字体颜色变为蓝色</p>
+    </div>
+        <hr>
+    <div class="four">
+    	<p>当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</p>
+    	输入：
+    	<input name="ct" type="text">
+    </div>
+  <hr>
+    <div class="fifth"> 
+    	<p class="display">获取用户选择的内容：红色</p>
+    	<select>
+    		<option>红色</option>
+    		<option>蓝色</option>
+    		<option>粉色</option>
+    		<option>白色</option>
+    		<option>金色</option>
+    	</select>
+    </div>
+	<script>
+		$('.btn').on('click',function(){
+			$btn=$('.btn');
+			 $btn.css({backgroundColor:'red'});
+			 setTimeout(function(){
+			 	$btn.css('background','blue');
+			 },1000);
+		});
+		
+		$('.second').on('scroll',function(){
+             $sc=$('.second').scrollTop();
+             $('.sc-n').text('当前滚动垂直坐标：'+$sc+'px');
+		});
+
+		$('.third p').on('mouseover',function(){
+		$(this).css({color:'red'});
+		});
+
+        $('.third p').on('mouseleave',function(){
+		$(this).css({color:'blue'});
+		});
+		$('input').on('focus',function(){
+			$(this).addClass('borderColor');
+		});
+
+		$('input').on('keyup',function(){
+        $text=$(this).val().toUpperCase();
+        $(this).val($text);
+        // console.log($text);
+		});
+		$('input').on('blur',function(){
+			$(this).removeClass('borderColor');
+			$texts=$(this).val();
+			console.log($texts);
+		});
+        $('select').on('change',function(){
+           $('.display').text('获取用户选择的内容:'+$(this).val());
+        });
+
+	</script>
+</body>
+</html>

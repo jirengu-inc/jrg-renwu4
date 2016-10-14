@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>16--1</title>
+</head>
+	<body>
+		<script>
+function isNumber(el){
+    if(typeof(el)==='number'){
+    	return "true";
+    }
+     else{
+       return "false"
+    }
+}
+function isString(el){
+     if(typeof(el)==='string'){
+    	return "true";
+    }
+     else{
+       return "false"
+    }
+}
+function isBoolean(el){
+     if(typeof(el)==='boolean'){
+    	return "true";
+    }
+     else{
+       return "false"
+    }
+}
+function isFunction(el){
+     if(typeof(el)==='function'){
+    	return "true";
+    }
+     else{
+       return "false"
+    }
+}
+
+var a = 2,
+    b = "jirengu",
+    c = false;
+alert( isNumber(a) );  //true
+alert( isString(a) );  //false
+alert( isString(b) );  //true
+alert( isBoolean(c) ); //true
+alert( isFunction(a)); //false
+alert( isFunction( isNumber ) ); //true
+		</script>
+	</body>
+</html>

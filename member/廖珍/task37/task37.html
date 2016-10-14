@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>dialog</title>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <button id="open1">打开1</button>
+        <button id="open2">打开2</button>
+        <button id="open3">打开3</button>
+        <button id="open4">打开4</button>
+        <button id="open5">打开5</button>
+    </body>
+    <script>
+        function Dialog() {
+            this.createDialog();
+            this.binEvent();
+        }
+        Dialog.prototype={
+            defaultOpts:{
+                title:'',
+                message:'',
+                isShowCloseBtn:true,
+                isShowConfirmBtn:false,
+                onClose:function() {},
+                onConfirm:function() {}
+            },
+            open:function(opts) {
+                this.setOpts(opts);
+                console.log(opts);
+                this.setDialog();
+                this.showDialog();
+            },
+            close:function() {
+                this.hideDialog();
+            },
+            setOpts:function(opts) {
+                if(typeof opts==='string') {
+                    this.opts=$.extend({},this.defaultOpts,{
+                        message:opts
+                    });
+                }else if(typeof ==='object') {
+                    this.opts=$.extend({},this.defaultOpts,opts);
+                }
+            },
+             bindEvent:function() {
+                var _this=this;
+                 _this.$dialog.find('.btn-close').on('click',function(e) {
+                     e.preventDefault();
+                     _this.opts.onClose();
+                     _this.hideDialog();
+                 });
+                 _this.$dialog.find('.btn-confirm').on('click',function(e) {
+                     _this.opts.onConfirm();
+                     _this.hideDialog();
+                 });
+                 _this.$dialog.on('mousedown', function(e){
+                        var $dialog=$(this),
+                        evtX=e.pageX-$dialog.offset().left,
+                        evtY=e.pageY-$dialog.offset().top;
+                        $dialog.addClass('draggable').data('evtPos',{
+                            x:evtX,
+                            y:evtY
+                        });//把事件到dialog边缘的距离保存下来
+
+                 });
+                 $('body').on('mousemove',function(e) {
+                     $('.draggable').length&& $(.draggable).offset({
+                         top:e.pageY-$('.draggable').data('evtPos').y,
+                         left:e.pageX-$('.draggable').data('evtPos').x
+                     });
+                 });
+                 $('body').on('mouseup',function() {
+                     $('.draggable').length&& $('.draggable').removeClass('draggable').removeData('pos');
+                 })
+             },
+        }
+    </script>
+</html>

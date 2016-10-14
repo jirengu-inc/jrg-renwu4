@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>code3</title>
+
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			margin: 10px;
+		}
+		.list{
+			overflow: hidden;
+			list-style: none;
+		}
+		.list li{
+		    margin: 10px;
+		    padding: 10px;
+		    border: 1px solid #ddd;
+		}
+		a{
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.more{
+			padding: 10px;
+			display: inline-block;
+			color: red;
+			border: 1px solid red;
+			border-radius: 5px;
+			position: relative;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+	</style>
+</head>
+<body>
+	<ul class="list">
+		<li><a href="">内容1</a></li>
+		<li><a href="">内容2</a></li>
+	</ul>
+	<a href="#" class="more">加载更多</a>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		var lodingLock = false;
+		$('.more').on(' click',function(e){
+			var $this = $(this)
+			if (lodingLock) {
+				return;
+			}
+			lodingLock = true;
+			$this.html('加载中');
+			e.preventDefault();
+			getData();
+		});
+		
+		
+		var $more = $('.more');
+		loadEl();
+
+		$(window).on('scroll',function(){
+			loadEl();
+		});
+
+
+		function loadEl(){
+			// $more = $('.more')
+			if (isVisible($more)) {
+				getData();
+			}
+		}
+		function getData(){
+			var len = 20;
+			var start = $('.list').children().size()+1;
+			var url = 'index.php?start='+start+'&len='+len;
+			$.get(url,function(data){
+				var data = JSON.parse(data);
+				setTimeout(function(){
+					if (data.status === 1) {
+						data = data.data;
+						for(var key in data){
+							$('.list').append('<li><a href="#">'+data[key]+'</a></li>');
+						}
+						$more.html('加载更多');
+						lodingLock = false;
+					}
+				},2000);
+					
+			});	
+		}
+		function isVisible($el){
+			var scrollTop = $(window).scrollTop();
+			var elTop = $el.offset().top;
+			var winH = $(window).height();
+			if (elTop < scrollTop+winH) {
+				return true;
+			}else{
+				return false;
+			}
+		}
+		$('.list').on('mouseover','li',function(){
+			$(this).css({
+				'background':'pink'
+			});
+		}).on('mouseleave','li',function(){
+			$(this).css({
+				'background':'none'
+			});
+		});
+	</script>
+</body>
+</html>

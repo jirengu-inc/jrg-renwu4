@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+	<meta charset="utf-8">
+	<title>用圣being布局实现三栏布局</title>
+	<style>
+	   html,body {
+	   	margin:0px;
+	   	padding:0px;
+	   }
+	   .header,.footer {
+	   	height:30px;
+	   	background:#ccc;
+	   }
+	   .content {
+	   	overflow:auto;
+	 	padding:0px 160px 0px 200px;
+	 	border:1px solid #ccc;
+	   }
+	   .main {
+	   	width:100%;
+	   	background:green;
+	   	float:left;
+	   }
+	   .leftside {
+	   	width:200px;
+	   	height:100px;
+	   	background:red;
+	   	float:left;
+	   	margin-left:-100%;
+	   	position:relative;
+	   	left:-200px;
+	   }
+	   .rightside {
+	   	width:160px;
+	   	height:100px;
+	   	background:yellow;
+	   	float:left;
+	   	margin-left:-160px;
+	   	position:relative;
+	   	left:160px;
+	   }
+	</style>
+	</head>
+	<body>
+		<div class="header">头部</div>
+		<div class="content">
+			<div class="main">圣杯布局是指两边顶宽中间自适应的三栏布局，中间栏要放在文档流前面以优先渲染，其流程为（1）设置container的左右padding，用于预留左右边栏的空间，（2）给所有元素设置定位和浮动，用于设置左右两栏偏移（3）给左边栏设置right让其移动，设置父边距100%让跑到上面，给右边栏设置margin让其跑到上面</div>
+			<div class="leftside">左侧边栏，固定宽度</div>
+			<div class="rightside">右侧边栏，固定宽度</div>
+		</div>
+		<div class="footer">尾部</div>
+	</body>
+</html>

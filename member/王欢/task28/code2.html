@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>code2</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			padding: 10px;
+			font-size: 30px;
+			color: #fff;
+		}
+		header,footer{
+			height: 50px;
+		}
+		
+		.wrap{
+			width: 900px;
+			margin: 0 auto;
+		}
+		header .wrap,footer .wrap{
+			height: 50px;
+			line-height: 50px;
+			background: red;
+		}
+		.content{
+			margin-top: 20px;
+			margin-bottom: 20px;
+		}
+		.content .ct{
+			height: 500px;
+			background: #ddd;
+			overflow: auto;
+		}
+		.content .ct .nav{
+			background: blue;
+			height: 30px;
+			margin-bottom: 10px;
+		}
+		.content .ct .aside{
+			float: left;
+			height: 400px;
+			width: 20%;
+			background: pink;
+		}
+		.content .ct .main{
+			float: right;
+			min-height: 400px;
+			width: 70%;
+			background: yellow;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="wrap">
+			header
+		</div>
+	</header>
+	<div class="content">
+		<div class="wrap">
+			<div class="ct">
+				<div class="nav">nav1</div>
+				<div class="aside">aside</div>
+				<div class="main">main</div>
+			</div>
+			<div class="ct">
+				<div class="nav">nav2</div>
+				<div class="aside">aside</div>
+				<div class="main">main</div>
+			</div>
+			<div class="ct">
+				<div class="nav">nav3</div>
+				<div class="aside">aside</div>
+				<div class="main">main</div>
+			</div>
+			<div class="ct">
+				<div class="nav">nav4</div>
+				<div class="aside">aside</div>
+				<div class="main">main</div>
+			</div>
+			<div class="ct">
+				<div class="nav">nav5</div>
+				<div class="aside">aside</div>
+				<div class="main">main</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="wrap">
+			footer
+		</div>
+	</footer>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		(function($){
+			$.fn.stickUp = function(){
+				var $nav = $(this),
+					elTop = $nav.offset().top,
+					elLeft = $nav.offset().left,
+					$cloneEl = $nav.clone().insertBefore($nav).css({'display':'none'}),
+					width = $nav.width();
+
+				$(window).on('scroll',function(){
+					var scrollTop = $(this).scrollTop();
+					if (scrollTop >= elTop) {
+						$cloneEl.css({
+							'display':'block',
+							'position':'fixed',
+							'top':0,
+							'left':elLeft,
+							'width':width
+						});
+					}else{
+						$cloneEl.css({
+							'display':'none'
+						});
+					}
+				});
+			}
+		})(jQuery)
+		
+		$('.nav').each(function(){
+			$(this).stickUp();
+		});
+	</script>
+</body>
+</html>

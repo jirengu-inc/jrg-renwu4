@@ -1,0 +1,138 @@
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>音乐播放器</title>
+		<link href='css/iconfont.css' rel='stylesheet' type='text/css'>
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	</head>
+	<body>
+		<div class="layout">
+			<div class="music">
+				<i class="icon iconfont">&#xe63e;</i>
+				<div class="panel">
+					<div class='panel-ct'>
+						<div class="music-header clearfix">
+							<span><i class="icon iconfont menu">&#xe605;</i>
+								<ul class="Song-type">
+								</ul>
+							</span>
+							<span class="music-name"></span>
+							<span><i class="icon iconfont hint">&#xe657;</i></span>
+						</div>
+						<div class="music-sound clearfix">
+							<span><i class="icon iconfont sound-img">&#xe776;</i></span>
+							<span class='soun-outline'>
+								<span class='soun-pre'></span>
+								<span class='soun-next'></span>
+							</span>
+							
+						</div>
+						<div class="lyric-img">
+							<div class="lyric-img-style"></div>
+						</div>
+						<div class="lyric">
+							<ul class='lyric-ct'></ul>
+						</div>
+						<div class="music-progress">
+							<span class='pro-first'></span>
+							<span class='time-after'></span>
+						</div>
+						<div class='clearfix time-num'>
+							<span class='tiem-left'>00:00</span>
+							<span class='tiem-right'>00:00</span>
+						</div>
+						<div class="music-footer">
+							<span class="pre-music"><i class="icon iconfont">&#xe63c;</i></span>
+							<span class="play-music">
+								<i class="icon iconfont">&#xf0067;</i>
+								<iframe id='frame' src='./frame.html' frameborder='0' crossorign></iframe>
+							</span>
+							<span class="next-music"><i class="icon iconfont">&#xe63d;</i></span>
+						</div>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+		<script>
+			//做Fm组件，引入js可以自动加载随机的音乐，加载html,绑定事件
+			//实现自动播放功能，选择音乐类型，暂停，播放，下一首，调音量，调音乐进度，等功能。
+			var music=document.getElementsByClassName("music");
+			console.log(music);
+			music[0].addEventListener('click',function() {
+				var panel=document.getElementsByClassName('panel');
+				panel[0].style.display="block";
+			});
+			var menu=$('.menu');
+			menu.on('mouseenter',function() {
+
+				$('.Song-type').show();
+			});
+			$('.soun-outline').on('click',function(e) {
+				e.stopPropagation();
+				$('.soun-pre').css({'width':e.pageX-$(this).offset().left+'px'});
+				console.log(e.pageX);
+				console.log($(this).offset().left);
+				$('.soun-next').css({'left':e.pageX-$(this).offset().left+'px'});
+			});
+			var player={
+				init:function() {
+					this.getSong();
+					this.getChannel();
+					this.curIdx=null;
+
+				},
+				getSong:function() {
+					$cur=this;
+					$cur.curIdx=$cur.curIdx || 8;
+					$.get('http://api.jirengu.com/fm/getSong.php',{channel:$cur.curIdx})
+					.done(function(song){
+						$cur.songData=JSON.parse(song);
+						console.log($cur.songData);
+						$cur.songName=$cur.songData.song[0].title;
+						$cur.songPic=$cur.songData.song[0].picture;
+						$cur.songlrc=$cur.songData.song[0].lrc;
+						$cur.songUrl=$cur.songData.song[0].url;
+						$cur.songArtist=$cur.songData.song[0].artist;
+						$cur.songSid=$cur.songData.song[0].sid;
+						console.log($cur.songUrl);
+						$('.music-name').text($cur.songName+' by '+$cur.songArtist);
+						$('.lyric-img-style').css({background:'url('+$cur.songPic+')'});
+						$('.lyric-ct').html('<li>本歌曲没有展示歌词</li>');
+						$('#frame').contents().find('#player').attr('src',$cur.songUrl);
+						
+						
+					});
+
+				},
+				getChannel:function() {
+					var $cur=this;
+					$cur.channel='';
+					$.get('http://api.jirengu.com/fm/getChannels.php')
+						.done(function(msg){
+							$cur.songType=JSON.parse(msg);
+							for(var i in $cur.songType.channels) {
+								$cur.channel+='<li data-id='+$cur.songType.channels[i].channel_id+'>'+$cur.songType.channels[i].name+'</li>'
+							}
+						$('.Song-type').append($cur.channel);
+						});
+						
+				}
+			}
+			player.init();
+			
+	
+	
+		
+
+			
+			
+	
+		
+	
+
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>负边距</title>
+	<style>
+		.body{
+		    width:500px;
+		    margin:10px;
+		    border:dashed 1px orange;
+		    overflow:hidden;
+		}
+
+		.wrap3{
+		    float:left;
+		    width:100%;
+		}
+
+		.wrap3 .content{
+		    height:200px;
+		    margin-right:100px;
+		    background:rgba(255,0,0,0.5);
+		}
+
+		.body .right{
+		    width:100px;
+		    height:200px;
+		    float:left;
+		    margin-left:-100px;
+		    background:rgba(0,255,0,0.5);
+		}
+	</style>
+</head>
+<body>
+	<div class="body">
+    <div class="wrap3">
+        <div class="content">
+            Content Content Content Content Content Content Content
+            Content Content Content Content Content Content Content Content
+        </div>
+    </div>
+    <div class="right">Right</div>
+</div>
+</body>
+</html>

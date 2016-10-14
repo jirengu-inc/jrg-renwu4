@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	   var flag = true;
+		setTimeout(function(){
+		    flag = false;
+		},0)
+		while(flag){}
+		console.log(flag);
+	// setTimeout 0 把function的执行顺序移到最后,
+		  // 所以 var flag = true;while(flag){}console.log(flag);变量为true,while{}会进入无限循环，陷入死循环，卡死
+	</script>
+</body>
+</html>

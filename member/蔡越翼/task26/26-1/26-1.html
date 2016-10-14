@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>26-1</title>
+	<link rel="stylesheet" href="26-1.css">
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script src="26-1.js"></script>
+</head>
+<body>
+	<fieldset>
+		<legend>
+		<p>1. $node 添加 class active，给元素 $noed 删除 class active</p>
+		<p>2.展示元素$node, 隐藏元素$node</p>
+		</legend>
+		<p class="test">test</p>
+		<button class="add">add</button>
+		<button class="remove">remove</button>
+		<button class="show">show</button>
+		<button class="hide">hide</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>3.获取元素$node 的 属性: id、src、title， 修改以上属性</p>
+			<p>4.给$node 添加自定义属性data-src</p>
+		</legend>
+		<img class="demo" id="demo" src="./img/a.jpg" title="demo-a">
+		<p class="attr"></p>
+		<p class="data-src"></p>
+		<button class="get">getAttr</button>
+		<button class="set">setAttr</button>
+		<button class="setData">data-src</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>5.在$ct 内部最开头添加元素$node 6.在$ct内部最末尾添加元素$node</p>
+			<p>7.删除$node  8.把$ct里内容清空</p>
+		</legend>
+		<div class="ct">
+			<p>测试测试测试测试测试</p>
+		</div>
+		<button class="before">addBefore</button>
+		<button class="after">addAfter</button>
+		<button class="rmElement">rmAdd</button>
+		<button class="clear">clearCt</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>9.在$ct 里设置 html</p>
+		</legend>
+		<div class="ct1"></div>
+		<p class="ctHtml"></p>
+		<button class="addCtHtml">addCtHtml</button>
+		<button class="showCtHtml">showCtHtml</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>10.获取、设置$node 的宽度、高度(分别不包括内边距、包括内边距、包括边框、包括外边距)</p>
+		</legend>
+		<div class="ct2">我是内容</div>
+		<p class="showSize"></p>
+		<p class="showSize"></p>
+		<p class="showSize"></p>
+		<p class="showSize"></p>
+		<button class="getSize">getSize</button>
+		<button class="setSize">setSize</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+		<P>11.获取窗口滚动条垂直滚动距离</P>
+		<p>12.获取$node 到根节点水平、垂直偏移距离</p>
+		</legend>
+		<p class="showSlTop"></p>
+		<p class="showOffset"></p>
+		<button class="slTop">scrollTop</button>
+		<button class="offset">offset</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>13.修改$node 的样式，字体颜色设置红色，字体大小设置14px</p>
+		</legend>
+		<p class="showCss">修改节点样式</p>
+		<button class="cgCss">changeCss</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>14.遍历节点，把每个节点里面的文本内容重复一遍</p>
+		</legend>
+		<ul class="ct3">
+			<li class="list">1</li>
+			<li class="list">2</li>
+			<li class="list">3</li>
+		</ul>
+		<button class="replay">each</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>15.从$ct 里查找 class 为 .item的子元素</p>
+			<p>16.获取$ct 里面的所有孩子</p>
+		</legend>
+		<div class="ct4">
+			<p class="item">我是class为item的子元素</p>
+			<div>
+				哈哈哈
+				<p>哈哈哈</p>
+			</div>
+		</div>
+		<button class="getItem">getItem</button>
+		<button class="getAll">getAll</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>17.对于$node，向上找到 class 为’.ct’的父亲，在从该父亲找到’.panel’的孩子</p>
+		</legend>
+		<div class="ct5">
+			<p class="current">我的起点</p>
+			<p>数据数据</p>
+			<p class="panel">我是panel</p>
+			<p>数据数据</p>
+		</div>
+		<button class="getPanel">getPanel</button>
+	</fieldset>
+	<fieldset>
+		<legend>
+			<p>18.获取选择元素的数量</p>
+			<p>19.获取当前元素在兄弟中的排行</p>
+			</legend>
+		<ul class="ct6">
+			<li>数据</li>
+			<li class="idx">数据</li>
+			<li>数据</li>
+		</ul>
+		<p class="showLength"></p>
+		<p class="showIdx"></p>
+		<button class="getLength">getLength</button>
+		<button class="getIdx">getIndex</button>
+	</fieldset>
+</body>
+</html>

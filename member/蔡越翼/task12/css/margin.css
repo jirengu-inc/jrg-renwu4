@@ -1,0 +1,31 @@
+html,body,ul,li{
+	margin:0;
+	padding:0;
+}
+.container{
+	width:490px;
+	margin:0 auto;
+	background-color: #f7f7f7;
+}
+.content{
+	padding:10px 0;
+	background-color: #ccc;
+}
+.wrap{
+	margin-left: -20px;
+}
+.wrap:after{
+	content:"";
+	display: block;
+	clear: both;
+}
+.wrap>li{
+	width:150px;
+	height: 30px;
+	list-style: none;
+	float: left;
+	margin-top:10px;
+	margin-left: 20px;
+	color: #fff;
+	background-color:#004210;
+}

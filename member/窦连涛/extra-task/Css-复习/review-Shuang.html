@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双飞燕布局</title>
+	<style>
+		.wrap:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.main,.left,.right { float:left;  height:200px; }
+		.main { width:100%;  background:#ace; }
+		.left { width:20%; background:#eee; margin-left:-100%;}
+		.right { width:30%; background:#ddd; margin-left:-30%;}
+		.manln {margin:0 30% 0 20%;height: 200px;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="main">
+				main
+				<div class="minln">123</div>
+		</div>
+		<div class="left">left</div>
+		<div class="right">right</div>
+	</div>
+</body>
+</html>

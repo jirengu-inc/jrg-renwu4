@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.box{
+		width:100px;
+		height:50px;
+		border:1px solid #ccc;
+		margin:100px auto;
+		position:relative;
+	}
+	.angle{
+		width:0;
+		height:0;
+	    position: absolute;
+	}
+	.angle_gray{
+		border-top:10px solid transparent;
+		border-right:10px solid transparent;
+		border-bottom:10px solid #ccc;
+		border-left: 10px solid transparent;
+		top: -20px;
+        left: 8px;
+
+	}
+	.angle_red{
+		border-top:10px solid red;
+		border-right:10px solid red;
+		border-bottom: 10px solid transparent;
+		border-left:10px solid transparent;
+		top: 0;
+        left: 80px
+	}
+	.angle_white{
+		border-top:10px solid transparent;
+		border-right:10px solid transparent;
+		border-bottom:10px solid #fff;
+		border-left: 10px solid transparent;
+		top: -18px;
+        left: 8px;
+	}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="angle angle_gray "></div>
+	</div>
+	<div class="box">
+		<div class="angle angle_red "></div>
+	</div>
+	
+	<div class="box">
+	    <div class="angle angle_gray "></div>
+		<div class="angle angle_white"></div>
+	</div>
+	  
+</body>
+</html>

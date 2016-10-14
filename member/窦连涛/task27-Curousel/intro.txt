@@ -1,0 +1,22 @@
+右面滚动是 先拿牌再滚动
+左面滚动是 先滚动再拿牌
+
+size() JQ方法
+length JQ属性
+
+margin:0 auto 只是针对普通的元素有效 对于浮动元素是没有效果的
+
+把锁绑定到某个属性上 ？
+
+
+function addClass(el,cls){
+  var reg = new RegExp('(^|\\s)'+cls+'($|\\s)');
+  if(reg.test(el.className)) return;
+  el.className += " " + cls;
+}
+
+function removeClass(el,cls){
+  var reg = new RegExp('(^|\\s)'+cls+'($|\\s)');
+  if(reg.test(el.className)) return;
+  el.className += " " + cls;
+}

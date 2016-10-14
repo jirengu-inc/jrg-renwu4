@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <meta charset="utf-8">
+  <title>code2</title>
+  <style>
+  	body{
+  		margin: 50px;
+  	}
+  	div{
+  		margin: 20px;
+  	}
+  	.btn{
+  		height: 50px;
+  		line-height: 50px;
+  		border: 1px solid #bbb;
+  		border-radius: 3px;
+  		background: #ddd;
+  		outline: none;
+  	}
+  	input{
+  		outline: none;
+  	}
+  	input.bor{
+		border: 1px solid blue;
+  	}
+  </style>
+</head>
+<body>
+<!-- 
+当选择 select 后，获取用户选择的内容 -->
+	<div>
+		<button class="btn">
+		  当点击此按钮时，让 $btn 的背景色变为红色再变为蓝色
+		</button>
+	</div>
+
+	<div class="hl">
+	  当鼠标放置到div 上，把div 背景色改为红色，移出鼠标背景色变为白色
+	</div>
+	<div>
+		<input type="text">
+	</div>
+	<div>
+	  <select name="city" id="">  
+	    <option value="bj">北京</option>
+	    <option value="sh">上海</option>
+	    <option value="tj">天津</option>
+	  </select>
+	  <button class="btn-s">获取select值</button>
+	</div>
+
+
+  <script>
+  	$('.btn').on('click',function(e){
+	  var $this = $(this)
+	  $this.css({'background':'red'});
+	  setTimeout(function(){
+	    $this.css({'background':'blue'});
+	  },800);
+	});
+
+	$('.hl').on('mouseover',function(){
+	  $(this).css({'background':'red'});
+	}).on('mouseleave',function(){
+	  $(this).css({'background':'#fff'});
+	});
+
+	$('input').on('focus',function(){
+	  $(this).addClass('bor');
+	}).on('blur',function(){
+	  $(this).removeClass('bor');
+	  console.log($(this).val())
+	}).on('keyup',function(){
+	  $(this).val($(this).val().toUpperCase());
+	})
+	$('.btn-s').on('click',function(){
+		console.log($('select[name="city"]').val());
+	});
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#header,#footer{
+			height: 100px;
+			background-color: red;
+		}
+		#content .aside{
+			background-color: blue;
+			width: 300px;
+			float: left;
+		}
+		#content .main{
+			background-color: #f60;
+			
+			padding: 10px;
+			min-height: 500px;
+			overflow: auto;
+		}
+		#content:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="main">
+            我是main 
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main... 
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Air</title>
+    <style>
+        .air {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            border: 3px solid red;
+            margin: 40px;
+            border-radius: 5px;
+        }
+
+        .air::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-bottom: 20px solid red;
+            border-top: 20px solid rgba(0, 0, 0, 0);
+            border-left: 20px solid rgba(0, 0, 0, 0);
+            border-right: 20px solid rgba(0, 0, 0, 0);
+            top: -40px;
+            left: 10px;
+        }
+
+        .san::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-bottom: 20px solid white;
+            border-top: 20px solid rgba(0, 0, 0, 0);
+            border-left: 20px solid rgba(0, 0, 0, 0);
+            border-right: 20px solid rgba(0, 0, 0, 0);
+            top: -36px;
+            left: 10px;
+        }
+
+        .box {
+            position: relative;
+            width: 200px;
+            height: 100px;
+            border: 2px solid #ccc;
+            margin: 40px;
+        }
+
+        .box::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 10px solid red;
+            border-right: 10px solid red;
+            border-bottom: 10px solid rgba(0, 0, 0, 0);
+            border-left: 10px solid rgba(0, 0, 0, 0);
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="air">
+        <div class="san"></div>
+    </div>
+    <div class="box"></div>
+</body>
+
+</html>

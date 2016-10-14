@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>运算符</title>
+  <script>
+  console.log(1+1); //2
+  console.log("2"+"4");//"24"
+  console.log(2+"4"); //"24"
+  console.log(+new Date());//"1467706346410"
+  console.log(+"4");//"4"
+
+
+  var a = 1;
+  a+++a;//3
+
+  typeof a+2;
+  "number2"
+
+  var arr = [3,4,5];
+  for(x in arr){
+    arr[x] = arr[x]*arr[x];
+  }
+  console.log(arr);
+
+  var obj = {
+  name: 'hunger',
+  sex: 'male',
+  age: 28
+  }
+
+  for(z in obj){
+    console.log(z+":"+obj[z]);
+  }
+
+  console.log(c);//undefined 变量前置
+  var c = 1;
+  console.log(c);// c=1；
+  console.log(b); // 报错
+  </script>
+</head>
+<body>
+
+</body>
+</html>

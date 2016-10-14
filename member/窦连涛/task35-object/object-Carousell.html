@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Object-Curousel</title>
+  <style>
+   html,body,div,ul,li{
+     margin:0;
+     padding: 0;
+   }
+
+   li{
+     list-style: none;
+   }
+
+   a{
+     text-decoration: none;
+   }
+
+   .curousel {
+     width: 520px;
+     height: 280px;
+     overflow: hidden;
+     position: relative;
+     margin-bottom:50px;
+   }
+
+   .curousel .img-ct {
+     position: absolute;
+   }
+
+   .curousel .img-ct:after{
+     content:'';
+     display: block;
+     clear: both;
+   }
+
+   .curousel .img-ct li{
+    width: 520px;
+    height: 280px;
+    float: left;
+   }
+
+   .arrow {
+     width: 30px;
+     height: 30px;
+     line-height: 30px;
+     text-align: center;
+     position: absolute;
+     top:50%;
+     margin-top:-15px;
+     border-radius: 50%;
+     background: #eee;
+     opacity: 0.8;
+     box-shadow: 0 0 2px #999;
+   }
+
+   .next {
+     left:10px;
+   }
+
+   .pre {
+     right:10px;
+   }
+
+   .bullet {
+     position: absolute;
+     bottom:10px;
+     left:50%;
+     transform: translateX(-50%);
+   }
+
+   .curousel .bullet li{
+     width: 40px;
+     height: 8px;
+     background: #FFF;
+     display: inline-block;
+     cursor: pointer;
+     border-radius: 2px;
+   }
+
+   .curousel .bullet li.active {
+     background: #CCC;
+   }
+  </style>
+</head>
+<body>
+    <div class="curousel">
+      <ul class="img-ct">
+        <li data-id=0 > <a href="#"><img src="image/1.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/2.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/3.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/4.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/5.jpg" alt=""></a></li>
+      </ul>
+      <a href="#" class="arrow pre"> < </a>
+      <a href="#" class="arrow next" > > </a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <div class="curousel">
+      <ul class="img-ct">
+        <li data-id=0 > <a href="#"><img src="image/1.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/2.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/3.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/4.jpg" alt=""></a></li>
+        <li data-id=0 > <a href="#"><img src="image/5.jpg" alt=""></a></li>
+      </ul>
+      <a href="#" class="arrow pre"> < </a>
+      <a href="#" class="arrow next" > > </a>
+      <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+    	function Carousel($node){
+			this.node = $node;
+			this.bullet = $node.find('.bullet');
+			
+			this.pre = $node.find('.pre');//上一个
+			this.next = $node.find('.next'); //下一个
+
+			this.ct = $node.find('.img-ct');//获取 UL
+			this.items = this.ct.children(); //看有几个子元素
+			this.imgW = this.items.width();	// 每个元素的宽度
+			this.imgCount = this.items.size(); // 总共有几个子元素
+
+			this.ct.prepend(this.items.last().clone()); //把最后一个放到最前面
+    	this.ct.append(this.items.first().clone()); // 把第一个放到最后面
+    	this.imgRealCount = this.ct.children().size(); // 计算实际的个数
+      
+    	this.ct.css({left:0-this.imgW,width:this.imgRealCount*this.imgW}); // 
+
+      this.curId = 0;
+      this.isAnimate = false;
+     
+    	this.bind();
+     
+		} 
+
+		Carousel.prototype = {
+
+			bind: function(){
+				var _this = this;
+            
+
+				this.pre.on('click', function(){
+					_this.playPre();
+				});
+				this.next.on('click', function(){
+					_this.playNext();
+				});
+
+        this.bullet.on('click','li',function(){
+            var idx = $(this).index();
+            if(idx > _this.curId){
+                _this.playNext(idx - _this.curId);
+            }else if(idx < _this.curId){
+                _this.playPre(_this.curId - idx);
+            }
+        })
+        
+			},
+
+      playNext:function(idx){
+          var idx = idx || 1;
+          var _this = this;
+          // console.log(!_this.isAnimate === true);
+          if(!_this.isAnimate){
+            _this.isAnimate = true;
+            _this.ct.animate({left:"-=" + _this.imgW * idx},function(){
+              _this.curId = (_this.curId + idx ) % _this.imgCount;
+              if(_this.curId === 0){
+                _this.ct.css({left : 0 - _this.imgW});
+              }
+              _this.isAnimate = false;
+              _this.setBullet();
+            })
+          }
+      },
+
+      playPre:function(idx){
+        var idx = idx || 1;
+        var _this = this;
+        if(!_this.isAnimate){
+          _this.isAnimate = true;
+          _this.ct.animate({left: "+=" + _this.imgW * idx},function(){
+            _this.curId = (_this.imgCount + _this.curId - idx) % _this.imgCount;
+            if(_this.curId === _this.imgCount -1){
+              _this.ct.css({left : 0 - (_this.imgW*_this.imgCount)});
+            }
+            _this.isAnimate = false;
+            _this.setBullet();
+          })
+        }
+      },
+      
+
+      setBullet: function(){
+          this.bullet.find('li').removeClass('active').eq(this.curId).addClass('active');
+      },
+
+
+
+		};
+
+		var $node1 = $('.curousel').eq(0);
+		var $node2 = $('.curousel').eq(1);
+		var carousel1 = new Carousel($node1);
+		var carousel2 = new Carousel($node2);
+		// console.log($node1);
+		
+
+    </script>
+</body>
+</html>

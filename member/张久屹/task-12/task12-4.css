@@ -1,0 +1,35 @@
+.header{
+  height: 40px;
+  background: #969696;
+}
+.content{
+  overflow: hidden;
+}
+.box1{
+  height:100px;
+  width: 100%;
+  float: left;
+}
+.main{
+  background: green;
+  height: 100px;
+  margin: 0 200px;
+}
+.box2{
+  background: red;
+  height:100px;
+  width: 200px;
+  float: left;
+  margin-left: -100%; 
+}
+.box3{
+  background: yellow;
+  min-height:100px;
+  width: 200px;
+  float: left;
+  margin-left: -200px;
+}
+.footer{ 
+  height: 40px;
+  background: #969696;
+}

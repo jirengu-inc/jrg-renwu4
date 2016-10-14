@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>25-3</title>
+	<link rel="stylesheet" type="text/css" href="./25-3css.css">
+</head>
+<body>
+	<h1>珠宝首饰</h1>
+		<ul id="wrap">
+			<li class="liWrap">
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<p class="price">￥1699.00</p>
+				<div class="cover">
+					<a href="#" class="btn">立即抢购</a>
+				</div>
+			</li>
+			<li class="liWrap">
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<p class="price">￥1699.00</p>
+				<div class="cover">
+					<a href="#" class="btn">立即抢购</a>
+				</div>
+			</li>
+			<li class="liWrap">
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<p class="price">￥1699.00</p>
+				<div class="cover">
+					<a href="#" class="btn">立即抢购</a>
+				</div>
+			</li>
+			<li class="liWrap">
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				<p class="price">￥1699.00</p>
+				<div class="cover">
+					<a href="#" class="btn">立即抢购</a>
+				</div>
+			</li>
+		</ul>
+		<a href="#" id="btnMore">加载更多</a>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$("#wrap").on("mouseover",".liWrap",function(){
+		$(this).find(".cover").css("display","block");
+	})
+	$("#wrap").on("mouseleave",".liWrap",function(){
+		$(this).find(".cover").css("display","none");
+	})
+	var products = [
+    {
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金手 猴哥款',
+        price: '￥405.00'
+    },{
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金转运珠 猴哥款',
+        price: '￥100.00'
+    },{
+        img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+        name: '珂兰 黄金手链 3D猴哥款',
+        price: '￥45.00'
+    }
+];
+
+	$("#btnMore").on("click",function(e){
+			e.preventDefault();
+		  	var html = ''
+		  	for (var i = 0;i<products.length;i++){
+				html+='<li class="liWrap"><img src="'+products[i].img+'"><p>'+products[i].name+'</p><p class="price">'+products[i].price+'</p><div class="cover"><a href="#" class="btn">立即抢购</a></div></li>  '
+		  	}
+		  	$('#wrap').append($(html))
+	});
+</script>
+</html>

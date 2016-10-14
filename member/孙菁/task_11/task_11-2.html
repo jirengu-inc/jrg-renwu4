@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 11-2两栏布局</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#wrap{
+			margin:0 auto;
+			width: 960px;
+			font-weight: bold;
+		}
+		#header,#footer{
+			height: 80px;
+			background: red;
+		}
+        #content .aside{
+            width: 300px;
+            background:#CCCCFF;
+            float: left;
+        }
+        #content .main{
+        	overflow: hidden;  /*形成BFC*/
+        	background: pink;
+        }
+	</style>
+</head>
+<body>
+    <div id="wrap">
+    	<div id="header">header</div>
+    	<div id="content">
+    		<div class="aside">左浮动</div>
+    		<div class="main">形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，形成BFC，</div>
+    	</div>
+    	<div id="footer">footer</div>
+    </div>
+	
+</body>
+</html>

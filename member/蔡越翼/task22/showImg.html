@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>showImg</title>
+</head>
+<body>
+	<ul class="ct">
+		<li data-img="1.png">鼠标放置查看图片1</li>
+		<li data-img="2.png">鼠标放置查看图片2</li>
+		<li data-img="3.png">鼠标放置查看图片3</li>
+	</ul>
+	<div class="img-preview"></div>
+	<script>
+		var ct = document.querySelector('.ct'),
+			imgPreview = document.querySelector('.img-preview');
+		ct.addEventListener('mouseover',function(e){
+			var img = "./img/" + e.target.getAttribute('data-img');
+			imgPreview.innerHTML = '<img src="'+ img + '">'
+		});
+	</script>
+</body>
+</html>

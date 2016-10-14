@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			padding: 0;
+		}
+		body{
+			font-family: "Microsoft Yahei";
+		}
+		.wrap{
+			border-bottom: 1px solid #ccc;
+		}
+		.nav{
+			background: #eee;
+			font-size: 0px;
+			width: 450px;
+			margin: 0 auto;
+		}
+		li{
+			list-style: none;
+		}
+		.nav>li{
+			display: inline-block;
+			font-size: 20px;
+			position: relative;
+			width: 90px;
+			text-align: center;
+		}
+		.nav>li a{
+			text-decoration: none;
+			color: #777;
+		}
+		.talkbox{
+			position: absolute;
+			top:100%;
+			left:10px;
+			display: none;
+			width: 70px;
+		}
+		.nav>li:hover .talkbox{
+			display: block;
+		}
+		.nav li:hover{
+			background: #ccc;
+		}
+		.talkbox>ul{
+			margin-top: 8px;
+			border: 1px solid #CCC;
+			box-shadow: 0px 0px 10px #ccc;
+		}
+		.border-color{
+			top:-4px;
+			border-bottom-color:#CCC;
+		}
+		.talkbox a{
+			font-size: 12px;
+			line-height: 26px;
+		}
+		.talkbox:after{
+			content:"";
+			display: block;
+			width: 0;
+			height: 0;
+			border: 6px solid transparent;
+			border-bottom-color:white;
+			position: absolute;
+			left: 29px;
+			top:-3px;
+		}
+		.talkbox:before{
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			border: 6px solid transparent;
+			position: absolute;
+			left: 29px;
+			top:-4px;
+			border-bottom-color:#CCC;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav">
+			<li><a href="#">前端</a>
+				<div class="talkbox">
+					<ul>
+						<li><a href="#">JavaScript</a></li>
+						<li><a href="#">CSS</a></li>
+						<li><a href="#">HTML</a></li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#">服务端</a>
+				<div class="talkbox">
+					<ul>
+						<li><a href="#">NODE</a></li>
+						<li><a href="#">PHP</a></li>
+						<li><a href="#">JAVA</a></li>
+						<li><a href="#">PYTHON</a></li>
+						<li><a href="#">RUBY</a></li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#">前端工具</a>
+				<div class="talkbox">
+					<ul>
+						<li><a href="#">Sublime</a></li>
+						<li><a href="#">Git</a></li>
+						<li><a href="#">WebStorm</a></li>
+					</ul>
+				</div>
+			</li>
+			<li><a href="#">HTML</a></li>
+			<li><a href="#">NODE</a></li>
+		</ul>
+	</div>
+</body>
+</html>

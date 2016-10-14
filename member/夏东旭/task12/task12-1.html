@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul{
+			list-style: none;
+			display: inline-block;
+			background-color: #ccc;
+			padding: 0 0 10px 0;
+			margin:0 auto;
+		}
+		ul>li{
+			width: 200px;
+			height: 50px;
+			background-color: blue;
+			float:left;
+			margin:10px 10px 0 0;
+		}
+		
+		ul::after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.clear-margin-right{
+			margin-right:0
+		}
+		.clear-left{
+			clear: left;
+		}
+		.layout{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	
+		<div class="layout">
+			<ul>
+				<li>1</li>
+				<li>2</li>
+				<li class="clear-margin-right">3</li>
+				<li class="clear-left">4</li>
+				<li>5</li>
+				<li class="clear-margin-right">6</li>
+			</ul>
+		</div>
+	
+</body>
+</html>

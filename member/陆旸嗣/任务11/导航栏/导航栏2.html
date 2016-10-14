@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>导航栏</title>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding:0;
+	}
+	li{list-style: none;}
+
+		.wrap{
+			margin: 20px 0px 0px 20px;
+		}
+		.float{
+			list-style: none;
+			float: left;
+			padding:0 20px;
+			border:1px solid black;
+			text-align: center;
+			background-color: #cbcbcb;
+			position: relative;
+		}
+		.float:hover{
+			background-color: gray;
+		}
+		a{
+			text-decoration: none;
+			color: #000;
+		}
+		.child{
+			background-color: #fff;
+			border:1px solid black;
+			position: absolute;
+			width: 80px;
+			left: 0px;
+			display: none;
+
+		}
+		.child > li:hover{
+			cursor: pointer;
+			background-color: gray;
+		}
+		.float:hover .child{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<ul class="wrap">
+		<ul>
+			<li class="float">
+				<a href="#">前端</a>
+				<ul class="child">
+					<li>hhh</li>
+					<li>hhh</li>
+					<li>hhh</li>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<li class="float">
+				<a href="#">前端2</a>
+				<ul class="child">
+					<li>hhh</li>
+					<li>hhhhhhh</li>
+					<li>hhh</li>
+				</ul>
+			</li>
+		</ul>
+		<li class="float">
+			<a href="#">前端工具</a>
+		</li>
+		<li class="float">
+			<a href="#">前端教程</a>
+		</li>
+		<ul>
+			<li class="float">
+				<a href="#">前端3</a>
+				<ul class="child">
+					<li>hhhhhhh</li>
+					<li>hhh</li>
+					<li>hhh</li>
+				</ul>
+			</li>
+		</ul>
+		<li class="float">
+			<a href="#">JS</a>
+		</li>
+	</ul>
+</body>
+</html>

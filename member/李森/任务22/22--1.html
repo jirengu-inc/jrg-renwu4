@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+</div> 
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>任务4班</li>
+</ul>
+
+  <script type="text/javascript">
+document.getElementsByClassName('ct')[0].addEventListener('click',function(e){
+        console.log(e.target.innerText);
+});
+
+var ct = document.getElementsByClassName('ct')[0];
+var ha = function(e){
+	var text = e.target;
+	console.log(text.innerText);
+}
+ct.addEventListener('click',ha);
+  </script>
+</body>
+</html>

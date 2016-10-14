@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-30</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div.content { position: relative; }
+		div.item {
+			position: absolute;
+			width: 200px;
+			margin: 10px 10px 0 0;
+			transition: all 1s;
+		}
+		.h1 {
+			height: 200px;
+			background: #A168D5;
+		}
+		.h2 {
+			height: 300px;
+			background: #8E41D5;
+		}
+		.h3 {
+			height: 400px;
+			background: #600CAC;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="item h1">1</div>
+		<div class="item h3">2</div>
+		<div class="item h2">3</div>
+		<div class="item h1">4</div>
+		<div class="item h1">5</div>
+		<div class="item h3">6</div>
+		<div class="item h3">7</div>
+		<div class="item h2">8</div>
+		<div class="item h1">9</div>
+		<div class="item h3">10</div>
+		<div class="item h3">11</div>
+		<div class="item h3">12</div>
+		<div class="item h2">13</div>
+		<div class="item h2">14</div>
+	</div>
+	
+	<script>
+		//按思路顺序写法：
+		/*
+	    function waterFall(){
+	    	var winW = $(window).width(),
+	    		nodeWidth = $(".item").outerWidth(true),     //考虑到内外边距
+	    		colNum = parseInt( winW / nodeWidth );       //取整，容器宽度/元素宽度，得到当前容器可显示几列
+
+	    	var colSumHeight = [];          //建立空数组，用于存放每一列的height之和
+	    	for(var i=0;i<colNum;i++){
+	    		colSumHeight.push(0);
+	    	}
+
+	    	$(".item").each(function(){     //遍历item设置每个item的位置
+	    		var $this = $(this);
+
+	    		var idx = 0,                //依次比较出最小值
+	    		    minSumHeight = colSumHeight[0];
+	    		for(var i=0;i<colSumHeight.length;i++){
+	    			if( colSumHeight[i] < minSumHeight){
+	    				minSumHeight = colSumHeight[i];           //分别得到最小高度的元素高度及下标
+	    				idx = i;
+	    			}
+	    		}
+
+	    		$this.css({
+	    			left: idx * nodeWidth,
+	    			top: minSumHeight
+	    		})
+	    		colSumHeight[idx] += $this.outerHeight(true);
+
+	    	});
+	    }
+		
+		waterFall();
+
+		$(window).on('resize',function(){    //监听window的尺寸改变
+			waterFall();
+		});	
+		*/
+	
+		//封装成对象写法：
+		
+		var waterFall = {
+			colSumHeight:[],
+
+			init: function($ct){
+				this.$ct = $ct;
+				this.$items = $ct.find(".item");
+				this.$nodeWidth = this.$items.outerWidth(true);
+
+				this.bind();
+				this.start();
+			},
+
+			bind: function(){
+				var me = this;
+				$(window).on('resize',function(){
+					me.start();
+				});
+			},
+
+			start: function(){
+				var me = this;
+				this.colNum = parseInt( this.$ct.width() / this.$nodeWidth );
+				me.colSumHeight = [];             //每当可显示列数变化时要清空数组重新计算
+				for(var i=0;i<this.colNum;i++){
+					this.colSumHeight[i] = 0;
+				}
+				this.$items.each(function(){
+					me.placeItem( $(this) );
+				});
+			},
+
+			placeItem: function($el){
+				var obj = this.getIndexOfMin(this.colSumHeight),
+					idx = obj.idx,
+					min = obj.min;
+				$el.css({
+					left: idx * this.$nodeWidth,
+					top: min  
+				});
+				this.colSumHeight[idx] += $el.outerHeight(true);
+			},
+
+			getIndexOfMin: function(arr){
+				var idx = 0,
+				    minSumHeight = arr[0];
+
+				for(var i=1;i<arr.length;i++){
+					if( arr[i] < minSumHeight ){
+						minSumHeight = arr[i];
+						idx = i;
+					}
+				}
+				return {
+					min: minSumHeight,
+					idx: idx
+				};
+			}
+		}
+
+		waterFall.init( $(".content") );
+		
+	</script>
+	
+</body>
+</html>

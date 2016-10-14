@@ -1,0 +1,58 @@
+1 语义化
+2 href和src的区别
+3 嵌套
+		1 流和标准流
+		2 行内元素和块级元素
+		3 两者区别
+				1 用处
+				2 宽、高、边距、填充
+				3 相互转换
+				4 任何不是块级元素的可见元素都是内联元素
+		4 嵌套规则
+				1 只能嵌套内联元素 h1~h6 p dt 
+				2 并列嵌套 
+4 line-height
+		
+		1 块级元素中包含的行内元素或者文本 则指定了元素内部line boxes最小高度
+		2 对于非替代行内(a)元素 用于计算line-box 的高度
+		3 对于替代的行内元素(button input) 没有任何影响
+
+			单位:
+				1 normal 默认
+				2 number 1.5 是font-size的1.5倍 继承的情况下不会有异常 
+				3 长度 30px
+				4 百分比 150%
+				5 inherit 继承
+		** 单行文本下 元素的高度并不是由文字大小决定的 而是line-height 决定的
+			如果没有定义line-height属性则默认的line-height属性直为 normal
+			而normal的值是由font-family决定的
+
+			单行文本的垂直居中并不是完全的垂直居中 只是近似居中
+
+
+5 CSS属性的兼容性 caniuse
+
+6 display: none , visibility: hidden, opacity:0 有什么作用？有什么区别？	
+
+	 			display			visibility       opacity
+
+	 	可视		不可视			不课时			 透明
+	 	占位		不占位			占位				 占位
+
+7  a 链接不会继承父元素的颜色 但会继承字体大小
+8  列表
+
+		UL 用于导航
+		OL 用于图书排行
+		LI 用于上面两者的嵌套
+9 list-style 可以用于去除前面的原点 可以添加在ul 上也可以添加再 li上
+10 块级元素 行内元素
+11 <button>提交</button>、<a class=“btn” href="#">提交</a>、<input type=“submit” value=“提交”> 三者有什么区别？
+12 radio 如何 分组?
+13 type=hidden隐藏域有什么作用? 举例说明
+
+14 table th tr td 
+15 form 表单
+
+
+	

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>效果切换</title>
+	<style>
+	li{
+    list-style: none;
+  }
+  .ct >ul >li{
+    border:1px solid #ccc;
+  }
+  .ct>ul>li>p{
+    display:none;
+  }
+	</style>
+</head>
+<body>
+	 <div class="ct">
+    <ul>
+       <li class="item">
+         <h3>标题1</h3>
+         <p>内容1</p>
+       </li>
+        <li class="item">
+         <h3>标题2</h3>
+         <p>内容2</p>
+       </li>
+        <li class="item">
+         <h3>标题3</h3>
+         <p>内容3</p>
+       </li>
+        <li class="item">
+         <h3>标题4</h3>
+         <p>内容4</p>
+       </li>
+     </ul> 
+   </div>
+
+
+
+  <h2>Greeting</h2>
+  <div class="container">
+    <div class="inner">Hello</div>
+    <div class="inner">Goodbye</div>
+    
+    <!-- <div class="inner">xiufangjaiyou</div> -->
+  </div>
+    <button id="add-to-last">添加最后</button>
+    <button id="add-to-first">添加前面</button>
+     <button id="switch">switch</button>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+ $('#add-to-last').on('click',function(){
+   $('.container').append('<div class="inner">xiufangjaiyou</div>');
+ });
+ $('#add-to-first').on('click',function(){
+   $('.container').prepend('<div class="inner">xiufangjaiyou</div>');
+ });
+ $('#switch').on('click',function(){
+  $('.inner').eq(1).after( $('.inner').eq(0));
+ });
+// $('.container').html('<div class="inner">xiufangjaiyou</div>');
+</script>
+
+ 
+ <script>
+   $('.ct .item').on('mouseenter',function(){
+    $(this).find('p').slideDown();
+   });
+   $('.ct .item').on('mouseleave',function(){
+    $(this).find('p').slideUp(100);
+   });
+ </script>
+</body>
+</html>

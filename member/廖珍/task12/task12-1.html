@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>利用父边距布局</title>
+		<style>
+		html,body,ul,li {
+			margin:0px;
+			padding:0px;
+		}
+		ul {
+			list-style:none;
+
+		}
+		.box {
+			width:490px;
+			height:300px;
+			background:#ccc;
+			margin:10px;
+			margin:0 auto;
+			position:absolute;
+			top:50%;
+			left:50%;
+			margin-left:-250px;
+			margin-top:-150px;
+		}
+		.wrap {
+			margin-left:-30px;
+			position:relative;
+			left:20px;
+
+
+		}
+		.wrap li {
+			width:150px;
+			height:130px;
+			float:left;
+			background:blue;
+			margin:10px;
+
+		}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<ul class="wrap">
+				<li>1</li>
+				<li>2</li>
+				<li>3</li>
+				<li>4</li>
+				<li>5</li>
+				<li>6</li>
+			</ul>
+		</div>
+	</body>
+</html>

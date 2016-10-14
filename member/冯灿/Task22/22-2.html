@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>22-2</title>
+</head>
+
+<body>
+  <p>Check console.</p>
+  <ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+  </ul>
+  <input class="ipt-add-content" placeholder="添加内容" />
+  <button id="btn-add-start">开头添加</button>
+  <button id="btn-add-end">结尾添加</button>
+
+  <script src="./EventUtil.js" charset="utf-8"></script>
+  <script type="text/javascript">
+    var ulElement = document.querySelector('ul.ct');
+    EventUtil.addHandler(ulElement, 'click', function(event) {
+      event = EventUtil.getEvent(event);
+      console.log(event.target.textContent);
+    });
+
+    var editor = document.querySelector('input.ipt-add-content');
+    var btn_add_start = document.querySelector('button#btn-add-start'),
+      btn_add_end = document.querySelector('button#btn-add-end');
+    EventUtil.addHandler(btn_add_start, 'click', function(event) {
+      if (editor.value !== "") {
+        var liElement = document.createElement('li');
+        liElement.textContent = editor.value;
+        ulElement.insertBefore(liElement, ulElement.firstChild);
+        editor.value = '';
+      }
+    });
+
+    EventUtil.addHandler(btn_add_end, 'click', function(event) {
+      if (editor.value !== "") {
+        var liElement = document.createElement('li');
+        liElement.textContent = editor.value;
+        ulElement.appendChild(liElement);
+        editor.value = '';
+      }
+    });
+  </script>
+</body>
+
+</html>
