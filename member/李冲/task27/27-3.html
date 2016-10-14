@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -178,7 +179,7 @@
         $part.find('li').on('click',function(){
         	var idx = $(this).index();
         	if(idx > curIdx){
-        		playNext(idx-curdx);
+        		playNext(idx-curIdx);
         	}else if(idx < curIdx){
         		playPre(curIdx - idx);
         	}
@@ -205,7 +206,7 @@
         		});
         	}
         }   
-        function playPre(){
+        function playPre(idx){
         	var idx = idx || 1;
         	if(isLocked){return;}else{
         		isLocked = true;
