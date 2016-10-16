@@ -1,0 +1,355 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+/*intro*/
+#navigation{
+	background-color: #cdcdcd;
+	opacity: 0.9;
+	position: fixed;
+	width: 100%;
+	z-index: 6;
+}
+#navigation:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.navigationWrapLeft{
+	float: right;
+	margin-right: 70px;
+}
+.navigationWrapLeft > li{
+	box-sizing: border-box;
+	height: 35px;
+	display: inline-block;
+	float: left;
+	padding: 10px 20px;
+}
+.navigationWrapLeft > li > a{
+	color: #fff;
+}
+.navigationWrapLeft > li:hover{
+	border-top: 2px solid #00aaff;
+	background-color: #fff;
+}
+.navigationWrapLeft > li:hover a{
+	color: #000;
+}
+.navigationWrapRight{
+	float: left;
+}
+.navigationWrapRight > li{
+	display: inline-block;
+	float: left;
+	padding: 10px 20px;
+	color: #000;
+}
+#intro{
+	height: 600px;
+	text-align: center;
+	background: url(./img/headbg.jpg) no-repeat center center;
+	background-size: cover;
+	opacity: 0.8;
+	line-height: 50px;
+}
+.cap{
+	padding: 100px 0 20px 0;
+}
+.cap > img{
+	width: 150px;
+	height: 150px;
+	border-radius: 75px;
+	border: 2px solid #666;
+}
+
+/*技能进度条*/
+#skill{
+	text-align: center;
+	padding-top: 50px;
+}
+#skill > p{
+	padding-top: 25px;
+	margin-bottom: 40px;
+}
+.progressBarWrap{
+	margin:0;
+	position: relative;
+}
+.progressBar{
+        width:500px;
+        height:20px;
+        background-color:#666;
+        display:inline-block;
+        border-radius: 5px;
+        position: relative;
+        
+}
+.normal{
+	border-radius: 5px;
+    position: absolute;
+    width:0;
+    left: 0px;
+    height:20px;
+    display:none;
+    line-height: 20px;
+}
+.show{
+	display: inline-block;
+}
+.percent{
+    background-color:#72a1ff;
+     -webkit-animation: move 3s;
+    -moz-animation: move 3s;
+    -o-animation: move 3s;
+    animation: move 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes move{
+    from{
+        width:0
+    }
+    to{
+        width:83%
+    }
+}
+
+.percent80{
+    background-color:#faff99;
+     -webkit-animation: move 3s;
+    -moz-animation: move 3s;
+    -o-animation: move 3s;
+    animation: move80 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes move80{
+    from{
+        width:0
+    }
+    to{
+        width:80%
+    }
+}
+.percent68{
+    background-color:#ff9c92;
+     -webkit-animation: move 3s;
+    -moz-animation: move 3s;
+    -o-animation: move 3s;
+    animation: move68 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes move68{
+    from{
+        width:0
+    }
+    to{
+        width:68%
+    }
+}
+.percent70{
+    background-color:#7affab;
+     -webkit-animation: move 3s;
+    -moz-animation: move 3s;
+    -o-animation: move 3s;
+    animation: move70 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes move70{
+    from{
+        width:0
+    }
+    to{
+        width:70%
+    }
+}
+.percent60{
+    background-color:#7ab9ff;
+     -webkit-animation: move 3s;
+    -moz-animation: move 3s;
+    -o-animation: move 3s;
+    animation: move60 3s;
+    animation-fill-mode: forwards;
+}
+@keyframes move60{
+    from{
+        width:0
+    }
+    to{
+        width:60%
+    }
+}
+.skilliconfont{
+	font-size: 40px;
+	color: #3678b7;
+	margin-right: 5px;
+	display: inline-block;
+	width: 100px;
+	transition:all 1s;
+	cursor: pointer;
+}
+.skilliconfont:hover{
+	font-size: 50px;
+}
+.skillintro{
+	width: 500px;
+	height: 100px;
+	border: 1px solid #2f2f2f;
+	margin: 0 auto;
+	transform:translateX(55px);
+	text-align: justify;
+	border-radius: 5px;
+	background-color: #3876b7;
+	color: #fff;
+	line-height: 30px;
+	opacity: 0;
+	transition:all 5s;
+}
+.skillintroshow{
+	opacity: 1;
+}
+/*轮播样式*/
+#project{
+	text-align: center;
+	padding: 50px 0;
+	background-color: #7ab9ff;
+	color: #fff;
+	margin-top: 30px;
+}
+#carouselWrap{
+	position: relative;
+	width: 721px;
+	height: 441px;
+	margin: 40px auto;
+}
+.imgWrap > li > p{
+	font-size: 20px;
+	padding-top: 10px;
+}
+.middle{
+	position: absolute;
+	z-index: 5;
+	top:0;
+	left: 0;
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+}
+.leftOne{
+	position: absolute;
+	right: 30px;
+	z-index: 4;
+	top:0;
+	left: -60px;
+	transform:scaleY(0.8);
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	opacity: 0.8;
+}
+.leftTwo{
+	position: absolute;
+	right: 60px;
+	z-index: 3;
+	top:0;
+	left: -120px;
+	transform:scaleY(0.6);
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	opacity: 0.6;
+}
+.rightOne{
+	position: absolute;
+	z-index: 2;
+	left: 30px;
+	top:0;
+	left: 60px;
+	transform:scaleY(0.8);
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	opacity: 0.8;
+}
+.rightTwo{
+	position: absolute;
+	z-index: 1;
+	left: 60px;
+	top:0;
+	left: 120px;
+	transform:scaleY(0.6);
+	-webkit-transition: all 1s;
+	-moz-transition: all 1s;
+	-o-transition: all 1s;
+	transition: all 1s;
+	opacity: 0.6;
+
+}
+.next{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	text-align: center;
+	line-height: 50px;
+	background: #666;
+	color: #fff;
+	right: 20px;
+	z-index: 6;
+	top: 50%;
+	transform:translateY(-25px);
+	cursor: pointer;
+}
+.pre{
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+	text-align: center;
+	line-height: 50px;
+	background: #666;
+	color: #fff;
+	left: 20px;
+	z-index: 6;
+	top: 50%;
+	transform:translateY(-25px);
+	cursor: pointer;
+}
+/*联系方式*/
+#callme{
+	padding: 50px 0;
+	text-align: center;
+}
+#callme > h1{
+	padding-bottom: 30px;
+}
+#callme > div > p{
+	display: inline;
+	line-height: 30px;
+}
+/*返回顶部*/
+#go-top{
+      position: fixed;
+      width: 100px;
+      height: 50px;
+      font-size: 15px;
+      color: red;
+      border:1px solid red;
+      border-radius: 10px;
+      bottom: 50px;
+      right: 0px;
+      line-height: 50px;
+      text-align: center;
+      cursor: pointer;
+      display: none;
+}
+
