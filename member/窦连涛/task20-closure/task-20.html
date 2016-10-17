@@ -17,15 +17,26 @@
       // })
       /*闭包*/
       // 这个不是我想要的结果
-      // (function(){
-        // var count = [];
-        // for (var i = 0; i < 10; i++) {
-        //   count[i] = function(){
-        //     return i;
-        //   }
-        // }
-        // console.log(count);
-      // })()
+      (function(){
+        var count = [];
+        for (var i = 0; i < 10; i++) {
+          count[i] = function(){
+            return i;
+          }
+        }
+        console.log(count);
+      })()
+
+      var count = [];
+        for (var i = 0; i < 10; i++) {
+           count[i] = function() {
+               var temp = i;
+               return function() {
+                   return temp;
+               };
+           }();
+        }
+        console.log(count[3]());
       // 这个是我们想要的结果 就是在函数内部再返回一个函数 并且返回这个函数
       // (function(){
       //   var count = [];
