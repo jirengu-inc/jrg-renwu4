@@ -23,10 +23,10 @@ $(window).on("scroll",function(){
 		progressBarPlay();
 	},1000);
 })
-// 技能简介弹出
-// $(".skilliconfont").on("mouseover",function(){
-// 	skillintroshow($(this));
-// })
+//返回顶部：
+$(window).on("scroll",function(){
+	cheakgoTop();
+});
 
 
 //头部打字效果函数
@@ -117,29 +117,26 @@ function stopplay(){
 	clearInterval(clock);
 }
 
-//返回顶部
-var Gotop=(function(){
-    var $goTop =$('<div id="go-top">返回顶部</div>');
-    $("body").append($goTop);
+// 返回顶部
+// var $goTop =$('<div id="gotop">返回顶部</div>');
+// 	$("body").append($goTop);
 
-	function init(){
-      $(window).on("scroll",function(){
-      	var $scroll=$(window).scrollTop();
-      	if($scroll>400){
-        	$("#go-top").show(1000);
-      	}else{
-        	$("#go-top").hide();
-      	}
-    })
-    $("#go-top").on("click",function(){
-    	$("body").scrollTop(0);
-  	})
-    }
-    return{
-      a:init
-    }
-  })();
-  Gotop.a();
+function cheakgoTop(){
+	var $scroll
+	if(document.body.scrollTop){
+		$scroll=$("body").scrollTop();
+	}else{
+		$scroll=document.documentElement.scrollTop;
+	};
+    if($scroll>400){
+    	$("#gotop").show(500);
+  	}else{
+    	$("#gotop").hide(500);
+  	}
+}
+
+
+
 
 
 

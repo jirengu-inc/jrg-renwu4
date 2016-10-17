@@ -337,7 +337,7 @@ a{
 	line-height: 30px;
 }
 /*返回顶部*/
-#go-top{
+#gotop{
       position: fixed;
       width: 100px;
       height: 50px;
@@ -350,6 +350,7 @@ a{
       line-height: 50px;
       text-align: center;
       cursor: pointer;
-      display: none;
+      z-index: 5;
+      /*display: none;*/
 }
 
