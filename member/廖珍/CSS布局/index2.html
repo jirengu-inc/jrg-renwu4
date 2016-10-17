@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>css3的各种效果</title>
+        <style>
+            html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:100%;
+                position:relative;
+            }
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+                height:20px;
+                line-height:20px;
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+           .view {
+           		width:1000px;
+           		margin:0 auto;
+           }
+          .header,.footer {
+    height:30px;
+    background:#ccc;
+  }
+  .content {
+    overflow:auto;
+  }
+  .content .main {
+    width:100%;
+    height:100px;
+    float:left;
+  }
+  .content .main .wrap {
+    height:100px;
+    background:pink;
+    margin-left:200px;
+    margin-right:200px;
+  }
+  .content .leftside {
+    width:200px;
+    height:400px;
+    background:red;
+    float:left;
+    margin-left:-100%;
+  }
+  .content .rightside {
+    width:200px;
+    height:400px;
+    background:yellow;
+    float:left;
+    margin-left:-200px;
+  }
+        </style>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>CSS常见布局</h3>
+                <p>CSS的常见布局，如圣杯布局，双飞翼布局</p>
+                <ul class='clearfix'>
+                    <li><a href='index1.html'>圣杯布局</a></li>
+                    <li><a href='index2.html'>双飞翼布局</a></li>
+                   
+                </ul>
+            </div>
+           <div class='view'>
+           		 <div class="header">底部</div>
+    <div class="content">
+      <div class="main">
+        <div class="wrap">双飞翼布局指两边顶宽，中间自适应的三栏布局，中间栏要放在文档流前面以优先渲染</div>
+      </div>
+      <div class="leftside">左侧边栏，固定宽度</div>
+      <div class="rightside">右侧边栏，固定宽度</div>
+    </div>
+    <div class="footer">尾部</div>
+           </div>
+			
+           
+
+        </div>
+      
+        
+    </body>
+</html>
