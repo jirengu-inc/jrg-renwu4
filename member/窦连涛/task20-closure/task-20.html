@@ -17,7 +17,7 @@
       //   },0)
       // })
       /*闭包*/
-      // 这个不是我想要的结果
+      // 这个不是我想要的结果 demo
       // (function(){
       //   var count = [];
       //   for (var i = 0; i < 10; i++) {
@@ -38,19 +38,18 @@
       //      }();
       //   }
       //   console.log(count[3]());
-      // 这个是我们想要的结果 就是在函数内部再返回一个函数 并且返回这个函数
       // 第二种方法
-      // (function(){
-      //   var count = [];
-      //   for (var i = 0; i < 10; i++) {
-      //     count[i] = function(num){
-      //       return function(){
-      //         return num;
-      //       }
-      //     }(i);
-      //   }
-      //   console.log(count[3]());
-      // })();
+
+        // var count = [];
+        // for (var i = 0; i < 10; i++) {
+        //   count[i] = function(num){
+        //     return function(){
+        //       return num;
+        //     }
+        //   }(i);
+        // }
+        // console.log(count[3]());
+
 
       // (function(){
       //   var f1, f2;

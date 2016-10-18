@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task32</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+    body,div,ul,li,h4,p{
+        margin: 0;
+        padding:0;
+        box-sizing: border-box;
+    }
+    ul,li{
+        list-style: none;
+    }
+    .wrap{
+        width: 960px;
+        margin: 10px auto;
+    }
+    .clearfix::after{
+        content: " ";
+        display: block;
+        clear: both;
+    }
+    #ct{
+        position: relative;
+    }
+    #ct .item{
+        position: absolute;
+        width: 240px;
+        border: 1px solid #eee;
+        margin: 10px;
+    }
+    #ct .item img{
+        width: 220px;
+        margin:10px 10px 0 10px;
+    }
+    #ct .item .header{
+        margin: 0 10px;
+        line-height: 20px;
+        border-bottom: 1px solid #aaa;
+    }
+    #ct .item .desp{
+        font-size: 12px;
+        color: #888;
+        padding: 10px;
+    }
+    #load{
+        visibility: hidden;
+    }
+    .hide{
+        display: none;
+    }
+
+
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <ul id="ct" class="clearfix">
+          	<li class="item hide">用来计算高度</li>
+        </ul>
+        <p id="load">看不见的标记</p>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js">    </script>
+    <script type="text/javascript">
+        var pageN = 1,
+          	perPageCount = 10,
+          	$load = $('#load');
+
+      	var clock;
+      	$(window).on('scroll',function(){
+        	if (clock) {
+          		clearTimeout(clock);
+        	}
+        	clock = setTimeout(function(){
+          		show();
+          		console.log(1);
+        	},400);
+      	});
+
+      	show();
+
+	    function show(){
+	        if (isShow($load)) {
+	          getData();
+	        }
+	    }
+
+      	function isShow($el){
+        	var top = $el.offset().top,
+            	winH = $(window).height(),
+            	scrollH = $(window).scrollTop();
+        	if (top < winH + scrollH) {
+          		return true;
+        	}else {
+          		return false;
+        	}
+      	}
+
+     	function getData(){
+       		$.ajax({
+             	url: 'http://platform.sina.com.cn/slide/album_tech',
+             	type: 'get',
+             	dataType: 'jsonp',
+             	jsonp: 'jsoncallback',
+             	data:{
+               		app_key:'1271687855',
+               		page: pageN,
+               		num: perPageCount
+             	},
+
+            	success: function(ret){
+                	if (ret.status.code === '0') {
+                 		var $nodes = render(ret.data);
+                		waterfall($nodes);
+                 		pageN++;
+               		}
+             	}
+       		})
+     	}
+
+     	function render(items){
+       		var tpl = '';
+
+    		for (var i = 0; i < items.length; i++) {
+      			tpl += '<li class="item">';
+      			tpl += '<a href="'+ items[i].url +'" class="link"> <img src="'+ items[i].img_url +'" alt="" /></a>';
+      			tpl += '<h4 class="header">'+ items[i].short_name+'</h4>';
+      			tpl += '<p class="desp">'+ items[i].short_intro+'</p>';
+      			tpl += '</li>'
+    		}
+    		var $node = $(tpl);
+    		$('#ct').append($node);
+    		return $node;
+     	}
+
+        var nodeW = $('.item').outerWidth(true),
+          	colN  = parseInt($('#ct').width()/nodeW),
+          	sumHeight= [];
+
+     	for (var i = 0; i < colN; i++) {
+          	sumHeight.push(0);
+        }
+
+      function waterfall($el){
+        	$el.each(function(){
+
+        	var $cur = $(this);
+        	$cur.find('img').on('load',function(){ 
+            	var idx = 0,
+                	minSumH = sumHeight[0];
+            	for (var i = 0; i < sumHeight.length; i++) {
+              		if (sumHeight[i]<minSumH) {
+                		idx = i;
+                		minSumH = sumHeight[i];
+              		}
+            	}
+            	$cur.css({
+              		left: nodeW*idx,
+              		top : minSumH,
+              		opacity: 1
+            	});
+
+            	sumHeight[idx] += $cur.outerHeight(true);
+          	})
+        });
+     }
+
+    </script>
+  </body>
+</html>
