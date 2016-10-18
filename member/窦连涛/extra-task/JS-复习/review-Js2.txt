@@ -42,12 +42,31 @@ Json
 
 深拷贝 浅拷贝
 
-
+延迟函数
 setInterval setTimeout
 
         两者的最大区别就是，setTimeout方法不会每隔5秒钟就执行一次showTime函数，它是在每次调用setTimeout后过5秒钟再去执行showTime函数。这意味着如果showTime函数的主体部分需要2秒钟执行完，那么整个函数则要每7秒钟才执行一次。而setInterval却没有被自己所调用的函数所束缚，它只是简单地每隔一定时间就重复执行一次那个函数。
 
-        可以用setTimeout 模拟 setInterval
+        1 使用场景
+
+              倒计时
+
+              滚动条 例如 3秒之后计算到浏览器窗口的距离 3秒之内滚动取消监听事件
+
+        2 最小时间粒度 和浏览器相关
+
+
+
+
+
+        3 可以用setTimeout 模拟 setInterval
+
+        showTime();
+        function showTime(){
+          var today = new Date();
+          alert("The time is: " + today.toString());
+          setTimeout(showTime,1000);
+        }
 
         setInterval("showTime()", 5000);
         function showTime(){
@@ -60,6 +79,18 @@ setInterval setTimeout
         },0)
         这里的0是指的是 放入任务序列的最后。
 
+        var i = 0;
+        var start = Date.now();
+        var clock = setTimeout(function(){
+          i++;
+          if(i == 1000){
+              clearTimeout(clock);
+              var end = Date.now();
+              console.log((end-start)/i);
+          }
+          setTimeout(arguments.callee,0);
+        },0)
+
 什么是闭包呢？
         通俗的讲 就是一个函数内部，return出去另外一个函数，ruturn出去的这个函数 可以操作父函数的内部变量。
 
@@ -69,3 +100,8 @@ setInterval setTimeout
             }
         }
         sum(1)(2);
+
+正则表达式
+
+      构造函数
+      字面量  这两种方式生成正则表达式
