@@ -92,6 +92,7 @@
     background:pink;
     margin-left:200px;
     margin-right:200px;
+    height:400px;
   }
   .content .leftside {
     width:200px;
@@ -125,7 +126,11 @@
            		 <div class="header">底部</div>
     <div class="content">
       <div class="main">
-        <div class="wrap">双飞翼布局指两边顶宽，中间自适应的三栏布局，中间栏要放在文档流前面以优先渲染</div>
+        <div class="wrap">利用浮动和负margin实现三栏布局，然后  在三栏布局的中间栏中加一个新的元素。给该元素设置合适的margin值来解决左右栏的遮盖问题。 
+创建父元素并包裹三个浮动的子元素，左右边栏固定宽度， 
+ 设定左右栏负边距，使左右栏显示在中间栏两侧。 
+ 在中间栏中内部添加子元素。 
+设置子元素左右边距等于左右栏的宽度。</div>
       </div>
       <div class="leftside">左侧边栏，固定宽度</div>
       <div class="rightside">右侧边栏，固定宽度</div>
