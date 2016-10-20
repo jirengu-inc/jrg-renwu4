@@ -7,7 +7,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="" rel="stylesheet">
-<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
 <style>
 	.wrap{
 		width: 900px;
@@ -77,53 +77,7 @@
 </div>
 <div id="footer">footer</div>
 <script>
-// 	$('.nav').each(function(){
-// var $cur =$(this);
-// var curH = $cur.height();
-// var curW = $cur.width();
-// var offsetTop = $cur.offset().top;
-// var offsetLeft = $cur.offset().left;
-// console.log($cur,curH,curW,offsetTop,offsetLeft)
 
-// var $clone = $cur.clone().css({display:'none',visibility:'hidden'})
-//               .insertBefore($cur)
-
-// $(window).on('scroll',function(){
-//   var scrollTop = $(this).scrollTop()
-//   console.log(scrollTop)
-//   if(scrollTop>=offsetTop){ 
-//     if(!isFixed()){
-//       setFixed()
-//     }
-//   }else{
-//     if(isFixed()){
-//       unsetFixed()
-//     }
-//   }
-// })
-
-// function isFixed(){
-//   return $cur.data('data-fixed') //初始值为false,
-// }
-// function setFixed(){
-//   $cur.data('data-fixed',true)
-//   $cur.css({
-//     position:'fixed',
-//     width:curW,
-//     height:curH,
-//     left:offsetLeft,
-//     // top:offsetTop,
-//     top:0,
-//     'z-index':999
-//   })
-//   $clone.show()
-// }
-// function unsetFixed(){
-//   $cur.data('data-fixed',false)
-//   $cur.removeAttr('style')
-//   $clone.hide()
-// }
-// 	})
 
   function stickup($el){
 var $cur = $el;
