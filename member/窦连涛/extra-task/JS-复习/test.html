@@ -1,25 +1,389 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>各种测试</title>
+  <meta charset="utf-8">
+  <style>
+    .doneclass{
+      color: red;
+    }
+    fieldset{
+        margin-bottom: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+      .ct10{
+          width: 100px;
+          height: 50px;
+          padding: 10px;
+          border: 10px solid red;
+          margin: 10px;
+      }
+      .ct11{
+          position: fixed;
+          width: 200px;
+          height: 200px;
+          background-color: aquamarine;
+          top: 0;
+          left: 50%;
+      }
+      div.ct12{
+          background-color: red;
+          width: 100px;
+          height: 100px;
+          margin: 0;
+          padding: 0;
+      }
+
+  </style>
+  <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
 </head>
 <body>
-  <input id="btnClick" type="button" value="Click Here" />
 
-<script type="text/javascript">
-    var btnClick = document.getElementById('btnClick');
-    btnClick.onclick = function showMessage() {
-        alert(this.id);
-    };
+<fieldset>
+  <legend>1、给元素添加及移除class</legend>
+  <h1 class="doneclass">我是h1</h1>
+  <h1 class="doneclass2">我也是h1</h1>
+  <button class="btn1">点击我为第二个h1增加class</button>
+  <button class="btn2">点击我为第一个h1移除class</button>
+  <script>
+    $(".btn1").on("click",function () {
+      $("h1.doneclass2").addClass("doneclass");
+    });
+    $(".btn2").on("click",function () {
+      $("h1:first").removeClass("doneclass");
+    })
+  </script>
+</fieldset>
+<fieldset>
+  <legend>2.展示元素$node, 隐藏元素$node</legend>
+  <h2 class="showhide">我是h2</h2>
+  <button class="hide">点击我隐藏</button>
+  <button class="show">点击我显示</button>
+  <script>
+    $(".hide").on("click",function () {
+      $(".showhide").hide();
+    });
+    $(".show").on("click",function () {
+      $(".showhide").show();
+    });
+  </script>
+</fieldset>
+<fieldset>
+  <legend>3.获取元素$node 的 属性: id、src、title， 修改以上属性</legend>
+  <img id="imgId" title="鼠标悬浮我会显示"  src="http://upload.jianshu.io/users/upload_avatars/2166980/72fe41a69002.jpg?imageMogr/thumbnail/90x90/quality/100" alt="我的头像">
+ <h3 class="imgH3"> </h3>
+  <button class="get">点击我获取属性</button>
+  <form action="#">
+    请输入新的id：<input class="newid" type="text" placeholder="请输入新的id">
+    请输入新的src：<input class="newsrc" type="text" placeholder="请输入新的src">
+    请输入新的title：<input class="newtitle" type="text" placeholder="请输入新的title">
+  </form>
+  <button class="change">点击我设置属性</button>
+  <h4> </h4>
+  <script>
 
-    btnClick.onclick = function showMessage() {
-        alert("Hello,world");
-    };
+    $(".get").on("click",function () {
+         var idInfo=$("img").attr("id");
+         var srcInfo=$("img").attr("src");
+         var titleInfo=$("img").attr("title");
+       $("h3").html("该图片的id是: "+idInfo+"<br>"+"该图片的src是: "+srcInfo+"<br>"+"该图片的title是: "+titleInfo);
+      });
 
-    btnClick.onclick = null;
-</script>
+    $(".change").on("click",function () {
+      var newid=$(".newid").val();
+      var newsrc=$(".newsrc").val();
+      var newtitle=$(".newtitle").val();
+
+      $("img").attr("id",newid);
+      $("img").attr("src",newsrc);
+      $("img").attr("title",newtitle);
+      var idInfo=$("img").attr("id");
+      var srcInfo=$("img").attr("src");
+      var titleInfo=$("img").attr("title");
+      $("h4").html("该图片的id是: "+idInfo+"<br>"+"该图片的src是: "+srcInfo+"<br>"+"该图片的title是: "+titleInfo);
+
+    });
+
+  </script>
+</fieldset>
+<fieldset>
+  <legend>4.给$node 添加自定义属性data-src</legend>
+  <div id="ct1"><div class="beadded" >添加自定义属性data-src</div></div>
+  <button class="addDataSrc">点我增加添加自定义属性data-src</button>
+  <h5> </h5>
+  <script>
+    $(".addDataSrc").on("click",function () {
+      $(".beadded").attr("data-src","i don't know");
+       $("h5").text($("#ct1").html()) ;
+
+
+    })
+  </script>
+</fieldset>
+<fieldset>
+    <legend>5.在$ct 内部最开头添加元素$node</legend>
+    <div id="ct">
+        <div class="beadded1" >在$ct 内部最开头添加元素$node</div>
+        <div class="beadded2" >在$ct 内部最开头添加元素$node</div>
+    </div>
+    <button class="headAdd">点我在$ct 内部最开头添加元素$node</button>
+    <script>
+        $(".headAdd").on("click",function () {
+//            方法一、
+////            $("#ct").children().eq(0).before("<p>我是内部<em>最开头</em>添加的元素</p>") ;
+//            方法二、
+            $("#ct").prepend("<p>我是内部<strong>最开头</strong>添加的元素</p>")
+
+        })
+    </script>
+</fieldset>
+<fieldset>
+    <legend>6.在$ct 内部最末尾添加元素$node</legend>
+    <div id="ct3">
+        <div class="beadded1" >在$ct 内部最末尾添加元素$node</div>
+        <div class="beadded2" >在$ct 内部最末尾添加元素$node</div>
+    </div>
+    <button class="endAdd">点我在$ct 内部最末尾添加元素$node</button>
+    <script>
+        $(".endAdd").on("click",function () {
+
+            $("#ct3").append("<p>我是内部<em>最末尾</em>添加的元素</p>")
+
+        })
+    </script>
+</fieldset>
+<fieldset>
+    <legend>7.删除$node</legend>
+    <div id="ct7">
+        <div class="willBeRemove" >即将被删除的$node</div>
+        <div>我是div</div>
+    </div>
+    <button class="remove">点我删除$node</button>
+    <script>
+        $(".remove").on("click",function () {
+            $(".willBeRemove").remove();
+        })
+    </script>
+</fieldset>
+<fieldset>
+    <legend>8.把$ct里内容清空</legend>
+    <div id="ct8">
+        <div>即将被清空的$node</div>
+        <div>即将被清空的$node</div>
+    </div>
+    <button class="clear">点我清空</button>
+    <script>
+        $(".clear").on("click",function () {
+            $("#ct8").empty();
+        })
+    </script>
+</fieldset>
+<fieldset>
+    <legend>9.在$ct 里设置 html </legend>
+    <div id="ct9">
+        <div>即将被替换的$node</div>
+        <div>即将被替换的$node</div>
+    </div>
+    <button class="setHtml">点我设置HTML</button>
+    <script>
+        $(".setHtml").on("click",function () {
+            $("#ct9").html('<div class="btn">1111</div>');
+        })
+    </script>
+</fieldset>
+<fieldset>
+    <legend>10.获取、设置$node 的宽度、高度 </legend>
+    <div class="ct10">
+        <div class="getWH">我是div</div>
+    </div>
+    <p class="getWidth">  </p>
+    <p class="getHeight">  </p>
+    <button class="getWH">点我分别获取宽度、高度</button>
+    <form action="####">
+        <input type="text" placeholder="请输入content的宽度数据" class="widthSet">
+        <input type="text" placeholder="请输入content的高度数据" class="heightSet">
+    </form>
+
+    <button class="setWH">点我分别设置宽度、高度</button>
+    <p class="setWidth">  </p>
+    <p class="setHeight">  </p>
+    <script>
+        $("button.getWH").on("click",function () {
+            var width=$(".ct10").width();
+            var innerWidth=$(".ct10").innerWidth();
+            var outerWidth=$(".ct10").outerWidth();
+            var outerWidthT=$(".ct10").outerWidth(true);
+
+            var height=$(".ct10").height();
+            var innerHeight=$(".ct10").innerHeight();
+            var outerHeight=$(".ct10").outerHeight();
+            var outerHeightT=$(".ct10").outerHeight(true);
+            $("p.getWidth").html("该div不含内边距的宽度是： "+width+"<br>"+"该div含内边距的宽度是： "+innerWidth+"<br>"+"该div含边框的宽度是： "+outerWidth+"<br>"+"该div外边距的宽度是： "+outerWidthT+"<br>");
+            $("p.getHeight").html("该div不含内边距的高度是： "+height+"<br>"+"该div含内边距的高度是： "+innerHeight+"<br>"+"该div含边框的高度是： "+outerHeight+"<br>"+"该div外边距的高度是： "+outerHeightT+"<br>");
+
+        });
+        $("button.setWH").on("click",function () {
+            $("div.ct10").width($("input.widthSet").val());
+            $("div.ct10").height($("input.heightSet").val());
+
+            $("p.setWidth").html("该div的content的宽度是： "+$("input.widthSet").val()+"<br>"+"该div的content的高度是： "+$("input.heightSet").val()+"<br>");
+
+        })
+    </script>
+</fieldset>
+<fieldset>
+    <legend>11.获取窗口滚动条垂直滚动距离</legend>
+    <div class="ct11"></div>
+
+
+    <script>
+        $(this).scroll(function () {
+           $(".ct11").text("滚动条距离顶部距离为： "+$(this).scrollTop())
+        });
+    </script>
+</fieldset>
+<fieldset>
+    <legend>12.获取$node 到根节点水平、垂直偏移距离</legend>
+    <div class="ct12">  </div>
+    <p class="ct12"></p>
+    <script>
+       var offset1=$("div.ct12").offset();
+        $("p.ct12").html("该div距离根节点水平距离为： "+offset1.left+"<br>"+"该div距离根节点垂直距离为： "+offset1.top)
+    </script>
+</fieldset>
+<fieldset>
+    <legend>13.修改$node 的样式，字体颜色设置红色，字体大小设置14px</legend>
+    <p class="ct13">修改$node 的样式，字体颜色设置红色，字体大小设置14px</p>
+    <button class="ct13">点我修改</button>
+    <script>
+        $("button.ct13").on("click",function () {
+            $("p.ct13").css({"color":"red","font-size":"14px"})
+        })
+
+    </script>
+</fieldset>
+<fieldset>
+    <legend>14.遍历节点，把每个节点里面的文本内容重复一遍</legend>
+    <ul class="ct14">
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+        <li>我是li5
+            <p>我是li5里的p</p>
+        </li>
+    </ul>
+    <button class="ct14">点我遍历</button>
+    <p class="ct14"> </p>
+    <script>
+        $("button.ct14").on("click",function () {
+            $(".ct14>li").each(function (index) {
+                $("p.ct14").append("我是第"+index+"项的"+$(this).text()+"<br>")
+            })
+        })
+    </script>
+</fieldset>
+<fieldset>
+    <legend>15.从$ct 里查找 class 为 .item的子元素</legend>
+    <div class="ct15">
+        <p class="item">我是有item的p</p>
+        <p>我是没有item的p</p>
+        <h1 class="item">我是有item的h1</h1>
+        <div>我是没有item的div</div>
+    </div>
+    <p class="ct15"></p>
+    <em>字体为红色则class名为item</em>
+
+    <script>
+//        方法一、
+//        $("div.ct15").children().each(function (index,value) {
+//            if ($(value).hasClass("item")){
+//                $("p.ct15").append("第"+index+"项有class为item"+"<br>");
+//            }
+//
+//        })
+//        方法二、
+        $("div.ct15").find(".item").css("color","red");
+
+    </script>
+</fieldset>
+<fieldset>
+    <legend>16.获取$ct 里面的所有孩子</legend>
+    <div class="ct16">
+        <div>我是ct16里的子元素div
+        <ul>
+            <li>我是ct16里的子元素div里的li</li>
+            <li>我是ct16里的子元素div里的li</li>
+            <li>我是ct16里的子元素div里的li</li>
+            <li>我是ct16里的子元素div里的li</li>
+            <li>我是ct16里的子元素div里的li</li>
+        </ul>
+        </div>
+        <p>我是ct16里的子元素p</p>
+    </div>
+    <i>将所有子元素的字体颜色设置为绿色</i>
+    <script>
+           $("div.ct16").find("*").css("color","green");
+    </script>
+</fieldset>
+<fieldset>
+    <legend>17.对于$node，向上找到 class 为’.ct’的父亲，在从该父亲找到’.panel’的孩子</legend>
+    <div class="ct17">
+        <h6 class="hehe">我是h6</h6>
+        <p class="me">我是ct17里的段落</p>
+        <ul>
+            <li>我是li1</li>
+            <li>我是li2</li>
+            <li class="panel">我是li3</li>
+        </ul>
+    </div>
+    <em>将找到的元素的背景色设置为黄色</em>
+    <script>
+        $("p.me").parent().find(".panel").css("background-color","yellow")
+
+    </script>
+</fieldset>
+<fieldset>
+    <legend>18.获取选择元素的数量</legend>
+    <div class="ct18">
+        <p class="many">我是有many的p</p>
+        <p>我是没有many的p</p>
+        <h1 class="many">我是有many的h1</h1>
+        <div>我是没有many的div
+            <ul>
+                <li class="many">我是有many的li</li>
+                <li>我是没有many的li</li>
+                <li>我是没有many的li</li>
+            </ul>
+        </div>
+    </div>
+    <em class="ct18"></em>
+
+
+
+    <script>
+       $("em.ct18").text(" 一共有many的数量为："+$("div.ct18").find(".many").length)
+    </script>
+</fieldset>
+<fieldset>
+    <legend>19.获取当前元素在兄弟中的排行</legend>
+    <ul class="ct19">
+        <li>我是第1个li</li>
+        <li>我是第2个li</li>
+        <li>我是第3个li</li>
+        <li>我是第4个li</li>
+        <li>我是第5个li</li>
+    </ul>
+    <p class="ct19">点击获取我是排行老几</p>
+
+    <script>
+        $("ul.ct19>li").on("click",function () {
+            var prev=$(this).prevAll().length;
+                $("p.ct19").text("我排行老"+parseInt(prev+1))
+        })
+    </script>
+</fieldset>
+
 </body>
 </html>

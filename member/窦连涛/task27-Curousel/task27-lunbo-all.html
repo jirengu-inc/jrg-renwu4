@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>无线轮播</title>
+		<title>全屏轮播</title>
 		<meta name="description" content="">
 		<meta name="keywords" content="">
 		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -28,9 +27,7 @@
 		}
 		.carousel{
 			position: relative;
-			width: 310px;
-			height: 206px;
-			overflow: hidden;
+
 		}
 		#header .img-ct{
 			position: absolute;
@@ -44,23 +41,6 @@
 			position: relative;
 			float: left;
 			height: 100%;
-		}
-		#header .main{
-			position: absolute;
-			width: 600px;
-			left: 50%;
-			top: 50%;
-			z-index: 1;
-			transform: translate(-50%, -50%);
-			color: #fff;
-			text-align: center;
-		}
-		#header .main h3{
-			font-size: 34px;
-		}
-		#header .main p{
-			font-size: 16px;
-			line-height: 2;
 		}
 
 		#header .cover{
@@ -182,7 +162,7 @@
 			});
 
 			setBg(1);
-			autoPlay();
+			// autoPlay();
 
 			function stopAuto(){
 				clearInterval(clock);
@@ -235,7 +215,6 @@
 				if($node.data('isBgSet')) return;
 				$cover.css('background-image', 'url('+imgUrl+')');
 				$node.data('isBgSet', true);
-
 			}
 
 			function setBullet(){
