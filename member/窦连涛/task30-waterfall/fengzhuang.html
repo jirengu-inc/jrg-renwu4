@@ -83,9 +83,10 @@
             $cur.css({
               left:$nodeWidth * $idx,
               top:$minHeight
-            });
+            });//摆放位置
 
             $colHeight[$idx] =  $cur.outerHeight(true) + $colHeight[$idx];
+            // 计算高度
         })
       }
 

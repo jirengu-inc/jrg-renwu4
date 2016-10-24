@@ -6,6 +6,8 @@
 </head>
 <body>
 	<script type="text/javascript">
+
+		// 工厂模式
 		// function Person(name,age){
 		// 	var obj = {
 		// 		name:name,
@@ -14,13 +16,13 @@
 		// 			console.log(this.name + this.age);
 		// 			}
 		// 	}
-
 		// 	return obj;
 		// }
 
 		// xm =Person('小名',13);
 		// xl = Person('小李',14);
-		// 
+
+		// 构造函数模式
 		// function Person(name,age){
 		// 	this.name = name;
 		//     this.age = age ;
@@ -30,12 +32,15 @@
 		// }
 		// xm = new Person('小名',13);
 		// xl = new Person('小李',14);
-		// 
+		//
+
+
+
+		// 原型模式
 		// function People(name,age){
 		//     this.name = name;
 		//     this.age = age ;
 		// }
-
 		// People.prototype.sayName={
 		//     other: '小红',
 		//     sayName: function(){
@@ -43,19 +48,16 @@
 		//         console.log('我还有' + this.other);
 		//     }
 		// }
-
-
-		// xm = new People('小名',13);
-
+		// xm = new People('小名',13)；
 		// xl = Object.create(People.prototype,{name:{value:'小名'}});
-
 		// console.log(xm.hasOwnPerperty('name'));
-		// 
-		// 
-		// 
-		// 
-		// 
-		// 
+		//
+
+		//
+		//
+		//
+		//
+		//补全代码，实现继承 （难度:****）
 		function Person(name, sex){
 		    this.name = name;
 		    this.sex =sex;
@@ -63,63 +65,74 @@
 
 		Person.prototype.getName = function(){
 		    return this.name;
-		};    
+		};
 
 		function Male(name, sex, age){
-		   Person.call(this,name,sex);
+		   Person.call(this,name,sex);//在this的作用域下执行Person这个函数，然后把后面的两个参数传递进去
+
 		   this.age = age ;
 		}
 
 		Male.prototype = Object.create(Person.prototype);
-
+		//Object.create有什么作用？兼容性如何？如何使用？ （难度:3*）
+		// Object.create()方法创建一个拥有指定原型和若干个指定属性的对象。Object.create(proto,[ propertiesObject ]),第一个参数作为所创建对象的原型，第二个参数是一组属性与值为所创建对象的属性与值。
 		Male.prototype.printName = function(){
 			return Male.prototype.getName.call(this);
 		}
-		
+
 		Male.prototype.getAge = function(){
 		    console.log(this.age);
 		};
 
 		var ruoyu = new Male('若愚', '男', 27);
 		ruoyu.printName();
-
-
 		//
 		//
 		//
-		// 
+		//
 		// function People(name,age){
 		//     this.name = name;
 		//     this.age = age ;
 		// }
-
 		// People.prototype.sayName=function(age){
 		// 	return parseInt(this.age + age)  ;
 		// }
-
 		// function Meimei(name,age,sex){
 		// 	People.call(this,name,age);
 		// 	this.sex = sex ;
 		// }
-
 		// Meimei.prototype = Object.create(People.prototype);
-
 		// meimei = new Meimei('meimei',17,'女');
-
 		// console.log(meimei.sayName(10);
-		// 
-		// 
-		
-		function Create(obj){
-			if (typeof Object.create === 'function'){
-				return Object.create(obj);
-			}else{
-				function proto(){};
-		        proto.prototype = obj;
-		      	var objt = new proto();
-		      	proto.prototype = null;
-		    }
-		}
+		//
+
+
+
+
+		//hasOwnProperty有什么作用？ 如何使用？ （难度:3*）
+		// hasOwnPerperty是Object.prototype的一个方法，可以判断一个对象是否包含自定义属性而不是原型链上的属性。
+		var Obj = {
+			name: name,
+			sayName:function(){
+			    console.log(this.name)
+			  }
+			}
+			Obj.hasOwnProperty('sayName')//true
+			Obj.hasOwnProperty('toString')//false
+			Obj.hasOwnProperty('name')//true
+
+		// 实现Object.create的 polyfill，如:（ps: 写个 函数create，实现 Object.create 的功能) （难度:4*）
+		//
+		// function Create(obj){
+		// 	if (typeof Object.create === 'function'){
+		// 		return Object.create(obj);
+		// 	}else{
+		// 		function proto(){};
+		//         proto.prototype = obj;
+		//       	var objt = new proto();
+		//       	proto.prototype = null;
+		//     }
+		// }
 	</script>
 </body>
 </html>

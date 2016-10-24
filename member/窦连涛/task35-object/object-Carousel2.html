@@ -58,11 +58,11 @@
    }
 
    .next {
-     left:10px;
+     right:10px;
    }
 
    .pre {
-     right:10px;
+     left:10px;
    }
 
    .bullet {
@@ -130,7 +130,7 @@
     	function Carousel($node){
 			this.node = $node;
 			this.bullet = $node.find('.bullet');
-			
+
 			this.pre = $node.find('.pre');//上一个
 			this.next = $node.find('.next'); //下一个
 
@@ -142,21 +142,21 @@
 			this.ct.prepend(this.items.last().clone()); //把最后一个放到最前面
     	this.ct.append(this.items.first().clone()); // 把第一个放到最后面
     	this.imgRealCount = this.ct.children().size(); // 计算实际的个数
-      
-    	this.ct.css({left:0-this.imgW,width:this.imgRealCount*this.imgW}); // 
+
+    	this.ct.css({left:0-this.imgW,width:this.imgRealCount*this.imgW}); //
 
       this.curId = 0;
       this.isAnimate = false;
-     
+
     	this.bind();
-     
-		} 
+
+		}
 
 		Carousel.prototype = {
 
 			bind: function(){
 				var _this = this;
-            
+
 
 				this.pre.on('click', function(){
 					_this.playPre();
@@ -173,7 +173,7 @@
                 _this.playPre(_this.curId - idx);
             }
         })
-        
+
 			},
 
       playNext:function(idx){
@@ -208,7 +208,7 @@
           })
         }
       },
-      
+
 
       setBullet: function(){
           this.bullet.find('li').removeClass('active').eq(this.curId).addClass('active');
@@ -223,7 +223,7 @@
 		var carousel1 = new Carousel($node1);
 		var carousel2 = new Carousel($node2);
 		// console.log($node1);
-		
+
 
     </script>
 </body>
