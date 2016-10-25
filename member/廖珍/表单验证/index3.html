@@ -1,0 +1,199 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>jquery常见效果</title>
+        <style>
+            html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:100%;
+                position:relative;
+            }
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+                height:20px;
+                line-height:20px;
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+            .view {
+                width:1000px;
+                margin:30px auto;
+            }
+            .view-ct li {
+                padding:10px;
+                background:rgba(231, 201, 201, 0.81);
+                margin-top:20px;
+                border:1px solid #ccc;
+                border-radius:5px;
+            }
+            .view div {
+                text-align:center;
+            }
+            .view div a {
+                 padding:10px;
+                color:#fff;
+                background:rgba(231, 201, 201, 0.81);
+                display:inline-block;
+                margin-top:20px;
+            }
+            .btn:hover {
+                background: #C0AAAA;
+            }
+
+        </style>
+        <script src='ajax.js'></script>
+        <script src='validate.js'></script>
+        <script src='class.js'></script>
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>ajax和mock 数据</h3>
+                <p>ajax是在页面不刷新的情况下，向后台获取数据，并返回数据。而mock数据是和后台定好接口后，搭建服务器，伪造数据。</p>
+                <ul class='clearfix'>
+                    <li><a href='index2.html'>注册验证</a></li>
+                    <li><a href='index3.html'>加载更多</a></li>
+                   
+                </ul>
+            </div>
+            <div class='view'>
+                <ul class='view-ct'>
+                    <li>内容1</li>
+                    <li>内容2</li>
+                </ul>
+                <div>
+                    <a href='#' class='btn'>加载更多</a>
+                </div> 
+       
+            </div>
+            </div>
+         <script>
+                function ajax(opts) {
+                    var xmlhttp=new XMLHttpRequest();
+                    xmlhttp.onreadystatechange=function() {
+                    if(xmlhttp.readyState===4) {
+                        if((xmlhttp.status>=200&&xmlhttp.status<300)||xmlttp.status===304) {
+                            var data=JSON.parse(xmlhttp.responseText);
+                            opts.success(data);
+                        }else {
+                            opts.error();
+                        }
+                    }
+                }
+                    var dataStr='';
+                    for(var key in opts.data) {
+                        dataStr+=key+'='+opts.data[key]+'&';
+                    }
+                    dataStr=dataStr.substr(0,dataStr.length-1);
+                    if(opts.type.toLowerCase()==='get') {
+                        xmlhttp.open(opts.type,opts.url+'?'+dataStr,true);
+                        xmlhttp.send()
+                    }
+                    if(opts.type.toLowerCase()==='post') {
+                        xmlhttp.open(opts.type,opts.url,true);
+                         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                        xmlhttp.send(dataStr);
+                    }
+                }
+
+                var cur=2,
+                    len=6,
+                    btn=document.querySelector('.btn')
+                    ct=document.querySelector('.view-ct'),
+                    isLocked=false;
+                    console.log(ct);
+                    btn.addEventListener('click',function() {
+                        if(isLocked) {
+                            return;
+                        }
+                        btn.innerText='正在加载中...';
+                        isLocked=true;
+                        ajax({
+                            url:'getMore',
+                            type:'get',
+                            data:{
+                                start:cur,
+                                len:len
+                            },
+                            success:function(json) {
+                                if(json.status==0) {
+                                    for(var i=0;i<json.data.length;i++) {
+                                        console.log(json.data);
+                                        var li=document.createElement('li');
+                                        li.innerText='内容'+json.data[i];
+                                        ct.appendChild(li);
+                                    }
+                                    cur+=4;
+                                    isLocked=false;
+                                    btn.innerText='加载更多';
+
+                                }else {
+                                    alert('出错啦！');
+                                }
+                            },
+                            error:function() {
+                                alert(系统异常);
+                            }
+                        });
+                    });
+                   
+         </script>   
+              
+       
+    </body>
+</html>

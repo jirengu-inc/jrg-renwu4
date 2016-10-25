@@ -115,11 +115,11 @@
   </div>
  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>
-  	// 传递第一个参数 tab 
+  	// 传递第一个参数 tab
   	// 点击tabs下的li 给他添加move class 其他 兄弟元素 并获取她在tabs里面的索引号
   	// 让con元素下面的div的索引 显示 其他兄弟元素隐藏
    function Tab(grandfather){
-    	this.grandfather = grandfather;
+    	this.grandfather = grandfather;//$('.tab')
     	this.ulFather = this.grandfather.children()[0].classList[0];
     	this.ulClass = this.grandfather.children()[0].children[0].className;
     	this.ulFatherSon = this.grandfather.children()[0].children[0].localName;
@@ -136,14 +136,14 @@
     		$(_this.grandfather).find(tabs).on('click',_this.ulFatherSon,function(){
     			var _index = $(this).index();
     			$(this).addClass(liClass).siblings(_this.ulFatherSon).removeClass(liClass);
-    			
+
     			$(this).parent(tabs).siblings(divFather).children().eq(_index).addClass(divClass).siblings().removeClass(divClass);
     		})
     		// console.log(_this.divClass);
     	}
 
     	return this.bind();
-    	
+
     }
 
     var gf = $('.tab').eq(0);

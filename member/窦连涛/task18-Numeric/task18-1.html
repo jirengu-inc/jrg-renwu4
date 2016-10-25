@@ -250,7 +250,7 @@ function limit2(num){
 写一个函数，获取从min到max之间的随机数，包括min不包括max
 */
 function min_random(min,max){
-  return (Math.random() * (max - min)) + min;
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 /*
@@ -270,6 +270,32 @@ function s_random(len,min,max){
   }
   return arr;
 }
+
+//获取一个随机数组，数组中元素为长度为len，最小值为min，最大值为max(包括)的随机数
+   function randArr(len, min, max) {
+       var arr = [],
+           randVal;
+       for (var i = 0; i < arr.length; i++) {
+           randVal = min + Math.floor(Math.random() * (max - min + 1));
+           arr.push(randVal);
+       }
+       return randArr;
+   }
+
+   //写一个函数，生成一个长度为 n 的随机字符串，字符串字符的取值范围包括0到9，a到 z，A到Z
+   function getRandStr(len) {
+       var retStr = '',
+           randIdx,
+           dict = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+       for (var i = 0; i < len; i++) {
+           randIdx = Math.floor(Math.random() * dict.length);
+           retStr += dict[randIdx];
+       }
+       return retStr;
+   }
+
+
+
 </script>
 </head>
 <body>

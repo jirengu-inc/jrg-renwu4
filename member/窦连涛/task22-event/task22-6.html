@@ -101,7 +101,7 @@
     for (var i = 0; i < tab.length; i++) {
       (function(i){
         tab[i].addEventListener('click',function(){
-          var s = i;
+          var s = i;//保存下变量
           for (var j = 0; j < tab.length; j++) {
             tab[j].className = '';
             con[j].className = 'cons';

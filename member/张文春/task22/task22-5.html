@@ -96,23 +96,24 @@
   <script>
   	var btn1 = document.querySelector('.btn1'),
     contant = document.querySelector('.contant');
-btn1.addEventListener('click',function(e){
-   e.stopPropagation(); 
-  contant.style.display = 'block';
-});
-contant.addEventListener('click',function(e){
+	btn1.addEventListener('click',function(e){
+	   e.stopPropagation(); 
+	  contant.style.display = 'block';
+	});
+	contant.addEventListener('click',function(e){
 //   contant.style.display = 'none';
-   e.stopPropagation(); 
-  if(hasClass(e.target,'close')){
-    contant.style.display = 'none';
-  }
-});
-document.body.addEventListener('click',function(e){
-   contant.style.display = 'none';
-});
-var hasClass = function(ele,cls){
-  return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
-};
+	   e.stopPropagation(); 
+	  if(hasClass(e.target,'close')){
+	    contant.style.display = 'none';
+	  }
+	});
+	document.body.addEventListener('click',function(e){
+	   contant.style.display = 'none';
+	});
+	var hasClass = function(ele,cls){
+	  return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+	};
+	
   </script>
 </body>
 

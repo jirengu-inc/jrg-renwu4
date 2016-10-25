@@ -6,7 +6,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		function People(name){
+		function People(name=null){
 			this.name = name;
 		}
 
@@ -14,10 +14,14 @@
 			console.log(this.name);
 		}
 
-		p1 = new People('DouLianTao');
-		P2 = new People('MaYanJie');
+		People.prototype.name="hello";
 
-		
+		P1 = new People('DouLianTao');
+		P2 = new People();
+
+
+
+
 	</script>
 </body>
 </html>

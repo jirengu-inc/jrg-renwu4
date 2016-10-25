@@ -1,0 +1,39 @@
+
+利用对象的形式 形成最简单的封装
+
+类似于这样
+
+var goTop = {
+    init:function(){
+
+    },
+    bind:function(){
+
+    }
+};
+
+或者利用函数的方式
+
+var goTop = function(){
+  if($('#gotop').length > 0) return;
+  var $goTop = $('<div id="gotop">回到顶部</div>');//设置元素
+  $('body').append($goTop);// 添加到body末尾
+  function init(){
+    $(window).on('scroll',function(){
+        $winScroll = $(window).scrollTop();
+        if($winScroll > 300){
+          $goTop.show();
+        }else{
+          $goTop.hide();
+        }
+      $goTop.on('click',function(){
+        $(window).scrollTop(0);
+      })
+    })
+  }
+  return {
+      init:init,
+  }
+}();
+goTop.init();
+goTop.init();如果做两次调用 会有两次绑定 但是隐藏性比较好

@@ -1,5 +1,6 @@
 function ajax(opts){
     var xmlhttp = new XMLHttpRequest();
+    //创建XML对象
     xmlhttp.onreadystatechange = function(){
       if(xmlhttp.readyState == 4 && xmlhttp.status==200){
         var json = JSON.parse(xmlhttp.responseText);

@@ -57,11 +57,11 @@
    }
 
    .next {
-     left:10px;
+     right:10px;
    }
 
    .pre {
-     right:10px;
+     left:10px;
    }
 
    .bullet {
@@ -94,8 +94,8 @@
         <li data-id=0 > <a href="#"><img src="image/4.jpg" alt=""></a></li>
         <li data-id=0 > <a href="#"><img src="image/5.jpg" alt=""></a></li>
       </ul>
-      <a href="#" class="arrow next"> < </a>
-      <a href="#" class="arrow pre" > > </a>
+      <a href="#" class="arrow pre"> < </a>
+      <a href="#" class="arrow next" > > </a>
       <ul class="bullet">
         <li class="active"></li>
         <li></li>
@@ -145,7 +145,7 @@
                 playPre();
             })
 
-            autoPlay();
+            // autoPlay();
 
             function autoPlay(){
               clock = setInterval(function(){
@@ -200,7 +200,7 @@
             $('#curousel').on('mouseout',function(){
               $pre.css("display","none");
               $next.css("display","none");
-              autoPlay();
+              // autoPlay();
             })
       })
     </script>

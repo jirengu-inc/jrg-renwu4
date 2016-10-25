@@ -75,6 +75,8 @@
         })
       }
 
+      loadMore();
+
       function isVisible($node){
           var $winH = $(window).height();// 视窗的高度
           var $eTop = $($node).offset().top; // 元素的偏移高度
@@ -85,8 +87,6 @@
             return false;
           }
       }
-
-      loadMore();
 
       $(window).on('scroll',function(){
         if(isVisible($btn)){

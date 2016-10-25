@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>jquery常见效果</title>
+        <style>
+            html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:100%;
+                position:relative;
+            }
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+                height:20px;
+                line-height:20px;
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+
+           .register{
+                width:450px;
+                margin:100px auto;
+                background:rgba(89, 67, 90, 0.83);
+            }
+           .register h3 {
+                text-align:center;
+           }
+           .register-ct dd {
+                margin-left: 86px;
+            }
+            .register-ct dt {
+                width: 86px;
+                float: left;
+                height: 24px;
+                line-height: 24px;
+            }
+            .register-ct input {
+                height: 24px;
+                line-height: 24px;
+                padding-left: 10px;
+                border: 1px solid #ccc;
+                border-radius: 3px;
+            }
+            .register-ct input.error{
+                 border-color: red;
+            }
+            .register-ct .msg{
+                margin-top: 10px;
+                margin-bottom: 10px;
+                color: #aaa;
+                height: 12px;
+                font-size: 12px;
+            }
+        </style>
+        <script src='ajax.js'></script>
+        <script src='validate.js'></script>
+        <script src='class.js'></script>
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>ajax和mock 数据</h3>
+                <p>ajax是在页面不刷新的情况下，向后台获取数据，并返回数据。而mock数据是和后台定好接口后，搭建服务器，伪造数据。</p>
+                <ul class='clearfix'>
+                    <li><a href='index2.html'>注册验证</a></li>
+                    <li><a href='index3.html'>加载更多</a></li>
+                   
+                </ul>
+            </div>
+            <div class='view'>
+                <div class="register">
+                    <h3>注册</h3>
+                    <form id="register-form" action="">
+                        <dl class="register-ct">
+                        <dt>用户名</dt>
+                        <dd>
+                            <input id="username" type="text" placeholder="用户名(hunger被注册过)">
+                        </dd>
+                        <dd class="msg msg-un">只能是字母、数字、下划线，3-10个字符</dd>
+
+                        <dt>密码:</dt>
+                        <dd>
+                        <input type="password" id="password1" placehoder="密码">
+                         </dd>
+                        <dd class="msg msg-pwd1">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+
+                    <dt> 在输一次:</dt>
+                    <dd>
+                    <input type="password" id="password2" placeholder="在输入一次密码"> 
+                    </dd>
+                    <dd class="msg msg-pwd2"></dd>
+                    <dd><button id="btn-register">注册</button></dd>
+            </dl>       
+        </form>
+
+
+    </div>
+            </div>
+            </div>
+         <script>
+             var usernameIpt=document.getElementById('username'),
+                 password1Ipt=document.getElementById('password1'),
+                 password2Ipt=document.getElementById('password2'),
+                 btn=document.getElementById('btn-register'),
+
+                 unMsg=document.querySelector('.msg-un'),
+                 pw1Msg=document.querySelector('.msg-pwd1'),
+                 pw2Msg=document.querySelector('.msg-pwd2');
+                
+                /*检测用户名是否可用*/
+                function testUn() {
+                    var username=usernameIpt.value;
+                    if(!isLegalUsername(username)) {
+                        unMsg.innerText='用户名格式不正确';
+                        addClass(usernameIpt,'error');
+                        return false;
+                    }
+                }
+                /*检测密码是否正确*/
+                function testPwd1() {
+                    var pwd1=password1Ipt.value;
+                    if(!isLegalPassword(pwd1)) {
+                        pw1Msg.innerText='密码格式不正确';
+                        addClass(password1Ipt,'error');
+                        return false;
+                    }
+                }
+
+                /*检测第二次输入和密码的格式是否正确和和第一次输入的密码是否一样*/
+                function testPwd2() {
+                    var pwd2=password2Ipt.value;
+                    if(!isLegalPassword(pwd2)) {
+                    pw2Msg.innerText='密码格式不正确';
+                    addClass(password2Ipt,'error');
+                    return false;
+                }else if(pwd2!==password1Ipt.value){
+                    pw2Msg.innerText='两次输入的密码不一致';
+                    addClass(password2Ipt,'error');
+                    return false;
+                }else {
+                    pw2Msg.innerText='';
+                    removeClass(password2Ipt,'error');
+                    return true;
+                }
+            }
+               usernameIpt.addEventListener('change',function() {
+                    testUn()&&testUnUseage();
+                });
+                password1Ipt.addEventListener('change',function() {
+                    testPwd1();
+                });
+                password2Ipt.addEventListener('change',function() {
+                    testPwd2();
+                });
+                /*和后台约定数据
+                    1、status:0,代表用户名可用。
+                    2、status:1,代表用户名已注册
+                    
+                */
+                function testUnUseage() {
+                    ajax({
+                        url:'/register',
+                        type:'post',
+                        data:{
+                            username:usernameIpt.value
+                        },
+                        success:function(json) {
+                            if(json.status==1) {
+                                unMsg.innerText='用户名可用';
+                            }else if(json.status==0) {
+                                unMsg.innerText='用户名已经被注册';
+                            }
+                        }
+                    })
+                }
+
+                btn.addEventListener('click',function(e) {
+                    e.preventDefault();
+                    if(testUn()&&testPwd1()&&testPwd2()) {
+                        testUnUseage(function(canUse) {
+                            if(canUse) {
+                                alert('正在注册');
+                                console.log('正在注册。。。')
+                            }
+                        })
+                    }
+                })
+
+
+               
+               
+         </script>   
+              
+       
+    </body>
+</html>

@@ -37,12 +37,12 @@
 	2 构造函数模式
 
 			function Cake(name,age){
-				
+
 				this.name = name;
 				this.sayName = function(){
 					console.log(this.name);
 				}
-				
+
 			}
 
 			cake1 = new Cake('草莓');
@@ -63,7 +63,7 @@
 
 		Person.prototype.printName = function(){
 		    console.log(this.name);
-		};    
+		};
 
 		function Male(name, sex, age){
 		    Person.call(this, name, sex);
@@ -78,4 +78,3 @@
 
 		var m = new Male('Byron', 'm', 26);
 		m.printName();
-

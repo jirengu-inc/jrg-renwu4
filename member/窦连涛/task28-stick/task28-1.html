@@ -94,7 +94,6 @@
 
     */
     $(function(){
-
       $.fn.stick = function(handle){
         var $cur = this,
             $eWidth = $cur.width(), //获取元素的宽
@@ -130,7 +129,6 @@
               //  如果$cur.attr('data-attr') 结果是 undefined 第一次取反是 ture 第二次取反 是false
               //  如果$cur.attr('data-attr') 结果是 true 第一次取反是 false 第二次取反 是true
             }
-
             function setFixed(){
               $cur.attr('data-attr',true)
                    .css({

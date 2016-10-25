@@ -1,0 +1,50 @@
+1 特点
+
+    宽度固定 高度不固定
+
+      1 视窗总宽度/每个元素的宽度 ===》 算出来几列
+      2 看哪一列的高度最小 然后把后面的元素 放到最小那一列的下面
+      3 然后再把高度算一遍
+      var $waterfall = (function(){
+        function render(){
+          $nodeWidth = $('.item').outerWidth(true);
+          $colNum = parseInt($(window).width()/$nodeWidth);
+          $colHeight = [];
+          for (var i = 0; i < $colNum; i++) {
+            $colHeight.push(0);
+          }
+
+          $('.item').each(function(){
+              var $cur = $(this),
+               $idx = 0,
+               $minHeight = $colHeight[0];
+
+              for (var i = 0; i < $colHeight.length; i++) {
+                if($colHeight[i] < $minHeight){
+                  $idx = i;
+                  $minHeight = $colHeight[i];
+                }
+              }
+
+              $cur.css({
+                left:$nodeWidth * $idx,
+                top:$minHeight
+              });//摆放位置
+
+              $colHeight[$idx] =  $cur.outerHeight(true) + $colHeight[$idx];
+              // 计算高度
+          })
+        }
+
+        render();
+
+        $(window).on('resize',function(){
+          render();
+        })
+
+        return {
+          init:render
+        }
+      })();
+
+      $water.init();
