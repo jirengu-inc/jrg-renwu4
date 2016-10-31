@@ -49,10 +49,13 @@
 	</ul>
 	<h3>订阅</h3>
 	<ul  ondrop="drop(event)" ondragover="allowDrop(event)" class="con">
-		
+	</ul>	
 	</div>
 	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script>
+	// 1.设置draggable='true'，规定元素是可以拖动的；
+	// 2.监听器ondragstart，当拖动的时候，要做什么，这里要做的就是把这个被拖动的元素的Id给存起来，使用到了e.dataTransfer这个对象的setData方法，来存id
+	// 3.监听器ondragover，当放下时，要做什么，先利用e.dataTransfer这个对象的getData方法，把我存起来的id给拿出来，然后找到这个id对应的dom，使用appendChild方法，把这一块DOM给追加过来
 
 			function allowDrop(e) {
 		        e.preventDefault();

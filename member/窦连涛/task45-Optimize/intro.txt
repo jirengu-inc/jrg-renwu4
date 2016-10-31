@@ -29,3 +29,26 @@
       默认情况下 CSS 会阻塞渲染的资源
       媒体查询和媒体类型允许我们将一些CSS标记为不阻塞渲染
       CSS 资源 不论阻塞或者不阻塞 浏览器都会下载
+
+摁下确认按键的时候 发生了什么事情 ？
+DNS 查询(domain name service)
+
+      1 DNS 查询
+      2 HTTP 请求
+      3 HTTP 响应
+        1 下载内容
+        2 解析内容
+        3 绘制图像
+
+
+        前端优化
+
+            1 减少HTTP 请求
+            2 使用CDN
+            3 添加Expries头或Cache-Control = max-
+            4 使用gzip
+            5 CSS 放在文件上方
+            6 JS 放在body 之后
+            7 避免使用Expressions
+            8 将CSS和JS 放置在不同的文件中
+            9 配置实体标签 Etags
