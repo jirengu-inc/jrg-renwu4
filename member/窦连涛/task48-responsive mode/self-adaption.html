@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自适应</title>
+  <style>
+      .container {
+        height: 500px;
+        background: red;
+      }
+
+      @media screen and (min-width:100px){
+        .container{
+          background: pink;
+        }
+      }
+
+      @media screen and (min-width:400px){
+        .container{
+          background: yellow;
+          /*覆盖上面的粉色*/
+        }
+      }
+
+      @media screen and (min-width:600px){
+        .container{
+          background: orange;
+        }
+      }
+
+      @media screen and (min-width:800px){
+        .container{
+          background: blue;
+          /*覆盖上面的orange*/
+        }
+      }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+  </div>
+</body>
+</html>

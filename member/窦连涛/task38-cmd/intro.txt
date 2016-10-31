@@ -1,0 +1,53 @@
+为什么使用模块化
+
+    1 文件过多
+    2 增加网络开销
+
+    require.js 和 sea.js
+
+    解决问题
+
+      解决命名冲突
+
+      依赖管理
+
+          其他价值
+
+              代码可读性
+
+              代码解耦
+
+AMD 和 CMD Common.js 规范
+
+      AMD (Asynchronous Module Definition) 异步模块定义
+
+      define(id?,dependencies?,factory) ;
+
+      id 是模块名字 可选的
+
+      dependenciese 依赖其他模块 可选的
+
+      factory 工厂模式
+
+      eg:
+
+        define('model',['jquery','dialog'],function($,Dialog){
+            $('.model').show();
+            Dialog.open();
+        })
+
+        实现AMD 的库是 Require Dojo curl
+
+
+      Common.js规范实际上是服务端的规范
+
+
+          require
+
+          exports
+
+      CMD (Common Module Definition) 通用模块定义
+
+      sea.js 推出的
+
+          CMD 是模拟同步

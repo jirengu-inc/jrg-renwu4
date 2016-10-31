@@ -1,0 +1,52 @@
+
+
+baseUrl
+
+      相对于baseUrl地址来加载所有的模块 也可以通过RequrieJs.config里面设置
+
+      data-main : 写在script里面 相当于script一个属性 作用同baseUrl
+
+      注意的问题 ：
+
+        1 如果加载的JS文件 写成xx.js 那么baseUrl设置的路径就不起作用
+
+          eg:
+
+          requirejs.config({
+            baseUrl:"js"
+          });
+
+          requirejs(['amd-main.js']);
+
+              a  以.js结尾
+              b  以/开头
+              c  以http网络协议
+
+        2 如果如果baseUrl 下引入JS 文件夹下还有一个文件夹 那么需要在入口文件的地方(不是这个HTML文件而是在amd-main.js中要修改写法)
+
+          eg:
+
+          define(['xxx/inc-cmd'],function(Inc){
+            //依赖于inc-cmd这个模块
+            console.log(Inc.get());
+            Inc.inc();
+            console.log(Inc.get());
+            Inc.inc();
+            console.log(Inc.get());
+          })
+
+
+      amd-main.js
+
+      define(id?,dependencies?,factory) ;
+
+      id 不写 根据文件的名字进行加载 到后面glup的时候 会没有路径了 然后根据
+      生成的那个文件名来写模块
+
+
+      r.js 打包工具
+
+
+      main.js 相对于index.html
+
+      build.js 相当于自身而言 

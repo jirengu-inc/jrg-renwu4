@@ -1,0 +1,7 @@
+1 mdn ajax 例子
+2 node.js快速搭建一个静态服务器
+3 文件后缀 对人来说，用哪一个应用程序打开此文件
+  对计算机来说 没用
+  json.parse
+4 菜鸟教程 node.js
+5 heroku
