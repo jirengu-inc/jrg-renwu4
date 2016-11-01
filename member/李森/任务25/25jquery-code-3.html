@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>	</title>
+<style type="text/css">
+	ul,li{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+	    text-decoration: none;
+	    color: red;
+	}
+	.ct{
+		width: 700px;
+		margin: 0 auto;
+	}
+	.commodity:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.commodity{
+		margin-bottom: -20px;
+		margin-left: -20px;
+	}
+	.commodity>li{
+		float: left;
+		width: 178px;
+		padding: 10px 20px;
+		border: 1px solid #ccc;
+		margin-left: 20px;
+		margin-bottom: 20px;
+		position: relative;
+	}
+	.commodity .modl{
+		width: 218px;
+		height: 216px;
+		background: rgba(14,14,14,.4);
+		position: absolute;
+		top: 0;
+		left: 0;
+		display: none;
+	}
+	.commodity>li>img{
+		display: block;
+		margin: 0 auto;
+	}
+	.jewelry-name{
+		height: 44px;
+	}
+	.jewelry-name,.price{
+		margin: 0;
+		padding: 0;
+		line-height: 22px;
+	}
+	 .price{
+		color: red;
+
+	}
+	.modl .btn{
+		border: 1px solid red;
+		border-radius: 5px;
+		background: #fff;
+		color: red;
+		padding: 10px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -43px;
+		margin-top: -19px;
+	}
+    .btn2{
+    	display: block;
+    	width: 100px;
+		border: 1px solid red;
+		border-radius: 5px;
+		background: #fff;
+		padding: 5px;
+		margin: 30px auto;
+		text-align: center;
+    }
+</style>	
+</head>
+<body>
+<div class="ct">
+	<h2>珠宝首饰</h2>
+    <ul class="commodity">
+		<li class="jewelry">
+			<div class="modl">
+			    <a class="btn" href=>立即抢购</a>
+			</div>
+			<img src="img/a.jpg" alt="商品图片" />
+			<p class="jewelry-name">藏美千足金与和田玉，金镶玉路路通吊坠</p>
+			<p class="price">￥998.00</p>
+		</li>
+		<li class="jewelry">
+			<div class="modl">
+				<a class="btn" href=>立即抢购</a>
+			</div>
+			<img src="img/a.jpg" alt="商品图片" />
+			<p class="jewelry-name">藏美千足金与和田玉，金镶玉路路通吊坠</p>
+			<p class="price">￥998.00</p>
+		</li>
+		<li class="jewelry">
+			<div class="modl">
+				<a class="btn" href=>立即抢购</a>
+			</div>
+			<img src="img/a.jpg" alt="商品图片" />
+			<p class="jewelry-name">藏美千足金与和田玉，金镶玉路路通吊坠</p>
+			<p class="price">￥998.00</p>
+		</li>
+		<li class="jewelry">
+			<div class="modl">
+				<a class="btn" href=>立即抢购</a>
+			</div>
+			<img src="img/a.jpg" alt="商品图片" />
+			<p class="jewelry-name">精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+			<p class="price">￥998.00</p>
+		</li>
+		<li class="jewelry">
+			<div class="modl">
+				<a class="btn" href=>立即抢购</a>
+			</div>
+			<img src="img/a.jpg" alt="商品图片" />
+			<p class="jewelry-name">藏美千足金与和田玉，金镶玉路路通吊坠</p>
+			<p class="price">￥998.00</p>
+		</li>
+		<li class="jewelry">
+			<div class="modl">
+				<a class="btn" href=>立即抢购</a>
+			</div>
+			<img src="img/a.jpg" alt="商品图片" />
+			<p class="jewelry-name">精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+			<p class="price">￥998.00</p>
+		</li>
+	</ul>
+</div>
+	<a class="btn2" href="">加载更多</a>
+
+
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+	$('.commodity').on('mouseover','.jewelry',function(){
+		$(this).find('.modl').show();
+	});	
+	$('.commodity').on('mouseout','.jewelry',function(){
+		$(this).find('.modl').hide();
+	});
+
+ var products = [
+	{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手 猴哥款',
+		price: '￥405.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金转运珠 猴哥款',
+		price: '￥100.00'
+	},{
+		img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+		name: '珂兰 黄金手链 3D猴哥款',
+		price: '￥45.00'
+	}
+];
+function getProdHtml(prod){
+	var html = '';
+	html += '<li class="jewelry">'
+	html +=   '<div class="modl">'
+	html +=      '<a class="btn" href=>立即抢购</a>'
+	html +=   '</div>' 
+	html +=   '<img src="'+prod.img+'" alt="商品图片" />'
+	html +=   '<p class="jewelry-name">'+prod.name+'</p>'
+	html +=   '<p class="price">'+prod.price+'</p>'
+	html += '</li>'
+	return html;
+}
+$('.btn2').on('click',function(e){
+	e.preventDefault();
+	$.each(products, function(idx, prod){
+	var html = getProdHtml(prod);
+	$('.commodity').append(html);
+	});
+});
+</script>	
+</body>
+</html>

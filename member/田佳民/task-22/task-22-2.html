@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>task-22-2</title>
+    </head>
+    <body>
+        <ul class="ct">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+        <input class="ipt-add-content" placeholder="添加内容"/>
+        <button id="btn-add-start">开头添加</button>
+        <button id="btn-add-end">结尾添加</button>
+        <script>
+            // 获取元素
+            var ct= document.querySelector('.ct'),
+                  ipt= document.querySelector(".ipt-add-content"),
+                  addStartBtn=document.querySelector("#btn-add-start"),
+                  addEndBtn=document.querySelector("#btn-add-end");
+            //控制台展示该元素的文本内容。
+                ct.addEventListener('click', function(e){
+            	   if(e.target.tagName.toLowerCase() === 'li'){
+        		   console.log(e.target.innerText);
+        		    }
+                });
+            //开头添加
+            addStartBtn.addEventListener('click',function(){
+                if(ipt.value==''){
+                    alert('请输入内容');
+                }else{
+                    var li=document.createElement('li');
+                    li.innerText=ipt.value;
+                    ct.insertBefore(li,ct.firstChild);
+                }
+            });
+            // addStartBtn.addEventListener('click',function(){
+            //
+            //         var li=document.createElement('li');
+            //         li.innerText=ipt.value;
+            //         ct.insertBefore(li,ct.firstChild);
+            //
+            // });
+            //尾部添加
+            addEndBtn.addEventListener('click',function(){
+                if(ipt.value==''){
+                    alert('请输入内容');
+                }else{
+                    var li=document.createElement('li');
+                    li.innerText=ipt.value;
+                    ct.appendChild(li,ct.firstChild);
+                }
+            });
+
+
+        </script>
+    </body>
+</html>

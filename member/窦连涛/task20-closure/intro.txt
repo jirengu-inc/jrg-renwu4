@@ -1,0 +1,48 @@
+setInterval setTimeout
+
+最小时间粒度 与浏览器相关的 ？
+
+用settimeout 实现 setinterval两者的区别 ？
+
+setInterval 在规定的时间内 完成函数的运行
+俗语就是 比如公司规定你每一天做多少东西，但是你半天完成了，那么剩下的时间闲着
+setTimeout 不跟你规定时间，而是你什么时候完成算什么时候，只有你完成了 你才能休息规定的时间
+
+setTimeout(function(){
+
+},0)
+这里的0是指的是 放入任务序列的最后
+
+use strict 模式下无法使用
+arguments.callee 调用函数本身
+
+call apply 改变函数的作用域的
+
+Apply.prototype.slice.call(arguments,0,10);
+[].slice.call(arguments,0,10);
+
+function getMini(){
+      var i = 0 ;
+      var start = Date.now();
+      var clock = setTimeout(function(){
+          i++;
+          if(i === 1000){
+            clearTimeout;
+            var end = Date.now();
+            console.log((end - start)/i);
+          }
+          clock = setTimeout(arguments.collee,0);
+      },0)
+}
+
+什么是闭包呢？
+通俗的讲 就是一个函数内部，return出去另外一个函数，ruturn出去的这个函数 可以操作父函数的内部变量。
+
+(function(){
+  console.log(sum(1)(2));
+  function sum(a){
+    return function(){
+      return a + b ;
+    }
+  }
+})()

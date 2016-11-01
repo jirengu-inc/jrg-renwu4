@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>问答</title>
+  <style>
+      html,body,div{
+        margin: 0;
+        padding: 0;
+      }
+
+      .test{
+        width: 400px;
+        height: 100px;
+        background: yellow;
+        margin-top: 1000px;
+      }
+  </style>
+</head>
+<body>
+  <div class="test">
+
+  </div>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>
+    // 可视化的函数
+    function isVisible($node){
+        var $winH = $(window).height();// 视窗的高度
+        var $eTop = $($node).offset().top; // 元素的偏移高度
+        var $winScroll = $(window).scrollTop(); //视窗滚动的距离
+        if($winH + $winScroll > $eTop){
+          return true;
+        }else{
+          return false;
+        }
+    }
+    // 判断一个元素是不是出现在窗口可视范围。每次出现都在控制台打印 true
+    // $(window).on('scroll',function(){
+    //   var $result = isVisible('.test');
+    //   if($result === true){
+    //     console.log("true");
+    //   }
+    // })
+
+    //判断一个元素是不是出现在窗口可视范围。在元素第一次出现时在控制台打印 true，以后再次出现不做任何处理
+    var isLock = false;
+    $(window).on('scroll',function(){
+      var $result = isVisible('.test');
+      if(($result === true) && (isLock === false)){
+        console.log("true");
+        isLock = true;
+      }
+    })
+
+    /*
+
+     一个页面需要加载大量图片时，为了页面的加载速度，我们将未出现在页面可视窗口的图片不加载，等图片滚动到可视窗口后再做加载。在可视之前所有图片都由一张图片替代（可以是gif或者白图等）
+
+     可见时加载
+     第一 什么叫可见
+     第二 怎么加载
+
+    */
+
+
+
+
+
+  </script>
+</body>
+</html>

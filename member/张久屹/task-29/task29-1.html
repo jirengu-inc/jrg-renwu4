@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <meta charset="utf-8">
+  <title>回到顶部</title>
+  <style>
+	p{
+		margin: 80px;
+	}
+	a{
+		text-decoration: none;
+		color: #fff;
+	}
+	.top{
+		position: fixed;
+		background: #777;
+		border: 1px solid #333;
+		height: 30px;
+		line-height: 30px;
+		font-size: 20px;
+		width: 90px;
+		bottom: 80px;
+		right: 100px;
+		padding: 10px;
+		text-align: center;
+		display: none;
+	}
+  </style>
+</head>
+
+<body>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容13</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1d</p>
+	<p>内容1</p>
+	<p>内容1asd</p>
+	<p>内容1as</p>
+	<p>内容1ssdf</p>
+	<p>内容1</p>
+	<p>内容1sdf</p>
+	<p>内容1sdfs</p>
+	<p>内容1sdf</p>
+	<p>内容1sdf</p>
+	<p>内容1sd时代发生地方f</p>
+	<p>内容1sdfsdfs时代发生地方</p>
+	<p>内容1sfgdf爱仕达</p>
+	<p>内容1sddf文认为</p>
+	<p>内容13sdf</p>
+	<p>内容1sfgdf爱仕达</p>
+	<p>内容1sfgdf爱仕达</p>
+	<p>内容1sfgdf爱仕达</p>
+	<p>内容1sd时代发生地方f</p>
+	<p>内容1sd时代发生地方f</p>
+	<p>内容1sd时代发生地方f</p>
+	<p>内容1sd时代发生地方f</p>
+	<p>内容1sd时代发生地方f</p>
+	<p>内容1sd时代发生地方f</p>
+	<div class="top"><a href="#">回到顶部</a></div>
+
+
+
+	<script>
+		
+	
+
+	$(window).on('scroll',function(){
+		var $top = $('.top'),
+			winH = $(window).height(),
+		    winS = $(window).scrollTop(); //此变量须放在监听函数内部，否则无法实时获取滚动高度
+		if(winS > winH ){
+			$top.show();
+		}else{
+			$top.hide();
+		}
+	});
+
+
+		
+
+
+
+	</script>
+
+</body>
+</html>

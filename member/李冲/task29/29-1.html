@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>29-1</title>
+	<style>
+		p{
+			margin:25px 0;
+		}
+		#go-top{
+			position: fixed;
+			bottom: 10px;
+			right: 10px;
+			border: 1px solid $ccc;
+			background: #666;
+			cursor: pointer;
+			box-shadow: 0 0 0 4px #ccc;
+			display: none;
+			color: #fff;
+			padding: 15px;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+<body>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容5</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容3</p>
+	<p class="content1">内容2</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容9</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容8</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容4</p>
+	<p class="content1">内容3</p>
+	<p class="content1">内容2</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容9</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容8</p>
+	<p class="content1">内容1</p>
+	<p class="content1">内容4</p>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$(function(){
+			var $Top = $("<p id = 'go-top'>回到顶部</p>");
+			$('body').append($Top);
+			$(window).on("scroll",function(){
+				var distanceY = $(window).scrollTop();
+				if(distanceY>150){
+					$Top.show();
+				}else{
+					$Top.hide();
+				}
+			})
+			$Top.on("click",function(){
+				$("body").scrollTop(0);
+			})
+		})
+	</script>
+</body>
+</html>

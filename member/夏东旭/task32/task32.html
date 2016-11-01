@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="plugin.js"></script>
+	<style>
+		body{
+			font-family: "Microsoft Yahei";
+		}
+		ul,li,p,h4{
+			padding: 0;
+			margin: 0;
+		}
+		ul{
+			list-style: none
+		}
+		
+		.news{
+			position: relative;
+			margin: 0 auto;
+		}
+		.news-item{
+			width: 250px;
+			padding: 10px;
+			margin: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			box-shadow: 1px 1px 1px #ccc;
+			position: absolute;
+			display: none;
+		}
+		.news-img{
+			width: 250px;
+		}
+		.news-title{
+			border-bottom: 1px solid #ccc;
+			font-size:15px; 
+		}
+		.news-des{
+			margin-top:10px; 
+			font-size: 13px;
+		}
+		.news-time{
+			font-size: 10px;
+			margin-top: 10px;
+		}
+		.news-source{
+			font-size: 10px;
+		}
+		.load-icon{
+			text-align: center;
+		}
+		.load-icon img{
+			width: 50px;
+			z-index: -1;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul class="news">
+			<!-- <li class="news-item">
+				<a href="" target="_blank"><img src="" alt="" class="news-img"></a>
+				<h3 class="news-title"></h3>
+				<p class="news-des"></p>
+				<p class="news-time"></p>
+				<p class="news-source"></p>
+			</li> -->
+		</ul>
+	</div>
+	<div class="load-icon"><img src="loading.gif" alt=""></div>
+	<script>
+		(function(){
+			var sendAjax=(function(){
+					var curpage=2;
+					return {
+						init:function(){
+							$.ajax({
+							url:'http://platform.sina.com.cn/slide/album_tech', 	
+							dataType:'jsonp',
+							jsonp:"jsoncallback",
+							data:{
+								app_key:1271687855,
+								num:11,
+								page:curpage++
+							}
+							})
+							.done(sendAjax.render)
+							.fail(function(){alert("出错了")})
+							.done(sendAjax.Afterload);
+						},
+						Afterload:function(){
+							var dtds=[];
+							$(".news-img.before").each(function(){
+								var dtd=$.Deferred();
+								$(this).load(function(){
+									dtd.resolve();	
+								})
+								dtds.push(dtd);
+							});
+							$.when.apply(null,dtds)
+								.done(function(){
+									$(".news-item.before")
+										.waterfall()
+										.fadeIn(500)
+										.removeClass("before")
+										.find(".news-img").removeClass("before");
+								});
+						},
+						render:function(json){
+							var data=json.data;
+							if(json.status.code==='0'){
+								for(var i=0;i<data.length;i++){
+									var newEl='<li class="news-item before">';
+									newEl+='<a href='+data[i].url+' target="_blank"><img src='+data[i].img_url+' alt="" class="news-img before"></a>';
+									newEl+='<h4 class="news-title">'+data[i].name+'</h4>';
+									newEl+='<p class="news-des">'+data[i].short_intro+'</p>';
+									newEl+='<p class="news-time">时间: '+data[i].createtime+'</p>';
+									newEl+='<p class="news-source">来源: '+data[i].source+'</p>';
+									newEl+='</li>';
+									$(".news").append(newEl);
+								}
+							}
+						}
+					}
+			}());
+			
+			$(".load-icon").lazyload(sendAjax.init);
+		}())
+				
+		
+		
+		
+
+	</script>
+</body>
+</html>

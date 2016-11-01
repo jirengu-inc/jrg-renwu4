@@ -1,0 +1,30 @@
+@font-face {
+  font-family: 'demofont';
+  src:  url('fonts/demofont.eot?1w0t40');
+  src:  url('fonts/demofont.eot?1w0t40#iefix') format('embedded-opentype'),
+    url('fonts/demofont.ttf?1w0t40') format('truetype'),
+    url('fonts/demofont.woff?1w0t40') format('woff'),
+    url('fonts/demofont.svg?1w0t40#demofont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'demofont' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-up:before {
+  content: "\ea32";
+}
+

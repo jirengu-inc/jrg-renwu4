@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset = "utf-8">
+		<title>learn jQuery</title>
+		<style>
+			*{
+				margin:0;padding:0;
+			}
+			button{
+				outline:none;
+				width:100px;
+				height:40px;
+				border-radius: 4px;
+				font-size:18px;
+				margin:20px;
+			}
+			.getOffset{
+				width:200px;
+				height:80px;
+				position: fixed;
+				right:10px;
+				top:100px;
+				border:1px solid red;
+				border-radius: 4px;
+				padding:20px;
+			}
+			.box{
+				height:1000px;
+				width:400px;
+				padding:20px;
+				border:1px solid red;
+			}
+			.box p{
+				margin:20px 0;
+			}
+			span{
+				color:red;
+			}
+			.mouse{
+				width:200px;
+				height:60px;
+				border-radius: 4px;
+				color:green;
+				padding:20px;
+			}
+			input{
+				width:200px;
+				height:60px;
+				outline:none;
+				border:2px solid #DDD;
+				border-radius: 4px;
+			}
+			select{
+				font-size: 20px;
+				height:40px;
+				width:100px;
+			}
+			.getChoice{
+				width:250px;
+				height:30px;
+			}
+
+
+		</style>
+	</head>
+	<body>
+	</br>
+		<p>1.当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</p>
+		<button class="btn">请点击我</button>
+		<div class="getOffset">
+			<p>2.当窗口滚动时，获取垂直滚动距离:<p></br>
+			<p class="offset"></p>
+		</div>
+		<div class="box"> I am a box.
+			<p>3.当鼠标放置到$div 上，把$div 背景色改为红色，移出鼠标背景色变为白色<p>
+			<div class="mouse">请移动鼠标到我身上</div>
+			<p>4.当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</p>
+			<input></input>
+		</br>
+			<select>5.当选择 select 后，获取用户选择的内容
+				<option>apple</option>
+				<option>banana</option>
+				<option>grape</option>
+				<option>lemon</option>
+				<option>orange</option>
+			</select>
+			<button class="getChoice">点我获取用户选择的内容</button>
+			<p>用户选择的是：<span class="choice"></span></p>
+		</div>
+
+		<script src = "../jquery-3.1.1.min.js"></script>
+		<script>
+			$(".btn").on("click",function(){
+				$(".btn").css("background","red");
+				setTimeout(function(){
+					$(".btn").css("background","blue");
+				},400);
+			});
+			$(window).on("scroll",function(){
+				$(".offset").html("窗口垂直滚动了 <span>" + scrollY + "</span> 像素"); 
+			});
+			$(".mouse").on("mouseenter",function(){
+				$(".mouse").css("background","red");
+			});
+			$(".mouse").on("mouseleave",function(){
+				$(".mouse").css("background","white");
+			});
+			$("input").on("focus",function(){
+				$("input").css("border","2px solid blue");
+				$("input").on("keyup",function(){
+					$("input").val( $("input").val().toUpperCase() );
+				})
+			});
+			$("input").on("blur",function(){
+				$("input").css("border","2px solid #DDD");
+				console.log( $("input").val() );
+			});
+			$(".getChoice").on("click",function(){
+				$(".choice").text( $("select").val() );
+			})
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,8 @@
+var WaterFall = {
+
+	init:function(){
+
+	}
+
+	
+}

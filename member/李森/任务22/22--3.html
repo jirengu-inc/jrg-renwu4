@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="img/一半盾.png">鼠标放置查看图片1</li>
+    <li data-img="img/指南针.png">鼠标放置查看图片2</li>
+    <li data-img="img/烧瓶.png">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview">
+</div>
+
+ 
+  <script>
+
+
+var lis = document.getElementsByTagName('li'),
+    frame = document.getElementsByClassName('img-preview')[0];
+
+for(var i=0; i<lis.length; i++){
+ lis[i].addEventListener('mouseenter',function(){
+ 	var img = this.getAttribute('data-img');
+ 	frame.innerHTML = "<img src=' "+img+" '>"
+ });
+ 	lis[i].addEventListener('mouseout',function(){
+	frame.innerHTML = "";
+});
+}
+ </script>
+</body>
+</html>

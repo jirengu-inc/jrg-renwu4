@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>stickup</title>
+   <style type="text/css">
+
+        #header{
+          background: yellow;
+          height: 80px;
+          line-height: 80px;
+          text-align: center;
+          margin-bottom: 20px;
+        }
+
+        #nav{
+          height: 40px;
+          background: blue;
+        }
+        #content{
+          min-height: 800px;
+          background: #ccc;
+          padding: 10px;
+          overflow: auto;
+        }
+        #content .aside{
+          float: left;
+          width: 100px;
+          min-height: 400px;
+          background: green;
+        }
+        #content .main{
+          background: #fff;
+          padding-left: 20px;
+          min-height: 800px;
+        }
+        #footer{
+          background: #333;
+        }
+
+
+    </style>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="header">header</div>
+<div id="nav">nav</div>
+<div id="content">
+  <div class="aside">aside</div>
+  <div class="main">main</div>
+</div>
+<div id="footer">footer</div>
+
+<script>
+   var $cur = $('#nav'),
+       distanceX = $($cur).offset().left,
+       distanceY = $($cur).offset().top,
+       curX = $($cur).width(),
+       curY = $($cur).height();
+ //得到#nav的属性。
+    var $curClone = $('#nav').clone()
+                            .css({visibility:'hidden',display:'none'})
+                            .insertBefore($cur);
+    $(window).on('scroll',function(){
+      var scrollY = $(this).scrollTop();
+      if(scrollY>=distanceY){
+        if(!isFixed()){
+          setFixed();
+        }
+      }else{
+        if(isFixed()){
+          unFixed();
+        }
+      }
+    })
+    function setFixed(){
+      $cur.data("data-fixed",true)
+          .css({
+            "position": 'fixed',
+            "width": curX,
+            "left":'distanceX',
+            "top":0
+          });
+      $curClone.show();   
+    }
+    function unFixed(){
+      $cur.data("data-fixed",false)
+          .removeAttr('style');
+      $curClone.hide();    
+    }
+    function isFixed(){
+      return $cur.data("data-fixed");
+    }
+  
+
+
+
+  
+</script>
+
+
+</body>
+</html>

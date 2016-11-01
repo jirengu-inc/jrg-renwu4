@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>waterFall</title>
+  <style>
+      *{
+          margin: 0;
+          padding: 0;
+      }
+      #main{
+          position: relative;
+      }
+      .wrap{
+        float: left;
+        padding-top: 10px;
+        padding-left: 10px;
+        transition: all 1s;
+      }
+      .box{
+        padding: 10px;
+        border: 1px solid #ccc;
+
+      }
+      .box>img{
+          width: 200px;
+          height: auto;
+      }
+  </style>
+</head>
+<body>
+    <div id="main">
+        <div class="wrap">
+            <div class="box">
+                <img src='img/1.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/2.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/3.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/4.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/5.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/6.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/7.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/8.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/9.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/10.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/11.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/12.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/13.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/14.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/15.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/16.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/17.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/18.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/19.png'>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="box">
+                <img src='img/20.png'>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script src=1.9.1jquery.js></script>
+<script >
+function waterFall(){
+    var $wrapW=$('.wrap').outerWidth(true),
+            $cols =parseInt($(window).width()/$wrapW),
+            arrH=[];
+
+            for(var i=0;i<$cols;i++){
+                arrH.push(0);
+            }
+            console.log(arrH)
+            $('.wrap').each(function(){
+                        var $cur = $(this);
+                        var idx = 0,
+                            minSumHeight = arrH[0];
+
+                        for(var i=0;i<arrH.length; i++)    {
+                            if(arrH[i] < minSumHeight){
+                                idx = i;
+                                minSumHeight = arrH[i];
+                            }
+                        }
+                        $cur.css({
+                            'position':'absolute',
+                            'left': $wrapW*idx,
+                            'top': minSumHeight
+                    });
+                    arrH[idx] = $cur.outerHeight(true) + arrH[idx];
+            })
+        $(window).on('resize',function(){
+            waterFall();
+        })
+}
+waterFall();
+
+</script>
+</html>

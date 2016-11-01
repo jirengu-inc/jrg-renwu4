@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>多个轮播</title>
+	<style>
+		ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.carousel,.picture img{
+			width: 500px;
+			height: 300px;
+		}
+		.carousel{
+			position: relative;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+		.picture{
+			position: absolute;
+		}
+		.picture>li{
+			position: absolute;
+			display: none;
+		}
+		.pre,.next{
+			width: 40px;
+			line-height: 40px;
+			display: block;
+			background: #000;
+			opacity: .2;
+			color: #fff;
+			font-size: 32px;
+			border-radius: 50px;
+			text-align: center;
+			position: absolute;
+			top: 50%;
+			margin-top: -20px;
+		}
+		.carousel>a:hover{
+			opacity: .6;
+		}
+		.pre{
+			left: 10px;			l			
+		}
+		.next{			
+			right: 10px;
+		}
+		.follow:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.follow{
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+		.follow>li{
+			width: 15px;
+			height: 6px;
+			display: inline-block;
+			background: red;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.follow .hover{
+			background: #3CB371;
+		}
+	</style>
+</head>
+<body>
+<div class="carousel carousel1">
+	<ul class="picture">
+		<li><a href="#"><img src="img/z1.jpg"></a></li>
+		<li><a href="#"><img src="img/z4.jpg"></a></li>
+		<li><a href="#"><img src="img/z6.jpg"></a></li>
+	</ul>
+	<a class="pre" href="#"><</a>
+	<a class="next" href="#">></a>
+	<ul class="follow">
+		<li class="hover"></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<div class="carousel carousel2">
+	<ul class="picture">
+		<li><a href="#"><img src="img/z1.jpg"></a></li>
+		<li><a href="#"><img src="img/z4.jpg"></a></li>
+		<li><a href="#"><img src="img/z6.jpg"></a></li>
+	</ul>
+	<a class="pre" href="#"><</a>
+	<a class="next" href="#">></a>
+	<ul class="follow">
+		<li class="hover"></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+<div class="carousel carousel3">
+	<ul class="picture">
+		<li><a href="#"><img src="img/z1.jpg"></a></li>
+		<li><a href="#"><img src="img/z4.jpg"></a></li>
+		<li><a href="#"><img src="img/z6.jpg"></a></li>
+	</ul>
+	<a class="pre" href="#"><</a>
+	<a class="next" href="#">></a>
+	<ul class="follow">
+		<li class="hover"></li>
+		<li></li>
+		<li></li>
+	</ul>
+</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+function startPlay(multiple){
+  var $multiple = $(multiple),
+      $picture = $multiple.find('.picture'),
+  	  $pictureS = $picture.children(),
+  	  $pre = $multiple.find('.pre'),
+  	  $next = $multiple.find('.next'),
+  	  $follow =$multiple.find('.follow'),
+  	  $imgS = $pictureS.length;
+
+  var curIdx = 0;
+  var isAnimate = false;
+  
+  $pre.on('click',function(e){
+  	e.preventDefault();
+  	 playPre();
+  });
+  $next.on('click',function(e){
+  	e.preventDefault();
+  	 playNext();
+  });
+  $follow.find('li').on('click',function(){
+  	 var $idx = $(this).index();
+  	 play($idx);
+  });
+ 
+  play(0);
+  playGo();
+
+  function playPre(){
+  	play( ($imgS+curIdx-1)%$imgS );
+  }
+
+  function playNext(){
+  	play( (curIdx+1)%$imgS );
+  }
+
+  function play(idx){
+  	if(isAnimate) {return};
+    isAnimate = true;
+  	$pictureS.eq(curIdx).fadeOut(500);
+  	$pictureS.eq(idx).fadeIn(500,function(){
+  	    isAnimate = false;
+    })
+  	curIdx = idx;
+  	follow();
+  }
+  
+  function follow(){
+  	$follow.children().removeClass('hover')
+  			.eq(curIdx).addClass('hover');
+  }
+
+  function playGo(){
+  	colck = setInterval(function(){
+  		playNext();
+  	},3000);
+  }
+}
+startPlay('.carousel1');
+startPlay('.carousel2');
+startPlay('.carousel3');
+
+</script>
+
+</body>
+</html>

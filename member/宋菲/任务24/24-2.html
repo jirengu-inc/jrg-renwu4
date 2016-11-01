@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>加载更多</title>
+  <style>
+  ul,li{
+  margin: 0;
+  padding: 0
+}
+#ct li{
+  list-style:none;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 10px;
+  cursor:pointer;
+}
+#load-more{
+	display: block;
+	margin: 10px auto;
+	text-align: center;
+	cursor: pointer;
+}
+#load-more img{
+	width: 40px;
+	height: 40px;
+}
+.btn{
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	width: 80px;
+	border: 1px solid #E27272;
+	border-radius: 3px;
+	text-align: center;
+	text-decoration: none;
+	color: #E27272;
+}
+.hover{
+  background: green;
+  color: #fff;
+}
+  </style>
+</head>
+<body>
+<ul id="ct">
+  <li>内容1</li>
+  <li>内容2</li>
+</ul>
+  <a id="load-more" class="btn" href="#">加载更多</a>
+</body>
+<script>
+var loadMoreBtn = document.querySelector('#load-more'),
+    ct = document.querySelector('#ct');
+    var cur = 2;
+    var isLoading = false;
+
+    ct.addEventListener('mouseenter',function(e){
+      if(e.target.tagName.toLowerCase()==='li'){
+        // e.target.style.backgroundColor = 'green';
+        // e.target.style.color='#fff';
+         e.target.className = 'hover';
+      }
+    },true) //不明白这里为什么要加true,不加true事件不能到达li身上
+    ct.addEventListener('mouseleave',function(e){
+      if(e.target.tagName.toLowerCase()==='li'){
+        // e.target.style.backgroundColor = 'white';
+        // e.target.style.color='#333';
+        e.target.className = '';
+      }
+    },true)
+
+loadMoreBtn.addEventListener('click', function(e){
+
+  e.preventDefault();
+  if(isLoading){ //如果是ture,就什么都不做,返回
+    return;
+  }
+ isLoading = true;
+ loadMoreBtn.innerHTML= "<img src='http://jrgzuoye.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS9-jqueryajax/loading.gif' width=50px height=20px/>"
+ ajax({
+    url: '2.php',
+    dataType: 'json',
+    type: 'get',
+    data: {
+      start: cur,
+      len: 6
+    },
+    success: function(json){
+      onSuccess(json);
+    },
+    error: function(){
+      onError();
+    }
+  });
+});
+
+
+  function onSuccess (json){
+
+    if(json.status == 1){
+      append(json.data);
+      cur += 6;
+    }else{
+      alert('获取数据失败');
+    }
+    isLoading =false;
+    loadMoreBtn.innerHTML='加载更多'
+  }
+
+  function onError(){
+    alert('系统异常');
+    isLoading =false;
+
+    loadMoreBtn.innerHTML='加载更多'
+  }
+
+  function append(arr){
+    for(var i = 0;i<arr.length;i++){
+      var li = document.createElement('li')
+      li.innerText = '内容'+arr[i];
+      ct.appendChild(li)
+    }
+  }
+
+  function ajax(opts){
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function(){
+        if(xmlhttp.readyState ==4&&xmlhttp.status ==200){
+            var json = JSON.parse(xmlhttp.responseText)
+            opts.success(json)
+        }
+        if(xmlhttp.readyState ==4&&xmlhttp.status ==404){
+            var json = JSON.parse(xmlhttp.responseText)
+            opts.error()
+        }
+    }
+    var dataStr = '';
+    for(var key in opts.data){
+        dataStr+=key+'='+opts.data[key]+'&';
+    }
+
+    dataStr = dataStr.substr(0, dataStr.length-1);
+    if(opts.type.toLowerCase() ==='post'){
+        xmlhttp.open(opts.type,opts.url,true);
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        xmlhttp.send(dataStr);
+    }
+    if(opts.type.toLowerCase() ==='get'){
+        xmlhttp.open(opts.type,opts.url+'?'+dataStr,true);
+        xmlhttp.send();
+    }
+}
+</script>
+</html>

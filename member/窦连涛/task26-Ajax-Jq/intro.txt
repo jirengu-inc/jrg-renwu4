@@ -1,0 +1,43 @@
+1 添加元素
+
+append() 被选元素的结尾插入元素
+prepend() 被选元素的开头插入元素
+before() 被选元素之前插入内容
+after() 被选元素之后插入内容
+
+2 删除元素
+
+remove() 删除被选元素以及子元素
+empty() 从被选元素中删除子元素
+
+3 添加删除class
+
+hasClass();
+addClass();
+removeClass();
+toggleClass();
+
+4 设置样式
+.css("属性") 返回属性值
+.css("属性"，"属性值")
+.css({"属性:属性值","属性:属性值",...})
+
+5 尺寸
+width(); 设置或返回元素的宽度，不包括(内边距，外边距 边框) 内容的宽度
+height();设置或返回元素的高度，不包括(内边距，外边距 边框) 内容的高度
+innerWidth(); 返回元素的宽度,包括内边距
+innerWidth(); 返回元素的高度,包括内边距 
+outerWidth(); 返回元素的宽度,包括内边距、边框
+outerHeight(); 返回元素的高度,包括内边距、边框
+outerWidth(true); 返回元素的宽度,包括内边距、边框、外边距
+outerHeight(true); 返回元素的高度,包括内边距、边框、外边距
+
+offset 相当于根节点的一个偏移
+
+function setFooter(){
+  var WinH = $(window).height();
+  var DocH = $("body").height();
+  if(WinH > DocH){
+    $('#footer').css('margin-top':(WinH - DocH) + "px");
+  }
+}

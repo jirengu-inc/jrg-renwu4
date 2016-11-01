@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function method(num){
+	 res=0;
+     if(num==1){
+     	res=1; //1级楼梯的走法
+     }
+     else if(num==2){
+       res=2; //两级楼梯的走法有两种，(1,1),(2)
+     }
+     else{
+     	res=method(num-1)+method(num-2);
+     	   //如果有n级楼梯，每次走1步或者2步，最后不外乎是剩下一级或者两级楼梯，走到n-1级楼梯就是剩下一级楼梯，走到n-2级楼梯就是剩下2级楼梯，于是方法用递归就是method(n-1)+method(n-2);
+     }
+     return res;
+	}
+	// method(200);
+	// console.log(method(200));
+	</script>
+</body>
+</html>

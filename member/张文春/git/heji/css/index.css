@@ -1,0 +1,202 @@
+ul{
+	list-style: none;
+	padding: 0;
+	/*padding-top: 200px;*/
+}
+
+.clear:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
+#sidebar{
+	background: #aaa;
+	width: 35px;
+	/*padding-top: 200px;*/
+	position: fixed;
+	top: 0;
+	padding-top: 10px;
+	min-height: 100%;
+	z-index: 100;
+}
+#sidebar div:hover{
+	background: #bbb;
+}
+.sidebar-item{
+	font-size: 12px;
+	font-family: 'Microsoft YaHei';
+	text-align: center;
+	margin-top: 20px;
+	cursor: pointer;
+}
+.item-prof{
+	margin-top: 200px;
+}
+#closeBar{
+	position: absolute;
+	bottom: 30px;
+	width: 35px;
+	text-align: center;
+	cursor: pointer;
+	transition: all 2s;
+
+}
+.closeBar-a{
+	/*left: 200px;*/
+	color: red;
+	transform: translateX(150px) rotate(405deg) scale(1.5);
+
+}
+.nav-content{
+	width: 200px;
+	position: fixed;
+	min-height: 100%;
+	background: #ccc;
+	left: 45px;
+	left: -200px;
+	opacity: 0;
+	display: none;
+	transition: all 2s;
+	z-index: 50;
+	top: 0;
+}
+.nav-content .nav-icon{
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	cursor: pointer;
+
+}
+.nav-con-open{
+	-webkit-animation-name: nco;
+	-o-animation-name: nco;
+	animation-name: nco;
+	-webkit-animation-duration: 2s;
+	-o-animation-duration: 2s;
+	animation-duration: 2s;
+	-webkit-animation-iteration-count: 1;
+	-o-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+
+@keyframes nco{
+	from{
+		opacity: 0;
+	}
+	to{
+		opacity: 1;
+		transform: translateX(250px);
+	}
+}
+.nav-con-close{
+	-webkit-animation-name: ncc;
+	-o-animation-name: ncc;
+	animation-name: ncc;
+	-webkit-animation-duration: 1s;
+	-o-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+	-o-animation-iteration-count: 1;
+	animation-iteration-count: 1;
+	-webkit-animation-fill-mode: forwards;
+	-o-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+}
+@keyframes ncc{
+	from{
+		opacity: 1;
+	}
+	to{
+		opacity: 0;
+		transform: translateX(-250px);
+	}
+}
+
+
+/*这是menubar的CSS*/
+.menuRight i{
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+}
+.item{
+	width: 1000px;
+	height: 600px;
+	padding: 10px;
+	border: 5px solid #ccc;
+	margin: 0 auto;
+	margin-top: 30px;
+	position: relative;
+
+}
+img{
+	margin-top: 30px;
+	cursor: pointer;
+}
+img.go{
+	width: 200px;
+	height: 200px;
+	cursor: pointer;
+}
+/*#item1{
+	background: red;
+}
+#item2{
+	background: green;
+}
+#item3{
+	background: yellow;
+}
+#item4{
+	background: #ccc;
+}
+#item5{
+	background: white;
+}*/
+.item p{
+	font-size: 100px;
+	text-align: center;
+}
+.menuRight{
+	position: fixed;
+	top: 100px;
+	left: 50%;
+	margin-left: 550px;
+}
+.menuRight li a:hover,
+.menuRight li a.current{
+	background: #0088bb;
+	color: #fff;
+}
+.menuRight ul li{
+	width: 100px;
+	height: 60px;
+	border: 1px solid #ccc;
+	padding: 5px;
+	margin-top: 2px;
+	border-radius: 5px;
+	cursor: pointer;
+	text-align: center;
+}
+a{	display: inline-block;
+	width: 100px;
+	height: 60px;
+	text-decoration: none;
+	color: black;
+	line-height: 60px;
+	font-size: 30px;
+
+}
+
+#stickTop{
+	display: none;
+	background: #ccc;
+}
+#stickTop a{
+	font-size: 20px;
+
+}

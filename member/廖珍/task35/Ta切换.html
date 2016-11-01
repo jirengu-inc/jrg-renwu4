@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>用tab切换实现</title>
+		<style>
+			.mod-tab {
+				border:1px solid #ccc;
+				margin-bottom:20px;
+			}
+			.mod-tab * {
+				box-sizing:border-box;
+			}
+			.mod-tab ul,li {
+				padding:0;
+				margin:0;
+				list-style:none;
+			}
+			.mod-tab .tabs:after {
+				content:'';
+				height:0;
+				display:table;
+				clear:both;
+			}
+			.mod-tab .tabs li {
+				float:left;
+				width:33.3%;
+				height:30px;
+				line-height:30px;
+				text-align:center;
+				border-right:1px solid #ccc;
+				border-bottom:1px solid #ccc;
+			}
+			.mod-tab .tabs li:last-child {
+				border-right:none;
+			}
+			.mod-tab .tabs .active {
+				background:#eee;
+			}
+			.mod-tab .panel {
+				display:none;
+				height:180px;
+				padding:20px;
+			}
+			.mod-tab .active {
+				display:block;
+			}
+		</style>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class='mod-tab' id='m1'>
+			<ul class='tabs'>
+				<li class='active'>tab1</li>
+				<li>tab2</li>
+				<li>tab3</li>
+			</ul>
+			<div class='panel active'>内容1</div>
+			<div class='panel'>内容2</div>
+			<div class='panel'>内容3</div>
+		</div>
+
+
+		<div class='mod-tab' id='m2'>
+			<ul class='tabs'>
+				<li class='active'>tab1</li>
+				<li>tab2</li>
+				<li>tab3</li>
+			</ul>
+			<div class='panel active'>内容1</div>
+			<div class='panel'>内容2</div>
+			<div class='panel'>内容3</div>
+		</div>
+		<script>
+			function modTab($node) {
+				this.$node=$node;
+				this.$tabs=$node.find('.tabs');
+				this.$lis=this.$tabs.find('li');
+				this.$panel=$node.find('.panel');
+				this.bind();
+				console.log(this.$node);
+				console.log(this.$tabs);
+				console.log(this.$lis);
+				console.log(this.$panel);
+				
+			}
+			modTab.prototype={
+				bind:function() {
+					var me=this;
+					me.$lis.on('click',function() {
+						var idx=$(this).index();
+						console.log(idx);
+						$(this).siblings().removeClass('active');
+						$(this).addClass('active');
+						me.$panel.removeClass('active');
+						me.$panel.eq(idx).addClass('active');
+					})
+					console.log(this);
+					console.log(me);
+				}
+			}
+			var modTab1=new modTab($('#m1'));
+			var modTab2=new modTab($('#m2'));
+		</script>
+	</body>
+</html>

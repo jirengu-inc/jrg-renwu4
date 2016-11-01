@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task18</title>
+  <script>
+      /*
+      Push 向数组添加一个元素，放置数组的末尾。其它元素前移。
+      pop  将数组的最后一个元素 删除。
+      shift 将数组的第一个元素 删除。
+      unshift 向数组添加一个元素，放置数组的第一位,其他元素后移。
+      join 将数组中的元素变成字符串,并返回一个新的字符串。(数组对象)
+      split 将字符串转化为数组 ,并返回一个新的数组。（字符串对象）
+      join 和 split 很方便的将数组转化为字符串，然后再将字符串转化为数组
+      splice  在数组的任意位置添加/删除数组中的元素。
+      splice(2,4) 从数组中下表为2的位置开始，删除4个元素(包括自身)
+      splice(2,0,4,5,6,7) 从数组中下标为2的位置开始,0（表示不删除元素），添加4,5,6,7
+      */
+    /*用 splice 实现 push、pop、shift、unshift方法*/
+    function push(arr,n){
+      arr.splice(arr.length,0,n);
+      return arr.length;
+    }
+
+    function pop(arr){
+      var i = arr[arr.length-1];
+      arr.splice(arr.length-1,1);
+      return i;
+    }
+
+    function shift(arr){
+      var i = arr[0];
+      arr.splice(0,1);
+      return i;
+    }
+
+    function unshift(arr,n){
+      arr.splice(0,0,n);
+      return arr.length;
+    }
+
+/*数组拼接出如下字符串 */
+    var prod = {
+      name: '女装',
+      styles: ['短款', '冬季', '春装']
+    };
+
+    function getTpl(data){
+      var str = '';
+      str += '<dl class="product">';
+      str += '<dt>'+data.name+'</dt>';
+      for (var i = 0; i < data.styles.length; i++) {
+        str += '<dd>'+data.styles[i]+'</dd>';
+      }
+      str += '</dl>';
+      return str;
+    }
+
+    console.log(getTpl(prod));
+/*数组拼接出如下字符串 */
+
+/*写一个find函数，实现下面的功能 */
+function find(array,c){
+  for (var i = 0; i < array.length; i++) {
+    if(array[i] === c){
+      return i ;
+    }
+  }
+  return -1;
+}
+// var arr = ["test", 2, 1.5, false];
+// find(arr, "test") // 0
+// find(arr, 2) // 1
+// find(arr, 0) // -1
+/*写一个find函数，实现下面的功能 */
+
+// 写一个函数filterNumeric
+arr = ["a", "b", 1, 3, 5, "b", 2]
+// newarr = filterNumeric(arr);  //   [1,3,5,2]
+function filterNumeric(arr){
+  var newarr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if(typeof arr[i] === 'number'){
+      newarr.push(arr[i]);
+    }
+  }
+  return newarr;
+}
+// 写一个函数filterNumeric
+
+// 对象obj有个className属性，里面的值为的是空格分割的字符串(和html元素的class特性类似)，写addClass、removeClass函数，有如下功能：
+// var obj = {
+//   className: 'open menu'
+// }
+// addClass(obj, 'new') // obj.className='open menu new'
+// addClass(obj, 'open')  // 因为open已经存在，此操作无任何办法
+// addClass(obj, 'me') // obj.className='open menu new me'
+// console.log(obj.className)  // "open menu new me"
+// removeClass(obj, 'open') // obj.className='menu new me'
+// removeClass(obj, 'blabla')  // 不变
+function addClass(obj, cls){
+      var classArr = obj.className.split(' ');
+      for(var i=0; i<classArr.length; i++){
+          if(cls === classArr[i]){
+              return;
+          }
+      }
+      obj.className += ' ' + cls;
+  }
+  function removeClass(obj, cls){
+      var classArr = obj.className.split(' ');
+      for(var i=0; i<classArr.length; i++){
+          if(cls === classArr[i]){
+              classArr.splice(i, 1);
+              i--;
+          }
+      }
+      obj.className = classArr.join(' ');
+  }
+
+// 对象obj有个className属性
+
+// 写一个camelize函数，
+// 写一个camelize函数，把my-short-string形式的字符串转化成myShortString形式的字符串，如 (***)
+// camelize("background-color") == 'backgroundColor'
+// camelize("list-style-image") == 'listStyleImage'
+function camelize(str){
+  var arr = str.split('-');
+  var newstr = arr.join('');
+  return newstr;
+}
+// 写一个camelize函数，
+
+// 如下代码输出什么？为什么?
+// arr = ["a", "b"];
+// arr.push( function() { alert(console.log('hello hunger valley')) } );
+// arr[arr.length-1]()  // ?
+// arr.push() arr数组中压入了一个成员，
+// arr[arr.length-1]()实际上就是刚刚压入的这个成员，变成了一个快速执行函数，
+// 会先输出 'hello hunger valley' 这个字符串
+// 然而没有返回值，alert就会认为是undefined
+
+
+// 写一个函数filterNumericInPlace，过滤数组中的数字，删除非数字 (****)
+// arr = ["a", "b", 1, 3, 4, 5, "b", 2];
+//对原数组进行操作，不需要返回值
+// filterNumericInPlace(arr);
+// console.log(arr)  // [1,3,4,5,2]
+function filterNumericInPlace(arr){
+  // var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if(typeof arr[i] !== 'number'){
+      // newArr.unshift(i);
+      arr.splice(i,1);
+      i--;
+    }
+  }
+  // for(var j = 0 ; j < newArr.length; j++){
+  //   arr.splice(newArr[j],1);
+  // }
+  // return arr;
+}
+
+/*
+写一个ageSort函数实现如下功能 （***）
+var john = { name: "John Smith", age: 23 }
+var mary = { name: "Mary Key", age: 18 }
+var bob = { name: "Bob-small", age: 6 }
+var people = [ john, mary, bob ]
+ageSort(people) // [ bob, mary, john ]
+*/
+// var john = { name: "John Smith", age: 23 }
+// var mary = { name: "Mary Key", age: 18 }
+// var bob = { name: "Bob-small", age: 6 }
+// var people = [john,mary,bob];
+
+function ageSort(arr){
+  arr.sort(function(a,b){
+    return a.age - b.age;
+  })
+  return arr;
+}
+
+/*
+写一个filter(arr, func) 函数用于过滤数组，接受两个参数，第一个是要处理的数组，第二个参数是回调函数(回调函数遍历接受每一个数组元素，当函数返回true时保留该元素，否则删除该元素)。实现如下功能： （****）
+function isNumeric (el){
+    return typeof el === 'number';
+}
+arr = ["a",3,4,true, -1, 2, "b"]
+arr = filter(arr, isNumeric) ; // arr = [3,4,-1, 2],  过滤出数字
+arr = filter(arr, function(val) { return val > 0 });  // arr = [2] 过滤出大于0的整数
+*/
+function isNumeric (el){
+    return typeof el === 'number';
+}
+function filter(arr,func){
+  for (var i = 0; i < arr.length; i++) {
+    if(func(arr[i]) === false){
+      arr.splice(i,1)
+    }
+  }
+  return arr;
+}
+
+/*
+写一个 ucFirst函数，返回第一个字母为大写的字符 （***）
+ucFirst("hunger") == "Hunger"
+*/
+function ucFirst(strs){
+  var newstr = strs.toUpperCase();
+  var arr = newstr.split('');
+  var newArr = [];
+  for (var i = 1; i < arr.length; i++) {
+    newArr.push(arr[i].toLowerCase());
+  }
+  newArr.unshift(arr[0]);
+  str = newArr.join('');
+  return str;
+}
+
+/*
+写一个函数truncate(str, maxlength), 如果str的长度大于maxlength，会把str截断到maxlength长，并加上...，如 （****）
+truncate("hello, this is hunger valley,", 10)) == "hello, thi...";
+truncate("hello world", 20)) == "hello world"
+*/
+function truncate(strs,maxlength){
+  var str = '';
+  var len = strs.length;
+  if(len > maxlength){
+    var arr = strs.split('');
+    arr.splice(maxlength,arr.length-maxlength);
+    str += arr.join('');
+    str += '...';
+  }else{
+    str = strs;
+  }
+  return str;
+}
+
+/*
+写一个函数limit2，保留数字小数点后两位，四舍五入， 如: （**）
+var num1 = 3.456
+limit2( num1 );  //3.46
+limit2( 2.42 );    //2.42
+*/
+function limit2(num){
+   return (Math.round(num*100))/100;
+}
+/*
+写一个函数，获取从min到max之间的随机数，包括min不包括max
+*/
+function min_random(min,max){
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+/*
+写一个函数，获取从min都max之间的随机整数，包括min包括max （***）
+*/
+function max_random(min,max){
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+/*
+写一个函数，获取一个随机数组，数组中元素为长度为len，最小值为min，最大值为max(包括)的随机数 （***）
+*/
+function s_random(len,min,max){
+  var arr = [];
+  for (var i = 0; i < len; i++) {
+    arr.push(Math.floor(Math.random() * (max - min + 1)) + min);
+  }
+  return arr;
+}
+
+//获取一个随机数组，数组中元素为长度为len，最小值为min，最大值为max(包括)的随机数
+   function randArr(len, min, max) {
+       var arr = [],
+           randVal;
+       for (var i = 0; i < arr.length; i++) {
+           randVal = min + Math.floor(Math.random() * (max - min + 1));
+           arr.push(randVal);
+       }
+       return randArr;
+   }
+
+   //写一个函数，生成一个长度为 n 的随机字符串，字符串字符的取值范围包括0到9，a到 z，A到Z
+   function getRandStr(len) {
+       var retStr = '',
+           randIdx,
+           dict = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+       for (var i = 0; i < len; i++) {
+           randIdx = Math.floor(Math.random() * dict.length);
+           retStr += dict[randIdx];
+       }
+       return retStr;
+   }
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>多个轮播</title>
+		<style>
+			html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+				padding:0px;
+				margin:0px;
+			}
+			
+			ul,li {
+				list-style:none;
+			}
+			a {
+				text-decoration: none;
+			}
+			html {
+				width:100%;
+				height:100%;
+			}
+			body {
+				width:100%;
+				height:100%;
+				background:#ddd url(imgs/bg.jpg) repeat top left;
+				font-size:15px;
+				font-family:'Open Sans Condensed','Arial Narrow',serif;
+				
+			}
+			.clearfix:after {
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.container {
+				width:100%;
+				position:relative;
+			}
+			#header {
+				margin:30px 0;
+				text-align:center;
+			}
+			#header h3 {
+				margin-bottom:10px;
+				color:rgba(42, 23, 23, 0.43);
+			}
+			#header p {
+				
+				color:rgba(0, 0, 0, 0.39);
+				margin-bottom:15px;
+			}
+			#header ul {
+				width:100%;
+				margin:0 auto;
+			}
+			#header ul li {
+				display:inline-block;
+				height:20px;
+				line-height:20px;
+				width:110px;
+				text-align:center;
+				margin-left:2px;
+				padding:0px 3px;
+				border:1px solid #fff;
+				background:rgba(255, 0, 0, 0.02);
+			}
+			#header ul li a {
+				color:#C6A1A1;
+				font-style:italic;
+			}
+			
+			.view {
+				width:700px;
+				margin:0 auto;
+
+			}
+			.carousel {
+				width:300px;
+				border:10px solid #fff;
+				margin-left:20px;
+				overflow:hidden;
+				position:relative;
+				height:200px;
+				margin-bottom:20px;
+				display:inline-block;
+
+			}
+			.carousel .carousel-ct {
+				position:absolute;
+			}
+			.carousel .carousel-ct .item {
+				width:300px;
+				height:200px;
+				float:left;
+			}
+			.caroule .carousle-ct .item img {
+				width:300px;
+				height:200px;
+			}
+			.arrow {
+				position:absolute;
+				width:20px;
+				height:20px;
+				border-radius:50%;
+				top:50%;
+				margin-top:-10px;
+				background:rgba(33, 29, 29, 0.67);
+				text-align:center;
+				line-height:20px;
+				color:#fff;
+				font-size:16px;
+			}
+			.pre {
+				left:10px;
+			}
+			.next {
+				right:10px;
+			}
+			.bullent {
+				position:absolute;
+				bottom:10px;
+				transform:translateX(-50%);
+				left:50%;
+			}
+			.bullent li {
+				display:inline-block;
+				width:20px;
+				height:4px;
+				background: #fff;
+				border-radius:2px;
+
+			}
+			.bullent li.active {
+				background:#ccc;
+			}
+		</style>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	</head>
+	<body>
+		<div class='container'>
+			<div id='header'>
+				<h3>多种轮播的实现</h3>
+				<p>利用jquery实现不同效果的轮播</p>
+				<ul class='clearfix'>
+					<li><a href='index.html'>无缝轮播</a></li>
+					<li><a href='index2.html'>多个轮播</a></li>
+					<li><a href='index3.html'>淡入淡出轮播</a></li>
+					<li><a href='index4.html'>全屏轮播</a></li>
+				</ul>
+			</div>
+			<div class='view'>
+				     <div class='carousel carousel1'>
+						<ul class='carousel-ct clearfix'>
+							<li class='item'>
+								<img src='imgs/1.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/2.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/3.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/7.jpg'>
+							</li>
+						</ul>
+						<a href='#' class='arrow pre'><</a>
+						<a href='#' class='arrow next'>></a>
+						<ul class='bullent clearfix'>
+							<li class='active'></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+			    </div>
+			    <div class='carousel carousel2'>
+						<ul class='carousel-ct clearfix'>
+							<li class='item'>
+								<img src='imgs/1.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/2.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/3.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/7.jpg'>
+							</li>
+						</ul>
+						<a href='#' class='arrow pre'><</a>
+						<a href='#' class='arrow next'>></a>
+						<ul class='bullent clearfix'>
+							<li class='active'></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class='carousel carousel3'>
+						<ul class='carousel-ct clearfix'>
+							<li class='item'>
+								<img src='imgs/1.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/2.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/3.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/7.jpg'>
+							</li>
+						</ul>
+						<a href='#' class='arrow pre'><</a>
+						<a href='#' class='arrow next'>></a>
+						<ul class='bullent clearfix'>
+							<li class='active'></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+					<div class='carousel carousel4'>
+						<ul class='carousel-ct clearfix'>
+							<li class='item'>
+								<img src='imgs/1.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/2.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/3.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/7.jpg'>
+							</li>
+						</ul>
+						<a href='#' class='arrow pre'><</a>
+						<a href='#' class='arrow next'>></a>
+						<ul class='bullent clearfix'>
+							<li class='active'></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+			</div>
+		</div>
+		<script>
+			function Carousel($carousel) {
+				this.$carousel=$carousel;
+				this.$ct=this.$carousel.find('.carousel-ct');
+				this.$items=this.$ct.children();
+				this.$pre=this.$carousel.find('.pre');
+				this.$next=this.$carousel.find('.next');
+				this.$bullent=this.$carousel.find('.bullent');
+				this.imgWidth=this.$items.width();
+				this.imgCount=this.$items.size();
+
+				this.$ct.prepend(this.$items.last().clone());
+				this.$ct.append(this.$items.first().clone());
+				this.imgRealCount=this.imgCount+2;
+				this.$ct.css({left:0-this.imgWidth});
+				this.$ct.css({width:this.imgWidth*this.imgRealCount})
+				this.isAnimate=false;
+				this.curIdx=0;
+			}
+
+			Carousel.prototype={
+				init:function() {
+					var $cur=this;
+					$cur.bind()
+				},
+				bind:function() {
+					var $cur=this;
+					$cur.$pre.on('click',function() {
+						$cur.playPre();
+					});
+					$cur.$next.on('click',function() {
+						$cur.playNext();
+					});
+					$cur.$bullent.find('li').on('click',function() {
+						var idx=$(this).index();
+						if(idx>$cur.curIdx) {
+							$cur.playNext(idx-$cur.curIdx)
+						}else if(idx<$cur.curIdx) {
+							$cur.playPre($cur.curIdx-idx)
+						}
+					});
+				},
+				playPre:function(idx) {
+					var $cur=this;
+					if($cur.isAnimate) {
+						return;
+					}
+					$cur.isAniamte=true;
+					var idx=idx||1;
+					$cur.$ct.animate({left:'+='+($cur.imgWidth*idx)},function() {
+						$cur.curIdx=($cur.curIdx+$cur.imgCount-idx)%$cur.imgCount;
+						if($cur.curIdx==($cur.imgCount-1)) {
+							$cur.$ct.css({left:0-$cur.imgWidth*$cur.imgCount});
+						}
+						$cur.isAnimate=false;
+						$cur.setBullent();
+					});
+					
+				},
+				playNext:function(idx) {
+					var $cur=this;
+					if($cur.isAnimate) {
+						return;
+					}
+					$cur.isAnimate=true;
+					var idx=idx||1;
+					$cur.$ct.animate({left:'-='+($cur.imgWidth*idx)},function() {
+						$cur.curIdx=($cur.curIdx+idx)%$cur.imgCount;
+						if($cur.curIdx==0) {
+							$cur.$ct.css({left:0-$cur.imgWidth});
+							
+						}
+						$cur.isAnimate=false;
+						$cur.setBullent();
+					});
+				},
+				setBullent:function() {
+					var $cur=this;
+					$cur.$bullent.find('li').removeClass('active').eq($cur.curIdx).addClass('active');
+					console.log($cur.curIdx);
+				}
+
+			}
+			var c1=new Carousel($('.carousel1'));
+			var c2=new Carousel($('.carousel2'));
+			var c3=new Carousel($('.carousel3'));
+			var c4=new Carousel($('.carousel4'));
+			c1.init();
+			c2.init();
+			c3.init();
+			c4.init();
+		</script>
+	</body>
+</html>

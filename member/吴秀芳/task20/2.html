@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+	function carStatus(){
+		var i=0;
+		function acceleratea(){
+			i+=10;
+		}
+		function decelerate(){
+			i-=10;
+		}
+		function getSpeed(){
+			console.log(i);
+			return i;
+		} 
+		function setSpeed(val){
+			i=val;
+		}
+		function getStatus(){
+			if(i>0){
+				console.log('running');
+			}
+			else if(i==0){
+             console.log('stop');
+			}else{
+				console.log('error');
+			}
+		}
+		return {acceleratea:acceleratea,
+		       decelerate:decelerate,
+		       getSpeed:getSpeed,
+		       setSpeed:setSpeed,
+		       getStatus:getStatus
+		   }//return 一个对象，对象里面有函数 
+	}
+	var Car = carStatus();
+	Car.setSpeed(30);
+	Car.getSpeed(); //30
+	Car.acceleratea();
+	Car.getSpeed(); //40;
+	Car.decelerate();
+	Car.decelerate();
+	Car.getSpeed(); //20
+	Car.getStatus(); // 'running';
+	Car.decelerate(); 
+	Car.decelerate();
+	Car.getStatus();  //'stop';
+	//Car.speed;  //error
+
+	</script>
+</body>
+</html>

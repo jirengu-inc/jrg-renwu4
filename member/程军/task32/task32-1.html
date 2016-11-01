@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 32</title>
+    <style>
+        ul {
+            padding:0;
+            margin:0;
+        }
+        li {
+            list-style: none;
+        }
+        li a {
+			text-decoration: none;
+        }
+        h3 {
+        	color: #000;
+        }
+        img {
+            vertical-align:bottom;
+        }
+       .source,.createtime {
+       		text-align: right;
+       }
+        .wrap {
+            width: 900px;
+            margin:0 auto;
+        }
+        .ct {
+            position: relative;
+        }
+        .ct>.item {
+            position:absolute;
+            width:260px;
+            padding:9px;
+            margin-top:10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .item>a img {
+            width:260px;
+        }
+        .item h3 {
+            margin:10px 0 5px 0;
+            padding-bottom: 10px;
+            border: 1px solid ;
+            border-color: #fff #fff #ccc #fff;
+        }
+        .item p {
+            font-size: 12px;
+            padding-right:15px;
+        }
+        .item hr {
+            border: none;
+            border-top:1px solid #ccc;
+        }
+        .item p,.item hr {
+            color:#7D7272;
+        }
+       	.unload {
+            width: 300px;
+            height: 1px;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="ct">
+    </ul>
+    <div class="unload"></div>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script src="flow.js"></script>
+<script>
+		var clock;
+
+
+		var page=1,pagenum=5;
+
+		var $width=$(".unload").outerWidth(true),
+				$ct=$(".ct").width(),
+				$num=Math.floor($ct/$width),
+					arr=[];
+			for (var i=0;i<$num;i++){
+				arr.push(0);
+				}  
+
+	flowSet()
+	$(window).on('scroll', function(){
+    if(clock){
+      clearTimeout(clock);
+    }
+    clock = setTimeout(function(){
+      flowSet();
+    }, 200);
+	});
+	function flowSet(){
+		if(isVisible($(".unload"))){
+			loadMore(page,pagenum);
+		}
+	}
+function imgLoad($node){                 
+	var cur=0;
+
+	$node.find("img").on("load",function(){
+			cur++;                    
+		if(cur==pagenum){
+			setNode($node);
+		}
+	})	
+	}
+
+	function isVisible(el){   // el为juerry对象
+        $distanceH=el.offset().top,
+        height=$(window).height()*3/4,
+            $top=$(window).scrollTop(),
+             cur= $top+height,
+             off=$top-$distanceH;
+            if(cur>$distanceH){
+                    return true;
+            }
+                return false;     
+ 		}
+	
+	function setNode($node){  
+			$($node).each(function(){
+				var me=$(this);
+				var	hgt=me.outerHeight(true);
+				var	minHgt=Math.min.apply(null, arr);
+				arr.indexNum = function(value) {
+        		var a = this;
+        		for (var j = 0,len=a.length;j<len; j++) {
+           		 if (a[j] === value)
+                return j;
+        				}
+   			 };
+
+   			 var idx=arr.indexNum(minHgt);
+   			 	var $top=arr[idx]; 
+   	   			 me.css({left:$width*idx,
+   			 			top:$top});
+   				 	arr[idx]=hgt+$top; 
+			});
+			page++;
+	}
+   	function loadMore(page,pagenum){
+		 $.ajax({
+     	url:"http://platform.sina.com.cn/slide/album_tech",
+     	type:"GET",
+     	data:({
+     		page:page,
+     		num:pagenum,
+     		app_key:1271687855
+     	}),
+       	dataType:"jsonp",
+     	jsonp:"jsoncallback",
+     	success:function(ret){
+     		success(ret)
+     	}
+     	,
+     	error:function(){
+     		console.log("请求失败")
+     	}
+     })
+	} 
+function success(ret){
+	if (ret.status.code==="0") {
+		creatNote(ret.data)
+	} else {
+		alert("查询不到数据")
+	}
+}
+function creatNote (arr,ct){
+	var node="";
+	for(var i=0,len=arr.length;i<len;i++){
+		node+="<li class='item unset'>";
+        node+=" <a href='"+arr[i].url+"'>";
+        node+="      <img class='news-img' src='"+arr[i].img_url+"' alt='img'>";
+        node+="     <div class='new-words'>";
+        node+="         <h3 class='news-head'>"+arr[i].short_name+"</h3>";
+        node+="         <p class='news-short'>"+arr[i].short_intro+"</p>";
+        node+="         <p class='createtime'>"+arr[i].createtime+"</p>";
+        node+="         <p class='source'>来源："+arr[i].source+"</p>";
+        node+="     </div>";
+        node+=" </a>";
+        node+="</li>";
+        }
+        var $node=$(node);
+       $(".ct").append($node);
+        imgLoad($(".unset"));  //只选择传过来的数据;
+        $(".unset").removeClass("unset")   
+	} 
+</script>
+</body>
+</html>
+

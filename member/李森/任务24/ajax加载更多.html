@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		ul,li{
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		a{
+			text-decoration: none;
+		}
+		#ul>li{
+			margin-bottom: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            cursor: pointer;
+		}
+		#btn{
+			color: red;
+			padding: 10px;
+			border: 1px solid red;
+			border-radius: 5px;
+			display: block;
+			width: 64px;
+			margin: 0 auto; 
+		}
+	</style>
+</head>
+<body>
+<ul id="ul">
+	<li>内容1</li>
+	<li>内容2</li>
+	<li>内容3</li>
+</ul>
+  <a id="btn" href="#">加载更多</a>
+
+  <script type="text/javascript" src="ajax.js"></script>
+  <script>
+    var start = 4;
+    var len = 5;
+    var ul = document.getElementById('ul');
+	var btn = document.getElementById('btn');
+
+    ul.addEventListener('mouseover',function(e){
+    	if(e.target.localName=='li'){
+    	e.target.style.backgroundColor = "green";
+    	e.stopPropagation();
+        }
+    }); 
+    ul.addEventListener('mouseout',function(e){
+	if(e.target.localName=='li'){
+		e.target.style.backgroundColor = "";
+		e.stopPropagation();
+        }
+    });   	
+	btn.addEventListener('click',function(e){
+  	 	e.preventDefault();
+  	 	if(isloading){return}
+  	 	var isloading = true;
+        ajax({
+        	url: '/ind',
+        	type: 'get',
+        	data: {
+                start: start,
+                len: len,
+        	},
+        	success: function(json){
+                success(json);
+                start += len;   
+        	},
+        	error: function(){
+                onerror();  
+             }
+        });
+  	 });
+	  function onerror(){
+	  	isloading =false;
+        alert("oh...出问题了");
+	  }
+	function success(json){
+		var ul = document.querySelector('#ul');
+		for (var i = 0; i < json.data.length; i++) {
+			var newli = document.createElement('li');
+			newli.innerText = '内容'+json.data[i];
+			ul.appendChild(newli);
+	    }
+	    isloading = false;
+	}
+  </script>
+
+</body>
+</html>

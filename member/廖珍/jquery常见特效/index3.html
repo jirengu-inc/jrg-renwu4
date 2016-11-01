@@ -1,0 +1,279 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>jquery</title>
+        <style>
+            html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:100%;
+                position:relative;
+            }
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+              
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+           .waterfall-ct {
+                position:relative;
+                width:1000px;
+                margin:40px auto;
+           }
+           .waterfall-ct li{
+            position:absolute;
+            width:280px;
+            margin:10px;
+            padding:0px 0px 10px 0;
+            border:2px solid #fff;
+            background:rgba(255, 0, 0, 0.02);
+           }
+           .waterfall-ct .item img {
+                margin:10px;
+                width:260px;
+            }
+            .waterfall-ct .item .header {
+                height:25px;
+                text-align:center;
+                border-bottom:1px solid #fff;
+                color:rgba(42, 23, 23, 0.43);
+
+            }
+            .waterfall-ct .item .desp {
+                font-size:14px;
+                line-height:1.8;
+                text-align:center;
+                color:rgba(0, 0, 0, 0.39);
+            }
+            .load {
+                display:'block';
+                width:80px;
+                padding:10px;
+                background:yellow;
+                color:red;
+                font-style:italic;
+                background:rgba(255, 0, 0, 0.02);
+                border:1px solid #fff;
+            }
+            .load:hover {
+                background:#fff;
+            }
+            .loading {
+                width:1000px;
+                margin:0 auto;
+                text-align:center;
+            }
+        </style>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>jquery的常见特效</h3>
+                <p>从后端获取数据，用瀑布流布局摆放数据</p>
+                <ul class='clearfix'>
+                    <li><a href='index.html'>懒加载</a></li>
+                    <li><a href='index2.html'>tab切换</a></li>
+                    <li><a href='index3.html'>无限加载瀑布流</a></li>
+                    <li><a href='index4.html'>回到顶部</a></li>
+                    <li><a href='index5.html'>stickUp</a></li>
+                </ul>
+
+            </div>
+            <div class='view'>
+                <div class='waterfall'>
+                    <ul class='waterfall-ct clearfix'>
+                       
+                    </ul>
+                    <div class='loading'>
+                        <a  herf='# 'class='load'>加载更多</a>
+                    </div>
+                        
+                </div>
+            </div>
+        </div>
+      
+        <script>
+           var waterfall={
+                init:function() {
+                    this.$target=$('.load');
+                    this.page=1;
+                    this.len=12;
+                    this.scrollT=$(window).scrollTop();
+                    this.winH=$(window).height();
+                    this.clock;
+                    this.colSumHeight=[];
+                    console.log(this.page);
+                },
+                bind:function() {
+                    var $cur=this;
+                    $cur.$target.on('click',function() {
+                        if($cur.clock) {
+                            clearTimeout($cur.clock);
+                        }
+                        
+                        $cur.clock=setTimeout(function() {
+                            $cur.checkShow()
+                        },100);
+                    });
+                },
+                checkShow:function() {
+                    var $cur=this;
+                    if($cur.isShow($cur.$target)) {
+                        $cur.dosth();
+                    }
+                    console.log(2);
+                },
+                isShow:function() {
+                    var $cur=this;
+                    
+                    
+                    console.log($cur.winH+$cur.scrollT);
+                    if(500<$cur.winH+$cur.scrollT) {
+                        return true;
+                    }else {
+                        return false;
+                    }
+                },
+                dosth:function() {
+                    var $cur=this;
+                    $.ajax({
+                        url:'http://platform.sina.com.cn/slide/album_tech',
+                        type:'get',
+                        dataType:'jsonp',
+                        jsonp:'jsoncallback',
+                        data:{
+                            app_key:'1271687855',
+                            num:$cur.len,
+                            page:$cur.page
+                        },
+                        success:function(ret) {
+                            if(ret.status.code==='0') {
+                                $cur.dataArr=ret.data;
+                                $cur.nodes=$cur.renderData($cur.dataArr);
+                                console.log(ret.data);
+                                console.log($cur.nodes);
+                                $cur.render($cur.nodes);
+                                $cur.page++;
+                                console.log($cur.page);
+                            }
+                        }
+                    });
+                },
+                    renderData:function(items) {
+                        var tpl = '',
+                        $nodes;
+                        console.log($nodes);
+                        for(var i = 0;i<items.length;i++){
+                        tpl += '<li class="item">';
+                        tpl += ' <a href="'+ items[i].url +'" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
+                        tpl += ' <h4 class="header">'+ items[i].short_name +'</h4>';
+                        tpl += '<p class="desp">'+items[i].short_intro+'</p>';
+                        tpl += '</li>';
+                        }
+                        $nodes = $(tpl);
+                        console.log($nodes);
+
+                        $('.waterfall-ct').append($nodes);
+                        return $nodes;
+                },
+                render:function($nodes) {
+                    var $cur=this;
+                        $cur.nodeWidth=$nodes.outerWidth(true);
+                        console.log($cur.nodeWidth);
+                        $cur.sumWidth=$('.waterfall-ct').width();
+                        $cur.colNum=parseInt($cur.sumWidth/$cur.nodeWidth);
+                        console.log($cur.colNum);
+                        console.log($cur.colSumHeight.length);
+                        if($cur.colSumHeight.length===0) {
+                            for(var i=0;i<$cur.colNum;i++) {
+                                $cur.colSumHeight.push(0);
+                            }
+                        }
+                    console.log($cur.colSumHeight);
+                    $nodes.each(function() {
+                        var $cur1=$(this);
+                        $cur1.find('img').on('load',function() {
+                            $cur.idx=0;
+                            console.log($cur.colSumHeight);
+                            $cur.minHeight=$cur.colSumHeight[0];
+                            for(var i=0;i<$cur.colSumHeight.length;i++) {
+                                if($cur.colSumHeight[i]<$cur.minHeight) {
+                                    $cur.idx=i;
+                                    $cur.minHeight=$cur.colSumHeight[i]
+                                }
+                            }
+                            $cur1.css({
+                                left:$cur.idx*$cur.nodeWidth,
+                                top:$cur.minHeight
+                            });
+                            $cur.colSumHeight[$cur.idx]+=$cur1.outerHeight(true);
+                             $('.waterfall-ct').height(Math.max.apply(null,$cur.colSumHeight));
+                        });
+                    });
+                },
+                open:function() {
+                    var $cur=this;
+                    $cur.init();
+                    $cur.bind();
+                    $cur.checkShow();
+                }
+    }
+    waterfall.open();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task28-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	#header{
+		height:80px;
+		background:red;
+		text-align:center;
+		line-height:80px;
+	}
+	#nav{
+		height:40px;
+		background:blue;
+		margin-top:20px;
+	}
+	#content{
+		padding:10px;
+		background:#ccc;
+		min-height:800px;
+		overflow:auto;
+	}
+	#content .aside{
+		width:100px;
+		height:400px;
+		float:left;
+		background:green;
+	}
+	#content .main{
+		background:#fff;
+		min-height:800px;
+		padding-left:20px;
+		overflow:auto;
+	}
+	#footer{
+		background:#333;
+	}
+</style>
+</head>
+<body>
+   <div id="header">header</div>
+   <div id="nav">nav</div>
+   <div id="content">
+       <div class="aside">aside</div>
+       <div class="main">main</div>
+   </div> 
+   <div id="footer">footer</div>
+   <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+   <script type="text/javascript">
+        var $nav=$('#nav'),
+           navHeight=$nav.height(),
+           navWidht=$nav.width(),
+           offsetTop=$nav.offset().top,//获取匹配元素相对于当前视口上方的位移
+           offsetLeft=$nav.offset().left;//获取匹配元素相对于当前视口左方的位移
+        var $navClone=$nav.clone().css({visibility:'hidden',display:'none'}).insertBefore($nav);
+
+        $(window).on('scroll',function(){
+        	var scrollTop=$(this).scrollTop();//获取匹配元素相对滚动条顶部的偏移
+
+        	if(scrollTop>=offsetTop){
+        		if(!isFixed()){
+        			setFixed();
+        		}
+        	}else{
+        		if(isFixed()){
+        			unsetFixed();
+        		}
+        	}
+        });
+
+        function isFixed(){
+        	return $nav.data('data-fixed');
+        }
+        function setFixed(){
+        	$nav.data('data-fixed',true)
+        	    .css({'position':'fixed',
+        	    	  'top':0,
+        	    	  'left':offsetLeft,
+        	    	  'width':navWidht,
+        	    	  'margin':0,
+        	    	  'z-index':9999
+        		});
+        	$navClone.show();
+        }
+        function unsetFixed(){
+        	$nav.data('data-fixed',false)
+        		.removeAttr('style');
+        	$navClone.hide();
+        }
+
+   </script>
+</body>
+</html>
+
+<!-- 问题：1.为什么给content添加clearfix无法清除浮动？
+		   2.z-index的值不需要设置那么大可以吗？
+ -->

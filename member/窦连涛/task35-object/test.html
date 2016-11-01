@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function People(name=null){
+			this.name = name;
+		}
+
+		People.prototype.sayName = function(){
+			console.log(this.name);
+		}
+
+		People.prototype.name="hello";
+
+		P1 = new People('DouLianTao');
+		P2 = new People();
+
+
+
+
+	</script>
+</body>
+</html>

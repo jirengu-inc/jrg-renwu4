@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>stickup顶部导航</title>
+	<style>
+		#header .poster{
+			background: red;
+			height: 50px;
+			margin-bottom: 20px;
+		}
+		#header .nav{
+			background: pink;
+			height: 30px;
+		}
+		#content:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		#content{
+			padding: 10px ;
+			background: #ccc;
+		}
+		#content .main{
+			background: #fff;
+			height: 1000px;
+			overflow: auto;
+		}
+		#content .aside{
+			width: 100px;
+			height: 500px;
+			background: green;
+			float: left;
+		}
+		#footer{
+			height: 30px;
+			background: blue;
+			margin-top: 10px;
+			color: #fff;
+		}		
+
+	</style>
+</head>
+<body>
+ <div id="header">
+ 	<div class="poster">poster</div>
+ 	<div class="nav">nav</div>
+ </div>
+ <div id="content">
+ 	<div class="aside">aside</div>
+  	<div class="main">main</div>
+ </div>
+ <div id="footer">footer</div>
+
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+$.fn.stickup = function(){
+	var $el = this,
+		$elW = $el.width(),
+		$elH = $el.height(),
+		$elTop = $el.offset().top,
+		$elLeft = $el.offset().left;
+	
+	var $Nel = $el.clone()
+			   .css('opacity',0)
+			   .insertBefore($el)
+			   .hide();
+
+	$(window).on('scroll',function(){
+		var $scrollTop = $(this).scrollTop();	
+		if($scrollTop >= $elTop){
+			if(!isFixed()){
+				setFixed();
+				console.log(!isFixed());
+			}
+		}else{
+			if(isFixed()){
+				unsetFixed();
+				console.log(isFixed());
+			}
+		}
+	});
+
+	function isFixed(){
+		return $el.data('data-fixed');
+	}
+	function setFixed(){
+		$el.data('data-fixed',true)
+			.css({
+				'position': 'fixed',
+				'top': 0,
+				'left': $elLeft,
+				'width': $elW,
+				'z-index': 9999
+			});
+		$Nel.show();	
+	}
+	function unsetFixed(){
+		$el.data('data-fixed',false)
+		   .removeAttr('style');
+		$Nel.hide();
+	}
+}
+$('.nav').stickup();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>29-2-图片懒加载</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"> </script>
+    <style>
+    ul,li{
+          list-style:none;
+        }
+        .lazy{
+          width: 800px;
+          margin: 0 auto;
+        }
+        .lazy li{
+          float: left;
+          margin: 10px 10px;
+        }
+        .lazy li img{
+          width: 220px;
+          height: 300px;
+        }
+
+    </style>
+  </head>
+  <body>
+
+    <ul class="lazy">
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww3.sinaimg.cn/mw1024/911825fbgw1f6inzrcflyj20go0m9q54.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww3.sinaimg.cn/mw1024/911825fbgw1f6inzq6fooj20i20r3792.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww3.sinaimg.cn/mw1024/911825fbgw1f6j6ps9wjtj20bt0htq5f.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6j6pqukxkj20fo0kn76p.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6j6pqpln7j209l0ed75p.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww3.sinaimg.cn/mw1024/911825fbgw1f6j6pq8s4dj20fo0lqq7a.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6j6ppxqmpj20fo0m877h.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6j6ppibkyj20fh0m842p.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6j6popb6cj20d30m80x6.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6j6pow51mj20ar0geq5k.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6jtsm6y05j20hs0f70us.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww2.sinaimg.cn/mw1024/911825fbgw1f6jtsjkdftj20ia0rf41f.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww4.sinaimg.cn/mw1024/911825fbgw1f6jts73sn0j20ia0rf423.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww1.sinaimg.cn/mw1024/911825fbgw1f6jtsif6oyj20gl0bsn22.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww2.sinaimg.cn/mw1024/911825fbgw1f6jtsgl86mj20i80cvn21.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww3.sinaimg.cn/mw1024/911825fbgw1f6jtsbkzhdj20c80icta9.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww3.sinaimg.cn/mw1024/911825fbgw1f6jts9shr5j20c80c83zx.jpg"></a></li>
+      <li><a href="#"><img src="http://images.shejidaren.com/wp-content/uploads/2015/11/loading-gif-9.gif" data-img="http://ww3.sinaimg.cn/mw1024/911825fbgw1f6jts99y3yj20c8085my3.jpg"></a></li>
+
+    </ul>
+    <script type="text/javascript">
+      var clock;
+      $(window).on('scroll',function(){
+        if (clock) {
+          clearTimeout(clock);
+        }
+        clock = setTimeout(function(){           // 设置一个延时函数 ..300毫秒内如果不动就只执行一次，如果之内再滚动窗口即执行 ⬆️  上述clear代码清除clock再重新执行showN()
+          showN();                               // 直到300毫秒内 不再滚动 才会加载完图片
+        },300)
+
+
+      });
+
+      showN();   //窗口未滚动前 要执行一次  展示已经出现在窗口的图片
+
+      function showN(){
+        $('.lazy img').each(function(){
+          var $cur = $(this);
+          if ($cur.attr('loaded')) {      //如果已经有loaded这个自定属性，就直接return显示，这些不再遍历，减少资源浪费
+            return;
+          }
+          if (isShow($cur)) {             //如果if里的条件正确 就执行showImg
+            showImg($cur);
+            $cur.parents('a').attr('href','javascript:void(0)');
+          }
+        });
+      }
+      function isShow($el){
+        var crollH = $(window).scrollTop(),
+            windH = $(window).height(),
+            top = $el.offset().top;
+        if (crollH + windH > top) {      //如果滚动距离 加 窗口高度 大于元素到根节点顶部的距离 则true即展示图片
+          return true;
+        }else {
+          return false;
+        }
+      }
+
+      function showImg($el){
+        $el.attr('src',$el.attr('data-img'));    //将图片储存在 自定义属性里，需要时将它赋予真实属性  减少页面缓存时间
+
+        $el.attr('loaded',true);                // 真实属性被赋予图片位置后 loaded变为true
+      }
+
+    </script>
+
+  </body>
+</html>
