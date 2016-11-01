@@ -1,0 +1,181 @@
+html,body,ul,li,h1{
+  margin:0;
+  padding: 0;
+}
+
+html,body{
+  font:16px/1.5 "Montserrat","Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color:rgba(0, 0, 0, 0.4);
+}
+
+.layout {
+  width: 1000px;
+  margin:0 auto;
+}
+
+.clearfix{
+  *zoom:1;
+}
+
+.clearfix:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.header-wrap-nav>li{
+  float: left;
+  margin-right: 20px;
+  position: relative;
+}
+
+.header-wrap-nav>li:nth-child(2):hover .sub{
+  display: block;
+}
+
+.header-wrap-nav li a{
+  display: block;
+  padding: 20px;
+  height: 20px;
+}
+
+.header-wrap-nav>li:first-child a{
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.header-wrap-nav>li:nth-child(2):after{
+  content: '';
+  display: block;
+  width: 0px;
+  height: 0px;
+  border-top:5px solid #ccc;
+  border-right:5px solid transparent;
+  border-bottom:5px solid transparent;
+  border-left:5px solid transparent;
+  position: absolute;
+  top:28px;
+  right: 0px;
+}
+
+.header-wrap-nav>li:nth-child(2) ul{
+  display: none;
+  position: absolute;
+  border:1px solid #ccc;
+  background: #FFF;
+}
+
+.header-wrap-nav>li:nth-child(2) ul li a{
+  width: 73px;
+}
+
+.header-wrap-nav>li:nth-child(2) ul li a:hover{
+  background: #ccc;
+  color:#FFF;
+}
+
+.header-logo {
+  height: 310px;
+  background: #b84d45;
+}
+
+#main {
+  margin:20px 0;
+}
+
+.main-nav {
+  background: #F5F5F5;
+  line-height: 50px;
+  border-radius: 5px;
+  text-indent: 30px;
+  color:rgba(0, 0, 0, 0.4);
+}
+
+.main-nav a{
+  color: #b84d45;
+}
+
+.main-content{
+  margin:30px 0;
+}
+
+.main-works {
+  margin-left: -30px;
+  text-align: center;
+}
+
+.main-works li{
+  width: 303px;
+  padding: 4px;
+  border:1px solid #ccc;
+  border-radius: 5px;
+  float: left;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+
+.main-works .img {
+  width: 303px;
+}
+
+.main-works .img:hover{
+  opacity:0.7;
+}
+
+.main-works h3{
+  font-size:25px;
+}
+
+.main-works p{
+  padding: 1px;
+  margin:30px 0;
+}
+
+.btn{
+  display: inline-block;
+  padding: 5px 10px;
+  border:1px solid #F2F2F2;
+  border-radius: 5px;
+  color:#000;
+  margin-bottom: 20px;
+}
+
+
+/*footer*/
+#footer {
+  text-align: center;
+}
+
+.detail-wrap{
+  background: #b84d45;
+  padding:50px 0;
+}
+
+.detail p{
+  color:#FFF;
+}
+
+.detail p:first-child {
+  font-size: 30px;
+}
+
+#footer hr{
+  width: 1000px;
+  margin:50px auto 20px;
+}
+
+#footer>p{
+  margin-bottom: 100px;
+}
+
+#footer>p a{
+  color:#b84d45;
+}
