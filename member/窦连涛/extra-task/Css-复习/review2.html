@@ -7,8 +7,8 @@
 	兄弟		正常文档流                    解决办法 浮动 转化为行内元素 overflow:hidden
 	自身		正常文档流 无内容有margin       解决办法 border padding overflow:hidden
 
-3 box-sizing:border-box 
-	
+3 box-sizing:border-box
+
 	使得宽高=内容+border+adding
 
 4 IE 盒模型和W3C盒模型有什么区别?
@@ -20,8 +20,8 @@
 	多张图片合成 减少HTTP请求数
 
 6 img标签和CSS背景使用图片在使用场景上有何区别？
-	
-	固定不变的CSS背景图 
+
+	固定不变的CSS背景图
 
 7 如何让一个div水平居中？如何让图片水平居中
 
@@ -35,7 +35,7 @@
 	opacity能够被继承，rgba不行
 
 9 background-size
-	
+
 	作用是设置背景图片的大小。常用的值有：
 	px 可以为一个或者两个值，分别设置图片的长和宽
 	% 可以为一个值或者两个值 以父元素的百分比来设置长和宽
@@ -43,12 +43,12 @@
 	contain 让背景图片完全覆盖内容区域
 
 10 CSS 定位机制有三种
-	
+
 	文档流 、浮动 、定位
 
 			position:absolute 和 position:fixed 、float、display:none 脱离文档流
 
-	四种定位方式	
+	四种定位方式
 
 				是否定位				参考点			使用场景
 
@@ -65,7 +65,7 @@
 
 		            对周围元素产生影响				原理
 
-	负margin            产生影响					CSS盒子模型一个属性
+	负margin        产生影响					CSS盒子模型一个属性
 	position 		   不产生影响					CSS的一个定位机制
 
 
@@ -88,16 +88,15 @@
 		1.父元素的高度无坍塌
 		2.破坏布局
 
+14 BFC
 
-14 BFC 
+15 父容器使用overflow: auto| hidden撑开高度的原理
 
-15 父容器使用overflow: auto| hidden撑开高度的原理 
-		
 		父元素形成BFC
 
 16 使用display:inline-block 之后的块级元素会产生缝隙，如何去除呢？
 
-		4种方法
+		2种方法 父元素 font-size:0  浮动元素 margin-left:-4px;
 
 17 另外BFC 还有一个作用 就是让围绕浮动元素的文字不再环绕。overflow:hidden
 
@@ -107,17 +106,17 @@
 
 			特点 ： 侧边栏固定  内容区域撑开并占用 剩下的空间
 
-			解决 :  侧边栏浮动 内容区 形成BFC overflow:hidden
+			解决 :  侧边栏浮动  内容区形成BFC overflow:hidden
 
-			注意 ： 宽度设置为100% 是相对于父容器
+	负边距两栏布局
 
-	负边距两栏布局 
-	
 			特点 ： 侧边栏固定  内容区域撑开并占用 剩下的空间
 
-			解决 : 侧边栏和内容区域 都浮动 侧边栏-margin:侧边栏宽度 
+			解决 : 侧边栏和内容区域 都浮动 清除浮动
 
-				  父容器 padding:侧边栏宽度 侧边栏再position:relative left:-宽度
+						内容区相对定位 left的距离是侧边栏的宽度
+						侧边栏margin-left:-100%
+			注意 ： 宽度设置为100% 是相对于父容器
 
 19 圣杯布局 和 双飞翼布局
 
@@ -191,21 +190,10 @@
 					right:50%;
 					margin-left:-100px;(宽度一半)
 					margin-top:-100px;（高度一半）
-					
+
 			3.2 宽高不知，由内容撑开
 
 					position:absolute
 					left:50%;
 					right:50%;
 					transform:translate（-50%，-50%）;
-
-	
-
-
-
-	
-
-
-
-	
-

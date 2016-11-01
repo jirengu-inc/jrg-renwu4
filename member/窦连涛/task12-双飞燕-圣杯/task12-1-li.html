@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>多个li浮动</title>
+  <title>多个li浮动---两端对齐</title>
   <style>
     html,body,ul,li{
       margin: 0;
@@ -14,12 +14,14 @@
     }
 
     .layout-960 {
-      width: 960px;
+      width: 1010px;
       margin: 0 auto;
     }
 
     #content {
       margin-top: 30px;
+      overflow: hidden;
+      /*padding:1px; 父子间的合并*/
     }
 
     .main{
@@ -29,7 +31,7 @@
     }
 
     .loop{
-      margin-left: -20px;
+      margin-left: -10px;
     }
 
     .loop:after{
@@ -40,12 +42,13 @@
 
     .loop>li{
       float: left;
-      width: 306px;
+      width: 330px;
       height: 40px;
       margin-top: 10px;
-      margin-left:20px;
+      margin-left:10px;
       background: green;
     }
+    /*计算公式 总宽度 1010-li(margin-left:20)*2两边空白 = 920px 920/6=306 */
   </style>
 </head>
 <body>

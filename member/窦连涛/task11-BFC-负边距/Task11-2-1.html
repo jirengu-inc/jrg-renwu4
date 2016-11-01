@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>BFC两栏布局</title>
+	<title>负边距两栏布局</title>
 	<style>
 		* {
 			margin: 0;
@@ -13,22 +13,34 @@
 			height: 40px;
 			background: red;
 		}
+
 		#content .aside{
 			width:200px;
 			float:left;
 			background: rgba(2,2,252,0.2);
+			margin-left:-100%;
 		}
 		#content .main {
 			background: pink;
-			overflow: auto;
+			float: left;
+			position: relative;
+			left:200px;
+		}
+		/*侧边栏和内容区域都浮动
+		内容区相对定位 left的距离是侧边栏的宽度
+		侧边栏margin-left:-100%
+		*/
+		#content:after {
+			content:'';
+			display: block;
+			clear: both;
 		}
 	</style>
 </head>
 <body>
 	<div id="header">header</div>
     <div id="content">
-        <div class="aside">aside</div>
-        <div class="main">
+    	 <div class="main">
             我是main
             我是main 我是main 我是main 我是main
             我是main 我是main 我是main 我是main
@@ -55,6 +67,8 @@
             我是main 我是main 我是main 我是main
             我是main 我是main 我是main 我是main
         </div>
+        <div class="aside">aside</div>
+
     </div>
     <div id="footer">footer</div>
 </body>
