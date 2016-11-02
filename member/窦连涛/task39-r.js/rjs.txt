@@ -49,4 +49,4 @@ baseUrl
 
       main.js 相对于index.html
 
-      build.js 相当于自身而言 
+      build.js 相当于自身而言

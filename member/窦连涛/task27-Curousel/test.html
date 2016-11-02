@@ -107,87 +107,10 @@
     <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script>
-      $(function(){
-        var $ct = $('.img-ct'),
-            $next = $('.next'),
-            $pre = $('.pre'),
-            $items = $ct.children(),
-            $imgCount = $ct.children().size(),
-            $imgWidth = $ct.find('li').width(),
-            $bullet = $('.bullet');
+      var curousel = function(){
+        
 
-
-            $ct.append($items.first().clone());
-            $ct.prepend($items.last().clone());
-            var $imgRealCount = $ct.children().size();
-            $ct.css({left:0 - $imgWidth,width:$imgWidth * $imgRealCount});
-
-            var curId = 0;
-            var isAnimate = false;
-
-            $bullet.on('click','li',function(){
-                var idx = $(this).index();
-                if(idx > curId){
-                  playNext(idx - curId);
-                }else if(idx < curId){
-                  playPre(curId - idx);
-                }
-            })
-
-            $next.on('click',function(){
-               playNext();
-            })
-
-            $pre.on('click',function(){
-                playPre();
-            })
-
-            autoPlay();
-
-            function autoPlay(){
-              clock = setInterval(function(){
-                playNext();
-              },3000);
-            }
-
-            function stopAuto(){
-              clearIntervel(clock);
-            }
-
-            function playNext(idx){
-              var idx = idx || 1;
-              if(!isAnimate){
-                isAnimate = true;
-                $ct.animate({left:"-=" + $imgWidth * idx},function(){
-                  curId = (curId + idx ) % $imgCount;
-                  if(curId === 0){
-                    $ct.css({left : 0 - $imgWidth});
-                  }
-                  isAnimate = false;
-                  setBullet();
-                })
-              }
-            }
-
-            function playPre(idx){
-              var idx = idx || 1;
-              if(!isAnimate){
-                isAnimate = true;
-                $ct.animate({left: "+=" + $imgWidth * idx},function(){
-                  curId = ($imgCount + curId - idx) % $imgCount;
-                  if(curId === $imgCount -1){
-                    $ct.css({left : 0 - ($imgWidth*$imgCount)});
-                  }
-                  isAnimate = false;
-                  setBullet();
-                })
-              }
-            }
-
-            function setBullet(){
-              $bullet.find('li').removeClass('active').eq(curId).addClass('active');
-            }
-      })
+      }
     </script>
 </body>
 </html>
