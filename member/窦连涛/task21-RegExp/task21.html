@@ -16,19 +16,29 @@
   // console.log(trim(" @!1+2(34)! "));
   // console.log(trim(" +1*2/34-^ "));
 
-  function addClass(el, cls){
 
+
+  function trim(str) {
+      return str.replace(/^\s+|\s+$/g, "");
+  }
+
+
+  function addClass(el, cls) {
+      if (!hasClass(el, cls)) {
+          el.className += " " + cls;
+      }
   }
 
   function hasClass(el, cls) {
-
+      var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)')
+      return reg.test(el.className);
   }
 
   function removeClass(el, cls) {
-
+      var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)')
+          tmp = node.className.replace(reg, '').replace(/\s{2,}/g, ' '); //把两个以上的空格替换为一个空格
+      el.className = trim(tmp);
   }
-
-
 
   function isEmail(str){
     var patt = /\S+[\w]{3,16}@[\w]{3,16}\.{1}.{,10}(\S+)$/ig;
