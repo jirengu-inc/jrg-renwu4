@@ -265,7 +265,7 @@
       return newArr;
     }
 
-
+    // 完全深拷贝
     function deepCopy(copy){
       var newCopy;
       if(typeof copy === "object" && copy instanceof Array){
@@ -289,7 +289,6 @@
       }else{
         newCopy = copy;
       }
-
       return newCopy;
     }
   </script>

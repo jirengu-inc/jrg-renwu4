@@ -19,7 +19,7 @@ Date本身是一个对象 但是为了更好的显示浏览效果 自动调用�
 
         ** new Date().getTime() == Date.now()
 
-    获取SET
+    获取GET
 
       d.getFullYear();
       d.getMonth(); 需要加1
@@ -27,7 +27,7 @@ Date本身是一个对象 但是为了更好的显示浏览效果 自动调用�
       d.getDate(); 几号；
       d.getMillsecond() 毫秒数
 
-    设置GET
+    设置SET
 
     不仅可以通过毫秒数获取事件对象，还可以通过字符串
 
