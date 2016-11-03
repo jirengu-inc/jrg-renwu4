@@ -1,77 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset = "utf-8">
-	<title>jQ carousel</title>
+	<meta charset="utf-8">
+	<title>lunbo</title>
 	<style>
 		*{
-			margin:0;padding: 0;
+			margin:0;padding:0;
 		}
 		ul,li{
 			list-style: none;
 		}
 		a{
 			text-decoration: none;
-			color:#FFF;
 		}
-		.carousel{
-			width:480px;height:360px;
+		.carsouel{
+			width:480px;
+			height:360px;
+			position:relative;
+			overflow: hidden;
+		}
+		.carsouel .img-ct{
 			position: relative;
 		}
-		.img-ct{
-			width:480px;height:360px;
-			position:relative;
-			overflow:hidden;
+		.carsouel:after{
+			content: "";
+			display: block;
+			clear:both;
 		}
-		.img-ct li{
+		.carsouel .img-ct li{
 			display: none;
-
+		}
+		.img-ct li a img{
+			width:480px;
+			height:360px;
 		}
 		.arrow{
-			width:30px;height:30px;border-radius: 50%;
+			width:30px;
+			height:30px;
+			color:#FFF;
+			line-height: 30px;
+			text-align: center;
+			font-size: 20px;
+			border-radius:50%;
 			background: rgba(10,10,10,0.7);
-			text-align: center;line-height: 30px;
 		}
-		.prev{
-			position: absolute;
-			left: 20px;
+		.next{
+			position:absolute;
+			right:20px;
 			top:50%;
 			transform: translateY(-50%);
 		}
-		.next{
-			position: absolute;
-			right: 20px;
+		.prev{
+			position:absolute;
+			left:20px;
 			top:50%;
 			transform: translateY(-50%);
 		}
 		.bullet{
-			position: absolute;
-			bottom:20px;
+			
+			position:absolute;
+			bottom:10px;
 			left:50%;
 			transform: translateX(-50%);
-			cursor: pointer;
+			
 		}
-		.bullet li{
-			width:30px;height:6px;border-radius: 3px;
+		.bullet li {
+			width:20px;height:6px;
+			border-radius:3px;
+			margin:0 10px;
+			background: #888;
 			display: inline-block;
-			background: #222;margin-right: 10px;
+			cursor:pointer;
 		}
 		.bullet .active{
-			background:#FFF;
+			background: #FFF;
 		}
-		
 	</style>
 </head>
 <body>
-	<div class="carousel">
+	<div class="carsouel">
 		<ul class="img-ct">
 			<li><a href="#"><img src="1.jpg"></a></li>
 			<li><a href="#"><img src="2.jpg"></a></li>
 			<li><a href="#"><img src="3.jpg"></a></li>
 			<li><a href="#"><img src="4.jpg"></a></li>
 		</ul>
-		<a class="arrow next" href="#">></a>
-		<a class="arrow prev" href="#"><</a>
+		<a href="#" class="next arrow">></a>
+		<a href="#" class="prev arrow"><</a>
 		<ul class="bullet">
 			<li></li>
 			<li></li>
@@ -79,63 +94,70 @@
 			<li></li>
 		</ul>
 	</div>
+	
 	<script src="../jquery-3.1.1.min.js"></script>
 	<script>
-		var $ct = $(".img-ct"),
-			$items = $(".img-ct").children(),
-			$next = $(".next"),
-			$prev = $(".prev"),
-			$bullet = $(".bullet"),
-			imgWidth = $items.width(),
-			imgCount = $(".img-ct").children().length;
-		var curIdx = 0,
-			isAnimate = false;
-
-
-		$next.on("click",function(){
-			playNext();
-		});
-		$prev.on("click",function(){
-			playPrev();
-		});
-		$bullet.children().on("click",function(){
-			var idx = $(this).index();
-			console.log(idx);
-			play(idx);
-		});
-
+		$curIdx = 0;
+		$idx = 0;
+		$items = $(".img-ct").children();
+		$bl = $(".bullet").children();
+		$itemsCount = $(".img-ct").children().length;
+		$isAnimate = false;
+		
 		play(0);
 		autoPlay();
 
+		$(".next").on("click",function(){
+			playNext();
+		});
+		$(".prev").on("click",function(){
+			playPrev();
+		});
+		$(".bullet li").on("click",function(){
+			$a = $(this).index();
+			console.log($a);
+			play($a);
+		})
 		function playNext(){
-			play( (curIdx+1)%imgCount );
+			play( ($curIdx+1) % $itemsCount );
 		};
 		function playPrev(){
-			play( (curIdx-1+imgCount)%imgCount );
+			play ( ($itemsCount + $curIdx - 1) % $itemsCount);
 		};
-		function play(idx){
-			console.log(idx);
-			if(isAnimate) return;
-			isAnimate = true;
-			$items.eq(curIdx).fadeOut(500);
-			$items.eq(idx).fadeIn(500,function(){
-				isAnimate = false;
+		function play(a){
+			if($isAnimate)	return;
+			$isAnimate = true;
+			$items.eq($curIdx).fadeOut(500);
+			$items.eq(a).fadeIn(500,function(){
+				$isAnimate = false;
 			});
-			curIdx = idx;
+			$curIdx = a;
+			
 			setBullet();
 		};
 		function setBullet(){
-			$bullet.children().removeClass("active")
-							  .eq(curIdx).addClass("active");
-		};
-		function stopAuto(){
-			clearInterval(clock);
+			$bl.removeClass("active");
+			$bl.eq($curIdx).addClass("active");
+			console.log(1);
 		};
 		function autoPlay(){
 			clock = setInterval(function(){
 				playNext();
-			},3000);
+			},6000);
 		};
+		function stopClock(){
+			clearInterval(clock);
+		}
+
+
+
 	</script>
 </body>
 </html>
+
+
+
+
+
+
+

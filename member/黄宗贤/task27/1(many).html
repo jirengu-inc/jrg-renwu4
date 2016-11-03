@@ -17,10 +17,12 @@
 		.carousel{
 			width:480px;height:360px;
 			position: relative;
+			border:1px solid red;
 		}
 		.img-ct{
 			width:480px;height:360px;
 			position:relative;
+			border:1px solid blue;
 			overflow:hidden;
 		}
 		.img-ct li{
@@ -128,6 +130,7 @@
 				imgCount = $items.length;
 			var curIdx = 0,isAnimate = false;
 
+			console.log($next);
 			play(0);
 			autoRun();
 
