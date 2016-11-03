@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "utf-8">
+	<title>jQ carousel</title>
+	<style>
+		*{
+			margin:0;padding: 0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color:#FFF;
+		}
+		.carousel{
+			width:480px;height:360px;
+			position: relative;
+		}
+		.img-ct{
+			width:480px;height:360px;
+			position:relative;
+			overflow:hidden;
+		}
+		.img-ct li{
+			display: none;
+
+		}
+		.arrow{
+			width:30px;height:30px;border-radius: 50%;
+			background: rgba(10,10,10,0.7);
+			text-align: center;line-height: 30px;
+		}
+		.prev{
+			position: absolute;
+			left: 20px;
+			top:50%;
+			transform: translateY(-50%);
+		}
+		.next{
+			position: absolute;
+			right: 20px;
+			top:50%;
+			transform: translateY(-50%);
+		}
+		.bullet{
+			position: absolute;
+			bottom:20px;
+			left:50%;
+			transform: translateX(-50%);
+		}
+		.bullet li{
+			width:30px;height:6px;border-radius: 3px;
+			display: inline-block;
+			background: #999;margin-right: 10px;
+			cursor:pointer;
+		}
+		.bullet .active{
+			background:#FFF;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="carousel c1">
+		<ul class="img-ct">
+			<li><a href="#"><img src="1.jpg"></a></li>
+			<li><a href="#"><img src="2.jpg"></a></li>
+			<li><a href="#"><img src="3.jpg"></a></li>
+			<li><a href="#"><img src="4.jpg"></a></li>
+		</ul>
+		<a class="arrow next" href="#">></a>
+		<a class="arrow prev" href="#"><</a>
+		<ul class="bullet">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="carousel c2">
+		<ul class="img-ct">
+			<li><a href="#"><img src="1.jpg"></a></li>
+			<li><a href="#"><img src="2.jpg"></a></li>
+			<li><a href="#"><img src="3.jpg"></a></li>
+			<li><a href="#"><img src="4.jpg"></a></li>
+		</ul>
+		<a class="arrow next" href="#">></a>
+		<a class="arrow prev" href="#"><</a>
+		<ul class="bullet">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="carousel c3">
+		<ul class="img-ct">
+			<li><a href="#"><img src="1.jpg"></a></li>
+			<li><a href="#"><img src="2.jpg"></a></li>
+			<li><a href="#"><img src="3.jpg"></a></li>
+			<li><a href="#"><img src="4.jpg"></a></li>
+		</ul>
+		<a class="arrow next" href="#">></a>
+		<a class="arrow prev" href="#"><</a>
+		<ul class="bullet">
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script src="../jquery-3.1.1.min.js"></script>
+	<script>
+		//阻止默认事件，注意要传入event
+		$("a").on("click",function(event){
+			event.preventDefault(); 
+		})
+		$.fn.runCarousel = function(){
+			var $tmp = $(this),
+			    $ct = $tmp.find(".img-ct"),
+				$items = $ct.children(),
+				$prev = $tmp.find(".prev"),
+				$next = $tmp.find(".next"),
+				$bullet = $tmp.find(".bullet"),
+				imgWidth = $items.width(),
+				imgCount = $items.length;
+			var curIdx = 0,isAnimate = false;
+
+			play(0);
+			autoRun();
+
+			$next.on("click",function(){
+				playNext();
+			});
+			$prev.on("click",function(){
+				playPrev();
+			});
+			$bullet.children().on("click",function(){
+				var idx = $(this).index();
+				play(idx);
+			});
+
+			function playNext(){
+				//console.log((curIdx+1)%imgCount);
+				play( (curIdx+1)%imgCount );
+			};
+			function playPrev(){
+				play( (curIdx-1+imgCount)%imgCount );
+			};
+			function play(idx){
+				if(isAnimate) return;
+				isAnimate = true;
+				$items.eq(curIdx).fadeOut(500,function(){
+					//console.log("fadeOut");
+				});
+				$items.eq(idx).fadeIn(500,function(){
+					isAnimate =false;
+					//console.log("fadeIn");
+					//curIdx = idx;  不能写在这里，会延迟
+				});
+				curIdx = idx;
+				setBullet();
+			};
+			function autoRun(){
+				clock = setInterval(function(){
+					playNext();
+				},5000);
+			};
+			function stopAuto(){
+				clearInterval(clock);
+			};
+			function setBullet(){
+				console.log("bullet");
+				$bullet.children().removeClass("active")
+								  .eq(curIdx).addClass("active");
+			};
+		}
+
+		//注意each的写法
+		$('.carousel').each(function(index, value){
+			$(value).runCarousel();});
+		//$(".carousel").childern().runCarousel();
+		//$(".c2").runCarousel();
+		//$(".c3").runCarousel();
+	</script>
+</body>
+</html>
