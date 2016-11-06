@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>两栏三栏布局用浮动实现</title>
+  <style>
+      html,body,div{
+        padding: 0;
+        margin:0;
+      }
+
+      .ct {
+        width: 980px;
+        margin: 0 auto;
+        background: #CCC;
+      }
+
+      .ct:after{
+        content: '';
+        display: block;
+        clear: both;
+      }
+
+      .ct div:first-child{
+        width: 200px;
+        height: 300px;
+        background: green;
+        float: left;
+
+      }
+
+      /*.ct div:nth-child(2){
+        width: 200px;
+        height: 300px;
+        background: blue;
+        float: right;
+      }*/
+
+      .ct .main {
+        height: 400px;
+        background: red;
+        margin-left: 220px;
+        /*margin-right: 220px;*/
+      }
+  </style>
+</head>
+<body>
+  <div class="ct">
+    <div class="ad"></div>
+    <!-- <div class="aside"></div> -->
+    <div class="main"></div>
+  </div>
+  <!-- 和圣杯布局不一样的地方在于：
+    圣杯布局main在第一位
+    而这个布局main在最后一位 -->
+</body>
+</html>

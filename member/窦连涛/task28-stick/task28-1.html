@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>stick one</title>
+  <style>
+      html,body,div{
+        margin: 0;
+        padding:0;
+      }
+
+      .clear:after{
+        content: '';
+        display: block;
+        clear:both;
+      }
+
+      .clear {
+        *zoom:1;
+      }
+
+      .wrap{
+        width: 980px;
+        margin: 50px auto;
+      }
+
+      #header {
+        height: 50px;
+        background: green;
+      }
+
+      .con-top {
+        height: 50px;
+        background: yellow;
+      }
+
+      .con-midd {
+        height: 500px;
+      }
+
+      .con-midd-left {
+        float: left;
+        height: 500px;
+        width: 200px;
+        background: purple;
+      }
+
+      .con-midd-right {
+        float: right;;
+        height: 500px;
+        width: 280px;
+        background: cyan;
+      }
+  </style>
+</head>
+<body>
+
+    <div id="header" class="wrap">
+        Header
+    </div>
+    <div id="content" class="wrap">
+        <div class="con-top">nav1</div>
+        <div class="con-midd clear">
+          <div class="con-midd-left"></div>
+          <div class="con-midd-right"></div>
+        </div>
+    </div>
+
+    <div id="content1" class="wrap clear">
+        <div class="con-top">nav2</div>
+        <div class="con-midd clear">
+          <div class="con-midd-left"></div>
+          <div class="con-midd-right"></div>
+        </div>
+    </div>
+    <div id="footer">
+        Footer
+    </div>
+
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js"></script>
+  <script>
+    /*
+    设定为fixed 之后会出现问题
+    1 本身距离左面有距离 这个时候会漂移到左面
+    2 宽度会收缩
+    3 后面元素会顶上去
+
+    思路 获取元素本身真实的宽度
+        计算偏移量
+        插入一个元素来替换fixed 元素位置
+
+
+    */
+    $(function(){
+      $.fn.stick = function(handle){
+        var $cur = this,
+            $eWidth = $cur.width(), //获取元素的宽
+            $eHeight = $cur.height(), //获取元素的高
+            $eLeft = $cur.offset().left, //获取元素的左偏移量
+            $eTop = $cur.offset().top; // 获取元素的TOP偏移量
+            onChange = handle || function(){};
+
+            var $eClone = $cur.clone() //克隆自己
+                          .css('opacity',0) // 设置透明度为0
+                          .insertBefore($cur) // 在自己之前插入
+                          .hide();// 隐藏
+            $(window).on('scroll',function(){
+               var $scrollTop = $(this).scrollTop(); // 滚动条的位置
+
+               if($scrollTop >= $eTop){ // 滚动条的位置大于元素偏离的位置
+                 // 这个时候需要判断是向上滚动呢 还是向下滚动呢 ？
+                //  这个时候看有没有stick 上
+                 if(!isFixed()){ //
+                   setFixed();
+                   onChange.call($cur);
+                 }
+               }else{
+                 if(isFixed){
+                   unFixed();
+                 }
+               }
+            })
+
+            function isFixed(){
+              return !!$cur.attr('data-attr');
+              //  两次去反
+              //  如果$cur.attr('data-attr') 结果是 undefined 第一次取反是 ture 第二次取反 是false
+              //  如果$cur.attr('data-attr') 结果是 true 第一次取反是 false 第二次取反 是true
+            }
+            function setFixed(){
+              $cur.attr('data-attr',true)
+                   .css({
+                     'position':'fixed',
+                     'top':0,
+                     'left':$eLeft,
+                     'z-index':9999,
+                     'width':$eWidth,
+                     'margin':0
+                   })
+              $eClone.show();
+            }
+
+            function unFixed(){
+              $cur.removeAttr('data-attr')
+                  .removeAttr('style');
+              $eClone.hide();
+            }
+      }
+      $('#content .con-top').stick();
+    })
+  </script>
+</body>
+</html>

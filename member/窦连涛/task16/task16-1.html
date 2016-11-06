@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>数据类型</title>
+  <script>
+  function isNumber(el){
+    return typeof(el)=="number" ?  "Number类型": "不是Number类型，是"+typeof(el) + '类型';
+  }
+  function isString(el){
+      return typeof(el)=="string" ?  "String类型":"不是String类型，是"+typeof(el) + '类型';
+  }
+  function isBoolean(el){
+      return typeof(el)=="boolean" ?  "Boolean类型": "不是Boolean类型，是"+typeof(el) + '类型';
+  }
+  function isFunction(el){
+      return typeof(el)=="function" ?  "Function类型": "不是function类型，是"+typeof(el) + '类型';
+  }
+  var a = 2,
+    b = "jirengu",
+    c = false;
+console.log( isNumber(a) );
+console.log( isString(a) );
+console.log( isString(b) );
+console.log( isBoolean(c) );
+console.log( isFunction(a));
+console.log( isFunction( isNumber ) );
+  </script>
+</head>
+<body>
+
+</body>
+</html>

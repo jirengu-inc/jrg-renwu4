@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无限加载+jsonp+瀑布流</title>
+	<style>
+		ul,li,hr{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.wrap{
+			width: 1000px;
+			margin: 0 auto;
+			padding-right: 10px;
+		}
+		#pic-ct{
+			position: relative;
+		}
+		.item{
+			position: absolute;
+			width: 300px;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin: 0 0 10px 10px;
+			box-shadow: 5px 3px 3px #ccc;
+		}
+		.item img{
+			width: 300px;
+		}
+		.item hr{
+
+		}
+		.hide{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+<div class="wrap">
+    <div class="ct-waterfall">
+    	<ul id="pic-ct">
+				<li class="item hide"></li>
+    	</ul>
+    	<div id="load"></div>
+    </div>
+</div>
+
+ <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+    var $load = $('#load'),
+    	clock;
+    //曝光加载
+	exposure($load);
+    
+	$(window).on('scroll',function(){
+		if(clock){
+			clearTimeout(clock);
+		}
+		clock = setTimeout(function(){
+			exposure($load);
+		},200)
+	})
+	//曝光加载
+	function exposure($load){
+		if(isShow($load)){
+			console.log(isShow($load));
+			ajaxGo();
+		}
+	}
+	//判断元素是否出现在视口
+	function isShow($el){
+		var $elT = $el.offset().top,
+		    $winH = $(window).height(),
+	        $winGo = $(window).scrollTop();
+			if($winGo + $winH > $elT){
+				return true;
+			}else{
+				return false;
+			}
+	}
+
+    var page = 1;
+    var num =10;
+	function ajaxGo(){
+		$.ajax({
+			url :'http://platform.sina.com.cn/slide/album_tech',
+			dataType :'jsonp',
+			jsonp :'jsoncallback',
+			data :{
+				app_key:'1271687855',
+     			num: num,
+				page: page
+			},
+			success:function(ret){
+				if(ret.status.code === '0'){
+					page++
+					onAppend(ret)
+				}else{
+					alert('请求出错。。。')
+				}
+			}
+		})
+	}
+	//把元素append到页面上
+	function onAppend(ret){
+		$.each(ret.data,function(k,v){
+			var $el = strJoint(v);//拼接dom节点
+			$('#pic-ct').append($el);//把元素append到页面上
+		})
+		waterfall($('.item'));//瀑布流
+	}
+	//拼接dom节点
+	function strJoint(v){
+		var str = '';
+		str += '<li class="item">';
+		str += '<a href="' + v.cmnt_url  + '">';
+		str += '<img src="' + v.img_url + '" alt="">';
+		str += '</a>';
+		str += '<h4 class="header">' + v.short_name + '</h4>';
+		str += '<hr/>';
+		str += '<p class="desp">' + v.short_intro + '</p>';
+		str += '</li>';
+		return str
+	}
+	//瀑布流
+    var itemH = [];
+	function waterfall($el){
+		var $itemW = $el.outerWidth(true),
+	        $itemS = parseInt($('.wrap').width()/$itemW);
+	    if(itemH.length === 0){
+			for(var i=0; i<$itemS; i++){
+			    itemH[i] = 0;
+		    }
+	     }   
+		$el.each(function(){
+			var $me = $(this);
+			$me.find('img').on('load',function(){
+		        var idx = 0,
+				    minH = itemH[0];
+				for(var i=0; i<itemH.length; i++){
+					if(itemH[i] < minH){
+						idx = i;
+						minH = itemH[i];
+					}
+				}
+				$me.css({
+					left: $itemW*idx,
+					top: minH
+				});
+				itemH[idx] = $me.outerHeight(true) + itemH[idx];
+				$('#pic-ct').height(Math.max.apply(null,itemH));
+			});
+		});     
+	}
+ 
+</script>
+
+</body>
+</html>

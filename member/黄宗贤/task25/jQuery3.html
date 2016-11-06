@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>jQuery 3</title>
+		<style>
+			*{
+				box-sizing:border-box;
+			}
+			div,ul,li{
+				margin:0;padding:0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			#wrap{
+				margin:20px auto;
+				width:760px;
+			}
+			h2{
+				color:#555;
+				margin:20px 0 ;
+			}
+			.goods{
+				margin-right:-20px;
+
+			}
+			.goods:after{
+				content:"";
+				display: block;
+				clear:both;
+			}
+			.item{
+				width:240px;
+				height:240px;
+				padding:20px 20px;
+				margin-right: 20px;
+				margin-bottom: 20px;
+				text-align: center;
+				float:left;
+				display: block;
+				outline:1px solid green;
+				position: relative;
+			}
+			.item img{
+				width:130px;
+				height:130px;
+			}
+			.item .name{
+				text-align: left;
+				font-size: 14px;
+			}
+			.item .price{
+				text-align: left;
+				color:red;
+				font-size: 16px;
+			}
+			.item .cover{
+				width:240px;
+				height:240px;
+				background: rgba(200,200,200,0.6);
+				display: none;
+				position: absolute;
+				top:0;left:0;
+			}
+			.item .cover .btn{
+				display: block;
+				margin:150px auto;
+				padding:10px 0;
+				width:100px;
+				border: 1px solid #333;
+				border-radius: 4px;
+				color:red;
+				background: #FFF;
+			}
+			.item .cover .btn:hover{
+				cursor: pointer;
+			}
+			.addBtn{
+				width: 100px;
+				border-radius: 4px;
+				border: 1px solid #333;
+				text-align: center;
+				margin:10px 0;
+				color:green;
+				padding:10px 10px;
+			}
+			.addBtn:hover{
+				background: green;
+				color:#FFF;
+				cursor: pointer;
+			}
+			.test a{
+				display: block;
+				color:#333;
+				line-height: 24px;
+				font-size: 16px;
+			}
+			.test a:hover{
+				color:blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<h2 class="header">珠宝首饰</h2>
+			<div class="content">
+				<ul class="goods">
+					<li class="item">
+						<img src="3.jpg"/>
+						<p class="name">周大福 Hello Kitty凯蒂猫系列 定价黄金吊坠</p>
+						<p class="price">¥1280.00</p>
+						<div class="cover">
+							<a class="btn">立即抢购</a>
+						</div>
+					</li>
+					<li class="item">
+						<img src="3.jpg"/>
+						<p class="name">周大福 Hello Kitty凯蒂猫系列 定价黄金吊坠</p>
+						<p class="price">¥1280.00</p>
+						<div class="cover">
+							<a class="btn">立即抢购</a>
+						</div>
+					</li>
+					<li class="item">
+						<img src="3.jpg"/>
+						<p class="name"> 周大福 Hello Kitty凯蒂猫系列 定价黄金吊坠 </p>
+						<p class="price"> ¥1280.00 </p>
+						<div class="cover">
+							<a class="btn">立即抢购</a>
+						</div>
+					</li>
+				</ul>
+				<div class="addBtn">添加更多</div>
+			</div>
+			<div class="test">
+				<a href="#">点我会返回页面顶部,href="#"</a>
+				<a href="">点我会刷新整个页面,href=""</a>
+				<a href="#!">点我不会动，href="#!"</a>
+				<a href="javascript:void(0)">点我不会动，href="javascript:void(0)"</a>
+			</div>
+		</div>
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+		<script>
+			$(".goods").on("mouseenter",".item",function(e){	//注意要用事件代理，注意参数的写法
+				$(this).find(".cover").show();
+			});
+			$(".goods").on("mouseleave",".item",function(e){
+				$(this).find(".cover").hide();
+			})
+
+			var products = [
+				{
+					img : "./4.jpg",
+					name : "周大福 星星 【白金/PT950铂金】吊坠",
+					price : "¥901.00"
+				},{
+					img : "5.jpg",
+					name : "周大福 大版铃铛 足金黄金吊坠",
+					price : "¥474.00"
+				},{
+					img : "6.jpg",
+					name : "周生生Pt950铂金戒指Promessa一线牵白金对戒",
+					price : "¥1352.00"
+				}
+			];
+			function getHtml(prod){
+				var html = "";
+				html += '<li class="item"><img src="' + prod.img + '"/>';
+				html += '<p class="name">' + prod.name + '</p>';
+				html += '<p class="price">' + prod.price + '</p>';
+				html += '<div class="cover"><a class="btn">立即抢购</a></div>';
+				return html;
+			}
+
+			$(".addBtn").on('click',function(){
+				console.log(1);
+				$.each(products,function(idx,prod){		
+				//采用了遍历数组的方法，function内的参数分别是索引和对应的值，此处值为对象
+					var html = getHtml(prod);
+					$(".goods").append(html);
+				});
+			});
+
+		</script>
+	</body>
+</html>

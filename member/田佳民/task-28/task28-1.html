@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>taskk28-1</title>
+  <style>
+  *{
+      margin: 0;
+      padding: 0;
+  }
+  #container{
+     width: 1000px;
+     margin: 0 auto;
+  }
+  #header{
+      background-color: #f54c4c;
+      height: 100px;
+      text-align: center;
+      line-height: 100px;
+  }
+  .wrap{
+    padding: 10px 0;
+    background-color: #ec82ec;
+  }
+  .wrap:after{
+      content: '';
+      display: block;
+      clear: both;
+  }
+ .nav{
+     height: 50px;
+     background-color: #e0892d;
+     text-align: center;
+     line-height: 50px;
+     margin-bottom: 10px;
+ }
+ .aside{
+     width: 60px;
+     height: 200px;
+     background-color: #ceda2e;
+     line-height: 200px;
+     margin-right: 10px;
+     float:left;
+ }
+ .main{
+     height: 900px;
+     background-color: #3fda2e;
+     line-height: 900px;
+     text-align: center;
+     overflow: hidden;
+ }
+ #footer{
+     height: 30px;
+     background-color: #2e82da;
+     text-align: center;
+     line-height: 30px;
+ }
+  </style>
+</head>
+<body>
+    <div id="container">
+        <div id="header">header</div>
+        <div class="wrap">
+            <div class="nav">nav</div>
+            <div class="aside">aside</div>
+            <div class="main">main</div>
+        </div>
+        <div id="footer">footer</div>
+    </div>
+
+</body>
+    <script src="1.9.1jquery.js"></script>
+    <script>
+    var $nav=$('.nav')
+          $offsetTop=$nav.offset().top;
+          $offsetLeft=$nav.offset().left;
+          $navWidth=$nav.width();
+          $navHeght=$nav.height();
+
+    $(window).on('scroll',function(){
+        var scrollTop=$(this).scrollTop();
+        if(scrollTop>=$offsetTop){
+            setFixed();
+        }else{
+            unFixed();
+        }
+    });
+
+    function setFixed(){
+        $nav.css({
+            'position' : 'fixed' ,
+            'top' : 0,
+            'left' : $offsetLeft,
+            'width' : $navWidth,
+            'margin' : 0,
+            'z-index' : 2,
+        })
+    }
+
+    function unFixed(){
+        $nav.removeAttr('style');
+    }
+
+    </script>
+</html>

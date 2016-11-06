@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		#ul1{
+			list-style-type: none;
+			padding:0;
+			margin:0 auto;
+			width:1000px;
+
+		}
+		#ul1 li{
+			border:1px solid red;
+			width:1000px;
+			height:50px;
+			border-radius: 2px;
+			margin:10px 0;
+		}
+		#btn{
+			width:100px;
+			display:block;
+			border:1px solid #ccc;
+			text-align: center;
+			border-radius: 2px;
+			margin:10px auto;
+			padding:10px 0;
+		}
+		#btn:hover{
+			background:red;
+		}
+	</style>	
+</head>
+<body>
+		<ul id="ul1">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<a id="btn">加载更多</a>
+	<script type="text/javascript">
+		var btn=document.getElementById('btn');
+		var cur=3;
+		btn.addEventListener('click',function(){
+				
+			ajax({
+				url:'work.php',
+				type:'get',
+				data:{
+					now:cur,
+					len:5
+				},
+				sucess:function(json){
+					
+					sucess(json);
+				},
+				error:function(){
+					alert('出错了');
+				}
+		
+			});
+
+
+			function sucess(json){
+					var oUl=document.getElementById('ul1');
+				//alert(json);
+					for(var i=0;i<json.data.length;i++){
+						var newLi=document.createElement('li');
+						newLi.innerText=json.data[i]; 
+						oUl.appendChild(newLi);
+					}
+				cur+=5;
+				
+			};
+
+			function ajax(opts){
+				var dataStr='';
+				for(var key in opts.data){
+					dataStr += key+'='+opts.data[key]+'&';
+				}
+				dataStr=dataStr.substr(0,dataStr.length-1);
+
+				var xmlHttp=new XMLHttpRequest();
+				xmlHttp.onreadystatechange=function(){
+					if(xmlHttp.readyState==4 && xmlHttp.status==200){
+							var json=JSON.parse(xmlHttp.responseText);		
+							opts.sucess(json);
+	
+						}
+					if(xmlHttp.status==404){
+						opts.error();
+					}
+						}
+						if(opts.type=='get'){
+							xmlHttp.open(opts.type,opts.url+'?'+dataStr,true)
+							xmlHttp.send();
+						}
+						if(opts.type=='post'){
+							xmlHttp.open(opts.type,opts.url,true)
+							xmlHttp.send(dataStr);
+							xmlHttp.setRequestHeader('content-type','application/x-www-form-urlencoded')
+						}
+			}
+
+		
+
+
+
+
+			
+
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lazyLoad</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		.wrap{
+			width: 900px;
+			margin: 0 auto;
+			/*background: pink;*/
+		}
+		.container{
+			list-style: none;			
+			
+			overflow: hidden;
+			position: relative;
+			margin-left: -10px;
+			margin-top: -10px;
+		}
+		.container li{
+			float: left;
+			margin-left: 10px;
+			margin-top: 10px;
+		}
+		.container li img{
+			width: 217.5px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="container">
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>		
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>		
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>		
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+			<li><a href=""><img src="images/blank.jpg" data-src="images/1.jpg" alt=""></a></li>
+
+			
+		</ul>
+	</div>
+	
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		var lazyLoad = (function($){
+			var clock;
+			var $img = $('img');
+			function init($seletor){
+				$img = $seletor.find('img');
+				checkEl();
+				bind();
+			}
+			function bind(){
+				$(window).on('scroll',function(){
+					if (clock) {
+						clearTimeout(clock);
+					}
+					clock = setTimeout(function(){
+						checkEl();
+					},300)
+				});
+			}
+			function checkEl(){
+				$img.filter('[isLoaded!=true]').each(function(){
+					if(isVisible($(this))){	
+						showEl($(this));
+					}
+				})
+			}
+			function showEl($el){
+				// setTimeout(function(){
+					$el.attr('src',$el.attr('data-src'))
+					$el.attr('isLoaded',true);
+				// },300);
+			}
+			function isVisible($el){
+			  var scrollTop = $(window).scrollTop();
+			  var winH = $(window).height();
+			  var elTop = $el.offset().top;
+			  var elH = $el.outerHeight();
+			  if($el.data('isV')){
+			    return false;
+			  }
+			  if(scrollTop+winH > elTop && (scrollTop < elTop+elH)){
+			    $el.data('isV',true)
+			     return true;
+			  }else{
+			    return false;
+			  }
+			}
+
+			return {
+				init:init
+			}
+
+		})(jQuery)
+
+		lazyLoad.init($('.wrap'));
+
+	</script>
+</body>
+</html>

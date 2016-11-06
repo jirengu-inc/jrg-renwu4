@@ -1,0 +1,4 @@
+Ajax 全称 Asynchronous Javascript and xml
+
+异步的Javascript 和 xml 可以实现和后台数据库简单、少量的数据交互
+前提是不刷新页面

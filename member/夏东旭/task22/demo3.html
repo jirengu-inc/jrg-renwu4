@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	</style>
+</head>
+<body>
+	<ul class="ct">
+	    <li data-img="http://pic29.nipic.com/20130513/2501606_212202579000_2.jpg">鼠标放置查看图片1</li>
+	    <li data-img="http://pic24.nipic.com/20121026/10890734_151559576115_2.jpg">鼠标放置查看图片2</li>
+	    <li data-img="http://pic1a.nipic.com/2008-12-29/2008122995423729_2.jpg">鼠标放置查看图片3</li>
+	</ul>
+	<div class="img-preview"></div>
+	<script>
+		var ct=document.querySelector(".ct"),
+			imgPreview=document.querySelector(".img-preview");
+		ct.addEventListener("mouseover",function(e){
+			var dataImg=e.target.getAttribute("data-img");
+			if(dataImg){
+				imgPreview.innerHTML="<img src="+dataImg+" width='500px'>";
+			}
+		})
+	</script>
+</body>
+</html>

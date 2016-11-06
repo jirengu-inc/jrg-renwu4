@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style>
+		p{
+			margin: 100px 0;
+		}
+	</style>
+</head>
+<body>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容5</p>
+	<p>内容6</p>
+	<p>内容7</p>
+	<p>内容8</p>
+	<p>内容9</p>
+	<p>内容10</p>
+	<p>内容11</p>
+	<p>内容12</p>
+	<p>内容13</p>
+	<p>内容14</p>
+	<p>内容15</p>
+
+
+	<script>
+	function goTop(string){
+		var offsetTop,
+			clock;
+		this.ct=$(string),
+		this.createNode=function(){
+			this.ct.css({
+				position:"fixed",
+				color:"#444",
+				right:"10px",
+				bottom:"10px",
+				padding:"4px 6px",
+				"border-radius":"5px",
+				background:"#ccc",
+				display:"none",
+				cursor:"pointer"
+			})
+			$("script").before(this.ct);
+		},
+		this.bindEvent=function(){
+			var that=this;
+			this.ct.on("click",function(){
+				$("html,body").animate({scrollTop:"0px"});
+			})
+			$(window).on("scroll",function(){
+				if(clock){
+					clearTimeout(clock);
+				}
+				clock=setTimeout(function(){
+					offsetTop=$(this).scrollTop();
+					if(offsetTop>200){
+						that.ct.fadeIn();
+					}else{
+						that.ct.fadeOut();
+					}
+				},200);
+			})
+		},
+		this.init=function(){
+			this.createNode();
+			this.bindEvent();
+		}
+
+	}
+	new goTop('<div>回到顶部</div>').init();
+
+
+	</script>
+</body>
+</html>

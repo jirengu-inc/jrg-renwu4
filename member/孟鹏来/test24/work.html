@@ -1,0 +1,63 @@
+<!Doctype html>
+<meta charset="utf-8">
+<html>
+<head>
+	<script type="">
+		function ajax(opts){
+			var xmlhttp=new XMLHttpRequest();
+			xmlHttp.onreadystatechange=function(){
+				if(xmlhttp.readyState==4 && xmlhttp.status==200){
+					opts.success();
+				}
+			
+				if(xmlhttp.status==404){
+					opts.error();
+				}
+			}
+
+			var str='';
+			for(key in opts.data){
+					str+=key+'='+opts.data[k]+'&';
+			}
+			str=str.substr(0,str.length-1);
+
+
+			if(opts.type.toLowerCase()=='post'){
+					xmlhttp.open(opts.type,opts.url,true);
+					xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+					xmlHttp.send(str);
+			}
+			if(opts.type.toLowerCase()=='get'){
+					xmlhttp.open(opts.type,opts.url+'?'+str,true);
+					xmlhttp.send();
+			}
+
+				
+		}
+
+
+
+
+		document.querySelector('#btn').addEventListener('click',function(){
+				ajax({
+				url:'getData.php',
+				type:'get',
+				data:{
+					username:'xiaoming',
+					password:'abcd1234'
+				},
+				success:function(ret){
+					console.log(ret);
+				},
+				error:function(){
+					console.log('出错了')
+				}
+			})
+		})
+		
+	</script>
+</head>
+<body> 
+	
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>task22---排序</title>
+</head>
+<body>
+  <ul id="ct">
+    <li class="item"><span>1</span><img src="1.jpg" alt=""></li>
+    <li class="item"><span>3</span><img src="2.jpg" alt=""></li>
+    <li class="item"><span>9</span><img src="3.jpg" alt=""></li>
+    <li class="item"><span>4</span><img src="4.jpg" alt=""></li>
+  </ul>
+  <script>
+    //先要获取所有的li
+    var item = document.getElementsByClassName('item');
+    var itemArr = [];
+    for (var i = 0; i < item.length; i++) {
+      itemArr.push(item[i]);
+    }
+
+    itemArr.sort(function(a,b){
+      return parseInt(a.children[0].innerText)-parseInt(b.children[0].innerText);
+    })
+
+    for (var i = 0; i < itemArr.length; i++) {
+      document.getElementById('ct').appendChild(itemArr[i]);
+    }
+  </script>
+</body>
+</html>

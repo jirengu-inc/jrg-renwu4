@@ -1,0 +1,330 @@
+html,body,ul,li,p,h1,h2,hr,img{
+  margin: 0;
+  padding:0;
+}
+
+a{
+  text-decoration: none;
+  color:#337AB7;
+}
+
+li{
+  list-style: none;
+}
+
+.layout{
+  width: 900px;
+  margin: 0 auto;
+}
+
+html,body{
+  height: 100%;
+  font: 14px/1.5 "微软雅黑";
+}
+
+#header{
+  height: 100%;
+  background: url("../img/bg.jpg");
+  position: relative;
+}
+
+.header-wrap{
+  text-align: center;
+  position: absolute;
+  top:50%;
+  left:50%;
+  margin-left: -450px;
+}
+
+.header-wrap h1{
+  font-size: 60px;
+}
+
+.header-wrap h1,.header-wrap h2{
+  margin-bottom: 20px;
+}
+
+.btn{
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  color:#FFF;
+}
+
+.btn:hover{
+  background: rgba(0, 0, 0, 0.7);
+}
+/*一句话介绍自己*/
+#main .a-word{
+  padding: 100px;
+  text-align: center;
+}
+
+#main .a-word p{
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+/*我的技能*/
+.skill{
+  background: #337AB7;
+  padding:100px 0;
+}
+
+.skill h2{
+  text-align: center;
+  color: #FFF;
+  margin-bottom: 10px;
+}
+
+.skill-wrap hr{
+  width: 100px;
+  margin: 20px auto;
+}
+
+.skill-intro{
+  margin-left: -20px;
+}
+
+.skill-intro:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.skill-intro li{
+  float: left;
+  width: 200px;
+  margin-left:15px;
+  margin-right:15px;
+}
+
+.skill-intro li .icon{
+  width: 112px;
+  height: 112px;
+  background: #FFF;
+  border-radius: 50%;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 112px;
+}
+
+.skill-intro li .icon .iconfont {
+  font-size: 60px;
+  color:#337AB7;
+}
+
+.skill-intro li h3{
+  color:#FFF;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.skill-intro li p{
+  color: #FFF;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 12px;
+}
+
+.skill-intro .btns{
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  font-family: "宋体";
+  padding:15px;
+  color:#000;
+  margin:0 53px;
+}
+
+.skill-intro .btns:hover{
+  background: rgba(255, 255, 255, 0.7);
+}
+/*个性的话语*/
+
+.kidney{
+  background: url(../img/callout.jpg);
+  padding:200px 0;
+  margin-bottom: 100px;
+}
+
+.kidney-wrap p{
+  text-align: center;
+  color: #FFF;
+  font-size: 50px;
+}
+/*我的作品*/
+.works-wrap {
+  text-align: center;
+}
+
+.works-wrap h3{
+  font-size: 40px;
+}
+
+.works-wrap hr{
+  width: 100px;
+  margin: 20px auto;
+  border:none;
+  border-top: 1px solid #EEE;
+}
+
+.works-item{
+  margin-left: -20px;
+  position: relative;
+}
+
+.works-item:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.works-item li{
+  float: left;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.works-item li a img{
+  width: 440px;
+}
+
+.works-item li a{
+  display: block;
+}
+
+.works-item li a:hover{
+  opacity: 0.7;
+}
+
+.works-wrap>a{
+  display: inline-block;
+  width: 70px;
+  padding:10px;
+  background: rgba(0, 0, 0, 0.4);
+  color: #FFF;
+}
+
+.works-wrap>a:hover{
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/*还有其他*/
+.hobby {
+  margin:50px 0;
+  background: #337AB7;
+  padding:100px 0;
+}
+
+.hobby-wrap h2{
+  text-align: center;
+  color: #FFF;
+  margin-bottom:20px;
+  padding: 1px;
+}
+
+.hobby-item {
+  margin:0 auto;
+  text-align: center;
+}
+
+.hobby-item a{
+  display: inline-block;
+  padding: 15px;
+  margin-left: 20px;
+}
+
+.hobby-item a:first-child{
+  color:#000;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.hobby-item a:first-child:hover{
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.hobby-item a:last-child{
+  color:#FFF;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hobby-item a:last-child:hover{
+  background: rgba(0, 0, 0, 0.7);
+}
+
+/*我的信息*/
+
+#footer{
+  margin-top: 100px;
+}
+
+.footer-wrap{
+  text-align: center;
+}
+
+.footer-wrap p{
+  margin:10px 0;
+  padding: 1px;
+  position: relative;
+}
+
+.footer-wrap p a{
+  color: #337AB7;
+}
+
+.footer-wrap p a:hover{
+  color: rgb(35,82,124);
+  text-decoration: underline;
+}
+
+.footer-wrap p:first-child{
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.footer-phone {
+  position: relative;
+  top:-1px;
+  right: 5px;
+}
+
+.footer-icon{
+  width: 200px;
+  margin: 0 auto;
+}
+
+.footer-wrap .footer-icon:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.footer-wrap li{
+  width: 50px;
+  float: left;
+  margin-left: 15px;
+}
+
+.footer-wrap li{
+  display: inline-block;
+}
+
+.footer-wrap li .iconfont {
+  font-size: 50px !important;
+}
+
+.footer-wrap li a:hover{
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.footer-wrap hr{
+  width: 100px;
+  margin:0 auto;
+  border-color: rgba(255, 255, 255, 0.4);;
+}
+
+
+.footer-wrap p:last-child{
+  font-size: 14px;
+  color: #CCC;
+}

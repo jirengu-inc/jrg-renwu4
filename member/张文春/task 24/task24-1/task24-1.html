@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task24-1</title>
+</head>
+<body>
+	<a href="#" id="btn">点我</a>
+	<script>
+//封装AJAX
+function ajax(opts){
+	//取出data中的数据并连接成为字符串
+	var dataStr = '',
+		url = opts.url,
+		type = opts.type.toLowerCase();
+	for (key in opts.data) {
+		dataStr += key + '=' +opts.data[key] + '&';
+	}
+	dataStr = dataStr.substr(0,dataStr.length-1);
+	//开始AJAX
+	var xhr = new XMLHttpRequest();
+	//处理URL
+	if (type === 'get') {
+		url += '?'+ dataStr;
+	}
+	xhr.open(type,url);
+	//处理send
+	if (type === 'get') {
+		xhr.send();
+	}else{
+		xhr.setRequestHeader("Content-type",'application/x-www-form-ulencoded');
+		xhr.send(dataStr);
+	}
+	//等待服务器响应
+	xhr.onreadystatechange  = function(){
+		if (xhr.readyState === 4) {
+			if (xhr.status  === 200) {
+				//console.log('success');
+				// opts.success(xhr.responseText);
+				opts.success(JSON.parse(xhr.responseText));
+			}
+			else{
+				opts.error();
+			}
+		}
+		
+	}
+
+}
+document.querySelector('#btn').addEventListener('click', function(){
+    ajax({
+        url: '/test',   //接口地址
+        type: 'get',               // 类型， post 或者 get,
+        data: {
+            username: 'xiaoming',
+            password: 'abcd1234'
+        },
+        success: function(ret){
+            success(ret);     // {status: 0}
+        },
+        error: function(){
+           error();
+        }
+    })
+});
+	function success(ret){
+		console.log(ret)
+	}
+	function error(){
+			console.log('error');
+			console.log(xhr.status );
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task22-4</title>
+	<style>
+		html,body{
+			margin: 0;
+			padding: 0;
+			}
+		ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.clear:after{
+			content: "";
+			display: block;
+			clear: both;
+
+		}
+		.contant{
+			border: 1px solid #ccc;
+			height: 500px;
+		}
+		/*ul{
+			border: 1px solid red;
+		}*/
+		li{
+			width: 33.2555%;
+			float: left;
+			border-left: 1px solid #ccc;
+			border-bottom: 1px solid #ccc;
+			cursor: pointer;
+			text-align: center;
+			height: 30px;
+			line-height: 30px;
+		}
+		.panel{
+			display: none;
+		}
+		.tab .active{
+			background-color: #eee;
+		}
+		.contant .active{
+			display: block;
+		}
+	</style>
+
+</head>
+<body>
+	<div class="contant">
+		<ul class="tab clear">
+			<li class="active">tab1</li>
+			<li>tab2</li>
+			<li>tab3</li>
+		</ul>
+		<div class="panel active">内容1</div>
+		<div class="panel">内容2</div>
+		<div class="panel">内容3</div>
+	</div>
+	<script type="text/javascript">
+		var Utils= {
+	trim:function(str){
+		return str.replace(/^\s+|\s+$/g,'');
+	},
+	hasClass:function(ele,cls){
+		return ele.className.search(new RegExp('\\b'+cls+'\\b'));
+	},
+	addClass:function(ele,cls){
+		if (ele.length&&ele.length > 0) {
+			for (var i = 0; i < ele.length; i++) {
+				Utils.singleAddClass(ele[i],cls);
+			}
+		}else{
+			Utils.singleAddClass(ele,cls);
+		}
+	},
+	singleAddClass:function(ele,cls){
+		if (Utils.hasClass(ele,cls) === -1) {
+			ele.className = Utils.trim(ele.className)+' '+cls;
+		}
+      
+	},
+	removeClass:function(ele,cls){
+		if (ele.length&&ele.length>0) {
+			for (var i = 0; i < ele.length; i++) {
+				Utils.singleRemoveClass(ele[i],cls);
+			}
+		}else{
+			Utils.singleRemoveClass(ele,cls);
+		}
+	},
+	singleRemoveClass:function(ele,cls){
+		ele.className = Utils.trim(ele.className.replace(new RegExp('\\b'+cls+'\\b')));
+	},
+   indexOf:function(ele){
+   var parent = ele.parentElement,
+       child = parent.children;
+     for(i=0;i<child.length;i++){
+       if(ele === child[i]) return i;
+     }return -1;
+}
+};
+
+var tabUl = document.querySelector('.tab'),
+    conts = document.querySelectorAll('.panel'),
+    tabs = tabUl.children;
+tabUl.addEventListener('click',function(e){
+  var i = Utils.indexOf(e.target);
+    Utils.removeClass(tabs,'active');
+    Utils.addClass(e.target,'active');
+    Utils.removeClass(conts,'active');
+    Utils.addClass(conts[i],'active');
+});
+
+	</script>
+</body>
+</html>

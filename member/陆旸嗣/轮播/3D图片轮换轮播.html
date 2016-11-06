@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>3D轮播</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.wrap{
+			position: relative;
+			margin-left: 200px;
+			width: 721px;
+			height: 441px;
+		}
+		.middle{
+			position: absolute;
+			z-index: 5;
+			top:0;
+			left: 0;
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;
+		}
+		.leftOne{
+			position: absolute;
+			right: 30px;
+			z-index: 4;
+			top:0;
+			left: -60px;
+			transform:scaleY(0.8);
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;
+			opacity: 0.8;
+		}
+		.leftTwo{
+			position: absolute;
+			right: 60px;
+			z-index: 3;
+			top:0;
+			left: -120px;
+			transform:scaleY(0.6);
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;
+			opacity: 0.6;
+		}
+		.rightOne{
+			position: absolute;
+			z-index: 2;
+			left: 30px;
+			top:0;
+			left: 60px;
+			transform:scaleY(0.8);
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;
+			opacity: 0.8;
+		}
+		.rightTwo{
+			position: absolute;
+			z-index: 1;
+			left: 60px;
+			top:0;
+			left: 120px;
+			transform:scaleY(0.6);
+			-webkit-transition: all 1s;
+			-moz-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;
+			opacity: 0.6;
+
+		}
+		.next{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			border-radius: 25px;
+			text-align: center;
+			line-height: 50px;
+			background: #666;
+			color: #fff;
+			right: 20px;
+			z-index: 6;
+			top: 50%;
+			transform:translateY(-25px);
+			cursor: pointer;
+		}
+		.pre{
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			border-radius: 25px;
+			text-align: center;
+			line-height: 50px;
+			background: #666;
+			color: #fff;
+			left: 20px;
+			z-index: 6;
+			top: 50%;
+			transform:translateY(-25px);
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="imgWrap">
+			<li idate="0" class="middle">
+				<img src="http://heart.woniu.com/static/web20151014/src/images/img1.jpg" alt="">
+			</li>
+			<li idate="1" class="rightOne">
+				<img src="http://heart.woniu.com/static/web20151014/src/images/img2.jpg" alt="">
+			</li>
+			<li idate="2" class="rightTwo">
+				<img src="http://heart.woniu.com/static/web20151014/src/images/img3.jpg" alt="">
+			</li>
+			<li idate="3" class="leftTwo">
+				<img src="http://heart.woniu.com/static/web20151014/src/images/img4.jpg" alt="">
+			</li>
+			<li idate="4" class="leftOne">
+				<img src="http://heart.woniu.com/static/web20151014/src/images/img5.jpg" alt="">
+			</li>
+		</ul>
+		<a href="#2" class="next"> > </a>
+		<a href="#2" class="pre"> < </a>
+	</div>
+	
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+// 第一次实现
+
+	// var arr=[],
+	// 	$imgChild=$(".imgWrap").children(),
+	// 	$imgnum=$($imgChild).length,
+	// 	lock=false;
+
+	// autoplay();
+		
+	// 	$(".next").on("click",function(){
+	// 		next();
+	// 	});
+	// 	$(".pre").on("click",function(){
+	// 		pre();
+	// 	});
+
+
+	// function autoplay(){
+	// 	setInterval(function(){
+	// 		next();
+	// 	},3000)
+	// }
+	// function next(){
+	// 	if(lock){
+	// 		return;
+	// 	}
+	// 	if(!lock){
+	// 		lock=true;
+	// 		for(var i=0;i<$imgnum;i++){
+	// 			var clsNam=$imgChild.eq(i).attr("class");
+	// 			if(clsNam==='middle'){
+	// 				$imgChild.eq(i).removeClass();
+	// 				$imgChild.eq(i).addClass("rightOne");
+	// 			}else if(clsNam==='rightOne'){
+	// 				$imgChild.eq(i).removeClass();
+	// 				$imgChild.eq(i).addClass("rightTwo");
+	// 			}else if(clsNam==='rightTwo'){
+	// 				$imgChild.eq(i).removeClass();
+	// 				$imgChild.eq(i).addClass("leftTwo");
+	// 			}else if(clsNam==='leftTwo'){
+	// 				$imgChild.eq(i).removeClass();
+	// 				$imgChild.eq(i).addClass("leftOne");
+	// 			}else if(clsNam==='leftOne'){
+	// 				$imgChild.eq(i).removeClass();
+	// 				$imgChild.eq(i).addClass("middle");
+	// 			}
+	// 			lock=false;
+	// 		}
+	// 	}
+		
+	// }
+	
+	// function pre(){
+	// 	for(var i=0;i<$imgnum;i++){
+	// 		var clsNam=$imgChild.eq(i).attr("class");
+	// 		if(clsNam==='middle'){
+	// 			$imgChild.eq(i).removeClass();
+	// 			$imgChild.eq(i).addClass("leftOne");
+	// 		}else if(clsNam==='rightOne'){
+	// 			$imgChild.eq(i).removeClass();
+	// 			$imgChild.eq(i).addClass("middle");
+	// 		}else if(clsNam==='rightTwo'){
+	// 			$imgChild.eq(i).removeClass();
+	// 			$imgChild.eq(i).addClass("rightOne");
+	// 		}else if(clsNam==='leftTwo'){
+	// 			$imgChild.eq(i).removeClass();
+	// 			$imgChild.eq(i).addClass("rightTwo");
+	// 		}else if(clsNam==='leftOne'){
+	// 			$imgChild.eq(i).removeClass();
+	// 			$imgChild.eq(i).addClass("leftTwo");
+	// 		}
+	// 	}
+	// }
+// 第二次实现 比较简洁。
+var arr=['middle','rightOne','rightTwo','leftTwo','leftOne'],
+	$imgChild=$(".imgWrap").children(),
+	$imgNum=$imgChild.length;
+	// console.log($imgNum);
+
+$(".next").on("click",function(){
+	next();
+})
+$(".pre").on("click",function(){
+	pre();
+})
+
+function next(){
+	var clN=arr.shift();
+	arr.push(clN);
+	for(var i=0;i<$imgNum;i++){
+		$($imgChild[i]).removeClass();
+		$($imgChild[i]).addClass(arr[i]);
+
+	}
+}
+function pre(){
+	var clN=arr.pop();
+	arr.unshift(clN);
+	for(var i=0;i<$imgNum;i++){
+		$($imgChild[i]).removeClass();
+		$($imgChild[i]).addClass(arr[i]);
+
+	}
+}
+
+
+
+</script>
+</html>

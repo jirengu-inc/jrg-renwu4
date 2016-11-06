@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 27-2 多个淡入淡出轮播</title>
+	<script src="../jquery-3.0.0.min.js"></script>
+	<style>
+		/* reset */
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		li { list-style: none; }
+		a { text-decoration: none; }
+		/* end reset*/
+
+		/* public */
+		.clear {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		/* end public*/
+
+		div.carousel {
+			position: relative;
+			width: 480px;
+			height: 360px;
+			margin: 20px auto;
+			overflow: hidden;
+		}
+		ul.items {                 /*这里不写死width便于扩展，在js里获取实际width*/
+			position: absolute;   
+		}
+		ul.items li {
+			float: left;
+		}
+		a.arrow {
+			position: absolute;
+			top: 50%;
+			margin-top: -25px;
+			width: 50px;
+			height: 50px;
+			line-height: 50px;
+			color: #fff;
+			font-size: 30px;
+			font-weight: bold;
+			text-align: center;
+			opacity: .8;
+		}
+		a.arrow:hover { font-size: 80px; }
+		a.pre { left: 10px; }
+		a.next { right: 10px; }
+		ul.carousel-nav {
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);    /*不写死width同上，用transform属性代替固定width时的margin-top达到水平居中*/
+			border-bottom: 10px;
+		}
+		ul.carousel-nav li {
+			display: inline-block;
+			width: 16px;
+			height: 4px;
+			background: #fff;
+			cursor: pointer;
+		}
+		ul.carousel-nav li.active { background: #666;}
+	</style>
+</head>
+<body>
+	<div class="carousel carousel1">          
+		<ul class="items clear">
+			<li date-id="0">
+				<a href="#"><img src="imgs/26.jpg"></a>
+			</li>
+			<li date-id="1">
+				<a href="#"><img src="imgs/25.jpg"></a>
+			</li>
+			<li date-id="2">
+				<a href="#"><img src="imgs/24.jpg"></a>
+			</li>
+			<li date-id="3">
+				<a href="#"><img src="imgs/23.jpg"></a>
+			</li>
+		</ul>
+		
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		
+		<ul class="carousel-nav">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<div class="carousel carousel2">          
+		<ul class="items clear">
+			<li date-id="0">
+				<a href="#"><img src="imgs/26.jpg"></a>
+			</li>
+			<li date-id="1">
+				<a href="#"><img src="imgs/25.jpg"></a>
+			</li>
+			<li date-id="2">
+				<a href="#"><img src="imgs/24.jpg"></a>
+			</li>
+			<li date-id="3">
+				<a href="#"><img src="imgs/23.jpg"></a>
+			</li>
+		</ul>
+		
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		
+		<ul class="carousel-nav">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<div class="carousel carousel3">          
+		<ul class="items clear">
+			<li date-id="0">
+				<a href="#"><img src="imgs/26.jpg"></a>
+			</li>
+			<li date-id="1">
+				<a href="#"><img src="imgs/25.jpg"></a>
+			</li>
+			<li date-id="2">
+				<a href="#"><img src="imgs/24.jpg"></a>
+			</li>
+			<li date-id="3">
+				<a href="#"><img src="imgs/23.jpg"></a>
+			</li>
+		</ul>
+		
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		
+		<ul class="carousel-nav">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script>
+	function carousel(carousel){
+		var $carousel = $(carousel),
+		    $items = $carousel.find( $("ul.items") ),
+		    $lis = $carousel.find( $items.children() ),
+		    $pre = $carousel.find( $("a.pre") ),
+		    $next = $carousel.find( $("a.next") ),
+		    $nav = $carousel.find( $("ul.carousel-nav") ),
+		    imgCount = $lis.length,
+		    $cancel = $(".cancel"); 
+
+		var curIdx = 0,
+			isFade = false;
+
+		play(0);
+		autoPlay();
+
+		$pre.on('click',function(evt){
+			evt.preventDefault();
+			playPre();
+		});
+
+		$next.on('click',function(evt){
+			evt.preventDefault();
+			playNext();
+		});
+
+		$nav.find('li').on('click',function(){
+			var idx = $(this).index();
+			play(idx);
+		});
+
+		function autoPlay(){
+			var clock = setInterval(function(){
+				playNext();
+			},2000);
+		}
+
+		function play(idx){
+			if(isFade) return;
+			isFade = true;
+			$lis.eq(curIdx).fadeOut(500);
+			$lis.eq(idx).fadeIn(500, function() {
+				isFade = false;
+			});
+
+			curIdx = idx;
+			setNav();
+		}
+
+		function playPre(){
+			play( (imgCount+curIdx-1)%imgCount );
+		}
+
+		function playNext(){
+			play( (curIdx+1)%imgCount );
+		}
+
+		function setNav(){
+			$nav.find("li")
+				.removeClass('active')
+				.eq(curIdx).addClass('active');
+		}
+	}
+
+	carousel(".carousel1");
+	carousel(".carousel2");
+	carousel(".carousel3");	
+ 
+
+	</script>
+</body>
+</html>

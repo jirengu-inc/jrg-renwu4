@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>click</title>
+	<style>
+		html,
+		body,
+		ul,
+		li {
+			margin: 0;
+			padding: 0;
+		}
+		li { list-style: none; }
+	</style>
+</head>
+<body>
+	<ul class="ct">
+		<li>这里是</li>
+		<li>饥人谷</li>
+		<li>任务4班</li>
+	</ul>
+	<script>
+		var ct = document.querySelector('.ct');
+		ct.onclick = function(e){
+			console.log(e.target.innerText);
+		}
+	</script>
+</body>
+</html>

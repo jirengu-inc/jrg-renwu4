@@ -1,0 +1,60 @@
+#wrap{
+    background-color: #ededed;
+    width: 700px;
+    height: 500px;
+    position: absolute;
+    top:0px;
+    display: none;
+}
+#box{
+    border: 1px solid #dedede;
+    display: inline-block;
+    position: absolute;
+    width: 350px;
+    height: 250x;
+    top: 150px;
+    left: 150px;
+    background-color: #fff;
+}
+#click{
+    position: relative;
+    top:5px;
+    z-index: 1;
+}
+.closeX{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.closeX:hover{
+    cursor: pointer;
+}
+.line{
+    background-color: #dedede;
+    height: 1px;
+    display: block;
+}
+.text{
+    margin: 15px 0px;
+}
+.btn-wrap{
+    display: inline-block;
+    float: right;
+    margin: 10px 10px 10px 0;
+}
+.close-btn{
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
+.close-btn:hover{
+    cursor: pointer;
+}
+ .sure{
+    display: inline-block;
+    float: left;
+    margin-right: 10px;
+}
+.sure:hover{
+    cursor: pointer;
+}

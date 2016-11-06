@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>任务15-2</title>
+<link href="./icon/iconfont.css" rel="stylesheet">
+<style>
+/*-----------------------去除默认、通用样式分割线-----------------------*/
+    html,body,p,h1,h2,h3,h4,ul,li{
+    margin: 0px;
+    padding: 0px;
+    }
+    html,body {
+    height: 100%;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    }
+    .mediacy{
+    width: 1200px;
+    margin: 0 auto;
+    }
+    a,li{
+    text-decoration: none;
+    list-style: none;
+    }
+    .clearfix:after{   /* 清除浮动 */
+    content: '';
+    display: block;
+    clear: both;
+    }
+    .text-center{
+        text-align: center;
+    }
+    a{
+        color:white;
+    }
+    a:hover{
+        color: yellow;
+    }
+/*-----------------------按钮style 分割线-----------------------*/
+     .btn{
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    background-color: #bbb;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: black;
+    }  
+    .btn:active{
+    background-color: #e25f31;
+    }
+    .btn:hover{
+    background-color: #c14d21;
+    }
+/*-----------------------#first-page分割线-----------------------*/
+    #first-page{
+        height: 750px;
+        background:  url(img/1.jpg) center center no-repeat;
+        background-size: cover;
+        margin: 0px;
+    }
+    #first-page>.container>.fp-header>.logo-worlds{
+        float: left;
+        color: yellow;
+        font-family: "Kaushan Script";
+        font-size: 32px;
+        height: 100px;
+        line-height: 100px;
+    }
+    #first-page>.container>.fp-header>.keep-right{
+        float: right;
+        height: 100px;
+        line-height: 100px;
+    }
+    #first-page>.container>.fp-header>.keep-right>li{
+        float: left;
+        margin-left: 25px;
+    }
+    #first-page>.container>.fp-text{
+        margin-top: 180px;
+        text-align: center;
+        height: 300px;
+    }
+    #first-page>.container>.fp-text>h2{
+        color: white;
+        font-size: 40px;
+        font-family: "Droid Serif";
+        font-style: italic;
+        font-weight: 900;
+    }
+    #first-page>.container>.fp-text>h1{
+        color: white;
+        font-size: 68px;
+    }
+    #first-page>.container>.fp-text>.btn{
+        background-color: #fed136;
+        margin-top: 32px;
+        color: white;
+        height: 32px;
+        width: 160px;
+        padding:20px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+     #first-page>.container>.fp-text>.btn:hover{
+        background-color: #fec503;
+    }
+
+/*-----------------------#content .first-project分割线-----------------------*/
+    #content{
+        text-align: center;
+    }
+    #content>.first-project>h2{
+        font-size: 42px;
+        color: black;
+        display: inline-block;
+        margin-top: 120px;
+    }
+    #content>.first-project>p{
+        color: #666666;
+        margin-top: 20px;
+    }
+    #content>.first-project>.fp-container{
+        width: 100%;
+        margin: 100px auto 100px auto;
+    }
+    #content>.first-project>.fp-container>ul{
+        position: relative;
+    }
+    #content>.first-project>.fp-container>ul>li{
+        float: left;
+        width: 400px;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+    #content>.first-project>.fp-container>ul>li>div{
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        margin: 0 auto;
+        border-radius: 50%;
+        background-color: #fed136;
+        
+    }
+     #content>.first-project>.fp-container>ul>li i{
+        color: white;
+        font-size: 50px;
+        display: inline-block;
+        margin-top: -5px;
+        margin-right: -3px;
+     }
+     #content>.first-project>.fp-container>ul>li p{
+        color: #666666;
+        font-size: 15px;
+     }
+    
+ /*-----------------------#content .second-project分割线-----------------------*/ 
+    #content>.second-project{
+        background-color: #eee;
+        padding-bottom: 100px;
+    }
+    #content>.second-project>.container>h2{
+        font-size: 42px;
+        color: black;
+        display: inline-block;
+        margin-top: 100px;        
+    }
+    #content>.second-project>.container>p{
+        color: #666666;
+        padding-top: 20px;      
+    }
+    #content>.second-project>.container>.spr-container{
+        margin: 60px auto 60px auto;
+        position: relative;
+    }
+    #content>.second-project>.container>.spr-container ul{
+        margin-left: -30px;
+    }
+    #content>.second-project>.container>.spr-container li{
+        width:380px;
+        float: left;
+        padding-left: 30px;
+        padding-bottom: 30px;
+    }
+    #content>.second-project>.container>.spr-container img{
+        width:100%;
+        height: 285px;
+    }
+    #content>.second-project>.container>.spr-container .picture-layout{
+        position: relative;
+    }
+    #content>.second-project>.container>.spr-container .cover-layout{
+        width:100%;
+        height: 285px;
+        line-height: 285px;
+        text-align: center;
+        background-color: rgba(254,209,36,0.9);
+        position: absolute;
+        top: 0;
+        display: none;
+        z-index: 2;
+    }
+    #content>.second-project>.container>.spr-container .picture-layout:hover .cover-layout{
+        display: block;
+    }
+    #content>.second-project>.container>.spr-container .cover-layout>i{
+        color: white;
+        font-size: 50px;
+        margin-top: -10px;
+        margin-left: 3px;
+    }
+    #content>.second-project>.container>.spr-container .description{
+        height: 100px;
+        background-color: white;
+    }
+    #content>.second-project>.container>.spr-container .description>h3{
+        padding-top: 20px;
+    }
+/*-----------------------#content .third-project分割线-----------------------*/ 
+    #content>.third-project>h2{
+        font-size: 42px;
+        color: black;
+        display: inline-block;
+        margin-top: 100px;
+    }
+    #content>.third-project>p{
+        color: #666666;
+        padding-top: 20px;      
+    }
+    #content>.third-project>.th-container{
+        margin: 60px auto 60px auto;
+        position: relative;
+    }
+    #content>.third-project>.th-container>.middle-line{
+        height: 1200px;
+        width: 0px;
+        border:1px #f1f1f1 solid;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -1px;
+        z-index: -1; 
+    }
+    #content>.third-project>.th-container li>.th-picture{
+        width: 150px;
+        height: 150px;
+        border: 8px #f1f1f1 solid;
+        border-radius: 50%;
+        position: relative;
+        top: 0;
+        left: 50%;
+        margin-left: -83px;
+        margin-bottom: 120px;
+        text-align: center;
+    }
+    #content>.third-project>.th-container>ul>li:nth-of-type(5)>.th-picture{
+        background-color: #fed136;
+    }
+    #content>.third-project>.th-container>ul>li:nth-of-type(5)>.th-picture>p{
+        padding-top: 40px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    #content>.third-project>.th-container  li>.th-picture>img{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    #content>.third-project>.th-container>ul>li:nth-of-type(2n+1)>.picture-description{
+        width: 400px;
+        float:left;
+        text-align: right;
+        margin-left: 80px;
+    }
+    #content>.third-project>.th-container>ul>li:nth-of-type(2n)>.picture-description{
+        width: 400px;
+        float:right;
+        text-align: left;
+        margin-right: 80px;
+    }
+    #content>.third-project>.th-container>ul>li>.picture-description>h4{
+        padding-bottom: 10px;
+        font-size: 20px;
+    }
+    #content>.third-project>.th-container>ul>li>.picture-description>p{
+        color: #666666;
+        font-size: 16px;
+    }
+/*-----------------------#content fourth-project分割线----------------------*/
+    #content>.fourth-project{
+        background-color: #eee; 
+        padding-bottom: 150px;
+        padding-top: 100px;
+
+    }
+    #content>.fourth-project>.fourth-container>h2{
+        font-size: 42px;
+        color: black;
+        display: inline-block;
+    }
+    #content>.fourth-project>.fourth-container>p{
+        color: #666;
+        margin-top: 20px;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture{
+        margin: 0 auto;
+        margin-top: 70px;
+        margin-bottom: 50px;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li{
+        float: left;
+        margin-left: 150px;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul{
+        margin-left: -75px;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>img{
+        width: 232px;
+        height: 232px;
+        border-radius: 50%;
+        border:6px #fff solid;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>h4{
+        font-size: 20px;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>p{
+        font-size: 15px;
+        color: #666;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>.icon-container{
+        margin-top: 20px;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>.icon-container>div{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        display: inline-block;
+        margin: 5px;
+        background-color: black;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>.icon-container>div:hover{
+        background-color: #fed136;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>.icon-container>div:nth-of-type(1)>i{
+        font-size: 15px;
+        color: white;
+    }
+    #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>.icon-container>div:nth-of-type(2)>i{
+        font-size: 22px;
+        color: white;
+    }
+     #content>.fourth-project>.fourth-container>.fourth-picture>ul>li>.icon-container>div:nth-of-type(3)>i{
+        font-size: 28px;
+        color: white;
+    }
+/*-----------------------#content fifth-project分割线----------------------*/
+    #content>.fifth-project>ul{
+        margin-left: 75px;
+    }
+    #content>.fifth-project>ul>li{
+        float: left;
+        margin-left: 50px;
+        padding: 50px 0;
+    }
+    #content>.fifth-project>ul>li>img{
+        width: 200px;
+        height: 50px;
+    }
+/*-----------------------#content sixth-project分割线----------------------*/
+    #content>.sixth-project{
+        background-color: #eee; 
+        padding-bottom: 150px;
+        padding-top: 100px;
+        background: url(./img/20.jpg) 0 0 no-repeat;
+        background-size: 100% 100%;
+    }
+    #content>.sixth-project>.sixth-container>h2{
+        font-size: 42px;
+        color: black;
+        display: inline-block;
+        color: white;
+    }
+    #content>.sixth-project>.sixth-container>p{
+        color: #bbb;
+        margin-top: 20px;
+    }
+    #content>.sixth-project>.sixth-container>form>.form-container>.sixth-form-user>input{
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        padding-left: 40px;
+        margin: 25px 0 0 40px;
+        width: 500px;
+        border-radius: 8px;
+    }
+    #content>.sixth-project>.sixth-container>form>.form-container>.sixth-form-text>textarea{
+        display: block;
+        padding-left: 40px;
+        margin: 25px 0 0 40px;
+        width: 500px;
+        height: 212px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+    #content>.sixth-project>.sixth-container>form>.form-container>div{
+        float: left;
+    }
+    #content>.sixth-project>.sixth-container>.sp-btn{
+        margin-top: 25px;
+    }
+    #content>.sixth-project>.sixth-container>.sp-btn>.btn{
+        background-color: #fed136;
+        margin-top: 32px;
+        color: white;
+        height: 32px;
+        width: 160px;
+        padding:20px;
+        font-weight: bold;
+        font-size: 20px;
+    }
+     #content>.sixth-project>.sixth-container>.sp-btn>.btn:hover{
+        background-color: #fec503;
+    }
+/*-----------------------#footer分割线----------------------*/
+    #footer{
+        text-align: center;
+    }
+    #footer>ul>.first-child{
+        height: 80px;
+        line-height: 80px;
+     }
+     #footer>ul>.third-child{
+        height: 80px;
+        line-height: 80px;
+        color: #fed136;
+     }
+    #footer>ul>li{
+        float: left;
+        width: 300px;
+        margin-left: 85px;
+    }
+    #footer>ul>li>.icon-container{
+        margin-top: 20px;
+    }
+    #footer>ul>li>.icon-container>div{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        display: inline-block;
+        margin: 5px;
+        background-color: black;
+    }
+    #footer>ul>li>.icon-container>div:nth-of-type(1)>i{
+        font-size: 15px;
+        color: white;
+        position:relative;
+    }
+    #footer>ul>li>.icon-container>div:nth-of-type(2)>i{
+        font-size: 22px;
+        color: white;
+        position:relative;
+        left: 1px;
+        top: 2px;
+    }
+     #footer>ul>li>.icon-container>div:nth-of-type(3)>i{
+        font-size: 28px;
+        color: white;
+        position:relative;
+        left: 1px;
+        top: -1px;
+    }
+    #footer>ul>li>.icon-container>div:hover{
+        background-color: #fed136;
+    }
+</style>
+</head>
+<body>
+    <div id="first-page">
+        <div class="container mediacy">
+            <div class="fp-header clearfix">
+                <a href="#" class="logo-worlds">Start Bootstrap</a>
+                <ul class="keep-right">
+                    <li>
+                        <a href="#">SERVICES</a>
+                    </li>
+                    <li>
+                        <a href="#">PORTFOLIO</a>
+                    </li>
+                    <li>
+                        <a href="#">ABOUT</a>
+                    </li>
+                    <li>
+                        <a href="#">TEAM</a>
+                    </li>
+                    <li>
+                    <a href="#">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="fp-text">
+                <h2>Welcome To Our Studio</h2>
+                <h1>IT'S NICE TO MEET YOU</h1>
+                <a href="#" class="btn">TELL ME MORE</a>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div class="mediacy first-project">
+            <h2>SERVICES</h2>
+            <P>Lorem ipsum dolor sit amet consectetur.</P>
+            <div class="fp-container">
+                <ul class="clearfix">
+                    <li>
+                        <div class="i-container">
+                        <i class="icon iconfont">&#xe607;</i>
+                        </div>
+                        <h3>E-Commerce</h3>
+                        <p>Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit. 
+                        Minima maxime quam architecto quo 
+                        inventore harum ex magni, 
+                        dicta impedit.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="i-container">
+                        <i class="icon iconfont">&#xe648;</i>
+                        </div>
+                        <h3>E-Commerce</h3>
+                        <p>Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit. 
+                        Minima maxime quam architecto quo 
+                        inventore harum ex magni, 
+                        dicta impedit.
+                        </p>
+                    </li>
+                    <li>
+                        <div class="i-container">
+                        <i class="icon iconfont">&#xe612;</i>
+                        </div>
+                        <h3>E-Commerce</h3>
+                        <p>Lorem ipsum dolor sit amet, 
+                        consectetur adipisicing elit. 
+                        Minima maxime quam architecto quo 
+                        inventore harum ex magni, 
+                        dicta impedit.
+                        </p>
+                    </li>
+                </ul>
+            </div> 
+        </div>
+        <div class="second-project">
+          <div class="mediacy container">
+            <h2>PORTFOLIO</h2>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <div class="spr-container">
+                <ul class="clearfix">
+                    <li>
+                       <div class="picture-layout">
+                           <img src="./img/2.png" alt="#"/>
+                           <div class="cover-layout">
+                              <i class="icon iconfont">&#xe602;</i>
+                           </div>
+                       </div>
+                       <div class="description">
+                       <h3>Round Icons</h3>
+                       <p>Graphic Design</p>
+                       </div>
+                    </li>
+                    <li>
+                        <div class="picture-layout">
+                           <img src="./img/3.png" alt="#"/>
+                           <div class="cover-layout">
+                               <i class="icon iconfont">&#xe602;</i>
+                           </div>
+                       </div>
+                       <div class="description">
+                       <h3>Startup Framework</h3>
+                       <p>Website Design</p>
+                       </div>
+                    </li>
+                    <li>
+                        <div class="picture-layout">
+                           <img src="./img/4.png" alt="#"/>
+                           <div class="cover-layout">
+                               <i class="icon iconfont">&#xe602;</i>
+                           </div>
+                       </div>
+                       <div class="description">
+                       <h3>Treehouse</h3>
+                       <p>Website Design</p>
+                       </div>
+                    </li>
+                    <li>
+                        <div class="picture-layout">
+                           <img src="./img/5.png" alt="#"/>
+                           <div class="cover-layout">
+                               <i class="icon iconfont">&#xe602;</i>
+                           </div>
+                       </div>
+                       <div class="description">
+                       <h3>Golden</h3>  
+                       <p>Website Design</p>
+                       </div>
+                    </li>
+                    <li>
+                       <div class="picture-layout">
+                           <img src="./img/6.png" alt="#"/>
+                           <div class="cover-layout">
+                               <i class="icon iconfont">&#xe602;</i>
+                           </div>
+                       </div>
+                       <div class="description">
+                       <h3>Escape</h3>
+                       <p>Website Design</p> 
+                       </div>
+                    </li>
+                    <li>
+                        <div class="picture-layout">
+                           <img src="./img/7.png" alt="#"/>
+                           <div class="cover-layout">
+                               <i class="icon iconfont">&#xe602;</i>
+                           </div>
+                       </div>
+                       <div class="description">
+                       <h3>Dreams</h3>
+                       <p>Website Design</p>
+                       </div>
+                    </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+        <div class="third-project mediacy">
+            <h2>ABOUT</h2>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <div class="th-container">
+                <div class="middle-line">
+                </div>
+                <ul > 
+                    <li class="clearfix">
+                        <div class="picture-description">
+                            <h4>2009-2011</h4>
+                            <h4>Our Humble Beginnings</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                        </div>
+                        <div class="th-picture">
+                           <img src="./img/8.jpg" alt="#">
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="picture-description">
+                            <h4>2009-2011</h4>
+                            <h4>Our Humble Beginnings</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                        </div>
+                        <div class="th-picture">
+                           <img src="./img/9.jpg" alt="#">
+                        </div>
+                        
+                    </li>
+                    <li class="clearfix">
+                        <div class="picture-description">
+                            <h4>2009-2011</h4>
+                            <h4>Our Humble Beginnings</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                        </div>
+                        <div class="th-picture">
+                           <img src="./img/10.jpg" alt="#">
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <div class="picture-description">
+                            <h4>2009-2011</h4>
+                            <h4>Our Humble Beginnings</h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                        </div>
+                        <div class="th-picture">
+                           <img src="./img/11.jpg" alt="#">
+                        </div>
+                        
+                    </li>
+                    <li class="clearfix">
+                        <div class="th-picture">
+                           <p>BE PART <br> OF OUR <br>STORY!</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="fourth-project">
+            <div class="fourth-container mediacy">
+            <h2>OUR AMAZING TEAM</h2>
+            <P>Lorem ipsum dolor sit amet consectetur.</P>
+                <div class="fourth-picture">
+                    <ul class="clearfix">
+                        <li>
+                            <img src="./img/12.jpg" alt="#">
+                            <h4>Kay Garland</h4>
+                            <p>Lead Designer</p>
+                            <div class="icon-container">
+                                <div>
+                                <i class="icon iconfont">&#xe736;</i>
+                                </div>
+                                <div>
+                                <i class="icon iconfont">&#xe6c9;</i>
+                                </div>
+                                <div>
+                                <i class="icon iconfont">&#xe620;</i>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/13.jpg" alt="#">
+                            <h4>Kay Garland</h4>
+                            <p>Lead Designer</p>
+                            <div class="icon-container">
+                                <div>
+                                <i class="icon iconfont">&#xe736;</i>
+                                </div>
+                                <div>
+                                <i class="icon iconfont">&#xe6c9;</i>
+                                </div>
+                                <div>
+                                <i class="icon iconfont">&#xe620;</i>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="./img/14.jpg" alt="#">
+                            <h4>Kay Garland</h4>
+                            <p>Lead Designer</p>
+                            <div class="icon-container">
+                                <div>
+                                <i class="icon iconfont">&#xe736;</i>
+                                </div>
+                                <div>
+                                <i class="icon iconfont">&#xe6c9;</i>
+                                </div>
+                                <div>
+                                <i class="icon iconfont">&#xe620;</i>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non<br> quis ad perspiciatis, totam corporis ea, alias ut unde.</p> 
+            </div>
+        </div>
+        <div class="fifth-project mediacy">
+            <ul class="clearfix">
+                <li>
+                    <img src="./img/15.jpg" alt="#">
+                </li>
+                <li>
+                    <img src="./img/16.jpg" alt="#">
+                </li>
+                <li>
+                    <img src="./img/17.jpg" alt="#">
+                </li>
+                <li>
+                    <img src="./img/18.jpg" alt="#">
+                </li>
+            </ul>
+        </div>
+        <div class="sixth-project">
+            <div class="sixth-container mediacy">
+            <h2>CONTACT US</h2>
+            <P>Lorem ipsum dolor sit amet consectetur.</P>
+            <form name="Myform" action="#">
+            <div class="form-container formclearfix">
+                <div class="sixth-form-user">
+                     <input name="username" type="text" placeholder="YOUR NAME *" maxlength="10"/>
+                     <input name="useremail" type="text" placeholder="YOUR EMAIL *" maxlength="10"/>
+                     <input name="userphone" type="text" placeholder="YOUR PHONE *" maxlength="10"/>
+                </div>
+                <div class="sixth-form-text">
+                     <textarea name="userme" id="qweqwe" cols="40" rows="10" placeholder="YOUR MESSAGE *"></textarea>
+                </div>
+            </div>
+            </form>
+            <div class="sp-btn">
+                 <a href="#" class="btn">TELL ME MORE</a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <ul class="clearfix mediacy">
+            <li class="first-child"> 
+                <p>opyright © Your Website 2014</p>
+            </li>
+            <li class="second-child">
+                <div class="icon-container clearfix">
+                    <div>
+                    <i class="icon iconfont">&#xe736;</i>
+                    </div>
+                    <div>
+                    <i class="icon iconfont">&#xe6c9;</i>
+                    </div>
+                    <div>
+                    <i class="icon iconfont">&#xe620;</i>
+                    </div>
+                </div>
+            </li>
+            <li class="third-child">
+                <p>Privacy Policy  Terms of Use</p>
+            </li>
+        </ul>
+    </div>
+
+</body>
+</html> 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两栏布局</title>
+	<style>
+		html,body,div{
+			margin:0;
+			padding:0;
+		}
+
+		#header,#footer{
+			height: 60px;
+			background: #F00;
+		}
+/*第一种是BFC*/
+/*		#content .aside{
+			width:200px;
+			float:left;
+			background: rgba(2,2,252,0.2);
+		}
+
+		#content .main {
+			background: pink;
+			overflow: hidden;
+		}*/
+
+		#content{
+			padding-left: 200px;
+		}
+
+		#content:after {
+			content:'';
+			display: block;
+			clear:both;
+		}
+
+		#content > .main {
+			float:left;
+			width: 100%;
+			background: pink;
+		}
+
+		#content > .aside {
+			float:left;
+			width: 200px;
+			background: #FF0;
+			margin-left: -100%;
+			position: relative;
+			left:-200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+    <div id="content">
+    	<div class="main">
+            我是main 
+            我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main  我是main 我是main 我是main 我是main  我是main 我是main 我是main 我是main  我是main 我是main 我是main 我是main  我是main 我是main 我是main 我是main  我是main 我是main 我是main 我是main  我是main 我是main 我是main 我是main  我是main 我是main 我是main 我是main... 
+        </div>
+        <div class="aside">aside</div>
+        
+        
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

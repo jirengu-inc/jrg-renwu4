@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>jqueru代码</title>
+	<style type="text/css">
+		
+		ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color: #000;
+		}
+		.nav>li{
+			position: relative;
+			width: 160px;
+			padding: 10px 0;
+			background: #c91213;
+			color: #fff;
+		}
+		.nav>li>a{
+			color: #fff;
+			padding: 11px 76px 10px 20px;
+		}
+		.nav>li>span{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+		}
+	    .twonav{
+			position: absolute;
+			top: 0;
+			right: -162px;
+			width: 160px;
+			border: 1px solid #ccc;
+			display: none;
+		}
+		.twonav:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.twonav>li{
+			float: left;
+			margin: 10px 20px;
+		}
+
+	</style>
+</head>
+<body>
+<div class="leftnav">
+	<ul class="nav">
+		<li><a href="">珠宝玉器</a><span>></span>
+		   <ul class="twonav">
+			  <li><a href="">翡翠</a></li>
+			  <li><a href="">水晶</a></li>
+		   </ul>
+		</li>
+		<li><a href="">珠宝玉器</a><span>></span>
+		   <ul class="twonav">
+			  <li><a href="">宝石</a></li>
+			  <li><a href="">珍珠</a></li>
+			  <li><a href="">翡翠</a></li>
+			  <li><a href="">水晶</a></li>
+		   </ul>
+		</li>
+		<li><a href="">珠宝玉器</a><span>></span>
+		   <ul class="twonav">
+			  <li><a href="">宝石</a></li>
+			  <li><a href="">宝石</a></li>
+			  <li><a href="">珍珠</a></li>
+			  <li><a href="">珍珠</a></li>
+			  <li><a href="">翡翠</a></li>
+			  <li><a href="">水晶</a></li>
+		   </ul>
+		</li>
+		<li><a href="">珠宝玉器</a><span>></span>
+		   <ul class="twonav">
+			  <li><a href="">宝石</a></li>
+			  <li><a href="">珍珠</a></li>
+			  <li><a href="">翡翠</a></li>
+			  <li><a href="">水晶</a></li>
+		   </ul>
+		</li>
+		<li><a href="">珠宝玉器</a><span>></span>
+		   <ul class="twonav">
+			  <li><a href="">宝石</a></li>
+			  <li><a href="">珍珠</a></li>
+			  <li><a href="">翡翠</a></li>
+			  <li><a href="">水晶</a></li>
+		   </ul>
+		</li>
+	</ul>
+</div>
+
+
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+	$('.nav').on('mouseover mouseout','li',function(e){
+		var type = e.type;
+		if(type === 'mouseover'){
+			$(this).contents('.twonav').show();
+		}else{
+			$(this).contents('.twonav').hide();
+		}	
+	});
+</script>
+
+
+
+
+</body>
+</html>

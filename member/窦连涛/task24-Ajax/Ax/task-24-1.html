@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>封装Ajax</title>
+</head>
+<body>
+
+    <script>
+    //     function ajax(opts){
+    //   // todo ...
+    // }
+    // document.querySelector('#btn').addEventListener('click', function(){
+    //   ajax({
+    //       url: 'getData.php',   //接口地址
+    //       type: 'get',               // 类型， post 或者 get,
+    //       data: {
+    //           username: 'xiaoming',
+    //           password: 'abcd1234'
+    //       },
+    //       success: function(ret){
+    //           console.log(ret);       // {status: 0}
+    //       },
+    //       error: function(){
+    //          console.log('出错了')
+    //       }
+    //   })
+    // });
+    function ajax(opts){
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function(){
+        if(xmlhttp.readyState == 4 && xmlhttp.status==200){
+          var json = JSON.parse(xmlhttp.responseText);
+          opts.success(json);
+        }
+        if(xmlhttp.status == 404){
+            opts.error();
+        }
+      }
+      //将json对象转化为key&value形式
+      var dataStr = '';
+      for (var key in opts.data) {
+        dataStr += key + '=' + opts.data[key] + '&';
+      }
+
+      dataStr = dataStr.substr(0,length-1);
+
+      if(opts.type.toLowerCase() === 'post'){
+        xmlhttp.open(opts.type,opts.url,true);
+        setRequestHeader("Content-Type","application/x-www-form-urlencoded; charset=gb2312");
+        xmlhttp.send(dataStr);
+      }
+
+      if(opts.type.toLowerCase() === 'get'){
+        xmlhttp.open(opts.type,opts.url+'?'+dataStr,true);
+        xmlhttp.send();
+      }
+    }
+    </script>
+</body>
+</html>

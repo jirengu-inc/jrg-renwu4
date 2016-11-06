@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>learning AJAX</title>
+	<style>
+		body,ul,li{
+			margin:0;padding:0;
+		}
+		.ctn{
+			width:300px;
+		}
+		li{
+			width:280px;
+			height:40px;
+			border:1px solid #AAA;
+			margin:10px;padding-left: 10px;
+			line-height: 40px;
+		}
+		li:hover{
+			cursor: pointer;
+			color:#FFF;
+			background-color: green;
+		}
+		#btn{
+			height:40px;
+			width:120px;
+			color:green;
+			text-align: center;
+			line-height: 40px;
+			border:1px solid green;
+			border-radius: 4px;
+			margin:10px auto;
+			font-weight: bold;
+		}
+		#btn:hover{
+			background:green;
+			color:#FFF;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="ctn">
+		<ul id="list">
+			<li>内容一</li>
+			<li>内容二</li>
+		</ul>
+		<div id="btn">
+			点我加载更多
+		</div>
+	</div>
+	<script>
+		var start = document.getElementById('list').children.length;
+		var leng = 2;
+		var list = document.getElementById('list');
+		var btn = document.getElementById('btn');
+		btn.addEventListener('click',function(){
+			var loading = true;
+			if(loading){
+				return;
+			}
+			else{
+				ajax({
+					url:'task24(ajax)1.php',
+					dataType:json,   //这个的作用是？
+					type:'get',
+					data:{
+						begin:start,
+						len:leng
+					},
+					onSuccess:function(json){
+						onSuccess(json);
+					}
+					onError:function(){
+						onError();
+					}
+				});
+			};
+		});
+		function onSuccess (json){
+			append(json.data);
+			start += 2;
+		}
+		function onError(){
+			alert("出错啦")；
+		}
+		function append(arr){
+			for (var i=0; i<arr.length; i++){
+				list.append('<li>'+arr[i]+'</li>')
+			}
+		}
+
+
+
+
+
+
+		function ajax(opts){
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				if ( xhr.readyState == 4 && xhr.status == 200 ){
+					var json = JSON.parse(xhr.responseText);
+					opts.onSuccess(json);
+				}
+				if ( xhr.readyState == 4 && xhr.status == 404 ){
+					opts.onError();
+				}
+			}
+
+			var dataSend = "";
+			for( var key in opts.data){
+				dataSend += key + "=" + opts.data[key] + "&";
+			}
+			dataSend = dataSend.substr(0,dataSend.length-1);
+
+			if (opts.type.toLowerCase() == "get"){
+				xhr.open(opts.type, opts.url + "?" + dataSend, true);
+				xhr.send();
+			}
+			if (opts.type.toUpperCase() == "post"){
+				xhr.open(opts.type,opts.url,true);
+				xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+				xhr.send(dataSend);
+			}
+		}
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

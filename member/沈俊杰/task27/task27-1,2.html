@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<style>
+			/* css reset */
+			
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			li {
+				list-style: none;
+			}
+			
+			a {
+				text-decoration: none;
+			}
+			/* carousel */
+			
+			.carousel {
+				position: relative;
+				width: 310px;
+				height: 206px;
+				overflow: hidden;
+			}
+			
+			.carousel .img-ct {
+				position: relative;
+			}
+			
+			.carousel .img-ct img {
+				width: 310px;
+				height: 206px;
+			}
+			
+			.carousel .img-ct:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+			
+			.carousel .img-ct li {
+				position: absolute;
+				display: none;
+			}
+			
+			.arrow {
+				position: absolute;
+				top: 50%;
+				margin-top: -15px;
+				width: 30px;
+				height: 30px;
+				line-height: 30px;
+				text-align: center;
+				background: #4E443C;
+				color: #fff;
+				border-radius: 30px;
+				box-shadow: 0 0 2px #999;
+				opacity: 0.8
+			}
+			
+			.arrow:hover {
+				opacity: 1;
+			}
+			
+			.pre {
+				left: 10px;
+			}
+			
+			.next {
+				right: 10px;
+			}
+			
+			ul.bullet {
+				position: absolute;
+				bottom: 10px;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			
+			ul.bullet li {
+				width: 16px;
+				height: 4px;
+				border-radius: 2px;
+				background: #fff;
+				display: inline-block;
+				cursor: pointer;
+			}
+			
+			ul.bullet li.active {
+				background: #666;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="carousel">
+			<ul class="img-ct">
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a>
+				</li>
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a>
+				</li>
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a>
+				</li>
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a>
+				</li>
+			</ul>
+			<a class="pre arrow" href="javascript:void(0)"><</a>
+			<a class="next arrow" href="javascript:void(0)">></a>
+			<ul class="bullet">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		<div class="carousel">
+			<ul class="img-ct">
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg"></a>
+				</li>
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg"></a>
+				</li>
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg"></a>
+				</li>
+				<li>
+					<a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg"></a>
+				</li>
+			</ul>
+			<a class="pre arrow" href="javascript:void(0)"><</a>
+			<a class="next arrow" href="javascript:void(0)">></a>
+			<ul class="bullet">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+		<script>
+			var Carousel = (function() {
+
+				function Carousel(box) {
+					this.$ct = box.find('.img-ct');
+					this.$items = this.$ct.children();
+					this.$pre = box.find('.pre');
+					this.$next = box.find('.next');
+					this.$bullet = box.find('.bullet');
+					this.imgWidth = this.$items.width();
+					this.imgCount = this.$ct.children().size();
+					this.curIdx = 0;
+					this.isAnimate = false;
+					this.init();
+				};
+
+				Carousel.prototype = {
+					playNext: function() {
+						this.play((this.curIdx + 1) % this.imgCount);
+					},
+
+					playPre: function() {
+						this.play((this.imgCount + this.curIdx - 1) % this.imgCount);
+					},
+
+					play: function(idx) {
+						var self = this;
+						if (this.isAnimate) return;
+						this.isAnimate = true;
+						this.$items.eq(this.curIdx).fadeOut(500);
+						this.$items.eq(idx).fadeIn(500, function() {
+							self.isAnimate = false;
+						});
+
+						this.curIdx = idx;
+						this.setBullet();
+					},
+
+					setBullet: function() {
+						this.$bullet.children().removeClass('active').eq(this.curIdx).addClass('active');
+					},
+
+					stopAuto: function() {
+						clearInterval(this.clock);
+					},
+
+					autoPlay: function() {
+						var self = this;
+						this.clock = setInterval(function() {
+							self.playNext();
+						}, 3000);
+					},
+
+					bind: function() {
+						var self = this;
+						self.$next.on('click', function() {
+							self.playNext();
+							return false;
+						});
+						self.$pre.on('click', function() {
+							self.playPre();
+							return false;
+						});
+						self.$bullet.find('li').on('click', function() {
+							var idx = $(this).index();
+							self.play(idx);
+						});
+					},
+
+					init: function() {
+						this.bind();
+						this.play(0);
+						this.autoPlay();
+					}
+				};
+
+				function init(collect) {
+					for (var i = 0; i < collect.length; i++) {
+						new Carousel(collect.eq(i));
+					}
+				}
+
+				return {
+					init: init
+				}
+
+			}())
+
+			Carousel.init($(".carousel"));
+		</script>
+
+	</body>
+
+</html>

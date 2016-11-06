@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		ul,li,p{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+			color: #000;
+		}
+		.ct{
+			margin-bottom: 20px;
+		}
+		.nav{
+			display: inline-block;
+			border: 1px solid #ccc;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+		}
+		.nav:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.nav>li{
+			float: left;
+			position: relative;
+			padding: 10px 10px;
+		}
+		.vertical-line:after{
+			content: "|";
+			color: #ccc;
+			position: absolute;
+			top: 10px;
+			right: -3px;
+		}
+		.ct>.commodity{
+			width: 700px;
+			border: 1px solid #ccc;
+		}
+		.commodity>ul:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.commodity-ct{		
+			margin-left: -20px;
+			margin-bottom: -20px;
+			display: none;	
+		}
+		.commodity-ct>li{
+			float: left;
+			position: relative;
+			width: 178px;
+			padding: 10px 20px;
+			margin-left: 20px;
+			margin-bottom: 20px;
+			border: 1px solid #ccc;
+			
+		}
+		.commodity-ct>li>img{
+			width: 130px;
+			height: 130px;
+			display: block;
+			margin: 0 auto;
+		}
+		.commodity-ct .Price{
+			color: red;
+		}
+		.modl{
+			width: 220px;
+			height: 206px;
+			background: rgba(14,14,14,.4);
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: none;
+		}
+		.modl .btn{
+			border: 1px solid red;
+			border-radius: 5px;
+			background: #fff;
+			color: red;
+			padding: 10px;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-left: -43px;
+			margin-top: -19px;
+		}
+		.a-red{
+			color: red;
+		}
+		.back{
+			background: #ccc;
+		}
+		.block{
+			display: block;
+		}
+
+	</style>
+</head>
+<body>
+<div class="ct">
+	<ul class='nav'>
+		<li class="vertical-line back"><a class="tab a-red" href="">热门</a></li>
+		<li class="vertical-line"><a class="tab" href="">珠宝首饰</a></li>
+		<li><a class="tab" href="">奢侈品</a></li>
+	</ul>
+	<div class="commodity">
+		<ul class="commodity-ct block">
+			<li>
+				<div class="modl">
+				    <a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+		</ul>
+		<ul class="commodity-ct">
+			<li>
+				<div class="modl">
+				    <a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+		</ul>
+		<ul class="commodity-ct">
+			<li>
+				<div class="modl">
+				    <a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="ct">
+	<ul class='nav'>
+		<li class="vertical-line back"><a class="tab a-red" href="">热门</a></li>
+		<li class="vertical-line"><a class="tab" href="">珠宝首饰</a></li>
+		<li><a class="tab" href="">奢侈品2</a></li>
+	</ul>
+	<div class="commodity">
+		<ul class="commodity-ct block">
+			<li>
+				<div class="modl">
+				    <a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/a.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+		</ul>
+		<ul class="commodity-ct">
+			<li>
+				<div class="modl">
+				    <a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/b.jpg" alt="商品图片" />
+				<p>9999千足金投资理财的首选</p>
+				<p class="Price">￥1998.00</p>
+			</li>
+		</ul>
+		<ul class="commodity-ct">
+			<li>
+				<div class="modl">
+				    <a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+			<li>
+				<div class="modl">
+					<a class="btn" href=>立即抢购</a>
+				</div>
+				<img src="img/c.jpg" alt="商品图片" />
+				<p>精藏美千足金与和田玉，金镶玉路路通吊坠</p>
+				<p class="Price">￥998.00</p>
+			</li>
+		</ul>
+	</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	$('.nav li').on('click',function(e){
+		e.preventDefault();
+		var idx = $(this).index();
+		var $this = $(this);
+		$this.parents('.ct').find('.tab').removeClass('a-red');
+		$this.parents('.ct').find('.tab').eq(idx).addClass('a-red');
+		$this.siblings().removeClass('back');
+		$this.addClass('back');
+
+		$this.parents('.ct').find('.commodity-ct').removeClass('block');
+		$this.parents('.ct').find('.commodity-ct').eq(idx).addClass('block');
+	});
+
+	$('.commodity-ct li').on('mouseover',function(e){	
+		 var $this = $(this);
+		$this.children('.modl').addClass('block');
+	});
+	$('.commodity-ct li').on('mouseout',function(e){
+		 var $this = $(this);
+		$this.children('.modl').removeClass('block');
+	});
+
+</script>
+</body>
+</html>

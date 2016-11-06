@@ -1,0 +1,452 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>css的各种效果</title>
+        <style>
+            html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                color:#fff;
+                
+            }
+            h2 {
+                font-size:30px;
+            }
+            p {
+                font-size:18px;
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:100%;
+                position:relative;
+            }
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+                height:20px;
+                line-height:20px;
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+            .view {
+                width:1100px;
+                margin:40px auto;
+            }
+            .view-ct {
+                width:100%;
+            }
+            .view-ct li {
+                width:300px;
+                height:400px;
+                margin-left:20px;
+                margin-bottom:20px;
+                text-align:center;
+                float:left;
+                padding:15px;
+            }
+            .view-ct li img{
+                width:300px;
+                height:400px;
+                z-index:99;
+
+            }
+            .item1 {
+                position:relative;
+                z-index:99;
+            }
+
+            .item1-hover {
+                position:absolute;
+                top:0;
+                right:0;
+                bottom:0;
+                left:0;
+                opacity:0.5;
+                background-image: linear-gradient(45deg, rgba(234, 176, 176, 1) 25%, transparent 25%, transparent 50%, rgba(234, 176, 176, 1) 50%, rgba(234, 176, 176, 1) 75%, transparent 75%, transparent);
+                opacity:0; 
+                animation:spin 3s infinite;
+                background-size:30px 30px;
+                z-index:-1;
+            }
+           .item1:hover .item1-hover {
+            opacity:1;
+           }
+            @keyframes spin {
+            from {background-position:0 0;}
+            to {background-position:60px 30px;}
+        }
+        .item3 {
+            position:relative;
+        }
+        .item3>div {
+           padding:30px;
+            position:absolute;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            color:#fff;
+        }
+       .item3 h2 {
+            padding-top:225px;
+            transform:translate3d(0,-30px,0);
+       }
+       .item3 p {
+            transform:translate3d(0,-30px,0);
+       }
+       .item3>div:before,.item3>div:after {
+            opacity:0;
+       }
+        .item3>div:before {
+            position:absolute;
+            content:'';
+            top:50px;
+            right:30px;
+            bottom:50px;
+            left:30px;
+            border-top:1px solid #fff;
+            border-bottom:1px solid #fff;
+
+            transform-origin:0;
+            -webkit-transform-origin:0 0;
+        }
+        .item3>div:after {
+            position:absolute;
+            content:'';
+            top:30px;
+            right:50px;
+            bottom:30px;
+            left:50px;
+            border-right:1px solid #fff;
+            border-left:1px solid #fff;
+            -webkit-transform-origin:100% 0;
+            transform-origin:100% 0;
+        }
+        .item3:hover img {
+            opacity:0.7;
+        }
+        .item3:hover div:before,
+        .item3:hover div:after
+         {
+            opacity:1;
+        }
+        .item3 div p {
+            opacity:0;
+        }
+       .item3:hover  p {
+            opacity:1;
+       }
+       .item3:hover h2,
+       .item3:hover p {
+            transform:translate3d(0,0,0);
+       }
+
+       /*item2*/
+       .item2 {
+            position:relative;
+       }
+       .item2 div {
+            position:absolute;
+            padding:30px;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            transition:opacity 0.3s,transform 0.5s;
+
+       }
+       .item2 div:before {
+            position:absolute;
+            content:'';
+            bottom:15px;
+            left:15px;
+            width:300px;
+            height:10px;
+            background:#fff;
+            opacity:0;
+       }
+       .item2 h2 {
+            padding-top:225px;
+            transform:translate3d(0,-30px,0);
+       }
+       .item2 p {
+            transform:translate3d(0,-30px,0);
+            opacity:0;
+            transition-duration:1s;
+       }
+       .item2:hover h2,
+       .item2:hover p {
+            transform:translate3d(0,0,0);
+       }
+       .item2:hover p,
+       .item2:hover img {
+            opacity:0.7;
+       }
+       .item2:hover div:before {
+            opacity:1;
+       }
+
+       /*item4*/
+       .item4 {
+            position:relative;
+        }
+        .item4 div {
+            position:absolute;
+            top:0;
+            right:0;
+            bottom:0;
+            left:0;
+        }
+        .item4 h2 {
+            padding-top:250px;
+        }
+        .item4 div:before {
+            position:absolute;
+            content:'';
+            top:50px;
+            right:50px;
+            bottom:50px;
+            left:50px;
+            border-top:1px solid #fff;
+            border-bottom:1px solid #fff;
+            opacity:0;
+        }
+        .item4 div:after {
+            position:absolute;
+            content:'';
+            top:50px;
+            right:50px;
+            bottom:50px;
+            left:50px;
+            border-right:1px solid #fff;
+            border-left:1px solid #fff;
+            opacity:0;
+        }
+        .item4 p {
+            opacity:0;
+        }
+        .item4:hover img,
+        .item4:hover p {
+            opacity:0.7;
+            transition:opacity 0.35s,transform 0.35s;
+            transition-duration: 0.5s
+        }
+        .item4:hover div:before,
+        .item4:hover div:after {
+            opacity:1;
+        }
+       .item4 h2,
+       .item4 p
+        {
+            transform:translate3d(-75px,0,0);
+       }
+       .item4:hover h2,
+       .item4:hover p {
+            transform:translate3d(0,0,0);
+       }
+       .item5 {
+            position:relative;
+       }
+       .item5 div{
+            text-align:left;
+            position:absolute;
+            top:0;
+            left:30px;
+            right:0;
+            bottom:0;
+       }
+       .item5 div h2 {
+            position: relative;
+            padding-top:60px;
+       }
+       .item5 div p {
+        display: inline-block;
+        margin-bottom:10px;
+        padding: 0.4em 1em;
+        background: rgba(255,255,255,0.9);
+        color: #2f3238;
+        text-transform: none;
+        font-weight: 500;
+        font-size: 75%;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: translate3d(-100px,0,0);
+        transform: translate3d(-100px,0,0);
+        opacity:0;
+       }
+       .item5 div p:first-child {
+        -webkit-transition-delay: 0.15s;
+        transition-delay: 0.15s;
+       }
+
+      .item5 div p:nth-child(2) {
+       -webkit-transition-delay: 0.1s;
+      transition-delay: 0.1s;
+      }
+
+     .item5 div p:nth-child(3) {
+      -webkit-transition-delay: 0.05s;
+      transition-delay: 0.05s;
+      }
+      .item5:hover img {
+      opacity: 0.4;
+     
+     }
+     .item5:hover p {
+     opacity: 1;
+     -webkit-transform: translate3d(0,0,0);
+     transform: translate3d(0,0,0);
+    }
+    .item5 img {
+        -webkit-transition: opacity 1s, -webkit-transform 1s;
+        transition: opacity 1s, transform 1s;
+       
+     }
+     .item6 {
+        position:relative
+     }
+    .cover {
+        position:absolute;
+        top:15px;
+        left:15px;
+        width:300px;
+        height:400px;
+        transform-style: preserve-3d;
+    }
+    .item6 .item6-cover {
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        background:#fe7253;
+        color:#fff;
+        transform:rotateY(-180deg);
+        transition:all 0.5s;
+        opacity:0;
+        text-align:center;
+    }
+   .cover:hover .item6-cover {
+        opacity:1;
+        transform:rotate(0);
+    }
+    .item6-cover p {
+        margin-top:160px;
+    }
+        </style>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>CSS3 demo展示</h3>
+                <p>利用CSS制作一些动画和3D效果，以及一些鼠标效果，增强用户体验</p>
+                <ul class='clearfix'>
+                    <li><a href='index.html'>Loding</a></li>
+                    <li><a href='index2.html'>立方体、旋转木马</a></li>
+                    <li><a href='index3.html'>纯css时钟</a></li>
+                    <li><a href='index4.html'>各种鼠标效果</a></li>
+                </ul>
+            </div>
+            <div class='view'>
+                <ul class='view-ct'>
+                    <li class='item1'> 
+                        <div class='item1-hover'></div>
+                        <img src='imgs/1.jpg'>
+                       
+                    </li>
+                     <li class='item2'>
+                        <img src='imgs/2.jpg'>
+                        <div>
+                             <h2>Click me</h2>
+                            <p>you are seeing a box</p>
+                        </div>
+                    </li>
+                     <li class='item3'>
+                        <img src='imgs/3.jpg'>
+                        <div>
+                            <h2>Click me</h2>
+                            <p>you are seeing a box</p>
+                        </div>
+                    </li>
+                     <li class='item4'>
+                        <img src='imgs/7.jpg' class='img4'>
+                         <div>
+                            <h2>Click me</h2>
+                            <p>you are seeing a box</p>
+                        </div>
+                    </li>
+                     <li class='item5'>
+                        <img src='imgs/8.jpg'>
+                        <div>
+                            <h2>click me</h2>
+                            <p>you will see the first pargraphy</p>
+                            <p>you will see the second pargraphy</p>
+                            <p>you will see the third pargraphy</p>
+                        </div>
+                    </li>
+                     <li class=item6>
+                        <img src='imgs/9.jpg'>
+                            <div class='cover'>
+                                 <div class='item6-cover'>
+                                    <p>you will see a rotate</p>
+                                </div>
+                            </div>
+                           
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+      
+        
+    </body>
+</html>

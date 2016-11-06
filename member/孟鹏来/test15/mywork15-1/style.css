@@ -1,0 +1,185 @@
+body{
+	margin:0;
+	padding:0;
+	font-size:15px;
+}
+ul{
+	list-style: none;
+	margin:0;
+	padding:0;
+
+}
+a{
+	text-decoration: none;
+	color:black;
+}
+p{
+	margin:0;
+}
+h1,h2,h3,h4,h5{
+	margin:0;
+}
+.layout{
+	width:1000px;
+	margin:0 auto;
+}
+.clear:after{
+	content:"";
+	display:block;
+	clear:both;
+}
+/*header*/
+#header{
+	height:52px;
+}
+#header .logo{
+	float:left;
+	line-height:52px;
+	padding-left:61px;
+
+}
+#header>ul{
+	line-height:52px;
+}
+#header>ul>li{
+	float:left;
+	padding-left:31px;
+	position:relative;
+}
+#header>ul>li a{
+	color:#777777;
+}
+#header>ul>li a:hover{
+	color:#333333;
+}
+#header>ul>li:hover .work-list{
+	display:block;
+}
+.work-list{
+	display:none;
+	position:absolute;
+	width:120px;
+	background: #ffffff;
+	line-height: 30px;
+	border-top:1px solid #ccc;
+	text-align: center;
+	left:0;
+	border-radius: 4px;
+	top:50px;
+	padding:10px 0;
+}
+.work-list li:last-of-type{
+	border-bottom:1px solid;
+}
+.work-list li:hover{
+	background-color:#f5f5f5;
+}
+.work-list p{
+	text-align:left;
+	padding-left:25px;
+}
+.show{
+	display:block;
+}
+
+
+/*banner*/
+#banner{
+	padding:60px 0 65px 0;
+	background:#b84d45;
+	color:#fff;
+}
+#banner h1{
+	font-size:60px;
+	margin-bottom: 10px;
+}
+#banner p{
+	font-size:26px;
+	line-height:28px
+}
+
+/*navbar*/
+#navbar{
+	padding:40px 0 20px 0;
+}
+#navbar .layout{
+	background:#f5f5f5;	
+	padding:12px;
+	border-radius: 4px;
+}
+#navbar .layout a:after{
+	content:"/\00a0";
+	padding:0 5px;
+	color:#ccc;
+}
+
+/*mywork*/
+#mywork{
+	padding:30px 0;
+}
+#mywork ul li{
+	border:1px solid #ccc;
+	border-radius: 3px;
+	float:left;
+	width:310px;
+	margin-left:11px;
+	margin-bottom: 11px;
+	padding:5px;
+}
+#mywork img{
+	width:310px;
+	height:228px;
+	border:1px solid #ccc;
+}
+#mywork img:hover{
+	opacity: 0.8;
+	filter:alpha(opacity:80);
+
+}
+#mywork ul li div{
+	padding:33px 30px;
+	text-align: center;
+}
+#mywork ul div h3{
+	font-size:24px;
+}
+#mywork ul div p{
+	padding:20px 0;
+} 
+#mywork ul div a{
+	display:inline-block;
+	border:1px solid #ccc;
+	border-radius: 4px;
+	padding:10px;
+}
+#mywork ul div a:hover{
+	background-color:#e6e6e6;
+}
+
+/*resume*/
+#resume{
+	padding:52px 0;
+	background:#b84d45;
+	color:#ffffff;
+}
+#resume .layout{
+	text-align: center;
+}
+#resume .layout p{
+	padding-top:10px;
+}
+#footer-hr hr{
+	width:1000px;
+	margin-top:70px;
+}
+.footer{
+	padding:10px 0 50px 0;
+	text-align: center;
+}
+.footer a{
+	color:#c74d6d;
+}
+.footer a:hover{
+	color:#9f3630;
+	text-decoration: underline;
+}

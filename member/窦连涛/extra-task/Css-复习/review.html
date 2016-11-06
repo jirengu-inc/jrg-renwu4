@@ -1,0 +1,49 @@
+1 命名 
+2 字体名何时加双引号
+3 CSS 选择器
+			1 基础选择器 通用 ID Class 标签
+			2 组合选择器 
+						1 并列选择器 E,F
+						2 后代选择器 E F 
+						3 子代选择器 E>F 
+						4 直接相邻器 E+F
+						5 兄弟选择器 E~F
+			3 属性选择器
+						1 E[attr] 选择具有Attr的E元素
+						2 E[att="val"] 选择具有att属性且属性值等于val的E元素。
+						3 E[att~="val"]选择具有att属性且属性值为一用空格分隔的字词列表，其中一个等于val的E元素（包含只有一个值且该值等于val的情况）。
+						4 E[att^="val"]选择具有att属性且属性值为以val开头的字符串的E元素。
+						5 E[att$="val"] 选择具有att属性且属性值为以val结尾的字符串的E元素。
+						6 E[att*="val"]选择具有att属性且属性值为包含val的字符串的E元素。
+						7 E[att|="val"]选择具有att属性且属性值为以val开头并用连接符"-"分隔的字符串的E元素，如果属性值仅为val，也将被选择。
+			4 伪类选择器
+						E:first-child 匹配元素E的第一个子元素.
+						E:last-child 匹配父元素的最后一个子元素，等同于:nth-last-child(1)
+						E:nth-child(n) 匹配其父元素的第n个子元素，第一个编号为1
+						E:nth-last-child(n)	匹配其父元素的倒数第n个子元素，第一个编号为1
+						E:nth-of-type(n) 与:nth-child()作用类似，但是仅匹配使用同种标签的元素
+						E:nth-last-of-type(n)	与:nth-last-child() 作用类似，但是仅匹配使用同种标签的元素
+						E:first-of-type	匹配父元素下使用同种标签的第一个子元素，等同于:nth-of-type(1)
+						E:last-of-type	匹配父元素下使用同种标签的最后一个子元素，等同于:nth-last-of-type(1)
+						N的取值
+						1.1，2，3，4，5
+						2.2n+1, 2n, 4n-1
+						3.odd, even
+			5 伪元素选择器
+						E:first-letter/E::first-letter
+						E:first-line/E::first-line
+						E:before/E::before
+						E:after/E::after
+						E::placeholder
+						E::selection
+4 选择器的优先级 http://harttle.com/2015/07/16/css-priority.html
+5 background 属性值顺序
+					background:
+					|background-color
+					|background-image
+					|background-repeat
+					|background-attachment
+					|background-position
+					(background 背景图片的优先级是大于背景颜色的).
+
+默认值：transparent none repeat scroll 0% 0% (百分比是指宽度的百分比) CIRAP
