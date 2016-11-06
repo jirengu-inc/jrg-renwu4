@@ -1,0 +1,113 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'G:\\node\\node.exe',
+1 verbose cli   'G:\\node\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'i',
+1 verbose cli   '-S',
+1 verbose cli   'gulp-jshint-cli' ]
+2 info using npm@3.10.8
+3 info using node@v6.9.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData gulp-jshint-cli
+8 silly fetchNamedPackageData gulp-jshint-cli
+9 silly mapToRegistry name gulp-jshint-cli
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry http://registry.npm.taobao.org/
+12 silly mapToRegistry data Result {
+12 silly mapToRegistry   raw: 'gulp-jshint-cli',
+12 silly mapToRegistry   scope: null,
+12 silly mapToRegistry   escapedName: 'gulp-jshint-cli',
+12 silly mapToRegistry   name: 'gulp-jshint-cli',
+12 silly mapToRegistry   rawSpec: '',
+12 silly mapToRegistry   spec: 'latest',
+12 silly mapToRegistry   type: 'tag' }
+13 silly mapToRegistry uri http://registry.npm.taobao.org/gulp-jshint-cli
+14 verbose request uri http://registry.npm.taobao.org/gulp-jshint-cli
+15 verbose request no auth needed
+16 info attempt registry request try #1 at 23:30:23
+17 verbose request id 4c841e71525302a9
+18 http request GET http://registry.npm.taobao.org/gulp-jshint-cli
+19 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.com registry.npmjs.com:443
+20 info attempt registry request try #2 at 23:30:47
+21 http request GET http://registry.npm.taobao.org/gulp-jshint-cli
+22 http 404 http://registry.npm.taobao.org/gulp-jshint-cli
+23 verbose headers { 'content-type': 'application/json',
+23 verbose headers   'cache-control': 'max-age=0',
+23 verbose headers   'content-length': '2',
+23 verbose headers   'accept-ranges': 'bytes',
+23 verbose headers   date: 'Sun, 06 Nov 2016 15:26:21 GMT',
+23 verbose headers   via: '1.1 varnish',
+23 verbose headers   age: '0',
+23 verbose headers   connection: 'close',
+23 verbose headers   'x-served-by': 'cache-ams4423-AMS',
+23 verbose headers   'x-cache': 'MISS',
+23 verbose headers   'x-cache-hits': '0',
+23 verbose headers   'x-timer': 'S1478445981.577376,VS0,VE383',
+23 verbose headers   vary: 'Accept-Encoding' }
+24 silly get cb [ 404,
+24 silly get   { 'content-type': 'application/json',
+24 silly get     'cache-control': 'max-age=0',
+24 silly get     'content-length': '2',
+24 silly get     'accept-ranges': 'bytes',
+24 silly get     date: 'Sun, 06 Nov 2016 15:26:21 GMT',
+24 silly get     via: '1.1 varnish',
+24 silly get     age: '0',
+24 silly get     connection: 'close',
+24 silly get     'x-served-by': 'cache-ams4423-AMS',
+24 silly get     'x-cache': 'MISS',
+24 silly get     'x-cache-hits': '0',
+24 silly get     'x-timer': 'S1478445981.577376,VS0,VE383',
+24 silly get     vary: 'Accept-Encoding' } ]
+25 silly fetchPackageMetaData Error: Registry returned 404 for GET on http://registry.npm.taobao.org/gulp-jshint-cli
+25 silly fetchPackageMetaData     at makeError (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+25 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
+25 silly fetchPackageMetaData     at Request._callback (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+25 silly fetchPackageMetaData     at Request.self.callback (G:\node\node_modules\npm\node_modules\request\request.js:187:22)
+25 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+25 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+25 silly fetchPackageMetaData     at Request.<anonymous> (G:\node\node_modules\npm\node_modules\request\request.js:1044:10)
+25 silly fetchPackageMetaData     at emitOne (events.js:96:13)
+25 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+25 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (G:\node\node_modules\npm\node_modules\request\request.js:965:12)
+25 silly fetchPackageMetaData  error for gulp-jshint-cli { Error: Registry returned 404 for GET on http://registry.npm.taobao.org/gulp-jshint-cli
+25 silly fetchPackageMetaData     at makeError (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+25 silly fetchPackageMetaData     at CachingRegistryClient.<anonymous> (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
+25 silly fetchPackageMetaData     at Request._callback (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+25 silly fetchPackageMetaData     at Request.self.callback (G:\node\node_modules\npm\node_modules\request\request.js:187:22)
+25 silly fetchPackageMetaData     at emitTwo (events.js:106:13)
+25 silly fetchPackageMetaData     at Request.emit (events.js:191:7)
+25 silly fetchPackageMetaData     at Request.<anonymous> (G:\node\node_modules\npm\node_modules\request\request.js:1044:10)
+25 silly fetchPackageMetaData     at emitOne (events.js:96:13)
+25 silly fetchPackageMetaData     at Request.emit (events.js:188:7)
+25 silly fetchPackageMetaData     at IncomingMessage.<anonymous> (G:\node\node_modules\npm\node_modules\request\request.js:965:12) pkgid: 'gulp-jshint-cli', statusCode: 404, code: 'E404' }
+26 silly rollbackFailedOptional Starting
+27 silly rollbackFailedOptional Finishing
+28 silly runTopLevelLifecycles Finishing
+29 silly install printInstalled
+30 verbose stack Error: Registry returned 404 for GET on http://registry.npm.taobao.org/gulp-jshint-cli
+30 verbose stack     at makeError (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:302:12)
+30 verbose stack     at CachingRegistryClient.<anonymous> (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:280:14)
+30 verbose stack     at Request._callback (G:\node\node_modules\npm\node_modules\npm-registry-client\lib\request.js:210:14)
+30 verbose stack     at Request.self.callback (G:\node\node_modules\npm\node_modules\request\request.js:187:22)
+30 verbose stack     at emitTwo (events.js:106:13)
+30 verbose stack     at Request.emit (events.js:191:7)
+30 verbose stack     at Request.<anonymous> (G:\node\node_modules\npm\node_modules\request\request.js:1044:10)
+30 verbose stack     at emitOne (events.js:96:13)
+30 verbose stack     at Request.emit (events.js:188:7)
+30 verbose stack     at IncomingMessage.<anonymous> (G:\node\node_modules\npm\node_modules\request\request.js:965:12)
+31 verbose statusCode 404
+32 verbose pkgid gulp-jshint-cli
+33 verbose cwd C:\Users\Ternence1\Desktop\前端开发\sinacloud\newapp\task41-gulp
+34 error Windows_NT 6.1.7601
+35 error argv "G:\\node\\node.exe" "G:\\node\\node_modules\\npm\\bin\\npm-cli.js" "i" "-S" "gulp-jshint-cli"
+36 error node v6.9.1
+37 error npm  v3.10.8
+38 error code E404
+39 error 404 Registry returned 404 for GET on http://registry.npm.taobao.org/gulp-jshint-cli
+40 error 404
+41 error 404 'gulp-jshint-cli' is not in the npm registry.
+42 error 404 You should bug the author to publish it (or use the name yourself!)
+43 error 404 Note that you can also install from a
+44 error 404 tarball, folder, http url, or git url.
+45 verbose exit [ 1, true ]
