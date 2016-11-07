@@ -1,10 +1,3 @@
-/**
- *
- * @authors hunger (hunger@jirengu.com)
- * @date    2015-10-21 17:30:16
- * @version $Id$
- */
-
 define(['jquery'],function ($) {
     var Exposure = (function () {
         function exposure($node){

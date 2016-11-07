@@ -1,6 +1,5 @@
-/**
- * Created by NICK on 2016/10/3.
- */
+//   main.js 相对于index.html
+//   build.js 相当于自身而言
 requirejs.config({
     baseUrl: 'js',
     paths: {

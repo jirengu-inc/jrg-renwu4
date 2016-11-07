@@ -1,15 +1,9 @@
-/**
- *
- * @authors hunger (hunger@jirengu.com)
- * @date    2015-10-21 17:46:07
- * @version $Id$
- */
 
 define(['jquery'], function( $ ) {
 
 
 	function goTop(id) {
-		this.id = id || 'jrg-gotop';
+		this.id = id || 'pt-gotop';
 		this.init();
 	}
 
@@ -55,5 +49,5 @@ define(['jquery'], function( $ ) {
 	//new goTop();
 
 
-	return goTop; 
+	return goTop;
 });

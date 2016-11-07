@@ -1,8 +1,4 @@
-/**
- * Created by NICK on 2016/10/2.
- */
 define(['jquery'],function ($) {
-    // var $ = require('jquery');
     var Carousel = (function () {
         function slide($node){
             var $ct = $node.find('.img-ct'),
@@ -44,7 +40,6 @@ define(['jquery'],function ($) {
                 playPre();
             })
             setBg(0);
-            setBg(1);
             autoPlay();
 
             function playNext(idx) {
@@ -108,7 +103,6 @@ define(['jquery'],function ($) {
                 }, 3000);
             }
         }
-
         return {
             init: slide
         }
