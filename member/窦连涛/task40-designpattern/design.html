@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>设计模式---构造函数</title>
+</head>
+<body>
+  <script>
+      var Person = function(name,age){
+        this.name = name;
+        this.age = age ;
+      }
+
+      var Person.prototype.sayName = function(){
+        console.log(this.name);
+      }
+
+      var Student = function(name,age,score){
+        Person.call(this,name,age);//实现属性的继承
+        this.score = score ;
+      }
+
+      Student.prototype = Create(Person.prototype);
+      //实现原型方法的继承
+      function Create(parentObj){
+        function F(){
+          F.prototype = parentObj;
+        }
+        return new F();
+      }
+
+      Student.prototype.sayScore() = function(){
+        console.log(this.score);
+      }
+
+      var student = new Student('饥人骨','22',98);
+      console.log(student);
+
+  </script>
+</body>
+</html>

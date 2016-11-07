@@ -1,6 +1,4 @@
-/**
- * Created by NICK on 2016/10/3.
- */
+
 define(['jquery'],function ($) {
     var water = (function () {
         function waterFall($data){

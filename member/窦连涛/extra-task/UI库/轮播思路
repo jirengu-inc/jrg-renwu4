@@ -1,0 +1,67 @@
+1 获取元素
+    $ct = $('.img-ct');
+    $pre = $('.pre');
+    $next = $('.next');
+    $bullet = $('.bullet');
+    $items = $ct.children();
+    $imgWidth = $items.width();//单个图片的宽
+    $imgCount = $ct.children().size();//总宽度
+    $ct.css({left:xxx,width:xxx})
+2 前插后插元素
+    $ct.append($items.first().clone());//将第一个图片插入到最后
+    $ct.prepend($items.last().clone());//将最后一个图片插入到第一个位置
+    $imgRealCount = $ct.children().size();
+    $ct.css({left:0-$imgWidth,width:$imgWidth*$imgRealCount});
+3 设置游标
+    $curId = 0 ;
+    Animate = false;
+4 运动
+    $bullet.on('click','li',function(){
+      var idx = $(this).index();
+    })
+    $pre.on
+    $next.on
+5 核心函数
+      function playPre(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+          isAnimate = true;
+          $ct.animate({left: "+=" + $imgWidth * idx},function(){
+            CurId = ($imgCount + CurId - idx) % $imgCount;
+            if(CurId === $imgCount - 1){
+              $ct.css({left: 0 - $imgWidth * $imgCount});
+            }
+            isAnimate = false;
+            setBullet();
+          })
+        }
+      }
+
+      function playNext(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+          isAnimate = true;
+          $ct.animate({left:"-=" + $imgWidth * idx},function(){
+            CurId = (CurId + idx) % $imgCount;
+            if(CurId === 0){
+              $ct.css({left: 0 - $imgWidth});
+            }
+            isAnimate = false;
+            setBullet();
+          })
+        }
+      }
+
+      function setBullet(){
+        $bullet.find('li').removeClass('active').eq(CurId).addClass('active');
+      }
+
+      function autoPlay(){
+        clock = setInterval(function(){
+          playNext();
+        },3000);
+      }
+
+      function stopAuto(){
+        clearIntervel(clock);
+      }

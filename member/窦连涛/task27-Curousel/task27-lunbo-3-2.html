@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>lunbo-改变dom顺序</title>
+	<style>
+		*{
+			margin:0;padding:0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.carousel{
+      width: 520px;
+      height: 280px;
+			position:relative;
+			overflow: hidden;
+		}
+		.carousel .img-ct{
+			position: absolute;
+		}
+		.carousel:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.img-ct li{
+			float:left;
+      width: 520px;
+      height: 280px;
+		}
+
+		.arrow{
+			width:30px;
+			height:30px;
+			color:#FFF;
+			line-height: 30px;
+			text-align: center;
+			font-size: 20px;
+			border-radius:50%;
+			background: rgba(10,10,10,0.7);
+		}
+		.next{
+			position:absolute;
+			right:20px;
+			top:50%;
+			transform: translateY(-50%);
+		}
+		.prev{
+			position:absolute;
+			left:20px;
+			top:50%;
+			transform: translateY(-50%);
+		}
+		.bullet{
+			position:absolute;
+			bottom:10px;
+			left:50%;
+			transform: translateX(-50%);
+
+		}
+		.bullet li {
+			width:20px;height:6px;
+			border-radius:3px;
+			margin:0 10px;
+			background: #222;
+			display: inline-block;
+			cursor:pointer;
+		}
+		.bullet .active{
+			background: #FFF;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="img-ct">
+			<li><a href="#"><img src="image/1.jpg"></a></li>
+			<li><a href="#"><img src="image/2.jpg"></a></li>
+			<li><a href="#"><img src="image/3.jpg"></a></li>
+			<li><a href="#"><img src="image/4.jpg"></a></li>
+      <li><a href="#"><img src="image/5.jpg"></a></li>
+		</ul>
+		<a href="#" class="next arrow">></a>
+		<a href="#" class="prev arrow"><</a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+      <li></li>
+		</ul>
+	</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		var $ct = $(".img-ct"),
+			$items = $ct.children(),
+			$prev = $(".prev"),
+			$next = $(".next"),
+			$bullet = $(".bullet"),
+			imgWidth = $items.width(),   //width要加括号
+			imgCount = $items.length;	//length不要加括号
+
+
+		imgRealCount = $ct.children().length;
+		$ct.css({left:0-imgWidth,width:imgRealCount*imgWidth});
+		var curIdx = 0,isAnimate = false;
+		$next.on("click",function(){
+			playNext();
+		});
+		$prev.on("click",function(){
+			playPrev();
+		});
+		$bullet.find("li").on("click",function(){
+			var idx = $(this).index();
+			if(idx > curIdx){
+				playNext(idx - curIdx);
+			}
+			else if(idx < curIdx){
+				playPrev(curIdx - idx);
+			}
+		});
+		// function autoPlay(){
+		// 	clock = setInterval(function(){
+		// 		playNext();
+		// 	},3000);
+		// };
+		// function stopAuto(){
+		// 	clearInterval(clock);
+		// };
+		function playNext(idx){
+			var idx = idx || 1;
+			if(isAnimate)	{return;}
+			isAnimate = true;
+			$ct.animate({left:'-='+(idx*imgWidth)},function(){
+				curIdx+=idx;
+				// console.log($ct.css("left"));
+				if(curIdx == imgCount){
+					$ct.css({left:0-imgWidth});
+					curIdx = 0;
+				};
+				isAnimate = false;
+				setBullet();
+				for(var i = 0;i < idx;i++){
+					$ct.append( $ct.children().first() );
+					$ct.css({left:0-imgWidth});
+				}
+
+			});
+		};
+		function playPrev(idx){
+			var idx = idx || 1;
+			if(isAnimate)	{return;}
+			isAnimate = true;
+			$ct.animate({left:'+='+(idx*imgWidth)},function(){
+				curIdx = (imgCount + curIdx - idx) % imgCount;
+				if(curIdx == (imgCount - 1)){
+					$ct.css({left:0-imgWidth*imgCount});
+				}
+				isAnimate = false;
+				setBullet();
+				for(var i = 0;i < idx;i++){
+					$ct.prepend( $ct.children().last() );
+					$ct.css({left:0-imgWidth});
+				}
+			});
+		}
+		function setBullet(){
+			$bullet.children().removeClass("active")
+							  .eq(curIdx).addClass("active");
+		};
+	</script>
+</body>
+</html>
