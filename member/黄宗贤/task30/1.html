@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>water fall</title>
+	<style>
+		body{
+			box-sizing: border-box;
+			text-align: center;
+			font-family: "Microsoft Yahei";
+			color:#FFF;
+		}
+		ul,li{
+			list-style: none;
+		}
+		.content{
+			border:1px solid red;
+			position: relative;
+		}
+		.content:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.item{
+			width:200px;
+			position: absolute;
+			margin:10px 10px 0 0;
+			transition: all 1s;
+			font-size: 20px;
+			line-height: 50px;
+		}
+        .btn{
+        	width:200px;
+        	height:40px;
+        	margin:10px auto;
+        	border-radius: 4px;
+        	background: red;
+        	z-index: 9999;
+        	position: absolute;
+        	cursor: pointer;
+        	line-height: 40px;
+        }
+		.h1{
+			background: #e57b7f;
+			height:100px;
+		}
+		.h2{
+			background: #097168;
+			height:250px;
+		}
+		.h3{
+			background: #ffcc88;
+			height:150px;
+		}
+		.h4{
+			background: #88baa4;
+			height:300px;
+		}
+		.h5{
+			background: #f4a32e;
+			height:200px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="item h1">内容1</div>
+		<div class="item h2">内容2</div>
+		<div class="item h3">内容3</div>
+		<div class="item h4">内容4</div>
+		<div class="item h5">内容5</div>
+	</div>
+	<div class="btn">点我加载更多</div>
+	<script src="../jquery-3.1.1.min.js"></script>
+	<script>
+
+		$('.btn').on('click',function(){
+			var start = $('.item').length,
+				leng = 5;
+			$.ajax({
+				url:'2.php',
+				type:'GET',
+				dataType:'json',
+				data:{
+					start:start,
+					leng:leng
+				},
+				success:function(data){
+					onSuccess(data);
+				},
+				error:function(){
+					alert('ajax error!');
+				}
+			});
+			function onSuccess(ele){
+				if(ele && ele.status==1){
+					for(var i=0;i<ele.data.length;i++){
+						var j = i+1;
+						$new = $('<div class=item>'+ele.data[i]+'</div>');
+						$new.addClass('h'+j);
+						$('.content').append($new);
+					}
+					render();
+				}
+				else{
+					alert('server error!');
+				}
+			}
+		})
+		function render(){
+			var itemW = $('.item').outerWidth(true),
+				winW = $(window).width(),
+				colNum = Math.floor( winW/itemW ),
+				colH = [];
+			for ( var i=0;i<colNum;i++){
+				colH.push(0);
+			}
+			
+			$('.item').each(function(){
+				var $cur = $(this),
+					idx = 0,
+					minH = colH[0],
+					maxH = colH[0],
+					$btn = $('.btn');
+				for( var i=0;i<colNum;i++){
+					if(minH > colH[i]){
+						idx = i;
+						minH = colH[i];
+					}
+					if(maxH < colH[i]){
+						maxH = colH[i];
+					}
+				}
+				$cur.css({
+					left:idx*itemW,
+					top:minH
+				});
+				colH[idx] += $cur.outerHeight(true);
+				$btn.css({
+					top:maxH+20
+				});
+			})
+		}
+		render();
+		$(window).on('resize',function(){
+			render();
+		})
+		
+	</script>
+</body>
+</html>
