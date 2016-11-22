@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 35-1</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+		p {
+			background: #FFAE73;
+			width: 80px;
+			padding: 10px 0;
+			text-align: center;
+			border-radius: 3px;
+		}
+	</style>
+</head>
+<body>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p><p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+
+	<script>
+		function GoTop($ct,$target){
+			this.ct = $ct;
+			this.target = $target;
+		}
+		GoTop.prototype = {
+			bindEvent: function(){
+				var me = this;
+				$(window).on('scroll',function(){
+					var offsetTop = $('body').scrollTop();
+					if( offsetTop > 100 ){
+						me.target.show();
+					}else{
+						me.target.hide();
+					}
+				});
+
+				me.target.on('click',function(){
+					$(window).scrollTop(0);
+				});
+			},
+			createNode: function(){
+				this.target = $('<button class="top">回到顶部</button>');
+				this.target.css({
+					position: 'fixed',
+					bottom: '20px',
+					right: '20px',
+					background: '#FF9140',
+					padding: '10px',
+					border: '1px solid #FF9140',
+					borderRadius: '3px',
+					color: '#fff',
+					fontSize: '20px',
+					fontWeight: 'bold',
+					display: 'none'
+				}).appendTo(this.ct);
+				this.bindEvent();
+			}
+		}
+
+		var goTop = new GoTop( $('html body') );
+		goTop.createNode();
+	</script>
+</body>
+</html>

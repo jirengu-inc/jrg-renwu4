@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task 35-3</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+	    *{
+	    	margin: 0;
+	    	padding: 0;
+	    }
+	    .clear:after {
+            content: "";
+            display: block;
+            clear: both;
+	    }
+		#tab {
+			width: 600px;
+			border: 1px solid #ccc;
+			margin-top: 20px;
+			margin-left: 20px;
+		}
+		ul.tabs li {
+			float: left;
+			width: 199px;
+            list-style: none;
+            text-align: center;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            border-bottom: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            cursor: pointer;
+		}
+		ul.tabs .active {
+			background: #eee;
+		}
+		ul.tabs li:last-child {
+			border-right: none;
+		}
+		div.cont {
+			display: none;
+			height: 247px;
+			padding: 10px;
+		}
+		#tab .active {
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="tab">
+		<ul class="tabs clear">
+			<li class="active">tab1</li>
+			<li>tab2</li>
+			<li>tab3</li>
+		</ul>
+        <div class="cont active">内容1</div>
+        <div class="cont">内容2</div>
+        <div class="cont">内容3</div>
+	</div>
+
+	<script>
+		function Package($tab){
+			this.$tab = $tab;
+			this.$ul = this.$tab.find("ul.tabs");
+			this.$lis = this.$tab.find("ul.tabs li");
+			this.$cont = this.$tab.find("div.cont");
+			this.bind();
+		}
+		Package.prototype = {
+			bind: function(){
+				var me = this;
+				me.$lis.on('click',function(){
+					var idx = me.$lis.index( $(this) );
+					me.change(idx);
+				})
+			},
+			change: function(idx){
+				this.$lis.eq(idx).addClass('active').siblings().removeClass('active');
+				this.$cont.eq(idx).addClass('active').siblings().removeClass('active');
+			}
+		}
+
+		var p1 = new Package( $("#tab") );
+	</script>
+</body>
+</html>
