@@ -10,6 +10,65 @@
 		<link rel='stylesheet' type='text/css' media='screen and (max-width:920px)' href='dist/css/style2.min.css'>
 		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
 	</head>
+	<style>
+		@media screen and (max-width:492px) {
+			.hide {
+				display:none;
+			}
+			.carousel .panel {
+				width:100%;
+			}
+			.nav-list {
+				right:0;
+			}
+			.layer-logo {
+				width:300px;
+				height:300px;
+				margin-top:-150px;
+				margin-left:-150px;
+			}
+			.monster-talk {
+				left:0;
+				width:0;
+			}
+			.monster-gate {
+	           left:70%;
+	            width:0;
+			}
+			.jrg-event {
+				bottom:-490px;
+			}
+			.intro-weekly .weekly-img {
+				display:none;
+			}
+			.weekly-desc {
+				margin-right:100px;
+			}
+			.weekly-desc .list1 {
+				margin-bottom:-17px;
+			}
+			.weekly-desc .list2 {
+				margin-left:126px;
+			}
+			.enter-jrg .free-course li .time {
+				display:none;
+			}
+			.contact .contact1 {
+				bottom:44px;
+			}
+			.contact .contact2{
+				bottom:44px;
+			}
+			.contact .contact3{
+				display:none;
+			}
+		} 
+		@media screen and (max-width:378px) {
+			.weekly-desc {
+				margin-right:60px;
+			}
+		}
+	</style>
 	<body>
 			<div id='header'>
 				<div class='layers'>
@@ -57,7 +116,7 @@
 					<ul class='nav-list clearfix'>
 						<li>
 							<a href='#'>课程
-							<i class='icon iconfont'>&#xe609;</i>
+							<i class='icon iconfont hide'>&#xe609;</i>
 							</a>
 							<ul class='nav-child'>
 								<li><a href='#'>视频</a></li>
@@ -67,7 +126,7 @@
 						</li>
 						<li>
 							<a href='#'>报名
-								<i class='icon iconfont'>&#xe609;</i>
+								<i class='icon iconfont hide'>&#xe609;</i>
 							</a>
 							<ul class='nav-child'>
 								<li><a href='#'>关于</a></li>
@@ -85,7 +144,7 @@
 						</li>
 						<li>
 							<a href='#'>博客
-								<i class='icon iconfont'>&#xe609;</i>
+								<i class='icon iconfont hide'>&#xe609;</i>
 							</a>
 							<ul class='nav-child'>
 								<li><a href='#'>技术文章</a></li>
@@ -94,7 +153,7 @@
 						</li>
 						<li>
 							<a href='#'>登入 
-								<i class='icon iconfont'>&#xe609;</i>
+								<i class='icon iconfont hide'>&#xe609;</i>
 							</a>
 							<ul class='nav-child'>
 								<li><a href='#'>设置</a></li>

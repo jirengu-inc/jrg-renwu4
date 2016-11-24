@@ -15,12 +15,18 @@ define(['jquery'],function($) {
 		   this.$courseList.css({'width':this.panelW1*this.courseCount});
 		   this.$panels.outerWidth(this.panelW1);
 		   this.$panel.css({width:this.panelW1});
-		}else{
+		}else if((this.width>parseInt(492+'px'))&&(this.width<parseInt(920+'px'))){
 			this.panelW2=$(window).width()/2;
 			console.log(this.panelW2);
 			this.$courseList.css({'width':this.panelW2*this.courseCount});
 			this.$panels.outerWidth(this.panelW2);
 			this.$panel.css({width:this.panelW2});
+		}else if(this.width<parseInt(492+'px')){
+			this.panelW3=$(window).width();
+			console.log(this.panelW3);
+			this.$courseList.css({'width':this.panelW3*this.courseCount});
+			this.$panels.outerWidth(this.panelW3);
+			this.$panel.css({width:this.panel3});
 		}
 	
 		this.panelH=this.$panels.height();
