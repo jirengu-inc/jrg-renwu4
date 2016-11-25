@@ -15,7 +15,7 @@ ul,li {
 }
 a {
 	text-align:center;
-	text-align:center;
+	text-decoration:none;
 }
 .icon {
    width: 4.3rem; height: 4.3rem;
@@ -962,7 +962,7 @@ a.polaroid:active {
 	background:#415761;
 }
 .Work-move {
-	transform:translateY(-44.5%);
+	transform:translateY(-45.5%);
 }
 .img-move {
 	position:absolute;
