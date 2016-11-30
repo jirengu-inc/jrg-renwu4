@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task32</title>
+	<style type="text/css">
+		.waterfull{
+			width:900px;
+			margin: 0 auto;
+		}
+		ul,li,h4{
+			padding:0;
+			margin:0;
+		}
+		li{
+			list-style:none;
+		}
+		#picture{
+			position:relative;
+		}
+		#picture .item{
+			position: absolute;
+			width:272px;
+			padding:10px;
+			margin:0 10px 10px 0;
+			border:1px solid #ccc;
+			box-sizing: border-box;
+		}
+		#picture .item img{
+			width:250px;
+			margin-bottom: 10px;
+		}
+		#picture .header{
+			height:25px;
+			border-bottom: 1px solid #ccc;
+		}
+		#picture .description{
+			font-size: 12px;
+			color:#666;
+		}
+		#target{
+			visibility: hidden;
+		}
+		.hide{
+			display:none;
+		}
+	</style>
+</head>
+<body>
+	<div class="waterfull">
+		<ul id="picture">
+	<!-- 		<li class="item">
+				<a href="url" class="link">
+					<img src="">
+				</a>
+				<h4 class="header">标题</h4>
+				<p class="description">描述</p>
+			</li> -->
+			<li class="item hide"></li>
+		</ul>
+		<div id="target">标示</div>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var clock;
+	$(window).on('scroll',function(){
+		if(clock){
+			clearTimeout(clock);
+		};
+		clock = setTimeout(function(){
+			checkShow();
+		},300)
+	});
+	function checkShow(){
+		if(visible($('#target'))){
+			loadMore();
+		}
+	}
+	function visible($el){
+		var distanceY = $el.offset().top,
+		    Height = $(window).height(),
+		    scrollTop = $("body").scrollTop();
+		if(distanceY<(Height+scrollTop)){
+			return true;
+		}else{
+			return false;
+		}    
+	}
+	var curPage = 1,
+	    perPageCount = 20;
+	checkShow();
+	function loadMore(){
+		$.ajax({
+			url:'http://platform.sina.com.cn/slide/album_tech',
+			dataType:'jsonp',
+			jsonp:'jsoncallback',
+			data:{
+				app_key:1271687855,
+				num:perPageCount,
+				page:curPage
+			},
+			success:function(result){
+                if(result.status.code === '0'){
+                	var $nodeList = place(result.data);
+                	render($nodeList);
+                	curPage++;
+                }else{
+                	alert('获取失败！');
+                }
+			}
+		})	
+	}  
+	function place(liArr){
+		var tpl = '',
+		    $nodes;
+		for(var i=0;i<liArr.length;i++){
+			tpl+='<li class = "item">';
+			tpl+='<a href="'+liArr[i].url+'" class="link">';
+			tpl+='<img src="'+liArr[i].img_url+'"/></a>';
+			tpl+='<h4 class="header">'+liArr[i].short_name+'</h4>';
+			tpl+='<p class="description">'+liArr[i].short_intro+'</p></li>'
+		}
+		var $nodes = $(tpl);
+		$('#picture').append($nodes);
+		return $nodes;    
+	}  
+	var wrapWidth = $('.waterfull').width(),
+	    itemWidth = $('.item').outerWidth(true),
+	    cols = Math.floor(wrapWidth/itemWidth),
+        colSum = [];
+    for(var i=0;i<cols;i++){
+    	colSum.push(0);
+    }    
+	function render($ele){
+		$ele.each(function() {
+			var $cur = $(this);
+			$(this).find("img").on("load", function() {
+				var idx = 0;
+				minH = colSum[0];
+				for (var i = 0; i < colSum.length; i++) {
+					if (minH > colSum[i]) {
+						minH = colSum[i];
+						idx = i;
+					}
+				}
+				$cur.css({
+					left: idx * itemWidth,
+					top: minH
+				});
+				colSum[idx] = colSum[idx] + $cur.outerHeight(true);
+				$("#picture").height(Math.max.apply(null, colSum));
+			})
+		})
+	}
+
+</script>
+</html>
