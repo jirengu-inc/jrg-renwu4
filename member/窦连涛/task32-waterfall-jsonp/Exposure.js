@@ -6,7 +6,7 @@ var Exposure = {
 		this.handle = handle;
 
 		this.bind();
-		this.checkshow();
+
 	},
 
 	bind:function(){

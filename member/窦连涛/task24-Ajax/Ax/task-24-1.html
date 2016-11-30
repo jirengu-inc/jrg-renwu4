@@ -7,7 +7,7 @@
   <title>封装Ajax</title>
 </head>
 <body>
-    
+
     <script>
     //     function ajax(opts){
     //   // todo ...
@@ -35,7 +35,6 @@
           var json = JSON.parse(xmlhttp.responseText);
           opts.success(json);
         }
-
         if(xmlhttp.status == 404){
             opts.error();
         }

@@ -1,188 +1,244 @@
 
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>无线轮播</title>
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>全屏无限循环滚动轮播</title>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	html, body, .carousel, .carousel .img-ct, .carousel .cover{
+		width: 100%;
+		height: 100%;
+	}
+	.carousel{
+		position: relative;
+		overflow: hidden;
+	}
+	.carousel .img-ct{
+		position: absolute;
+	}
+	.carousel .img-ct:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
 
-		<style type="text/css">
+	.carousel .item{
+		position: relative;
+		float: left;
+		height: 100%;
+	}
 
+	.carousel .main{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		z-index: 1;
+		width: 600px;
+		transform: translate(-50%, -50%);
+		color: #fff;
+		text-align: center;
+	}
 
-		html,body,ul,li,p{
-			margin: 0;
-			padding: 0;
-		}
-		li{
-			list-style: none;
-		}
-		a{
-			text-decoration: none;
-		}
-		html, body, #header, #header .carousel, #header .img-ct{
-			height: 100%;
-			width: 100%;
-		}
-		.carousel{
-			position: relative;
-			width: 310px;
-			height: 206px;
-			overflow: hidden;
-		}
-		#header .img-ct{
-			position: absolute;
-		}
-		#header .img-ct:after{
-			content: '';
-			display: table;
-			clear: both;
-		}
-		#header .item{
-			position: relative;
-			float: left;
-			height: 100%;
-		}
-		#header .main{
-			position: absolute;
-			width: 600px;
-			left: 50%;
-			top: 50%;
-			z-index: 1;
-			transform: translate(-50%, -50%);
-			color: #fff;
-			text-align: center;
-		}
-		#header .main h3{
-			font-size: 34px;
-		}
-		#header .main p{
-			font-size: 16px;
-			line-height: 2;
-		}
+	.carousel .main h3{
+		font-size: 34px;
+	}
 
-		#header .cover{
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			background-repeat: no-repeat;
-			background-position: center center;
-			background-size: cover;
-			opacity: 0.8;
-		}
+	.carousel .cover{
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		opacity: 0.8;
+		filter: alpha(opacity=80);
+	}
 
-		.arrow{
-			position: absolute;
-		    top: 50%;
-		    margin-top: -15px;
-		    width: 30px;
-		    height: 30px;
-		    line-height: 30px;
-		    text-align: center;
-		    background: #4E443C;
-		    color: #fff;
-		    border-radius: 30px;
-		    box-shadow: 0 0 2px #999;
-		    opacity: 0.8
-		}
-		.arrow:hover {
-		    opacity: 1;
-		}
-		.pre{
-			left: 10px;
-		}
-		.next{
-			right: 10px;
-		}
-		ul.bullet {
-			  position: absolute;
-		    bottom: 10px;
-		    left: 50%;
-		    transform: translateX(-50%);
-		}
-		ul.bullet li {
-		    width: 16px;
-		    height: 4px;
-		    border-radius: 2px;
-		    background: #fff;
-		    display: inline-block;
-		    cursor: pointer;
-		}
+	.arrow{
+		position: absolute;
+		top: 50%;
+		margin-top: -15px;
+		display: block;
+		width: 30px;
+		height: 30px;
+		text-align: center;
+		line-height: 30px;
+		color: #fff;
+		border-radius: 15px;
+		background: #4e443c;
+		opacity: 0.8;
+		filter: alpha(opacity=80);
+	}
+	.arrow:hover{
+		opacity: 1;
+	}
+	.pre{
+		left: 20px;
+	}
+	.next{
+		right: 20px;
+	}
+	.carousel .bullet{
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.carousel .bullet  li{
+		display: inline-block;
+		width: 16px;
+		height: 4px;
+		border-radius: 2px;
+		background: #fff;
+		cursor: pointer;
+	}
+	.carousel .bullet  li.active{
+		background: #666;
+	}
+</style>
+</head>
+<body>
+ 	<div class="carousel">
+		<ul class="img-ct">
+			<li class="item">
+				<a href="javascript:void(0)"><div class="cover" data-bg-img="img/1.jpg"></div></a>
+				<!-- <div class="main">
+					<h3>1</h3>
+				</div> -->
+			</li>
+			<li class="item">
+				<a href="javascript:void(0)"><div class="cover" data-bg-img="img/2.jpg"></div></a>
+				<!-- <div class="main">
+					<h3>2</h3>
+				</div> -->
+			</li>
+			<li class="item">
+				<a href="javascript:void(0)"><div class="cover" data-bg-img="img/3.jpg"></div></a>
+				<!-- <div class="main">
+					<h3>3</h3>
+				</div> -->
+			</li>
+			<li class="item">
+				<a href="javascript:void(0)"><div class="cover" data-bg-img="img/4.jpg"></div></a>
+				<!-- <div class="main">
+					<h3>4</h3>
+				</div> -->
+			</li>
+		</ul>
+		<a class="pre arrow" href="javascript:void(0)"><</a>
+		<a class="next arrow" href="javascript:void(0)">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+     </div>
 
-		ul.bullet li.active {
-		    background: #666;
-		}
-
-
-		</style>
-
-	</head>
-	<body>
-	<div id="header">
-		<div class="carousel">
-			<ul class="img-ct">
-		        <li class="item">
-		          <div class="cover" data-bg-img="img/1.jpg"></div>
-		        </li>
-		        <li class="item">
-		          <div class="cover" data-bg-img="img/2.jpg"></div>
-		        </li>
-		        <li class="item">
-		          <div class="cover" data-bg-img="img/3.jpg"></div>
-		        </li>
-		        <li class="item">
-		          <div class="cover" data-bg-img="img/4.jpg"></div>
-		        </li>
-            <li class="item">
-		          <div class="cover" data-bg-img="img/5.jpg"></div>
-		        </li>
-			</ul>
-			<ul class="bullet">
-				<li class="active"></li>
-				<li></li>
-				<li></li>
-				<li></li>
-        <li></li>
-			</ul>
-		</div>
-	</div>
-
-		<script type="text/javascript">
-		//$(function(){
-
-			var $ct = $('.img-ct'),
+    	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    	<script>
+		$.fn.runCarousel = function(){
+			var $this = $(this),
+				$ct = $this.find('.img-ct'),
 				$items = $ct.children(),
-				$pre = $('.pre'),
-				$next = $('.next'),
-				$bullet = $('.bullet'),
-				imgWidth = $(window).width(),
-				imgCount = $ct.children().size();
+				$pre = $this.find('.pre'),
+				$next = $this.find('.next'),
+				$bullet = $this.find('.bullet'),
+				imgWidth = $(window).width();  //获取图片宽度
+				imgCount = $ct.children().length; //获取图片数量
 
 			$ct.prepend($items.last().clone());
 			$ct.append($items.first().clone());
 			$ct.find('.item').css('width', imgWidth);
 			$ct.find('.cover').css('width', imgWidth);
-			imgRealCount = $ct.children().size();
-			$ct.css({left: 0-imgWidth, width: imgRealCount*imgWidth})
+			imgRealCount = $ct.children().length;
+			$ct.css({left: 0-imgWidth, width: imgRealCount*imgWidth});
 
-			var curIdx = 0;
+			var curIdx = 0; // 当前显示序号
 			var isAnimate = false;
+
+			$next.on('click', function() {
+				playNext();
+			});
+
+			$pre.on('click', function(){
+				playPre();
+			});
 
 			$bullet.find('li').on('click', function(){
 				var idx = $(this).index();
 				if(idx > curIdx){
-					playNext(idx - curIdx);
+					playNext(idx-curIdx);
 				}else if(idx < curIdx){
-					playPre(curIdx - idx);
+					playPre(curIdx-idx);
 				}
 			});
 
 			setBg(1);
 			autoPlay();
+
+			function playNext(idx){
+				var idx = idx || 1;
+				if(isAnimate){
+					stopAuto();
+				}
+				isAnimate = true;
+				setBg(curIdx+2);
+				$ct.animate({left: '-=' + (idx*imgWidth)}, function(){
+					curIdx = (curIdx + idx)%imgCount;
+					if(curIdx === 0){
+						$ct.css({left: 0-imgWidth});
+					}
+					isAnimate = false;
+					setBullet();
+				});
+			}
+
+			function playPre(idx){
+				var idx = idx || 1;
+				if(isAnimate){
+					stopAuto();
+				}
+				isAnimate = true;
+				setBg(curIdx);
+				$ct.animate({left: '+=' + (idx*imgWidth)}, function(){
+					curIdx = (imgCount + curIdx - idx)%imgCount;
+					if(curIdx === (imgCount-1)){
+						$ct.css({left: 0-imgWidth*imgCount});
+					}
+					isAnimate = false;
+					setBullet();
+				});
+			}
+
+			function setBullet(){
+				$bullet.find('li').removeClass('active').eq(curIdx).addClass('active');
+			}
+
+			function setBg(idx){
+				var idx = idx || 0,
+					$node = $ct.children().eq(idx),
+					$cover = $node.find('.cover'),
+					imgUrl = $cover.attr('data-bg-img');
+				if($node.data('isBgSet')){
+					return;
+				}
+				$cover.css('background-image', 'url(' + imgUrl + ')');
+				$node.data('isBgSet', true);
+			}
 
 			function stopAuto(){
 				clearInterval(clock);
@@ -191,58 +247,11 @@
 			function autoPlay(){
 				clock = setInterval(function(){
 					playNext();
-				}, 3000);
+				}, 2000);
 			}
+		};
 
-			function playNext(idx){
-				var idx = idx || 1;
-				if(!isAnimate){
-					isAnimate = true;
-					setBg(curIdx+2);
-					$ct.animate({left: '-='+(imgWidth*idx)},function(){
-						curIdx = (curIdx + idx)%imgCount;
-						if(curIdx === 0){
-							$ct.css({left: 0-imgWidth});;
-						}
-						isAnimate = false;
-						setBullet();
-					});
-				}
-			}
-
-			function playPre(idx){
-				var idx = idx || 1;
-				if(!isAnimate){
-					isAnimate = true;
-					setBg(curIdx);
-					$ct.animate({left: '+='+(imgWidth*idx)},function(){
-						curIdx = (imgCount + curIdx - idx)%imgCount;
-						if(curIdx === (imgCount - 1)){
-							$ct.css({left: 0-imgWidth*imgCount});;
-						}
-						isAnimate = false;
-						setBullet();
-					});
-				}
-			}
-
-			//这里为了性能让图片用了懒加载
-			function setBg(idx){
-				var idx = idx || 0,
-					$node = $ct.children().eq(idx)
-					$cover = $node.find('.cover'),
-					imgUrl = $cover.attr('data-bg-img');
-				if($node.data('isBgSet')) return;
-				$cover.css('background-image', 'url('+imgUrl+')');
-				$node.data('isBgSet', true);
-
-			}
-
-			function setBullet(){
-				$bullet.children().removeClass('active')
-								  .eq(curIdx).addClass('active');
-			}
-
-		</script>
-	</body>
+    $('.carousel').runCarousel();
+    	</script>
+</body>
 </html>

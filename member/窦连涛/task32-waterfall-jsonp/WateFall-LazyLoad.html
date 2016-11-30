@@ -1,143 +1,207 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>瀑布流+JSONP+无限加载</title>
-	<style>
-		html,body,ul,li,div,p {
-			margin: 0;
-			padding: 0;
-		}
+    <meta charset="UTF-8">
 
-		ul,li {
-			list-style: none;
-		}
+    <title>task 32</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <style>
+        html,body,ul,li{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .ct{
+            width: 1100px;
+            margin: 0 auto;
+            border:1px solid;
+        }
+        .img-ct{
+            position: relative;
+        }
+        .clearfix{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .img-ct .item{
+            position: absolute;
+            padding: 0 0 10px 0;
+            width: 280px;
+            margin: 10px;
+            border: 1px solid #DFDFDF;
+            background: #FFF;
+            opacity: 0;
+            transition: all .8s;
+        }
+        .img-ct .item img{
+            margin: 10px;
+            width: 260px;
+        }
 
-		.clearfix:after {
-			content:'';
-			display: block;
-			clear:both;
-		}
+        .img-ct .item .header{
+            height: 25px;
+            margin: 0 12px;
+            border-bottom: 1px solid #DBDBDB;
+        }
+        .img-ct .desp{
+            font-size: 12px;
+            line-height: 1.8;
+            margin: 10px 15px 0;
+            color: #777371;
+        }
 
-		.clearfix {
-			*zoom:1;
-		}
+        #load{
+           visibility: hidden;
+            height: 20px;
+        }
 
-		.ct {
-			position: relative;
-			padding: 10px;
-			margin:0 auto;
-		}
+        .hide{
+            display: none;
+        }
 
-		.ct .item {
-			width:200px;
-			position: absolute;
-			padding: 0 0 10px 0 ;
-			border:1px solid #DFDFDF;
-			background: #FFF;
-			margin:10px;
-			transition: all .8s;
-			box-shadow: 2px 2px 2px #E8E8E8,-2px -2px 2px #E8E8E8;
-		}
-
-		.ct .item img {
-			width:176px;
-			margin: 12px;
-		}
-
-		.ct img .header {
-			height: 25px;
-			margin:0 12px;
-			border-bottom: 1px solid #DBDBDB;
-		}
-
-		.ct .desp {
-			font-size: 12px;
-			line-height: 1.8;
-			margin:10px 15px 0;
-			color: #777371;
-		}
-
-		#load {
-			
-		}
-
-		.hide {
-			visibility: hidden;
-		}
-
-	</style>
+    </style>
 </head>
 <body>
-	<div class="ct-waterfall">
-		<ul id="pic-ct" class="ct clearfix">
-			<!-- <li class="item">
-				<a href="#" class="link">
-					<img src="" alt="">
-				</a>
-				<h4 class="header"></h4>
-				<p class="desp"></p>
-			</li> -->
-		</ul>
-		<div id="load" class="hide">我是看不见的</div>
-	</div>
-	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-	<script type="text/javascript" src="Exposure.js"></script>
-	<script type="text/javascript" src="WaterFall.js"></script>
-	<script type="text/javascript">
-		//懒加载
-		//Ajax
-		//瀑布流
-		
-		var $page = 1,
-			$amount = 10;
+    <div class="ct">
+        <ul class="img-ct clearfix">
+        <li class="item hide"></li>
+        </ul>
+        <div id="load">我是看不见的</div>
+    </div>
 
-		WaterFall.init($('.pic-ct'));
 
-		Exposure.init($('#load'),function(){
-			getdata(function(data){
-				$nodes = render(data);
-				$WaterFall.start($nodes);
-			})
-		})
+    <script>
 
-		function getdata(callback){
-			$.ajax({
-					url: 'http://platform.sina.com.cn/slide/album_tech?',
-					type: 'get',
-					dataType: 'jsonp',
-					jsonp:'jsoncallback',
-					data: {
-						app_key: '1271687855',
-						format:'json',
-						size:'img',
-						num:perPageCount,
-						page:curPage
-					},
-					success: function(ret){
-						if(ret.status.code === "0"){
-							callback(ret.data);
-							curPage++;
-						}
-					}
-				})			
-		}
+        var clock;
+        $(window).on('scroll',function () {
+            if(clock){
+                clearTimeout(clock);
+            }
+            clock=setTimeout(function () {
 
-		function render($items){
-			var $tpl = '',
-				$nodes;
-			for (var i =0; i < $items.length; i++) {
-				$tpl += '<li class="item">';
-				$tpl += '<a href="#" class="link">';
-				$tpl += '<img src="'+ $items[i].img_url +'" alt=""></a>';
-				$tpl += '<h4 class="header">'+ $items[i].short_name +'</h4>';
-				$tpl += '<p class="desp">'+ $items[i].short_intro +'</p></li>';
-			}
+                    checkshow();
 
-			$nodes = $(tpl);
-			$('#pic-ct').append($nodes);
-			return $nodes;
-		}
-	</script>
+            },100);
+        });
+       checkshow();
+
+        function checkshow() {
+            console.log('1');
+            if(ishow($('#load'))){
+                loadAndPlace()
+            }
+        }
+
+        function ishow($el) {
+            var $eloffsetH=$el.offset().top,
+                    windowH=$(window).height(),
+                    $elscroll=$(window).scrollTop();
+            if($eloffsetH<windowH+$elscroll){
+                return true
+            }else return false;
+        }
+
+        var curpage=1,
+                pagecount=9;
+
+        function loadAndPlace() {
+            $.ajax({
+                url:'http://platform.sina.com.cn/slide/album_tech',
+                dataType:'jsonp',
+                jsonp:"jsoncallback",
+                data:{
+                    app_key:'1271687855',
+                    num:pagecount,
+                    page:curpage
+                }
+            }).done(function (ret) {
+                if(ret && ret.status && ret.status.code === "0"){
+                    place(ret.data);
+                }else {
+                    console.log('error data')
+                }
+            });
+
+        }//加载
+
+
+        function place(nodelist) {
+            console.log(nodelist);
+            var node=renderdata(nodelist);//把节点添加到页面
+
+            var defereds=[];
+            node.find('img').each(function () {
+                var defer=$.Deferred();
+                $(this).load(function () {
+                    defer.resolve();
+                });
+                defereds.push(defer)
+            });
+            $.when.apply(null,defereds).done(function () {
+                console.log('over');
+                waterfall(node)
+            })
+
+        }//插入数据
+        function renderdata(items) {
+            var tpl='',
+                    node;
+            for(var i = 0; i<items.length;i++){
+
+                tpl+='<li class="item">';
+                tpl+='<img src="'+items[i].img_url+'" alt="" '+"</a>";
+                tpl+='<h4 class="header">'+items[i].short_name+'</h4>';
+                tpl+='<p class="desp">'+items[i].short_intro+'</p>'  ;
+                tpl+='</li>';
+
+            }
+            node=$(tpl);
+            $('.img-ct').append(node);
+            return node;
+        }
+
+        var nodewidth=$('.item').outerWidth(true);
+        var colnum=parseInt($('.img-ct').width()/nodewidth);
+        var sumheight=[];
+
+            for (var i = 0; i < colnum; i++) {
+                sumheight.push(0);
+            }
+
+            function waterfall($nodes) {
+
+                $nodes.each(function () {
+                    var cur = $(this);
+                    var minheight = sumheight[0],
+                            idx = 0;
+                    for (var i = 0; i < sumheight.length; i++) {
+
+                        if (minheight > sumheight[i]) {
+                            minheight = sumheight[i];
+                            idx = i;
+                        }
+                    }
+                    cur.css({
+                        left: idx * nodewidth,
+                        top: minheight,
+                        opacity:1
+                    });
+                    sumheight[idx] += cur.outerHeight(true);
+                    $('.img-ct').height(Math.max.apply(null,sumheight))
+
+                });
+            }
+        //瀑布流处理
+
+
+    </script>
+
 </body>
 </html>

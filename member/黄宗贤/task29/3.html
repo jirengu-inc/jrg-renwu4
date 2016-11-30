@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>lazy ajax</title>
+	<style>
+		body{
+			box-sizing: border-box;
+		}
+		ul,li{
+			list-style: none;
+			margin:0;padding:0;
+		}
+		li{
+			height:200px;
+			width:500px;
+			line-height: 200px;
+			border:1px solid green;
+			border-radius: 4px;
+			margin:20px 0px;padding:0 20px;
+			font-size: 24px;
+		}
+		li:hover{
+			background: green;
+			color:#FFF;
+			cursor: pointer;
+		}
+		.btn{
+			width:500px;
+			height:60px;
+			padding:0 20px;
+			border-radius: 4px;
+			background: green;
+			color:#FFF;
+			line-height: 60px;
+			font-size: 24px;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<ul class="ct">
+			<li>内容1</li>
+			<li>内容2</li>
+			<li>内容3</li>
+			<li>内容4</li>
+		</ul>
+	</div>
+	<script src="../jquery-3.1.1.min.js"></script>
+	<script>
+		var $btn = $('<div class="btn">加载更多</div>'),
+			leng = 3,
+			$ct = $('.ct'),
+			finish = true;
+		$('body').append($btn);
+
+		$(window).on("scroll",function(){
+			console.log("fi");
+			if(isShow($btn) && finish){
+				finish = false;   //防止多次滚动时同时发生ajax
+				var start=$('li').length;
+				console.log(1);
+
+				$.ajax({
+					url:'1.php',
+					type:'GET',
+					dataType:'json',
+					data:{
+						start:start,
+						leng:leng
+					},
+					success:function(data){
+						if(data && data.status == 1){
+							var res = data.items;
+							for(var i=0;i<res.length;i++){
+								console.log("append");
+								$ct.append('<li>' + res[i] + '</li>');
+							}
+						}
+						else{
+							alert('error');
+						}
+						finish = true;
+					},
+					error:function(){
+						alert('ajax error');
+					}
+				});
+			}
+			else{
+				console.log(2);
+				return;
+			}
+			function isShow($ele){
+				var scrollY = $(window).scrollTop(),
+					winH = $(window).height(),
+					offsetY = $ele.offset().top;
+				if( scrollY + winH > offsetY ){
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+		})
+	</script>
+</body>

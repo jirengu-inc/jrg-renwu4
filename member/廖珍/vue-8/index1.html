@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>vue+bootstrap书单</title>
+		<link rel="stylesheet" href="bootstrap1.min.css">
+		<script src="http://apps.bdimg.com/libs/vue/1.0.14/vue.js"></script>
+		<script src="Store1.js"></script>
+		<style>
+			* {
+				padding:0;
+				margin:0;
+			}
+			body {
+				color:#555462;
+			}
+			img {
+				width:100%;
+			}
+			#app {
+				width:700px;
+				position:absolute;
+				left:50%;
+				top:50%;
+				transform:translate(-50%,-50%);
+			}
+		</style>
+	</head>
+	<body>
+		<img src="http://pic.qiantucdn.com/58pic/14/50/05/24u58PICHGy_1024.jpg">
+		<div id="app">
+			<my-title></my-title>
+			<div id="divTblBook">
+				<table class="table table-hover">
+					<td>
+						<tr>
+							<th v-for="b in bookShow">{{b}}</th>
+							<th>操作</th>
+						</tr>
+					</td>
+					<tbody>
+						<tr v-for="item in books">
+							<td v-for="b in item">{{item[$key]}}</td>
+							<td>
+								<button class="btn btn-primary" v-on:click='delBook(item)'>删除</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div id="divAddBook">
+				<h3 class="text-center">添加书籍</h3>
+				<div v-for="b in bookShow">
+					<div class="form-group">
+						<label>{{b}}</label>
+						<input type="text" class="form-control" v-model="book[$key]">
+					</div>
+				</div>
+				<button class='btn btn-primary' v-on:click="addBook()">添加</button>
+			</div>
+		</div>
+		<script>
+			var vm=new Vue({
+				el:"#app",
+				components:{
+					'my-title':{
+						template:"<h2 v-text='title' class='text-center'></h2>",
+						data:function() {
+							return {
+								title:"Vue.js+bootstrap书单"
+							}
+						}
+					}
+				},
+				data:{
+					books:[{
+						author:'曹雪芹',
+						name:'红楼梦',
+						price:32.0
+					},{
+						author:'施耐庵',
+						name:'水浒传',
+						price:32.0	
+					},{
+						author:'吴承恩',
+						name:'西游记',
+						price:32.0
+					}],
+					book:{
+						Name:'',
+						Author:'',
+						price:'',
+					},
+					bookShow:{
+						Name:'书名',
+						Author:'作者',
+						price:'价格'
+					}
+				},
+				watch:{
+					books:{
+						handler:function(books) {
+							save(books)
+						},
+						deep:true
+					}
+				},
+				methods:{
+					addBook:function() {
+						this.books.push(this.book);
+						this.book=""
+						fetch()
+						console.log(fetch())
+					},
+					delBook:function(book) {
+						this.books.$remove(book);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

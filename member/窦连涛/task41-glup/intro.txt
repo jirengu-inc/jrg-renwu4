@@ -1,0 +1,57 @@
+
+1 glup是打造自动化流程的一个工具(node.js写的应用)。
+
+  可以装很多插件 ？
+
+  HTML、CSS、Javascript 相当于原料
+
+  经过流水线之后
+
+  作用
+
+      文件的压缩和合并 图片的压缩 ------ 基本功能
+
+
+  新建gulpfile.js
+
+      gulp-minify-css  CSS压缩
+      gulp-uglify       js压缩
+      gulp-concat       合并文件
+      gulp-rename       重命名
+      gulp-clean        清空文件夹
+      gulp-htmlmin      html压缩
+      gulp-jshint       js代码合法性检查
+      gulp-imagemin     图片压缩
+
+      gulp-autoprefixer
+
+      /usr/local/lib 全局安装完了之后在这个路径
+
+      定制一个任务
+
+      gulp.task('dafault',function(){})
+
+      //默认是default的话 执行的时候 直接gulp命令就可以
+      //如果是abc gulp 'abc'
+
+      初次安装错误
+      1 没有package.json //npm init -f
+      2 npm WARN demos@1.0.0 No description
+        //package.json 中写description
+      3 npm WARN demos@1.0.0 No repository
+        //"repository" : {
+         "type" : "git",
+         "url" : "http://github.com/npm/npm.git"
+       }
+
+       gulp-jshint 的安装比较特殊
+       //npm install jshint gulp-jshint --save-dev
+
+       升级graceful-fs v3.0.0
+       npm install -g graceful-fs graceful-fs@latest
+       minimatch
+       npm install -g minimatch minimatch@latest
+
+       gulp 是基于数据流的
+
+       browerSync fs gulp-scp2 

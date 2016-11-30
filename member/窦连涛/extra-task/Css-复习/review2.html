@@ -1,0 +1,200 @@
+1 盒子模型
+	1 对任何元素都有效
+	2 对行内元素来说 上下的padding和margin无效 但是上下padding 会有效果但对其他元素无影响。
+2 边距合并
+
+	父子		正常文档流 无边框和padding ---> 产生合并 解决办法 添加边框或者padding 1px
+	兄弟		正常文档流                    解决办法 浮动 转化为行内元素 overflow:hidden
+	自身		正常文档流 无内容有margin       解决办法 border padding overflow:hidden
+
+3 box-sizing:border-box
+
+	使得宽高=内容+border+adding
+
+4 IE 盒模型和W3C盒模型有什么区别?
+
+	W3C标准中padding、border所占的空间不在width、height范围内，大家俗称的IE的盒模型width包括content尺寸＋padding＋border
+
+5 雪碧图是什么?有什么作用?
+
+	多张图片合成 减少HTTP请求数
+
+6 img标签和CSS背景使用图片在使用场景上有何区别？
+
+	固定不变的CSS背景图
+
+7 如何让一个div水平居中？如何让图片水平居中
+
+	div width:xxx margin:0 auto
+
+	img 包含他的父级元素 text-align:center
+
+8 opacity 和 rgba都能设置透明，有什么区别
+	opacity作用于元素和其中所有元素的所有内容
+	rgba只作用于元素的颜色和背景色
+	opacity能够被继承，rgba不行
+
+9 background-size
+
+	作用是设置背景图片的大小。常用的值有：
+	px 可以为一个或者两个值，分别设置图片的长和宽
+	% 可以为一个值或者两个值 以父元素的百分比来设置长和宽
+	cover 让背景图片完全覆盖整个元素
+	contain 让背景图片完全覆盖内容区域
+
+10 CSS 定位机制有三种
+
+	文档流 、浮动 、定位
+
+			position:absolute 和 position:fixed 、float、display:none 脱离文档流
+
+	四种定位方式
+
+				是否定位				参考点			使用场景
+
+	static		否					无				普通文档流
+
+	fixed		是					浏览器			悬浮广告 导航条
+
+	relative	是					自身				元素的微调 大布局
+
+	absolute	是 相对于static定位以外的第一个父元素进行定位 局部 垂直水平居中
+
+
+11 position:relative和负margin 区别
+
+		            对周围元素产生影响				原理
+
+	负margin        产生影响					CSS盒子模型一个属性
+	position 		   不产生影响					CSS的一个定位机制
+
+
+12 浮动元素有什么特征？对其他浮动元素、普通元素、文字分别有什么影响?
+
+	浮动元素的特征：脱离文档流。
+
+	1   任何定义为float的元素都会自动被设置为一个块状元素显示，相当于被定义display：block；声明。这样就可以为浮动元素定义width和height属性，如果不设置宽度和高度，浮动（或绝对定位）元素的宽度会收缩，收缩成和内容一样的宽度。即使是内联显示元素也可以浮动。
+
+	2	而块状元素（或者被定义display：block；）不浮动时，如果没有定义，它的宽度则会自动显示为100%。
+
+
+
+
+	影响			浮动元素			普通元素			文字
+	浮动元素	阻止元素继续浮动	占用浮动元素的位置		环绕
+
+13 清除浮动
+
+		1.父元素的高度无坍塌
+		2.破坏布局
+
+14 BFC
+
+15 父容器使用overflow: auto| hidden撑开高度的原理
+
+		父元素形成BFC
+
+16 使用display:inline-block 之后的块级元素会产生缝隙，如何去除呢？
+
+		2种方法 父元素 font-size:0  浮动元素 margin-left:-4px;
+
+17 另外BFC 还有一个作用 就是让围绕浮动元素的文字不再环绕。overflow:hidden
+
+18 BFC 布局 和 负边距布局
+
+	BFC 两栏布局
+
+			特点 ： 侧边栏固定  内容区域撑开并占用 剩下的空间
+
+			解决 :  侧边栏浮动  内容区形成BFC overflow:hidden
+
+	负边距两栏布局
+
+			特点 ： 侧边栏固定  内容区域撑开并占用 剩下的空间
+
+			解决 : 侧边栏和内容区域 都浮动 清除浮动
+
+						内容区相对定位 left的距离是侧边栏的宽度
+						侧边栏margin-left:-100%
+			注意 ： 宽度设置为100% 是相对于父容器
+
+19 圣杯布局 和 双飞翼布局
+
+
+	圣杯布局的原理是怎样的? 简述实现圣杯布局的步骤
+	圣杯布局要求三栏布局，中间宽度自适应，两边宽度固定
+	圣杯布局：用到浮动，定位，负边距，不添加额外标签。
+	步骤一1.中间部分需要根据浏览器宽度的变化而变化，所以要用100%，这里设左中右向左浮动，因为中间100%，左层和右层根本没有位置上去
+	步骤二：利用负边距，把左右栏定位
+	步骤三：给外层加padding了
+	采用相对定位方法，各自相对于自己把自己挪出去
+	双飞翼布局的原理? 实现步骤?
+	设置三个DIV的顺序为：中左右，且都向左浮动
+	2.设置中DIV的宽度为100%
+	3.设置左DIV的左负边距为-100%，设置右DIV的左负边距为-右元素宽度
+	4.中DIV添加一层DIV，设置左边距为左元素宽度，右边距为右元素宽度
+
+21  CSS 各种垂直居中对齐
+
+	块级元素中的行内元素水平垂直居中
+
+	1 块级元素中的行内元素水平居中
+
+		text-align:center
+
+		块级元素中内容可变的垂直居中
+
+			padding
+
+		块级元素中内容不变的垂直居中
+
+		  	line-height
+
+	2 块级元素在块级元素中的水平垂直绝对居中
+
+		适用场景 弹窗 固定的屏幕垂直居中 (一滑动就变了)
+				position:absolute;
+				top:0;
+				bottom:0;
+				left:0;
+				right:0;
+
+		块级元素(有固定宽度的)在页面上的水平居中。
+		块级元素本身加属性。
+
+				margin: 0 auto
+
+
+		全屏		块级元素(有固定宽度的)在页面上的全屏。
+						适用场景 整屏全屏，一个整屏接一个整屏的。
+
+					  html,body{
+					      height:100%;
+					}
+					  .test1 {
+					     height:100%;
+					     background:blue;
+					}
+					  .test2 {
+					  height:100%;
+					  background:red;
+					}
+
+
+		全屏垂直居中
+  			3.1 宽高是固定死的
+
+					width:200px;
+					height:200px;
+					position:absolute
+					left:50%;
+					right:50%;
+					margin-left:-100px;(宽度一半)
+					margin-top:-100px;（高度一半）
+
+			3.2 宽高不知，由内容撑开
+
+					position:absolute
+					left:50%;
+					right:50%;
+					transform:translate（-50%，-50%）;

@@ -1,3 +1,9 @@
+var wrap=document.getElementById("wrap-title");
+var btn=wrap.children;
+var wrapWord=document.getElementById("wrap-word")
+var word=wrapWord.children;
+wrap.addEventListener("click",show);
+
 function addClass(Tool,Cla){
     var CN=Tool.className;
 
@@ -32,9 +38,4 @@ function show(e){
 }
 
 
-var wrap=document.getElementById("wrap-title");
-var btn=wrap.children;
-var wrapWord=document.getElementById("wrap-word")
-var word=wrapWord.children;
-wrap.addEventListener("click",show);
 

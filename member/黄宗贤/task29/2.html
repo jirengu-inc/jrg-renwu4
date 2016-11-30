@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>lazy img</title>
+	<style>
+		ul,li{
+			list-style: none;
+		}
+		ul:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		.content{
+			width:800px;
+			border:1px solid red;
+		}
+		.content li{
+			float:left;
+			margin:10px;
+		}
+		.content li img{
+			height:400px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content">
+		<ul class="ct">
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/0c8f4378-d66d-479b-aa9f-274b07d888ac.png"></li>
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/0c8f4378-d66d-479b-aa9f-274b07d888ac.png"></li>
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/0c8f4378-d66d-479b-aa9f-274b07d888ac.png"></li>
+			
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/6d74619e-ef33-4f41-b9cd-04d9bbccac47.png"></li>
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/6d74619e-ef33-4f41-b9cd-04d9bbccac47.png"></li>
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/6d74619e-ef33-4f41-b9cd-04d9bbccac47.png"></li>
+			
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/b8f54520-5f4f-42b9-85fd-23fd782da30f.png"></li>
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/b8f54520-5f4f-42b9-85fd-23fd782da30f.png"></li>
+			<li><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/46f89e09-296a-4588-b4fa-9cece9c01a53.jpg" data-src="http://7xpvnv.com2.z0.glb.qiniucdn.com/b8f54520-5f4f-42b9-85fd-23fd782da30f.png"></li>
+			
+		</ul>
+	</div>
+	<script src="../jquery-3.1.1.min.js"></script>
+	<script>
+		//console.log(clock);
+		$(window).on("scroll",function(){
+			var clock;
+			if(clock){
+				clearTimeout(clock);	//如果在300毫秒内又滑动屏幕，计时重新开始
+			}
+			clock = setTimeout(function(){	
+				console.log(1);
+			//滑动完成3000毫秒后，才执行checkShow()
+				checkShow();
+			},3000);
+		});
+			checkShow();
+			function checkShow(){
+				$(".ct img").each(function(){
+					var $cur = $(this);
+					if($cur.attr('isLoaded')){
+						return;
+					}
+					if(isShow($cur)){
+						showImg($cur);
+					}
+				});
+			};
+			function isShow($ele){
+				var scrollY = $(window).scrollTop(),
+					winH = $(window).height(),
+					offsetY = $ele.offset().top;
+				if( scrollY + winH > offsetY){
+					return true;
+				}
+				else{
+					return false;
+				}
+			}
+			function showImg($ele){
+				$ele.attr('src',$ele.attr('data-src'));
+				$ele.attr('isLoaded',true);
+			}
+		
+	</script>
+			
+</body>
+</html>

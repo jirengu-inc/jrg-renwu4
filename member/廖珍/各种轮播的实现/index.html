@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset='utf-8'>
+		<title>多种轮播的实现</title>
+		<style>
+			html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+				padding:0px;
+				margin:0px;
+			}
+			ul,li {
+				list-style:none;
+			}
+			a {
+				text-decoration: none;
+			}
+			html {
+				width:100%;
+				height:100%;
+			}
+			body {
+				width:100%;
+				height:100%;
+				background:#ddd url(imgs/bg.jpg) repeat top left;
+				font-size:15px;
+				font-family:'Open Sans Condensed','Arial Narrow',serif;
+				
+			}
+			.clearfix:after {
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.container {
+				width:100%;
+				position:relative;
+			}
+			#header {
+				margin:30px 0;
+				text-align:center;
+			}
+			#header li:hover {
+				background:rgba(255, 255, 255, 0.54);
+			}
+			#header h3 {
+				margin-bottom:10px;
+				color:rgba(42, 23, 23, 0.43);
+			}
+			#header p {
+				
+				color:rgba(0, 0, 0, 0.39);
+				margin-bottom:15px;
+			}
+			#header ul {
+				width:100%;
+				margin:0 auto;
+			}
+			#header ul li {
+				display:inline-block;
+				height:20px;
+				line-height:20px;
+				width:110px;
+				text-align:center;
+				margin-left:2px;
+				padding:0px 3px;
+				border:1px solid #fff;
+				background:rgba(255, 0, 0, 0.02);
+			}
+			#header ul li a {
+				color:#C6A1A1;
+				font-style:italic;
+			}
+			.view {
+				width:900px;
+				height:400px;
+				margin:40px auto;
+				border:8px solid #fff;
+			}
+			.view .carousel {
+				width:100%;
+				height:100%;
+				overflow:hidden;
+				position:relative;
+			}
+			.carousel-ct {
+				position:absolute;
+			}
+			.carousel-ct li {
+				width:900px;
+				height:400px;
+				float:left;
+			}
+			.carousel-ct li img {
+				width:900px;
+				height:400px;
+			}
+			.arrow {
+				position:absolute;
+				width:20px;
+				height:20px;
+				border-radius:50%;
+				top:50%;
+				margin-top:-10px;
+				background:rgba(33, 29, 29, 0.67);
+				text-align:center;
+				line-height:20px;
+				color:#fff;
+				font-size:16px;
+			}
+			.pre {
+				left:10px;
+			}
+			.next {
+				right:10px;
+			}
+			.bullent {
+				position:absolute;
+				bottom:10px;
+				transform:translateX(-50%);
+				left:50%;
+			}
+			.bullent li {
+				display:inline-block;
+				width:20px;
+				height:4px;
+				background: #fff;
+				border-radius:2px;
+
+			}
+			.bullent li.active {
+				background:rgba(3, 17, 21, 0.47);
+			}
+			.arrow:hover {
+				background:hsla(140, 56%, 61%, 0.46);
+			}
+		</style>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	</head>
+	<body>
+		<div class='container'>
+			<div id='header'>
+				<h3>多种轮播的实现</h3>
+				<p>利用jquery实现不同效果的轮播</p>
+				<ul class='clearfix'>
+					<li><a href='index.html'>无缝轮播</a></li>
+					<li><a href='index2.html'>多个轮播</a></li>
+					<li><a href='index3.html'>淡入淡出轮播</a></li>
+					<li><a href='index4.html'>全屏轮播</a></li>
+				</ul>
+			</div>
+			<div class='view'>
+					<div class='carousel'>
+						<ul class='carousel-ct clearfix'>
+							<li class='item'>
+								<img src='imgs/1.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/2.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/3.jpg'>
+							</li>
+							<li class='item'>
+								<img src='imgs/7.jpg'>
+							</li>
+						</ul>
+						<a href='#' class='arrow pre'><</a>
+						<a href='#' class='arrow next'>></a>
+						<ul class='bullent clearfix'>
+							<li class='active'></li>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+		</div>
+		<script>
+			var carousel= {
+				init:function() {
+					this.$carousel=$('.carousel');
+					this.$ct=$('.carousel-ct');
+					this.$items=this.$ct.find('li');
+					this.$pre=$('.pre');
+					this.$next=$('.next');
+					this.$bullent=$('.bullent')
+					this.itemWidth=this.$items.width();
+					this.imgCount=this.$items.size();
+					console.log(this.imgCount);
+					this.curIdx=0;
+					this.isAnimate=false;
+					this.imgRealCount=this.imgCount+2
+
+					this.$ct.prepend(this.$items.last().clone());
+					this.$ct.append(this.$items.first().clone());
+					this.$ct.css({left:0-this.itemWidth});
+					this.$ct.css({width:this.imgRealCount*this.itemWidth});
+					this.bind();
+				},
+				bind:function() {
+					var $cur=this;
+					$cur.$pre.on('click',function(){
+						$cur.playPre();
+					});
+					$cur.$next.on('click',function() {
+						$cur.playNext();
+					});
+					$cur.$bullent.find('li').on('click',function() {
+						var idx=$(this).index();
+						if(idx>$cur.curIdx) {
+							$cur.playNext(idx-$cur.curIdx);
+						}else if(idx<$cur.curIdx) {
+							$cur.playPre($cur.curIdx-idx);
+						}
+					});
+				},
+				playPre:function(idx) {
+					var $cur=this;
+					var idx=idx || 1;
+					if($cur.isAnimate) {
+						return;
+					}
+					$cur.isAnimate=true;
+					$cur.$ct.animate({left:'+='+($cur.itemWidth*idx)},function() {
+						$cur.curIdx=($cur.imgCount+$cur.curIdx-idx)%$cur.imgCount;
+						console.log($cur.curIdx);
+						if($cur.curIdx==($cur.imgCount-1)) {
+							console.log($cur.imgCount-1)
+							$cur.$ct.css({left:0-($cur.itemWidth*$cur.imgCount)});
+						}
+						$cur.isAnimate=false;
+						$cur.setBullent();
+					});
+					
+				},
+				playNext:function(idx) {
+					var $cur=this;
+					var idx=idx||1;
+					if($cur.isAnimate) {
+						return;
+					}
+					$cur.isAnimate=true;
+					$cur.$ct.animate({left:'-='+($cur.itemWidth*idx)},function() {
+
+						$cur.curIdx=($cur.curIdx+idx)%$cur.imgCount;
+						if($cur.curIdx==0) {
+							$cur.$ct.css({left:0-$cur.itemWidth});
+						}
+						$cur.isAnimate=false;
+						$cur.setBullent();
+					});
+					
+				},
+				setBullent:function() {
+					var $cur=this;
+					$cur.$bullent.children().removeClass('active').eq($cur.curIdx).addClass('active');
+					console.log($cur.curIdx);
+				}
+
+			}
+			carousel.init();
+		</script>
+	</body>
+</html>
+
+<div class='register'>
+			<h3>注册</h3>
+			<form id='register-form' action=''>
+				<dl class='register-ct'>
+					<dt>用户名:</dt>
+					<dd>
+						<input id='username' type='text' placeholder='用户名(hunger被注册过)'>
+					</dd>
+					<dd class='msg msg-un'>只能是字母、数字、下划线，3-10个字符</dd>
+					<dt>密码：</dt>
+					<dd>
+						<input type='password' id='password1' placeholder='密码'>
+					</dd>
+					<dd class='msg msg-pwd1'>大写字母、小写、数字、下划线最少两种</dd>
+					<dt>再输一次：</dt>
+					<dd>
+						<input type='password' id='password2' placeholder='再输入一次密码'>
+					</dd>
+					<dd class='msg msg-pwd'></dd>
+					<dd><button id='btn-register'>注册</dd>
+				</dl>
+			</form>
+		</div>

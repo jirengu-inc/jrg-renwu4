@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>BFC引起的合并</title>
+	<style>
+		html,body,div{
+			margin:0;
+			padding:0;
+		}
+
+/*.wrapper {
+            border: 1px solid ;
+            width:300px;
+        }
+
+        .box1,.box2 {
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            margin:30px;
+            display: inline-block;//兄弟间的外边距合并
+        }
+兄弟间外边距合并*/
+
+				/*父子间外边距合并 父元素没有border和padding		  .wrapper {
+            width:400px;
+            background: pink;
+            margin:10px;*/
+            /*overflow: hidden;*/
+/*            display:inline-block;
+        }*/
+
+/*        .box1,.box2 {
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            margin:20px;
+        }*/
+
+        .box5 {
+					margin:40px;
+					/*padding: 1px; 自身合并 有margin 无内容*/
+				}
+	</style>
+</head>
+<body>
+<!-- 兄弟间外边距合并	<div class="wrapper">
+        <div class="box1"></div>
+        <div class="box2"></div>
+</div> -->
+<!-- 父子间外边距合并 <div class="wrapper">
+        <div class="box1"></div>
+        <div class="box2"></div>
+ </div> -->
+ <div class="box5"></div>
+<h3>hello</h3>
+
+</body>
+</html>

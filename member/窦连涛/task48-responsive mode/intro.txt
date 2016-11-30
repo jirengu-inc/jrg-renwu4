@@ -1,0 +1,49 @@
+响应式
+
+    在不同的条件下 展示某些不同的页面
+
+    电脑端和手机端 展示不同的页面
+
+媒体查询
+
+    querymedia
+    @media print{
+      适用于印刷的样式
+    }
+    @media screen {
+
+    }
+
+    以@开头的
+
+        @important
+        @keyframes //定义动画
+        @font-face //定义字体
+
+    常用的媒体类型
+
+        all
+        handle 手持设备
+        print 印刷
+        projection 投影
+        screen 屏幕
+
+    简单例子 基础用法
+
+        @media screen and(max-width:990px){
+            .container{
+                background:orange;
+              }
+        }
+
+    其他特性
+
+        操作符
+
+            and 把多个媒体查询联合在一起
+
+            orientation : landscape 横屏
+
+   一套html 两套css 之间来回的切换
+
+            移动端 rem

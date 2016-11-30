@@ -1,0 +1,36 @@
+1 css 命名过长
+2 写法不一样(包括各种前缀)
+
+运算 在颜色上用的比较多
+
+    变量命名 @
+    嵌套 #header {
+            h1 {
+              font-size: 26px;
+              font-weight: bold;
+            }
+            p { font-size: 12px;
+              a { text-decoration: none;
+                &:hover { border-width: 1px }
+              }
+            }
+          }
+    运算
+        @the-border: 1px;
+        @base-color: #111;
+        @red:        #842210;
+
+        #header {
+        color: @base-color * 3;
+        border-left: @the-border;
+        border-right: @the-border * 2;
+        }
+        #footer {
+        color: @base-color + #003300;
+        border-color: desaturate(@red, 10%);
+        }
+
+
+    sass
+
+        插件 autoprefix 后编译 

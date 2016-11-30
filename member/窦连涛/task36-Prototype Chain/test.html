@@ -25,7 +25,7 @@
 			for(var i in json){
 				//如果当前项大于下一项
 				if(json[i] > num){
-					
+
 					num = json[i];
 					number = i;
 				}
@@ -52,16 +52,17 @@
 
 		function isObj(obj,Func){
 
-			var proto = obj.__proto__;
+			var proto = obj.__proto__;//pro = p1.__proto__
 
 			do{
 				if(proto === Func.prototype) return true;
+				//p1.__proto__ === People.prototype
 				if(!proto) return false;
 			}while(proto = proto.__proto__);
-
+			//proto = p1.__proto__.__proto__
 			return false;
 		}
-		
+
 	</script>
 </body>
 </html>

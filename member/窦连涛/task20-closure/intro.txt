@@ -1,13 +1,12 @@
 setInterval setTimeout
 
-最小时间粒度 与浏览器相关的
+最小时间粒度 与浏览器相关的 ？
 
-用settimeout 实现 setinterval两者的区别
+用settimeout 实现 setinterval两者的区别 ？
 
 setInterval 在规定的时间内 完成函数的运行
 俗语就是 比如公司规定你每一天做多少东西，但是你半天完成了，那么剩下的时间闲着
-setTimeout 不跟你规定时间，而是你什么时候完成算什么时候，
-只有你完成了 你才能休息规定的时间
+setTimeout 不跟你规定时间，而是你什么时候完成算什么时候，只有你完成了 你才能休息规定的时间
 
 setTimeout(function(){
 
@@ -36,7 +35,7 @@ function getMini(){
       },0)
 }
 
-什么事闭包呢？
+什么是闭包呢？
 通俗的讲 就是一个函数内部，return出去另外一个函数，ruturn出去的这个函数 可以操作父函数的内部变量。
 
 (function(){

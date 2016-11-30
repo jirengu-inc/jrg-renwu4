@@ -1,0 +1,310 @@
+<!doctype html>
+<html><!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>jquery常见效果</title>
+        <style>
+            html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:100%;
+                position:relative;
+            }
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+                height:20px;
+                line-height:20px;
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+            .view {
+                width:1000px;
+                margin:0 auto;
+            }
+            .lazyLoading {
+                width:100%;
+            }
+            .lazyLoading li {
+                width:300px;
+                height:350px;
+                margin-left:20px;
+                margin-top:20px;
+                border:5px solid #fff;
+                float:left;
+                color:black;
+            }
+            .lazyLoading li img {
+                width:300px;
+                height:350px;
+            }
+            .goTop {
+                position:fixed;
+                right:3%;
+                bottom:10%;
+                width:50px;
+                height:50px;
+                border-radius:50%;
+                line-height:50px;
+                text-align:center;
+                background-image:linear-gradient(to bottom left,#CA7171,rgba(122, 59, 194, 0.19));
+                color:#fff;
+                font-size:18px;
+                border:1px solid #fff;
+                display:none;
+            }
+
+        </style>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>jquery的常见特效---回到顶部</h3>
+                <p>滚动滑动条后，查看右下角效果，点击top，即可返回网页顶部</p>
+                <ul class='clearfix'>
+                    <li><a href='index.html'>懒加载</a></li>
+                    <li><a href='index2.html'>tab切换</a></li>
+                    <li><a href='index3.html'>瀑布流布局</a></li>
+                    <li><a href='index4.html'>回到顶部</a></li>
+                    <li><a href='index5.html'>stickUp</a></li>
+                </ul>
+            </div>
+            <div class='view'>
+                <ul class='lazyLoading clearfix'>
+                    <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                     <li>
+                        <a href='#'>
+                            <img src='http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg' data-src='imgs/1.jpg'>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class='goTop'>Top</div>
+
+        </div>
+      
+        <script>
+           var lazyLoading={
+                init:function($imgs) {
+                    this.$ct=$('.lazyLoading');
+                    this.items=this.$ct.children();
+                    this.bind();
+                    this.$target=$imgs
+                    console.log(this.$target)
+                },
+                bind:function() {
+                    var $cur=this;
+                    $(window).on('scroll',function() {
+                      $cur.checkShow();
+                    });
+                },
+                checkShow:function() {
+                    var $cur=this;
+                   $cur.$target.each(function() {
+                        var $cur1=$(this);
+                        if($cur.isShow($cur1)) {
+                           setTimeout(function() {
+                                $cur.showImg($cur1)
+                           },1000)
+                        }
+                   });
+                },
+                isShow:function($el) {
+                    var $cur=this;
+                    var winH=$(window).height();
+                    var offsetH=$el.offset().top;
+                    var scrollT=$(window).scrollTop();
+                    if(offsetH<winH+scrollT) {
+                        return true;
+                    }else {
+                     
+                      
+                        return false;
+                    }
+                },
+                showImg:function($el) {
+                    var $cur=this;
+                    $el.attr('src',$el.attr('data-src'));
+                }
+                
+           }
+           lazyLoading.init($('.lazyLoading li img'));
+
+            var goTop={
+                init:function() {
+                    this.goTop=$('.goTop');
+                    this.bind();
+                },
+                bind:function() {
+                    var $cur=this;
+                    $(window).on('scroll',function() {
+                        var scrollT=$(window).scrollTop();
+                        if(scrollT>200) {
+                            $cur.goTop.show();
+                        }else {
+                            $cur.goTop.hide();
+                        }
+                    });
+                    $cur.goTop.on('click',function() {
+                        $(window).scrollTop(0);
+                    })
+                }
+            }
+            goTop.init();
+        </script>
+    </body>
+</html>
+   

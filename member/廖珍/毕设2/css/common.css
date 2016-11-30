@@ -1,0 +1,69 @@
+html,body,ul,li,h1,h2,h3,h4,h5,h6,p {
+	padding:0px;
+	margin:0px;
+}
+* {
+	box-sizing:border-box;
+}
+
+html,body,#header,.layers,.layer-mountains {
+	width:100%;
+	height:100%;
+}
+	
+body {
+	font-size:14px;
+	font-family:serif,Arial,'Microsoft YaHei',san-serif;
+	color:#fff;
+	background:#303052;
+}
+a {
+	text-decoration:none;
+	color:#fff;
+}
+ul,li {
+	list-style:none;
+}
+.layers,.layer-shadows,.layer-mountains,.layer-logo {
+	position:absolute;
+}
+.clearfix:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+@keyframes star1 {
+	0% {width:30px;height:30px;}
+	50% {width:20px;height:20px;}
+	100% {width:8px;height:8px;}
+}
+@keyframes star2 {
+	0% {width:40px;height:40px;}
+	50% {width:25px;height:25px;}
+	100% {width:15px;height:15px;}
+}
+@keyframes star3{
+	0% {width:4px;height:4px;}
+	50% {width:16px;height:16px;}
+	100% {width:32px;height:32px;}
+}
+@keyframes star5{
+	0% {width:36px;height:36px;}
+	100% {width:2px;height:2px;}	
+}
+@keyframes meteor1{
+	0% {right:0;top:0;}
+	100% {right:600px;top:600px;}
+}
+@keyframes meteor2{
+	0% {right:100px;top:-200px;}
+	100% {left:200px;bottom:300px;}
+}
+@keyframes shadow1 {
+	99.9% {left:-200px;}
+	100% {display:none;}
+}
+@keyframes shadow2 {
+	99.9% {left:0;}
+	100% {display:none;}
+}

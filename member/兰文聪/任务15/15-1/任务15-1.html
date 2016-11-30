@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>任务15-1</title>
+<link href="./icon/iconfont.css" rel="stylesheet">
+<style>
+/*-----------------------去除默认、通用样式分割线-----------------------*/
+    html,body,p,h1,ul,li{
+    margin: 0;
+    padding: 0;
+    }
+    html,body {
+    height: 100%;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    }
+    .mediacy{
+    width: 1000px;
+    margin: 0 auto;
+    }
+    a,li{
+    text-decoration: none;
+    list-style: none;
+    }
+    .clearfix:after{   /* 清除浮动 */
+    content: '';
+    display: block;
+    clear: both;
+    }
+    .text-center{
+        text-align: center;
+    }
+    a{
+        color: #666;
+    }
+    a:hover{
+        color: #000;
+    }
+    /*-----------------------按钮style 分割线-----------------------*/
+     .btn{
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    text-align: center;
+    background-color: #bbb;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    border-radius: 5px;
+    color: black;
+    }  
+    .btn:active{
+    background-color: #e25f31;
+    }
+    .btn:hover{
+    background-color: #c14d21;
+    }
+/*-----------------------#header分割线-----------------------*/
+    #header .rocket>i{
+        font-size: 32px;
+        float: left;
+        padding-top: 8px;
+        padding-right: 20px;
+    }
+    #header .rocket:hover{
+        color: #c14d21;
+    }
+    #header>.mediacy>.catalogue{
+        float: left;
+    }
+    #header>.mediacy>.catalogue>li{
+        float: left;
+        height: 50px;
+        line-height: 50px;
+        padding-right: 25px;
+        position: relative;
+    }
+    #header>.mediacy>.catalogue .icon-triangle i{
+        position: absolute;
+        top: 5px;
+    }
+    #header>.mediacy>.catalogue .son-catalogue-container{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        border: 1px solid #ccc;
+        display: none;
+    }
+    #header>.mediacy>.catalogue>.son-catalogue:hover .son-catalogue-container{
+        display: block;
+    }
+    #header>.mediacy>.catalogue>.son-catalogue>.son-catalogue-container>li{ 
+        padding: 5px;
+        height: 32px;
+        line-height: 32px;
+        text-align: center;
+        border: 1px dashed #ccc;
+        background: white;
+    }
+    #header>.mediacy>.catalogue>.son-catalogue>.son-catalogue-container>li:hover{ 
+        background: #eee;
+    }
+ /*-----------------------#content-introduction-background简介背景分割线-----------------------*/   
+    #content>.introduction-background{
+        background-color: #b84d45;
+        color: white;
+    }
+    #content>.introduction-background>.introduction-container{
+        padding: 30px;
+    }
+    #content>.introduction-background>.introduction-container>h1{
+        padding-bottom: 10px;
+    }
+    /*-----------------------#content-home-page首页分割线-----------------------*/ 
+    #content>.home-page>.mediacy{
+        /*border: 1px solid red;*/
+        margin-top: 30px;
+        margin-bottom: 30px;
+        background: #eee;
+    }
+    #content>.home-page>.mediacy li{
+        float: left;
+        line-height: 40px;
+        padding-left: 10px;
+    }
+    #content>.home-page>.mediacy a{
+        color: #b84d45; 
+    }
+    #content>.home-page>.mediacy a:hover{
+        color: #111;
+    }
+    /*-----------------------#content-sample-reels作品集分割线-----------------------*/ 
+    #content>.sample-reels ul{
+        margin-left: -50px;
+    }
+    #content>.sample-reels li{
+        float: left;
+        margin-left: 50px;
+        border: 1px solid #999;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    #content>.sample-reels img{
+        width: 298px;
+        height: 220px;
+    }
+    #content>.sample-reels h1{
+        font-size: 25px;
+        padding: 5px;
+    }
+    #content>.sample-reels p{
+        padding: 5px;
+    }
+    /*-----------------------#content-interested有兴趣 分割线-----------------------*/
+    #content>.interested{
+        background-color: #b84d45;
+        color: white;
+        padding: 30px;
+    }
+    #content>.interested  p{
+        padding: 20px;
+    }
+    #content>.interested  a{
+        color: white;
+        border: 1px solid #fff;
+        border-radius: 2px;
+        padding: 5px;
+    }
+/*-----------------------#footer分割线-----------------------*/
+    #footer p{
+        padding: 40px;
+    }
+</style>
+</head>
+<body>
+    <div id="header">
+        <div class="mediacy clearfix">
+            <a href="#" class="rocket"><i class="icon iconfont">&#xe603;</i></a>
+            <ul class="catalogue">
+                <li>
+                    <a href="#">博客</a>
+                </li>
+                <li>
+                    <a href="#">项目</a>
+                </li>
+                <li>
+                    <a href="#">简历</a>
+                </li>
+                <li class="son-catalogue">
+                    <a class="icon-triangle" href="#">更多<i class="icon iconfont">&#xe60a;</i></a>
+                    <ul class="son-catalogue-container">
+                        <li><a href="">GitHub</a></li>
+                        <li><a href="">知乎</a></li>
+                        <li><a href="">微博</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div id="content">
+        <div class="introduction-background">
+            <div class="introduction-container mediacy">
+                <h1>我的简介</h1>
+                <ul>
+                    <li>这里是我的简介</li>
+                    <li>我的简介简介</li>
+                </ul>
+            </div>
+        </div>
+        <div class="home-page">
+            <div class="mediacy">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#">首页</a>
+                    </li>
+                    <li>/&nbsp我的作品</li>
+                </ul>
+            </div>
+        </div>
+        <div class="sample-reels">
+            <div class="mediacy">
+                <ul class="clearfix">
+                    <li>
+                        <a href="#"><img src="img/1.jpg" alt="无效"></a>
+                        <h1>作品标题</h1>
+                        <p>作品介绍</p>
+                        <div class="text-center">
+                        <a href="" class="btn">查看</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/1.jpg" alt="无效"></a>
+                        <h1>作品标题</h1>
+                        <p>作品介绍</p>
+                        <div class="text-center">
+                        <a href="" class="btn">查看</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/1.jpg" alt="无效"></a>
+                        <h1>作品标题</h1>
+                        <p>作品介绍</p>
+                        <div class="text-center">
+                        <a href="" class="btn">查看</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/1.jpg" alt="无效"></a>
+                        <h1>作品标题</h1>
+                        <p>作品介绍</p>
+                        <div class="text-center">
+                        <a href="" class="btn">查看</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/1.jpg" alt="无效"></a>
+                        <h1>作品标题</h1>
+                        <p>作品介绍</p>
+                        <div class="text-center">
+                        <a href="" class="btn">查看</a>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="#"><img src="img/1.jpg" alt="无效"></a>
+                        <h1>作品标题</h1>
+                        <p>作品介绍</p>
+                        <div class="text-center">
+                        <a href="" class="btn">查看</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="interested">
+            <div class="text-center mediacy">
+                <h1>想更详细的了解我？</h1>
+                <p>下载我的简历吧</p>
+                <a href="#">下载</a>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="mediacy text-center">
+            <p>来自@ruoyu</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -265,10 +265,10 @@
       return newArr;
     }
 
-
+    // 完全深拷贝
     function deepCopy(copy){
       var newCopy;
-      if(typeof copy === "objec" && copy instanceof Array){
+      if(typeof copy === "object" && copy instanceof Array){
         var newCopy = [];
         for (var i = 0; i < arr.length; i++) {
           if(typeof arr[i] === "object" && copy instanceof Array){
@@ -277,7 +277,7 @@
             newArr[i] = arr[i];
           }
         }
-      }else if(typeof copy === "objec" && copy instanceof Array === false){
+      }else if(typeof copy === "object" && copy instanceof Array === false){
         var newCopy = {} ;
         for (var x in obj) {
           if (typeof copy[x] === "object" && copy instanceof Array === false) {
@@ -289,7 +289,6 @@
       }else{
         newCopy = copy;
       }
-
       return newCopy;
     }
   </script>

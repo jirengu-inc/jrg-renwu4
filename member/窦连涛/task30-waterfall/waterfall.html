@@ -56,31 +56,26 @@
     <div class="item h1">13</div>
     <div class="item h3">14</div>
   </div>
-
   <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>
       $(function(){
-
         function render(){
-          $nodeWidth = $('.item').outerWidth(true);
-          $colNum = parseInt($(window).width()/$nodeWidth);
-          $colHeight = [];
+          $nodeWidth = $('.item').outerWidth(true);// 获取元素的宽度
+          $colNum = parseInt($(window).width()/$nodeWidth);// 放下几个
+          $colHeight = [];// 空数组
           for (var i = 0; i < $colNum; i++) {
             $colHeight.push(0);
           }
-
           $('.item').each(function(){
               var $cur = $(this),
-               $idx = 0,
-               $minHeight = $colHeight[0];
-
+                  $idx = 0,//假设0是最小值
+                  $minHeight = $colHeight[0]; // 假设第一个是最小高度
               for (var i = 0; i < $colHeight.length; i++) {
                 if($colHeight[i] < $minHeight){
                   $idx = i;
-                  $minHeight = $colHeight[i];
+                  $minHeight = $colHeight[i]; //因为都是0
                 }
               }
-
               $cur.css({
                 left:$nodeWidth * $idx,
                 top:$minHeight

@@ -1,0 +1,276 @@
+
+h1,h2,h3,h4,h5,h6,p,ul,li {
+	font-family:"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+	padding:0;
+	margin:0;
+}
+html,body {
+	width:100%;
+}
+a {
+	text-decoration:none;
+}
+.clearfix:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+
+
+.navbar {
+	background-color:#222;
+	padding:7px 0px;
+	border:1px solid #222;
+}
+.navbar-brand {
+	font-family:'Kaushan Script',"Roboto Slab","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:26px;
+}
+#logo {
+	color:#fed136;
+}
+#nav-list {
+	color:#fff;
+	font-size:18px;
+}
+#nav-list:hover {
+	color:#fed136;
+}
+.onepage {
+	height:600px;
+	width:100%;
+}
+.fullCarousel {
+	overflow:hidden;
+	height:600px;
+	position:relative;
+	width:100%;
+}
+.fullCarousel-ct {
+	position:absolute;
+	width:100%;
+}
+.item {
+	float:left;
+	width:100%;
+	position:relative;
+}
+.fullCarousel-item1 {
+	background:url('../image/header-bg.jpg');
+	background-size:cover;
+	height:600px;
+
+}
+.fullCarousel-item2 {
+	background:url('../image/header-bg2.jpg');
+	background-size:cover;
+	height:600px;
+}
+.fullCarousel-item3 {
+	background:url('../image/header-bg3.jpg');
+	background-size:cover;
+	height:600px;
+}
+.fullCarousel-item4 {
+	background:url('../image/header-bg4.jpg');
+	background-size:cover;
+	height:600px;
+}
+.h1content,.pcontent {
+	color:#fff;
+}
+.text-title{
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50% ,-50%);
+}
+.pcontent {
+	font-size:26px;
+	}
+.h1content {
+	font-size:48px;
+	font-weight:500;
+	margin:10px 0;
+}
+.btn-wrap {
+	text-align:center;
+	margin-top:10px;
+}
+
+.twopage {
+	margin:100px 0;
+}
+.twopage-text {
+	margin-bottom:60px;
+}
+.text-h1 {
+	margin:20px 0;
+}
+.Commerce {
+	position:relative;
+}
+.icon-ct {
+	width:100px;
+	height:100px;
+	border-radius:50%;
+	position:relative;
+	line-height:100px;
+	text-align:center;
+	background:#f0ad41;
+	left:50%;
+	margin-left:-50px;
+}
+#icon1 {
+	color:#fff;
+	font-size:44px;
+}
+.text-h3 {
+	margin:10px 0;
+}
+.text-p {
+	line-height:1.5;
+	font-style:italic;
+	color:rgba(156, 150, 150, 0.94);
+	font-size:16px;
+}
+
+.threepage {
+	background:#f7f7f7;
+	padding:150px 0;
+}
+.link {
+	margin-top:50px;
+	display:inline-block;
+}
+@media screen and (max-width:767px) {
+	.portfolio {
+		text-align:center;
+	}
+}
+.desc {
+	background:#fff;
+	padding:20px;
+	max-width:360px;
+	margin:0;
+}
+.threepage img {
+	width:350px;
+	height:250px;
+}
+
+
+.fourpage {
+	margin:80px 0;
+}
+.timeline {
+	position:relative;
+}
+.timeline-img  {
+	left: 50%;
+    margin-left: -50px;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    z-index: 100;
+    background-color: #fed136;
+    color: #fff;
+    border-radius: 100%;
+    border: 7px solid #f1f1f1;
+    text-align: center;
+}
+.timeline-panel {
+	width:41%;
+	padding:0 20px 20px 30px;
+}
+.timeline-panel-left {
+	float:left;
+	text-align:right;
+}
+.timeline-panle-right {
+	float:right;
+	text-align:left;
+}
+.fourpage ul li {
+	margin-bottom:80px;
+}
+.timeline::before {
+	content:"";
+	position:absolute;
+	left:50%;
+	width:2px;
+	background:#ccc;
+	top:20px;
+	bottom:0;
+	margin-left:18px;
+}
+
+
+
+.fivepage {
+	padding:80px 0;
+	background:#f7f7f7;
+}
+.team-img img {
+	width:235px;
+	height:235px;
+	border:8px solid #fff;
+	margin:0 auto;
+}
+
+.team-contact ul li {
+	display:inline-block;
+}
+.team-contact ul li a {
+	display:inline-block;
+	width:40px;
+	height:40px;
+	line-height:40px;
+	border-radius:50%;
+	text-align:center;
+	background:#222;
+}
+.icon {
+	color:#fff;
+}
+
+
+.sixpage {
+	padding:60px 0px;
+}
+
+
+.contact {
+	background-color:#222;
+	background-image:url("../image/map-image.png");
+	padding:150px 0;
+}
+.form-control {
+	margin-top:25px;
+}
+.form-group input,.form-group textarea {
+	padding:20px;
+}
+.form-group textarea {
+	height:176px;
+}
+
+
+.footer {
+	padding:25px 0;
+}
+.footer .list-contact li {
+	display:inline-block;
+}
+.footer .list-contact li a {
+	display:inline-block;
+	width:40px;
+	height:40px;
+	line-height:40px;
+	border-radius:50%;
+	text-align:center;
+	background:#222;
+}
+.contact-color {
+	color:#fff;
+}

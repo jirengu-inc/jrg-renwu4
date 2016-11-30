@@ -1,0 +1,190 @@
+HTTP 超文本传输协议
+
+HTTP 是一个服务端和客户端应答的标准(TCP)
+
+一次HTTP 操作称为一个事物 共分四个步骤
+
+	1 客户机与服务器连接 HTTP/Agent 打包
+	2 建立连接 发送请求
+	3 给予响应
+	4 呈现客户端
+
+	统一资源标识符 URI
+	统一资源定位符 URL
+
+	URI 包括 URL 和 URN
+
+URL 格式
+
+	1 方案(协议)
+	2 服务器的位置
+	3 资源路径
+
+	<scheme>://<user>:<password>@<host>:<port>/<path>;<param>?<query>#<hash>
+
+	方法
+		1 GET
+
+		2 POST
+
+		3 HEAD 查信息而不是查内容的时候
+
+		4 PUT DELETE
+
+		5 trace 诊断
+
+		6 options  支持那种请求
+
+	状态码
+
+		100-199 客户端进行一些操作
+
+		200-299 用于表示请求成功
+
+		300-399 已经移动的文件并且新地址包含在HEADER 中
+
+		400-499 客户端错误
+
+		500-599 服务器错误
+
+		100 初始的请求已经接受 客户端继续发送其他请求
+
+		101 切换协议
+
+		**200 发送请求成功 对GET和POST的文档的请求 再后面
+
+		201 服务器已经创建了文档 Location头给出了 他的URL 地址 针对PUT请求
+
+		202 已经接受了请求 但是处理尚未完成
+
+		203 文档已经返回 但是头信息可能不正确
+
+		204 没有新文档 显示原文档
+
+		205
+
+		**206 视频网站 一部分一部分下载
+
+		300 文档在多个位置都有 让你选择其中一个
+
+		**301 重定向 永久性 yinyue.baidu.com
+
+		**302 类似重定向 临时性 和 307 一样
+
+		303 你发送的请求是POST 但是建议你改成GET
+
+		**304 用你的缓存去 服务器不再重新给你资源
+
+		400 出现语法错误
+
+		**401 要求用户名密码
+
+		**403 有资源 无权限  Forbidden
+
+		**404 文件找不到
+
+		405 不支持的请求方法的时候 返回405
+
+		408 客户端超时
+
+		414 URI 太长
+
+		**500 后台语法错误
+
+		501 请求的功能没有 ？
+
+		**502 网管错误 发送不了
+
+		**503 超载
+
+		**504 网管超时
+
+		505 你的服务器不支持HTTP 版本
+
+报文 	是HTTP应用程序之间发送的程序块 是格式化的数据块
+
+		组成部分
+
+			1 起始行
+
+			2 包含信息的首部块
+
+			3 可选的包含数据的主体部分
+
+		语法：
+
+		HTTP 报文分两种
+
+		请求报文：
+
+		method request-url version  GET http://www.baidu.com http1.1 起始行
+
+		headers
+
+		entity-body
+
+		响应报文
+
+		version status reason-phrase
+
+		headers
+
+		entity-body
+
+
+	通用首部
+
+		connection 客户端和服务器是否保持链接 HTTP1.1 虽然断开了 但是链路仍旧保持
+
+		Date 报文创建时间
+
+		Update 给出了发送端可能想要升级使用新版本或者协议
+
+		via 报文显示的中间节点
+
+		Trailer 分块传输
+
+		Trailer-Encoding 告诉接收端对报文采取什么形式
+
+		cache-control 跟缓存相关的控制 老版缓存 现在一般不用了
+
+	请求首部
+
+		Client-IP 客户端IP
+
+		From 客户端邮件地址
+
+		Host 接受的请求服务器的主机名 和 端口号
+
+		Refeer 点击超链接 跳到的地址 告诉该地址 来源于那里
+
+		user-agent 客户端信息
+
+		Accept 能接受那些MIME type
+
+		Accept-charset 能接收那些字符集
+
+		Accept-Encoding 告诉服务器能发送哪些编码
+
+		Accept-Language 告诉服务器能发送那些语言
+
+		if-Match 类似于md5加密比对
+
+		if-NoneMatch
+
+		if-Modified-Since
+
+		if-UnModified-Since
+
+		Cookie 客户端的字符串
+		
+
+ISO 国际标准化组织 OSI 开放系统互联模型  IOS 苹果操作系统
+
+		Accept 可以接受的类型
+
+		Accept-encoding 压缩的类型
+
+		Cache Control 缓存
+
+		Cookie

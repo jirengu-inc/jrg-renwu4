@@ -1,0 +1,281 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>多种轮播的实现</title>
+        <style>
+             html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            * {
+                box-sizing:border-box;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:100%;
+                position:relative;
+            }
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+                height:30px;
+                line-height:20px;
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+            .view {
+                width:700px;
+                margin:40px auto;
+                border:10px solid #fff;
+            }
+            .tab {
+                width:100%;
+                height:400px;
+                position:relative;
+            }
+            .tab-left {
+                width:100%;
+            }
+            .tab-left img{
+                width:100%;
+                height:400px;
+                display:none;
+                float:left;
+            }
+            .tab-left img.active {
+                display:block;
+            }
+            .tab-right {
+                position:absolute;
+                right:0;
+                z-index:100;
+            }
+            .tab-right ul {
+                width:270px;
+                background:black;
+                opacity:0.5;
+            }
+            .tab-right ul li {
+                height:133px;
+               
+                color:#fff;
+                border-bottom:1px solid #333;
+                padding:40px 0px;
+                line-height:1.2em;
+               cursor:pointer;
+               position:relative;
+            }
+            .tab-right ul li:last-child{
+                border-bottom:none;
+            }
+            .active:before {
+                content:'';
+                position:absolute;
+                border-top:10px solid transparent;
+                border-right:10px solid #ccc;
+                border-bottom:10px solid transparent;
+                border-left:10px solid transparent;
+                left:-21px;
+                top:58px;
+            }
+            .mod-tab{
+                width:100%;
+                background:rgba(202, 101, 83, 0.54);
+            }
+             .mod-tab .tabs li {
+           
+            width:33.3%;
+            height:30px;
+            line-height:30px;
+            float:left;
+            border-bottom:1px solid #ccc;
+            border-right:1px solid #ccc;
+            text-align:center;
+           }
+           .mod-tab .tabs li:last-child {
+            border-right:none;
+           }
+           .mod-tab .tabs .active {
+            background:#87AFB2;
+           }
+           .mod-tab .panel {
+            display:none;
+            height:200px;
+            padding:30px;
+           }
+           .mod-tab .active {
+            display:block;
+           }
+           
+           
+        </style>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    </head>
+    <body>
+         <div id='header'>
+                <h3>jquery的常见特效</h3>
+                <p>利用jquery实现一些特效，如懒加载、tab切换、瀑布流布局</p>
+                <ul class='clearfix'>
+                    <li><a href='index.html'>懒加载</a></li>
+                    <li><a href='index2.html'>tab切换</a></li>
+                    <li><a href='index3.html'>瀑布流布局</a></li>
+                    <li><a href='index4.html'>回到顶部</a></li>
+                    <li><a href='index5.html'>stickUp</a></li>
+                </ul>
+        </div>
+         <div class='view'>
+             <div class='tab'>
+                 <div class='tab-left'>
+                     <img src='imgs/2.jpg' class='active'>
+                     <img src='imgs/3.jpg'>
+                     <img src='imgs/7.jpg'>
+                 </div>
+                 <div class='tab-right'>
+                    <ul>
+                        <li>
+                            <a>Beautiful flying people are invading some corn fields in Lacoste land</a>
+                        </li>
+                         <li>
+                            <a>Learn how enjoy more the weekend getaways,togheter with your family</a>
+                        </li>
+                        <li class='active1'>
+                            <a>Best music alums of 2010:Lifestyle Mojo</a>
+                        </li>
+                    </ul>
+                 </div>
+         </div>
+    </div> 
+    <div class='view'>
+        <div class="mod-tab">
+            <ul class="tabs clearfix">
+                <li class="active">tab1</li>
+                <li>tab2</li>
+                <li>tab3</li>
+            </ul>
+            <div class="panel active">内容1</div>
+            <div class="panel">内容2</div>
+            <div class="panel">内容3</div>
+        </div>
+    </div> 
+        <script>
+           var $imgs=$('.tab-left img');
+           var $lis=$('.tab-right ul li');
+            $lis.on('mouseenter',function() {
+                $cur=$(this);
+                var idx=$cur.index();
+               $imgs.removeClass('active').eq(idx).addClass('active');
+              
+              
+              
+               
+                $lis.removeClass('active1').eq(idx).addClass('active1');
+            });
+            
+
+
+              var Utils={
+           hasClass: function(ele, cls){
+              return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+               },
+      
+          addSigleClass:function(ele,cls) {
+            if(!Utils.hasClass(ele,cls)) {
+                return ele.className+=" "+cls
+            }
+          },
+          removeSigleClass:function(ele, cls){
+        ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b', 'g'), '');
+    },
+          addClass:function(ele,cls) {
+            if(ele.length&&ele.length>0) {
+            for(i=0;i<ele.length;i++) {
+                Utils.addSigleClass(ele[i],cls)
+            }
+            }else {
+                Utils.addSigleClass(ele,cls)
+            }
+          },
+          removeClass:function(ele, cls){
+       if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils. removeSigleClass(ele[i], cls); 
+          }
+      }else{
+          Utils. removeSigleClass(ele, cls);
+      }   
+    },
+          indexOf:function(ele) {
+            var parent=ele.parentElement;
+            var siblings=parent.children;
+            for(i=0;i<siblings.length;i++) {
+                if(ele===siblings[i]) return i;
+            }
+           return -1;
+          }
+     };
+    var tabCt = document.querySelector('.tabs');
+     tabCt.addEventListener("click",function(e) {
+        var target=e.target,
+            tabs=tabCt.children,
+            index=Utils.indexOf(target),
+            panels = document.querySelectorAll('.panel');
+        if(index>-1) {
+            Utils.removeClass(tabs,"active");
+            Utils.addClass(target,"active");
+            Utils.removeClass(panels,"active");
+            Utils.addClass(panels[index],"active");
+        }
+     });
+        </script>
+    </body>
+</html>

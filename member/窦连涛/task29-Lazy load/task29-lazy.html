@@ -53,9 +53,9 @@
       checkShow();
 
       function checkShow(){
-        $('.testson img').each(function(){
+        $('.testson img[imgs^=true]').each(function(){
           var $cur = $(this);
-          if($cur.attr('imgs')) return ;
+          // if($cur.attr('imgs')) return ;
           if(isShow($cur)){
             showImg($cur);
           }
@@ -75,9 +75,10 @@
       }
 
       function showImg($node){
-
+          //替换src属性
           $node.attr('src',$node.attr('data-img'));
-          $node.attr('imgs',true);
+          $node.attr('imgs',true);//加个标志位 如果展示图片出来了
+          //下次就不在循环
       }
     })
   </script>

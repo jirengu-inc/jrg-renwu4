@@ -2,27 +2,27 @@ html5  下一代HTML的规范 主要体现在语义化方面
 
 		新元素
 
-			header 
+			header 头部
 
-			main
+			main  主体
 
-			footer 
+			footer 尾部
 
-			figure
+			figure 文档中插入的图片
 
-			figcaption
+			figcaption <figcaption> 标签定义 figure 元素的标题（caption）。
 
 			meter 进度
 
-			nav 
+			nav 导航
 
 			section 段落
 
-			article 
+			article 文章
 
 			aside 侧边栏
 
-			menu 
+			menu 菜单
 
 		兼容性问题
 

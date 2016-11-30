@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>stick up</title>
+	<style>
+		p{
+			margin:0;padding: 0;
+		}
+		#head{
+			height:80px;
+			background: red;
+			margin:10px;
+			text-align: center;
+			line-height: 80px;
+		}
+		.nav{
+			height:40px;
+			margin: 10px 10px 0 10px;
+			background: blue;
+		}
+		#content{
+			background: #BBB;
+			min-height:410px;
+			padding:10px;
+			margin:0 10px 10px 10px;
+		}
+		#content:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.aside{
+			width:80px;
+			min-height: 400px;
+			float:left;
+			background: green;
+		}
+		.main{
+			min-height: 400px;
+			background: #FFF;
+			overflow:auto;  //自己形成BFC(小宇宙),不受左边浮动元素的影响
+		}
+		#foot{
+			height:20px;
+			margin:10px;
+			background: #AAA;
+		}
+		.clone{
+			display: none;
+		}
+		.fixed{
+			position: fixed;
+			display: block;
+			margin:0;
+			top:0;
+			left:10px;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="head">
+		<p>header</p>
+	</div>
+	<div class="nav">
+		<p>nav1</p>
+	</div>
+	<div id="content">
+		<div class="aside">
+			<p>aside</p>
+		</div>
+		<div class="main">
+			<p>main</p>
+		</div>
+	</div>
+	<div class="nav">
+		<p>nav2</p>
+	</div>
+	<div id="content">
+		<div class="aside">
+			<p>aside</p>
+		</div>
+		<div class="main">
+			<p>main</p>
+		</div>
+	</div>
+	<div class="nav">
+		<p>nav3</p>
+	</div>
+	<div id="content">
+		<div class="aside">
+			<p>aside</p>
+		</div>
+		<div class="main">
+			<p>main</p>
+		</div>
+	</div>
+	<div class="nav">
+		<p>nav4</p>
+	</div>
+	<div id="content">
+		<div class="aside">
+			<p>aside</p>
+		</div>
+		<div class="main">
+			<p>main</p>
+		</div>
+	</div>
+	<div id="foot">
+		<p>footer</p>
+	</div>
+	<script src="../jquery-3.1.1.min.js"></script>
+	<script>
+		$.fn.setFixed = function(){
+		//$('.nav').each(function(){
+			var $tmp = $(this),
+				curW = $tmp.width(),
+				curH = $tmp.height(),
+				offsetY = $tmp.offset().top,
+				offsetX = $tmp.offset().left,
+				isFixed = false;
+
+			var $curCopy = $tmp.clone()
+							   .hide()
+							   .insertBefore($tmp);
+
+			$(window).on("scroll",function(){
+
+				//var scrollTop = $(this).scrollTop();
+				if(scrollY >= offsetY){
+					if(!isFixed){
+						$curCopy.show();
+						$tmp.css({
+							'position':'fixed',
+							'top':0,
+							'left':offsetX,
+							'width':curW,
+							'margin':0,
+							'z-index':9999
+						});
+						isFixed = true;
+					};
+				}
+				else{
+					isFixed = false;
+					$curCopy.hide();
+					$tmp.removeAttr('style');
+				};
+			});
+		};
+		//);
+			
+		$(".nav").each(function(idx,val){
+			$(val).setFixed();
+		});
+
+		//$('.carousel').each(function(index, value){
+		//	$(value).runCarousel();});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

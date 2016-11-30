@@ -1,0 +1,278 @@
+<!doctype html>
+<html><!doctype html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <title>jquery常见效果</title>
+        <style>
+            html,body,ul,li,p,h1,h2,h3,h4,h5,h6 {
+                padding:0px;
+                margin:0px;
+            }
+            ul,li {
+                list-style:none;
+            }
+            a {
+                text-decoration: none;
+            }
+            html {
+                width:100%;
+                height:100%;
+            }
+            body {
+                width:100%;
+                height:100%;
+                background:#ddd url(imgs/bg.jpg) repeat top left;
+                font-size:15px;
+                font-family:'Open Sans Condensed','Arial Narrow',serif;
+                
+            }
+            .clearfix:after {
+                content:'';
+                display:block;
+                clear:both;
+            }
+            .container {
+                width:1000px;
+                margin:0 auto;
+            }
+           
+            #header {
+                margin:30px 0;
+                text-align:center;
+            }
+            #header li:hover {
+                background:rgba(255, 255, 255, 0.54);
+            }
+            #header h3 {
+                margin-bottom:10px;
+                color:rgba(42, 23, 23, 0.43);
+            }
+            #header p {
+                
+                color:rgba(0, 0, 0, 0.39);
+                margin-bottom:15px;
+            }
+            #header ul {
+                width:100%;
+                margin:0 auto;
+            }
+            #header ul li {
+                display:inline-block;
+                height:20px;
+                line-height:20px;
+               
+                text-align:center;
+                margin-left:5px;
+                padding:5px;
+                border:1px solid #fff;
+                background:rgba(255, 0, 0, 0.02);
+            }
+            #header ul li a {
+                color:#C6A1A1;
+                font-style:italic;
+            }
+           .ct {
+                background-image:linear-gradient(to bottom,rgba(202, 75, 220, 0.43),rgba(158, 158, 137, 0.31));
+                position:relative;
+                width:100%;
+                height:40px;
+                text-align:center;
+                border:1px solid #fff;
+                box-shadow:1px 1px 3px #fff;
+           }
+           .nav {
+                position:absolute;
+                left:50%;
+                transform:translateX(-50%);
+                text-align:center;
+           }
+           .nav li {
+                float:left;
+                padding:8px 10px;
+                font-size:20px;
+                border-right:1px solid transparent;
+                border-left:1px solid transparent;
+           }
+           .nav li:hover{
+                border:1px solid #c78490;
+                background:rgba(237,205,237,0.64);
+           }
+           .nav li a {
+                color:rgba(50, 40, 40, 0.78);
+           }
+           #home {
+                margin-top:40px;
+                background:url(imgs/7.jpg);
+                width:100%;
+                height:400px;
+                background-size:cover;
+           }
+           #work {
+                text-align:center;
+                margin-top:30px;
+                width:100%;
+                color:#222;
+                font-size:28px;
+                height:1000px;
+           }
+           #work .work-ct li {
+                width:450px;
+                margin-left:30px;
+                height:400px;
+                float:left;
+                margin-top:20px;
+                margin-bottom:20px;
+                border:10px solid #fff;
+           }
+           #work .work-ct li img {
+                width:450px;
+                height:400px;
+           }
+           #about {
+                padding:50px;
+                background:rgba(239, 189, 189, 0.67);
+               
+                margin-left:30px;
+           }
+           #about .about-ct {
+                margin-left:50px;
+           }
+           #about .about-ct li {
+                float:left;
+           }
+           #about .about-ct li:nth-child(2) {
+                margin-left:200px;
+           }
+           #contact {
+            background:#ccc;
+            padding:30px;
+            margin-left:30px;
+            margin-top:30px;
+            position:relative;
+           }
+           #contact ul {
+                position:absolute;
+                top:50%;
+                left:50%;
+                transform:translateX(-30%,-50%);
+           }
+           #contact ul li {
+                display:inline-block;
+           }
+        </style>
+        <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    </head>
+    <body>
+        <div class='container'>
+            <div id='header'>
+                <h3>jquery的常见特效---stickUp</h3>
+                <p>当滚动条滚动到一定程度后，让导航栏固定在顶部</p>
+                <ul class='clearfix'>
+                    <li><a href='index.html'>懒加载</a></li>
+                    <li><a href='index2.html'>tab切换</a></li>
+                    <li><a href='index3.html'>瀑布流布局</a></li>
+                    <li><a href='index4.html'>回到顶部</a></li>
+                    <li><a href='index5.html'>stickUp</a></li>
+                </ul>
+            </div>
+            <div class='view'>
+                <div class='container'>
+                    <div class='ct'>
+                        <ul class='nav clearfix'>
+                            <li class='item'><a href='#'>Home</a></li>
+                            <li class='item'><a href='#'>Work</a></li>
+                            <li class='item'><a href='#'>About</a></li>
+                            <li class='item'><a href='#'>Contact</a></li>
+                        </ul>
+                    </div>
+                    <div id='home'>  
+                    </div>
+                    <div id='work'>
+                        <h3>Work</h3>
+                        <ul class='work-ct'>
+                            <li>
+                                <img src='imgs/1.jpg'>
+                            </li>
+                             <li>
+                                <img src='imgs/11.jpg'>
+                            </li>
+                             <li>
+                                <img src='imgs/10.jpg'>
+                            </li>
+                             <li>
+                                <img src='imgs/8.jpg'>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id='about'>
+                        <ul class='about-ct clearfix'>
+                            <li>About</li>
+                            <li>
+                                <p>爱好：跑步、阅读、唱歌</p>
+                                <p>技能：熟悉HTML、CSS、JavaScript、Jquery</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id='contact'>
+                       
+                    </div>
+                </div>
+            </div>
+           
+          </div>
+          <script>
+              var stickUp={
+                init:function() {
+                    this.$nav=$('.ct');
+                    this.offsetT=this.$nav.offset().top;
+                    this.offsetL=this.$nav.offset().left;
+                    this.$navW=this.$nav.width();
+                    this.$navH=this.$nav.height();
+                    this.$navClone=this.$nav.clone().css({display:'none',visibility:'hidden'}).insertBefore(this.$nav)
+                    this.bind();
+
+                },
+                bind:function() {
+                    var $cur=this;
+                    $(window).on('scroll',function() {
+                        var scrollT=$(this).scrollTop();
+                        if(scrollT>=$cur.offsetT) {
+                            if(!$cur.isFixed()) {
+                                $cur.setFixed();
+                            }
+                        }else {
+                            if($cur.isFixed()) {
+                                $cur.unsetFixed();
+                            }
+                        }
+                    });
+                },
+                isFixed:function() {
+                    var $cur=this;
+                    return $cur.$nav.data('data-fixed');
+                },
+                setFixed:function() {
+                    var $cur=this;
+                    $cur.$nav.data('data-fixed',true)
+                        .css({
+                          position:'fixed',
+                          top:0,
+                          left:$cur.offsetL,
+                          width:$cur.$navW,
+                          margin:0  
+                        });
+                    $cur.$navClone.show();
+                },
+                unsetFixed:function() {
+                    var $cur=this;
+                    $cur.$nav.data('data-fixed',false)
+                        .removeAttr('style');
+                    $cur.$navClone.hide();
+                }
+              }
+              stickUp.init();
+          </script>
+    </body>
+</html>
+   

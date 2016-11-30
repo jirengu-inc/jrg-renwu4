@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery ajax</title>
+	<style>
+		body,ul,li{
+			margin:0;padding:0;
+		}
+		.ctn{
+			width:300px;
+		}
+		li{
+			width:280px;
+			height:40px;
+			border:1px solid #AAA;
+			margin:10px;padding-left: 10px;
+			line-height: 40px;
+		}
+		li:hover{
+			cursor: pointer;
+			color:#FFF;
+			background-color: green;
+		}
+		#btn{
+			height:40px;
+			width:120px;
+			color:green;
+			text-align: center;
+			line-height: 40px;
+			border:1px solid green;
+			border-radius: 4px;
+			margin:10px auto;
+			font-weight: bold;
+		}
+		#btn:hover{
+			background:green;
+			color:#FFF;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul class="list">
+			<li>内容1</li>
+			<li>内容2</li>
+			<li>内容3</li>
+		</ul>
+	</div>
+	<div id ="btn">点我加载更多</div>
+	<script src="jquery-3.1.1.min.js"></script>
+	<script>
+		$("#btn").on("click",function(){
+			$begin = $("li").length;
+			$leng = 2;
+			$.ajax({
+				url:"ajax1.php",
+				type:"GET",
+				dataType:"json",
+				data:{
+					start:$begin,
+					leng:$leng
+				},
+				success:function(json){
+					onSuccess(json);
+				},
+				error:function(){
+					onError();
+				}
+			});
+			function onSuccess(json){
+				if(json.status == 1){
+					append(json.data);
+				}
+				else{
+					alert("服务器出错了");
+				};
+			};
+			function onError(){
+				alert("无法发起ajax");
+			}
+			function append(arr){
+				for($i = 0; $i < arr.length; $i++){
+					$("ul").append("<li>" + arr[$i] + "</li>");
+				}
+			}
+		})
+	</script>
+</body>
+</html>

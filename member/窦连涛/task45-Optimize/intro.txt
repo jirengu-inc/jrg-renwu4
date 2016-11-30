@@ -1,0 +1,54 @@
+移动端的特点
+
+      1 耗电 流量贵 网速慢 不稳定
+
+    总体思路 请求要少  文件要小   网速要快
+
+                    1合并JS
+                    2合并CSS
+                    3图片精灵
+
+                    CSS放置位置
+                    JS 放置位置
+
+            JS CSS
+            文件压缩(先压缩再合并)
+
+                              使用CDN 静态资源库(内容分发网络)
+                              localStorage html5 一个属性
+                              避免使用javascript修改DOM树
+            报错的请求一定要避免掉
+
+阻塞渲染
+
+      JS 下载的时候 肯定会阻塞下载
+      CSS 下载执行时可能阻塞渲染 但不阻塞下载
+
+      TL DR too long did't read  太长 没读
+
+      默认情况下 CSS 会阻塞渲染的资源
+      媒体查询和媒体类型允许我们将一些CSS标记为不阻塞渲染
+      CSS 资源 不论阻塞或者不阻塞 浏览器都会下载
+
+摁下确认按键的时候 发生了什么事情 ？
+DNS 查询(domain name service)
+
+      1 DNS 查询
+      2 HTTP 请求
+      3 HTTP 响应
+        1 下载内容
+        2 解析内容
+        3 绘制图像
+
+
+        前端优化
+
+            1 减少HTTP 请求
+            2 使用CDN
+            3 添加Expries头或Cache-Control = max-
+            4 使用gzip
+            5 CSS 放在文件上方
+            6 JS 放在body 之后
+            7 避免使用Expressions
+            8 将CSS和JS 放置在不同的文件中
+            9 配置实体标签 Etags

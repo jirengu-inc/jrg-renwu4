@@ -1,0 +1,162 @@
+﻿.box{
+    width: 380px;
+    height: 247px;
+    left: 400px;
+    top: 120px;
+    position: absolute;
+    border:1px solid #ccc;
+    background: #f6f6f6;
+    box-shadow: 0 0 8px #000;
+    border-radius: 10px;
+}
+
+.close{
+    background: url('../images/boxy_btn.png') no-repeat;
+    width: 26px;
+    height: 27px;
+    float: right;
+    margin-right: -10px;
+    margin-top: -10px;
+    cursor: pointer;
+
+}
+
+.boxtop{
+    margin:10px auto;
+    background: url('../images/login_window_logo.png') no-repeat -200px -0px;
+    height: 44px;
+    width: 200px;
+    cursor: move;
+}
+
+.boxmiddle{
+    text-align: center;
+}
+
+.boxinput{
+    height: 35px;
+    width: 250px;
+    display: inline-block;
+    margin:20px 0px;
+}
+
+.middlephoto1{
+    background: url('../images/login_btn.png') no-repeat 4px -36px;
+    height: 20px;
+    width: 60px;
+    display: inline-block;
+}
+
+.middlephoto2{
+    background: url('../images/login_btn.png') no-repeat -57px -36px;
+    height: 20px;
+    width: 60px;
+    display: inline-block;
+}
+
+.input{
+    height: 25px;
+    width: 176px;
+    border-radius: 10px;
+    outline: medium;
+}
+.boxbottom{
+    text-align: center;
+    margin-top: 20px;
+    overflow: hidden;
+    text-align: center;
+}
+.boxbottom2{
+    width: 280px;
+    height: 50px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+.login{
+    background: url('../images/login_btn.png') no-repeat -110px 5px;
+    height: 40px;
+    width: 120px;
+    display: inline-block;
+    float: left;
+    margin-left: 25px;
+    cursor: pointer;
+}
+.slectbox{
+    height: 20px;
+    width: 120px;
+    display: inline;
+    float: left;
+    margin-top: 15px;
+}
+
+.littleicon{
+    background:url('../images/ptlogin.png') no-repeat 0px 0px;
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.arrows{
+    background: url('../images/ptlogin.png') no-repeat 0px -22px;
+    height: 10px;
+    width: 7px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.word{
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.downlist{
+    width: 90px;
+    height: 100px;
+    position: absolute;
+    float: left;
+    list-style: none;
+    border:1px solid #ccc;
+    background-color: white;
+    margin: 0px;
+    padding: 0px;
+    left: 215px;
+    top: 220px;
+    line-height: 15px;
+    overflow: hidden;
+    display: none;
+}
+
+.over{
+    cursor: pointer;
+}
+.over:hover{
+    background-color:gray;
+}
+.listicon1{
+    background:url('../images/ptlogin.png') no-repeat 0px 0px;
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    float: left;
+}
+.listicon2{
+    background:url('../images/ptlogin.png') no-repeat -72px 0px;
+    height: 14px;
+    width: 17px;
+    display: inline-block;
+    float: left;
+}
+.listicon3{
+    background:url('../images/ptlogin.png') no-repeat -18px 0px;
+    height: 14px;
+    width: 14px;
+    display: inline-block;
+    float: left;
+}
+.listword{
+    text-align: left;
+    margin:0px;
+    line-height: 18px;
+}

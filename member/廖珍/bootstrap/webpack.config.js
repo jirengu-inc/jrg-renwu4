@@ -1,0 +1,12 @@
+module.exports={
+	entry:'./entry.js',
+	output:{
+		filename:'build/build.js'
+	},
+	module:{
+		loaders:[
+			{test:/\.css$/,loader:'style!css'},
+			{test:/\.(png|jpg)$/,loader:'url-loader?limit=8192'}
+		]
+	}
+}

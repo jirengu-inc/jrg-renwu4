@@ -57,11 +57,11 @@
    }
 
    .next {
-     left:10px;
+     right:10px;
    }
 
    .pre {
-     right:10px;
+     left:10px;
    }
 
    .bullet {
@@ -94,8 +94,8 @@
         <li data-id=0 > <a href="#"><img src="image/4.jpg" alt=""></a></li>
         <li data-id=0 > <a href="#"><img src="image/5.jpg" alt=""></a></li>
       </ul>
-      <a href="#" class="arrow next"> < </a>
-      <a href="#" class="arrow pre" > > </a>
+      <a href="#" class="arrow pre"> < </a>
+      <a href="#" class="arrow next" > > </a>
       <ul class="bullet">
         <li class="active"></li>
         <li></li>
@@ -107,87 +107,83 @@
     <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script>
-      $(function(){
-        var $ct = $('.img-ct'),
-            $next = $('.next'),
-            $pre = $('.pre'),
-            $items = $ct.children(),
-            $imgCount = $ct.children().size(),
-            $imgWidth = $ct.find('li').width(),
-            $bullet = $('.bullet');
 
+      $ct = $('.img-ct');
+      $bullet = $('.bullet');
+      $pre = $('.pre');
+      $next = $('.next');
+      $items = $ct.children();
+      $imgCount = $items.size();
+      $imgWidth = $items.width();
+      $ct.prepend($items.last().clone());
+      $ct.append($items.first().clone());
+      $imgRealCount = $ct.children().size();
+      $ct.css({left:0-$imgWidth,width:$imgWidth * $imgRealCount});
 
-            $ct.append($items.first().clone());
-            $ct.prepend($items.last().clone());
-            var $imgRealCount = $ct.children().size();
-            $ct.css({left:0 - $imgWidth,width:$imgWidth * $imgRealCount});
+      CurId = 0;
+      isAnimate = false;
 
-            var curId = 0;
-            var isAnimate = false;
-
-            $bullet.on('click','li',function(){
-                var idx = $(this).index();
-                if(idx > curId){
-                  playNext(idx - curId);
-                }else if(idx < curId){
-                  playPre(curId - idx);
-                }
-            })
-
-            $next.on('click',function(){
-               playNext();
-            })
-
-            $pre.on('click',function(){
-                playPre();
-            })
-
-            autoPlay();
-
-            function autoPlay(){
-              clock = setInterval(function(){
-                playNext();
-              },3000);
-            }
-
-            function stopAuto(){
-              clearIntervel(clock);
-            }
-
-            function playNext(idx){
-              var idx = idx || 1;
-              if(!isAnimate){
-                isAnimate = true;
-                $ct.animate({left:"-=" + $imgWidth * idx},function(){
-                  curId = (curId + idx ) % $imgCount;
-                  if(curId === 0){
-                    $ct.css({left : 0 - $imgWidth});
-                  }
-                  isAnimate = false;
-                  setBullet();
-                })
-              }
-            }
-
-            function playPre(idx){
-              var idx = idx || 1;
-              if(!isAnimate){
-                isAnimate = true;
-                $ct.animate({left: "+=" + $imgWidth * idx},function(){
-                  curId = ($imgCount + curId - idx) % $imgCount;
-                  if(curId === $imgCount -1){
-                    $ct.css({left : 0 - ($imgWidth*$imgCount)});
-                  }
-                  isAnimate = false;
-                  setBullet();
-                })
-              }
-            }
-
-            function setBullet(){
-              $bullet.find('li').removeClass('active').eq(curId).addClass('active');
-            }
+      $bullet.on('click','li',function(){
+        var idx = $(this).index();
+        if(idx > CurId){
+          playNext(idx - CurId);
+        }else{
+          playPre(CurId - idx);
+        }
       })
+      $pre.on('click',function(){
+          playPre();
+      })
+
+      $next.on('click',function(){
+          playNext();
+      })
+
+      function playPre(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+          isAnimate = true;
+          $ct.animate({left: "+=" + $imgWidth * idx},function(){
+            CurId = ($imgCount + CurId - idx) % $imgCount;
+            if(CurId === $imgCount - 1){
+              $ct.css({left: 0 - $imgWidth * $imgCount});
+            }
+            isAnimate = false;
+            setBullet();
+          })
+        }
+      }
+
+      function playNext(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+          isAnimate = true;
+          $ct.animate({left:"-=" + $imgWidth * idx},function(){
+            CurId = (CurId + idx) % $imgCount;
+            if(CurId === 0){
+              $ct.css({left: 0 - $imgWidth});
+            }
+            isAnimate = false;
+            setBullet();
+          })
+        }
+      }
+
+
+
+      function setBullet(){
+        $bullet.find('li').removeClass('active').eq(CurId).addClass('active');
+      }
+
+      function autoPlay(){
+        clock = setInterval(function(){
+          playNext();
+        },3000);
+      }
+
+      function stopAuto(){
+        clearIntervel(clock);
+      }
     </script>
 </body>
 </html>
