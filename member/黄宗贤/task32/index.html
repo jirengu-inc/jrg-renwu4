@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQ waterFall</title>
+	<style>
+		html,body,div,ul,li,p{
+			margin:0;padding:0;
+			font-family: "Microsoft Yahei";
+		}
+		ul,li{
+			list-style: none;
+		}
+		#wrap{
+			padding:20px 40px;
+		}
+		#pic-ct{
+			width:980px;
+			border:1px solid red;
+			position: relative;
+		}
+		#pic-ct:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.item{
+			width:280px;
+			margin:10px;
+			position:absolute;
+			border:1px solid #CCC;
+			opacity: 0;
+			transition:all 0.8s;
+		}
+		.item img{
+			width:260px;
+			margin:10px;
+		}
+		.item .header{
+			font-size:18px;
+			padding:0 0 10px 0;
+			margin:0 10px 10px 10px;
+			border-bottom:1px solid #DDD;
+		}
+		.item .desp{
+			font-size:12px;
+			line-height: 1.8;
+			margin:0 10px 10px 10px;
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul id="pic-ct">
+			<li class="item" style="display: none;"></li>
+		</ul>
+	</div>
+	<div id="flag">you can't see me</div>
+	<div id="btn">click me</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<!-- <script src="../jquery-3.1.1.min.js"></script> -->
+	<script>
+		main();
+		$(window).on('scroll',function(){
+			setTimeout(function(){
+					main();
+				},1000);
+		})
+		//$("#btn").on("click",function(){
+		//	main();
+		//})
+		function main(){
+			if ( checkShow( $("#flag") ) ){
+				loadData();
+			}
+		};
+		function checkShow($ele){
+			var winH = $(window).height(),
+				scrollY = $(window).scrollTop(),
+				offsetY = $ele.offset().top;
+			if ( winH + scrollY > offsetY ){
+				return true;
+			}
+			else{
+				return false;
+			};
+		};
+		var pageIdx = 1,leng = 10;
+		function loadData(){
+			//console.log(pageIdx);
+			$.ajax({
+				url:'http://platform.sina.com.cn/slide/album_tech',
+				dataType:'jsonp',
+				jsonp:'jsoncallback',
+				data:{
+					app_key:'1271687855',
+					page:pageIdx,
+					leng:leng
+				}
+			}).done(function(ret){
+				if( ret.status && ret.status.code == '0' ){
+					pageIdx++;
+					placeData(ret.data);
+					
+				}
+				else{
+					alert('ajax error!')
+				};
+			});
+		};
+		function placeData(data){
+			var tpl="",
+				$nodes;
+			for ( var i=0;i<data.length;i++ ){
+				tpl += '<li class="item">';
+				tpl += '<a href="' + data[i].url + 'class="link"><img src="' + data[i].img_url + '" alt=""></a>';
+				tpl += '<h4 class="header">' + data[i].short_name + '</h4>';
+				tpl += '<p class="desp">' + data[i].short_intro + '</p>';
+				tpl += '</li>';
+			}
+			$nodes = $(tpl);
+			$("#pic-ct").append($nodes);
+
+			var defereds=[];
+			$nodes.find('img').each(function(){
+				var defer = $.Deferred();
+				$(this).load(function(){
+					defer.resolve();
+				});
+				defereds.push(defer);
+			});
+			$.when.apply(null,defereds).done(function(){
+				waterFall( $nodes );
+			});
+
+			//setTimeout(function(){
+			//		waterFall( $($nodes) );
+			//	},2000);
+
+		}
+		var colHeight = [],
+			itemW = $(".item").outerWidth(true),
+			ctW = $("#pic-ct").width(),
+			colNum = Math.floor( ctW / itemW );
+
+		for ( var i=0;i<colNum;i++ ){
+			colHeight.push(0);
+		};
+
+		function waterFall($nodes){
+			$nodes.each(function(){
+				var $cur = $(this),
+					idx = 0,
+					minH = colHeight[idx];
+				for ( var i=0;i<colHeight.length;i++ ){
+					if ( minH > colHeight[i] ){
+						idx = i;
+						minH = colHeight[i];
+					}
+				};
+				$cur.css({
+					top:minH,
+					left:idx*itemW,
+					opacity:1
+				});
+				colHeight[idx] += $cur.outerHeight(true);
+				$('#pic-ct').height(Math.max.apply(null,colHeight));
+			});
+		};
+	</script>
+</body>
+</html>
