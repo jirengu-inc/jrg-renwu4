@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>carousel</title>
+	<style type="text/css">
+		ul,li,.wrap{
+			margin:0;
+			padding:0;
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.wrap{
+			width:500px;
+			height: 300px;
+			margin:20px 0;
+			position:relative;
+			overflow: hidden;
+		}
+		.carousel img{
+			width:500px;
+			height:300px;
+		}
+		.carousel{
+			height:300px;
+			position:relative;
+		}
+		.carousel:after{
+			content: '';
+			display: block;
+			clear:both;
+		}
+		.btn{
+			position:absolute;
+            width:30px;
+            height:30px;
+            font-size: 30px;
+            background: #666;
+            opacity: 0.5;
+            top:50%;
+            transform: translateY(-50%);
+            box-shadow: 0 0 0 2px;
+            border-radius: 30px;
+            text-align: center;
+            line-height: 30px;
+            color:white;
+            cursor:pointer;
+		}
+		.btn:hover{
+			opacity:0.8;
+		}
+		.pre{
+			left:20px;
+		}
+		.next{
+			right:20px;
+		}
+		.carousel li{
+			float: left;
+		}
+		.bullet{
+			position: absolute;
+			left:50%;
+			transform: translateX(-50%);
+			bottom:20px;
+		}
+		.bullet li{
+			display: inline-block;
+			width:30px;
+			height:12px;
+			border-radius: 15px;
+			background: white;
+			cursor:pointer;
+		}
+		.bullet li.active{
+            background: #aaa;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="carousel">
+					<li><a href="#"><img src="http://s8.rr.itc.cn/g/wapChange/201310_16_10/a47md20184946200340.jpg"></a></li>
+					<li><a href="#"><img src="http://s8.rr.itc.cn/g/b/2Z/BRRZ3Rz.jpg"></a></li>
+					<li><a href="#"><img src="http://s7.rr.itc.cn/g/Z/f6/JFb2yMj.jpg"></a></li>
+					<li><a href="#"><img src="http://s8.rr.itc.cn/g/u/bz/U7ZNnY3.jpg"></a></li>
+		</ul>
+		<a href="#" class="btn pre"><</a>
+		<a href="#" class="btn next">></a>		
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="wrap">
+		<ul class="carousel">
+					<li><a href="#"><img src="http://s8.rr.itc.cn/g/wapChange/201310_16_10/a47md20184946200340.jpg"></a></li>
+					<li><a href="#"><img src="http://s8.rr.itc.cn/g/b/2Z/BRRZ3Rz.jpg"></a></li>
+					<li><a href="#"><img src="http://s7.rr.itc.cn/g/Z/f6/JFb2yMj.jpg"></a></li>
+					<li><a href="#"><img src="http://s8.rr.itc.cn/g/u/bz/U7ZNnY3.jpg"></a></li>
+		</ul>
+		<a href="#" class="btn pre"><</a>
+		<a href="#" class="btn next">></a>		
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+	// function Carousel($ct){
+ //        this.$ct = $ct;
+ //        this.init();
+	// }
+	// Carousel.prototype = {
+	// 	init:function(){
+	// 			this.$carousel = this.$ct.find('.carousel');
+	// 			this.pre = this.$ct.find('.pre');
+	// 			this.next = this.$ct.find('.next');
+	// 			this.lis = this.$carousel.find('li');
+	// 			this.imgCount = this.lis.size();
+	// 			this.imgWidth = this.lis.width();
+	// 			this.$carousel.prepend(this.lis.last().clone());
+	// 			this.$carousel.append(this.lis.first().clone());
+	// 			this.realCount = this.$carousel.children().length;
+	// 			this.$point = this.$ct.find('.bullet');
+	// 			this.$carousel.css({
+	// 				"width":this.imgWidth*this.realCount,
+	// 				"left":0-this.imgWidth
+	// 			});
+	// 			this.curIdx = 0;
+	// 			this.bind();
+	// 			this.autoPlay();
+	// 			this.isLocked =false;
+	// 		},
+	// 	bind:function(){
+	// 			var self = this;
+	// 			this.pre.on('click',function(){
+	// 				self.playPre();
+	// 			});
+	// 			this.next.on('click',function(){
+	// 				self.playNext();
+	// 			});
+	//             this.$point.find('li').on('click',function(){
+	//             	var idx = $(this).index();
+	//             	if(idx>self.curIdx){
+	//             		self.playNext(idx-self.curIdx);
+	//             	}else{
+	//             		self.playPre(self.curIdx-idx);
+	//             	}
+	//             })
+	// 		},
+	// 	playPre:function(idx){
+	// 	            var self = this;
+	// 	            var idx = idx||1;
+	// 	            if(this.isLocked)return;
+	// 	            this.isLocked = true;
+	// 	            this.$carousel.animate({"left":"+="+(self.imgWidth*idx)},function(){
+	// 	            	self.curIdx = (self.curIdx-idx+self.imgCount)%self.imgCount;
+	// 	            	if(self.curIdx === (self.imgCount-1)){
+	// 	            		self.$carousel.css({"left":0-self.imgWidth*self.imgCount});
+	// 	            	}
+	// 	            	self.isLocked = false;
+	// 	            	self.setPoint();
+	// 	            })
+	// 			},
+	// 	playNext:function(idx){
+	// 				var self = this;
+	// 				var idx = idx || 1;
+	// 				if(this.isLocked)return;
+	// 				this.isLocked = true;
+	// 				this.$carousel.animate({"left":"-="+(self.imgWidth*idx)},function(){
+	// 					self.curIdx = (self.curIdx+idx)%self.imgCount;
+	// 					if(self.curIdx === 0){
+	// 						self.$carousel.css({"left":0-imgWidth});
+	// 					}
+	// 					self.isLocked = false;
+	// 					self.setPoint();
+	// 				})
+	// 			},
+	// 	autoPlay:function(){
+	// 		var self = this;
+	// 		var clock = setInterval(function(){self.playNext()},2000);
+	// 	},
+ //        setPoint:function(){
+ //        	this.$point.find('li').removeClass('active')
+ //        	        .eq(this.curIdx).addClass('active');           
+ //        }
+	// }
+	// $('.wrap').each(function(){
+	// 	new Carousel($(this));
+	// })
+	(function($){
+		$.fn.carousel = function(){
+			var $this = $(this),
+				$carousel = $this.find('.carousel'),
+				$lis = $carousel.children(),
+				$bullet = $this.find('.bullet'),
+				imgCount = $lis.length,
+				imgWidth = $lis.width();
+			$carousel.prepend($lis.last().clone());
+			$carousel.append($lis.first().clone());
+			var	realCount = $carousel.find('li').length;
+			$carousel.css({"left":0-imgWidth,"width":imgWidth*realCount});
+			var clock,
+			    curIdx = 0;
+                isLocked = false;
+            autoPlay();
+            setBullet();
+            
+            function autoPlay(){
+                clock = setInterval(function(){
+                	playNext();
+                },2000);
+            }    
+            function playNext(idx){
+            	var idx = idx || 1;
+            	if(isLocked)return;
+
+            	$carousel.animate({"left":"-="+(idx*imgWidth)},function(){
+            		curIdx = (curIdx+idx)%imgCount;
+            		if(curIdx === 0){
+            			$carousel.css({"left":0-imgWidth});
+            		}
+            		isLocked = false;
+            		setBullet();
+            	})
+            }
+            function playPre(idx){
+            	var idx = idx || 1;
+            	if(isLocked)return;
+            	console.log(1);
+            	$carousel.animate({"left":"+="+(idx*imgWidth)},function(){
+            		curIdx = (curIdx - idx +imgCount)%imgCount;
+            		if(curIdx === imgCount-1){
+            			$carousel.css({"left":0-imgWidth*imgCount})
+            		}
+            		isLocked = false;
+            		setBullet();
+            	})
+            }
+            function setBullet(){
+            	$bullet.find('li').removeClass('active')
+            	       .eq(curIdx).addClass('active');
+            }
+
+            var $pre = $this.find('.pre'),
+                $next = $this.find('.next');
+        	$pre.on('click',function(){
+        		playPre();
+        	})
+        	$next.on('click',function(){
+        		playNext();
+        	})
+        	
+        	$bullet.find('li').on('click',function(){
+        		var idx = $(this).index();
+        		if(idx>curIdx){
+        			playNext(idx-curIdx);
+        		}else if(idx<curIdx){
+        			playPre(curIdx-idx);
+        		}
+        	})
+            
+		}
+	})(jQuery)
+	$('.wrap').each(function(){
+		$(this).carousel();
+	})
+</script>
+</html>
