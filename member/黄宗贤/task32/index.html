@@ -141,6 +141,7 @@
 				waterFall( $nodes );
 			});
 			isLoad = false;
+			console.log( $(".item").size() );
 			//setTimeout(function(){
 			//		waterFall( $($nodes) );
 			//	},2000);
@@ -171,9 +172,11 @@
 					left:idx*itemW,
 					opacity:1
 				});
+
 				colHeight[idx] += $cur.outerHeight(true);
 				$('#pic-ct').height(Math.max.apply(null,colHeight));
 			});
+
 		};
 	</script>
 </body>
