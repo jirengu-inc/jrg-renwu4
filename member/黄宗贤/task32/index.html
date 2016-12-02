@@ -62,9 +62,11 @@
 	<script>
 		main();
 		$(window).on('scroll',function(){
-			setTimeout(function(){
-				main();
-			},1000);
+			if (!isLoad){
+				setTimeout(function(){
+					main();
+				},1000);
+			}	
 		})
 		//$("#btn").on("click",function(){
 		//	main();
@@ -85,28 +87,34 @@
 				return false;
 			};
 		};
-		var pageIdx = 1,leng = 10;
+		var pageIdx = 1,leng = 10,isLoad = false;
 		function loadData(){
-			//console.log(pageIdx);
-			$.ajax({
-				url:'http://platform.sina.com.cn/slide/album_tech',
-				dataType:'jsonp',
-				jsonp:'jsoncallback',
-				data:{
-					app_key:'1271687855',
-					page:pageIdx,
-					leng:leng
-				}
-			}).done(function(ret){
-				if( ret.status && ret.status.code == '0' ){
-					pageIdx++;
-					placeData(ret.data);
-					
-				}
-				else{
-					alert('ajax error!')
-				};
-			});
+			if(isLoad){
+				return;
+			}
+			else{
+				console.log(pageIdx);
+				isLoad = true;
+				$.ajax({
+					url:'http://platform.sina.com.cn/slide/album_tech',
+					dataType:'jsonp',
+					jsonp:'jsoncallback',
+					data:{
+						app_key:'1271687855',
+						page:pageIdx,
+						leng:leng
+					}
+				}).done(function(ret){
+					console.log(isLoad);
+					if( ret.status && ret.status.code == '0' ){
+						pageIdx++;
+						placeData(ret.data);
+					}
+					else{
+						alert('ajax error!')
+					};
+				});
+			}
 		};
 		function placeData(data){
 			var tpl="",
@@ -132,7 +140,7 @@
 			$.when.apply(null,defereds).done(function(){
 				waterFall( $nodes );
 			});
-
+			isLoad = false;
 			//setTimeout(function(){
 			//		waterFall( $($nodes) );
 			//	},2000);
