@@ -57,16 +57,21 @@
 	</div>
 	<div id="flag">you can't see me</div>
 	<div id="btn">click me</div>
-	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
-	<!-- <script src="../jquery-3.1.1.min.js"></script> -->
+	<!-- <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script> -->
+	<script src="../jquery-3.1.1.min.js"></script>
 	<script>
 		main();
 		$(window).on('scroll',function(){
-			if (!isLoad){
-				setTimeout(function(){
+			//if (!isLoad){
+			if( clock ){
+				clear( clock );
+			}
+			else{
+				var clock = setTimeout(function(){
 					main();
 				},1000);
-			}	
+			}
+			//}	
 		})
 		//$("#btn").on("click",function(){
 		//	main();
@@ -89,7 +94,7 @@
 		};
 		var pageIdx = 1,leng = 10,isLoad = false;
 		function loadData(){
-			if(isLoad){
+			if(isLoad){		//这里一定要进行限制，否则会一下子多次加载相同内容
 				return;
 			}
 			else{
@@ -132,7 +137,8 @@
 			var defereds=[];
 			$nodes.find('img').each(function(){
 				var defer = $.Deferred();
-				$(this).load(function(){
+				//$(this).load(function(){	注意新版jQuery不支持此写法
+				$(this).on("load",function(){
 					defer.resolve();
 				});
 				defereds.push(defer);
@@ -141,7 +147,8 @@
 				waterFall( $nodes );
 			});
 			isLoad = false;
-			console.log( $(".item").size() );
+			console.log( $(".item").length );
+			//console.log( $(".item").size() );  注意新版jQuery不支持此写法
 			//setTimeout(function(){
 			//		waterFall( $($nodes) );
 			//	},2000);
