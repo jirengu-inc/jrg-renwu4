@@ -1,0 +1,10 @@
+requirejs.config({
+	baseUrl:'./js/src/com',
+	paths:{
+		'jquery':"http://apps.bdimg.com/libs/jquery/1.9.1/jquery"
+	}
+});
+require(['gotop']);
+require(['carousel']);
+require(['waterfull']);
+require(['lazyload']);

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>曝光</title>
+	<style type="text/css">
+		.header{
+			height:1500px;
+			width:100%;
+		}
+		.exposure1{
+
+			height:800px;
+		}
+		.exposure2{
+			height:800px;
+		}
+	</style>
+</head>
+<body>
+    <div class="header"></div>
+	<div class="exposure1">
+		一直弹框的块
+	</div>
+	<div class="exposure2">
+		只弹出一次的块
+	</div>
+</body>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var Exposure = (function(){
+		var clock;
+		var isLocked = false;
+			function bind($ele,handle){
+				
+				$(window).on('scroll',function(){
+					if(clock)clearTimeout(clock);
+						clock = setTimeout(function(){
+							if(isShow($ele)){
+								handle();
+							}
+						},100)
+				});
+			}
+			function one($ele,handle){
+				$(window).on('scroll',function(){
+					if(isLocked)return;
+					if(isShow($ele)){
+						handle();
+						isLocked=true;
+					}
+				})
+			}
+			function isShow($ele){
+                var distanceY = $ele.offset().top,
+				    winH = $(window).height(),
+				    scrollTop = $(window).scrollTop();
+			
+					return (distanceY>scrollTop)&&((winH+scrollTop)>distanceY)
+			}
+            return{
+            	bind:bind,
+            	one:one
+            }
+	})()
+        Exposure.bind($(".exposure1"),function () {
+            alert("always");
+        });
+        Exposure.one($(".exposure2"),function () {
+            alert("once");
+        })
+</script>
+</html>
