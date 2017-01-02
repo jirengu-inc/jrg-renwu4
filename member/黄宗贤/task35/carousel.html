@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>carousel</title>
+	<style>
+		html,body,ul,li,div,p{
+			margin:0;
+			padding:0;
+		}
+		a{
+			text-decoration: none;
+		}
+		.ct{
+			width:310px;
+			height:206px;
+			border:1px solid red;
+			position: relative;
+			overflow: hidden;
+		}
+		.ct:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		ul,li{
+			list-style: none;
+		}
+		ul{
+			
+			position: absolute;
+		}
+		li{
+			float: left;
+		}
+		.btn{
+			width:30px;
+			height:30px;
+			border-radius: 15px;
+			position: absolute;
+			top:50%;
+			margin-top: -15px;
+			font-size: 30px;
+			background: #FFF;
+			color:green;
+			text-align: center;
+			line-height: 30px;
+		}
+		.prev{
+			left:10px;
+
+		}
+		.next{
+			right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul class="list">
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/1.jpg"></li>
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/2.jpg"></li>
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/3.jpg"></li>
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/4.jpg"></li>
+		</ul>
+		<a href="#!" class="btn prev"> < </a>
+		<a href="#!" class="btn next"> > </a>
+	</div>
+
+	<div class="ct">
+		<ul class="list">
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/1.jpg"></li>
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/2.jpg"></li>
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/3.jpg"></li>
+			<li><img src="http://book.jirengu.com/jirengu/sample/%E7%BB%84%E4%BB%B6%E5%8C%96/imgs/4.jpg"></li>
+		</ul>
+		<a href="#!" class="btn prev"> < </a>
+		<a href="#!" class="btn next"> > </a>
+	</div>
+
+	<script src="../jQuery-3.1.1.min.js"></script>
+	<script>
+		function Carousel($node){
+			this.next = $node.find(".next");
+			this.prev = $node.find(".prev");
+			this.imgs = $node.find(".list");
+			this.imgW = $node.find("img").width();
+			this.imgH = $node.find("img").height();
+			this.bind();
+			this.imgs.css("width",($node.children().length+1) * this.imgW);
+			console.log($node.children().length);
+			//this.imgs.width = $node.children().length * this.imgW;
+		}
+		Carousel.prototype = {
+
+			playPrev:function(){
+				var cur = this;
+				console.log("prev");
+				this.imgs.prepend(this.imgs.children().last());
+				this.imgs.css("left",0-this.imgW);
+				this.imgs.animate({"left":0});
+
+			},
+			playNext:function(){
+				var cur = this;
+				console.log("next");
+				this.imgs.animate({"left":0-this.imgW},function(){
+					cur.imgs.append(cur.imgs.children().first());
+					cur.imgs.css("left",0);
+				})
+			},
+			bind:function(){
+				var cur = this;
+				this.next.on("click",function(){
+					cur.playNext();
+				})
+				this.prev.on("click",function(){
+					cur.playPrev();
+				})
+			}
+	
+		}
+		$(".ct").each(function(){
+			new Carousel( $(this) );
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
+
+
