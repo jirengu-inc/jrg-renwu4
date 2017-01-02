@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = 'utf-8'>
+	<title>GoTop</title>
+	<style>
+		body{
+			position: relative;
+		}
+		.box{
+			width:400px;
+			height:2000px;
+			border:1px solid red;
+			color:green;
+		}
+		.goTop{
+			width:200px;
+			height:60px;
+			position: fixed;
+			right:10px;
+			top:40px;
+			border:1px solid blue;
+			line-height: 60px;
+			font-size: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p>我是内容123</p>
+		<h1>窗口滚动超过200像素时，回到顶部的按钮才会出现<h1>
+	</div>
+	<script src="../jQuery-3.1.1.min.js"></script>
+	<script>
+		function GoTop($ele){
+			this.ct = $ele;
+			this.target = $('<div class="goTop">回到顶部</div>');
+		}
+		GoTop.prototype={
+			
+			bindEvent:function(){
+				var cur = this;
+				cur.target.on("click",function(){
+					$(window).scrollTop(0);
+				});
+			},
+			creatNode:function(){
+				var cur = this;
+				cur.target.hide();//默认是隐藏的
+				$("body").append(cur.target);
+				$(window).on("scroll",function(){
+					if( $(window).scrollTop() > 100 ){
+						console.log(1);
+						cur.target.show();
+					}
+					else{
+						console.log(3);
+						cur.target.hide();
+					}
+				})
+				
+			}
+		}
+		var go = new GoTop($("body"));
+		go.creatNode();
+		go.bindEvent();
+	</script>
+</body>
+</html>
