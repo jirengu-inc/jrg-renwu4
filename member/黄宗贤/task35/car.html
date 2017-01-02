@@ -1,0 +1,24 @@
+function Car(name,color,status){
+	this.name = name;
+	this.color = color;
+	this.status = status;
+}
+Car.prototype={
+	run:function(){
+		this.status = 'run';
+	},
+	stop:function(){
+		this.status = 'stop';
+	},
+	getStatus:function(){
+		console.log(this.status);
+	}
+}
+
+var myCar = new Car("BMW","red","stop");
+myCar.status;//stop
+myCar.getStatus();//stop
+myCar.run();
+myCar.getStatus();//run
+myCar.stop();
+myCar.getStatus();//stop
