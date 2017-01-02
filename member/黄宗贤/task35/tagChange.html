@@ -20,9 +20,7 @@
 			display: block;
 			clear:both;
 		}
-		ul{
-			
-		}
+		
 		li{
 			width:100px;
 			height:40px;
@@ -32,6 +30,9 @@
 			border:1px solid #AAA;
 			float: left;
 			cursor: pointer;
+		}
+		.active{
+			background:#AAA;
 		}
 		.ct{
 			width:300px;
@@ -110,6 +111,8 @@
 					cur.num = $(this).index();
 					console.log(cur.num);
 					cur.show($(this));
+					$(this).addClass("active");
+					$(this).siblings().removeClass("active");
 				});
 			},
 			show:function($ele){
