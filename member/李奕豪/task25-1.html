@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task25-1</title>
+	<style type="text/css" media="screen">
+		ul,li{
+			list-style: none;
+		}
+		#box{
+			
+		}
+		#box .box-nav{
+			width:200px;
+			padding:10px 5px;
+			background: red;
+			border-bottom: 1px solid #fff;
+			color:#fff;
+			position:relative;
+		}
+		#box .box-nav:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		#box .box-nav>span{
+			display: inline-block;
+			float: right;
+			font-weight: bolder;
+		}
+		#box .box-nav .nav-li{
+			width:135px;
+			border:1px solid #ccc;
+			position: absolute;
+            top: 0px;
+            left: 208px;
+            padding: 0;
+           display: none;
+		}
+		#box .box-nav .nav-li:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		#box .box-nav .nav-li>li{
+			    width: 40px;
+                float: left;
+                margin-left: 5px;
+                margin-top: 5px;
+                color:#a98b8b;
+		}
+		
+	</style>
+</head>
+<body>
+	<ul id="box">
+		<li class="box-nav">珠宝玉器 <span>></span>
+         <ul class="nav-li">
+         	<li>珍珠</li>
+         	<li>玛瑙</li>
+         	<li>钻石</li>
+         	<li>钻石</li>
+         </ul>
+		</li>
+		<li class="box-nav">珠宝玉器 <span>></span>
+         <ul class="nav-li">
+         	<li>珍珠</li>
+         	<li>玛瑙</li>
+         	<li>钻石</li>
+         	<li>钻石</li>
+         	<li>玛瑙</li>
+         </ul>
+		</li>
+		<li class="box-nav">珠宝玉器 <span>></span>
+         <ul class="nav-li">
+         	<li>珍珠</li>
+         	<li>玛瑙</li>
+         	<li>钻石</li>
+         	<li>钻石</li>
+         	<li>玛瑙</li>
+         	<li>玛瑙</li>
+         </ul>
+		</li>
+		<li class="box-nav">珠宝玉器 <span>></span>
+         <ul class="nav-li">
+         	<li>珍珠</li>
+         	<li>玛瑙</li>
+         	<li>钻石</li>
+         	<li>钻石</li>
+         	<li>玛瑙</li>
+         	<li>珍珠</li>
+         </ul>
+		</li>
+		<li class="box-nav">珠宝玉器 <span>></span>
+         <ul class="nav-li">
+            <li>珍珠</li>
+         	<li>玛瑙</li>
+         	<li>钻石</li>
+         	<li>钻石</li>
+         	<li>玛瑙</li>
+         	<li>珍珠</li>
+         </ul>
+		</li>
+		
+	</ul>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$('.box-nav').on('mouseenter',function(){
+			$(this).find('.nav-li').show();
+
+		});
+		$('.box-nav').on('mouseleave',function(){
+			$(this).find('.nav-li').hide();
+
+		});
+	</script>
+</body>
+</html>
