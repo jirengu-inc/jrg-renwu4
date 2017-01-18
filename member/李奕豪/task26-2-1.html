@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26-2-1</title>
+<style>
+.box{
+	width:200px;
+	height:200px;
+    border: 1px solid;
+}
+</style>	
+</head>
+<body>
+<div class="box">
+hello，hunger！
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(function(){
+	var $div =$('.box');
+	$div.on('click',function(){
+		$div.css({'background':'red'})
+		setTimeout(function(){
+			$div.css({'background':'blue'})
+		},500)
+	})
+});
+</script>	
+</body>
+</html>

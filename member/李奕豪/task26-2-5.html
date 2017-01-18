@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26-2-5</title>
+<style>
+div{
+    width:200px;
+    height:200px;
+    border:1px solid ;
+}
+</style>	
+</head>
+<body>
+<select name="" multiple>
+    <option value="">apple</option>
+    <option value="">西瓜</option>
+    <option value="">茄子</option>
+    <option value="">芒果</option>
+</select>
+<div>
+    
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(function(){
+  var $slt=$('select');
+  var $opt=$('option');
+  var $div=$('div');
+   $slt.on('change',function () {
+      $div.text($('option:selected').text());
+    })
+});
+</script>	
+</body>
+</html>

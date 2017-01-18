@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26</title>
+	<style>
+	    ul,li{
+	    	padding: 0;
+	    	margin: 0;
+	    }
+		#box>li{
+            list-style: none;
+            border: 1px solid;
+            margin-top: 10px;
+            padding: 10px;
+            cursor: pointer;
+		}
+		.btn{
+			display: inline-block;
+	        height: 40px;
+	        line-height: 40px;
+	        width: 80px;
+	        border: 1px solid #E27272;
+	        border-radius: 3px;
+	        text-align: center;
+	        text-decoration: none;
+	        color: #E27272;
+		}
+		#loadMore{
+			display: block;
+			margin: 10px auto;
+			cursor: pointer;
+		}
+		#load-more img{
+	        width: 40px;
+	        height: 40px;
+}
+		.hover{
+            background: green;
+            color: #fff;
+        }
+	</style>
+</head>
+<body>
+	<ul id="box">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<a class="btn" href="#" id="loadMore">加载更多</a>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		/*
+		定义接口：
+		url:getMore.php;
+		入参：{start:2,len:6}
+		回参：{
+	      status:1，//1代表正常 0代表出错了
+	      data:[2,3,4,5,6,7]
+		}
+		 */
+		var $loadMoreBtn =$('#loadMore');
+		var $box =$('#box');
+		var cur = 2;
+		// 鼠标放置在li元素上的效果：
+		$box.on('mouseenter','li',function(){
+			$(this).addClass('hover');
+		});
+		$box.on('mouseleave','li',function(){
+			$(this).removeClass('hover');
+		});
+
+		//下边就是对按钮进行事件处理：
+		
+		$loadMoreBtn.on('click',function(e){
+			
+             e.preventDefault();  //防止点击 a 链接页面跳到顶部
+
+             if($(this).data('isLoading')){   //获取一个状态锁
+                  return;
+              }
+             $(this).data('isLoading', true)   //设置一个状态锁，防止在加载的数据回来之前用户多次点击
+                    .html('<img src="loading.gif" />');  //链式调用，换行也没关系，对齐好看些
+
+			$.ajax({
+				url:"getMore.php",
+				datatype:"json",
+				type:"get",
+				data:{
+					start:cur,
+					len:6
+				},
+				success:function(json){
+					onSuccess(json);
+				},
+				error:function(){
+					onError();
+				}
+			});
+		});
+		function onSuccess(json){
+			  $loadMoreBtn.data('isLoading', false)
+              .text('加载更多');   //链式调用，换行也没关系，对齐好看些
+              console.log(json);
+              if(json.status == 1){
+              append(json.data);
+              cur += 6;
+              }else{
+              alert('获取数据失败');
+              }
+		}
+		function onError(){
+              $loadMoreBtn.data('isLoading', false)
+                          .text('加载更多'); //链式调用，换行也没关系，对齐好看些
+              alert('系统异常');
+        }
+        function append(arr){
+        	for(var i=0;i<arr.length;i++){
+        		$box.append('<li>+arr[i]+</li>');
+        	}
+        }
+		
+	</script>
+</body>
+</html>
